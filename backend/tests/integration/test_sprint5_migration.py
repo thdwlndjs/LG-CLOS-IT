@@ -65,8 +65,8 @@ def test_0003_preserves_legacy_records_and_matches_current_ddl():
                         )
                     )
                 ).all()
-                await conn.run_sync(migrate, "head")
-                await conn.run_sync(migrate, "head")
+                await conn.run_sync(migrate, "0003_sprint5_history_care")
+                await conn.run_sync(migrate, "0003_sprint5_history_care")
                 after = (
                     await conn.execute(
                         text(

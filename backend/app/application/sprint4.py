@@ -202,7 +202,8 @@ class Sprint4(Sprint3):
                     id=identity,
                     h=actor.household_id,
                     m=actor.member_id,
-                    p=canonical(body.model_dump(mode="json")),
+                    p=canonical(dict(body.model_dump(mode="json"),
+                                     personal_account=actor.personal_account)),
                     c=actor.correlation_id,
                 )
                 await repo.execute(
@@ -306,7 +307,15 @@ class Sprint4(Sprint3):
             )
             if row is None:
                 raise ApiError(404, "NOT_FOUND", "Share unavailable")
-            actor = ActorContext(row["household_id"], row["member_id"], "MEMBER", uuid4(), "share")
+            personal = await repo.one(
+                "SELECT coalesce(j.request_payload->'personal_account'='true'::jsonb,false) "
+                "AS enabled FROM wardrobe.job j JOIN wardrobe.card_render_job r "
+                "ON r.job_id=j.id WHERE r.card_id=:card AND j.status='SUCCEEDED' "
+                "AND j.result_ref=CAST(:asset AS text) ORDER BY j.created_at DESC LIMIT 1",
+                card=row["id"], asset=str(row["image_asset_id"]),
+            )
+            actor = ActorContext(row["household_id"], row["member_id"], "MEMBER", uuid4(), "share",
+                                 personal_account=bool(personal and personal["enabled"]))
             try:
                 await card_inputs(repo, actor, CardTemplateData(**row["template_data"]["data"]))
                 image = await ready_asset(repo, actor, row["image_asset_id"], "CARD")

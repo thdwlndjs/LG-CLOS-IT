@@ -17,11 +17,13 @@ celery_app.conf.update(
         "app.workers.cards",
         "app.workers.storage",
         "app.workers.events",
+        "app.workers.external_vton",
     ),
     task_default_queue=settings.worker_queue,
     beat_schedule={
         "storage-retention": {"task": "wardrobe.cleanup_assets", "schedule": 60.0},
         "vton-durable-jobs": {"task": "wardrobe.process_vton", "schedule": 2.0},
+        "external-vton-jobs": {"task": "wardrobe.process_external_vton", "schedule": 2.0},
         "card-durable-jobs": {"task": "wardrobe.process_cards", "schedule": 2.0},
         "storage-durable-jobs": {"task": "wardrobe.process_storage", "schedule": 2.0},
         "outbox-dispatch": {"task": "wardrobe.dispatch_events", "schedule": 2.0},

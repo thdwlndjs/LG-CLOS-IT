@@ -89,6 +89,7 @@ async def execute_job(settings, resources, row, provider_factory):
         "MEMBER",
         UUID(int=0),
         row["correlation_id"] or str(row["id"]),
+        personal_account=row["request_payload"].get("personal_account", False),
     )
     payload = row["request_payload"]
     items = [OutfitItem(**i) for i in payload["items"]]

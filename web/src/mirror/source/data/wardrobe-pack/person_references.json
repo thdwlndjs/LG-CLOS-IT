@@ -1,0 +1,9 @@
+[
+  {
+    "id": "DEMO_PERSON01",
+    "reference_asset_id": "asset_LOOK01_v1",
+    "is_synthetic_person": true,
+    "body_measurements": null,
+    "scope": "패키지의 정적 착장 비교 전용"
+  }
+]

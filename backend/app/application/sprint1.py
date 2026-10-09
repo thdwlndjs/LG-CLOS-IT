@@ -111,6 +111,8 @@ class Sprint1:
         return Garment(
             id=row["id"],
             owner_id=row["owner_id"],
+            device_id=row["device_id"],
+            name=row["name"],
             category=row["category"],
             color=row["color"],
             material=row["material"],
@@ -199,6 +201,10 @@ class Sprint1:
 
     async def upsert(self, actor, body, key=None, garment_id=None, version=None):
         require_self(actor, body.owner_id)
+        if actor.personal_account and body.device_id is None and (
+            garment_id is None or "device_id" in body.model_fields_set
+        ):
+            raise ApiError(422, "VALIDATION_ERROR", "Select an accessible storage device")
         nonblank(body.category)
         nonblank(body.color)
         for season in body.season_tags:
@@ -208,6 +214,14 @@ class Sprint1:
 
             async def mutate():
                 await repo.lock('storage-household:' + str(actor.household_id))
+                if body.device_id is not None:
+                    device = await repo.one(
+                        "SELECT device_id FROM wardrobe.device_member WHERE device_id=:device "
+                        "AND member_id=:member AND household_id=:household",
+                        device=body.device_id, member=actor.member_id, household=actor.household_id,
+                    )
+                    if device is None:
+                        raise ApiError(404, "NOT_FOUND", "Device not found")
                 if garment_id is not None:
                     row = await self.require_garment(repo, actor, garment_id, lock=True)
                     await self.dto(row)  # Unmapped states must not be silently overwritten.
@@ -249,13 +263,16 @@ class Sprint1:
                     target = uuid4()
                     await repo.execute(
                         "INSERT INTO wardrobe.garment "
-                        "(id,household_id,owner_id,category,color,material,"
+                        "(id,household_id,owner_id,device_id,name,category,color,material,"
                         "season_tags,image_asset_id,care_label) "
-                        "VALUES (:id,:household,:owner,:category,:color,:material,:seasons,:image,"
+                        "VALUES (:id,:household,:owner,:device,:name,:category,:color,:material,"
+                        ":seasons,:image,"
                         "CAST(:care AS jsonb))",
                         id=target,
                         household=actor.household_id,
                         owner=actor.member_id,
+                        device=body.device_id,
+                        name=body.name,
                         category=body.category,
                         color=body.color,
                         material=body.material,
@@ -280,6 +297,8 @@ class Sprint1:
                     params = {"id": target, "category": body.category, "color": body.color}
                     for field, column in (
                         ("material", "material"),
+                        ("name", "name"),
+                        ("device_id", "device_id"),
                         ("season_tags", "season_tags"),
                         ("image_asset_id", "image_asset_id"),
                     ):

@@ -21,12 +21,15 @@ def claims_to_actor(claims: dict, correlation_id: str) -> ActorContext:
         return ActorContext(
             household_id=UUID(claims["household_id"]), member_id=UUID(claims["sub"]),
             session_id=UUID(claims["sid"]), role=role, correlation_id=correlation_id,
+            station_id=UUID(claims["station_id"]) if claims.get("station_id") else None,
+            personal_account=claims.get("personal_account") is True,
         )
     except (KeyError, ValueError, TypeError, AttributeError) as exc:
         raise ApiError(401, "UNAUTHENTICATED", "Invalid session token") from exc
 
 
-def issue_token(settings: Settings, member_id: UUID, household_id: UUID, role: str):
+def issue_token(settings: Settings, member_id: UUID, household_id: UUID, role: str,
+                station_id: UUID | None = None, personal_account: bool = False):
     import jwt
 
     now = utc_now()
@@ -37,6 +40,10 @@ def issue_token(settings: Settings, member_id: UUID, household_id: UUID, role: s
         "sid": str(session_id), "iat": now, "nbf": now, "exp": expires,
         "iss": settings.jwt_issuer, "aud": settings.jwt_audience,
     }
+    if station_id is not None:
+        claims["station_id"] = str(station_id)
+    if personal_account:
+        claims["personal_account"] = True
     # Reject unsupported roles before signing, including the unresolved API-only DEMO role.
     claims_to_actor(claims, "issuance")
     token = jwt.encode(claims, settings.jwt_secret.get_secret_value(), algorithm="HS256")
@@ -76,4 +83,22 @@ async def current_actor(
         ))
         if member is None or member.role != actor.role:
             raise ApiError(401, "UNAUTHENTICATED", "Session principal is no longer valid")
+        if actor.personal_account:
+            from sqlalchemy import text
+
+            enabled = await session.scalar(text(
+                "SELECT enabled FROM wardrobe.account_credential WHERE member_id=:member"
+            ), {"member": actor.member_id})
+            if not enabled:
+                raise ApiError(401, "UNAUTHENTICATED", "Account is no longer enabled")
+            from redis.exceptions import RedisError
+
+            try:
+                revoked = await request.app.state.resources.redis.exists(
+                    f"wardrobe:revoked:{actor.session_id}")
+            except RedisError as exc:
+                raise ApiError(
+                    503, "DEPENDENCY_UNAVAILABLE", "Session verifier unavailable") from exc
+            if revoked:
+                raise ApiError(401, "UNAUTHENTICATED", "Session revoked")
     return actor

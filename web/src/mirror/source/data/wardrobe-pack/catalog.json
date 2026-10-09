@@ -1,0 +1,1525 @@
+[
+  {
+    "garment_id": "T01",
+    "name": "화이트 셔츠",
+    "category": "top",
+    "subcategory": "shirt",
+    "subcategory_ko": "셔츠",
+    "colors": [
+      {
+        "code": "white",
+        "label_ko": "화이트",
+        "hex": "#F5F5F2"
+      }
+    ],
+    "season_tags": [
+      "spring",
+      "autumn"
+    ],
+    "style_tags": [
+      "minimal",
+      "business_casual"
+    ],
+    "description_ko": "포인트 칼라와 가슴 주머니가 있는 화이트 긴팔 셔츠입니다.",
+    "visual_material_description": "매끈하고 촘촘한 포플린을 연상시키는 직물 표면",
+    "asset_id": "asset_T01_v1",
+    "asset_version": 1,
+    "image_ref": "assets/catalog/T01.png",
+    "sha256": "d7dd5a5417a9dddbe3fd7bbe733bbf4bea617eb53f9374b3ee47c3d4907a5627",
+    "owner_id": null,
+    "location_ref": null,
+    "missing": false
+  },
+  {
+    "garment_id": "T02",
+    "name": "아이보리 셔츠",
+    "category": "top",
+    "subcategory": "shirt",
+    "subcategory_ko": "셔츠",
+    "colors": [
+      {
+        "code": "ivory",
+        "label_ko": "아이보리",
+        "hex": "#EEE9D9"
+      }
+    ],
+    "season_tags": [
+      "spring",
+      "summer",
+      "autumn"
+    ],
+    "style_tags": [
+      "natural",
+      "casual"
+    ],
+    "description_ko": "주머니 없이 편안하게 떨어지는 아이보리 긴팔 셔츠입니다.",
+    "visual_material_description": "성긴 짜임과 자연스러운 구김이 보이는 린넨풍 표면",
+    "asset_id": "asset_T02_v1",
+    "asset_version": 1,
+    "image_ref": "assets/catalog/T02.png",
+    "sha256": "47cba52d2037fadb0e16f6c2bd8d52ce30b6a7dab401b5ba558cc5325862d8b0",
+    "owner_id": null,
+    "location_ref": null,
+    "missing": false
+  },
+  {
+    "garment_id": "T03",
+    "name": "블루 셔츠",
+    "category": "top",
+    "subcategory": "shirt",
+    "subcategory_ko": "셔츠",
+    "colors": [
+      {
+        "code": "sky_blue",
+        "label_ko": "스카이블루",
+        "hex": "#AAC7DB"
+      }
+    ],
+    "season_tags": [
+      "spring",
+      "autumn"
+    ],
+    "style_tags": [
+      "preppy",
+      "business_casual"
+    ],
+    "description_ko": "버튼다운 칼라와 가슴 주머니가 있는 스카이블루 셔츠입니다.",
+    "visual_material_description": "미세한 조직감이 보이는 옥스퍼드풍 직물 표면",
+    "asset_id": "asset_T03_v1",
+    "asset_version": 1,
+    "image_ref": "assets/catalog/T03.png",
+    "sha256": "4b0984486bff22676061263c6cdee41f58e57ffa2b945309c1b999b10cd2a643",
+    "owner_id": null,
+    "location_ref": null,
+    "missing": false
+  },
+  {
+    "garment_id": "T04",
+    "name": "올리브 셔츠",
+    "category": "top",
+    "subcategory": "shirt",
+    "subcategory_ko": "셔츠",
+    "colors": [
+      {
+        "code": "olive",
+        "label_ko": "올리브",
+        "hex": "#62694B"
+      }
+    ],
+    "season_tags": [
+      "spring",
+      "autumn"
+    ],
+    "style_tags": [
+      "casual",
+      "workwear"
+    ],
+    "description_ko": "포인트 칼라와 가슴 주머니가 있는 올리브 긴팔 셔츠입니다.",
+    "visual_material_description": "사선 짜임을 연상시키는 탄탄한 트윌풍 표면",
+    "asset_id": "asset_T04_v1",
+    "asset_version": 1,
+    "image_ref": "assets/catalog/T04.png",
+    "sha256": "8c52a8c2a3ee409367f7f527ba785f2dc7faec79eb47be1b1a0e3a4b140cb52c",
+    "owner_id": null,
+    "location_ref": null,
+    "missing": false
+  },
+  {
+    "garment_id": "B01",
+    "name": "블랙 슬랙스",
+    "category": "bottom",
+    "subcategory": "tailored_trousers",
+    "subcategory_ko": "슬랙스",
+    "colors": [
+      {
+        "code": "black",
+        "label_ko": "블랙",
+        "hex": "#242424"
+      }
+    ],
+    "season_tags": [
+      "spring",
+      "autumn"
+    ],
+    "style_tags": [
+      "minimal",
+      "business_casual"
+    ],
+    "description_ko": "앞 주름과 곧은 바지선이 있는 블랙 스트레이트 슬랙스입니다.",
+    "visual_material_description": "매끈한 정장 직물풍 표면",
+    "asset_id": "asset_B01_v1",
+    "asset_version": 1,
+    "image_ref": "assets/catalog/B01.png",
+    "sha256": "f2de5799b07a7ac43f184daf7f1b5873ce7f3dec8a513542e6018b6dc3ddff80",
+    "owner_id": null,
+    "location_ref": null,
+    "missing": false
+  },
+  {
+    "garment_id": "B02",
+    "name": "베이지 치노",
+    "category": "bottom",
+    "subcategory": "chinos",
+    "subcategory_ko": "치노팬츠",
+    "colors": [
+      {
+        "code": "beige",
+        "label_ko": "베이지",
+        "hex": "#CCB694"
+      }
+    ],
+    "season_tags": [
+      "spring",
+      "autumn"
+    ],
+    "style_tags": [
+      "casual",
+      "preppy"
+    ],
+    "description_ko": "앞 주름 없이 편안하게 떨어지는 베이지 스트레이트 치노입니다.",
+    "visual_material_description": "탄탄하고 미세한 사선 조직이 보이는 트윌풍 표면",
+    "asset_id": "asset_B02_v1",
+    "asset_version": 1,
+    "image_ref": "assets/catalog/B02.png",
+    "sha256": "03e9717f81ae41f6cc840e85001ee047295c97762846dc35d587295d93427db8",
+    "owner_id": null,
+    "location_ref": null,
+    "missing": false
+  },
+  {
+    "garment_id": "O01",
+    "name": "베이지 트렌치코트",
+    "category": "outer",
+    "subcategory": "trench_coat",
+    "subcategory_ko": "트렌치코트",
+    "colors": [
+      {
+        "code": "beige",
+        "label_ko": "베이지",
+        "hex": "#CCB694"
+      }
+    ],
+    "season_tags": [
+      "spring",
+      "autumn"
+    ],
+    "style_tags": [
+      "classic",
+      "business_casual"
+    ],
+    "description_ko": "더블 버튼과 허리 벨트, 어깨 견장이 있는 베이지 트렌치코트입니다.",
+    "visual_material_description": "촘촘하고 매끈한 직물풍 표면",
+    "asset_id": "asset_O01_v1",
+    "asset_version": 1,
+    "image_ref": "assets/catalog/O01.png",
+    "sha256": "340fecbd39661a5c259b2e6e010d567ed1d8b28fcdc767ecb48eab6d570c3dd9",
+    "owner_id": null,
+    "location_ref": null,
+    "missing": false
+  },
+  {
+    "garment_id": "O02",
+    "name": "네이비 봄버 재킷",
+    "category": "outer",
+    "subcategory": "bomber_jacket",
+    "subcategory_ko": "봄버 재킷",
+    "colors": [
+      {
+        "code": "navy",
+        "label_ko": "네이비",
+        "hex": "#26364B"
+      }
+    ],
+    "season_tags": [
+      "spring",
+      "autumn"
+    ],
+    "style_tags": [
+      "casual",
+      "street"
+    ],
+    "description_ko": "지퍼 여밈과 목, 소매, 밑단 시보리가 있는 네이비 봄버 재킷입니다.",
+    "visual_material_description": "가볍고 매끈한 직물풍 표면",
+    "asset_id": "asset_O02_v1",
+    "asset_version": 1,
+    "image_ref": "assets/catalog/O02.png",
+    "sha256": "09b085af9dd5985d34de97770c00033c9cd10d365b3ab6815716b9657c131900",
+    "owner_id": null,
+    "location_ref": null,
+    "missing": false
+  },
+  {
+    "garment_id": "O03",
+    "name": "차콜 울 코트",
+    "category": "outer",
+    "subcategory": "wool_style_coat",
+    "subcategory_ko": "울 코트",
+    "colors": [
+      {
+        "code": "charcoal",
+        "label_ko": "차콜",
+        "hex": "#4A4A4A"
+      }
+    ],
+    "season_tags": [
+      "winter"
+    ],
+    "style_tags": [
+      "classic",
+      "business_casual"
+    ],
+    "description_ko": "세 개의 버튼과 노치드 라펠이 있는 차콜 무릎 길이 코트입니다.",
+    "visual_material_description": "잔잔한 보풀감과 두께감이 있는 울풍 표면",
+    "asset_id": "asset_O03_v1",
+    "asset_version": 1,
+    "image_ref": "assets/catalog/O03.png",
+    "sha256": "5dc3154aed257431f6066b2164b1167187565e6c8c5df6e1cfaa29341bf8df61",
+    "owner_id": null,
+    "location_ref": null,
+    "missing": false
+  },
+  {
+    "garment_id": "O04",
+    "name": "차콜 블레이저",
+    "category": "outer",
+    "subcategory": "blazer",
+    "subcategory_ko": "블레이저",
+    "colors": [
+      {
+        "code": "charcoal",
+        "label_ko": "차콜",
+        "hex": "#4A4A4A"
+      }
+    ],
+    "season_tags": [
+      "spring",
+      "autumn"
+    ],
+    "style_tags": [
+      "business_casual",
+      "classic"
+    ],
+    "description_ko": "노치드 라펠과 덮개 주머니가 있는 차콜 투버튼 블레이저입니다.",
+    "visual_material_description": "미세한 짜임의 정장 직물풍 표면",
+    "asset_id": "asset_O04_v1",
+    "asset_version": 1,
+    "image_ref": "assets/catalog/O04.png",
+    "sha256": "dc4e13116157dd7ea49ded77bde6f14e445c7bea43dbea1537bb6f288cdb2c8c",
+    "owner_id": null,
+    "location_ref": null,
+    "missing": false
+  },
+  {
+    "garment_id": "O05",
+    "name": "크림 가디건",
+    "category": "outer",
+    "subcategory": "cardigan",
+    "subcategory_ko": "가디건",
+    "colors": [
+      {
+        "code": "cream",
+        "label_ko": "크림",
+        "hex": "#E8DFC8"
+      }
+    ],
+    "season_tags": [
+      "spring",
+      "autumn"
+    ],
+    "style_tags": [
+      "classic",
+      "casual"
+    ],
+    "description_ko": "브이넥과 브라운 버튼, 앞 주머니가 있는 크림 가디건입니다.",
+    "visual_material_description": "중간 두께의 부드러운 니트 조직",
+    "asset_id": "asset_O05_v1",
+    "asset_version": 1,
+    "image_ref": "assets/catalog/O05.png",
+    "sha256": "660ee50a4da4fa702d39c48108d669396791ec0cdf9cbe8271fad167570d9cb2",
+    "owner_id": null,
+    "location_ref": null,
+    "missing": false
+  },
+  {
+    "garment_id": "O06",
+    "name": "블루 데님 재킷",
+    "category": "outer",
+    "subcategory": "denim_jacket",
+    "subcategory_ko": "데님 재킷",
+    "colors": [
+      {
+        "code": "denim_blue",
+        "label_ko": "데님 블루",
+        "hex": "#5B7D9B"
+      }
+    ],
+    "season_tags": [
+      "spring",
+      "autumn"
+    ],
+    "style_tags": [
+      "casual",
+      "workwear"
+    ],
+    "description_ko": "가슴 덮개 주머니와 금속 버튼이 있는 블루 트러커 재킷입니다.",
+    "visual_material_description": "데님풍 표면과 또렷한 봉제선",
+    "asset_id": "asset_O06_v1",
+    "asset_version": 1,
+    "image_ref": "assets/catalog/O06.png",
+    "sha256": "0c063c45011ee3fa0779b00638918a100d0d68949d8227665a6c34de928b5436",
+    "owner_id": null,
+    "location_ref": null,
+    "missing": false
+  },
+  {
+    "garment_id": "T05",
+    "name": "크림 케이블 니트",
+    "category": "top",
+    "subcategory": "knit_sweater",
+    "subcategory_ko": "케이블 니트",
+    "colors": [
+      {
+        "code": "cream",
+        "label_ko": "크림",
+        "hex": "#E8DFC8"
+      }
+    ],
+    "season_tags": [
+      "autumn",
+      "winter"
+    ],
+    "style_tags": [
+      "classic",
+      "casual"
+    ],
+    "description_ko": "몸판과 소매의 케이블 짜임이 돋보이는 크림 크루넥 니트입니다.",
+    "visual_material_description": "굵은 꼬임 패턴과 두툼한 니트 조직",
+    "asset_id": "asset_T05_v1",
+    "asset_version": 1,
+    "image_ref": "assets/catalog/T05.png",
+    "sha256": "1cd67a1549187949e8ad3b80b2d8c2d5f0b1efebd8d4e9c8e0c9484a2eefc1e0",
+    "owner_id": null,
+    "location_ref": null,
+    "missing": false
+  },
+  {
+    "garment_id": "T06",
+    "name": "네이비 반팔 티셔츠",
+    "category": "top",
+    "subcategory": "short_sleeve_tshirt",
+    "subcategory_ko": "반팔 티셔츠",
+    "colors": [
+      {
+        "code": "navy",
+        "label_ko": "네이비",
+        "hex": "#26364B"
+      }
+    ],
+    "season_tags": [
+      "spring",
+      "summer"
+    ],
+    "style_tags": [
+      "minimal",
+      "casual"
+    ],
+    "description_ko": "프린트가 없는 네이비 크루넥 반팔 티셔츠입니다.",
+    "visual_material_description": "얇고 매끈한 저지풍 표면",
+    "asset_id": "asset_T06_v1",
+    "asset_version": 1,
+    "image_ref": "assets/catalog/T06.png",
+    "sha256": "7f445475954fd3ae2c592eb351be1834df56695b94f13e12113942872aee07ef",
+    "owner_id": null,
+    "location_ref": null,
+    "missing": false
+  },
+  {
+    "garment_id": "T07",
+    "name": "그레이 맨투맨",
+    "category": "top",
+    "subcategory": "sweatshirt",
+    "subcategory_ko": "맨투맨",
+    "colors": [
+      {
+        "code": "grey",
+        "label_ko": "그레이",
+        "hex": "#A6A6A6"
+      }
+    ],
+    "season_tags": [
+      "spring",
+      "autumn"
+    ],
+    "style_tags": [
+      "casual",
+      "sporty"
+    ],
+    "description_ko": "목둘레와 소매, 밑단에 시보리가 있는 그레이 맨투맨입니다.",
+    "visual_material_description": "멜란지 색감의 도톰한 스웨트 원단풍 표면",
+    "asset_id": "asset_T07_v1",
+    "asset_version": 1,
+    "image_ref": "assets/catalog/T07.png",
+    "sha256": "6a438ff346a4ef77fa109fa40d63ae32cc7cc4f3b145f3b5c2252e782468e2aa",
+    "owner_id": null,
+    "location_ref": null,
+    "missing": false
+  },
+  {
+    "garment_id": "T08",
+    "name": "스트라이프 롱슬리브",
+    "category": "top",
+    "subcategory": "long_sleeve_tshirt",
+    "subcategory_ko": "롱슬리브 티셔츠",
+    "colors": [
+      {
+        "code": "ivory",
+        "label_ko": "아이보리",
+        "hex": "#EEE9D9"
+      },
+      {
+        "code": "navy",
+        "label_ko": "네이비",
+        "hex": "#26364B"
+      }
+    ],
+    "season_tags": [
+      "spring",
+      "autumn"
+    ],
+    "style_tags": [
+      "casual",
+      "marine"
+    ],
+    "description_ko": "아이보리 바탕에 네이비 가로줄이 들어간 크루넥 롱슬리브입니다.",
+    "visual_material_description": "부드럽고 얇은 저지풍 표면",
+    "asset_id": "asset_T08_v1",
+    "asset_version": 1,
+    "image_ref": "assets/catalog/T08.png",
+    "sha256": "43931b03d5004d5500986ad4bb85799bcfe5e5da30f1644ffa216e8a2f812664",
+    "owner_id": null,
+    "location_ref": null,
+    "missing": false
+  },
+  {
+    "garment_id": "T09",
+    "name": "차콜 풀오버 후드티",
+    "category": "top",
+    "subcategory": "pullover_hoodie",
+    "subcategory_ko": "풀오버 후드티",
+    "colors": [
+      {
+        "code": "charcoal",
+        "label_ko": "차콜",
+        "hex": "#4A4A4A"
+      }
+    ],
+    "season_tags": [
+      "spring",
+      "autumn",
+      "winter"
+    ],
+    "style_tags": [
+      "casual",
+      "street"
+    ],
+    "description_ko": "후드와 끈, 앞 캥거루 주머니가 있는 차콜 풀오버 후드티입니다.",
+    "visual_material_description": "도톰하고 부드러운 스웨트 원단풍 표면",
+    "asset_id": "asset_T09_v1",
+    "asset_version": 1,
+    "image_ref": "assets/catalog/T09.png",
+    "sha256": "19107e171ecd9574e5dc655d09e18f07eca7e61b6fa0a9f136d8b83590fb79de",
+    "owner_id": null,
+    "location_ref": null,
+    "missing": false
+  },
+  {
+    "garment_id": "T10",
+    "name": "아이보리 슬리브리스",
+    "category": "top",
+    "subcategory": "sleeveless_top",
+    "subcategory_ko": "슬리브리스",
+    "colors": [
+      {
+        "code": "ivory",
+        "label_ko": "아이보리",
+        "hex": "#EEE9D9"
+      }
+    ],
+    "season_tags": [
+      "summer"
+    ],
+    "style_tags": [
+      "minimal",
+      "casual"
+    ],
+    "description_ko": "넓은 어깨끈과 둥근 네크라인이 있는 아이보리 슬리브리스입니다.",
+    "visual_material_description": "세로 골지가 보이는 리브 조직",
+    "asset_id": "asset_T10_v1",
+    "asset_version": 1,
+    "image_ref": "assets/catalog/T10.png",
+    "sha256": "144b4b331364e047668e0e5e145013a112ee1057b3f1e370acd4968d955ec80b",
+    "owner_id": null,
+    "location_ref": null,
+    "missing": false
+  },
+  {
+    "garment_id": "T11",
+    "name": "버건디 폴로 셔츠",
+    "category": "top",
+    "subcategory": "polo_shirt",
+    "subcategory_ko": "폴로 셔츠",
+    "colors": [
+      {
+        "code": "burgundy",
+        "label_ko": "버건디",
+        "hex": "#723D49"
+      }
+    ],
+    "season_tags": [
+      "spring",
+      "summer"
+    ],
+    "style_tags": [
+      "preppy",
+      "smart_casual"
+    ],
+    "description_ko": "접히는 칼라와 짧은 버튼 여밈이 있는 버건디 반팔 폴로입니다.",
+    "visual_material_description": "작은 요철이 느껴지는 피케풍 표면",
+    "asset_id": "asset_T11_v1",
+    "asset_version": 1,
+    "image_ref": "assets/catalog/T11.png",
+    "sha256": "c504469a51f2a64cfe93a6d773e546d1fb8950250b240ec9cef70aaefb4cfd91",
+    "owner_id": null,
+    "location_ref": null,
+    "missing": false
+  },
+  {
+    "garment_id": "T12",
+    "name": "블랙 모크넥",
+    "category": "top",
+    "subcategory": "mockneck_top",
+    "subcategory_ko": "모크넥",
+    "colors": [
+      {
+        "code": "black",
+        "label_ko": "블랙",
+        "hex": "#242424"
+      }
+    ],
+    "season_tags": [
+      "autumn",
+      "winter"
+    ],
+    "style_tags": [
+      "minimal",
+      "smart_casual"
+    ],
+    "description_ko": "낮게 올라오는 목과 긴 소매가 특징인 블랙 모크넥 상의입니다.",
+    "visual_material_description": "매끈하고 얇은 저지풍 표면",
+    "asset_id": "asset_T12_v1",
+    "asset_version": 1,
+    "image_ref": "assets/catalog/T12.png",
+    "sha256": "d367ccf036bd3dfa68fca272a9eab4f5aff724382e926f728f5788c794c8f166",
+    "owner_id": null,
+    "location_ref": null,
+    "missing": false
+  },
+  {
+    "garment_id": "B03",
+    "name": "인디고 스트레이트 데님",
+    "category": "bottom",
+    "subcategory": "straight_jeans",
+    "subcategory_ko": "스트레이트 데님",
+    "colors": [
+      {
+        "code": "indigo",
+        "label_ko": "인디고",
+        "hex": "#2F4462"
+      }
+    ],
+    "season_tags": [
+      "spring",
+      "autumn",
+      "winter"
+    ],
+    "style_tags": [
+      "casual",
+      "workwear"
+    ],
+    "description_ko": "다섯 개 주머니와 브라운 스티치가 있는 인디고 스트레이트 진입니다.",
+    "visual_material_description": "짙은 워싱과 대비되는 스티치의 데님풍 표면",
+    "asset_id": "asset_B03_v1",
+    "asset_version": 1,
+    "image_ref": "assets/catalog/B03.png",
+    "sha256": "9e2481f333c161afed02758ce494de8e0cc2b8dc531f61421cf5cb8a1625f8e0",
+    "owner_id": null,
+    "location_ref": null,
+    "missing": false
+  },
+  {
+    "garment_id": "B04",
+    "name": "라이트 린넨 와이드팬츠",
+    "category": "bottom",
+    "subcategory": "wide_trousers",
+    "subcategory_ko": "와이드팬츠",
+    "colors": [
+      {
+        "code": "flax",
+        "label_ko": "라이트 베이지",
+        "hex": "#D8CFB8"
+      }
+    ],
+    "season_tags": [
+      "spring",
+      "summer"
+    ],
+    "style_tags": [
+      "natural",
+      "casual"
+    ],
+    "description_ko": "통이 넓게 떨어지는 라이트 베이지 린넨풍 와이드팬츠입니다.",
+    "visual_material_description": "가벼운 짜임과 자연스러운 구김이 있는 린넨풍 표면",
+    "asset_id": "asset_B04_v1",
+    "asset_version": 1,
+    "image_ref": "assets/catalog/B04.png",
+    "sha256": "459af5803841fb9011feaa0d8d98d5a5d5cbcbd8e2980159a116fa3e90b0b5a4",
+    "owner_id": null,
+    "location_ref": null,
+    "missing": false
+  },
+  {
+    "garment_id": "B05",
+    "name": "그레이 플리츠 스커트",
+    "category": "bottom",
+    "subcategory": "pleated_skirt",
+    "subcategory_ko": "플리츠 스커트",
+    "colors": [
+      {
+        "code": "charcoal",
+        "label_ko": "차콜",
+        "hex": "#4A4A4A"
+      }
+    ],
+    "season_tags": [
+      "spring",
+      "autumn"
+    ],
+    "style_tags": [
+      "preppy",
+      "classic"
+    ],
+    "description_ko": "일정한 간격의 주름이 있는 차콜 무릎 길이 스커트입니다.",
+    "visual_material_description": "잔잔한 직물 표면과 반복되는 칼주름",
+    "asset_id": "asset_B05_v1",
+    "asset_version": 1,
+    "image_ref": "assets/catalog/B05.png",
+    "sha256": "c711f10dddeecc0a6278121f0a94b6efae9d23bdef55ddb96a8cc4a251efe314",
+    "owner_id": null,
+    "location_ref": null,
+    "missing": false
+  },
+  {
+    "garment_id": "B06",
+    "name": "올리브 카고팬츠",
+    "category": "bottom",
+    "subcategory": "cargo_trousers",
+    "subcategory_ko": "카고팬츠",
+    "colors": [
+      {
+        "code": "olive",
+        "label_ko": "올리브",
+        "hex": "#62694B"
+      }
+    ],
+    "season_tags": [
+      "spring",
+      "autumn"
+    ],
+    "style_tags": [
+      "workwear",
+      "street"
+    ],
+    "description_ko": "허벅지 양옆의 큰 덮개 주머니가 특징인 올리브 카고팬츠입니다.",
+    "visual_material_description": "격자 조직을 연상시키는 립스톱풍 표면",
+    "asset_id": "asset_B06_v1",
+    "asset_version": 1,
+    "image_ref": "assets/catalog/B06.png",
+    "sha256": "c1a0a51b9976c0d37bad56f113d475e1581ef8ff96065b9416540ade2bd6888e",
+    "owner_id": null,
+    "location_ref": null,
+    "missing": false
+  },
+  {
+    "garment_id": "B07",
+    "name": "그레이 조거팬츠",
+    "category": "bottom",
+    "subcategory": "jogger_trousers",
+    "subcategory_ko": "조거팬츠",
+    "colors": [
+      {
+        "code": "grey",
+        "label_ko": "그레이",
+        "hex": "#A6A6A6"
+      }
+    ],
+    "season_tags": [
+      "spring",
+      "autumn"
+    ],
+    "style_tags": [
+      "casual",
+      "sporty"
+    ],
+    "description_ko": "허리 끈과 발목 시보리가 있는 그레이 조거팬츠입니다.",
+    "visual_material_description": "멜란지 색감의 부드러운 스웨트 원단풍 표면",
+    "asset_id": "asset_B07_v1",
+    "asset_version": 1,
+    "image_ref": "assets/catalog/B07.png",
+    "sha256": "58b00505e0aa9729e5046a77122d69dceae57468669aeba563c5cbcf8bc961a6",
+    "owner_id": null,
+    "location_ref": null,
+    "missing": false
+  },
+  {
+    "garment_id": "B08",
+    "name": "블루 데님 쇼츠",
+    "category": "bottom",
+    "subcategory": "denim_shorts",
+    "subcategory_ko": "데님 쇼츠",
+    "colors": [
+      {
+        "code": "denim_blue",
+        "label_ko": "데님 블루",
+        "hex": "#5B7D9B"
+      }
+    ],
+    "season_tags": [
+      "summer"
+    ],
+    "style_tags": [
+      "casual",
+      "street"
+    ],
+    "description_ko": "다섯 개 주머니와 짧은 프린지 밑단이 있는 블루 데님 쇼츠입니다.",
+    "visual_material_description": "워싱이 있는 데님풍 표면과 자연스럽게 풀린 밑단",
+    "asset_id": "asset_B08_v1",
+    "asset_version": 1,
+    "image_ref": "assets/catalog/B08.png",
+    "sha256": "51cd95f88929edb27065f1b378b3d338cbc1ec992e740df8144910887743b793",
+    "owner_id": null,
+    "location_ref": null,
+    "missing": false
+  },
+  {
+    "garment_id": "B09",
+    "name": "블랙 트레이닝 쇼츠",
+    "category": "bottom",
+    "subcategory": "training_shorts",
+    "subcategory_ko": "트레이닝 쇼츠",
+    "colors": [
+      {
+        "code": "black",
+        "label_ko": "블랙",
+        "hex": "#242424"
+      }
+    ],
+    "season_tags": [
+      "summer"
+    ],
+    "style_tags": [
+      "sporty",
+      "casual"
+    ],
+    "description_ko": "밴딩 허리와 곡선형 옆 트임이 있는 블랙 트레이닝 쇼츠입니다.",
+    "visual_material_description": "가벼운 광택과 얇은 직물 조직의 기능성 원단풍 표면",
+    "asset_id": "asset_B09_v1",
+    "asset_version": 1,
+    "image_ref": "assets/catalog/B09.png",
+    "sha256": "bef443e4e8e4349fe8b1767486e840f8c38aef1cf93f9e8a1f202b994655237c",
+    "owner_id": null,
+    "location_ref": null,
+    "missing": false
+  },
+  {
+    "garment_id": "D01",
+    "name": "블랙 원피스",
+    "category": "dress",
+    "subcategory": "sleeveless_midi_dress",
+    "subcategory_ko": "슬리브리스 원피스",
+    "colors": [
+      {
+        "code": "black",
+        "label_ko": "블랙",
+        "hex": "#242424"
+      }
+    ],
+    "season_tags": [
+      "spring",
+      "summer"
+    ],
+    "style_tags": [
+      "minimal",
+      "smart_casual"
+    ],
+    "description_ko": "둥근 네크라인과 자연스럽게 퍼지는 치마가 있는 블랙 미디 원피스입니다.",
+    "visual_material_description": "광택이 적은 매끈한 직물풍 표면",
+    "asset_id": "asset_D01_v1",
+    "asset_version": 1,
+    "image_ref": "assets/catalog/D01.png",
+    "sha256": "31f1f601b4a0d68fb5c494f104722da530d04ce1a5e59425577d434e170f8bee",
+    "owner_id": null,
+    "location_ref": null,
+    "missing": false
+  },
+  {
+    "garment_id": "H01",
+    "name": "네이비 볼캡",
+    "category": "hat",
+    "subcategory": "baseball_cap",
+    "subcategory_ko": "볼캡",
+    "colors": [
+      {
+        "code": "navy",
+        "label_ko": "네이비",
+        "hex": "#26364B"
+      }
+    ],
+    "season_tags": [
+      "spring",
+      "summer",
+      "autumn"
+    ],
+    "style_tags": [
+      "casual",
+      "sporty"
+    ],
+    "description_ko": "여섯 패널과 곡선형 챙으로 구성된 네이비 볼캡입니다.",
+    "visual_material_description": "탄탄한 직물풍 표면",
+    "asset_id": "asset_H01_v1",
+    "asset_version": 1,
+    "image_ref": "assets/catalog/H01.png",
+    "sha256": "07fb82c4854ed11808daa5cabc19c9248f619dc06f73948c4c35f2039341cca9",
+    "owner_id": null,
+    "location_ref": null,
+    "missing": false
+  },
+  {
+    "garment_id": "H02",
+    "name": "오트밀 비니",
+    "category": "hat",
+    "subcategory": "beanie",
+    "subcategory_ko": "비니",
+    "colors": [
+      {
+        "code": "oatmeal",
+        "label_ko": "오트밀",
+        "hex": "#CCBEA7"
+      }
+    ],
+    "season_tags": [
+      "autumn",
+      "winter"
+    ],
+    "style_tags": [
+      "casual",
+      "street"
+    ],
+    "description_ko": "넓게 접힌 밑단과 둥근 크라운이 있는 오트밀 비니입니다.",
+    "visual_material_description": "굵은 골지 니트 조직",
+    "asset_id": "asset_H02_v1",
+    "asset_version": 1,
+    "image_ref": "assets/catalog/H02.png",
+    "sha256": "d82a058f2296b05e3e7ddb8c1dc24b91660f2df480b12fb52a5afe3252003079",
+    "owner_id": null,
+    "location_ref": null,
+    "missing": false
+  },
+  {
+    "garment_id": "H03",
+    "name": "베이지 버킷햇",
+    "category": "hat",
+    "subcategory": "bucket_hat",
+    "subcategory_ko": "버킷햇",
+    "colors": [
+      {
+        "code": "beige",
+        "label_ko": "베이지",
+        "hex": "#CCB694"
+      }
+    ],
+    "season_tags": [
+      "spring",
+      "summer",
+      "autumn"
+    ],
+    "style_tags": [
+      "casual",
+      "outdoor"
+    ],
+    "description_ko": "아래로 내려오는 짧은 챙과 스티치가 있는 베이지 버킷햇입니다.",
+    "visual_material_description": "미세한 사선 조직을 연상시키는 트윌풍 표면",
+    "asset_id": "asset_H03_v1",
+    "asset_version": 1,
+    "image_ref": "assets/catalog/H03.png",
+    "sha256": "42f57788c39667f1ccd3f8b13e757a4a727848301e10ff8e1d44ec33d5fd8397",
+    "owner_id": null,
+    "location_ref": null,
+    "missing": false
+  },
+  {
+    "garment_id": "H04",
+    "name": "블랙 베레모",
+    "category": "hat",
+    "subcategory": "beret",
+    "subcategory_ko": "베레모",
+    "colors": [
+      {
+        "code": "black",
+        "label_ko": "블랙",
+        "hex": "#242424"
+      }
+    ],
+    "season_tags": [
+      "autumn",
+      "winter"
+    ],
+    "style_tags": [
+      "classic",
+      "preppy"
+    ],
+    "description_ko": "둥글고 납작한 크라운과 작은 꼭지가 있는 블랙 베레모입니다.",
+    "visual_material_description": "부드럽고 촘촘한 펠트풍 표면",
+    "asset_id": "asset_H04_v1",
+    "asset_version": 1,
+    "image_ref": "assets/catalog/H04.png",
+    "sha256": "f5d7bd33ae59509f7f749792b045842ce3b51c472c6e9575dd4939182cf8b8d3",
+    "owner_id": null,
+    "location_ref": null,
+    "missing": false
+  },
+  {
+    "garment_id": "H05",
+    "name": "카키 캠프캡",
+    "category": "hat",
+    "subcategory": "camp_cap",
+    "subcategory_ko": "캠프캡",
+    "colors": [
+      {
+        "code": "khaki",
+        "label_ko": "카키",
+        "hex": "#7B7B59"
+      }
+    ],
+    "season_tags": [
+      "spring",
+      "summer",
+      "autumn"
+    ],
+    "style_tags": [
+      "outdoor",
+      "street"
+    ],
+    "description_ko": "다섯 패널과 짧은 평평한 챙이 있는 카키 캠프캡입니다.",
+    "visual_material_description": "얇고 매끈한 기능성 직물풍 표면",
+    "asset_id": "asset_H05_v1",
+    "asset_version": 1,
+    "image_ref": "assets/catalog/H05.png",
+    "sha256": "7d37bf49132a85825130aa3f48c7bee72a98bb78136361db15e944b797a812ef",
+    "owner_id": null,
+    "location_ref": null,
+    "missing": false
+  },
+  {
+    "garment_id": "S01",
+    "name": "화이트 스니커즈",
+    "category": "shoes",
+    "subcategory": "low_top_sneakers",
+    "subcategory_ko": "로우톱 스니커즈",
+    "colors": [
+      {
+        "code": "white",
+        "label_ko": "화이트",
+        "hex": "#F5F5F2"
+      },
+      {
+        "code": "ivory",
+        "label_ko": "아이보리",
+        "hex": "#EEE9D9"
+      }
+    ],
+    "season_tags": [
+      "spring",
+      "summer",
+      "autumn"
+    ],
+    "style_tags": [
+      "minimal",
+      "casual"
+    ],
+    "description_ko": "흰색 끈과 아이보리 밑창이 있는 화이트 로우톱 스니커즈 한 켤레입니다.",
+    "visual_material_description": "매끈한 가죽풍 갑피와 고무풍 밑창",
+    "asset_id": "asset_S01_v1",
+    "asset_version": 1,
+    "image_ref": "assets/catalog/S01.png",
+    "sha256": "6a6992adfc70e10fc2457d32802620576bedb6f1ea1070a1d1bf8706f23e7ebf",
+    "owner_id": null,
+    "location_ref": null,
+    "missing": false
+  },
+  {
+    "garment_id": "S02",
+    "name": "블랙 로퍼",
+    "category": "shoes",
+    "subcategory": "penny_loafers",
+    "subcategory_ko": "페니 로퍼",
+    "colors": [
+      {
+        "code": "black",
+        "label_ko": "블랙",
+        "hex": "#242424"
+      }
+    ],
+    "season_tags": [
+      "spring",
+      "autumn"
+    ],
+    "style_tags": [
+      "preppy",
+      "business_casual"
+    ],
+    "description_ko": "페니 스트랩과 낮은 굽이 있는 블랙 로퍼 한 켤레입니다.",
+    "visual_material_description": "은은한 광택과 잔무늬가 있는 가죽풍 표면",
+    "asset_id": "asset_S02_v1",
+    "asset_version": 1,
+    "image_ref": "assets/catalog/S02.png",
+    "sha256": "e071a11102fce8433c5596f7f192c443ccd3343f867cecdfbc0a9138f5b4084e",
+    "owner_id": null,
+    "location_ref": null,
+    "missing": false
+  },
+  {
+    "garment_id": "S03",
+    "name": "그레이 러닝화",
+    "category": "shoes",
+    "subcategory": "running_shoes",
+    "subcategory_ko": "러닝화",
+    "colors": [
+      {
+        "code": "grey",
+        "label_ko": "그레이",
+        "hex": "#A6A6A6"
+      },
+      {
+        "code": "off_white",
+        "label_ko": "오프화이트",
+        "hex": "#ECE8DC"
+      }
+    ],
+    "season_tags": [
+      "spring",
+      "summer",
+      "autumn"
+    ],
+    "style_tags": [
+      "sporty",
+      "casual"
+    ],
+    "description_ko": "그레이 메시와 오프화이트 배색이 있는 러닝화 한 켤레입니다.",
+    "visual_material_description": "메시 조직, 보송한 오버레이, 굴곡 있는 고무풍 밑창",
+    "asset_id": "asset_S03_v1",
+    "asset_version": 1,
+    "image_ref": "assets/catalog/S03.png",
+    "sha256": "d6c5d4356c7b7d87baba6c9d0df064b0e247986ee82bb7fa18ec4441fb61b31a",
+    "owner_id": null,
+    "location_ref": null,
+    "missing": false
+  },
+  {
+    "garment_id": "S04",
+    "name": "브라운 앵클부츠",
+    "category": "shoes",
+    "subcategory": "chelsea_boots",
+    "subcategory_ko": "첼시부츠",
+    "colors": [
+      {
+        "code": "dark_brown",
+        "label_ko": "다크브라운",
+        "hex": "#5B4031"
+      }
+    ],
+    "season_tags": [
+      "autumn",
+      "winter"
+    ],
+    "style_tags": [
+      "classic",
+      "smart_casual"
+    ],
+    "description_ko": "양옆 밴드와 뒤 당김 고리가 있는 다크브라운 첼시부츠 한 켤레입니다.",
+    "visual_material_description": "매끈한 가죽풍 갑피와 탄성 직물풍 옆면",
+    "asset_id": "asset_S04_v1",
+    "asset_version": 1,
+    "image_ref": "assets/catalog/S04.png",
+    "sha256": "9f35d1037167fbfc4af9a8e8bca16572e37da87574a2008400f2bd3ff4a3375d",
+    "owner_id": null,
+    "location_ref": null,
+    "missing": false
+  },
+  {
+    "garment_id": "S05",
+    "name": "블랙 더비 슈즈",
+    "category": "shoes",
+    "subcategory": "derby_shoes",
+    "subcategory_ko": "더비 슈즈",
+    "colors": [
+      {
+        "code": "black",
+        "label_ko": "블랙",
+        "hex": "#242424"
+      }
+    ],
+    "season_tags": [
+      "spring",
+      "autumn",
+      "winter"
+    ],
+    "style_tags": [
+      "classic",
+      "business_casual"
+    ],
+    "description_ko": "개방형 끈 여밈과 둥근 앞코가 있는 블랙 더비 슈즈 한 켤레입니다.",
+    "visual_material_description": "매끈하고 은은한 광택이 있는 가죽풍 표면",
+    "asset_id": "asset_S05_v1",
+    "asset_version": 1,
+    "image_ref": "assets/catalog/S05.png",
+    "sha256": "920ed059cb10639c845c99344bd749329d72b59906cc3b48adf92d0925afe6d6",
+    "owner_id": null,
+    "location_ref": null,
+    "missing": false
+  },
+  {
+    "garment_id": "S06",
+    "name": "베이지 스트랩 샌들",
+    "category": "shoes",
+    "subcategory": "strap_sandals",
+    "subcategory_ko": "스트랩 샌들",
+    "colors": [
+      {
+        "code": "beige",
+        "label_ko": "베이지",
+        "hex": "#CCB694"
+      }
+    ],
+    "season_tags": [
+      "summer"
+    ],
+    "style_tags": [
+      "casual",
+      "outdoor"
+    ],
+    "description_ko": "발등과 뒤꿈치를 잡아 주는 스트랩이 있는 베이지 샌들 한 켤레입니다.",
+    "visual_material_description": "직물풍 스트랩과 요철 있는 고무풍 밑창",
+    "asset_id": "asset_S06_v2",
+    "asset_version": 2,
+    "image_ref": "assets/catalog/S06.png",
+    "sha256": "3adbb9149b89023409e0ead6fe71d6cee20b595cf7170bd72f7f7b26a47774cd",
+    "owner_id": null,
+    "location_ref": null,
+    "missing": false
+  },
+  {
+    "garment_id": "S07",
+    "name": "브라운 스웨이드 클로그",
+    "category": "shoes",
+    "subcategory": "clogs",
+    "subcategory_ko": "클로그",
+    "colors": [
+      {
+        "code": "taupe",
+        "label_ko": "토프 브라운",
+        "hex": "#96816B"
+      }
+    ],
+    "season_tags": [
+      "spring",
+      "summer",
+      "autumn"
+    ],
+    "style_tags": [
+      "natural",
+      "casual"
+    ],
+    "description_ko": "둥근 앞코와 버클 스트랩, 열린 뒤축이 있는 브라운 클로그 한 켤레입니다.",
+    "visual_material_description": "보송한 스웨이드풍 갑피와 코르크풍 풋베드",
+    "asset_id": "asset_S07_v1",
+    "asset_version": 1,
+    "image_ref": "assets/catalog/S07.png",
+    "sha256": "f008abfcbe9e0108db5d5dedcc26213b099ae80329977865255255dca4d87b57",
+    "owner_id": null,
+    "location_ref": null,
+    "missing": false
+  },
+  {
+    "garment_id": "A01",
+    "name": "블랙 숄더백",
+    "category": "accessory",
+    "subcategory": "shoulder_bag",
+    "subcategory_ko": "숄더백",
+    "colors": [
+      {
+        "code": "black",
+        "label_ko": "블랙",
+        "hex": "#242424"
+      }
+    ],
+    "season_tags": [
+      "spring",
+      "summer",
+      "autumn",
+      "winter"
+    ],
+    "style_tags": [
+      "minimal",
+      "smart_casual"
+    ],
+    "description_ko": "긴 조절 스트랩과 윗면 지퍼가 있는 블랙 숄더백입니다.",
+    "visual_material_description": "잔잔한 엠보싱과 부드러운 가죽풍 표면",
+    "asset_id": "asset_A01_v1",
+    "asset_version": 1,
+    "image_ref": "assets/catalog/A01.png",
+    "sha256": "62d70c3ab3241df8aef41684133e24bb4af0a3d9904b964e0c2fc92aabd5c2f2",
+    "owner_id": null,
+    "location_ref": null,
+    "missing": false
+  },
+  {
+    "garment_id": "A02",
+    "name": "내추럴 캔버스 토트백",
+    "category": "accessory",
+    "subcategory": "tote_bag",
+    "subcategory_ko": "토트백",
+    "colors": [
+      {
+        "code": "off_white",
+        "label_ko": "오프화이트",
+        "hex": "#ECE8DC"
+      }
+    ],
+    "season_tags": [
+      "spring",
+      "summer",
+      "autumn",
+      "winter"
+    ],
+    "style_tags": [
+      "natural",
+      "casual"
+    ],
+    "description_ko": "두 개의 짧은 손잡이와 앞 주머니가 있는 내추럴 토트백입니다.",
+    "visual_material_description": "촘촘하고 두꺼운 캔버스풍 조직",
+    "asset_id": "asset_A02_v1",
+    "asset_version": 1,
+    "image_ref": "assets/catalog/A02.png",
+    "sha256": "6c87fbb32db9defab7a54d78b6519da034ecbcbbdd053f386bfdc0a6f6e9cb68",
+    "owner_id": null,
+    "location_ref": null,
+    "missing": false
+  },
+  {
+    "garment_id": "A03",
+    "name": "다크브라운 벨트",
+    "category": "accessory",
+    "subcategory": "belt",
+    "subcategory_ko": "벨트",
+    "colors": [
+      {
+        "code": "dark_brown",
+        "label_ko": "다크브라운",
+        "hex": "#5B4031"
+      },
+      {
+        "code": "silver",
+        "label_ko": "실버",
+        "hex": "#B9BEC3"
+      }
+    ],
+    "season_tags": [
+      "spring",
+      "summer",
+      "autumn",
+      "winter"
+    ],
+    "style_tags": [
+      "classic",
+      "business_casual"
+    ],
+    "description_ko": "직사각형 실버 버클이 있는 다크브라운 벨트입니다.",
+    "visual_material_description": "매끈한 가죽풍 스트랩과 무광 금속풍 버클",
+    "asset_id": "asset_A03_v1",
+    "asset_version": 1,
+    "image_ref": "assets/catalog/A03.png",
+    "sha256": "9d59835cdba7bdf28344b21be5cc5efa7ef0addd905ed2976651e82262856dc8",
+    "owner_id": null,
+    "location_ref": null,
+    "missing": false
+  },
+  {
+    "garment_id": "A04",
+    "name": "카멜 머플러",
+    "category": "accessory",
+    "subcategory": "scarf",
+    "subcategory_ko": "머플러",
+    "colors": [
+      {
+        "code": "camel",
+        "label_ko": "카멜",
+        "hex": "#B18C5B"
+      }
+    ],
+    "season_tags": [
+      "autumn",
+      "winter"
+    ],
+    "style_tags": [
+      "classic",
+      "casual"
+    ],
+    "description_ko": "양끝의 짧은 술과 부드러운 색감이 특징인 카멜 머플러입니다.",
+    "visual_material_description": "보송한 섬유감과 짧은 술 장식이 있는 울풍 표면",
+    "asset_id": "asset_A04_v1",
+    "asset_version": 1,
+    "image_ref": "assets/catalog/A04.png",
+    "sha256": "a7ae7e81c554e7e97ebb6d387ce7e3b9eb87f99c0120a817898e80045c4b85bf",
+    "owner_id": null,
+    "location_ref": null,
+    "missing": false
+  },
+  {
+    "garment_id": "A05",
+    "name": "블랙 데이팩",
+    "category": "accessory",
+    "subcategory": "backpack",
+    "subcategory_ko": "백팩",
+    "colors": [
+      {
+        "code": "black",
+        "label_ko": "블랙",
+        "hex": "#242424"
+      }
+    ],
+    "season_tags": [
+      "spring",
+      "summer",
+      "autumn",
+      "winter"
+    ],
+    "style_tags": [
+      "casual",
+      "sporty"
+    ],
+    "description_ko": "앞 지퍼 주머니와 패딩 어깨끈이 있는 블랙 데이팩입니다.",
+    "visual_material_description": "탄탄하고 잔잔한 직물풍 표면",
+    "asset_id": "asset_A05_v1",
+    "asset_version": 1,
+    "image_ref": "assets/catalog/A05.png",
+    "sha256": "7a98d9c02e547c478d36bcb0712e60150e66dd57711bb3eef51b21ced1989f9d",
+    "owner_id": null,
+    "location_ref": null,
+    "missing": false
+  },
+  {
+    "garment_id": "A06",
+    "name": "실버 체인 목걸이",
+    "category": "accessory",
+    "subcategory": "chain_necklace",
+    "subcategory_ko": "체인 목걸이",
+    "colors": [
+      {
+        "code": "silver",
+        "label_ko": "실버",
+        "hex": "#B9BEC3"
+      }
+    ],
+    "season_tags": [
+      "spring",
+      "summer",
+      "autumn",
+      "winter"
+    ],
+    "style_tags": [
+      "minimal",
+      "street"
+    ],
+    "description_ko": "펜던트 없이 작은 체인이 이어진 실버 목걸이입니다.",
+    "visual_material_description": "작은 고리마다 광택이 보이는 금속풍 표면",
+    "asset_id": "asset_A06_v1",
+    "asset_version": 1,
+    "image_ref": "assets/catalog/A06.png",
+    "sha256": "d18b54e8f4d887ab3b91efa09bde96e7602fc4515e7ca1cb17a89d6d4d2942d5",
+    "owner_id": null,
+    "location_ref": null,
+    "missing": false
+  },
+  {
+    "garment_id": "O07",
+    "name": "블랙 숏패딩",
+    "category": "outer",
+    "subcategory": "puffer_jacket",
+    "subcategory_ko": "숏패딩",
+    "colors": [
+      {
+        "code": "black",
+        "label_ko": "블랙",
+        "hex": "#242424"
+      }
+    ],
+    "season_tags": [
+      "winter"
+    ],
+    "style_tags": [
+      "casual",
+      "street"
+    ],
+    "description_ko": "후드 없이 높은 칼라와 가로 퀼팅이 있는 블랙 숏패딩입니다.",
+    "visual_material_description": "무광 직물 표면과 볼륨 있는 가로 퀼팅",
+    "asset_id": "asset_O07_v1",
+    "asset_version": 1,
+    "image_ref": "assets/catalog/O07.png",
+    "sha256": "d9b09504f0e046b71857364151d6b6969becbd04e64ca08667a93f1357251d27",
+    "owner_id": null,
+    "location_ref": null,
+    "missing": false
+  },
+  {
+    "garment_id": "O08",
+    "name": "세이지 후드 바람막이",
+    "category": "outer",
+    "subcategory": "hooded_windbreaker",
+    "subcategory_ko": "후드 바람막이",
+    "colors": [
+      {
+        "code": "sage",
+        "label_ko": "세이지 그린",
+        "hex": "#8D9B86"
+      }
+    ],
+    "season_tags": [
+      "spring",
+      "summer",
+      "autumn"
+    ],
+    "style_tags": [
+      "sporty",
+      "outdoor"
+    ],
+    "description_ko": "후드와 사선 지퍼 주머니가 있는 세이지 그린 바람막이입니다.",
+    "visual_material_description": "가볍게 구겨진 얇은 기능성 원단풍 표면",
+    "asset_id": "asset_O08_v1",
+    "asset_version": 1,
+    "image_ref": "assets/catalog/O08.png",
+    "sha256": "705a0a889c144ded81f9957bc33a0ee8d37e8ee7618aff1f1df1153fa993c4d4",
+    "owner_id": null,
+    "location_ref": null,
+    "missing": false
+  }
+]

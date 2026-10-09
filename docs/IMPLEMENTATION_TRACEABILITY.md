@@ -2,6 +2,8 @@
 
 Scope: Sprint 0 platform and Sprint 1–7 backend contract 1.7. Fifty-two business operations are implemented. Shared job/asset operations do not imply completion of later features. Current verification: [Sprint 7 report](SPRINT_7_REPORT.md). Decart paid live verification is deferred until all Sprints finish.
 
+Team mirror integration, additive API/DB contracts, browser verification, and remaining local QA configuration are tracked in the [integration implementation report](INTEGRATION_IMPLEMENTATION_REPORT.md). The Sprint tables below retain their original scope.
+
 ## Sprint 0
 
 | Area | Source / operation | Tables / boundary | Status |

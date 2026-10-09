@@ -1,0 +1,44 @@
+[
+  {
+    "id": "SEARCH01",
+    "name": "형태가 다른 상의 검색",
+    "query_examples": [
+      "맨투맨",
+      "후드티",
+      "니트",
+      "슬리브리스",
+      "롱슬리브"
+    ],
+    "expected_item_ids": [
+      "T07",
+      "T09",
+      "T05",
+      "T10",
+      "T08"
+    ]
+  },
+  {
+    "id": "SWAP01",
+    "name": "니트와 부츠 유지 후 하의만 교체",
+    "before_outfit_id": "LOOK02",
+    "after_outfit_id": "LOOK03",
+    "locked_slots": [
+      "top",
+      "shoes"
+    ],
+    "changed_slot": "bottom",
+    "before_garment_id": "B03",
+    "after_garment_id": "B01"
+  },
+  {
+    "id": "REGISTER01",
+    "name": "올리브 셔츠 등록 사진 확인",
+    "registration_example_id": "REGISTER01"
+  },
+  {
+    "id": "CARE_UNKNOWN",
+    "name": "관리 근거 없음 처리",
+    "garment_id": "T05",
+    "expected_behavior": "소재 함량과 케어 라벨 미확인으로 표시하고 근거 확인을 요청한다. 임의 세탁 규칙을 만들지 않는다."
+  }
+]

@@ -1,0 +1,44 @@
+.fixed-scene .home-today-compact h1{font-size:13px;letter-spacing:2px;margin:0;color:#596449}
+.fixed-scene .today-evidence{font-size:10px;line-height:1.5;margin:0}
+.fixed-scene .home-today-card .look-composition{pointer-events:none}
+.fixed-scene .home-today-card span{min-width:0}
+.fixed-scene .home-today-card strong{font-size:12px;line-height:1.5}
+.fixed-scene .garment-facts{border:1px solid #cbd3be;border-radius:10px;background:#f4f6ed;margin:12px 0;padding:12px;line-height:1.7}
+.fixed-scene .garment-facts small{display:block;font-size:11px;color:#69725b}
+.fixed-scene .wear-facts{display:flex;flex-wrap:wrap;gap:4px 12px;align-items:center;font-size:12px}
+.fixed-scene .wear-facts b{font-size:17px;color:#4c6340}
+.fixed-scene .wear-facts span{font-size:11px;color:#737b69}
+.fixed-scene .washing-guidance{margin:10px 0;padding:10px 0;border-block:1px solid #d8decf;font-size:12px}
+.fixed-scene .washing-guidance summary{cursor:pointer;min-height:32px;padding:5px 0}
+.fixed-scene .washing-guidance p{margin:5px 0}
+.fixed-scene .take-out-button{width:100%;font-size:12px;min-height:40px}
+.fixed-scene .rail-controls{display:flex;align-items:center;gap:5px;font-size:11px;margin:10px 0}
+.fixed-scene .rail-controls span{margin-right:auto}
+.fixed-scene .rail-controls button{border:1px solid #cbd2bf;border-radius:5px;background:#fbfcf6;color:#566449;min-height:36px;padding:6px 10px}
+.fixed-scene .garment-rail{display:flex;gap:10px;overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;overscroll-behavior-x:contain;padding:5px 1px 12px;scrollbar-color:#a8b299 #edf0e7;scrollbar-width:thin;outline-offset:2px}
+.fixed-scene .garment-rail .garment-card{flex:0 0 78%;min-width:0;scroll-snap-align:start;border:1px solid #cbd3be;border-radius:9px;padding:10px;background:#f4f6ee;text-align:left;transition:border-color .18s,background .18s}
+.fixed-scene .garment-rail .garment-card.selected{border-color:#718761;background:#e5edd9}
+.fixed-scene .garment-rail .garment-card>div{height:180px;display:flex;align-items:center;justify-content:center}
+.fixed-scene .garment-rail .garment-photo{max-height:100%;object-fit:contain}
+.fixed-scene .garment-rail strong{display:block;font-size:13px;margin-top:8px}
+.fixed-scene .garment-rail small,.fixed-scene .garment-rail code{display:block;font-size:11px;line-height:1.6;color:#78826b}
+.fixed-scene .pack-catalog-notes{margin-top:15px;font-size:11px}
+.fixed-scene .pack-catalog-notes>summary{cursor:pointer;min-height:36px;padding:8px}
+.fixed-scene .whole-look-comparison{padding:10px;border:1px solid #cbd3be;border-radius:10px;background:#f3f5ec;margin:12px 0}
+.fixed-scene .whole-look-comparison>summary{font-size:12px;color:#58694a;cursor:pointer;min-height:32px;padding:4px}
+.fixed-scene .whole-look-comparison>div{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.fixed-scene .whole-look-comparison figure{margin:0;padding:5px;background:#e7ecdd;border-radius:6px}
+.fixed-scene .whole-look-comparison .look-composition{height:130px;width:100%}
+.fixed-scene .whole-look-comparison figcaption{font-size:10px;text-align:center;padding:5px 0}
+.fixed-scene .whole-look-comparison>small{font-size:10px;line-height:1.5;display:block;margin-top:8px;color:#78816b}
+.fixed-scene .wear-today-action{display:flex;flex-direction:column;gap:5px;margin:12px 0}
+.fixed-scene .wear-today-action .button{min-height:46px;width:100%;font-size:14px}
+.fixed-scene .wear-today-action small{font-size:10px;text-align:center;color:#758066}
+.fixed-scene .mirror-content{font-size:13px}
+.fixed-scene .feedback{font-size:12px;line-height:1.65}
+.fixed-scene .description{line-height:1.65}
+@media(prefers-reduced-motion:reduce){.fixed-scene .garment-rail,.fixed-scene .garment-rail *{scroll-behavior:auto!important;transition:none!important}}
+
+.fixed-scene .pack-look-presets-detail{font-size:11px;border-bottom:1px solid #d8dfcd;margin:8px 0;padding:5px 0}
+.fixed-scene .pack-look-presets-detail>summary{cursor:pointer;min-height:32px;padding:5px 0}
+.fixed-scene .outfit-workspace[data-comparison=true] .outfit-preview{display:none}

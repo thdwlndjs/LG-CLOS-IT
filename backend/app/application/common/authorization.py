@@ -11,6 +11,8 @@ class ActorContext:
     role: str
     session_id: UUID
     correlation_id: str
+    station_id: UUID | None = None
+    personal_account: bool = False
 
 
 def require_household(actor: ActorContext, household_id: UUID) -> None:

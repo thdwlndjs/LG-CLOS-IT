@@ -61,6 +61,12 @@ def create_app(settings: Settings | None = None, resources=None) -> FastAPI:
     app.include_router(sprint5.router)
     app.include_router(sprint6.router)
     app.include_router(sprint7.router)
+    from app.api.v1 import (
+        integration,
+        shopping,  # noqa: F401 -- registers additive integration routes
+    )
+
+    app.include_router(integration.router)
 
     # Operational paths are outside the supplied business OpenAPI contract.
     @app.get("/health/live", include_in_schema=False)

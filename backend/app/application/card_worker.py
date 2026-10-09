@@ -90,6 +90,7 @@ async def execute_card(settings, resources, row, renderer):
         "MEMBER",
         uuid4(),
         row["correlation_id"] or str(row["id"]),
+        personal_account=row["request_payload"].get("personal_account", False),
     )
     asset_id = None
 

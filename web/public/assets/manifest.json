@@ -1,0 +1,80 @@
+[
+  {
+    "id": "outer-black",
+    "label": "블랙 레더 재킷",
+    "file": "black-jacket.png",
+    "source": {
+      "url": "https://pngimg.com/uploads/jacket/jacket_PNG8025.png",
+      "credit": "PNGimg.com / jacket_PNG8025",
+      "license": "CC BY-NC 4.0 — noncommercial demonstration only"
+    },
+    "sourceHash": "0c5af983423e182d25c697abe7a79cae4ebe7de1e4d6eeab164cf035ee18778d",
+    "origin": "Existing local outfit-card module; unedited byte copy",
+    "usage": "Noncommercial local demo only; not approved team inventory"
+  },
+  {
+    "id": "top-burgundy",
+    "label": "버건디 울 니트",
+    "file": "burgundy-knit.png",
+    "source": {
+      "url": "https://pngimg.com/uploads/sweater/sweater_PNG44.png",
+      "credit": "PNGimg.com / sweater_PNG44",
+      "license": "CC BY-NC 4.0 — noncommercial demonstration only"
+    },
+    "sourceHash": "8ec7a95546bdb2be6ff85c73c8b1e253e9d82ded6d36081e91a11e0327908546",
+    "origin": "Existing local outfit-card module; unedited byte copy",
+    "usage": "Noncommercial local demo only; not approved team inventory"
+  },
+  {
+    "id": "top-gray",
+    "label": "그레이 스웨트셔츠",
+    "file": "gray-sweatshirt.png",
+    "source": {
+      "url": "https://pngimg.com/uploads/sweater/sweater_PNG50.png",
+      "credit": "PNGimg.com / sweater_PNG50",
+      "license": "CC BY-NC 4.0 — noncommercial demonstration only"
+    },
+    "sourceHash": "0ffb3a0447db2a0cb28e27e57a36f6f90c500873d150bb68199fb1e389190e57",
+    "origin": "Existing local outfit-card module; unedited byte copy",
+    "usage": "Noncommercial local demo only; not approved team inventory"
+  },
+  {
+    "id": "bottom-denim",
+    "label": "인디고 데님",
+    "file": "jeans.png",
+    "source": {
+      "url": "https://pngimg.com/uploads/jeans/jeans_PNG5745.png",
+      "credit": "PNGimg.com / jeans_PNG5745",
+      "license": "CC BY-NC 4.0 — noncommercial demonstration only"
+    },
+    "sourceHash": "0f001a4d6c3dcf6e2c987f4919632d51835a649edca1bc5d944abd0115f7792e",
+    "origin": "Existing local outfit-card module; unedited byte copy",
+    "usage": "Noncommercial local demo only; not approved team inventory"
+  },
+  {
+    "id": "bag-leather",
+    "label": "미니멀 레더 백팩",
+    "file": "bag.png",
+    "source": {
+      "url": "https://pngimg.com/uploads/backpack/backpack_PNG6343.png",
+      "credit": "PNGimg.com / backpack_PNG6343",
+      "license": "CC BY-NC 4.0 — noncommercial demonstration only"
+    },
+    "sourceHash": "c08156f4b534ee854efe675fad91f658ecb40a2533f3856b552614a02a840d56",
+    "origin": "Existing local outfit-card module; unedited byte copy",
+    "usage": "Noncommercial local demo only; not approved team inventory"
+  },
+  {
+    "id": "shoes-boots",
+    "label": "블랙 레이스업 부츠 한 켤레",
+    "file": "shoes.png",
+    "source": {
+      "url": "https://pngimg.com/uploads/boots/boots_PNG7782.png",
+      "credit": "PNGimg.com / boots_PNG7782",
+      "license": "CC BY-NC 4.0 — noncommercial demonstration only"
+    },
+    "sourceHash": "94d52f130995cac435729de530e9838b690b645ae9c5a26309e7219ea53d4115",
+    "origin": "Existing local outfit-card module; unedited byte copy",
+    "usage": "Noncommercial local demo only; not approved team inventory"
+  }
+]

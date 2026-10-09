@@ -5,7 +5,7 @@ from sqlalchemy import text
 
 from app.core.config import Settings
 
-BASELINE_REVISION = "0003_sprint5_history_care"
+BASELINE_REVISION = "0004_device_integration"
 
 
 class RuntimeResources:

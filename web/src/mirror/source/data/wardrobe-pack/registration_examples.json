@@ -1,0 +1,11 @@
+[
+  {
+    "id": "REGISTER01",
+    "asset_id": "asset_REGISTER01_v1",
+    "expected_garment_id": "T04",
+    "kind": "synthetic_registration_input",
+    "same_item_already_in_catalog": true,
+    "demo_behavior": "Review and match the existing T04; do not auto-create a duplicate. A new-registration test should omit T04 from its starting fixture.",
+    "care_label_provided": false
+  }
+]

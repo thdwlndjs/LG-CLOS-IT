@@ -34,18 +34,20 @@ class Sprint1Repository:
                 household=actor.household_id,
                 owner=actor.member_id,
             )
-        permission = "g.owner_id=:owner" if lock else READ_PERMISSION
+        permission = "g.owner_id=:owner AND " + READ_PERMISSION if lock else READ_PERMISSION
         return await self.one(
             GARMENT_SELECT + " WHERE g.id=:id AND g.household_id=:household "
             "AND " + permission + " AND g.retired_at IS NULL",
             id=garment_id,
             household=actor.household_id,
             owner=actor.member_id,
+            device_scope=actor.personal_account,
         )
 
     async def garments(self, actor, filters, limit=None, offset=0):
         clauses = ["g.household_id=:household", READ_PERMISSION, "g.retired_at IS NULL"]
-        params = {"household": actor.household_id, "owner": actor.member_id}
+        params = {"household": actor.household_id, "owner": actor.member_id,
+                  "device_scope": actor.personal_account}
         if filters.get("owner_id") is not None:
             clauses.append("g.owner_id=:filter_owner")
             params["filter_owner"] = filters["owner_id"]
@@ -79,9 +81,13 @@ class Sprint1Repository:
 
 
 # Join scope prevents a bad cross-household FK from exposing location/asset details.
-READ_PERMISSION = """(g.owner_id=:owner OR EXISTS
+READ_PERMISSION = """((NOT :device_scope AND (g.owner_id=:owner OR EXISTS
  (SELECT 1 FROM wardrobe.garment_share sh WHERE sh.garment_id=g.id
- AND sh.member_id=:owner AND sh.household_id=:household))"""
+ AND sh.member_id=:owner AND sh.household_id=:household))) OR (:device_scope AND EXISTS
+ (SELECT 1 FROM wardrobe.device_member dm
+ JOIN wardrobe.account_credential ac ON ac.member_id=dm.member_id AND ac.enabled
+ WHERE dm.device_id=g.device_id AND dm.member_id=:owner
+ AND dm.household_id=:household)))"""
 
 GARMENT_SELECT = """
 SELECT g.*, coalesce(s.status::text,'UNKNOWN') AS status,

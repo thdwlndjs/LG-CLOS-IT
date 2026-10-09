@@ -267,6 +267,12 @@ def test_registration_search_unknown_location_and_optimistic_update(real_dsn, se
         assert first.status_code == second.status_code == 201
         assert first.json() == second.json()
         garment = first.json()
+        from app.api.v1.sprint1 import source_contract
+
+        original = source_contract()["components"]["schemas"]["Garment"]
+        assert original["additionalProperties"] is False
+        assert set(garment) <= set(original["properties"])
+        assert set(original["required"]) <= set(garment)
         assert garment["status"] == "UNKNOWN" and garment["location_id"] is None
         assert garment["location_confidence"] is None and garment["last_seen_at"] is None
         gid = garment["id"]
@@ -278,6 +284,8 @@ def test_registration_search_unknown_location_and_optimistic_update(real_dsn, se
             ),
         )
         assert [item["id"] for item in filtered.json()["items"]] == [gid]
+        assert all(set(item) <= set(original["properties"])
+                   for item in filtered.json()["items"])
         assert filtered.json()["page"] == dict(limit=1, offset=0, total=1)
         assert (await client.get("/api/v1/garments?limit=0")).status_code == 422
         empty_page = await client.get("/api/v1/garments?category=OUTER&offset=1")

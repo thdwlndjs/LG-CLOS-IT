@@ -66,7 +66,22 @@ async def sessions(request: Request, body: SessionStartRequest, key: Key):
     return await Sprint1(request).session_start(body, key)
 
 
-@router.get("/garments", response_model=GarmentList, **metadata("/garments", "get"))
+def garment_wire(actor, value):
+    if actor.personal_account:
+        return value
+    # Original OpenAPI forbids additional properties. Legacy credentials keep
+    # the original wire shape; only the new personal login opts into extensions.
+    data = value.model_dump(mode="json") if hasattr(value, "model_dump") else dict(value)
+    if "items" in data:
+        data["items"] = [{k: v for k, v in item.items() if k not in {"device_id", "name"}}
+                         for item in data["items"]]
+    else:
+        data = {k: v for k, v in data.items() if k not in {"device_id", "name"}}
+    return data
+
+
+@router.get("/garments", response_model=GarmentList, response_model_exclude_unset=True,
+            **metadata("/garments", "get"))
 async def garments(
     request: Request,
     actor: Actor,
@@ -79,18 +94,20 @@ async def garments(
     limit: Annotated[int, Query(ge=1, le=100)] = 20,
     offset: Annotated[int, Query(ge=0)] = 0,
 ):
-    return await Sprint1(request).listing(
+    result = await Sprint1(request).listing(
         actor,
         dict(owner_id=owner_id, category=category, color=color, season=season, status=status),
         member_id,
         limit,
         offset,
     )
+    return garment_wire(actor, result)
 
 
-@router.post("/garments", status_code=201, response_model=Garment, **metadata("/garments", "post"))
+@router.post("/garments", status_code=201, response_model=Garment,
+             response_model_exclude_unset=True, **metadata("/garments", "post"))
 async def garment_create(request: Request, actor: Actor, body: GarmentUpsert, key: Key):
-    return await Sprint1(request).upsert(actor, body, key=key)
+    return garment_wire(actor, await Sprint1(request).upsert(actor, body, key=key))
 
 
 # Static path precedes the UUID path; /locate must not be interpreted as an ID.
@@ -105,14 +122,16 @@ async def locate(request: Request, actor: Actor, body: GarmentLocateRequest):
 
 
 @router.get(
-    "/garments/{garment_id}", response_model=Garment, **metadata("/garments/{garment_id}", "get")
+    "/garments/{garment_id}", response_model=Garment, response_model_exclude_unset=True,
+    **metadata("/garments/{garment_id}", "get")
 )
 async def garment_detail(request: Request, actor: Actor, garment_id: UUID):
-    return await Sprint1(request).detail(actor, garment_id)
+    return garment_wire(actor, await Sprint1(request).detail(actor, garment_id))
 
 
 @router.patch(
-    "/garments/{garment_id}", response_model=Garment, **metadata("/garments/{garment_id}", "patch")
+    "/garments/{garment_id}", response_model=Garment, response_model_exclude_unset=True,
+    **metadata("/garments/{garment_id}", "patch")
 )
 async def garment_patch(
     request: Request,
@@ -126,7 +145,8 @@ async def garment_patch(
         value = value[1:-1]
     if not value.isascii() or not value.isdigit() or int(value) < 1:
         raise ApiError(422, "VALIDATION_ERROR", "If-Match must contain a positive version")
-    return await Sprint1(request).upsert(actor, body, garment_id=garment_id, version=int(value))
+    return garment_wire(actor, await Sprint1(request).upsert(
+        actor, body, garment_id=garment_id, version=int(value)))
 
 
 @router.post(

@@ -1,0 +1,50 @@
+[
+  {
+    "id": "RESULT_LOOK01",
+    "mode": "saved_result",
+    "render_type": "static_image",
+    "outfit_id": "LOOK01",
+    "person_ref": "DEMO_PERSON01",
+    "person_reference_asset_id": "asset_LOOK01_v1",
+    "generation_input_asset_id": null,
+    "result_asset_id": "asset_LOOK01_v1",
+    "outfit_signature": "246a0f1ffd81b6a9a56d10672232886b712a6af6c688597d9c79b5d5657c6e96",
+    "match_policy": "exact_person_and_full_snapshot_and_asset_versions",
+    "display_label": "생성된 정적 착장 시연 이미지",
+    "provider_execution_verified": false,
+    "fit_accuracy_verified": false,
+    "visual_review": "person_and_outfit_visually_matched; not pixel-identical clothing reproduction"
+  },
+  {
+    "id": "RESULT_LOOK02",
+    "mode": "saved_result",
+    "render_type": "static_image",
+    "outfit_id": "LOOK02",
+    "person_ref": "DEMO_PERSON01",
+    "person_reference_asset_id": "asset_LOOK01_v1",
+    "generation_input_asset_id": "asset_LOOK01_v1",
+    "result_asset_id": "asset_LOOK02_v1",
+    "outfit_signature": "34669fa758ccf04620f5bc08d94f8fb9eab14ff6ca6515fadc43119998a8bb10",
+    "match_policy": "exact_person_and_full_snapshot_and_asset_versions",
+    "display_label": "생성된 정적 착장 시연 이미지",
+    "provider_execution_verified": false,
+    "fit_accuracy_verified": false,
+    "visual_review": "person_and_outfit_visually_matched; not pixel-identical clothing reproduction"
+  },
+  {
+    "id": "RESULT_LOOK03",
+    "mode": "saved_result",
+    "render_type": "static_image",
+    "outfit_id": "LOOK03",
+    "person_ref": "DEMO_PERSON01",
+    "person_reference_asset_id": "asset_LOOK01_v1",
+    "generation_input_asset_id": "asset_LOOK02_v1",
+    "result_asset_id": "asset_LOOK03_v1",
+    "outfit_signature": "9292b1fb06e0cd2b3bdd1115cc6d58d1b084eaef87bfe5d267cfcd584eb74509",
+    "match_policy": "exact_person_and_full_snapshot_and_asset_versions",
+    "display_label": "생성된 정적 착장 시연 이미지",
+    "provider_execution_verified": false,
+    "fit_accuracy_verified": false,
+    "visual_review": "person_and_outfit_visually_matched; not pixel-identical clothing reproduction"
+  }
+]

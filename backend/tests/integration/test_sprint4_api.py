@@ -81,6 +81,42 @@ def test_real_chromium_storage_save_share_reuse_revoke(real_dsn, settings_values
             public = await client.get(share, headers={"Authorization": ""})
             assert public.status_code == 200 and public.content == output.content
             assert public.headers["cache-control"] == "no-store"
+            # Provisioning a personal account must not reinterpret an old share.
+            async with engine.begin() as conn:
+                grants = (
+                    (
+                        await conn.execute(
+                            text(
+                                "DELETE FROM wardrobe.device_member WHERE member_id=:member "
+                                "RETURNING device_id,member_id,household_id"
+                            ),
+                            dict(member=UUID(existing.OWNER)),
+                        )
+                    )
+                    .mappings()
+                    .all()
+                )
+                await conn.execute(
+                    text(
+                        "INSERT INTO wardrobe.account_credential(member_id,login,password_hash) "
+                        "VALUES (:member,'legacy-share-fixture','not-a-login-credential')"
+                    ),
+                    dict(member=UUID(existing.OWNER)),
+                )
+            assert (await client.get(share, headers={"Authorization": ""})).status_code == 200
+            async with engine.begin() as conn:
+                await conn.execute(
+                    text("DELETE FROM wardrobe.account_credential WHERE member_id=:member"),
+                    dict(member=UUID(existing.OWNER)),
+                )
+                for grant in grants:
+                    await conn.execute(
+                        text(
+                            "INSERT INTO wardrobe.device_member(device_id,member_id,household_id) "
+                            "VALUES (:device_id,:member_id,:household_id)"
+                        ),
+                        dict(grant),
+                    )
             assert (await client.get("/api/v1/cards")).json()["page"]["total"] == 1
             owner_auth = client.headers["Authorization"]
             await family(client, settings)

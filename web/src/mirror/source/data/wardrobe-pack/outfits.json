@@ -1,0 +1,128 @@
+[
+  {
+    "id": "LOOK01",
+    "owner_id": null,
+    "title": "그레이 스웻셋",
+    "snapshot_json": {
+      "items": [
+        {
+          "slot": "top",
+          "garment_id": "T07",
+          "external_item_id": null,
+          "asset_id": "asset_T07_v1",
+          "asset_version": 1,
+          "asset_sha256": "6a438ff346a4ef77fa109fa40d63ae32cc7cc4f3b145f3b5c2252e782468e2aa",
+          "name": "그레이 맨투맨"
+        },
+        {
+          "slot": "bottom",
+          "garment_id": "B07",
+          "external_item_id": null,
+          "asset_id": "asset_B07_v1",
+          "asset_version": 1,
+          "asset_sha256": "58b00505e0aa9729e5046a77122d69dceae57468669aeba563c5cbcf8bc961a6",
+          "name": "그레이 조거팬츠"
+        },
+        {
+          "slot": "shoes",
+          "garment_id": "S03",
+          "external_item_id": null,
+          "asset_id": "asset_S03_v1",
+          "asset_version": 1,
+          "asset_sha256": "d6c5d4356c7b7d87baba6c9d0df064b0e247986ee82bb7fa18ec4441fb61b31a",
+          "name": "그레이 러닝화"
+        }
+      ],
+      "locked_slots": [],
+      "person_ref": "DEMO_PERSON01",
+      "synthetic_demo": true,
+      "outfit_signature": "246a0f1ffd81b6a9a56d10672232886b712a6af6c688597d9c79b5d5657c6e96"
+    },
+    "created_at": null
+  },
+  {
+    "id": "LOOK02",
+    "owner_id": null,
+    "title": "크림 니트와 인디고 데님",
+    "snapshot_json": {
+      "items": [
+        {
+          "slot": "top",
+          "garment_id": "T05",
+          "external_item_id": null,
+          "asset_id": "asset_T05_v1",
+          "asset_version": 1,
+          "asset_sha256": "1cd67a1549187949e8ad3b80b2d8c2d5f0b1efebd8d4e9c8e0c9484a2eefc1e0",
+          "name": "크림 케이블 니트"
+        },
+        {
+          "slot": "bottom",
+          "garment_id": "B03",
+          "external_item_id": null,
+          "asset_id": "asset_B03_v1",
+          "asset_version": 1,
+          "asset_sha256": "9e2481f333c161afed02758ce494de8e0cc2b8dc531f61421cf5cb8a1625f8e0",
+          "name": "인디고 스트레이트 데님"
+        },
+        {
+          "slot": "shoes",
+          "garment_id": "S04",
+          "external_item_id": null,
+          "asset_id": "asset_S04_v1",
+          "asset_version": 1,
+          "asset_sha256": "9f35d1037167fbfc4af9a8e8bca16572e37da87574a2008400f2bd3ff4a3375d",
+          "name": "브라운 앵클부츠"
+        }
+      ],
+      "locked_slots": [],
+      "person_ref": "DEMO_PERSON01",
+      "synthetic_demo": true,
+      "outfit_signature": "34669fa758ccf04620f5bc08d94f8fb9eab14ff6ca6515fadc43119998a8bb10"
+    },
+    "created_at": null
+  },
+  {
+    "id": "LOOK03",
+    "owner_id": null,
+    "title": "니트 유지 · 블랙 슬랙스로 교체",
+    "snapshot_json": {
+      "items": [
+        {
+          "slot": "top",
+          "garment_id": "T05",
+          "external_item_id": null,
+          "asset_id": "asset_T05_v1",
+          "asset_version": 1,
+          "asset_sha256": "1cd67a1549187949e8ad3b80b2d8c2d5f0b1efebd8d4e9c8e0c9484a2eefc1e0",
+          "name": "크림 케이블 니트"
+        },
+        {
+          "slot": "bottom",
+          "garment_id": "B01",
+          "external_item_id": null,
+          "asset_id": "asset_B01_v1",
+          "asset_version": 1,
+          "asset_sha256": "f2de5799b07a7ac43f184daf7f1b5873ce7f3dec8a513542e6018b6dc3ddff80",
+          "name": "블랙 슬랙스"
+        },
+        {
+          "slot": "shoes",
+          "garment_id": "S04",
+          "external_item_id": null,
+          "asset_id": "asset_S04_v1",
+          "asset_version": 1,
+          "asset_sha256": "9f35d1037167fbfc4af9a8e8bca16572e37da87574a2008400f2bd3ff4a3375d",
+          "name": "브라운 앵클부츠"
+        }
+      ],
+      "locked_slots": [
+        "top",
+        "shoes"
+      ],
+      "person_ref": "DEMO_PERSON01",
+      "synthetic_demo": true,
+      "outfit_signature": "9292b1fb06e0cd2b3bdd1115cc6d58d1b084eaef87bfe5d267cfcd584eb74509"
+    },
+    "created_at": null
+  }
+]

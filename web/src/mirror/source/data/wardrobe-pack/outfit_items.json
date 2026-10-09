@@ -1,0 +1,56 @@
+[
+  {
+    "outfit_id": "LOOK01",
+    "slot": "top",
+    "garment_id": "T07",
+    "external_item_id": null
+  },
+  {
+    "outfit_id": "LOOK01",
+    "slot": "bottom",
+    "garment_id": "B07",
+    "external_item_id": null
+  },
+  {
+    "outfit_id": "LOOK01",
+    "slot": "shoes",
+    "garment_id": "S03",
+    "external_item_id": null
+  },
+  {
+    "outfit_id": "LOOK02",
+    "slot": "top",
+    "garment_id": "T05",
+    "external_item_id": null
+  },
+  {
+    "outfit_id": "LOOK02",
+    "slot": "bottom",
+    "garment_id": "B03",
+    "external_item_id": null
+  },
+  {
+    "outfit_id": "LOOK02",
+    "slot": "shoes",
+    "garment_id": "S04",
+    "external_item_id": null
+  },
+  {
+    "outfit_id": "LOOK03",
+    "slot": "top",
+    "garment_id": "T05",
+    "external_item_id": null
+  },
+  {
+    "outfit_id": "LOOK03",
+    "slot": "bottom",
+    "garment_id": "B01",
+    "external_item_id": null
+  },
+  {
+    "outfit_id": "LOOK03",
+    "slot": "shoes",
+    "garment_id": "S04",
+    "external_item_id": null
+  }
+]

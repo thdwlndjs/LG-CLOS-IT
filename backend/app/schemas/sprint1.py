@@ -43,6 +43,8 @@ class Asset(DTO):
 
 class Garment(DTO):
     id: UUID
+    device_id: UUID | None = None
+    name: str | None = None
     owner_id: UUID
     category: str
     color: str
@@ -64,6 +66,8 @@ class Garment(DTO):
 
 class GarmentUpsert(DTO):
     owner_id: UUID
+    device_id: UUID | None = None
+    name: str | None = Field(default=None, max_length=200)
     category: str
     color: str
     material: str | None = None

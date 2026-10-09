@@ -55,11 +55,14 @@ export function safeLink(value) {
 }
 export function createClient(token, onExpired, transport = fetch) {
   const pending = new Map();
-  async function request(path, { method = "GET", body, version, signal } = {}) {
+  async function request(
+    path,
+    { method = "GET", body, version, signal, key: explicitKey } = {},
+  ) {
     const serialized = body === undefined ? undefined : JSON.stringify(body);
     const fingerprint = method + path + (serialized || "");
     const mutation = method !== "GET";
-    let key = pending.get(fingerprint);
+    let key = explicitKey || pending.get(fingerprint);
     if (mutation && !key) {
       key = crypto.randomUUID();
       pending.set(fingerprint, key);
@@ -104,6 +107,7 @@ export function createClient(token, onExpired, transport = fetch) {
     return data;
   }
   return {
+    request,
     get: (path, options) => request(path, options),
     send: (path, body, method = "POST", version) =>
       request(path, { method, body, version }),

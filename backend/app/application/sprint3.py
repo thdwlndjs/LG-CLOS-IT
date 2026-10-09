@@ -357,6 +357,7 @@ class Sprint3(Sprint2):
                 )
                 identity = uuid4()
                 payload = dict(
+                    personal_account=actor.personal_account,
                     outfit_id=str(outfit.id),
                     items=[i.model_dump(mode="json") for i in outfit.items],
                     person_asset_id=str(person["id"]),

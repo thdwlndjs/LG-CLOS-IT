@@ -1,0 +1,4 @@
+# Preserve the supplied visual source and geometry byte for byte.
+src/mirror/source/**/*.css
+src/mirror/source/data/**
+src/mirror/source/PhotoWardrobeStage.tsx

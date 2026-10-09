@@ -37,8 +37,10 @@ def test_generated_sprint1_operations_and_components_match_source(settings):
     generated = create_app(settings).openapi()
     source = source_contract()
     assert generated["info"]["version"] == source["info"]["version"]
-    assert sum(len(methods) for methods in generated["paths"].values()) == 52
-    for path, methods in generated["paths"].items():
+    legacy = {p: m for p, m in generated["paths"].items()
+              if not p.startswith("/api/v1/integration/")}
+    assert sum(len(methods) for methods in legacy.values()) == 52
+    for path, methods in legacy.items():
         for method, actual in methods.items():
             expected = source["paths"][path][method]
             assert actual["operationId"] == expected["operationId"]
@@ -64,5 +66,20 @@ def test_generated_sprint1_operations_and_components_match_source(settings):
                 assert parameter["required"] == ep[identity]["required"]
                 assert actual_schema == expected_schema
     for name, schema in generated["components"]["schemas"].items():
+        if name in {"Login", "Illuminate", "BulkImport", "LikedVton"}:
+            continue  # Additive integration requests have their own validation coverage.
         assert name in source["components"]["schemas"], name
+        if name in {"Garment", "GarmentUpsert"}:
+            schema = dict(schema, properties={k: v for k, v in schema["properties"].items()
+                                             if k not in {"device_id", "name"}})
         assert normalized(schema) == normalized(source["components"]["schemas"][name]), name
+
+
+def test_additive_garment_fields_preserve_required_contract(settings):
+    schemas = create_app(settings).openapi()["components"]["schemas"]
+    for name in ("Garment", "GarmentUpsert"):
+        schema = schemas[name]
+        assert "device_id" not in schema["required"] and "name" not in schema["required"]
+        assert schema["properties"]["device_id"]["anyOf"] == [
+            {"type": "string", "format": "uuid"}, {"type": "null"}]
+        assert "brand" not in schema["properties"] and "size" not in schema["properties"]

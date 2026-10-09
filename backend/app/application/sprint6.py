@@ -7,7 +7,7 @@ from app.application.sprint5 import Sprint5, check_version
 from app.core.clock import utc_now
 from app.core.errors import ApiError
 from app.domain.storage import placement_errors, target_errors, units
-from app.infrastructure.db.sprint1_repository import Sprint1Repository
+from app.infrastructure.db.sprint1_repository import READ_PERMISSION, Sprint1Repository
 from app.schemas.sprint1 import Page
 from app.schemas.sprint3 import AcceptedJob, Job
 from app.schemas.sprint6 import StorageAction, StorageActionItem, StorageActionList
@@ -25,7 +25,7 @@ def action_metadata(row):
     )
 
 
-async def load_storage(repo, actor, ids, now):
+async def load_storage(repo, actor, ids, now, *, read_device=False):
     locations = [
         dict(r)
         for r in await repo.all(
@@ -46,12 +46,17 @@ async def load_storage(repo, actor, ids, now):
                 "care_constraints FROM wardrobe.garment g LEFT JOIN "
                 "wardrobe.garment_state s ON s.garment_id=g.id LEFT JOIN "
                 "wardrobe.care_profile p ON p.garment_id=g.id WHERE "
-                "g.household_id=:h AND g.owner_id=:m AND g.retired_at IS NULL AND "
+                f"g.household_id=:h AND ((NOT :read_device AND g.owner_id=:m) OR "
+                f"(:read_device AND {READ_PERMISSION})) AND g.retired_at IS NULL AND "
                 "(CAST(:ids AS uuid[]) IS NULL OR g.id=ANY(CAST(:ids AS uuid[]))) "
                 "ORDER BY g.id LIMIT 101"
             ),
             h=actor.household_id,
             m=actor.member_id,
+            read_device=read_device,
+            device_scope=actor.personal_account,
+            household=actor.household_id,
+            owner=actor.member_id,
             ids=ids or None,
         )
     ]
@@ -169,7 +174,8 @@ class Sprint6(Sprint5):
 
             async def create():
                 await repo.lock("storage-household:" + str(actor.household_id))
-                await load_storage(repo, actor, body.garment_ids, utc_now())
+                await load_storage(repo, actor, body.garment_ids, utc_now(),
+                                   read_device=body.dry_run and actor.personal_account)
                 identity = uuid4()
                 await repo.execute(
                     (
@@ -180,7 +186,8 @@ class Sprint6(Sprint5):
                     id=identity,
                     h=actor.household_id,
                     m=actor.member_id,
-                    p=canonical(dict(input=body.model_dump(mode="json"))),
+                    p=canonical(dict(input=body.model_dump(mode="json"),
+                                     personal_account=actor.personal_account)),
                     c=actor.correlation_id,
                 )
                 await self.event(

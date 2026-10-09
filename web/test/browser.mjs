@@ -65,7 +65,7 @@ const step = async (name, action) => {
   console.log(`PASS ${name}`);
 };
 try {
-  await page.goto(base);
+  await page.goto(base + "/legacy");
   await step("01 profile/home/read-only Context states", async () => {
     await click("내 옷장 들어가기 →");
     await visible("오늘, 무엇을 입을까요?");

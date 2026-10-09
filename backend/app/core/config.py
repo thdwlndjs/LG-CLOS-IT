@@ -35,6 +35,7 @@ class Settings(BaseModel):
     jwt_issuer: str = "smart-wardrobe"
     jwt_audience: str = "smart-wardrobe-api"
     jwt_ttl_seconds: int = Field(default=3600, ge=60, le=86400)
+    led_off_seconds: int | None = Field(default=None, ge=1, le=3600)
     vton_provider: Literal["MOCK", "DECART"] = "MOCK"
     decart_api_key: SecretStr = SecretStr("")
     decart_base_url: str = ""
