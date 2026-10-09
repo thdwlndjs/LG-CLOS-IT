@@ -2,6 +2,12 @@
 
 ## 현재 상태
 
+2026-10-10 비용 정책 변경: 사용자가 **무료 티어만 사용**하도록 지정했다. 기존 `render.yaml`은 유료 구성의 과거 검토안이며 적용 대상에서 제외한다. 결제수단 등록·유료 리소스 생성·유료 플랜 전환을 진행하지 않는다. 클라우드 적재는 무료 배포 경로가 결정되고 실제 DB·이미지 저장소가 준비된 뒤 수행한다.
+
+공식 [Render 무료 티어 제한](https://render.com/docs/free)을 재확인했다. 무료 web/Postgres/Key Value는 제공되지만 private service·background worker는 무료 대상이 아니며 무료 web에는 영구 디스크가 없다. 따라서 현행 private MinIO 영구 저장·별도 Celery worker·private renderer 구성을 모든 서비스의 `plan: free` 변경만으로 유지할 수 없다. 무료 Postgres는 1GB·30일 만료, 무료 Key Value는 재시작 시 데이터 손실, 무료 web은 15분 비활성 시 중단된다. 기존 `ASC`와 무료 web의 워크스페이스 공유 750시간 제한도 배포 전에 함께 검토해야 한다.
+
+남은 결정: MinIO 유지 시 별도 영구 저장 가능한 실행 호스트가 필요하다. 기존 로컬 호스트를 사용하는 경우 PC 실행에 의존하며 전체 클라우드 배포로 보고하지 않는다. 외부 무료 S3 호환 저장소 사용은 기존 MinIO 유지 결정과 충돌하므로 사용자 결정 없이 대체하지 않는다. 무료 web 내부 작업 통합은 worker/renderer 메모리·중단·재시작 복구 검증이 필요하며 아직 구현·검증하지 않았다.
+
 2026-10-10 재확인: 사용자 요청에 따라 클라우드 의류·사진 적재 가능 여부를 확인했다. 인증된 Render CLI의 `blueprints validate render.yaml --output json`은 여전히 6개 리소스 모두 `need_payment_info`, `valid=false`를 반환했다. 동일 워크스페이스의 서비스 목록에는 기존 `ASC`만 있고 Smart Wardrobe용 DB·API는 없다. 클라우드 적재는 실행하지 않았으며 로컬 6벌·사진 6개를 유지한다. 결제수단 등록 후 배포·계정/기기 준비·기존 등록/업로드 계약 기반 적재·중복 및 실제 사진 조회 검증이 남아 있다. 이번 확인에서 기존 서비스와 새로 전달된 팀원 소스는 변경하지 않았다.
 
 2026-10-09: **Vercel 프론트 배포 완료, Render 백엔드 배포 차단** 상태다. 프론트 URL은 https://lg-clos-it.vercel.app 이다. Render·Vercel CLI 로그인과 Render 워크스페이스 선택은 완료했다. Render Blueprint 서버 검증은 6개 리소스에 `need_payment_info`를 반환해 실패했다. 결제수단 등록과 유료 구성 진행 확인을 기다린다. 백엔드 리소스는 생성하지 않았다. 전체 E2E 배포 완료로 판정하지 않는다.
