@@ -1,0 +1,14 @@
+# Frozen contract hashes include their original newline bytes. Keep those bytes
+# identical on Windows and Linux; do not alter the contract's content or hashes.
+docs/03_ARCHITECTURE_HLD_v1.1.md text eol=crlf
+docs/04_FSD.md text eol=crlf
+docs/05_BACKEND_LLD.md text eol=crlf
+docs/06_OPENAPI.yaml text eol=crlf
+docs/07_DATABASE_SCHEMA.sql text eol=crlf
+docs/08_IMPLEMENTATION_PLAN.md text eol=crlf
+docs/07_DATABASE_SEED.sql text eol=lf
+docs/contracts/** text eol=crlf
+docs/contracts/**/07_DATABASE_SEED.sql text eol=lf
+# This historical snapshot intentionally contains mixed original newlines.
+docs/contracts/1.1/08_IMPLEMENTATION_PLAN.md -text
+backend/alembic/baselines/0001_schema.sql text eol=lf
