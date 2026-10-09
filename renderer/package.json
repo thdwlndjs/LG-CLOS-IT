@@ -1,0 +1,8 @@
+{
+  "name": "smart-wardrobe-card-renderer",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {"start": "node src/server.mjs", "test": "node --test test/*.test.mjs"},
+  "dependencies": {"playwright": "1.64.0", "react": "19.3.0", "react-dom": "19.3.0"}
+}

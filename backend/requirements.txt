@@ -1,0 +1,15 @@
+# Direct dependency pins. Hashed transitive dependencies are in requirements.lock; see DECISIONS.md D-007.
+fastapi==0.139.0
+pydantic==2.13.4
+uvicorn==0.51.0
+SQLAlchemy==2.0.51
+asyncpg==0.30.0
+alembic==1.16.1
+celery==5.5.3
+redis==6.2.0
+boto3==1.38.32
+httpx==0.28.1
+PyJWT==2.10.1
+python-dotenv==1.2.2
+PyYAML==6.0.3
+Pillow==12.3.0

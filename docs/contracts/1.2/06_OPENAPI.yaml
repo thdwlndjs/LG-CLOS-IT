@@ -1,0 +1,5058 @@
+openapi: 3.1.0
+info:
+  title: Smart Wardrobe Prototype API
+  version: 1.2.0
+  description: HLD v1.1 / FSD v1.1 / Backend LLD v1.1 기반. 서버 소유의 REST 계약; Decart·ThinQ CLO 외부 실제 API 규격을 주장하지 않음.
+    Bearer 인증과 demo_mode 세션은 프로토타입 정책이며 운영 보안 정책이 아님.
+servers:
+- url: http://localhost:8000
+  description: Local FastAPI prototype
+tags:
+- name: Common
+- name: Garments
+- name: Recognition
+- name: Context
+- name: Recommendations
+- name: Outfits
+- name: Styles
+- name: VTON
+- name: Cards
+- name: History
+- name: Care
+- name: Storage
+- name: Settings
+- name: Jobs
+- name: Assets
+security:
+- BearerAuth: []
+paths:
+  /api/v1/sessions:
+    post:
+      tags:
+      - Common
+      summary: 프로필 선택 및 세션 시작
+      operationId: post_api_v1_sessions
+      x-fsd-ids:
+      - COM-001
+      parameters:
+      - name: Idempotency-Key
+        in: header
+        required: true
+        schema:
+          type: string
+          format: uuid
+        description: 재시도 시 동일 명령 결과 반환
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SessionStartRequest'
+      responses:
+        '201':
+          description: 성공 또는 작업 접수
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SessionStartResponse'
+        '400':
+          description: 잘못된 요청
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '401':
+          description: 인증 실패
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '403':
+          description: 접근 거부
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '404':
+          description: 리소스 없음
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '409':
+          description: 상태 또는 버전 충돌
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '422':
+          description: 유효성 오류
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '429':
+          description: 요청 제한
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '503':
+          description: 외부 서비스 사용 불가
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+      security: []
+  /api/v1/home:
+    get:
+      tags:
+      - Common
+      summary: 홈 오늘의 코디·케어 알림
+      operationId: get_api_v1_home
+      x-fsd-ids:
+      - COM-002
+      parameters:
+      - &id001
+        name: member_id
+        in: query
+        required: false
+        schema: &id002
+          type: string
+          format: uuid
+      responses:
+        '200':
+          description: 성공 또는 작업 접수
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HomeDashboard'
+        '400':
+          description: 잘못된 요청
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '401':
+          description: 인증 실패
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '403':
+          description: 접근 거부
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '404':
+          description: 리소스 없음
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '409':
+          description: 상태 또는 버전 충돌
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '422':
+          description: 유효성 오류
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '429':
+          description: 요청 제한
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '503':
+          description: 외부 서비스 사용 불가
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+  /api/v1/garments:
+    get:
+      tags:
+      - Garments
+      summary: 의류 목록 필터링
+      operationId: get_api_v1_garments
+      x-fsd-ids:
+      - GAR-001
+      parameters:
+      - *id001
+      - name: owner_id
+        in: query
+        required: false
+        schema: *id002
+      - name: category
+        in: query
+        required: false
+        schema: &id003
+          type: string
+      - name: color
+        in: query
+        required: false
+        schema: *id003
+      - name: season
+        in: query
+        required: false
+        schema: *id003
+      - name: status
+        in: query
+        required: false
+        schema: *id003
+      - &id004
+        name: limit
+        in: query
+        required: false
+        schema:
+          type: integer
+          default: 20
+          minimum: 1
+          maximum: 100
+      - &id005
+        name: offset
+        in: query
+        required: false
+        schema:
+          type: integer
+          default: 0
+          minimum: 0
+      responses:
+        '200':
+          description: 성공 또는 작업 접수
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GarmentList'
+        '400':
+          description: 잘못된 요청
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '401':
+          description: 인증 실패
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '403':
+          description: 접근 거부
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '404':
+          description: 리소스 없음
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '409':
+          description: 상태 또는 버전 충돌
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '422':
+          description: 유효성 오류
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '429':
+          description: 요청 제한
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '503':
+          description: 외부 서비스 사용 불가
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+    post:
+      tags:
+      - Garments
+      summary: 의류 등록
+      operationId: post_api_v1_garments
+      x-fsd-ids:
+      - GAR-003
+      parameters:
+      - name: Idempotency-Key
+        in: header
+        required: true
+        schema:
+          type: string
+          format: uuid
+        description: 재시도 시 동일 명령 결과 반환
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GarmentUpsert'
+      responses:
+        '201':
+          description: 성공 또는 작업 접수
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Garment'
+        '400':
+          description: 잘못된 요청
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '401':
+          description: 인증 실패
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '403':
+          description: 접근 거부
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '404':
+          description: 리소스 없음
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '409':
+          description: 상태 또는 버전 충돌
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '422':
+          description: 유효성 오류
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '429':
+          description: 요청 제한
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '503':
+          description: 외부 서비스 사용 불가
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+  /api/v1/garments/{garment_id}:
+    delete:
+      tags:
+      - Garments
+      summary: 의류 삭제 (버전 검증, soft delete)
+      operationId: delete_api_v1_garments_garment_id
+      x-fsd-ids:
+      - GAR-003
+      parameters:
+      - name: garment_id
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      - name: If-Match
+        in: header
+        required: true
+        schema:
+          type: string
+        description: 버전 충돌 방지
+      responses:
+        '200':
+          description: 성공 또는 작업 접수
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GarmentDeleted'
+        '400':
+          description: 잘못된 요청
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '401':
+          description: 인증 실패
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '403':
+          description: 접근 거부
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '404':
+          description: 리소스 없음
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '409':
+          description: 상태 또는 버전 충돌
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '422':
+          description: 유효성 오류
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '429':
+          description: 요청 제한
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '503':
+          description: 외부 서비스 사용 불가
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+    get:
+      tags:
+      - Garments
+      summary: 의류 상세·위치
+      operationId: get_api_v1_garments_garment_id
+      x-fsd-ids:
+      - GAR-002
+      parameters:
+      - name: garment_id
+        in: path
+        required: true
+        schema: *id002
+      responses:
+        '200':
+          description: 성공 또는 작업 접수
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Garment'
+        '400':
+          description: 잘못된 요청
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '401':
+          description: 인증 실패
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '403':
+          description: 접근 거부
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '404':
+          description: 리소스 없음
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '409':
+          description: 상태 또는 버전 충돌
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '422':
+          description: 유효성 오류
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '429':
+          description: 요청 제한
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '503':
+          description: 외부 서비스 사용 불가
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+    patch:
+      tags:
+      - Garments
+      summary: 의류 정보 변경
+      operationId: patch_api_v1_garments_garment_id
+      x-fsd-ids:
+      - GAR-003
+      parameters:
+      - name: garment_id
+        in: path
+        required: true
+        schema: *id002
+      - name: If-Match
+        in: header
+        required: true
+        schema: *id003
+        description: 버전 충돌 방지
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GarmentUpsert'
+      responses:
+        '200':
+          description: 성공 또는 작업 접수
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Garment'
+        '400':
+          description: 잘못된 요청
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '401':
+          description: 인증 실패
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '403':
+          description: 접근 거부
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '404':
+          description: 리소스 없음
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '409':
+          description: 상태 또는 버전 충돌
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '422':
+          description: 유효성 오류
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '429':
+          description: 요청 제한
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '503':
+          description: 외부 서비스 사용 불가
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+  /api/v1/garment-observations:
+    post:
+      tags:
+      - Recognition
+      summary: 의류 관측 등록 및 상태 융합
+      operationId: post_api_v1_garment_observations
+      x-fsd-ids:
+      - GAR-004
+      parameters:
+      - name: Idempotency-Key
+        in: header
+        required: true
+        schema:
+          type: string
+          format: uuid
+        description: 재시도 시 동일 명령 결과 반환
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ObservationRequest'
+      responses:
+        '201':
+          description: 성공 또는 작업 접수
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ObservationResponse'
+        '400':
+          description: 잘못된 요청
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '401':
+          description: 인증 실패
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '403':
+          description: 접근 거부
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '404':
+          description: 리소스 없음
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '409':
+          description: 상태 또는 버전 충돌
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '422':
+          description: 유효성 오류
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '429':
+          description: 요청 제한
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '503':
+          description: 외부 서비스 사용 불가
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+  /api/v1/context-snapshots:
+    post:
+      tags:
+      - Context
+      summary: Context 수집 및 저장
+      operationId: post_api_v1_context_snapshots
+      x-fsd-ids:
+      - REC-001
+      parameters:
+      - name: Idempotency-Key
+        in: header
+        required: true
+        schema:
+          type: string
+          format: uuid
+        description: 재시도 시 동일 명령 결과 반환
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ContextCaptureRequest'
+      responses:
+        '201':
+          description: 성공 또는 작업 접수
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Context'
+        '400':
+          description: 잘못된 요청
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '401':
+          description: 인증 실패
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '403':
+          description: 접근 거부
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '404':
+          description: 리소스 없음
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '409':
+          description: 상태 또는 버전 충돌
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '422':
+          description: 유효성 오류
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '429':
+          description: 요청 제한
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '503':
+          description: 외부 서비스 사용 불가
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+  /api/v1/context-snapshots/{context_id}:
+    get:
+      tags:
+      - Context
+      summary: Context 스냅샷 조회
+      operationId: get_api_v1_context_snapshots_context_id
+      x-fsd-ids:
+      - REC-001
+      parameters:
+      - name: context_id
+        in: path
+        required: true
+        schema: *id002
+      responses:
+        '200':
+          description: 성공 또는 작업 접수
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Context'
+        '400':
+          description: 잘못된 요청
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '401':
+          description: 인증 실패
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '403':
+          description: 접근 거부
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '404':
+          description: 리소스 없음
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '409':
+          description: 상태 또는 버전 충돌
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '422':
+          description: 유효성 오류
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '429':
+          description: 요청 제한
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '503':
+          description: 외부 서비스 사용 불가
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+  /api/v1/outfit-recommendations:
+    post:
+      tags:
+      - Recommendations
+      summary: 코디 추천 실행
+      operationId: post_api_v1_outfit_recommendations
+      x-fsd-ids:
+      - REC-002
+      parameters:
+      - name: Idempotency-Key
+        in: header
+        required: true
+        schema:
+          type: string
+          format: uuid
+        description: 재시도 시 동일 명령 결과 반환
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RecommendRequest'
+      responses:
+        '201':
+          description: 성공 또는 작업 접수
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RecommendResponse'
+        '400':
+          description: 잘못된 요청
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '401':
+          description: 인증 실패
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '403':
+          description: 접근 거부
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '404':
+          description: 리소스 없음
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '409':
+          description: 상태 또는 버전 충돌
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '422':
+          description: 유효성 오류
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '429':
+          description: 요청 제한
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '503':
+          description: 외부 서비스 사용 불가
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+  /api/v1/outfits:
+    get:
+      tags:
+      - Outfits
+      summary: 내 코디 조회
+      operationId: get_api_v1_outfits
+      x-fsd-ids:
+      - OUTFIT-001
+      parameters:
+      - *id001
+      - name: status
+        in: query
+        required: false
+        schema: *id003
+      - *id004
+      - *id005
+      responses:
+        '200':
+          description: 성공 또는 작업 접수
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OutfitList'
+        '400':
+          description: 잘못된 요청
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '401':
+          description: 인증 실패
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '403':
+          description: 접근 거부
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '404':
+          description: 리소스 없음
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '409':
+          description: 상태 또는 버전 충돌
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '422':
+          description: 유효성 오류
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '429':
+          description: 요청 제한
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '503':
+          description: 외부 서비스 사용 불가
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+    post:
+      tags:
+      - Outfits
+      summary: 코디 저장·생성
+      operationId: post_api_v1_outfits
+      x-fsd-ids:
+      - OUTFIT-001
+      parameters:
+      - name: Idempotency-Key
+        in: header
+        required: true
+        schema:
+          type: string
+          format: uuid
+        description: 재시도 시 동일 명령 결과 반환
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OutfitUpsert'
+      responses:
+        '201':
+          description: 성공 또는 작업 접수
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Outfit'
+        '400':
+          description: 잘못된 요청
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '401':
+          description: 인증 실패
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '403':
+          description: 접근 거부
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '404':
+          description: 리소스 없음
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '409':
+          description: 상태 또는 버전 충돌
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '422':
+          description: 유효성 오류
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '429':
+          description: 요청 제한
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '503':
+          description: 외부 서비스 사용 불가
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+  /api/v1/outfits/{outfit_id}:
+    get:
+      tags:
+      - Outfits
+      summary: 코디 상세 조회
+      operationId: get_api_v1_outfits_outfit_id
+      x-fsd-ids:
+      - OUTFIT-001
+      parameters:
+      - name: outfit_id
+        in: path
+        required: true
+        schema: *id002
+      responses:
+        '200':
+          description: 성공 또는 작업 접수
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Outfit'
+        '400':
+          description: 잘못된 요청
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '401':
+          description: 인증 실패
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '403':
+          description: 접근 거부
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '404':
+          description: 리소스 없음
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '409':
+          description: 상태 또는 버전 충돌
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '422':
+          description: 유효성 오류
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '429':
+          description: 요청 제한
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '503':
+          description: 외부 서비스 사용 불가
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+    patch:
+      tags:
+      - Outfits
+      summary: 코디 수정
+      operationId: patch_api_v1_outfits_outfit_id
+      x-fsd-ids:
+      - OUTFIT-002
+      parameters:
+      - name: outfit_id
+        in: path
+        required: true
+        schema: *id002
+      - name: If-Match
+        in: header
+        required: true
+        schema: *id003
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OutfitUpsert'
+      responses:
+        '200':
+          description: 성공 또는 작업 접수
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Outfit'
+        '400':
+          description: 잘못된 요청
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '401':
+          description: 인증 실패
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '403':
+          description: 접근 거부
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '404':
+          description: 리소스 없음
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '409':
+          description: 상태 또는 버전 충돌
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '422':
+          description: 유효성 오류
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '429':
+          description: 요청 제한
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '503':
+          description: 외부 서비스 사용 불가
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+  /api/v1/style-references:
+    get:
+      tags:
+      - Styles
+      summary: 스타일 보관함 목록
+      operationId: get_api_v1_style_references
+      x-fsd-ids:
+      - STYLE-001
+      parameters:
+      - *id001
+      - name: source
+        in: query
+        required: false
+        schema: *id003
+      - *id004
+      - *id005
+      responses:
+        '200':
+          description: 성공 또는 작업 접수
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StyleReferenceList'
+        '400':
+          description: 잘못된 요청
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '401':
+          description: 인증 실패
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '403':
+          description: 접근 거부
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '404':
+          description: 리소스 없음
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '409':
+          description: 상태 또는 버전 충돌
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '422':
+          description: 유효성 오류
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '429':
+          description: 요청 제한
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '503':
+          description: 외부 서비스 사용 불가
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+    post:
+      tags:
+      - Styles
+      summary: 스타일 참고자료 등록
+      operationId: post_api_v1_style_references
+      x-fsd-ids:
+      - STYLE-001
+      parameters:
+      - name: Idempotency-Key
+        in: header
+        required: true
+        schema:
+          type: string
+          format: uuid
+        description: 재시도 시 동일 명령 결과 반환
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/StyleReferenceCreate'
+      responses:
+        '201':
+          description: 성공 또는 작업 접수
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StyleReference'
+        '400':
+          description: 잘못된 요청
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '401':
+          description: 인증 실패
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '403':
+          description: 접근 거부
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '404':
+          description: 리소스 없음
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '409':
+          description: 상태 또는 버전 충돌
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '422':
+          description: 유효성 오류
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '429':
+          description: 요청 제한
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '503':
+          description: 외부 서비스 사용 불가
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+  /api/v1/style-references/{style_id}:
+    delete:
+      tags:
+      - Styles
+      summary: 스타일 참고자료 삭제
+      operationId: delete_api_v1_style_references_style_id
+      x-fsd-ids:
+      - STYLE-001
+      parameters:
+      - name: style_id
+        in: path
+        required: true
+        schema: *id002
+      responses:
+        '204':
+          description: 완료
+        '400':
+          description: 잘못된 요청
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '401':
+          description: 인증 실패
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '403':
+          description: 접근 거부
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '404':
+          description: 리소스 없음
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '409':
+          description: 상태 또는 버전 충돌
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '422':
+          description: 유효성 오류
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '429':
+          description: 요청 제한
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '503':
+          description: 외부 서비스 사용 불가
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+  /api/v1/vton-sessions:
+    post:
+      tags:
+      - VTON
+      summary: 공통 입어보기 세션 생성
+      operationId: post_api_v1_vton_sessions
+      x-fsd-ids:
+      - VTON-001
+      parameters:
+      - name: Idempotency-Key
+        in: header
+        required: true
+        schema:
+          type: string
+          format: uuid
+        description: 재시도 시 동일 명령 결과 반환
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/VtonSessionCreate'
+      responses:
+        '201':
+          description: 성공 또는 작업 접수
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VtonSession'
+        '400':
+          description: 잘못된 요청
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '401':
+          description: 인증 실패
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '403':
+          description: 접근 거부
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '404':
+          description: 리소스 없음
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '409':
+          description: 상태 또는 버전 충돌
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '422':
+          description: 유효성 오류
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '429':
+          description: 요청 제한
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '503':
+          description: 외부 서비스 사용 불가
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+  /api/v1/vton-sessions/{session_id}:
+    get:
+      tags:
+      - VTON
+      summary: 입어보기 세션 조회
+      operationId: get_api_v1_vton_sessions_session_id
+      x-fsd-ids:
+      - VTON-001
+      parameters:
+      - name: session_id
+        in: path
+        required: true
+        schema: *id002
+      responses:
+        '200':
+          description: 성공 또는 작업 접수
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VtonSession'
+        '400':
+          description: 잘못된 요청
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '401':
+          description: 인증 실패
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '403':
+          description: 접근 거부
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '404':
+          description: 리소스 없음
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '409':
+          description: 상태 또는 버전 충돌
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '422':
+          description: 유효성 오류
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '429':
+          description: 요청 제한
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '503':
+          description: 외부 서비스 사용 불가
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+  /api/v1/vton-jobs:
+    post:
+      tags:
+      - VTON
+      summary: Decart 또는 Mock VTON 작업 요청
+      operationId: post_api_v1_vton_jobs
+      x-fsd-ids:
+      - VTON-002
+      description: Provider-neutral 계약. 실제 Decart API의 endpoint, 지원 모델 및 입력 제약은 확정 전이며 서버 Adapter 내부에서만 처리.
+      parameters:
+      - name: Idempotency-Key
+        in: header
+        required: true
+        schema:
+          type: string
+          format: uuid
+        description: 재시도 시 동일 명령 결과 반환
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/VtonJobRequest'
+      responses:
+        '202':
+          description: 성공 또는 작업 접수
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AcceptedJob'
+        '400':
+          description: 잘못된 요청
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '401':
+          description: 인증 실패
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '403':
+          description: 접근 거부
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '404':
+          description: 리소스 없음
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '409':
+          description: 상태 또는 버전 충돌
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '422':
+          description: 유효성 오류
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '429':
+          description: 요청 제한
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '503':
+          description: 외부 서비스 사용 불가
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+  /api/v1/vton-sessions/{session_id}/outfit:
+    patch:
+      tags:
+      - VTON
+      summary: 입어보기 코디 변경
+      operationId: patch_api_v1_vton_sessions_session_id_outfit
+      x-fsd-ids:
+      - VTON-003
+      parameters:
+      - name: session_id
+        in: path
+        required: true
+        schema: *id002
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/VtonModifyRequest'
+      responses:
+        '200':
+          description: 성공 또는 작업 접수
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VtonSession'
+        '400':
+          description: 잘못된 요청
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '401':
+          description: 인증 실패
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '403':
+          description: 접근 거부
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '404':
+          description: 리소스 없음
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '409':
+          description: 상태 또는 버전 충돌
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '422':
+          description: 유효성 오류
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '429':
+          description: 요청 제한
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '503':
+          description: 외부 서비스 사용 불가
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+  /api/v1/vton-sessions/{session_id}/end:
+    post:
+      tags:
+      - VTON
+      summary: 최종 코디 저장 및 세션 종료
+      operationId: post_api_v1_vton_sessions_session_id_end
+      x-fsd-ids:
+      - VTON-004
+      parameters:
+      - name: session_id
+        in: path
+        required: true
+        schema: *id002
+      - name: Idempotency-Key
+        in: header
+        required: true
+        schema:
+          type: string
+          format: uuid
+        description: 재시도 시 동일 명령 결과 반환
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/VtonEndRequest'
+      responses:
+        '201':
+          description: 성공 또는 작업 접수
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VtonSession'
+        '400':
+          description: 잘못된 요청
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '401':
+          description: 인증 실패
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '403':
+          description: 접근 거부
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '404':
+          description: 리소스 없음
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '409':
+          description: 상태 또는 버전 충돌
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '422':
+          description: 유효성 오류
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '429':
+          description: 요청 제한
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '503':
+          description: 외부 서비스 사용 불가
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+  /api/v1/cards/drafts:
+    post:
+      tags:
+      - Cards
+      summary: 코디카드 데이터·템플릿 구성
+      operationId: post_api_v1_cards_drafts
+      x-fsd-ids:
+      - CARD-001
+      parameters:
+      - name: Idempotency-Key
+        in: header
+        required: true
+        schema:
+          type: string
+          format: uuid
+        description: 재시도 시 동일 명령 결과 반환
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CardPrepareRequest'
+      responses:
+        '201':
+          description: 성공 또는 작업 접수
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CardDraft'
+        '400':
+          description: 잘못된 요청
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '401':
+          description: 인증 실패
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '403':
+          description: 접근 거부
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '404':
+          description: 리소스 없음
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '409':
+          description: 상태 또는 버전 충돌
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '422':
+          description: 유효성 오류
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '429':
+          description: 요청 제한
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '503':
+          description: 외부 서비스 사용 불가
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+  /api/v1/card-render-jobs:
+    post:
+      tags:
+      - Cards
+      summary: 카드 이미지 비동기 렌더링
+      operationId: post_api_v1_card_render_jobs
+      x-fsd-ids:
+      - CARD-002
+      parameters:
+      - name: Idempotency-Key
+        in: header
+        required: true
+        schema:
+          type: string
+          format: uuid
+        description: 재시도 시 동일 명령 결과 반환
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CardRenderRequest'
+      responses:
+        '202':
+          description: 성공 또는 작업 접수
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AcceptedJob'
+        '400':
+          description: 잘못된 요청
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '401':
+          description: 인증 실패
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '403':
+          description: 접근 거부
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '404':
+          description: 리소스 없음
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '409':
+          description: 상태 또는 버전 충돌
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '422':
+          description: 유효성 오류
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '429':
+          description: 요청 제한
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '503':
+          description: 외부 서비스 사용 불가
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+  /api/v1/cards:
+    get:
+      tags:
+      - Cards
+      summary: 저장된 코디카드 조회
+      operationId: get_api_v1_cards
+      x-fsd-ids:
+      - CARD-003
+      parameters:
+      - *id001
+      - *id004
+      - *id005
+      responses:
+        '200':
+          description: 성공 또는 작업 접수
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CardDraftList'
+        '400':
+          description: 잘못된 요청
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '401':
+          description: 인증 실패
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '403':
+          description: 접근 거부
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '404':
+          description: 리소스 없음
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '409':
+          description: 상태 또는 버전 충돌
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '422':
+          description: 유효성 오류
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '429':
+          description: 요청 제한
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '503':
+          description: 외부 서비스 사용 불가
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+  /api/v1/cards/{card_id}/save:
+    post:
+      tags:
+      - Cards
+      summary: 카드 저장 및 공유 정책 설정
+      operationId: post_api_v1_cards_card_id_save
+      x-fsd-ids:
+      - CARD-003
+      parameters:
+      - name: card_id
+        in: path
+        required: true
+        schema: *id002
+      - name: Idempotency-Key
+        in: header
+        required: true
+        schema:
+          type: string
+          format: uuid
+        description: 재시도 시 동일 명령 결과 반환
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CardSaveRequest'
+      responses:
+        '201':
+          description: 성공 또는 작업 접수
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CardDraft'
+        '400':
+          description: 잘못된 요청
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '401':
+          description: 인증 실패
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '403':
+          description: 접근 거부
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '404':
+          description: 리소스 없음
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '409':
+          description: 상태 또는 버전 충돌
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '422':
+          description: 유효성 오류
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '429':
+          description: 요청 제한
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '503':
+          description: 외부 서비스 사용 불가
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+  /api/v1/cards/{card_id}:
+    get:
+      tags:
+      - Cards
+      summary: 카드 상세·재사용 정보
+      operationId: get_api_v1_cards_card_id
+      x-fsd-ids:
+      - CARD-003
+      parameters:
+      - name: card_id
+        in: path
+        required: true
+        schema: *id002
+      responses:
+        '200':
+          description: 성공 또는 작업 접수
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CardDraft'
+        '400':
+          description: 잘못된 요청
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '401':
+          description: 인증 실패
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '403':
+          description: 접근 거부
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '404':
+          description: 리소스 없음
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '409':
+          description: 상태 또는 버전 충돌
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '422':
+          description: 유효성 오류
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '429':
+          description: 요청 제한
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '503':
+          description: 외부 서비스 사용 불가
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+  /api/v1/history:
+    get:
+      tags:
+      - History
+      summary: 착용·케어 이력 조회
+      operationId: get_api_v1_history
+      x-fsd-ids:
+      - HIST-001
+      parameters:
+      - *id001
+      - name: from
+        in: query
+        required: false
+        schema: &id006
+          type: string
+          format: date
+      - name: to
+        in: query
+        required: false
+        schema: *id006
+      - name: kind
+        in: query
+        required: false
+        schema: *id003
+      - *id004
+      - *id005
+      responses:
+        '200':
+          description: 성공 또는 작업 접수
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HistoryItemList'
+        '400':
+          description: 잘못된 요청
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '401':
+          description: 인증 실패
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '403':
+          description: 접근 거부
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '404':
+          description: 리소스 없음
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '409':
+          description: 상태 또는 버전 충돌
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '422':
+          description: 유효성 오류
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '429':
+          description: 요청 제한
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '503':
+          description: 외부 서비스 사용 불가
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+  /api/v1/wear-confirmations:
+    post:
+      tags:
+      - History
+      summary: 실제 착용 확인 및 이력 기록
+      operationId: post_api_v1_wear_confirmations
+      x-fsd-ids:
+      - HIST-002
+      description: 세션 종료나 카드 저장만으로 실제 착용을 확정하지 않음.
+      parameters:
+      - name: Idempotency-Key
+        in: header
+        required: true
+        schema:
+          type: string
+          format: uuid
+        description: 재시도 시 동일 명령 결과 반환
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/WearConfirmRequest'
+      responses:
+        '201':
+          description: 성공 또는 작업 접수
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WearRecord'
+        '400':
+          description: 잘못된 요청
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '401':
+          description: 인증 실패
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '403':
+          description: 접근 거부
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '404':
+          description: 리소스 없음
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '409':
+          description: 상태 또는 버전 충돌
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '422':
+          description: 유효성 오류
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '429':
+          description: 요청 제한
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '503':
+          description: 외부 서비스 사용 불가
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+  /api/v1/garments/{garment_id}/care-guide:
+    get:
+      tags:
+      - Care
+      summary: 의류별 관리 가이드 조회
+      operationId: get_api_v1_garments_garment_id_care_guide
+      x-fsd-ids:
+      - CARE-001
+      parameters:
+      - name: garment_id
+        in: path
+        required: true
+        schema: *id002
+      responses:
+        '200':
+          description: 성공 또는 작업 접수
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CareGuide'
+        '400':
+          description: 잘못된 요청
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '401':
+          description: 인증 실패
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '403':
+          description: 접근 거부
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '404':
+          description: 리소스 없음
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '409':
+          description: 상태 또는 버전 충돌
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '422':
+          description: 유효성 오류
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '429':
+          description: 요청 제한
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '503':
+          description: 외부 서비스 사용 불가
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+  /api/v1/care-schedules:
+    get:
+      tags:
+      - Care
+      summary: 케어 일정 조회
+      operationId: get_api_v1_care_schedules
+      x-fsd-ids:
+      - CARE-002
+      parameters:
+      - *id001
+      - name: from
+        in: query
+        required: false
+        schema: *id006
+      - name: to
+        in: query
+        required: false
+        schema: *id006
+      - *id004
+      - *id005
+      responses:
+        '200':
+          description: 성공 또는 작업 접수
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CareScheduleList'
+        '400':
+          description: 잘못된 요청
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '401':
+          description: 인증 실패
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '403':
+          description: 접근 거부
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '404':
+          description: 리소스 없음
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '409':
+          description: 상태 또는 버전 충돌
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '422':
+          description: 유효성 오류
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '429':
+          description: 요청 제한
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '503':
+          description: 외부 서비스 사용 불가
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+    post:
+      tags:
+      - Care
+      summary: 케어 일정 등록
+      operationId: post_api_v1_care_schedules
+      x-fsd-ids:
+      - CARE-002
+      parameters:
+      - name: Idempotency-Key
+        in: header
+        required: true
+        schema:
+          type: string
+          format: uuid
+        description: 재시도 시 동일 명령 결과 반환
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CareScheduleCreate'
+      responses:
+        '201':
+          description: 성공 또는 작업 접수
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CareSchedule'
+        '400':
+          description: 잘못된 요청
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '401':
+          description: 인증 실패
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '403':
+          description: 접근 거부
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '404':
+          description: 리소스 없음
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '409':
+          description: 상태 또는 버전 충돌
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '422':
+          description: 유효성 오류
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '429':
+          description: 요청 제한
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '503':
+          description: 외부 서비스 사용 불가
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+  /api/v1/care-schedules/{schedule_id}/complete:
+    post:
+      tags:
+      - Care
+      summary: 관리 수행 완료 기록
+      operationId: post_api_v1_care_schedules_schedule_id_complete
+      x-fsd-ids:
+      - CARE-003
+      parameters:
+      - name: schedule_id
+        in: path
+        required: true
+        schema: *id002
+      - name: Idempotency-Key
+        in: header
+        required: true
+        schema:
+          type: string
+          format: uuid
+        description: 재시도 시 동일 명령 결과 반환
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CareCompleteRequest'
+      responses:
+        '201':
+          description: 성공 또는 작업 접수
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CareSchedule'
+        '400':
+          description: 잘못된 요청
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '401':
+          description: 인증 실패
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '403':
+          description: 접근 거부
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '404':
+          description: 리소스 없음
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '409':
+          description: 상태 또는 버전 충돌
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '422':
+          description: 유효성 오류
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '429':
+          description: 요청 제한
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '503':
+          description: 외부 서비스 사용 불가
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+  /api/v1/garments/locate:
+    post:
+      tags:
+      - Storage
+      summary: 구조화 조건 기반 의류 위치 조회
+      operationId: post_api_v1_garments_locate
+      x-fsd-ids:
+      - STO-001
+      description: ThinQ CLO 또는 Mock이 구조화한 조건만 처리. 소유자 권한은 서버에서 검증.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GarmentLocateRequest'
+      responses:
+        '201':
+          description: 성공 또는 작업 접수
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LocatedGarmentList'
+        '400':
+          description: 잘못된 요청
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '401':
+          description: 인증 실패
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '403':
+          description: 접근 거부
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '404':
+          description: 리소스 없음
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '409':
+          description: 상태 또는 버전 충돌
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '422':
+          description: 유효성 오류
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '429':
+          description: 요청 제한
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '503':
+          description: 외부 서비스 사용 불가
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+  /api/v1/storage-optimization-jobs:
+    post:
+      tags:
+      - Storage
+      summary: 착용 패턴·공간 환경 보관 최적화
+      operationId: post_api_v1_storage_optimization_jobs
+      x-fsd-ids:
+      - STO-002
+      - STO-003
+      description: mode=WEAR_PATTERN은 STO-002, SPACE_ENVIRONMENT는 STO-003.
+      parameters:
+      - name: Idempotency-Key
+        in: header
+        required: true
+        schema:
+          type: string
+          format: uuid
+        description: 재시도 시 동일 명령 결과 반환
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/StorageOptimizeRequest'
+      responses:
+        '202':
+          description: 성공 또는 작업 접수
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AcceptedJob'
+        '400':
+          description: 잘못된 요청
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '401':
+          description: 인증 실패
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '403':
+          description: 접근 거부
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '404':
+          description: 리소스 없음
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '409':
+          description: 상태 또는 버전 충돌
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '422':
+          description: 유효성 오류
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '429':
+          description: 요청 제한
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '503':
+          description: 외부 서비스 사용 불가
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+  /api/v1/storage-actions:
+    get:
+      tags:
+      - Storage
+      summary: 보관 제안 조회
+      operationId: get_api_v1_storage_actions
+      x-fsd-ids:
+      - STO-004
+      parameters:
+      - name: household_id
+        in: query
+        required: false
+        schema: *id002
+      - name: status
+        in: query
+        required: false
+        schema: *id003
+      - *id004
+      - *id005
+      responses:
+        '200':
+          description: 성공 또는 작업 접수
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StorageActionList'
+        '400':
+          description: 잘못된 요청
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '401':
+          description: 인증 실패
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '403':
+          description: 접근 거부
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '404':
+          description: 리소스 없음
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '409':
+          description: 상태 또는 버전 충돌
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '422':
+          description: 유효성 오류
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '429':
+          description: 요청 제한
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '503':
+          description: 외부 서비스 사용 불가
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+  /api/v1/storage-actions/{action_id}:
+    get:
+      tags:
+      - Storage
+      summary: 보관 작업 상세
+      operationId: get_api_v1_storage_actions_action_id
+      x-fsd-ids:
+      - STO-004
+      parameters:
+      - name: action_id
+        in: path
+        required: true
+        schema: *id002
+      responses:
+        '200':
+          description: 성공 또는 작업 접수
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StorageAction'
+        '400':
+          description: 잘못된 요청
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '401':
+          description: 인증 실패
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '403':
+          description: 접근 거부
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '404':
+          description: 리소스 없음
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '409':
+          description: 상태 또는 버전 충돌
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '422':
+          description: 유효성 오류
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '429':
+          description: 요청 제한
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '503':
+          description: 외부 서비스 사용 불가
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+  /api/v1/storage-actions/{action_id}/decision:
+    post:
+      tags:
+      - Storage
+      summary: 보관 제안 승인·거절
+      operationId: post_api_v1_storage_actions_action_id_decision
+      x-fsd-ids:
+      - STO-004
+      parameters:
+      - name: action_id
+        in: path
+        required: true
+        schema: *id002
+      - name: Idempotency-Key
+        in: header
+        required: true
+        schema:
+          type: string
+          format: uuid
+        description: 재시도 시 동일 명령 결과 반환
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/StorageDecisionRequest'
+      responses:
+        '201':
+          description: 성공 또는 작업 접수
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StorageAction'
+        '400':
+          description: 잘못된 요청
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '401':
+          description: 인증 실패
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '403':
+          description: 접근 거부
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '404':
+          description: 리소스 없음
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '409':
+          description: 상태 또는 버전 충돌
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '422':
+          description: 유효성 오류
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '429':
+          description: 요청 제한
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '503':
+          description: 외부 서비스 사용 불가
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+  /api/v1/storage-actions/{action_id}/confirm:
+    post:
+      tags:
+      - Storage
+      summary: 실제 이동 확인 및 상태 갱신
+      operationId: post_api_v1_storage_actions_action_id_confirm
+      x-fsd-ids:
+      - STO-004
+      parameters:
+      - name: action_id
+        in: path
+        required: true
+        schema: *id002
+      - name: Idempotency-Key
+        in: header
+        required: true
+        schema:
+          type: string
+          format: uuid
+        description: 재시도 시 동일 명령 결과 반환
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/StorageConfirmRequest'
+      responses:
+        '201':
+          description: 성공 또는 작업 접수
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StorageAction'
+        '400':
+          description: 잘못된 요청
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '401':
+          description: 인증 실패
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '403':
+          description: 접근 거부
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '404':
+          description: 리소스 없음
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '409':
+          description: 상태 또는 버전 충돌
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '422':
+          description: 유효성 오류
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '429':
+          description: 요청 제한
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '503':
+          description: 외부 서비스 사용 불가
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+  /api/v1/settings:
+    get:
+      tags:
+      - Settings
+      summary: 사용자·연동 설정 조회
+      operationId: get_api_v1_settings
+      x-fsd-ids:
+      - SET-001
+      parameters:
+      - *id001
+      responses:
+        '200':
+          description: 성공 또는 작업 접수
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Settings'
+        '400':
+          description: 잘못된 요청
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '401':
+          description: 인증 실패
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '403':
+          description: 접근 거부
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '404':
+          description: 리소스 없음
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '409':
+          description: 상태 또는 버전 충돌
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '422':
+          description: 유효성 오류
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '429':
+          description: 요청 제한
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '503':
+          description: 외부 서비스 사용 불가
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+    put:
+      tags:
+      - Settings
+      summary: 사용자·연동 설정 변경
+      operationId: put_api_v1_settings
+      x-fsd-ids:
+      - SET-001
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Settings'
+      responses:
+        '200':
+          description: 성공 또는 작업 접수
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Settings'
+        '400':
+          description: 잘못된 요청
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '401':
+          description: 인증 실패
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '403':
+          description: 접근 거부
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '404':
+          description: 리소스 없음
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '409':
+          description: 상태 또는 버전 충돌
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '422':
+          description: 유효성 오류
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '429':
+          description: 요청 제한
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '503':
+          description: 외부 서비스 사용 불가
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+  /api/v1/jobs/{job_id}:
+    get:
+      tags:
+      - Jobs
+      summary: 비동기 작업 상태·결과 폴링
+      operationId: get_api_v1_jobs_job_id
+      x-fsd-ids:
+      - VTON-002
+      - CARD-002
+      - STO-002
+      - STO-003
+      parameters:
+      - name: job_id
+        in: path
+        required: true
+        schema: *id002
+      responses:
+        '200':
+          description: 성공 또는 작업 접수
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Job'
+        '400':
+          description: 잘못된 요청
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '401':
+          description: 인증 실패
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '403':
+          description: 접근 거부
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '404':
+          description: 리소스 없음
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '409':
+          description: 상태 또는 버전 충돌
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '422':
+          description: 유효성 오류
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '429':
+          description: 요청 제한
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '503':
+          description: 외부 서비스 사용 불가
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+  /api/v1/jobs/{job_id}/cancel:
+    post:
+      tags:
+      - Jobs
+      summary: 대기·실행 작업 취소
+      operationId: post_api_v1_jobs_job_id_cancel
+      x-fsd-ids:
+      - VTON-002
+      - CARD-002
+      parameters:
+      - name: job_id
+        in: path
+        required: true
+        schema: *id002
+      - name: Idempotency-Key
+        in: header
+        required: true
+        schema:
+          type: string
+          format: uuid
+        description: 재시도 시 동일 명령 결과 반환
+      responses:
+        '201':
+          description: 성공 또는 작업 접수
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Job'
+        '400':
+          description: 잘못된 요청
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '401':
+          description: 인증 실패
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '403':
+          description: 접근 거부
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '404':
+          description: 리소스 없음
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '409':
+          description: 상태 또는 버전 충돌
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '422':
+          description: 유효성 오류
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '429':
+          description: 요청 제한
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '503':
+          description: 외부 서비스 사용 불가
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+  /api/v1/assets/upload-intents:
+    post:
+      tags:
+      - Assets
+      summary: 직접 업로드용 임시 URL 발급
+      operationId: post_api_v1_assets_upload_intents
+      x-fsd-ids:
+      - GAR-003
+      - VTON-002
+      - STYLE-001
+      parameters:
+      - name: Idempotency-Key
+        in: header
+        required: true
+        schema:
+          type: string
+          format: uuid
+        description: 재시도 시 동일 명령 결과 반환
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UploadIntentRequest'
+      responses:
+        '201':
+          description: 성공 또는 작업 접수
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UploadIntentResponse'
+        '400':
+          description: 잘못된 요청
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '401':
+          description: 인증 실패
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '403':
+          description: 접근 거부
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '404':
+          description: 리소스 없음
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '409':
+          description: 상태 또는 버전 충돌
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '422':
+          description: 유효성 오류
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '429':
+          description: 요청 제한
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '503':
+          description: 외부 서비스 사용 불가
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+  /api/v1/assets/{asset_id}/finalize:
+    post:
+      tags:
+      - Assets
+      summary: 업로드 완료 및 무결성 확인
+      operationId: post_api_v1_assets_asset_id_finalize
+      x-fsd-ids:
+      - GAR-003
+      - VTON-002
+      - STYLE-001
+      parameters:
+      - name: asset_id
+        in: path
+        required: true
+        schema: *id002
+      - name: Idempotency-Key
+        in: header
+        required: true
+        schema:
+          type: string
+          format: uuid
+        description: 재시도 시 동일 명령 결과 반환
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AssetFinalizeRequest'
+      responses:
+        '201':
+          description: 성공 또는 작업 접수
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Asset'
+        '400':
+          description: 잘못된 요청
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '401':
+          description: 인증 실패
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '403':
+          description: 접근 거부
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '404':
+          description: 리소스 없음
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '409':
+          description: 상태 또는 버전 충돌
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '422':
+          description: 유효성 오류
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '429':
+          description: 요청 제한
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '503':
+          description: 외부 서비스 사용 불가
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+  /api/v1/settings/consent-history:
+    get:
+      tags:
+      - Settings
+      summary: 본인 이미지 동의 변경 이력
+      operationId: get_api_v1_settings_consent_history
+      x-fsd-ids:
+      - SET-001
+      responses:
+        '200':
+          description: 성공 또는 작업 접수
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ConsentHistory'
+        '400':
+          description: 잘못된 요청
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '401':
+          description: 인증 실패
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '403':
+          description: 접근 거부
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '404':
+          description: 리소스 없음
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '409':
+          description: 상태 또는 버전 충돌
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '422':
+          description: 유효성 오류
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '429':
+          description: 요청 제한
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '503':
+          description: 외부 서비스 사용 불가
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+components:
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: 서버가 발급한 사용자 범위 세션 토큰. 요청 member_id/household_id를 신뢰하지 않고 인증 주체와 비교.
+  schemas:
+    Error:
+      type: object
+      properties:
+        code: *id003
+        message: *id003
+        request_id: *id003
+        details:
+          type: object
+          additionalProperties: true
+      required:
+      - code
+      - message
+      - request_id
+      additionalProperties: false
+    ErrorEnvelope:
+      type: object
+      properties:
+        error:
+          $ref: '#/components/schemas/Error'
+      required:
+      - error
+      additionalProperties: false
+    Page:
+      type: object
+      properties:
+        limit:
+          type: integer
+        offset:
+          type: integer
+        total:
+          type: integer
+      required:
+      - limit
+      - offset
+      - total
+      additionalProperties: false
+    AcceptedJob:
+      type: object
+      properties:
+        job_id: *id002
+        status:
+          type: string
+          enum:
+          - QUEUED
+          - RUNNING
+          - SUCCEEDED
+          - READY
+          - FAILED
+          - TIMED_OUT
+          - CANCELLED
+        status_url: *id003
+      required:
+      - job_id
+      - status
+      - status_url
+      additionalProperties: false
+    Asset:
+      type: object
+      properties:
+        asset_id: *id002
+        asset_key: *id003
+        content_type: *id003
+        read_url:
+          anyOf:
+          - type: string
+          - type: 'null'
+        expires_at:
+          anyOf:
+          - type: string
+            format: date-time
+          - type: 'null'
+      required:
+      - asset_id
+      - asset_key
+      - content_type
+      additionalProperties: false
+    Member:
+      additionalProperties: false
+      properties:
+        id:
+          format: uuid
+          type: string
+        household_id:
+          format: uuid
+          type: string
+        display_name:
+          type: string
+        role:
+          enum:
+          - OWNER
+          - MEMBER
+          - CHILD
+          type: string
+      required:
+      - id
+      - household_id
+      - display_name
+      - role
+      type: object
+    SessionStartRequest:
+      type: object
+      properties:
+        household_id: *id002
+        member_id: *id002
+        demo_mode:
+          type: boolean
+      required:
+      - household_id
+      - member_id
+      additionalProperties: false
+    SessionStartResponse:
+      type: object
+      properties:
+        session_id: *id002
+        access_token: *id003
+        token_type:
+          type: string
+          enum:
+          - Bearer
+        expires_at: &id007
+          type: string
+          format: date-time
+        member:
+          $ref: '#/components/schemas/Member'
+        capabilities:
+          type: array
+          items: *id003
+      required:
+      - session_id
+      - access_token
+      - token_type
+      - expires_at
+      - member
+      - capabilities
+      additionalProperties: false
+    Garment:
+      additionalProperties: false
+      properties:
+        id:
+          format: uuid
+          type: string
+        owner_id:
+          format: uuid
+          type: string
+        category:
+          type: string
+        color:
+          type: string
+        material:
+          anyOf:
+          - type: string
+          - type: 'null'
+        season_tags:
+          items:
+            type: string
+          type: array
+        image:
+          anyOf:
+          - $ref: '#/components/schemas/Asset'
+          - type: 'null'
+        status:
+          enum:
+          - AVAILABLE
+          - IN_USE
+          - LAUNDRY
+          - CARE
+          - STORED
+          - UNKNOWN
+          - RETIRED
+          type: string
+        care_label:
+          anyOf:
+          - type: string
+          - type: 'null'
+        location_label:
+          anyOf:
+          - type: string
+          - type: 'null'
+        stale:
+          type: boolean
+        care_guide_available:
+          type: boolean
+        care_guide_url:
+          anyOf:
+          - type: string
+          - type: 'null'
+        shared_with_member_ids:
+          items:
+            format: uuid
+            type: string
+          type: array
+        location_id:
+          anyOf:
+          - format: uuid
+            type: string
+          - type: 'null'
+        location_confidence:
+          anyOf:
+          - type: number
+          - type: 'null'
+        last_seen_at:
+          anyOf:
+          - format: date-time
+            type: string
+          - type: 'null'
+        version:
+          type: integer
+      required:
+      - id
+      - owner_id
+      - category
+      - color
+      - status
+      - version
+      type: object
+    GarmentUpsert:
+      additionalProperties: false
+      properties:
+        owner_id:
+          format: uuid
+          type: string
+        category:
+          type: string
+        color:
+          type: string
+        material:
+          anyOf:
+          - type: string
+          - type: 'null'
+        season_tags:
+          items:
+            type: string
+          type: array
+        image_asset_id:
+          anyOf:
+          - format: uuid
+            type: string
+          - type: 'null'
+        care_label:
+          anyOf:
+          - type: string
+          - type: 'null'
+        location_id:
+          anyOf:
+          - format: uuid
+            type: string
+          - type: 'null'
+        tag_value:
+          anyOf:
+          - type: string
+          - type: 'null'
+        shared_with_member_ids:
+          items:
+            format: uuid
+            type: string
+          type: array
+      required:
+      - owner_id
+      - category
+      - color
+      type: object
+    ObservationRequest:
+      additionalProperties: false
+      properties:
+        garment_id:
+          anyOf:
+          - format: uuid
+            type: string
+          - type: 'null'
+        observation_id:
+          anyOf:
+          - format: uuid
+            type: string
+          - type: 'null'
+        tag_value:
+          anyOf:
+          - type: string
+          - type: 'null'
+        location_id:
+          anyOf:
+          - format: uuid
+            type: string
+          - type: 'null'
+        sensor_type:
+          enum:
+          - RFID
+          - VISION
+          - MANUAL
+          - MOCK
+          type: string
+        confidence:
+          type: number
+        observed_at:
+          format: date-time
+          type: string
+        source_id:
+          type: string
+      required:
+      - sensor_type
+      - confidence
+      - observed_at
+      - source_id
+      type: object
+    ObservationResponse:
+      type: object
+      properties:
+        observation_id: *id002
+        state_updated:
+          type: boolean
+        garment:
+          $ref: '#/components/schemas/Garment'
+      required:
+      - observation_id
+      - state_updated
+      - garment
+      additionalProperties: false
+    Context:
+      additionalProperties: false
+      properties:
+        id:
+          format: uuid
+          type: string
+        member_id:
+          format: uuid
+          type: string
+        captured_at:
+          format: date-time
+          type: string
+        timezone:
+          type: string
+        source_mode:
+          enum:
+          - LIVE
+          - CACHED
+          - MOCK
+          - PARTIAL
+          type: string
+        weather:
+          $ref: '#/components/schemas/ContextWeather'
+        schedule:
+          items:
+            $ref: '#/components/schemas/ContextSchedule'
+          type: array
+        location_label:
+          anyOf:
+          - type: string
+          - type: 'null'
+        is_holiday:
+          anyOf:
+          - type: boolean
+          - type: 'null'
+        missing_fields:
+          items:
+            type: string
+          type: array
+        source_status:
+          additionalProperties:
+            $ref: '#/components/schemas/ContextSourceStatus'
+          type: object
+      required:
+      - id
+      - member_id
+      - captured_at
+      - timezone
+      - source_mode
+      type: object
+    ContextCaptureRequest:
+      additionalProperties: false
+      properties:
+        member_id:
+          format: uuid
+          type: string
+        timezone:
+          type: string
+        mode:
+          enum:
+          - AUTO
+          - MOCK
+          type: string
+        at:
+          anyOf:
+          - format: date-time
+            type: string
+          - type: 'null'
+      required:
+      - member_id
+      - timezone
+      type: object
+    OutfitItem:
+      type: object
+      properties:
+        garment_id: *id002
+        slot:
+          type: string
+          enum:
+          - TOP
+          - BOTTOM
+          - OUTER
+          - SHOES
+          - ACCESSORY
+          - DRESS
+        position:
+          type: integer
+      required:
+      - garment_id
+      - slot
+      additionalProperties: false
+    Outfit:
+      additionalProperties: false
+      properties:
+        id:
+          format: uuid
+          type: string
+        member_id:
+          format: uuid
+          type: string
+        items:
+          items:
+            $ref: '#/components/schemas/OutfitItem'
+          type: array
+        status:
+          enum:
+          - DRAFT
+          - SAVED
+          - ARCHIVED
+          type: string
+        version:
+          type: integer
+        title:
+          type: string
+        created_at:
+          format: date-time
+          type: string
+        missing_garment_ids:
+          items:
+            format: uuid
+            type: string
+          type: array
+        try_on_ready:
+          type: boolean
+      required:
+      - id
+      - member_id
+      - items
+      - status
+      - version
+      - created_at
+      type: object
+    OutfitUpsert:
+      additionalProperties: false
+      properties:
+        items:
+          items:
+            $ref: '#/components/schemas/OutfitItem'
+          type: array
+        title:
+          type: string
+        status:
+          enum:
+          - DRAFT
+          - SAVED
+          - ARCHIVED
+          type: string
+      required:
+      - items
+      type: object
+    OutfitCandidate:
+      type: object
+      properties:
+        outfit:
+          $ref: '#/components/schemas/Outfit'
+        score:
+          type: number
+        reasons:
+          type: array
+          items: *id003
+      required:
+      - outfit
+      - score
+      - reasons
+      additionalProperties: false
+    RecommendRequest:
+      type: object
+      properties:
+        member_id: *id002
+        context_snapshot_id: *id002
+        limit:
+          type: integer
+        theme:
+          anyOf:
+          - type: string
+          - type: 'null'
+        constraints:
+          type: object
+          additionalProperties: true
+      required:
+      - member_id
+      - context_snapshot_id
+      additionalProperties: false
+    RecommendResponse:
+      type: object
+      properties:
+        recommendation_id: *id002
+        context_snapshot_id: *id002
+        candidates:
+          type: array
+          items:
+            $ref: '#/components/schemas/OutfitCandidate'
+        generated_at: *id007
+        fallback_used:
+          type: boolean
+      required:
+      - recommendation_id
+      - context_snapshot_id
+      - candidates
+      - generated_at
+      additionalProperties: false
+    StyleReference:
+      additionalProperties: false
+      properties:
+        id:
+          format: uuid
+          type: string
+        member_id:
+          format: uuid
+          type: string
+        source:
+          enum:
+          - INSTAGRAM
+          - SHOPPING
+          - OTHER
+          type: string
+        title:
+          type: string
+        source_url:
+          anyOf:
+          - type: string
+          - type: 'null'
+        image_asset_id:
+          anyOf:
+          - format: uuid
+            type: string
+          - type: 'null'
+        image:
+          anyOf:
+          - $ref: '#/components/schemas/Asset'
+          - type: 'null'
+        created_at:
+          format: date-time
+          type: string
+      required:
+      - id
+      - member_id
+      - source
+      - title
+      type: object
+    StyleReferenceCreate:
+      type: object
+      properties:
+        member_id: *id002
+        source:
+          type: string
+          enum:
+          - INSTAGRAM
+          - SHOPPING
+          - OTHER
+        source_url:
+          anyOf:
+          - type: string
+          - type: 'null'
+        image_asset_id:
+          anyOf:
+          - type: string
+            format: uuid
+          - type: 'null'
+        title: *id003
+      required:
+      - member_id
+      - source
+      - title
+      additionalProperties: false
+    VtonSession:
+      type: object
+      properties:
+        id: *id002
+        member_id: *id002
+        source_screen:
+          type: string
+          enum:
+          - HOME
+          - GARMENT_DETAIL
+          - MY_OUTFITS
+          - OUTFIT_EDITOR
+          - CALENDAR
+          - OTHER
+        status:
+          type: string
+          enum:
+          - CREATED
+          - ACTIVE
+          - ENDED
+          - CANCELLED
+          - EXPIRED
+        revision:
+          type: integer
+        outfit_id:
+          anyOf:
+          - type: string
+            format: uuid
+          - type: 'null'
+        context_snapshot_id:
+          anyOf:
+          - type: string
+            format: uuid
+          - type: 'null'
+        final_outfit_id:
+          anyOf:
+          - type: string
+            format: uuid
+          - type: 'null'
+        created_at: *id007
+      required:
+      - id
+      - member_id
+      - source_screen
+      - status
+      - revision
+      additionalProperties: false
+    VtonSessionCreate:
+      type: object
+      properties:
+        member_id: *id002
+        source_screen:
+          type: string
+          enum:
+          - HOME
+          - GARMENT_DETAIL
+          - MY_OUTFITS
+          - OUTFIT_EDITOR
+          - CALENDAR
+          - OTHER
+        outfit_id:
+          anyOf:
+          - type: string
+            format: uuid
+          - type: 'null'
+        context_snapshot_id:
+          anyOf:
+          - type: string
+            format: uuid
+          - type: 'null'
+      required:
+      - member_id
+      - source_screen
+      additionalProperties: false
+    VtonModifyRequest:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/OutfitItem'
+        expected_revision:
+          type: integer
+      required:
+      - items
+      - expected_revision
+      additionalProperties: false
+    VtonEndRequest:
+      type: object
+      properties:
+        expected_revision:
+          type: integer
+        final_outfit_id:
+          anyOf:
+          - type: string
+            format: uuid
+          - type: 'null'
+        save_outfit:
+          type: boolean
+      required:
+      - expected_revision
+      additionalProperties: false
+    VtonJobRequest:
+      type: object
+      properties:
+        session_id: *id002
+        expected_revision:
+          type: integer
+        person_asset_id: *id002
+        outfit_id: *id002
+        provider:
+          type: string
+          enum:
+          - DECART
+          - MOCK
+      required:
+      - session_id
+      - expected_revision
+      - person_asset_id
+      - outfit_id
+      additionalProperties: false
+    Job:
+      type: object
+      properties:
+        id: *id002
+        kind:
+          type: string
+          enum:
+          - VTON
+          - CARD_RENDER
+          - STORAGE_OPTIMIZATION
+        status:
+          type: string
+          enum:
+          - QUEUED
+          - RUNNING
+          - SUCCEEDED
+          - READY
+          - FAILED
+          - TIMED_OUT
+          - CANCELLED
+        progress_pct:
+          type: integer
+        result_asset:
+          anyOf:
+          - $ref: '#/components/schemas/Asset'
+          - type: 'null'
+        error:
+          anyOf:
+          - $ref: '#/components/schemas/Error'
+          - type: 'null'
+        created_at: *id007
+        updated_at: *id007
+      required:
+      - id
+      - kind
+      - status
+      - created_at
+      - updated_at
+      additionalProperties: false
+    CardTemplateData:
+      type: object
+      properties:
+        title: *id003
+        top_image_asset_id:
+          anyOf:
+          - type: string
+            format: uuid
+          - type: 'null'
+        bottom_image_asset_id:
+          anyOf:
+          - type: string
+            format: uuid
+          - type: 'null'
+        shoes_image_asset_id:
+          anyOf:
+          - type: string
+            format: uuid
+          - type: 'null'
+        style_tag: *id003
+        weather_label: *id003
+        date: *id006
+      required:
+      - title
+      - style_tag
+      - date
+      additionalProperties: false
+    CardPrepareRequest:
+      type: object
+      properties:
+        outfit_id: *id002
+        context_snapshot_id:
+          anyOf:
+          - type: string
+            format: uuid
+          - type: 'null'
+        template_id: *id003
+      required:
+      - outfit_id
+      - template_id
+      additionalProperties: false
+    CardDraft:
+      type: object
+      properties:
+        id: *id002
+        outfit_id: *id002
+        template_id: *id003
+        data:
+          $ref: '#/components/schemas/CardTemplateData'
+        status:
+          type: string
+          enum:
+          - DRAFT
+          - QUEUED
+          - RUNNING
+          - READY
+          - FAILED
+          - SAVED
+        image_asset:
+          anyOf:
+          - $ref: '#/components/schemas/Asset'
+          - type: 'null'
+      required:
+      - id
+      - outfit_id
+      - template_id
+      - data
+      - status
+      additionalProperties: false
+    CardRenderRequest:
+      type: object
+      properties:
+        card_id: *id002
+        output_format:
+          type: string
+          enum:
+          - PNG
+          - WEBP
+        width:
+          type: integer
+        height:
+          type: integer
+      required:
+      - card_id
+      additionalProperties: false
+    CardSaveRequest:
+      type: object
+      properties:
+        title:
+          anyOf:
+          - type: string
+          - type: 'null'
+        visibility:
+          type: string
+          enum:
+          - PRIVATE
+          - SHAREABLE
+        reuse_outfit:
+          type: boolean
+      required:
+      - visibility
+      additionalProperties: false
+    WearConfirmRequest:
+      type: object
+      properties:
+        member_id: *id002
+        outfit_id: *id002
+        session_id:
+          anyOf:
+          - type: string
+            format: uuid
+          - type: 'null'
+        worn_at: *id007
+        confirmation_method:
+          type: string
+          enum:
+          - USER
+          - SENSOR_VERIFIED
+        context_snapshot_id:
+          anyOf:
+          - type: string
+            format: uuid
+          - type: 'null'
+      required:
+      - member_id
+      - outfit_id
+      - worn_at
+      - confirmation_method
+      additionalProperties: false
+    WearRecord:
+      type: object
+      properties:
+        id: *id002
+        member_id: *id002
+        outfit_id: *id002
+        worn_at: *id007
+        confirmation_method: *id003
+        context_snapshot_id:
+          anyOf:
+          - type: string
+            format: uuid
+          - type: 'null'
+      required:
+      - id
+      - member_id
+      - outfit_id
+      - worn_at
+      - confirmation_method
+      additionalProperties: false
+    CareGuide:
+      type: object
+      properties:
+        garment_id: *id002
+        care_group: *id003
+        special_care:
+          type: boolean
+        instructions:
+          type: array
+          items: *id003
+        constraints:
+          type: object
+          additionalProperties: true
+      required:
+      - garment_id
+      - care_group
+      - special_care
+      - instructions
+      additionalProperties: false
+    CareScheduleCreate:
+      type: object
+      properties:
+        garment_id: *id002
+        scheduled_at: *id007
+        care_type: *id003
+        notes:
+          anyOf:
+          - type: string
+          - type: 'null'
+      required:
+      - garment_id
+      - scheduled_at
+      - care_type
+      additionalProperties: false
+    CareSchedule:
+      type: object
+      properties:
+        id: *id002
+        garment_id: *id002
+        scheduled_at: *id007
+        care_type: *id003
+        status:
+          type: string
+          enum:
+          - PLANNED
+          - DONE
+          - CANCELLED
+        notes:
+          anyOf:
+          - type: string
+          - type: 'null'
+      required:
+      - id
+      - garment_id
+      - scheduled_at
+      - care_type
+      - status
+      additionalProperties: false
+    CareCompleteRequest:
+      type: object
+      properties:
+        completed_at: *id007
+        notes:
+          anyOf:
+          - type: string
+          - type: 'null'
+      required:
+      - completed_at
+      additionalProperties: false
+    GarmentLocateRequest:
+      type: object
+      properties:
+        owner_id:
+          anyOf:
+          - type: string
+            format: uuid
+          - type: 'null'
+        category:
+          anyOf:
+          - type: string
+          - type: 'null'
+        color:
+          anyOf:
+          - type: string
+          - type: 'null'
+        garment_id:
+          anyOf:
+          - type: string
+            format: uuid
+          - type: 'null'
+      description: ThinQ CLO가 파싱한 구조화 조건; 자연어 입력을 이 API에서 파싱하지 않음.
+      additionalProperties: false
+    LocatedGarment:
+      additionalProperties: false
+      properties:
+        garment_id:
+          format: uuid
+          type: string
+        location_id:
+          anyOf:
+          - format: uuid
+            type: string
+          - type: 'null'
+        location_label:
+          anyOf:
+          - type: string
+          - type: 'null'
+        confidence:
+          anyOf:
+          - type: number
+          - type: 'null'
+        last_seen_at:
+          anyOf:
+          - format: date-time
+            type: string
+          - type: 'null'
+        status:
+          enum:
+          - FOUND
+          - STALE
+          - UNKNOWN
+          type: string
+        fallback:
+          anyOf:
+          - type: string
+          - type: 'null'
+      required:
+      - garment_id
+      - status
+      type: object
+    StorageOptimizeRequest:
+      type: object
+      properties:
+        household_id: *id002
+        member_id: *id002
+        mode:
+          type: string
+          enum:
+          - WEAR_PATTERN
+          - SPACE_ENVIRONMENT
+        dry_run:
+          type: boolean
+      required:
+      - household_id
+      - member_id
+      - mode
+      additionalProperties: false
+    StorageActionItem:
+      type: object
+      properties:
+        garment_id: *id002
+        source_location_id:
+          anyOf:
+          - type: string
+            format: uuid
+          - type: 'null'
+        destination_location_id: *id002
+        status:
+          type: string
+          enum:
+          - PROPOSED
+          - IN_PROGRESS
+          - AWAITING_CONFIRMATION
+          - COMPLETED
+          - FAILED
+      required:
+      - garment_id
+      - destination_location_id
+      - status
+      additionalProperties: false
+    StorageAction:
+      type: object
+      properties:
+        id: *id002
+        household_id: *id002
+        action_type: *id003
+        status:
+          type: string
+          enum:
+          - PROPOSED
+          - APPROVED
+          - IN_PROGRESS
+          - AWAITING_CONFIRMATION
+          - COMPLETED
+          - REJECTED
+          - FAILED
+          - EXPIRED
+          - CANCELLED
+        reasoning:
+          type: array
+          items: *id003
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/StorageActionItem'
+        version:
+          type: integer
+      required:
+      - id
+      - household_id
+      - status
+      - items
+      - version
+      additionalProperties: false
+    StorageDecisionRequest:
+      type: object
+      properties:
+        expected_version:
+          type: integer
+        decision:
+          type: string
+          enum:
+          - APPROVE
+          - REJECT
+      required:
+      - expected_version
+      - decision
+      additionalProperties: false
+    StorageConfirmRequest:
+      type: object
+      properties:
+        expected_version:
+          type: integer
+        items:
+          type: array
+          items:
+            type: object
+            properties:
+              garment_id: *id002
+              confirmed:
+                type: boolean
+              observed_location_id:
+                anyOf:
+                - type: string
+                  format: uuid
+                - type: 'null'
+            required:
+            - garment_id
+            - confirmed
+            additionalProperties: false
+      required:
+      - expected_version
+      - items
+      additionalProperties: false
+    Settings:
+      additionalProperties: false
+      properties:
+        member_id:
+          format: uuid
+          type: string
+        timezone:
+          type: string
+        units:
+          enum:
+          - METRIC
+          - IMPERIAL
+          type: string
+        weather_mode:
+          enum:
+          - LIVE
+          - MOCK
+          type: string
+        calendar_enabled:
+          type: boolean
+        vton_provider:
+          enum:
+          - DECART
+          - MOCK
+          type: string
+        notifications_enabled:
+          type: boolean
+        image_upload_consent:
+          type: boolean
+        provider_connection_status:
+          const: MOCK_ONLY
+          type: string
+      required:
+      - member_id
+      - timezone
+      - units
+      - weather_mode
+      - calendar_enabled
+      - vton_provider
+      - notifications_enabled
+      type: object
+    HomeDashboard:
+      type: object
+      properties:
+        member:
+          $ref: '#/components/schemas/Member'
+        today_context:
+          anyOf:
+          - $ref: '#/components/schemas/Context'
+          - type: 'null'
+        today_outfits:
+          type: array
+          items:
+            $ref: '#/components/schemas/OutfitCandidate'
+        care_alerts:
+          type: array
+          items:
+            $ref: '#/components/schemas/CareSchedule'
+        storage_alerts:
+          type: array
+          items:
+            $ref: '#/components/schemas/StorageAction'
+        updated_at: *id007
+        partial:
+          type: boolean
+      required:
+      - member
+      - today_outfits
+      - care_alerts
+      - storage_alerts
+      - updated_at
+      - partial
+      additionalProperties: false
+    HistoryItem:
+      type: object
+      properties:
+        id: *id002
+        kind:
+          type: string
+          enum:
+          - WEAR
+          - CARE
+        occurred_at: *id007
+        outfit_id:
+          anyOf:
+          - type: string
+            format: uuid
+          - type: 'null'
+        garment_id:
+          anyOf:
+          - type: string
+            format: uuid
+          - type: 'null'
+        description: *id003
+      required:
+      - id
+      - kind
+      - occurred_at
+      - description
+      additionalProperties: false
+    UploadIntentRequest:
+      additionalProperties: false
+      properties:
+        file_name:
+          type: string
+        content_type:
+          enum:
+          - image/png
+          - image/jpeg
+          - image/webp
+          type: string
+        size_bytes:
+          maximum: 10485760
+          minimum: 1
+          type: integer
+        purpose:
+          enum:
+          - GARMENT
+          - PERSON_VTON
+          - STYLE
+          - OTHER
+          type: string
+      required:
+      - file_name
+      - content_type
+      - size_bytes
+      - purpose
+      type: object
+    UploadIntentResponse:
+      additionalProperties: false
+      properties:
+        asset_id:
+          format: uuid
+          type: string
+        upload_url:
+          type: string
+        method:
+          const: PUT
+          type: string
+        expires_at:
+          format: date-time
+          type: string
+        required_headers:
+          additionalProperties:
+            type: string
+          type: object
+      required:
+      - asset_id
+      - upload_url
+      - method
+      - expires_at
+      - required_headers
+      type: object
+    AssetFinalizeRequest:
+      additionalProperties: false
+      properties:
+        checksum_sha256:
+          pattern: ^[0-9a-f]{64}$
+          type: string
+      required:
+      - checksum_sha256
+      type: object
+    GarmentList:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/Garment'
+        page:
+          $ref: '#/components/schemas/Page'
+      required:
+      - items
+      - page
+      additionalProperties: false
+    OutfitList:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/Outfit'
+        page:
+          $ref: '#/components/schemas/Page'
+      required:
+      - items
+      - page
+      additionalProperties: false
+    StyleReferenceList:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/StyleReference'
+        page:
+          $ref: '#/components/schemas/Page'
+      required:
+      - items
+      - page
+      additionalProperties: false
+    CareScheduleList:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/CareSchedule'
+        page:
+          $ref: '#/components/schemas/Page'
+      required:
+      - items
+      - page
+      additionalProperties: false
+    HistoryItemList:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/HistoryItem'
+        page:
+          $ref: '#/components/schemas/Page'
+      required:
+      - items
+      - page
+      additionalProperties: false
+    StorageActionList:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/StorageAction'
+        page:
+          $ref: '#/components/schemas/Page'
+      required:
+      - items
+      - page
+      additionalProperties: false
+    CardDraftList:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/CardDraft'
+        page:
+          $ref: '#/components/schemas/Page'
+      required:
+      - items
+      - page
+      additionalProperties: false
+    LocatedGarmentList:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/LocatedGarment'
+        page:
+          $ref: '#/components/schemas/Page'
+      required:
+      - items
+      - page
+      additionalProperties: false
+    ConsentRecord:
+      additionalProperties: false
+      properties:
+        id:
+          format: uuid
+          type: string
+        granted:
+          type: boolean
+        policy_version:
+          type: string
+        changed_at:
+          format: date-time
+          type: string
+      required:
+      - id
+      - granted
+      - policy_version
+      - changed_at
+      type: object
+    ConsentHistory:
+      additionalProperties: false
+      properties:
+        items:
+          items:
+            $ref: '#/components/schemas/ConsentRecord'
+          type: array
+      required:
+      - items
+      type: object
+    GarmentDeleted:
+      additionalProperties: false
+      properties:
+        garment_id:
+          format: uuid
+          type: string
+        deleted:
+          const: true
+          type: boolean
+      required:
+      - garment_id
+      - deleted
+      type: object
+    ContextWeather:
+      additionalProperties: false
+      properties:
+        temperature_c:
+          anyOf:
+          - type: number
+          - type: 'null'
+        humidity_pct:
+          anyOf:
+          - type: number
+          - type: 'null'
+        precipitation_mm:
+          anyOf:
+          - type: number
+          - type: 'null'
+        condition:
+          anyOf:
+          - type: string
+          - type: 'null'
+      type: object
+    ContextSchedule:
+      additionalProperties: false
+      properties:
+        kind:
+          type: string
+        starts_at:
+          format: date-time
+          type: string
+        people:
+          items:
+            type: string
+          type: array
+      required:
+      - kind
+      - starts_at
+      type: object
+    ContextSourceStatus:
+      additionalProperties: false
+      properties:
+        source:
+          type: string
+        observed_at:
+          anyOf:
+          - format: date-time
+            type: string
+          - type: 'null'
+        freshness:
+          enum:
+          - FRESH
+          - STALE
+          - UNKNOWN
+          type: string
+        is_mock:
+          type: boolean
+        missing_fields:
+          items:
+            type: string
+          type: array
+      required:
+      - source
+      - freshness
+      - is_mock
+      - missing_fields
+      type: object

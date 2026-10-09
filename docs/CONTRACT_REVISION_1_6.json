@@ -1,0 +1,23 @@
+{
+  "revision": "1.6.0",
+  "previous_revision": "1.5.0",
+  "authorized_by": "Sprint 6 request and implementation plan contract rule",
+  "previous_sha256": {
+    "03_ARCHITECTURE_HLD_v1.1.md": "07962f34ce1b7bea389ba85cf396c7aaf5c5fb0b637bb5b022694fb542f46f5b",
+    "04_FSD.md": "7e698c25971f745a5a8b4322ffaa794ce828601decd53548ab552da51896aa97",
+    "05_BACKEND_LLD.md": "f0a629a2be1de68222541d0c89c595c4c5ee499d1b5911d837aec9e2fe7cc40e",
+    "06_OPENAPI.yaml": "e6b47630e21345b51fd95c02ae6c52cc896fdd641f70d226556229e1eeb9fb7f",
+    "07_DATABASE_SCHEMA.sql": "79f5facd4c42b322b19cca244209cb95336a557234c2bd2a19c30156e9f26935",
+    "07_DATABASE_SEED.sql": "a0cbd33d2461fe616ed4cfe0e2a81587ba571c7df9858bdf06612718bd1a6418",
+    "08_IMPLEMENTATION_PLAN.md": "65989c43cdacc550f45e36d66aca7a6816d646671f5f19dc1106d785e5f62e09"
+  },
+  "current_sha256": {
+    "03_ARCHITECTURE_HLD_v1.1.md": "07962f34ce1b7bea389ba85cf396c7aaf5c5fb0b637bb5b022694fb542f46f5b",
+    "04_FSD.md": "254ad0af74393300f8acca030854d41a663ebb387b494221c74b1eff6ed0a89d",
+    "05_BACKEND_LLD.md": "79ebd88190d411892722e7dcf704ec765bdb153f3892a93416d9a098696883e7",
+    "06_OPENAPI.yaml": "af9c501acb2fbfff1ffdf1a2ac2498e265680d4e12c904cc21e23fc447437969",
+    "07_DATABASE_SCHEMA.sql": "79f5facd4c42b322b19cca244209cb95336a557234c2bd2a19c30156e9f26935",
+    "07_DATABASE_SEED.sql": "a0cbd33d2461fe616ed4cfe0e2a81587ba571c7df9858bdf06612718bd1a6418",
+    "08_IMPLEMENTATION_PLAN.md": "47c2621054b6ea423ac871f586129e8986192bcb5128093bc6e01ac7e4d0ee12"
+  }
+}

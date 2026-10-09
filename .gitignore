@@ -1,0 +1,27 @@
+.env
+.env.*
+!.env.example
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+*.egg-info/
+dist/
+build/
+.docker-local/
+test-results/
+node_modules/
+
+# Private inventory and import records
+data/imports/
+docs/OWNED_GARMENT_IMPORT_REVIEW.md
+
+# Credentials and local database exports
+*.pem
+*.key
+*.p12
+*.pfx
+*.dump
+*.sql.gz
+

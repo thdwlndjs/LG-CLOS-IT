@@ -1,0 +1,10 @@
+.git
+.env
+.env.*
+.venv
+**/__pycache__
+**/.pytest_cache
+test-results
+.docker-local
+**/node_modules
+
