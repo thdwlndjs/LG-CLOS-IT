@@ -1,176 +1,85 @@
-# ?? ???? ?? ?? ?? ? 2026-10-10
+# 무료 클라우드 배포 및 의류 적재 기록
 
-## ?? ??
+2026-10-10 기준. 원본 설계 문서 7개와 프론트 옷장·스마트미러 디자인은 변경하지 않았다. PostgreSQL을 유지하고, 클라우드 오브젝트 저장소만 승인된 Supabase Storage로 연결했다. 로컬 MinIO와 기존 실제 의류 6벌은 유지한다.
 
-Supabase Free ??? Singapore ????? ????. PostgreSQL 17.11? ?? Alembic Migration? ??? `0004_device_integration`, ?? ??? 40?? ????. ??? ??? PostgreSQL? ????. ??? `wardrobe-assets` ??? ??? PUT/GET/DELETE ? ?? ? 404? ?? ????. S3 ?? DB ????? Git/Docker?? ??? `.env.cloud`? ?? ?????? ????.
+## 실제 서비스 상태
 
-Render Key Value `wardrobe-redis`? ?? `plan=free`, private ??? ????. Render Web `https://wardrobe-api-5gd7.onrender.com`? ?? plan=free?? DB/Redis/Storage/renderer/worker readiness 5? ?? ????. Vercel production? API ??? ???? ?? ???? READY? ?? ????. ???? ?? ??? ?? ??, ?? ???? ??, GitHub Actions ?? ??? ?? ???? ???. ?? ?? ??? ??? ????, ?? Blueprint, MinIO ???? ?? ??? ?? ????. ?? `render.yaml`? ?? ???? ????.
+| 서비스 | 실제 확인 결과 |
+| --- | --- |
+| Frontend | https://lg-clos-it.vercel.app , Vercel Hobby active, GitHub main 연결 |
+| Backend | https://wardrobe-api-5gd7.onrender.com , Render Web plan=free |
+| Redis | Render `wardrobe-redis`, plan=free, Singapore private 연결 |
+| PostgreSQL | Supabase Free 조직 `Smart-Wardrobe`, Singapore 프로젝트 `smart-wardrobe`, PostgreSQL 17.11 |
+| Storage | 같은 프로젝트의 `wardrobe-assets`, Private, 이미지 MIME 허용, 10MiB 제한 |
+| Migration | 기존 schema를 유지한 `0004_device_integration`, 업무 테이블 40개 |
 
-## ?? ?? ??? ??
+API readiness에서 database/redis/storage/renderer/worker 모두 ok를 실제 확인했다. 의류 6벌과 READY 이미지 6개를 적재하고 Vercel 브라우저에서 개인 계정 로그인 및 사진 6개 표시를 확인했다. 사진 요청 실패 0건, Seed 표시 0건이다. GitHub Deploy Hook 자동 배포와 배포 smoke도 실제 성공했다. CI 실행 [37981174550](https://github.com/thdwlndjs/LG-CLOS-IT/actions/runs/37981174550)의 attempt 2 및 smoke [37981760776](https://github.com/thdwlndjs/LG-CLOS-IT/actions/runs/37981760776)가 성공했고, 검증한 commit은 `1d11f6a32b71a33747af01c3b6873d26d09dd58e`이다. 위 증적은 보고서 추가 전 구현 커밋의 검증이다. 보고서만 추가하는 main 커밋도 같은 경로로 실행하고, 그 마지막 실행 결과는 최종 응답에서 별도로 확인한다.
 
-`infra/cloud/Dockerfile`? ??? UID 10001? FastAPI 1 worker? ?? Chromium ?? ???? ?? ????. ???? 127.0.0.1??? ????. DB ?? ?? ?? ???? API lifespan ??? ????, ?? Celery ??? ?? ????? ????. ???? ?? ?? ?? ??? ???. ?? ?? ? ?? ? readiness? ????, DB? ?? QUEUED ?? ??? ???? ?? ????? ???? ?DB ???? ????. ?? ? ??? ????? ??? ?? ??? ???? ?? ??? ?? ?????? ???? ???.
+## 무료 실행 구성
 
-?? ??? ?? 512MB?0.5 CPU?swap ?? ??? ?? ?????? ?? Supabase DB/Storage, ?? Redis, API/renderer/worker readiness 5?? ?? 200/ok? ????. ?? ?? ??? Chromium ??? 3?, ????? ??? 149?, ? ?? ??? ?DB ?? ??? 1?, Ruff? ????. ?? ?DB ?? ??? 105?, ??? ??? 15? ? production build, OpenAPI validator, Render Blueprint ?? ??? ????. ???? ??? ?? ????? ?? ??? ?? ?? ???. ?? Redis ??? Render private Redis ?? ??? ???? ???.
+`infra/cloud/Dockerfile`은 UID 10001 비루트 사용자로 FastAPI 1 worker, 기존 Chromium 카드 렌더러, 기존 DB 기반 작업 처리기를 함께 실행한다. 렌더러는 127.0.0.1:3000에서만 수신한다. MinIO, 유료 worker/private service, persistent disk, Render PostgreSQL은 클라우드에 생성하지 않았다. 기존 로컬 Celery 실행 방식은 유지한다.
 
-DB TLS? ?? Supabase CA? ?? ? ????? ????. CA ??: https://supabase-downloads.s3-ap-southeast-1.amazonaws.com/prod/ssl/prod-ca-2021.crt . ?? ??? SHA256: `700723581420dd1ac98fd7e9ac529f0ef210eadcaf87fc868a3ad7d114c2f3b7`. ??? ?? ??? ???? ???.
+`WORKER_EXECUTION=INLINE`은 기존 SQL 작업 테이블과 처리기를 재사용한다. API lifespan에서 시작·종료하며 작업 실패 또는 처리기 종료 시 readiness가 실패한다. QUEUED 카드 작업을 처리기 재시작 후 성공시키는 실DB 통합 테스트를 통과했다. 모든 RUNNING 작업을 자동 복구한다고 보장하지 않으며 기존 lease 만료·실패 계약을 유지한다.
 
-## main ?? ??
+공식 Supabase CA로 DB TLS 체인 및 hostname을 검증한다. `infra/cloud/supabase-ca.crt` 출처는 [공식 배포 인증서](https://supabase-downloads.s3-ap-southeast-1.amazonaws.com/prod/ssl/prod-ca-2021.crt)이며 SHA256은 `700723581420dd1ac98fd7e9ac529f0ef210eadcaf87fc868a3ad7d114c2f3b7`이다. 시스템 보안 설정을 변경하지 않았다.
 
-Vercel? ?? Git ??? main push? ?? ????. ?? Render ???? ?? repository URL? ???? native Git ?? ??? ???? ???. [Render ?? ?? ??](https://render.com/docs/deploys)? ?? ?? URL ???? ?? ?? ????. ??? Render native ?? ??? ??, GitHub Actions? CI ?? ? ???? Deploy Hook?? ?? commit SHA? ???? ??? ????. Hook? Dashboard??? ?? ? ?? ?? ??? ??? ???? ??. ?? CLI ?? ??? ????? GitHub? ???? ???.
+## 데이터 적재 결과
 
-`.github/workflows/ci.yml`? frontend/backend/free-cloud-image ?? ?? ?? main push? ???? deploy job? ????. `RENDER_DEPLOY_HOOK_URL`? GitHub repository secret? ????. `.env.cloud`? ?? ?? ?? ?? ????? Git? ????. ?? secret ??? Hook? ?? ?? ??? ?????. Hook? ??? ?? job? ?????, ??? ???? ???.
+- 승인된 private 계획의 실제 보유 의류 6벌을 기존 등록 API로 적재했다. 상품 원본 이미지와 실제 보유 의류는 구분한다. 기존 승인 계획에서 상품 URL·전달 라벨 불일치, 공식 상품 본문 확인 불가, 같은 미확정 상품 재참조로 보류한 4건은 등록하지 않는다. 이는 승인된 6건 범위 밖의 미확정 적재 항목이다.
+- 클라우드 사용자·기기를 새로 준비하고 로컬 journal·asset ID·MinIO key를 복사하지 않았다. 클라우드 개인 계정 1개, 기기 1개이다.
+- verified TLS pg_dump 백업 후 동의 설정 API → upload intent → S3 PUT → SHA256 finalize → 의류 등록 API를 실행했다.
+- 모든 사진 다운로드 SHA256이 검증된 상품 이미지와 일치한다. 재실행 결과 verified=6, created_this_run=0, held=4이다.
+- 독립 SQL 조회에서 garment=6, READY GARMENT assets=6, wear_event=0, care_event=0, garment_observation=0을 확인했다. 의류 상태 UNKNOWN, 위치·마지막 관측·confidence가 미확정 상태임을 API로 확인했다.
+- private 실행 원장: `data/imports/cloud-owned.journal.json`. 백업과 브라우저 증적은 `test-results/`에만 보관하며 Git에 올리지 않는다.
 
-CI ?? ? `deployment-smoke.yml`? ??? backend commit? readiness, ? HTML? ????. `PUBLIC_API_ORIGIN`, `PUBLIC_WEB_ORIGIN`? GitHub repository variables? ?? ????. DB/S3/JWT ?? Actions? ???? ???. ? ?? CI ??? frontend/backend/free-cloud-image ?? ????. ? failure? ??? ???? ??? ????, ? Hook ?? job? ?? ??? ???.
-
-## ?? ?? ??
-
-`scripts/import_cloud_wardrobe.py`? `.env.cloud`? ??? staging Render/Supabase ???? ????. ?? commit/push? ??? ? ??? TLS? private pg_dump ??? ??? ?? ????? ??? ????. ?? ??? private ??? ?? ???? owner/device? ?? ????. ?? journal? ????? ?? `data/imports/cloud-owned.journal.json`? ?? ?? ??? ????. ?? ??, upload intent, SHA256 finalize, ?? ?? API? ????. ??? idempotency key? ???? SHA256 ??? ?? ? ??? ??? ????. ?? 4?? ???? ??? ???????? ??? ??? ???. ?? ?? 6?? ??? ????.
-
-?? ? ?? API readiness, `.env.cloud` ? ??? ??? ????. ??:
+재현 명령은 프로젝트 루트에서 실행한다. `--grant-image-consent`는 해당 클라우드 계정의 이미지 업로드 동의 설정을 API로 활성화한다. 기존 승인된 private 계획과 `.env.cloud`가 필요하며 tracked 변경이 commit/push되어 있어야 한다. 동일 원장을 유지해야 재실행 중복을 방지할 수 있다.
 
 ```powershell
 $env:PYTHONPATH='backend'
 .\.venv\Scripts\python.exe scripts/import_cloud_wardrobe.py --plan data/imports/owned-plan-20261009.json --journal data/imports/cloud-owned.journal.json --grant-image-consent
 ```
 
-S3 ?? RLS? ???? ??? ???? ?????Git? ???? ? ??. ?? ???? idle sleep, ???? pause, Redis ????? ????? ??? ?? ??. ?? Decart, ??? API, ?? LED ????? ???? ???. ??? ???? ?? ?? 7?? ???? ???.
+## 계정과 환경변수
 
----
+클라우드에서는 시연용 인증을 비활성화하고 개인 계정 JWT 인증을 사용한다. 화면의 마이 → 내 계정에서 로그인한다. 로그인 ID는 프로젝트 루트 `C:\Users\aicam\Desktop\2차프로젝트\.env.cloud`의 `CLOUD_IMPORT_LOGIN`, 비밀번호는 `CLOUD_IMPORT_PASSWORD`에서 확인한다. 비밀번호는 채팅·문서·프론트 코드에 기록하지 않는다.
 
-## ?? ?? ? ?? ??
+Vercel production에는 공개 설정 `VITE_API_BASE_URL`, `VITE_STORAGE_BASE_URL`만 입력했다. 프론트 API 클라이언트는 지정된 Supabase 프로젝트의 wardrobe-assets/assets 및 업로드 staging 경로만 허용한다. 다른 프로젝트·버킷·비HTTPS 주소는 거부한다. 화면 구조·크기·이미지·좌표는 변경하지 않았다.
 
-# Render + Vercel 배포 기록
+서버의 DATABASE_URL, JWT_SECRET, S3 key pair, SUPABASE_SERVICE_ROLE_KEY는 `.env.cloud`와 Render 환경변수에만 둔다. `.env*`가 Git에 제외되고 이미 추적된 secret 파일이 없음을 확인했다. S3 키는 RLS를 우회하는 서버용 키이므로 프론트에 전달하지 않는다. 브라우저는 짧은 유효기간의 서명 URL만 사용한다.
 
-## 현재 상태
+## GitHub Actions와 main 반영
 
-2026-10-10 최신 결정: 무료 클라우드 배포를 위해 사용자가 MinIO 대체를 허용했다. **클라우드 저장소 연결 대상은 Supabase Storage Free**, 로컬 Compose는 기존 MinIO와 실제 의류 6벌·사진 6개를 유지한다. 원본 설계 7개는 수정하지 않았다. Vercel은 실제 계정 API에서 `lg-clos-it`의 소유 팀 `thdwldnjs`와 `billing.plan=hobby`, `billing.status=active`를 확인했다. 조회 시각은 2026-10-10 03:25 KST이며 비공개 증적은 `test-results/vercel-plan-20261010.json`이다. 유료 플랜·유료 리소스 생성은 진행하지 않는다. 전체 클라우드 배포와 DB 적재는 아직 완료되지 않았다.
+Vercel은 기존 Git 연결로 main push를 배포한다. Render는 공개 repository URL로 생성했으므로 [공식 문서](https://render.com/docs/deploys)에 따라 native Git 자동 배포가 지원되지 않았다. Render native auto deploy를 끄고, [공식 Deploy Hook 방식](https://render.com/docs/deploy-hooks)으로 GitHub Actions에서 배포한다.
 
-### 무료 저장소 연결 준비
+`.github/workflows/ci.yml`의 frontend/backend/free-cloud-image 모두 성공한 main push만 deploy job을 실행한다. Hook에는 검증한 commit SHA를 ref로 전달한다. 사용자 제공 Hook이 해당 서비스의 것임을 확인하고 GitHub 공개키로 암호화하여 repository secret `RENDER_DEPLOY_HOOK_URL`에 등록했다. 임시 Render CLI 인증 토큰은 GitHub에 전달하지 않았다. DB/S3/JWT 비밀키도 Actions에 전달하지 않는다.
 
-기존 S3 SigV4·upload intent·SHA256 finalize·단기 signed GET 계약을 유지한다. 리전을 `STORAGE_REGION`으로 설정하고 `STORAGE_PROVIDER=SUPABASE`인 cloud entry는 MinIO host 대신 외부 S3 endpoint를 사용한다. Supabase 버킷은 Dashboard에서 `wardrobe-assets`, **Private**로 미리 생성한다. 시작 시 서버 전용 key로 REST bucket metadata의 `id` 및 `public=false`를 확인한 뒤 S3 HeadBucket을 수행한다. 버킷 없음·공개·인증 오류·형식 오류는 시작 실패이며 공개 버킷을 자동 수정하지 않는다. Supabase가 S3 bucket policy API를 제공한다고 가정하지 않는다.
+CI 성공 후 `deployment-smoke.yml`이 해당 backend commit, 의존성 readiness, frontend HTML을 확인한다. repository variables는 `PUBLIC_API_ORIGIN`, `PUBLIC_WEB_ORIGIN`이다. Hook이 없거나 HTTP 실패이면 deploy job을 실패시키고, 배포 SHA가 다르거나 readiness 실패이면 smoke도 실패한다.
 
-| 환경변수 | 설정 |
+## 실행한 검증과 실패 처리
+
+| 검증 | 결과 |
 | --- | --- |
-| STORAGE_PROVIDER | SUPABASE |
-| SUPABASE_URL | 실제 Free 프로젝트 HTTPS origin |
-| SUPABASE_SERVICE_ROLE_KEY | 해당 프로젝트 서버 전용 키, Render 환경변수에만 보관 |
-| STORAGE_ENDPOINT | S3 설정 화면의 endpoint, `https://PROJECT_REF.storage.supabase.co/storage/v1/s3` 형태 |
-| STORAGE_REGION | S3 설정 화면의 프로젝트 region |
-| STORAGE_PUBLIC_BASE_URL | STORAGE_ENDPOINT와 동일, cloud entry가 설정 |
-| STORAGE_BUCKET | wardrobe-assets |
-| STORAGE_ACCESS_KEY / STORAGE_SECRET_KEY | Dashboard에서 생성한 S3 key pair, 서버에만 보관 |
+| Supabase 실제 private bucket 및 PNG PUT/GET/DELETE, 삭제 후 404 | 통과 |
+| Alembic 및 PostgreSQL verified TLS | 통과 |
+| 512MB / 0.5 CPU / swap 없음의 combined container readiness | 5개 모두 통과, Redis는 이 검증에서 로컬 사용 |
+| 같은 제한의 Chromium 카드 테스트 | 3개 통과 |
+| 단위·계약 테스트 | 기존 무료 구성 149개 통과, Deploy Hook 추가 테스트 7개 통과 |
+| 실제 PostgreSQL·Redis·MinIO·Chromium 전체 통합 | 105개 통과 |
+| Frontend tests / production build | 16개 통과 / 성공 |
+| OpenAPI Validator / Ruff / Render Blueprint 서버 검사 | 통과 |
+| 실제 Render 의존성 readiness | 5개 모두 통과 |
+| 클라우드 의류 적재·사진 SHA256·재실행 멱등성 | 6개 확인, 추가 등록 0개 |
+| 실제 Vercel 브라우저 로그인·의류·사진 표시 | 6벌·6개 사진, 사진 오류 0개 |
+| GitHub Actions CI → Hook 배포 → exact revision readiness smoke | 실제 성공 |
 
-브라우저에는 기존 API가 발급한 단기 서명 URL만 전달한다. S3 key·service role key를 `VITE_*`, 소스, 문서, Git에 넣지 않는다. [공식 S3 인증 안내](https://supabase.com/docs/guides/storage/s3/authentication)는 S3 key가 모든 버킷에 접근하고 RLS를 우회하므로 서버 전용으로 사용할 것을 명시한다. 원격 private bucket·CORS·PUT/GET/삭제·SHA256·비동기 결과 조회는 실제 계정 연결 후 별도 검증해야 한다.
+첫 GitHub CI는 backend 계약 SHA256 검사 1개가 실패했고 다른 148개와 frontend/free-cloud-image는 성공했다. Windows CRLF와 Linux LF 차이가 원인이었다. `.gitattributes`로 기존 원래 줄바꿈을 유지하고 혼합 줄바꿈인 1.1 archive만 기존 기록 SHA256에 맞는 원래 바이트로 보존했다. 원본 설계 7개 및 SHA256 값은 변경하지 않았다. 이후 전체 CI 테스트 3개 job이 실제 성공했다.
 
-새 서명 경로/리전/업로드 헤더, 잘못된 project endpoint 차단, 공개·누락 버킷 차단을 포함한 선택 테스트 **46개 통과**, Ruff 통과. 최초 Ruff의 101자 줄 1개는 줄바꿈으로 수정했다. pytest cache 권한 경고와 botocore datetime deprecation 경고는 남아 있다. 버킷 응답은 HTTP MockTransport 검증이며 실제 Supabase 성공을 의미하지 않는다. 현재 Supabase CLI·SUPABASE 환경변수·프로젝트 인증정보가 없어 원격 프로젝트 생성·이미지 이전·클라우드 DB 적재는 실행하지 않았다.
+Hook 입력 전 deploy job 실패는 필수 secret 미설정 때문이었다. secret 등록 후 실패한 배포 job만 재실행하여 성공했고 기존 테스트 성공 결과를 유지했다. 테스트 실패를 skip하거나 success로 바꾸지 않았다. 로컬 배포 확인 명령의 SHA 오입력은 실제 git HEAD를 읽도록 바로잡아 정확한 revision/readiness 검사에 통과했다. 보고서 작성 중 PowerShell 인코딩 손상은 UTF-8로 재작성했다.
 
-### 무료 전체 배포의 남은 작업
+Supabase S3의 Vercel origin PUT preflight도 HTTP 200, 해당 origin 허용, content-type 허용을 확인했다. 이는 실제 브라우저 이미지 조회와 CLI/API 업로드 검증을 보완하지만 의류 등록 UI의 모든 사용자 플로우를 별도로 완료 검증했다는 의미는 아니다.
 
-- [Supabase Free](https://supabase.com/pricing): 파일 저장 1GB, DB 500MB, egress 5GB 및 cached egress 5GB, 1주 비활성 시 프로젝트 pause. 계정의 Free 플랜과 실제 용량을 확인한 뒤 진행한다. DB도 같은 무료 PostgreSQL 프로젝트를 쓰는 방안은 기존 schema/extension·접속/TLS·migration 검증 후 확정하며 아직 DB 호스트를 변경하지 않았다.
-- [Render Free](https://render.com/docs/free): API web과 Key Value는 무료 대상이지만 기존 worker/private renderer는 아니다. worker·renderer를 무료 web에 통합할 수 있는지 CPU/메모리·중단 복구·작업 재실행을 검증해야 한다. **MinIO 제거만으로 전체 무료 배포 문제가 해결된 것은 아니다.** 기존 `ASC`와 공유하는 무료 web 시간도 확인해야 한다.
-- [Vercel Hobby](https://vercel.com/docs/plans/hobby): 무료 플랜이며 현재 계정 조회에서도 활성 Hobby 확인. 사용량 제한과 비상업적 개인 용도 조건을 따른다. 별도 Marketplace 유료 상품은 추가하지 않았다. 계정의 모든 과거 청구 내역을 감사한 것은 아니다.
-- Supabase Free 프로젝트/Private 버킷 준비 → 무료 API·작업 실행 구성 확정 및 검증 → 클라우드 계정/기기 준비 → 기존 등록·업로드 API로 6벌·6사진 적재 → 중복 방지·실제 브라우저 사진 조회 검증 순으로 진행한다. 기존 로컬 저널을 다른 DB에 그대로 복사해 재사용하지 않는다.
+## 남은 운영 제약
 
-클라우드 적재는 기존 비공개 6건 계획을 사용하되 클라우드 사용자·기기 ID를 명시하고 별도 적재 저널로 실행한다. 보류된 4개 URL은 등록하지 않으며 위치·착용·케어 이력을 만들지 않는다. 상품 사진은 기존 동의 확인·upload intent·finalize를 거쳐 새 asset에 연결한다. 직접 DB 덤프 복원으로 로컬 자산 ID/MinIO key를 옮기는 것으로 대체하지 않는다. 사용자·기기 provisioning 및 원격 사전 백업 경로가 준비되기 전에는 적재하지 않는다.
+무료 서비스의 idle sleep과 Supabase inactivity pause, Redis 비영속성 및 무료 용량·시간 제한이 남는다. 첫 접속에는 서버 준비 지연으로 재시도가 필요할 수 있다. 강제 keep-alive를 설치하지 않는다. 실제 유료 Decart, 쇼핑 실서비스 API, 물리 LED는 검증하지 않는다. Mock 기반 로컬 통합 테스트 성공과 유료 서비스·하드웨어 검증을 구분한다. 공개 서비스를 운영 환경 수준으로 안전하거나 무중단이라고 판정하지 않는다.
 
-Supabase 프로젝트가 inactivity로 pause되면 Dashboard의 프로젝트 상태를 확인하고 복구한 뒤 DB·storage readiness를 다시 검사한다. 정확한 복구 절차와 실제 재개 시간은 계정 연결 후 확인한다. 무료 서비스 중단 시 대기 작업의 유실·중복 여부를 검증하기 전에는 상시 동작을 보장하지 않는다. S3 region은 반드시 해당 프로젝트 S3 설정값과 맞춘다. `SUPABASE_SERVICE_ROLE_KEY`는 bucket metadata REST 확인용 API key이며 `STORAGE_ACCESS_KEY/STORAGE_SECRET_KEY`의 S3 key pair와 별개다.
-
-이하 기록의 유료 Render 구성과 MinIO 유지 조건은 과거 배포 조사 이력이다. 최신 무료 전용·MinIO 대체 결정이 우선하며, 기존 `render.yaml`은 적용하지 않는다.
-
-2026-10-10 비용 정책 변경: 사용자가 **무료 티어만 사용**하도록 지정했다. 기존 `render.yaml`은 유료 구성의 과거 검토안이며 적용 대상에서 제외한다. 결제수단 등록·유료 리소스 생성·유료 플랜 전환을 진행하지 않는다. 클라우드 적재는 무료 배포 경로가 결정되고 실제 DB·이미지 저장소가 준비된 뒤 수행한다.
-
-공식 [Render 무료 티어 제한](https://render.com/docs/free)을 재확인했다. 무료 web/Postgres/Key Value는 제공되지만 private service·background worker는 무료 대상이 아니며 무료 web에는 영구 디스크가 없다. 따라서 현행 private MinIO 영구 저장·별도 Celery worker·private renderer 구성을 모든 서비스의 `plan: free` 변경만으로 유지할 수 없다. 무료 Postgres는 1GB·30일 만료, 무료 Key Value는 재시작 시 데이터 손실, 무료 web은 15분 비활성 시 중단된다. 기존 `ASC`와 무료 web의 워크스페이스 공유 750시간 제한도 배포 전에 함께 검토해야 한다.
-
-남은 결정: MinIO 유지 시 별도 영구 저장 가능한 실행 호스트가 필요하다. 기존 로컬 호스트를 사용하는 경우 PC 실행에 의존하며 전체 클라우드 배포로 보고하지 않는다. 외부 무료 S3 호환 저장소 사용은 기존 MinIO 유지 결정과 충돌하므로 사용자 결정 없이 대체하지 않는다. 무료 web 내부 작업 통합은 worker/renderer 메모리·중단·재시작 복구 검증이 필요하며 아직 구현·검증하지 않았다.
-
-2026-10-10 재확인: 사용자 요청에 따라 클라우드 의류·사진 적재 가능 여부를 확인했다. 인증된 Render CLI의 `blueprints validate render.yaml --output json`은 여전히 6개 리소스 모두 `need_payment_info`, `valid=false`를 반환했다. 동일 워크스페이스의 서비스 목록에는 기존 `ASC`만 있고 Smart Wardrobe용 DB·API는 없다. 클라우드 적재는 실행하지 않았으며 로컬 6벌·사진 6개를 유지한다. 결제수단 등록 후 배포·계정/기기 준비·기존 등록/업로드 계약 기반 적재·중복 및 실제 사진 조회 검증이 남아 있다. 이번 확인에서 기존 서비스와 새로 전달된 팀원 소스는 변경하지 않았다.
-
-2026-10-09: **Vercel 프론트 배포 완료, Render 백엔드 배포 차단** 상태다. 프론트 URL은 https://lg-clos-it.vercel.app 이다. Render·Vercel CLI 로그인과 Render 워크스페이스 선택은 완료했다. Render Blueprint 서버 검증은 6개 리소스에 `need_payment_info`를 반환해 실패했다. 결제수단 등록과 유료 구성 진행 확인을 기다린다. 백엔드 리소스는 생성하지 않았다. 전체 E2E 배포 완료로 판정하지 않는다.
-
-변경은 기능 단위 Conventional Commit으로 기록하고 원격 저장소에 푸시한다. `.env`, CLI 인증정보, DB 덤프, 개인 상품 URL·사진·적재 저널은 Git 제외를 유지한다. DB 상태 변경은 Git으로 복원되지 않으므로 별도 백업과 비공개 실행 저널로 기록한다.
-
-## 구성
-
-- Vercel: `web/`의 기존 Vite 화면. 좌우 옷장·중앙 미러 디자인 유지.
-- Render Web Service: 기존 FastAPI. 공개 HTTPS API, 개인 계정 JWT 인증.
-- Render Background Worker: 기존 Celery + Beat. Mock VTON·쇼핑·LED 유지. 유료 Decart 호출 없음.
-- Render Private Services: MinIO와 이미지 카드 renderer. 공용 MinIO·관리 콘솔 URL을 만들지 않는다.
-- Render Postgres 및 Key Value: 외부 IP 허용 목록 `[]`, 동일 Singapore 지역.
-- MinIO `/data`에 영구 디스크. 로컬 DB와 클라우드 DB는 별개다. 배포만으로 개인 의류가 이전되지 않는다. Seed도 자동 적재하지 않는다.
-
-`render.yaml`은 유료 리소스를 포함한 검토용 Blueprint다. API·worker·MinIO는 `0.5c-512mb`, renderer는 `1c-2g`, Key Value는 `256mb`, Postgres는 `0.1c-256mb`, MinIO 디스크는 10GB다. 기본 추정은 3×$7 + $25 + $10 + $6 + 10GB×$0.25 = **월 $64.50 + PostgreSQL 저장소·추가 사용량 요금**이다. 계정에서 표시되는 합계 비용과 가용 플랜을 확인한 뒤 적용한다. Render 리소스 생성 및 유료 요금 발생은 아직 없다. 가격 근거: [공식 compute 비용 예시](https://render.com/articles/production-rails-hosting-guide), [가격표](https://render.com/pricing).
-
-## 연결 계약
-
-`VITE_API_BASE_URL`에는 Render API의 **HTTPS origin만** 지정한다. 경로·쿼리·인증정보를 넣지 않는다. 미설정 로컬 실행은 기존 Vite 프록시를 사용한다.
-
-Render API와 worker의 `API_PUBLIC_ORIGIN`은 동일한 공개 API origin, `CORS_ALLOWED_ORIGINS`는 실제 Vercel origin으로 지정한다. Preview origin도 사용할 경우 정확한 origin을 개별 추가하고 `*`는 사용하지 않는다. Blueprint의 `sync: false` 값은 서비스마다 입력해야 한다.
-
-`scripts/start_cloud.py`는 Render의 Postgres URL을 asyncpg 형식으로 변환하고, Redis 및 private service 주소를 기존 환경변수에 매핑한다. API 시작 시 비공개 버킷을 준비하고 Alembic을 실행한다. 기존 공개 버킷 정책이 있으면 중단하며 임의 삭제하지 않는다. 클라우드에서는 `APP_ENV=staging`, `PUBLIC_DEPLOYMENT=true`, `AUTH_MODE=JWT`, `DEMO_AUTH_ENABLED=false`를 강제한다. 로컬 시연 로그인 버튼은 클라우드에서 인증 수단으로 사용할 수 없다. 실제 계정·기기 연결은 기존 provisioning 절차로 별도 준비한다.
-
-MinIO를 외부에 노출하지 않기 위해 FastAPI의 `/wardrobe-assets/{key}`가 기존 S3 서명 요청을 전달한다. 업로드는 `staging/…`의 PUT, 조회는 `assets/…`의 GET만 허용한다. MinIO가 서명과 만료를 검증하고, API는 최대 300초 서명·10MB 제한·기존 Redis 요청 제한을 적용한다. 버킷 목록·관리·삭제 요청은 전달하지 않는다. 서명된 URL을 로그나 문서에 저장하지 않는다. 이 경로는 운영 경로로서 기존 business OpenAPI에 추가하지 않는다.
-
-## 검증 및 남은 항목
-
-- 프론트 TypeScript/Vite 빌드 통과, Node 테스트 15개 통과(기존 13개 + cloud origin 검증 2개).
-- 새 relay 허용·차단 조건 테스트 9개 통과.
-- backend 단위·계약 테스트 총 129개 통과. 최초 실행의 Windows 기본 임시 폴더 접근 오류 7건은 저장소 내 별도 임시 경로로 재실행해 해소했다. 시스템 권한은 변경하지 않았다.
-- 실제 로컬 MinIO로 서명 PUT → GET → 바이트 SHA256 일치 확인. 임의 테스트 오브젝트는 삭제했다. 실제 의류 DB는 변경하지 않았다.
-- 서명 변형·버킷 목록 접근·10MB 초과 요청 차단 확인. 이 결과는 로컬 실제 MinIO 검증이며 Render 네트워크 검증을 대체하지 않는다.
-- 로컬 Compose의 MinIO·Redis가 실행 중인 상태에서 `python scripts/check_storage_relay.py`로 재현한다. 생성한 테스트 객체는 finally에서 삭제한다.
-- Render CLI 2.28.0 공식 릴리스 ZIP의 공식 SHA256SUMS 대조 통과. CLI 인증정보는 사용자 디렉터리에 보관하며 저장소에 넣지 않는다.
-- Render 서버 validation 실패: `need_payment_info`. 디스크의 비루트 쓰기 권한, private DNS 및 포트, DB migration, worker 작업, renderer 메모리, 공개 HTTPS CORS, 실제 브라우저 로그인·이미지·코디카드 E2E는 미검증이다.
-- 기존 MinIO 바이너리는 로컬 개발용 구버전이다. private prototype에서도 업데이트·취약점·AGPL 배포 의무 검토가 남는다. 운영 환경에 안전한 버전으로 판정하지 않는다.
-- 실제 클라우드 사용은 staging prototype으로 제한한다. 운영 전환은 MinIO 버전·취약점 검토 후 별도 판단한다. 배포 설정을 추가한 사실이 운영 안전성 검증을 의미하지 않는다.
-- 로컬 실제 의류 6벌과 사진 6개는 적재·조회 검증했고 Seed는 retired 처리했다. [로컬 적재 결과](OWNED_GARMENT_IMPORT_RESULT.md)를 따른다. 클라우드 DB에는 이전하지 않았다.
-
-## 배포 재현 순서
-
-1. CLI 계정 연결 및 대상 워크스페이스/팀 선택.
-2. `render blueprints validate render.yaml`로 서버 검증. Render Dashboard에서 이 저장소 Blueprint를 연결하고 비용과 입력값을 검토한 뒤 적용.
-3. 각 backend 서비스에 실제 `API_PUBLIC_ORIGIN`, `CORS_ALLOWED_ORIGINS` 입력. readiness와 worker 상태 확인. 실패하면 완료 처리하지 않는다.
-4. 저장소 루트에서 `vercel link --project lg-clos-it --scope thdwldnjs`. Vercel 프로젝트 root를 `web/`로 지정한다. CLI에 제출하는 디렉터리는 저장소 루트여야 한다.
-5. `vercel env add VITE_API_BASE_URL production`으로 Render origin 입력 후 `vercel --prod`.
-6. Vercel이 발급한 최종 production origin을 기록하고 Render API·worker의 CORS를 갱신한다. Render readiness를 다시 확인한 뒤 실제 HTTPS 브라우저 E2E 검증.
-7. 클라우드에는 최초 회원·기기가 없으므로 로그인 가능한 상태까지 별도 데이터 준비가 필요하다. 기존 `scripts/provision_integration.py`는 로컬 전용이며 클라우드에서 그대로 실행할 수 없다. 승인된 비공개 DB 이전 또는 명시적인 클라우드 관리자 provisioning 중 사용할 경로를 정하고 구현·검증한다. 배포 설정만으로 정상 로그인이 된다고 주장하지 않는다. 개인 의류 DB·사진을 자동 공개 이전하지 않는다.
-
-공식 기준: [Render Blueprint](https://render.com/docs/blueprint-spec), [Compute plans](https://render.com/docs/compute-plans), [Private services](https://render.com/docs/private-services), [CLI](https://render.com/docs/cli), [Vercel project configuration](https://vercel.com/docs/project-configuration), [CLI login](https://vercel.com/docs/cli/login).
-
-## Vercel 에이전트 설정 — 2026-10-09
-
-사용자가 지정한 [공식 설정 지침](https://vercel.com/get-started.md)을 내려받아 수행했다. 이 절차는 전역 도구 설정이며 프로젝트 배포와 구분한다.
-
-| 항목 | 확인된 상태 |
-| --- | --- |
-| CLI | `npm install --global vercel@latest` 완료. `vercel --version` 63.1.0, `vercel whoami` 인증 성공 |
-| 가이드 | `vercel@openai-curated` 플러그인 0.21.3, revision `11c74d6b`, 사용자 범위 설치·활성화 확인. standalone skills는 중복 설치하지 않음 |
-| 설치 경로 | `%USERPROFILE%/.codex/plugins/cache/openai-curated/vercel/11c74d6b` |
-| 명령 파일 | 설치된 `commands/status.md` 등 확인. 현재 대화에서 slash command 로딩 여부는 미검증 |
-| MCP | `codex mcp add vercel --url https://mcp.vercel.com` 완료. 공유 endpoint, enabled, OAuth 로그인 확인 |
-| MCP 설정 | `%USERPROFILE%/.codex/config.toml`에 사용자 공통 설정. 기존 unrelated 설정·승인 정책 유지 |
-| 인증 읽기 확인 | CLI `vercel teams ls` 및 teams API 조회 성공. **MCP `list_teams` 호출 성공을 의미하지 않음** |
-| 남은 확인 | 현재 대화에 새 MCP tools를 로드하는 기능이 없어 documentation search·MCP `list_teams` 미검증. Codex 새 세션에서 도구를 로드한 뒤 두 read-only 호출 필요 |
-
-`npx plugins add vercel/vercel-plugin`은 Windows의 Codex 실행 파일 자동 감지에 실패했다. `--target codex --scope user --yes` 재시도도 내부 `spawnSync codex ENOENT`로 실패했다. 설치 도구가 선택한 동일 대상에 `codex plugin add vercel@openai-curated --json`을 직접 실행해 성공했고, marketplace별 plugin list에서 installed/enabled를 확인했다.
-
-MCP 변경 작업은 사용자 확인을 유지한다. 현재 절차에서는 MCP를 통한 리소스 변경을 실행하지 않았다. 인증정보·일회성 승인 URL은 저장소에 기록하지 않는다. 전역 설정 단계에서는 프로젝트를 생성하지 않았고, 이후 사용자의 배포 지시에 따라 아래 배포를 수행했다.
-
-## 실제 Vercel 배포 — 2026-10-09
-
-- 프로젝트: `thdwldnjs/lg-clos-it`, 기존 다른 프로젝트는 변경하지 않았다.
-- GitHub `thdwlndjs/LG-CLOS-IT` 연결. Git 빌드의 root directory를 `web`으로 설정했다.
-- 최초 CLI production deployment: `dpl_Ajj8sp1AwpB22ZXmoZQsBENRxch7`, 상태 `READY`.
-- 고정 URL: https://lg-clos-it.vercel.app
-- Vercel 원격 TypeScript·Vite 빌드 성공. 500kB 번들 경고는 남아 있다.
-- 익명 HTTP 조회 200. 실제 Chromium 1920×1080에서 렌더링 확인, page error 0, 관찰한 자산 요청 6개 중 실패 0. 좌우 옷장과 중앙 미러 화면을 스크린샷으로 직접 확인했다.
-- 비공개 증적: `test-results/vercel-frontend-20261009.json`, `test-results/vercel-frontend-20261009.png`.
-- 현재 `VITE_API_BASE_URL`은 미설정이다. Render API가 아직 없으므로 API 요청·계정 로그인·실제 의류·이미지·VTON·코디카드·LED는 작동 완료로 보고하지 않는다. 이 배포는 **프론트 화면 공개 단계**다.
-- Render 결제수단 등록 후 서버 validation → 실제 backend 리소스 생성 → HTTPS API origin/CORS 설정 → Vercel 재배포 → 통합 브라우저 E2E 순서로 이어간다.
-
-## ?? ?? CI ??? ??
-
-? CI?? frontend? free-cloud-image? ????? backend? ?? snapshot SHA256 ?? 1?? ????(148 passed). Windows CRLF? Linux LF checkout ??? ?????. `.gitattributes`? ?? ??? ?? ???? ????, ?? ???? 1.1 ?? ?? archive? ?? ?? SHA256? ??? ???? ?? ???? ????. ?? ?? 7?? ??? ??? SHA256? ???? ???. ????? ???? ??? ???? ???.
-
-## ???? ?? ? ??? ?? ??
-
-?? API? 6????? 6?? ?? ???? ? ??? ???? SHA256? ????. ?? 4?? ????. ??? ??? ? ???? ??? ?? ???. `web/src/api.js`? ??? `VITE_STORAGE_BASE_URL`? ?? Supabase ????????assets/staging ??? ????? ????. Vercel production?? ?? S3 endpoint? ???? ???? ???? ???. ??? 16?? production build? ????. ?? ???????????? ???? ???.
+공식 요금·제약: [Render Free](https://render.com/docs/free), [Supabase Free](https://supabase.com/pricing), [Vercel Hobby](https://vercel.com/docs/plans/hobby).
