@@ -65,4 +65,14 @@
 
 적재 전 Git 선행 조건은 검증된 통합 변경이 `origin/main`에 반영된 상태다. 실행 원장에 `git rev-parse HEAD`와 원격 확인 시각을 기록하고 `git rev-parse origin/main`과 일치하는지 확인한다. `.env`와 비공개 원장을 제외한 실제 적재 코드·계약의 미커밋 변경이 있으면 먼저 검증·저장한다.
 
-통합 실행·테스트 명령은 [통합 구현 보고서의 로컬 실행과 재현](INTEGRATION_IMPLEMENTATION_REPORT.md#로컬-실행과-재현)을 따른다. 실제 적재 실행 명령과 결과 원장은 대상 입력 및 이미지 처리 확정 후 마련한다. 현재 단계에서 DB·MinIO에 실제 보유 상품을 추가하거나 이미지 동의를 변경하지 않았다.
+통합 실행·테스트 명령은 [통합 구현 보고서의 로컬 실행과 재현](INTEGRATION_IMPLEMENTATION_REPORT.md#로컬-실행과-재현)을 따른다.
+
+## 적재 실행 준비 기록 — 2026-10-09
+
+`scripts/import_owned_garments.py`를 마련했다. 비공개 `data/imports/` 계획만 읽고 기존 API로 등록한다. dry run에서 등록 후보 6건의 공식 상품 이미지 다운로드·형식·크기·SHA256 검증을 마쳤다. 나머지 입력 참조 4건은 보류 목록을 유지한다. 이것은 적재 준비 결과이며 실제 DB 적재 완료가 아니다.
+
+실행 전 Git 커밋·원격 main 일치 확인, DB 덤프와 SHA256 기록, owner/device 접근 확인, 이미지 동의를 확인한다. 동의가 없으면 등록 전에 중단한다. `--grant-image-consent`는 사용자의 명시적인 동의 응답을 받은 경우에만 사용한다. API 등록·이미지 intent·finalize의 동일 멱등 키와 본문을 원장에 기록하고 재시도한다. 응답 유실·중간 종료 시 새 키로 임의 재등록하지 않는다. 업로드 직후 중단된 경우 동일 intent와 바이트로 재개한다. 원본 이미지와 캐시가 다르면 중단한다.
+
+검증 명령은 `python scripts/import_owned_garments.py --plan data/imports/owned-plan-20261009.json --with-images`다. 실제 실행은 확정된 이미지 동의 후 `--execute --replace-seed`를 추가한다. Seed 정리는 기존 API의 retire 및 저장된 Seed 코디 archive를 사용하므로 물리 삭제가 아니다. 과거 코디 스냅샷은 보존한다. 등록 후 DB/API 재조회와 이미지 GET SHA256, 이력 증가 없음, 동일 계획 재실행 시 신규 등록 없음까지 검증해야 한다.
+
+준비 동작의 API·DB 미변경, 중복 identity 거부, 잘못된 원장 이후 lock 정리, 허용하지 않은 이미지 URL 차단 테스트 6개가 통과했다. 현재는 이미지 업로드 동의 응답을 기다리고 있으며 실제 보유 의류 등록·Seed 정리·동의 변경은 실행하지 않았다.
