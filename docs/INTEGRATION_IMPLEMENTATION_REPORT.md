@@ -14,7 +14,7 @@
 
 - 참조: HLD 03, FSD 04, OpenAPI 06, DB 07, 구현 추적표, 확정 결정 11, 프론트 FSD 12, 백엔드 변경안 13, 충돌 검토 14, 쇼핑 변경 요청 09 및 DB 적재 설계 10. 이미 작성된 `INTEGRATION_PREPARATION_REPORT.md`의 조사 결과를 재사용했다.
 - 최신 사용자의 통합 구현 지시를 근거로 11~14의 확정 정책을 구현했다. 초안의 이전 ‘코드 적용 전 승인’ 문구를 새 제품 정책으로 취급하지 않았다.
-- 원본 설계 문서 7개와 팀원 전달본은 수정하지 않았다. 기존 `/api/v1`의 필수 필드·52개 operation 및 owner/household 경계를 유지하고 `/api/v1/integration` 11개 operation을 추가했다. Garment/GarmentUpsert에 선택 device_id/name을 추가한 것은 명시적 계약 확장이다. 원본 OpenAPI/SQL은 확장 내용을 포함하지 않으며, **실행 중인 `/openapi.json`과 Migration 0004가 새 계약의 구현 증거**다. API 기본 버전 표기는 기존 `1.7.0`을 유지한다.
+- 원본 설계 문서 7개와 팀원 전달본은 수정하지 않았다. 기존 `/api/v1`의 필수 필드·52개 operation 및 owner/household 경계를 유지하고 `/api/v1/integration` 12개 operation을 추가했다. Garment/GarmentUpsert에 선택 device_id/name을 추가한 것은 명시적 계약 확장이다. 원본 OpenAPI/SQL은 확장 내용을 포함하지 않으며, **실행 중인 `/openapi.json`과 Migration 0004가 새 계약의 구현 증거**다. API 기본 버전 표기는 기존 `1.7.0`을 유지한다.
 - 원본 Garment의 `additionalProperties: false`와 충돌하지 않도록 기존 데모 인증의 목록·상세·등록·수정 응답에서는 device_id/name을 제외한다. 확장 필드는 새 개인 계정 로그인에만 제공한다. 기존 엄격한 응답 검증자는 기존 인증 경로와 원본 응답을 사용할 수 있고, 개인 계정 통합 클라이언트는 실행 OpenAPI의 확장 스키마를 사용해야 한다. 실제 Legacy API 응답을 원본 허용·필수 키와 대조하는 회귀 검사를 추가했다.
 - `user_id`는 기존 `member.id`에 대응한다. 보관 기기 `device.id`와 접속 미러 `access_station.id`는 별개다. 다른 HOME/STORE 미러 로그인은 같은 계정 데이터를 읽지만, STORE에서 집 LED 명령은 403이다.
 - 기존 가구마다 하나의 논리적 HOME 옷장을 백필하고 기존 구성원·의류를 연결했다. 실제 하드웨어 식별/슬롯 매핑을 검증했다는 의미가 아니다. 위치 매핑은 자동 백필하지 않는다. 여러 보관 기기 선택 UX는 후속 정책 이슈로 남긴다.
@@ -41,11 +41,12 @@
 
 ## API 및 DB 변경
 
-추가 API는 다음 11개다. LED 및 쇼핑 쓰기는 `Idempotency-Key: UUID`를 요구한다.
+추가 API는 다음 12개다. LED 및 쇼핑 쓰기는 `Idempotency-Key: UUID`를 요구한다.
 
 | 메서드 | `/api/v1/integration` 하위 경로 | 역할 |
 |---|---|---|
 | POST | `/login` | login/password 및 선택 station_id/station_credential 인증 |
+| POST | `/demo-login` | 로컬·테스트의 활성 demo 계정으로 비밀번호 없는 시연 진입 |
 | POST | `/logout` | 현재 개인 세션 폐기 |
 | GET | `/devices` | 사용자에게 연결된 보관 기기 |
 | GET | `/devices/{device_id}/locations` | 기존 위치와 검증자가 등록한 anchor |
@@ -64,7 +65,7 @@ Migration 0004: nullable `garment.device_id`와 household 일치 FK/인덱스 �
 | 검증 | 결과 | 증거 |
 |---|---|---|
 | 기존 단위·계약 테스트 | 111 passed, 110 deselected | pytest 실제 실행 |
-| 실DB 회귀, 기존 E2E 포함 | 110 passed, 111 deselected | `test-results/backend-integration-regression.log` |
+| 실DB 회귀, 기존 E2E 포함 | 111 passed, 111 deselected | `test-results/backend-integration-regression.log`, 시연 로그인 추가 검사 포함 |
 | Migration 기존 데이터 보존/재실행 | 통과 | `backend/tests/integration/test_device_migration.py`, 로컬 migration JSON |
 | API 핵심 10개 + 보안 거부 시나리오 | 통과 | `test-results/integration-live-evidence.json`, browser evidence의 checks |
 | 실제 브라우저 로그인·등록·검색·추천·VTON·카드·쇼핑·수정·케어·위치·보관 제안·로그아웃 | 7개 묶음 통과 | `test-results/integration-browser-evidence.json`의 ui_checks, 1920×1080 스크린샷 |
@@ -72,7 +73,7 @@ Migration 0004: nullable `garment.device_id`와 household 일치 FK/인덱스 �
 | 웹 API 클라이언트 테스트 | 13 passed | `npm test` |
 | TypeScript·Vite build | 통과 | `npm run build` |
 | Ruff | 통과 | backend/app·alembic·통합 scripts 검사 |
-| 실행 OpenAPI Validator | 통과, 55 paths | 로컬 컨테이너 `validate(create_app().openapi())` |
+| 실행 OpenAPI Validator | 통과, 56 paths | 실행 `/openapi.json` 검증, 시연 로그인 경로 포함 |
 | 시각 소스 보존 | 90개 비교, 변경 0개 | `mirror-visual-source-evidence.json` |
 | 로컬 readiness | database/redis/storage/renderer 모두 ok | `/health/ready` |
 
@@ -85,6 +86,12 @@ API 검사와 브라우저 검사는 별개다. 기기 간 조회·가족 전체
 최종 실DB 회귀는 `110 passed, 111 deselected`였고, 최종 배포 이미지의 단위·계약 검사도 `111 passed`였다. 개인 계정 발급 시 기존 카드의 공유 조회 범위가 바뀌는 코드 결함을 수정했다. 공유 이미지를 생성한 성공 작업의 서버 저장 `personal_account` 값을 사용하며, 과거 작업에 값이 없으면 기존 owner/share 범위를 유지한다. PNG·WEBP 실렌더 회귀에서 계정 발급 및 기기 접근 제거 후에도 기존 공유 계약이 유지됨을 검증했다. 개인 계정 가족 구성원이 같은 기기의 타인 소유 의류로 카드 생성·렌더·저장·공유하는 신규 경로도 실제 API·worker·MinIO로 통과했다. 로컬 API·worker는 이 최종 코드 이미지로 갱신했고 readiness의 4개 항목이 모두 정상이다.
 
 ## 남은 이슈와 위험
+
+### 후속 시연 로그인 버튼
+
+사용자 요청에 따라 로컬 Seed의 Demo User에 시연 계정을 발급하고, `마이 → 내 계정 → 시연용 로그인` 버튼을 연결했다. 비밀번호·기기 인증 입력 없이 버튼만 클릭해 개발용 Seed 의류 3건을 조회하고, 로그아웃 후 화면 목록이 0건으로 초기화되는 실제 브라우저 검증을 통과했다. DB 의류는 유지된다. 사진이 없는 Seed에 이미지를 임의 생성하지 않았으며 실제 상품 목록 적재는 별개로 미실행이다.
+
+프론트에 비밀번호를 넣지 않는다. `/integration/demo-login`은 기존 `APP_ENV=local/test`, `PUBLIC_DEPLOYMENT=false`, `DEMO_AUTH_ENABLED=true`, `AUTH_MODE=DEMO` 조건을 모두 검사하며, 고정 Seed 사용자에 관리자가 발급한 활성 `demo` 계정이 있어야 한다. 별도 기기 권한이나 동의는 부여하지 않는다. 기존 개인 세션의 조회 범위·만료·로그아웃 폐기를 사용하고 로그인 rate limit을 적용한다. 격리된 로컬 PostgreSQL 테스트 DB의 회귀는 활성 계정 부재/비활성 503, 시연 인증 비활성·JWT 모드·운영 환경·공개 배포 403 및 로그아웃 토큰 401을 확인했다. 로컬 서비스 갱신 직후 readiness 전 브라우저 요청은 프록시 502였으며, readiness 정상 확인 후 같은 버튼 경로를 재실행해 통과했다. 증적은 Git 제외 `test-results/demo-login-wardrobe.png`와 `test-results/backend-integration-regression.log`에 있다. 팀원 원본의 CSS·geometry·고정 자산 등 시각 소스 90개는 변경되지 않았다.
 
 | 우선 | 항목 | 처리 상태 |
 |---|---|---|

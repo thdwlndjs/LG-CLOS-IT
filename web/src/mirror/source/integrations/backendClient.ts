@@ -209,6 +209,14 @@ export class HttpRemoteBackend implements RemoteBackend {
         ? { station_id: stationId, station_credential: stationCredential }
         : {}),
     });
+    return this.acceptLogin(r);
+  }
+  async demoLogin() {
+    bindStation("", "");
+    const r: any = await api().send("POST", "/integration/demo-login", {});
+    return this.acceptLogin(r);
+  }
+  private acceptLogin(r: any) {
     token = r.access_token;
     member = r.member;
     sessionGeneration++;

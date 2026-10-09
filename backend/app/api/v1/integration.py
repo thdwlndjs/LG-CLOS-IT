@@ -78,6 +78,28 @@ async def login(request: Request, body: Login):
                     member={k: member[k] for k in ("id", "household_id", "display_name", "role")})
 
 
+@router.post("/demo-login")
+async def demo_login(request: Request):
+    settings = request.app.state.settings
+    if (settings.app_env not in {"local", "test"} or settings.public_deployment
+            or not settings.demo_auth_enabled or settings.auth_mode != "DEMO"):
+        raise ApiError(403, "FORBIDDEN", "Demo login is disabled")
+    async with request.app.state.resources.database.sessions.begin() as session:
+        member = await Sprint1Repository(session).one(
+            "SELECT m.* FROM wardrobe.member m JOIN wardrobe.account_credential c "
+            "ON c.member_id=m.id WHERE m.id=:member AND c.login='demo' AND c.enabled",
+            member=UUID("20000000-0000-4000-8000-000000000001"),
+        )
+        if member is None:
+            raise ApiError(503, "DEPENDENCY_UNAVAILABLE", "Demo account is not provisioned")
+        sid, token, expires = issue_token(
+            settings, member["id"], member["household_id"], member["role"],
+            personal_account=True,
+        )
+        return dict(session_id=sid, access_token=token, token_type="Bearer", expires_at=expires,
+                    member={k: member[k] for k in ("id", "household_id", "display_name", "role")})
+
+
 @router.post("/logout")
 async def logout(request: Request, actor: Actor):
     if not actor.personal_account:

@@ -57,6 +57,22 @@ export function BackendPanel({
       setBusy(false);
     }
   };
+  const demoLogin = async () => {
+    setBusy(true);
+    setMessage("");
+    try {
+      const client = new HttpRemoteBackend();
+      await client.demoLogin();
+      await app.configureRemote(client);
+      setMessage("시연용 옷장을 불러왔습니다.");
+    } catch (e) {
+      setMessage((e as Error).message);
+    } finally {
+      setPassword("");
+      setCredential("");
+      setBusy(false);
+    }
+  };
   return (
     <section ref={pane} className="mirror-account-panel">
       <h3>{placement === "tools" ? "서버 연결" : "내 계정"}</h3>
@@ -86,6 +102,13 @@ export function BackendPanel({
             void submit();
           }}
         >
+          <button
+            type="button"
+            disabled={busy}
+            onClick={() => void demoLogin()}
+          >
+            시연용 로그인
+          </button>
           <label>
             계정
             <input

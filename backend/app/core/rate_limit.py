@@ -19,7 +19,8 @@ return count
 async def rate_guard(request: Request):
     group = (
         "session"
-        if request.url.path in {"/api/v1/sessions", "/api/v1/integration/login"}
+        if request.url.path in {"/api/v1/sessions", "/api/v1/integration/login",
+                               "/api/v1/integration/demo-login"}
         else "read"
         if request.method == "GET"
         else "write"
