@@ -1,0 +1,114 @@
+# Review paid resource estimates in the Render dashboard before applying.
+envVarGroups:
+  - name: wardrobe-cloud
+    envVars:
+      - key: JWT_SECRET
+        generateValue: true
+      - key: VTON_PROVIDER
+        value: MOCK
+      - key: WEATHER_PROVIDER
+        value: MOCK
+      - key: CALENDAR_PROVIDER
+        value: MOCK
+      - key: STORAGE_BUCKET
+        value: wardrobe-assets
+
+databases:
+  - name: wardrobe-db
+    region: singapore
+    plan: 0.1c-256mb
+    postgresMajorVersion: "16"
+    ipAllowList: []
+
+services:
+  - type: keyvalue
+    name: wardrobe-redis
+    region: singapore
+    plan: 256mb
+    ipAllowList: []
+    maxmemoryPolicy: noeviction
+
+  - type: pserv
+    name: wardrobe-minio
+    runtime: docker
+    region: singapore
+    plan: 0.5c-512mb
+    dockerContext: ./infra/minio
+    dockerfilePath: ./infra/minio/Dockerfile
+    disk:
+      name: wardrobe-assets
+      mountPath: /data
+      sizeGB: 10
+    envVars:
+      - key: MINIO_ROOT_USER
+        generateValue: true
+      - key: MINIO_ROOT_PASSWORD
+        generateValue: true
+      - key: PORT
+        value: "9000"
+
+  - type: pserv
+    name: wardrobe-renderer
+    runtime: docker
+    region: singapore
+    plan: 1c-2g
+    dockerContext: .
+    dockerfilePath: ./renderer/Dockerfile
+    envVars:
+      - key: PORT
+        value: "3000"
+
+  - type: web
+    name: wardrobe-api
+    runtime: docker
+    region: singapore
+    plan: 0.5c-512mb
+    dockerContext: .
+    dockerfilePath: ./backend/Dockerfile
+    dockerCommand: python /workspace/scripts/start_cloud.py api
+    healthCheckPath: /health/ready
+    envVars: &backend-env
+      - fromGroup: wardrobe-cloud
+      - key: DATABASE_URL
+        fromDatabase:
+          name: wardrobe-db
+          property: connectionString
+      - key: REDIS_URL
+        fromService:
+          name: wardrobe-redis
+          type: keyvalue
+          property: connectionString
+      - key: MINIO_HOSTPORT
+        fromService:
+          name: wardrobe-minio
+          type: pserv
+          property: hostport
+      - key: RENDERER_HOSTPORT
+        fromService:
+          name: wardrobe-renderer
+          type: pserv
+          property: hostport
+      - key: STORAGE_ACCESS_KEY
+        fromService:
+          name: wardrobe-minio
+          type: pserv
+          envVarKey: MINIO_ROOT_USER
+      - key: STORAGE_SECRET_KEY
+        fromService:
+          name: wardrobe-minio
+          type: pserv
+          envVarKey: MINIO_ROOT_PASSWORD
+      - key: API_PUBLIC_ORIGIN
+        sync: false
+      - key: CORS_ALLOWED_ORIGINS
+        sync: false
+
+  - type: worker
+    name: wardrobe-worker
+    runtime: docker
+    region: singapore
+    plan: 0.5c-512mb
+    dockerContext: .
+    dockerfilePath: ./backend/Dockerfile
+    dockerCommand: python /workspace/scripts/start_cloud.py worker
+    envVars: *backend-env

@@ -28,4 +28,5 @@ docs/integration_sources/10_DB_IMPORT_AND_SHOPPING_INTEGRATION_DESIGN.md
 *.pfx
 *.dump
 *.sql.gz
+.vercel/
 

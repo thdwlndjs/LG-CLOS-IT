@@ -67,6 +67,9 @@ def create_app(settings: Settings | None = None, resources=None) -> FastAPI:
     )
 
     app.include_router(integration.router)
+    from app.api.storage_relay import router as storage_relay_router
+
+    app.include_router(storage_relay_router)
 
     # Operational paths are outside the supplied business OpenAPI contract.
     @app.get("/health/live", include_in_schema=False)

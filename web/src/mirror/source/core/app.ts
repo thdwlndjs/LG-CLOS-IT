@@ -1,3 +1,4 @@
+import { API_ORIGIN } from "../../../api.js";
 import {
   clone,
   DemoError,
@@ -142,7 +143,8 @@ function validateAsset(asset: Asset | null): void {
       ? /^\/assets\/[a-zA-Z0-9._/-]+$/.test(asset.url) &&
         !asset.url.includes("..")
       : asset.source === "storage"
-        ? /^\/api\/assets\/[a-f0-9-]{36}\/content$/.test(asset.url) ||
+        ? validCloudAsset(asset) ||
+          /^\/api\/assets\/[a-f0-9-]{36}\/content$/.test(asset.url) ||
           (/^[a-f0-9-]{36}$/.test(asset.id) &&
             new RegExp(
               "^/local-storage/wardrobe-assets/assets/[a-f0-9-]{36}/[a-f0-9-]{36}/" +
@@ -156,6 +158,25 @@ function validateAsset(asset: Asset | null): void {
       "VALIDATION",
       "프로젝트 자산 또는 현재 브라우저의 파일만 사용할 수 있습니다.",
     );
+}
+
+function validCloudAsset(asset: Asset): boolean {
+  if (!API_ORIGIN || !asset.url || !/^[a-f0-9-]{36}$/.test(asset.id))
+    return false;
+  try {
+    const url = new URL(asset.url);
+    return (
+      url.origin === API_ORIGIN &&
+      new RegExp(
+        "^/wardrobe-assets/assets/[a-f0-9-]{36}/[a-f0-9-]{36}/" +
+          asset.id +
+          "/[a-f0-9]{32}$",
+      ).test(url.pathname) &&
+      url.searchParams.has("X-Amz-Signature")
+    );
+  } catch {
+    return false;
+  }
 }
 
 /** UI actions depend on these contracts only. Replace repository and prepared handlers with future adapters. */

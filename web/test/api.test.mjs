@@ -1,6 +1,43 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { createClient, query, assetUrl, safeLink, upload } from "../src/api.js";
+import {
+  createClient,
+  query,
+  assetUrl,
+  safeLink,
+  upload,
+  configuredApiOrigin,
+} from "../src/api.js";
+
+test("cloud API configuration requires exact HTTPS origin", () => {
+  assert.equal(
+    configuredApiOrigin("https://api.example/"),
+    "https://api.example",
+  );
+  for (const value of [
+    "http://api.example",
+    "https://api.example/path",
+    "https://user:secret@api.example",
+    "https://api.example/?key=secret",
+  ])
+    assert.throws(() => configuredApiOrigin(value));
+});
+test("cloud images and shares use only configured API host", () => {
+  const origin = "https://api.example";
+  assert.equal(
+    assetUrl(origin + "/wardrobe-assets/assets/a?X-Amz-Signature=x", origin),
+    origin + "/wardrobe-assets/assets/a?X-Amz-Signature=x",
+  );
+  assert.equal(
+    assetUrl("/api/v1/card-shares/a", origin),
+    origin + "/api/v1/card-shares/a",
+  );
+  assert.equal(
+    assetUrl("https://other.example/wardrobe-assets/assets/a", origin),
+    null,
+  );
+  assert.equal(assetUrl(origin + "/wardrobe-assets/staging/a", origin), null);
+});
 
 test("query preserves false/zero and omits missing values", () =>
   assert.equal(

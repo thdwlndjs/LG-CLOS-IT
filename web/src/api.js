@@ -1,3 +1,21 @@
+export function configuredApiOrigin(value) {
+  if (!value) return "";
+  const url = new URL(value);
+  if (
+    url.protocol !== "https:" ||
+    url.pathname !== "/" ||
+    url.search ||
+    url.hash ||
+    url.username ||
+    url.password
+  )
+    throw new Error("VITE_API_BASE_URL must be an HTTPS origin");
+  return url.origin;
+}
+export const API_ORIGIN = configuredApiOrigin(
+  import.meta.env?.VITE_API_BASE_URL || "",
+);
+
 export class ApiError extends Error {
   constructor(status, code, requestId) {
     const messages = {
@@ -25,14 +43,21 @@ export function query(values) {
     ),
   ).toString();
 }
-export function assetUrl(value) {
+export function assetUrl(value, apiOrigin = API_ORIGIN) {
   if (!value) return null;
   let url;
   try {
-    url = new URL(value, "http://localhost:8000");
+    url = new URL(value, apiOrigin || "http://localhost:8000");
   } catch {
     return null;
   }
+  if (
+    apiOrigin &&
+    url.origin === apiOrigin &&
+    (url.pathname.startsWith("/wardrobe-assets/assets/") ||
+      url.pathname.startsWith("/api/v1/card-shares/"))
+  )
+    return url.href;
   if (
     url.origin === "http://localhost:9000" &&
     url.pathname.startsWith("/wardrobe-assets/")
@@ -75,7 +100,7 @@ export function createClient(token, onExpired, transport = fetch) {
     };
     let response;
     try {
-      response = await transport("/api/v1" + path, {
+      response = await transport(API_ORIGIN + "/api/v1" + path, {
         method,
         headers,
         body: serialized,
