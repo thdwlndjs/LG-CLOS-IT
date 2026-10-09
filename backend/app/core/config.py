@@ -21,6 +21,7 @@ class Settings(BaseModel):
     app_timezone: Literal["UTC"] = "UTC"
     log_level: Literal["DEBUG", "INFO", "WARNING", "ERROR", "CRITICAL"] = "INFO"
     database_url: SecretStr
+    database_ca_file: str = ""
     redis_url: SecretStr
     celery_broker_url: SecretStr
     celery_result_backend: SecretStr
@@ -53,6 +54,7 @@ class Settings(BaseModel):
     card_render_timeout_seconds: int = Field(default=30, ge=1, le=120)
     n8n_enabled: bool = False
     worker_queue: str = Field(default="celery", pattern=r"^[a-zA-Z0-9_-]{1,80}$")
+    worker_execution: Literal["CELERY", "INLINE"] = "CELERY"
     n8n_webhook_secret: SecretStr = SecretStr("")
     cors_allowed_origins: str = "http://localhost:5173"
     health_timeout_seconds: float = Field(default=5, gt=0, le=30)

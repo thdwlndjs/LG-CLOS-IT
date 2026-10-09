@@ -18,9 +18,10 @@ from app.infrastructure.resources import RuntimeResources
 from app.workers.celery_app import celery_app
 
 
-async def process():
-    settings = load_settings()
-    resources = RuntimeResources(settings)
+async def process(settings=None, resources=None):
+    settings = settings or load_settings()
+    owns_resources = resources is None
+    resources = resources or RuntimeResources(settings)
     try:
         async with resources.database.sessions.begin() as session:
             repo = Sprint1Repository(session)
@@ -115,7 +116,8 @@ async def process():
                     id=row["id"], lease=lease,
                 )
     finally:
-        await resources.close()
+        if owns_resources:
+            await resources.close()
 
 
 @celery_app.task(name="wardrobe.process_external_vton")

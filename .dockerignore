@@ -7,4 +7,12 @@
 test-results
 .docker-local
 **/node_modules
+data/imports
+docs/integration_sources
+docs/OWNED_GARMENT_IMPORT_REVIEW.md
+.vercel
+**/.vercel
+**/*.dump
+**/*.pem
+**/*.key
 

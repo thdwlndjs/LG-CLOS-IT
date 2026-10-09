@@ -5,6 +5,7 @@ from sqlalchemy import pool
 from sqlalchemy.ext.asyncio import create_async_engine
 
 from app.core.config import load_settings
+from app.infrastructure.db.session import database_connect_args
 
 
 def run_on_connection(connection):
@@ -15,8 +16,10 @@ def run_on_connection(connection):
 
 
 async def run_online():
-    engine = create_async_engine(load_settings().database_url.get_secret_value(),
-                                 poolclass=pool.NullPool)
+    settings = load_settings()
+    engine = create_async_engine(settings.database_url.get_secret_value(),
+                                 poolclass=pool.NullPool,
+                                 connect_args=database_connect_args(settings))
     try:
         async with engine.connect() as connection:
             await connection.run_sync(run_on_connection)

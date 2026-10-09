@@ -1,4 +1,5 @@
 import asyncio
+import os
 from contextlib import asynccontextmanager
 
 from fastapi import FastAPI, Request
@@ -22,9 +23,18 @@ def create_app(settings: Settings | None = None, resources=None) -> FastAPI:
             app.state.resources = RuntimeResources(settings)
         else:
             app.state.resources = resources
+        worker = None
         try:
+            if settings.worker_execution == "INLINE":
+                from app.application.inline_worker import InlineWorker
+
+                worker = InlineWorker(settings, app.state.resources)
+                app.state.inline_worker = worker
+                worker.start()
             yield
         finally:
+            if worker:
+                await worker.close()
             await app.state.resources.close()
 
     app = FastAPI(
@@ -76,6 +86,10 @@ def create_app(settings: Settings | None = None, resources=None) -> FastAPI:
     async def live():
         return {"status": "live"}
 
+    @app.get("/health/version", include_in_schema=False)
+    async def version():
+        return {"revision": os.getenv("RENDER_GIT_COMMIT", "local")}
+
     @app.get("/health/ready", include_in_schema=False)
     async def ready(request: Request):
         runtime = request.app.state.resources
@@ -91,7 +105,9 @@ def create_app(settings: Settings | None = None, resources=None) -> FastAPI:
         names = ["database", "redis", "storage", "renderer"]
         values = await asyncio.gather(*(check(getattr(runtime, f"probe_{name}")) for name in names))
         checks = dict(zip(names, values, strict=True))
-        healthy = all(value == "ok" for value in values)
+        if settings.worker_execution == "INLINE":
+            checks["worker"] = await check(request.app.state.inline_worker.probe)
+        healthy = all(value == "ok" for value in checks.values())
         return JSONResponse(
             {"status": "ready" if healthy else "not_ready", "checks": checks},
             status_code=200 if healthy else 503,
