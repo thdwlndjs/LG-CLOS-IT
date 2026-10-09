@@ -25,6 +25,10 @@ class Settings(BaseModel):
     celery_broker_url: SecretStr
     celery_result_backend: SecretStr
     storage_endpoint: str
+    storage_provider: Literal["MINIO", "SUPABASE"] = "MINIO"
+    storage_region: str = Field(default="us-east-1", min_length=1)
+    supabase_url: str = ""
+    supabase_service_role_key: SecretStr = SecretStr("")
     storage_bucket: str = "wardrobe-assets"
     storage_access_key: SecretStr
     storage_secret_key: SecretStr
@@ -79,6 +83,29 @@ class Settings(BaseModel):
             raise ConfigurationError("CORS requires an explicit origin allowlist")
         if self.n8n_enabled:
             raise ConfigurationError("n8n integration is deferred to Sprint 7")
+        if self.storage_provider == "SUPABASE":
+            origin = urlparse(self.supabase_url)
+            endpoint = urlparse(self.storage_endpoint)
+            project_host = origin.hostname or ""
+            if (
+                origin.scheme != "https"
+                or not project_host.endswith(".supabase.co")
+                or origin.path not in {"", "/"}
+                or origin.username or origin.port or origin.query or origin.fragment
+                or endpoint.scheme != "https"
+                or endpoint.hostname not in {
+                    project_host, project_host.removesuffix(".supabase.co") + ".storage.supabase.co"
+                }
+                or endpoint.path != "/storage/v1/s3"
+                or endpoint.username or endpoint.port or endpoint.query or endpoint.fragment
+                or self.storage_public_base_url != self.storage_endpoint
+            ):
+                raise ConfigurationError(
+                    "Supabase requires matching HTTPS project and S3 endpoints"
+                )
+            key = self.supabase_service_role_key.get_secret_value()
+            if not key or "CHANGE_ME" in key.upper():
+                raise ConfigurationError("SUPABASE_SERVICE_ROLE_KEY must be configured server-side")
         return self
 
     @property

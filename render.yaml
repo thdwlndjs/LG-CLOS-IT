@@ -1,4 +1,5 @@
-# Review paid resource estimates in the Render dashboard before applying.
+# Historical PAID blueprint: DO NOT APPLY under the current free-tier-only policy.
+# Supabase storage preparation and unresolved free compute: docs/CLOUD_DEPLOYMENT.md.
 envVarGroups:
   - name: wardrobe-cloud
     envVars:

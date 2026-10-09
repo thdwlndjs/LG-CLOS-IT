@@ -18,7 +18,12 @@ def configure(environ):
     values["CELERY_BROKER_URL"] = redis
     parsed = urlparse(redis)
     values["CELERY_RESULT_BACKEND"] = parsed._replace(path="/1").geturl()
-    values["STORAGE_ENDPOINT"] = "http://" + values["MINIO_HOSTPORT"]
+    external_storage = values.get("STORAGE_PROVIDER", "MINIO") == "SUPABASE"
+    if external_storage:
+        if not values.get("STORAGE_ENDPOINT") or not values.get("STORAGE_REGION"):
+            raise ValueError("Supabase requires STORAGE_ENDPOINT and STORAGE_REGION")
+    else:
+        values["STORAGE_ENDPOINT"] = "http://" + values["MINIO_HOSTPORT"]
     values["CARD_RENDERER_URL"] = "http://" + values["RENDERER_HOSTPORT"]
     origin = values.get("API_PUBLIC_ORIGIN") or values.get("RENDER_EXTERNAL_URL", "")
     parsed = urlparse(origin)
@@ -30,7 +35,9 @@ def configure(environ):
         or parsed.username
     ):
         raise ValueError("API_PUBLIC_ORIGIN must be an HTTPS origin")
-    values["STORAGE_PUBLIC_BASE_URL"] = origin.rstrip("/")
+    values["STORAGE_PUBLIC_BASE_URL"] = (
+        values["STORAGE_ENDPOINT"] if external_storage else origin.rstrip("/")
+    )
     values.update(
         APP_ENV="staging",
         PUBLIC_DEPLOYMENT="true",
@@ -44,9 +51,17 @@ def private_bucket():
     from botocore.exceptions import ClientError
 
     from app.core.config import load_settings
-    from app.infrastructure.adapters.object_storage import storage_client
+    from app.infrastructure.adapters.object_storage import storage_client, verify_supabase_bucket
 
     settings = load_settings()
+    if settings.storage_provider == "SUPABASE":
+        verify_supabase_bucket(settings)
+        client = storage_client(settings)
+        try:
+            client.head_bucket(Bucket=settings.storage_bucket)
+        finally:
+            client.close()
+        return
     client = storage_client(settings)
     try:
         for attempt in range(30):

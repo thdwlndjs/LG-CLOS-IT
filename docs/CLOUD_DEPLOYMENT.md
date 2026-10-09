@@ -2,6 +2,40 @@
 
 ## 현재 상태
 
+2026-10-10 최신 결정: 무료 클라우드 배포를 위해 사용자가 MinIO 대체를 허용했다. **클라우드 저장소 연결 대상은 Supabase Storage Free**, 로컬 Compose는 기존 MinIO와 실제 의류 6벌·사진 6개를 유지한다. 원본 설계 7개는 수정하지 않았다. Vercel은 실제 계정 API에서 `lg-clos-it`의 소유 팀 `thdwldnjs`와 `billing.plan=hobby`, `billing.status=active`를 확인했다. 조회 시각은 2026-10-10 03:25 KST이며 비공개 증적은 `test-results/vercel-plan-20261010.json`이다. 유료 플랜·유료 리소스 생성은 진행하지 않는다. 전체 클라우드 배포와 DB 적재는 아직 완료되지 않았다.
+
+### 무료 저장소 연결 준비
+
+기존 S3 SigV4·upload intent·SHA256 finalize·단기 signed GET 계약을 유지한다. 리전을 `STORAGE_REGION`으로 설정하고 `STORAGE_PROVIDER=SUPABASE`인 cloud entry는 MinIO host 대신 외부 S3 endpoint를 사용한다. Supabase 버킷은 Dashboard에서 `wardrobe-assets`, **Private**로 미리 생성한다. 시작 시 서버 전용 key로 REST bucket metadata의 `id` 및 `public=false`를 확인한 뒤 S3 HeadBucket을 수행한다. 버킷 없음·공개·인증 오류·형식 오류는 시작 실패이며 공개 버킷을 자동 수정하지 않는다. Supabase가 S3 bucket policy API를 제공한다고 가정하지 않는다.
+
+| 환경변수 | 설정 |
+| --- | --- |
+| STORAGE_PROVIDER | SUPABASE |
+| SUPABASE_URL | 실제 Free 프로젝트 HTTPS origin |
+| SUPABASE_SERVICE_ROLE_KEY | 해당 프로젝트 서버 전용 키, Render 환경변수에만 보관 |
+| STORAGE_ENDPOINT | S3 설정 화면의 endpoint, `https://PROJECT_REF.storage.supabase.co/storage/v1/s3` 형태 |
+| STORAGE_REGION | S3 설정 화면의 프로젝트 region |
+| STORAGE_PUBLIC_BASE_URL | STORAGE_ENDPOINT와 동일, cloud entry가 설정 |
+| STORAGE_BUCKET | wardrobe-assets |
+| STORAGE_ACCESS_KEY / STORAGE_SECRET_KEY | Dashboard에서 생성한 S3 key pair, 서버에만 보관 |
+
+브라우저에는 기존 API가 발급한 단기 서명 URL만 전달한다. S3 key·service role key를 `VITE_*`, 소스, 문서, Git에 넣지 않는다. [공식 S3 인증 안내](https://supabase.com/docs/guides/storage/s3/authentication)는 S3 key가 모든 버킷에 접근하고 RLS를 우회하므로 서버 전용으로 사용할 것을 명시한다. 원격 private bucket·CORS·PUT/GET/삭제·SHA256·비동기 결과 조회는 실제 계정 연결 후 별도 검증해야 한다.
+
+새 서명 경로/리전/업로드 헤더, 잘못된 project endpoint 차단, 공개·누락 버킷 차단을 포함한 선택 테스트 **46개 통과**, Ruff 통과. 최초 Ruff의 101자 줄 1개는 줄바꿈으로 수정했다. pytest cache 권한 경고와 botocore datetime deprecation 경고는 남아 있다. 버킷 응답은 HTTP MockTransport 검증이며 실제 Supabase 성공을 의미하지 않는다. 현재 Supabase CLI·SUPABASE 환경변수·프로젝트 인증정보가 없어 원격 프로젝트 생성·이미지 이전·클라우드 DB 적재는 실행하지 않았다.
+
+### 무료 전체 배포의 남은 작업
+
+- [Supabase Free](https://supabase.com/pricing): 파일 저장 1GB, DB 500MB, egress 5GB 및 cached egress 5GB, 1주 비활성 시 프로젝트 pause. 계정의 Free 플랜과 실제 용량을 확인한 뒤 진행한다. DB도 같은 무료 PostgreSQL 프로젝트를 쓰는 방안은 기존 schema/extension·접속/TLS·migration 검증 후 확정하며 아직 DB 호스트를 변경하지 않았다.
+- [Render Free](https://render.com/docs/free): API web과 Key Value는 무료 대상이지만 기존 worker/private renderer는 아니다. worker·renderer를 무료 web에 통합할 수 있는지 CPU/메모리·중단 복구·작업 재실행을 검증해야 한다. **MinIO 제거만으로 전체 무료 배포 문제가 해결된 것은 아니다.** 기존 `ASC`와 공유하는 무료 web 시간도 확인해야 한다.
+- [Vercel Hobby](https://vercel.com/docs/plans/hobby): 무료 플랜이며 현재 계정 조회에서도 활성 Hobby 확인. 사용량 제한과 비상업적 개인 용도 조건을 따른다. 별도 Marketplace 유료 상품은 추가하지 않았다. 계정의 모든 과거 청구 내역을 감사한 것은 아니다.
+- Supabase Free 프로젝트/Private 버킷 준비 → 무료 API·작업 실행 구성 확정 및 검증 → 클라우드 계정/기기 준비 → 기존 등록·업로드 API로 6벌·6사진 적재 → 중복 방지·실제 브라우저 사진 조회 검증 순으로 진행한다. 기존 로컬 저널을 다른 DB에 그대로 복사해 재사용하지 않는다.
+
+클라우드 적재는 기존 비공개 6건 계획을 사용하되 클라우드 사용자·기기 ID를 명시하고 별도 적재 저널로 실행한다. 보류된 4개 URL은 등록하지 않으며 위치·착용·케어 이력을 만들지 않는다. 상품 사진은 기존 동의 확인·upload intent·finalize를 거쳐 새 asset에 연결한다. 직접 DB 덤프 복원으로 로컬 자산 ID/MinIO key를 옮기는 것으로 대체하지 않는다. 사용자·기기 provisioning 및 원격 사전 백업 경로가 준비되기 전에는 적재하지 않는다.
+
+Supabase 프로젝트가 inactivity로 pause되면 Dashboard의 프로젝트 상태를 확인하고 복구한 뒤 DB·storage readiness를 다시 검사한다. 정확한 복구 절차와 실제 재개 시간은 계정 연결 후 확인한다. 무료 서비스 중단 시 대기 작업의 유실·중복 여부를 검증하기 전에는 상시 동작을 보장하지 않는다. S3 region은 반드시 해당 프로젝트 S3 설정값과 맞춘다. `SUPABASE_SERVICE_ROLE_KEY`는 bucket metadata REST 확인용 API key이며 `STORAGE_ACCESS_KEY/STORAGE_SECRET_KEY`의 S3 key pair와 별개다.
+
+이하 기록의 유료 Render 구성과 MinIO 유지 조건은 과거 배포 조사 이력이다. 최신 무료 전용·MinIO 대체 결정이 우선하며, 기존 `render.yaml`은 적용하지 않는다.
+
 2026-10-10 비용 정책 변경: 사용자가 **무료 티어만 사용**하도록 지정했다. 기존 `render.yaml`은 유료 구성의 과거 검토안이며 적용 대상에서 제외한다. 결제수단 등록·유료 리소스 생성·유료 플랜 전환을 진행하지 않는다. 클라우드 적재는 무료 배포 경로가 결정되고 실제 DB·이미지 저장소가 준비된 뒤 수행한다.
 
 공식 [Render 무료 티어 제한](https://render.com/docs/free)을 재확인했다. 무료 web/Postgres/Key Value는 제공되지만 private service·background worker는 무료 대상이 아니며 무료 web에는 영구 디스크가 없다. 따라서 현행 private MinIO 영구 저장·별도 Celery worker·private renderer 구성을 모든 서비스의 `plan: free` 변경만으로 유지할 수 없다. 무료 Postgres는 1GB·30일 만료, 무료 Key Value는 재시작 시 데이터 손실, 무료 web은 15분 비활성 시 중단된다. 기존 `ASC`와 무료 web의 워크스페이스 공유 750시간 제한도 배포 전에 함께 검토해야 한다.

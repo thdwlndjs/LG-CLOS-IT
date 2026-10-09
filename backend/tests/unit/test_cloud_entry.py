@@ -33,6 +33,26 @@ def test_cloud_uses_private_services_jwt_and_tls_redis():
     assert result["AUTH_MODE"] == "JWT" and result["DEMO_AUTH_ENABLED"] == "false"
 
 
+def test_cloud_supabase_uses_external_s3_endpoint_without_minio():
+    original = values()
+    original.pop("MINIO_HOSTPORT")
+    original.update(STORAGE_PROVIDER="SUPABASE", STORAGE_REGION="ap-southeast-1",
+                    STORAGE_ENDPOINT="https://example.storage.supabase.co/storage/v1/s3")
+    result = module().configure(original)
+    assert result["STORAGE_ENDPOINT"] == original["STORAGE_ENDPOINT"]
+    assert result["STORAGE_PUBLIC_BASE_URL"] == original["STORAGE_ENDPOINT"]
+    assert result["DEMO_AUTH_ENABLED"] == "false"
+
+
+@pytest.mark.parametrize("missing", ["STORAGE_REGION", "STORAGE_ENDPOINT"])
+def test_cloud_supabase_requires_explicit_endpoint_and_region(missing):
+    original = values() | dict(STORAGE_PROVIDER="SUPABASE", STORAGE_REGION="ap-southeast-1",
+                              STORAGE_ENDPOINT="https://example.storage.supabase.co/storage/v1/s3")
+    original.pop(missing)
+    with pytest.raises(ValueError):
+        module().configure(original)
+
+
 @pytest.mark.parametrize(
     "origin",
     [
