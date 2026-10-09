@@ -12,7 +12,7 @@ services:
   region: singapore
   plan: free
   branch: main
-  autoDeployTrigger: commit
+  autoDeployTrigger: off
   dockerContext: .
   dockerfilePath: ./infra/cloud/Dockerfile
   healthCheckPath: /health/ready

@@ -16,6 +16,17 @@ export const API_ORIGIN = configuredApiOrigin(
   import.meta.env?.VITE_API_BASE_URL || "",
 );
 
+export function configuredStorageBase(value) {
+  if (!value) return "";
+  const url = new URL(value);
+  if (url.protocol !== "https:" || !/^[a-z0-9]+(?:\.storage)?\.supabase\.co$/.test(url.hostname)
+      || url.pathname !== "/storage/v1/s3" || url.username || url.password
+      || url.port || url.search || url.hash)
+    throw new Error("VITE_STORAGE_BASE_URL must be the exact Supabase S3 endpoint");
+  return url.href;
+}
+export const STORAGE_BASE = configuredStorageBase(import.meta.env?.VITE_STORAGE_BASE_URL || "");
+
 export class ApiError extends Error {
   constructor(status, code, requestId) {
     const messages = {
@@ -43,7 +54,7 @@ export function query(values) {
     ),
   ).toString();
 }
-export function assetUrl(value, apiOrigin = API_ORIGIN) {
+export function assetUrl(value, apiOrigin = API_ORIGIN, storageBase = STORAGE_BASE, method = "GET") {
   if (!value) return null;
   let url;
   try {
@@ -51,10 +62,17 @@ export function assetUrl(value, apiOrigin = API_ORIGIN) {
   } catch {
     return null;
   }
+  if (storageBase) {
+    const base = new URL(configuredStorageBase(storageBase));
+    const prefix = base.pathname + "/wardrobe-assets/" + (method === "PUT" ? "staging/" : "assets/");
+    if (url.origin === base.origin && url.pathname.startsWith(prefix)
+        && !url.username && !url.password)
+      return url.href;
+  }
   if (
     apiOrigin &&
     url.origin === apiOrigin &&
-    (url.pathname.startsWith("/wardrobe-assets/assets/") ||
+    (url.pathname.startsWith("/wardrobe-assets/" + (method === "PUT" ? "staging/" : "assets/")) ||
       url.pathname.startsWith("/api/v1/card-shares/"))
   )
     return url.href;
@@ -158,7 +176,7 @@ export async function upload(api, file, purpose) {
     size_bytes: file.size,
     purpose,
   });
-  const target = assetUrl(intent.upload_url);
+  const target = assetUrl(intent.upload_url, API_ORIGIN, STORAGE_BASE, "PUT");
   if (!target) throw new Error("로컬 저장소 주소를 확인해주세요.");
   const response = await fetch(target, {
     method: "PUT",

@@ -7,7 +7,23 @@ import {
   safeLink,
   upload,
   configuredApiOrigin,
+  configuredStorageBase,
 } from "../src/api.js";
+
+test("Supabase signed images and uploads require the explicitly configured project and path", () => {
+  const base = "https://project.storage.supabase.co/storage/v1/s3";
+  assert.equal(configuredStorageBase(base), base);
+  const read = base + "/wardrobe-assets/assets/a?X-Amz-Signature=x";
+  const put = base + "/wardrobe-assets/staging/a?X-Amz-Signature=x";
+  assert.equal(assetUrl(read, "https://api.example", base), read);
+  assert.equal(assetUrl(put, "https://api.example", base), null);
+  assert.equal(assetUrl(put, "https://api.example", base, "PUT"), put);
+  assert.equal(assetUrl(read.replace("project.storage", "other.storage"), "https://api.example", base), null);
+  assert.equal(assetUrl(read.replace("wardrobe-assets", "other-bucket"), "https://api.example", base), null);
+  for (const value of ["http://project.supabase.co/storage/v1/s3", base + "?secret=x",
+    base.replace("project.storage", "user:secret@project.storage"), base + "/"])
+    assert.throws(() => configuredStorageBase(value));
+});
 
 test("cloud API configuration requires exact HTTPS origin", () => {
   assert.equal(
