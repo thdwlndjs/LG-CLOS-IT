@@ -2,6 +2,8 @@
 
 검증일: 2026-10-09. 범위: Sprint 7 FastAPI와 팀원 스마트미러 UI의 로컬 개발용 통합.
 
+후속 로컬 데이터 상태: 실제 의류 6벌과 사진 6개를 적재하고 브라우저 표시를 확인했다. 기존 Seed 3건은 retired, 저장된 Seed 코디는 ARCHIVED로 보존한다. 위치 미확인 의류에 시각을 기록하던 결함을 수정했다. 아래 최초 통합·Seed 검증 기록과 구분하며 최신 데이터 증거는 [적재 실행 결과](OWNED_GARMENT_IMPORT_RESULT.md)를 따른다.
+
 ## 판정과 검증 범위
 
 핵심 시나리오 10개가 실제 HTTP·PostgreSQL·Redis·MinIO·Celery·Chromium 카드 렌더러를 거쳐 통과했다. 브라우저에서도 개인 계정 로그인, 이미지 업로드·의류 등록·검색, 서버 추천 선택, Mock VTON·코디 확정, 카드 이미지 생성·저장·공유, 구매 중복 방지, LIKED VTON을 실행했다. VTON·쇼핑·LED는 Mock이며 실제 피팅 품질·실물 LED·외부 쇼핑 계정 연동을 검증한 결과가 아니다.

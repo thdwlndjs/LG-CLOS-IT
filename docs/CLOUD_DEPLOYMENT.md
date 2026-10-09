@@ -39,7 +39,7 @@ MinIO를 외부에 노출하지 않기 위해 FastAPI의 `/wardrobe-assets/{key}
 - Render 서버 validation 실패: `need_payment_info`. 디스크의 비루트 쓰기 권한, private DNS 및 포트, DB migration, worker 작업, renderer 메모리, 공개 HTTPS CORS, 실제 브라우저 로그인·이미지·코디카드 E2E는 미검증이다.
 - 기존 MinIO 바이너리는 로컬 개발용 구버전이다. private prototype에서도 업데이트·취약점·AGPL 배포 의무 검토가 남는다. 운영 환경에 안전한 버전으로 판정하지 않는다.
 - 실제 클라우드 사용은 staging prototype으로 제한한다. 운영 전환은 MinIO 버전·취약점 검토 후 별도 판단한다. 배포 설정을 추가한 사실이 운영 안전성 검증을 의미하지 않는다.
-- 개인 상품 사진 적재는 이미지 업로드 동의 응답을 기다린다. 준비된 이미지와 적재 계획은 비공개 폴더에 있고, 실제 적재 및 Seed 정리는 아직 실행하지 않았다.
+- 로컬 실제 의류 6벌과 사진 6개는 적재·조회 검증했고 Seed는 retired 처리했다. [로컬 적재 결과](OWNED_GARMENT_IMPORT_RESULT.md)를 따른다. 클라우드 DB에는 이전하지 않았다.
 
 ## 배포 재현 순서
 
