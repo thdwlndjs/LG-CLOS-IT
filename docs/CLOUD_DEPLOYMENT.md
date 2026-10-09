@@ -2,6 +2,8 @@
 
 ## 현재 상태
 
+2026-10-10 재확인: 사용자 요청에 따라 클라우드 의류·사진 적재 가능 여부를 확인했다. 인증된 Render CLI의 `blueprints validate render.yaml --output json`은 여전히 6개 리소스 모두 `need_payment_info`, `valid=false`를 반환했다. 동일 워크스페이스의 서비스 목록에는 기존 `ASC`만 있고 Smart Wardrobe용 DB·API는 없다. 클라우드 적재는 실행하지 않았으며 로컬 6벌·사진 6개를 유지한다. 결제수단 등록 후 배포·계정/기기 준비·기존 등록/업로드 계약 기반 적재·중복 및 실제 사진 조회 검증이 남아 있다. 이번 확인에서 기존 서비스와 새로 전달된 팀원 소스는 변경하지 않았다.
+
 2026-10-09: **Vercel 프론트 배포 완료, Render 백엔드 배포 차단** 상태다. 프론트 URL은 https://lg-clos-it.vercel.app 이다. Render·Vercel CLI 로그인과 Render 워크스페이스 선택은 완료했다. Render Blueprint 서버 검증은 6개 리소스에 `need_payment_info`를 반환해 실패했다. 결제수단 등록과 유료 구성 진행 확인을 기다린다. 백엔드 리소스는 생성하지 않았다. 전체 E2E 배포 완료로 판정하지 않는다.
 
 변경은 기능 단위 Conventional Commit으로 기록하고 원격 저장소에 푸시한다. `.env`, CLI 인증정보, DB 덤프, 개인 상품 URL·사진·적재 저널은 Git 제외를 유지한다. DB 상태 변경은 Git으로 복원되지 않으므로 별도 백업과 비공개 실행 저널로 기록한다.
