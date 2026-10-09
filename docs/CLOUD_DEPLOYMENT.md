@@ -2,7 +2,7 @@
 
 ## 현재 상태
 
-2026-10-09: 로컬 연결 검증과 배포 설정 준비 단계다. **클라우드 배포 완료가 아니다.** Render 및 Vercel CLI 인증과 대상 계정/팀 선택을 기다린다. Render Blueprint 서버 검증도 인증·워크스페이스 미설정으로 실행되지 않았다. 실제 배포 URL은 아직 없다.
+2026-10-09: 로컬 연결 검증과 배포 설정 준비 단계다. **클라우드 배포 완료가 아니다.** Render CLI 로그인과 Vercel CLI 로그인이 완료됐다. Render 워크스페이스는 미설정이므로 Blueprint 서버 검증은 아직 실행되지 않았다. 실제 배포 URL은 아직 없다.
 
 변경은 기능 단위 Conventional Commit으로 기록하고 원격 저장소에 푸시한다. `.env`, CLI 인증정보, DB 덤프, 개인 상품 URL·사진·적재 저널은 Git 제외를 유지한다. DB 상태 변경은 Git으로 복원되지 않으므로 별도 백업과 비공개 실행 저널로 기록한다.
 
@@ -46,9 +46,28 @@ MinIO를 외부에 노출하지 않기 위해 FastAPI의 `/wardrobe-assets/{key}
 1. CLI 계정 연결 및 대상 워크스페이스/팀 선택.
 2. `render blueprints validate render.yaml`로 서버 검증. Render Dashboard에서 이 저장소 Blueprint를 연결하고 비용과 입력값을 검토한 뒤 적용.
 3. 각 backend 서비스에 실제 `API_PUBLIC_ORIGIN`, `CORS_ALLOWED_ORIGINS` 입력. readiness와 worker 상태 확인. 실패하면 완료 처리하지 않는다.
-4. `cd web`, `npx vercel@63.1.0 link`. Vercel 프로젝트 root를 `web/`로 지정.
-5. `npx vercel@63.1.0 env add VITE_API_BASE_URL production`으로 Render origin 입력 후 `npx vercel@63.1.0 --prod`.
+4. `cd web`, `vercel link`. Vercel 프로젝트 root를 `web/`로 지정.
+5. `vercel env add VITE_API_BASE_URL production`으로 Render origin 입력 후 `vercel --prod`.
 6. Vercel이 발급한 최종 production origin을 기록하고 Render API·worker의 CORS를 갱신한다. Render readiness를 다시 확인한 뒤 실제 HTTPS 브라우저 E2E 검증.
 7. 클라우드에는 최초 회원·기기가 없으므로 로그인 가능한 상태까지 별도 데이터 준비가 필요하다. 기존 `scripts/provision_integration.py`는 로컬 전용이며 클라우드에서 그대로 실행할 수 없다. 승인된 비공개 DB 이전 또는 명시적인 클라우드 관리자 provisioning 중 사용할 경로를 정하고 구현·검증한다. 배포 설정만으로 정상 로그인이 된다고 주장하지 않는다. 개인 의류 DB·사진을 자동 공개 이전하지 않는다.
 
 공식 기준: [Render Blueprint](https://render.com/docs/blueprint-spec), [Compute plans](https://render.com/docs/compute-plans), [Private services](https://render.com/docs/private-services), [CLI](https://render.com/docs/cli), [Vercel project configuration](https://vercel.com/docs/project-configuration), [CLI login](https://vercel.com/docs/cli/login).
+
+## Vercel 에이전트 설정 — 2026-10-09
+
+사용자가 지정한 [공식 설정 지침](https://vercel.com/get-started.md)을 내려받아 수행했다. 이 절차는 전역 도구 설정이며 프로젝트 배포와 구분한다.
+
+| 항목 | 확인된 상태 |
+| --- | --- |
+| CLI | `npm install --global vercel@latest` 완료. `vercel --version` 63.1.0, `vercel whoami` 인증 성공 |
+| 가이드 | `vercel@openai-curated` 플러그인 0.21.3, revision `11c74d6b`, 사용자 범위 설치·활성화 확인. standalone skills는 중복 설치하지 않음 |
+| 설치 경로 | `%USERPROFILE%/.codex/plugins/cache/openai-curated/vercel/11c74d6b` |
+| 명령 파일 | 설치된 `commands/status.md` 등 확인. 현재 대화에서 slash command 로딩 여부는 미검증 |
+| MCP | `codex mcp add vercel --url https://mcp.vercel.com` 완료. 공유 endpoint, enabled, OAuth 로그인 확인 |
+| MCP 설정 | `%USERPROFILE%/.codex/config.toml`에 사용자 공통 설정. 기존 unrelated 설정·승인 정책 유지 |
+| 인증 읽기 확인 | CLI `vercel teams ls` 및 teams API 조회 성공. **MCP `list_teams` 호출 성공을 의미하지 않음** |
+| 남은 확인 | 현재 대화에 새 MCP tools를 로드하는 기능이 없어 documentation search·MCP `list_teams` 미검증. Codex 새 세션에서 도구를 로드한 뒤 두 read-only 호출 필요 |
+
+`npx plugins add vercel/vercel-plugin`은 Windows의 Codex 실행 파일 자동 감지에 실패했다. `--target codex --scope user --yes` 재시도도 내부 `spawnSync codex ENOENT`로 실패했다. 설치 도구가 선택한 동일 대상에 `codex plugin add vercel@openai-curated --json`을 직접 실행해 성공했고, marketplace별 plugin list에서 installed/enabled를 확인했다.
+
+MCP 변경 작업은 사용자 확인을 유지한다. 현재 절차에서는 MCP를 통한 리소스 변경을 실행하지 않았다. 인증정보·일회성 승인 URL은 저장소에 기록하지 않는다. 전역 설정 단계에서는 Vercel 프로젝트 생성·연결·배포를 하지 않았다. 후속 배포 작업에서 프로젝트 연결을 수행한다.
