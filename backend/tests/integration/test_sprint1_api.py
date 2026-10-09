@@ -580,3 +580,44 @@ def test_real_redis_session_rate_limit(real_dsn, settings_values):
         assert (await client.get("/api/v1/garments")).status_code == 200
 
     run_case(real_dsn, settings_values, case)
+
+
+@pytest.mark.parametrize("explicit_null", [False, True])
+def test_missing_or_cleared_location_has_no_last_seen_time(
+    real_dsn, settings_values, explicit_null
+):
+    async def case(client, engine, settings, *unused):
+        payload = dict(owner_id=OWNER, category="TOP", color="WHITE")
+        if explicit_null:
+            payload["location_id"] = None
+        created = await client.post(
+            "/api/v1/garments", json=payload, headers={"Idempotency-Key": str(uuid4())}
+        )
+        assert created.status_code == 201
+        garment = created.json()
+        assert garment["last_seen_at"] is None and garment["location_id"] is None
+        url = "/api/v1/garments/" + garment["id"]
+        located = await client.patch(
+            url, json={**payload, "location_id": LOCATION},
+            headers={"If-Match": str(garment["version"])},
+        )
+        assert located.status_code == 200
+        assert located.json()["last_seen_at"] is not None
+        cleared = await client.patch(
+            url, json={**payload, "location_id": None},
+            headers={"If-Match": str(located.json()["version"])},
+        )
+        assert cleared.status_code == 200
+        assert cleared.json()["location_id"] is None
+        assert cleared.json()["location_confidence"] is None
+        assert cleared.json()["last_seen_at"] is None
+        assert (await client.get(url)).json()["last_seen_at"] is None
+        async with engine.connect() as connection:
+            row = (await connection.execute(
+                text("SELECT location_id, last_seen_at FROM wardrobe.garment_state "
+                     "WHERE garment_id=:id"),
+                {"id": UUID(garment["id"])},
+            )).mappings().one()
+            assert row["location_id"] is None and row["last_seen_at"] is None
+
+    run_case(real_dsn, settings_values, case)

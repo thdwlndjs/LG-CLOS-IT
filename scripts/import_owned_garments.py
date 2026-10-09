@@ -403,6 +403,8 @@ def run(args):
                     assert (
                         actual["status"] == "UNKNOWN" and actual["location_id"] is None
                     )
+                    assert actual["last_seen_at"] is None
+                    assert actual["location_confidence"] is None
                     if args.with_images:
                         assert actual["image"]["asset_id"] == entry["asset_id"]
                         data = httpx.get(actual["image"]["read_url"], timeout=20)

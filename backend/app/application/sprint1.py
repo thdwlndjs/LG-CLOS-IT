@@ -315,11 +315,14 @@ class Sprint1:
                 if "location_id" in body.model_fields_set:
                     await repo.execute(
                         "UPDATE wardrobe.garment_state SET location_id=:loc,"
-                        "location_confidence=:conf,last_seen_at=now(),updated_at=now(),"
+                        "location_confidence=:conf,"
+                        "last_seen_at=:seen,"
+                        "updated_at=now(),"
                         "version=version+1 WHERE garment_id=:id",
                         id=target,
                         loc=body.location_id,
                         conf=1.0 if body.location_id else None,
+                        seen=utc_now() if body.location_id else None,
                     )
                 if "shared_with_member_ids" in body.model_fields_set:
                     await repo.execute(
