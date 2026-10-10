@@ -52,7 +52,11 @@ export async function todayServerRecommendation(
   }) as { outfit: Outfit; reasons: string[] }[];
 }
 
-export async function homeServerStorageAdvice(check: () => void) {
+export async function homeServerStorageAdvice(
+  check: () => void,
+  dryRun = true,
+  season: "ALL" | "WINTER" = "ALL",
+) {
   const member = currentMember();
   if (!member) throw Error("로그인 후 보관 추천을 요청하세요.");
   const client = api();
@@ -61,8 +65,8 @@ export async function homeServerStorageAdvice(check: () => void) {
     household_id: member.household_id,
     member_id: member.id,
     mode: "WEAR_PATTERN",
-    dry_run: true,
-    season: "ALL",
+    dry_run: dryRun,
+    season,
     analysis_window_days: 90,
     garment_ids: [],
   });

@@ -3,7 +3,7 @@
 import math
 from datetime import timedelta
 
-RULES_VERSION = "storage-greedy-v1"
+RULES_VERSION = "storage-greedy-v2"
 MIN_CONFIDENCE = 0.8
 STATE_MAX_AGE = timedelta(days=7)
 ENV_MAX_AGE = timedelta(hours=24)
@@ -163,7 +163,16 @@ def plan(garments, locations, occupancy, environments, wear, body, now):
             if count >= 2 or not tags or "ALL" in tags or body.season in tags
             else "ARCHIVE"
         )
+        # Explicit garment classification, never inferred from a product name.
+        # Transitional layers remain accessible during seasonal optimization.
+        transitional = garment["attributes"].get("seasonal_role") in {
+            "trench", "denim_jacket", "cardigan", "long_sleeve_shirt"
+        }
+        if transitional and body.mode == "WEAR_PATTERN":
+            desired = "ACCESSIBLE"
         reasons = [f"CONFIRMED_WEAR_COUNT:{count}", f"REQUESTED_SEASON:{body.season}"]
+        if transitional:
+            reasons.append("TRANSITIONAL_LAYER_KEEP_ACCESSIBLE")
         if count == 0:
             reasons.append("INSUFFICIENT_WEAR_HISTORY")
         size = units(garment)

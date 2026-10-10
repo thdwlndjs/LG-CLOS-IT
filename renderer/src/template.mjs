@@ -1,9 +1,10 @@
 import React from 'react';
 import { renderToStaticMarkup } from 'react-dom/server';
+import { cardTemplates, collageMarkup } from './card-layouts.mjs';
 
 const h = React.createElement;
 export function validate(payload) {
-  if (!payload || payload.template !== 'minimal-v1' || !['PNG', 'WEBP'].includes(payload.format)
+  if (!payload || !['minimal-v1', ...cardTemplates].includes(payload.template) || !['PNG', 'WEBP'].includes(payload.format)
       || typeof payload.title !== 'string' || payload.title.length > 200
       || typeof payload.style_tag !== 'string' || payload.style_tag.length > 1000
       || !Array.isArray(payload.items) || payload.items.length < 1 || payload.items.length > 6) throw Error('invalid');
@@ -21,6 +22,7 @@ export function validate(payload) {
 
 export function markup(payload) {
   validate(payload);
+  if (cardTemplates.includes(payload.template)) return collageMarkup(payload);
   return '<!doctype html>' + renderToStaticMarkup(h('html', null,
     h('head', null,
       h('meta', {httpEquiv: 'Content-Security-Policy', content: "default-src 'none'; img-src data:; style-src 'unsafe-inline'; font-src 'none'; script-src 'none'"}),

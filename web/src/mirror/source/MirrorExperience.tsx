@@ -128,6 +128,7 @@ export default function MirrorExperience() {
   const builderReturn = useRef<"library" | "compare" | "calendar">("library");
   const quickPicker = useRef(false);
   const compareUI = useRef({ quick: false, more: false, page: 0 });
+  const comparisonOrigin = useRef("outfit");
   const workspaceMemory = useRef(
     new Map<object, Map<string, MirrorOutfitWorkspaceUI>>(),
   );
@@ -504,6 +505,11 @@ export default function MirrorExperience() {
     setEditTarget(undefined);
     setNotice("");
     setIllumination(null);
+    if (comparisonOrigin.current === "home") {
+      setSection("home");
+      app.setScreen("home");
+      comparisonOrigin.current = "outfit";
+    }
   };
   const selectGarment = (g: Garment) => {
     app.selectGarment(g.id);
@@ -594,6 +600,7 @@ export default function MirrorExperience() {
   };
   const openLook = (look: Outfit) => {
     try {
+      comparisonOrigin.current = section;
       endComparison();
       if (app.outfits().some((o) => o.id === look.id))
         app.loadOutfitDraft(look.id, { reuse: true });
@@ -690,7 +697,10 @@ export default function MirrorExperience() {
       setNotice((e as Error).message);
     }
   };
-  const saveCard = async () => {
+  const saveCard = async (
+    templateId:
+      "minimal-v1" | "T1-v1" | "T2-v1" | "T3-v1" | "T4-v1" = "minimal-v1",
+  ) => {
     const current = app.outfitDraft();
     if (!current || cardSaveBusy.current) return;
     const captured = {
@@ -710,7 +720,7 @@ export default function MirrorExperience() {
         ownerRef.current === captured.owner &&
         app.repository === captured.repository
       ) {
-        await saveServerCard(result.entity.id);
+        await saveServerCard(result.entity.id, templateId);
         if (
           ownerRef.current === captured.owner &&
           app.repository === captured.repository
@@ -812,6 +822,7 @@ export default function MirrorExperience() {
   );
   return (
     <PhotoWardrobeStage
+      garments={garments}
       anchorIds={
         connection.kind === "supabase" ? serverAnchors : locations.anchorIds
       }
@@ -981,7 +992,9 @@ export default function MirrorExperience() {
             </button>
           ))}
         </nav>
-        {section === "home" && <MirrorHome app={app} onOpenOutfit={openLook} />}
+        <div hidden={section !== "home"}>
+          <MirrorHome app={app} onOpenOutfit={openLook} />
+        </div>
         {section === "wardrobe" && !selected && !registrationOpen && (
           <section className="mx-work mx-wardrobe">
             <div className="mg-heading">
@@ -1237,7 +1250,7 @@ export default function MirrorExperience() {
               onBack={library}
               onEdit={editDraft}
               onChooseTop={replaceTop}
-              onSave={() => void saveCard()}
+              onSave={(templateId) => void saveCard(templateId)}
               onCommit={() => void commit(false)}
               onEnd={library}
               saving={cardSaving}

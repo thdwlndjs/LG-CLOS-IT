@@ -259,7 +259,7 @@ def test_full_confirmation_and_idempotent_concurrent_requests(real_dsn, settings
     run_case(real_dsn, settings_values, case)
 
 
-def test_reservations_prevent_overbooking_cancel_releases(real_dsn, settings_values):
+def test_approval_does_not_reserve_but_completion_prevents_overbooking(real_dsn, settings_values):
     async def case(client, engine, settings, *unused):
         await setup(engine)
         async with engine.begin() as conn:
@@ -270,11 +270,17 @@ def test_reservations_prevent_overbooking_cancel_releases(real_dsn, settings_val
         _, first = await analyzed(client, settings, garment_ids=[GARMENT])
         _, second = await analyzed(client, settings, garment_ids=[SECOND])
         first = (await decide(client, first)).json()
-        rejected = await decide(client, second)
+        second_response = await decide(client, second)
+        assert second_response.status_code == 201, second_response.text
+        second = second_response.json()
+        # Independent approvals neither relocate nor reserve the one free slot.
+        assert (await confirm(client, first, [success()])).status_code == 201
+        rejected = await confirm(client, second, [success(SECOND)])
         assert rejected.status_code == 409, rejected.text
-        assert (await client.get("/api/v1/storage-actions/" + second["id"])).json()["version"] == 1
-        assert (await decide(client, first, "CANCEL")).json()["status"] == "CANCELLED"
-        assert (await decide(client, second)).status_code == 201
+        assert (await client.get("/api/v1/storage-actions/" + second["id"])).json()[
+            "status"
+        ] == "APPROVED"
+        assert (await decide(client, second, "CANCEL")).json()["status"] == "CANCELLED"
 
     run_case(real_dsn, settings_values, case)
 

@@ -44,7 +44,9 @@ export function MirrorCompare({
   onBack: () => void;
   onEdit: (slot?: "top") => void;
   onChooseTop: (garment: Garment) => void;
-  onSave: () => void;
+  onSave: (
+    templateId?: "minimal-v1" | "T1-v1" | "T2-v1" | "T3-v1" | "T4-v1",
+  ) => void;
   onCommit: () => void;
   onEnd: () => void;
   saving: boolean;
@@ -55,6 +57,9 @@ export function MirrorCompare({
   const [ui, setUI] = useState(
     uiState ?? { quick: false, more: false, page: 0 },
   );
+  const [cardTemplate, setCardTemplate] = useState<
+    "minimal-v1" | "T1-v1" | "T2-v1" | "T3-v1" | "T4-v1"
+  >("minimal-v1");
   const { quick, more, page } = ui;
   const uiRef = useRef(ui);
   uiRef.current = ui;
@@ -161,10 +166,28 @@ export function MirrorCompare({
           </button>
           <button
             disabled={saving || !draft || !completeOutfit(draft)}
-            onClick={onSave}
+            onClick={() => onSave(cardTemplate)}
           >
             {saving ? "카드 저장 중" : "코디카드로 저장"}
           </button>
+          <label>
+            카드 레이아웃
+            <select
+              aria-label="카드 레이아웃"
+              value={cardTemplate}
+              disabled={saving}
+              onChange={(e) =>
+                setCardTemplate(e.target.value as typeof cardTemplate)
+              }
+            >
+              <option value="minimal-v1">기본</option>
+              {["T1-v1", "T2-v1", "T3-v1", "T4-v1"].map((id) => (
+                <option key={id} value={id}>
+                  {id} · 시각 검토 대기
+                </option>
+              ))}
+            </select>
+          </label>
           <button
             onClick={() => {
               setMore(false);

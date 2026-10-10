@@ -8,7 +8,7 @@ const server = await createServer({
   server: { middlewareMode: true, hmr: false, ws: false },
 });
 after(() => server.close());
-const { winterHomeScenario, confirmedHomeUsage } = await server.ssrLoadModule(
+const { winterHomeScenario, confirmedHomeUsage, homeDemoChoices } = await server.ssrLoadModule(
   "/src/mirror/source/homeRecommendations.ts",
 );
 const garment = (id, category, ownerId = "me", photo = true) => ({
@@ -17,6 +17,16 @@ const garment = (id, category, ownerId = "me", photo = true) => ({
   ownerId,
   name: id,
   asset: photo ? { id: "asset-" + id, version: 2, url: "/image" } : null,
+});
+test("carousel has up to three unique owned combinations and never pads missing inventory", () => {
+  const garments = [garment("t1","top"),garment("t2","top"),garment("t3","top"),garment("b","bottom")];
+  const snapshot = structuredClone(garments);
+  const choices = homeDemoChoices(garments,"me","2026-10-11");
+  assert.equal(choices.length,3);
+  assert.equal(new Set(choices.map(x => JSON.stringify(x.outfit.items))).size,3);
+  assert.deepEqual(garments,snapshot);
+  assert.equal(homeDemoChoices([garments[0],garments[3]],"me","2026-10-11").length,1);
+  assert.equal(homeDemoChoices([garments[0]],"me","2026-10-11").length,0);
 });
 
 test("Mock recommendations only refer to supplied accessible photos and never mutate real data", () => {

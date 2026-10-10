@@ -51,6 +51,9 @@ class Sprint1Repository:
         if filters.get("owner_id") is not None:
             clauses.append("g.owner_id=:filter_owner")
             params["filter_owner"] = filters["owner_id"]
+        if filters.get("device_id") is not None:
+            clauses.append("g.device_id=:filter_device")
+            params["filter_device"] = filters["device_id"]
         for key in ("category", "color"):
             if filters.get(key) is not None:
                 clauses.append(f"g.{key}=:{key}")

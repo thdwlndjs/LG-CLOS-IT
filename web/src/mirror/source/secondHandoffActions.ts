@@ -141,14 +141,19 @@ export async function confirmServerLook(draft: OutfitDraft) {
   );
 }
 
-export async function saveServerCard(outfitId: string) {
+export type CardTemplateId =
+  "minimal-v1" | "T1-v1" | "T2-v1" | "T3-v1" | "T4-v1";
+export async function saveServerCard(
+  outfitId: string,
+  templateId: CardTemplateId = "minimal-v1",
+) {
   return serverCommand(
-    `card:${outfitId}`,
-    { outfitId },
+    `card:${outfitId}:${templateId}`,
+    { outfitId, templateId },
     async (step, check) => {
       const card = await step("draft", "POST", "/cards/drafts", {
         outfit_id: outfitId,
-        template_id: "minimal-v1",
+        template_id: templateId,
       });
       const job = await step("render", "POST", "/card-render-jobs", {
         card_id: card.id,

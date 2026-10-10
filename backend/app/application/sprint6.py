@@ -25,6 +25,12 @@ def action_metadata(row):
     )
 
 
+def storage_device_scope(actor, dry_run=False):
+    # Family manager is the existing household OWNER, and only accessible devices.
+    # Legacy/demo bearer sessions and other members retain their write scope.
+    return actor.personal_account and (dry_run or actor.role == "OWNER")
+
+
 async def load_storage(repo, actor, ids, now, *, read_device=False):
     locations = [
         dict(r)
@@ -86,28 +92,7 @@ async def load_storage(repo, actor, ids, now, *, read_device=False):
                 occupancy[loc] += size
         except ValueError:
             occupancy[loc] = None
-    reserved = await repo.all(
-        (
-            "SELECT i.*,a.reasoning FROM wardrobe.storage_action_item i JOIN "
-            "wardrobe.storage_action a ON a.id=i.action_id WHERE "
-            "a.household_id=:h AND a.status IN "
-            "('APPROVED','IN_PROGRESS','AWAITING_CONFIRMATION') AND "
-            "(a.expires_at IS NULL OR a.expires_at>:now) AND i.status IN "
-            "('PENDING','IN_PROGRESS','AWAITING_CONFIRMATION')"
-        ),
-        h=actor.household_id,
-        now=now,
-    )
-    for item in reserved:
-        loc = item["destination_location_id"]
-        if loc not in occupancy:
-            continue
-        metadata = action_metadata(item)
-        info = metadata.get("items", {}).get(str(item["garment_id"])) if metadata else None
-        if info is None:
-            occupancy[loc] = None
-        elif occupancy[loc] is not None:
-            occupancy[loc] += info["storage_units"]
+    # Approval is intent only. Capacity reflects physically confirmed occupants.
     environments = {}
     for row in await repo.all(
         (
@@ -174,8 +159,13 @@ class Sprint6(Sprint5):
 
             async def create():
                 await repo.lock("storage-household:" + str(actor.household_id))
-                await load_storage(repo, actor, body.garment_ids, utc_now(),
-                                   read_device=body.dry_run and actor.personal_account)
+                await load_storage(
+                    repo,
+                    actor,
+                    body.garment_ids,
+                    utc_now(),
+                    read_device=storage_device_scope(actor, body.dry_run),
+                )
                 identity = uuid4()
                 await repo.execute(
                     (
@@ -186,8 +176,12 @@ class Sprint6(Sprint5):
                     id=identity,
                     h=actor.household_id,
                     m=actor.member_id,
-                    p=canonical(dict(input=body.model_dump(mode="json"),
-                                     personal_account=actor.personal_account)),
+                    p=canonical(
+                        dict(
+                            input=body.model_dump(mode="json"),
+                            personal_account=actor.personal_account,
+                        )
+                    ),
                     c=actor.correlation_id,
                 )
                 await self.event(
@@ -330,7 +324,11 @@ class Sprint6(Sprint5):
     async def validate_plan_items(self, repo, actor, row, items, include_new_capacity=False):
         metadata = action_metadata(row)
         garments, locations, occupancy, environments = await load_storage(
-            repo, actor, [i["garment_id"] for i in items], utc_now()
+            repo,
+            actor,
+            [i["garment_id"] for i in items],
+            utc_now(),
+            read_device=storage_device_scope(actor),
         )
         current = {g["id"]: g for g in garments}
         spaces = {location["id"]: location for location in locations}
@@ -391,7 +389,7 @@ class Sprint6(Sprint5):
                     if row["status"] != "PROPOSED":
                         raise ApiError(409, "CONFLICT", "Action already decided")
                     if body.decision == "APPROVE":
-                        await self.validate_plan_items(repo, actor, row, items, True)
+                        await self.validate_plan_items(repo, actor, row, items)
                     status = "APPROVED" if body.decision == "APPROVE" else "REJECTED"
                     item_status = (
                         "AWAITING_CONFIRMATION" if body.decision == "APPROVE" else "SKIPPED"
@@ -488,7 +486,9 @@ class Sprint6(Sprint5):
                         subset.append(item)
                     elif not result.failure_reason or not result.failure_reason.strip():
                         raise ApiError(422, "VALIDATION_ERROR", "Failure reason required")
-                current = await self.validate_plan_items(repo, actor, row, subset) if subset else {}
+                current = (
+                    await self.validate_plan_items(repo, actor, row, subset, True) if subset else {}
+                )
                 for result in body.items:
                     item = items[result.garment_id]
                     if result.confirmed:

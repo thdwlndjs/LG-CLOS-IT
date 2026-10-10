@@ -3990,6 +3990,55 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CareSchedule'
+  /api/v1/integration/devices/{device_id}/scene:
+    get:
+      tags:
+      - Integration
+      summary: Wardrobe Scene
+      operationId: wardrobe_scene_api_v1_integration_devices__device_id__scene_get
+      security:
+      - BearerAuth: []
+      parameters:
+      - name: device_id
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+          title: Device Id
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WardrobeScene'
+        '422':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+          description: Unprocessable Entity
+  /api/v1/integration/vton-capabilities:
+    get:
+      tags:
+      - Integration
+      summary: Vton Capabilities
+      operationId: vton_capabilities_api_v1_integration_vton_capabilities_get
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Unprocessable Entity
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+      security:
+      - BearerAuth: []
 components:
   securitySchemes:
     BearerAuth:
@@ -4866,7 +4915,12 @@ components:
             $ref: '#/components/schemas/CardItem'
           type: array
         template_version:
-          const: minimal-v1
+          enum:
+          - minimal-v1
+          - T1-v1
+          - T2-v1
+          - T3-v1
+          - T4-v1
           type: string
       required:
       - title
@@ -4885,7 +4939,12 @@ components:
             type: string
           - type: 'null'
         template_id:
-          const: minimal-v1
+          enum:
+          - minimal-v1
+          - T1-v1
+          - T2-v1
+          - T3-v1
+          - T4-v1
           type: string
       required:
       - outfit_id
@@ -6179,3 +6238,139 @@ components:
       - rules_version
       - snapshot_at
       type: object
+    SceneGeometry:
+      properties:
+        x:
+          type: number
+          maximum: 1.0
+          minimum: 0.0
+          title: X
+        y:
+          type: number
+          maximum: 1.0
+          minimum: 0.0
+          title: Y
+        width:
+          type: number
+          maximum: 1.0
+          exclusiveMinimum: 0.0
+          title: Width
+        height:
+          type: number
+          maximum: 1.0
+          exclusiveMinimum: 0.0
+          title: Height
+        z_index:
+          type: integer
+          maximum: 100.0
+          minimum: 0.0
+          title: Z Index
+      additionalProperties: false
+      type: object
+      required:
+      - x
+      - y
+      - width
+      - height
+      - z_index
+      title: SceneGeometry
+    SceneItem:
+      properties:
+        garment_id:
+          type: string
+          format: uuid
+          title: Garment Id
+        location_id:
+          type: string
+          format: uuid
+          title: Location Id
+        name:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Name
+        version:
+          type: integer
+          title: Version
+        image:
+          $ref: '#/components/schemas/Asset'
+        geometry:
+          $ref: '#/components/schemas/SceneGeometry'
+        anchor_id:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Anchor Id
+      additionalProperties: false
+      type: object
+      required:
+      - garment_id
+      - location_id
+      - name
+      - version
+      - image
+      - geometry
+      - anchor_id
+      title: SceneItem
+    SceneBlocked:
+      properties:
+        garment_id:
+          type: string
+          format: uuid
+          title: Garment Id
+        reason:
+          type: string
+          enum:
+          - CLEAN_PLATE_UNAPPROVED
+          - LOCATION_UNKNOWN_OR_STALE
+          - SLOT_UNAPPROVED
+          - SLOT_OCCUPANCY_CONFLICT
+          - IMAGE_UNAVAILABLE
+          title: Reason
+      additionalProperties: false
+      type: object
+      required:
+      - garment_id
+      - reason
+      title: SceneBlocked
+    WardrobeScene:
+      properties:
+        device_id:
+          type: string
+          format: uuid
+          title: Device Id
+        frame:
+          anyOf:
+          - $ref: '#/components/schemas/Asset'
+          - type: 'null'
+        items:
+          items:
+            $ref: '#/components/schemas/SceneItem'
+          type: array
+          title: Items
+        blocked:
+          items:
+            $ref: '#/components/schemas/SceneBlocked'
+          type: array
+          title: Blocked
+        quality_status:
+          type: string
+          enum:
+          - approved
+          - BLOCKED_CLEAN_PLATE
+          title: Quality Status
+        total:
+          type: integer
+          maximum: 100.0
+          minimum: 0.0
+          title: Total
+      additionalProperties: false
+      type: object
+      required:
+      - device_id
+      - frame
+      - items
+      - blocked
+      - quality_status
+      - total
+      title: WardrobeScene

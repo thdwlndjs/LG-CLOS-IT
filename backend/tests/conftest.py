@@ -1,3 +1,5 @@
+import os
+
 import pytest
 
 from app.core.config import Settings
@@ -11,6 +13,7 @@ def settings_values():
         celery_result_backend="redis://localhost:6379/1", storage_endpoint="http://localhost:9000",
         storage_access_key="unit-access-key", storage_secret_key="unit-secret-key",
         jwt_secret="unit-test-only-secret-32-characters-minimum",
+        card_renderer_url=os.environ.get("TEST_CARD_RENDERER_URL", "http://renderer:3000"),
     )
 
 

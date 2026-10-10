@@ -18,6 +18,7 @@ from app.core.rate_limit import rate_guard
 from app.core.security import current_actor, issue_token
 from app.infrastructure.db.sprint1_repository import Sprint1Repository
 from app.schemas.errors import ErrorEnvelope
+from app.schemas.handoff import WardrobeScene
 
 router = APIRouter(prefix="/api/v1/integration", dependencies=[Depends(rate_guard)],
                    tags=["Integration"], responses={422: {"model": ErrorEnvelope}})
@@ -127,6 +128,21 @@ async def devices(request: Request, actor: Actor):
         ), "access_station_id": actor.station_id}
 
 
+@router.get("/vton-capabilities")
+async def vton_capabilities(actor: Actor):
+    # Public vendor documentation is capability evidence, not a live-call result.
+    return {
+        "mock": {"implemented": True, "owned": True, "liked": True},
+        "decart": {
+            "model": "lucy-vton-3.6", "documented_realtime_video": True,
+            "documented_batch_video": True, "verified_static_multi_garment_image": False,
+            "live_verified": False, "server_live_enabled": False,
+            "reason": "PAID_VERIFICATION_AND_VIDEO_RESULT_CONTRACT_REQUIRED",
+            "source": "https://docs.platform.decart.ai/models/realtime/virtual-try-on",
+        },
+    }
+
+
 async def accessible(repo, actor, device_id):
     row = await repo.one(
         "SELECT device_id FROM wardrobe.device_member "
@@ -149,6 +165,15 @@ async def locations(request: Request, actor: Actor, device_id: UUID):
             "WHERE d.id=:device ORDER BY l.id", device=device_id,
         )
         return dict(items=[dict(row) for row in rows])
+
+
+@router.get("/devices/{device_id}/scene", response_model=WardrobeScene)
+async def wardrobe_scene(request: Request, actor: Actor, device_id: UUID):
+    from app.application.wardrobe_scene import scene
+    async with request.app.state.resources.database.sessions.begin() as session:
+        repo = Sprint1Repository(session)
+        await accessible(repo, actor, device_id)
+        return await scene(request, repo, actor, device_id)
 
 
 @router.post("/led-commands", status_code=201)

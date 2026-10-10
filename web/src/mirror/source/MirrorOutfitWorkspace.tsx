@@ -240,10 +240,7 @@ export function MirrorOutfitWorkspace({
             ))
         ? "shopping"
         : "unknown";
-  const styles = externals.filter(
-      (item) =>
-        sourceKind(item) === "shopping",
-    ),
+  const styles = externals.filter((item) => sourceKind(item) === "shopping"),
     styleSelected = externals.find((item) => item.id === ui.styleItemId);
   const looks = app.cardOutfits();
   const selectSlot = (next: Slot) =>
@@ -452,7 +449,7 @@ export function MirrorOutfitWorkspace({
                               <button
                                 type="button"
                                 data-outfit-id={look.id}
-                                aria-label={`${look.name} 미러로 입어보기`}
+                                aria-label={`${look.name} AI 입어보기`}
                                 title={look.name}
                                 onClick={() => open(look)}
                               >
@@ -466,7 +463,7 @@ export function MirrorOutfitWorkspace({
                                   {look.name}
                                 </span>
                                 <small className="mow-card-action">
-                                  미러로 입어보기
+                                  AI 입어보기
                                 </small>
                               </button>
                               {app.connection.kind === "supabase" &&
@@ -533,12 +530,16 @@ export function MirrorOutfitWorkspace({
             ) : (
               <>
                 <div className="mow-style-heading">
-                  <span>{ui.libraryFilter === "owned" ? "내 옷장 의류" : "쇼핑 구매 후보"}</span>
+                  <span>
+                    {ui.libraryFilter === "owned"
+                      ? "내 옷장 의류"
+                      : "쇼핑 구매 후보"}
+                  </span>
                   <button type="button" onClick={() => setStyleUpload(true)}>
                     사진 참고
                   </button>
                 </div>
-                {(
+                {
                   <nav className="mow-small-tabs" aria-label="스타일 출처">
                     {(
                       [
@@ -551,14 +552,18 @@ export function MirrorOutfitWorkspace({
                         key={value}
                         aria-pressed={ui.libraryFilter === value}
                         onClick={() =>
-                          patch({ libraryFilter: value, stylePage: 0, styleItemId: null })
+                          patch({
+                            libraryFilter: value,
+                            stylePage: 0,
+                            styleItemId: null,
+                          })
                         }
                       >
                         {label}
                       </button>
                     ))}
                   </nav>
-                )}
+                }
                 {ui.libraryFilter === "owned" ? (
                   <MirrorGarmentGrid
                     garments={app.garments()}
@@ -572,7 +577,9 @@ export function MirrorOutfitWorkspace({
                         patch({
                           selectedSlot: garment.category,
                           source: "owned",
-                          summaryPage: Math.floor(OUTFIT_SLOT_KEYS.indexOf(garment.category) / 4),
+                          summaryPage: Math.floor(
+                            OUTFIT_SLOT_KEYS.indexOf(garment.category) / 4,
+                          ),
                           helpOpen: false,
                         });
                         setView("builder");
@@ -912,7 +919,7 @@ export function MirrorOutfitWorkspace({
                   disabled={!completeOutfit(draft)}
                   onClick={onRequestFitting}
                 >
-                  미러로 비교
+                  AI 입어보기
                 </button>
                 <button
                   type="button"

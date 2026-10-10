@@ -116,7 +116,7 @@ async def execute_card(settings, resources, row, renderer):
                 m=actor.member_id,
                 k=key,
                 mime=mime,
-                p=canonical(dict(job_id=str(row["id"]), template_version="minimal-v1")),
+                p=canonical(dict(job_id=str(row["id"]), template_version=card["template_id"])),
                 expiry=utc_now() + timedelta(minutes=15),
             )
         images = []
@@ -146,7 +146,7 @@ async def execute_card(settings, resources, row, renderer):
                 ).decode("ascii")
             images.append(dict(slot=item.slot, image=encoded))
         payload = dict(
-            template="minimal-v1",
+            template=card["template_id"],
             format=row["output_format"],
             title=data.title,
             style_tag=data.style_tag,
@@ -201,7 +201,15 @@ async def execute_card(settings, resources, row, renderer):
                 expiry=utc_now() + timedelta(days=30),
                 p=canonical(
                     dict(
-                        checksum_sha256=hashlib.sha256(result).hexdigest(), width=1080, height=1350
+                        checksum_sha256=hashlib.sha256(result).hexdigest(),
+                        width=1080,
+                        height=1350,
+                        template_version=card["template_id"],
+                        visual_quality=(
+                            "legacy"
+                            if card["template_id"] == "minimal-v1"
+                            else "manual-review-required"
+                        ),
                     )
                 ),
             )

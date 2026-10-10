@@ -1,5 +1,46 @@
 import type { DemoEvent, Garment, Outfit, OutfitItems } from "./core/types";
 
+/** Up to three distinct, registered-item compositions; no invented items or copies. */
+export function homeDemoChoices(
+  garments: readonly Garment[],
+  owner: string,
+  date: string,
+) {
+  const result: { outfit: Outfit; reasons: string[] }[] = [];
+  const seen = new Set<string>();
+  for (
+    let offset = 0;
+    offset < garments.length && result.length < 3;
+    offset++
+  ) {
+    const rotated = [...garments.slice(offset), ...garments.slice(0, offset)];
+    // Try different tops/bottoms while preserving deterministic Mock provenance.
+    const top = rotated.find((g) => g.category === "top" && g.asset?.url);
+    const bottom = rotated.find((g) => g.category === "bottom" && g.asset?.url);
+    const subset = rotated.filter(
+      (g) =>
+        (g.category !== "top" || g.id === top?.id) &&
+        (g.category !== "bottom" || g.id === bottom?.id),
+    );
+    const candidate = winterHomeScenario(subset, owner, date);
+    if (!candidate.outfit) continue;
+    const key = Object.entries(candidate.outfit.items)
+      .sort()
+      .map(([slot, id]) => `${slot}:${id}`)
+      .join("|");
+    if (seen.has(key)) continue;
+    seen.add(key);
+    result.push({
+      outfit: {
+        ...candidate.outfit,
+        id: `${candidate.outfit.id}:${result.length}`,
+      },
+      reasons: candidate.reasons,
+    });
+  }
+  return result;
+}
+
 /** Display-only scenario. Never insert these counts or measurements into app/DB state. */
 export function winterHomeScenario(
   garments: readonly Garment[],

@@ -142,3 +142,16 @@ def test_missing_capacity_and_unknown_space_diagnosed():
     locations[1]["capacity_units"] = 5
     locations[1]["attributes"] = {"enabled": False}
     assert execute([garment], locations, body)[0]["proposed_items"] == []
+
+
+@pytest.mark.parametrize("role", ["trench", "denim_jacket", "cardigan", "long_sleeve_shirt"])
+def test_transitional_layers_stay_accessible_during_winter_change(role):
+    garment, locations, body = fixture()
+    body.season = "WINTER"
+    garment["attributes"] = {"seasonal_role": role}
+    garment["season_tags"] = ["SUMMER"]
+    assert execute([garment], locations, body)[0]["proposed_items"] == []
+    garment["location_id"] = DESTINATION
+    result, _ = execute([garment], locations, body, occupancy={SOURCE: 0, DESTINATION: 1})
+    assert result["proposed_items"][0]["destination_location_id"] == str(SOURCE)
+    assert "TRANSITIONAL_LAYER_KEEP_ACCESSIBLE" in result["proposed_items"][0]["reasons"]

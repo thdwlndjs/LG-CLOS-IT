@@ -102,25 +102,37 @@ async def process_storage(settings, resources, planner=plan):
 
 
 async def execute_storage(resources, row, planner):
+    from dataclasses import replace
+
+    from app.application.sprint6 import storage_device_scope
+
     body = StorageOptimizeRequest(**row["request_payload"]["input"])
     now = utc_now()
     actor = ActorContext(
-        row["household_id"], row["member_id"], "MEMBER", uuid4(), row["correlation_id"],
+        row["household_id"],
+        row["member_id"],
+        "MEMBER",
+        uuid4(),
+        row["correlation_id"],
         personal_account=row["request_payload"].get("personal_account", False),
     )
     async with resources.database.sessions.begin() as session:
         repo = Sprint1Repository(session)
         await repo.lock("storage-household:" + str(actor.household_id))
         member = await repo.one(
-            "SELECT id FROM wardrobe.member WHERE id=:id AND household_id=:h",
+            "SELECT id,role FROM wardrobe.member WHERE id=:id AND household_id=:h",
             id=actor.member_id,
             h=actor.household_id,
         )
         if not member:
             raise ApiError(403, "FORBIDDEN", "Analysis member unavailable")
+        actor = replace(actor, role=member["role"])
         garments, locations, occupancy, environments = await load_storage(
-            repo, actor, body.garment_ids, now,
-            read_device=body.dry_run and actor.personal_account,
+            repo,
+            actor,
+            body.garment_ids,
+            now,
+            read_device=storage_device_scope(actor, body.dry_run),
         )
         wear = await wear_counts(repo, actor, now, body.analysis_window_days)
     output = planner(garments, locations, occupancy, environments, wear, body, now)
@@ -140,8 +152,11 @@ async def execute_storage(resources, row, planner):
             return
         if result["proposed_items"]:
             current, spaces, usage, env = await load_storage(
-                repo, actor, [UUID(m["garment_id"]) for m in result["proposed_items"]], utc_now(),
-                read_device=body.dry_run and actor.personal_account,
+                repo,
+                actor,
+                [UUID(m["garment_id"]) for m in result["proposed_items"]],
+                utc_now(),
+                read_device=storage_device_scope(actor, body.dry_run),
             )
             current = {str(g["id"]): g for g in current}
             spaces = {str(location["id"]): location for location in spaces}
@@ -240,8 +255,13 @@ async def execute_storage(resources, row, planner):
                 " WHERE id=:id"
             ),
             id=row["id"],
-            p=canonical(dict(input=body.model_dump(mode="json"), result=result,
-                             personal_account=actor.personal_account)),
+            p=canonical(
+                dict(
+                    input=body.model_dump(mode="json"),
+                    result=result,
+                    personal_account=actor.personal_account,
+                )
+            ),
             ref=result["action_ids"][0] if result["action_ids"] else None,
         )
         await worker_event(

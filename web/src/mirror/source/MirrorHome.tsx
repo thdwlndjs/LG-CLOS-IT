@@ -6,12 +6,17 @@ import { currentMember } from "./integrations/backendClient";
 import { useToday } from "./ScenarioControls";
 import { type MirrorWeatherContext } from "./mirrorPanelData";
 import { MirrorOutfitThumbnail } from "./MirrorPanelThumbnail";
-import { confirmedHomeUsage, winterHomeScenario } from "./homeRecommendations";
+import {
+  confirmedHomeUsage,
+  winterHomeScenario,
+  homeDemoChoices,
+} from "./homeRecommendations";
 import {
   homeServerStorageAdvice,
   todayServerRecommendation,
 } from "./homeServerActions";
 import "./mirror-panels.css";
+import { StorageMovePanel } from "./StorageMovePanel";
 
 export function MirrorHome({
   app,
@@ -52,9 +57,7 @@ export function MirrorHome({
   const demo = winterHomeScenario(garments, owner, today.date),
     usage = confirmedHomeUsage(state.events, owner, garments);
   const choices = scenario
-    ? demo.outfit
-      ? [{ outfit: demo.outfit, reasons: demo.reasons }]
-      : []
+    ? homeDemoChoices(garments, owner, today.date)
     : candidates;
   const run = async (kind: "outfit" | "storage") => {
     if (sending.current) return;
@@ -122,6 +125,9 @@ export function MirrorHome({
         </div>
       </div>
       <div className="mx-home-recommendations" aria-label="오늘의 추천과 관리">
+        {!scenario && app.connection.kind === "supabase" && (
+          <StorageMovePanel key={owner} app={app} />
+        )}
         <div
           className="mx-home-mode"
           role="group"
@@ -141,32 +147,34 @@ export function MirrorHome({
         </small>
         <section className="mx-home-advice" aria-label="오늘의 코디 추천">
           <h2>오늘의 코디 추천</h2>
-          {choices.map(({ outfit, reasons }) => (
-            <div key={outfit.id}>
-              <MirrorOutfitThumbnail app={app} outfit={outfit} />
-              <strong>{outfit.name}</strong>
-              {reasons.map((reason, index) => (
-                <p key={index}>{reason}</p>
-              ))}
-              <button
-                className="mx-home-open"
-                onClick={() => {
-                  try {
-                    outfitAssetRefs(
-                      outfit,
-                      app.garments(),
-                      app.connection.kind === "supabase",
-                    );
-                    onOpenOutfit(outfit);
-                  } catch (error) {
-                    setMessage((error as Error).message);
-                  }
-                }}
-              >
-                추천 코디 비교하기
-              </button>
-            </div>
-          ))}
+          <div className="mx-home-carousel" aria-label="추천 코디 캐러셀">
+            {choices.map(({ outfit, reasons }) => (
+              <div key={outfit.id}>
+                <MirrorOutfitThumbnail app={app} outfit={outfit} />
+                <strong>{outfit.name}</strong>
+                {reasons.map((reason, index) => (
+                  <p key={index}>{reason}</p>
+                ))}
+                <button
+                  className="mx-home-open"
+                  onClick={() => {
+                    try {
+                      outfitAssetRefs(
+                        outfit,
+                        app.garments(),
+                        app.connection.kind === "supabase",
+                      );
+                      onOpenOutfit(outfit);
+                    } catch (error) {
+                      setMessage((error as Error).message);
+                    }
+                  }}
+                >
+                  AI 입어보기
+                </button>
+              </div>
+            ))}
+          </div>
           {!choices.length && (
             <p>
               {scenario

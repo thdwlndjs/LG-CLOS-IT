@@ -20,7 +20,9 @@ def test_device_backfill_preserves_every_existing_garment_column():
     if not dsn:
         pytest.skip("Dedicated real PostgreSQL required")
     url = make_url(dsn)
-    assert url.database == "wardrobe_test" and url.host == "postgres-test"
+    assert url.database == "wardrobe_test" and (
+        url.host == "postgres-test" or (url.host == "127.0.0.1" and url.port == 56433)
+    )
     name = "wardrobe_test_" + uuid4().hex
 
     async def run():

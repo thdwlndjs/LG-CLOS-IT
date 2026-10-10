@@ -111,7 +111,10 @@ class Sprint4(Sprint3):
                     )
                     tags.update(garment["attributes"].get("style_tags") or [])
                 data = CardTemplateData(
-                    title=outfit.title, style_tag=", ".join(sorted(tags)), items=items
+                    title=outfit.title,
+                    style_tag=", ".join(sorted(tags)),
+                    items=items,
+                    template_version=body.template_id,
                 )
                 if body.context_snapshot_id:
                     context = await self.require_context(repo, actor, body.context_snapshot_id)
@@ -202,15 +205,17 @@ class Sprint4(Sprint3):
                     id=identity,
                     h=actor.household_id,
                     m=actor.member_id,
-                    p=canonical(dict(body.model_dump(mode="json"),
-                                     personal_account=actor.personal_account)),
+                    p=canonical(
+                        dict(body.model_dump(mode="json"), personal_account=actor.personal_account)
+                    ),
                     c=actor.correlation_id,
                 )
                 await repo.execute(
                     "INSERT INTO "
                     "wardrobe.card_render_job(job_id,card_id,template_version,output_format)"
-                    " VALUES (:j,:c,'minimal-v1',:f)",
+                    " VALUES (:j,:c,:template,:f)",
                     j=identity,
+                    template=card["template_id"],
                     c=body.card_id,
                     f=body.output_format,
                 )
@@ -312,10 +317,17 @@ class Sprint4(Sprint3):
                 "AS enabled FROM wardrobe.job j JOIN wardrobe.card_render_job r "
                 "ON r.job_id=j.id WHERE r.card_id=:card AND j.status='SUCCEEDED' "
                 "AND j.result_ref=CAST(:asset AS text) ORDER BY j.created_at DESC LIMIT 1",
-                card=row["id"], asset=str(row["image_asset_id"]),
+                card=row["id"],
+                asset=str(row["image_asset_id"]),
             )
-            actor = ActorContext(row["household_id"], row["member_id"], "MEMBER", uuid4(), "share",
-                                 personal_account=bool(personal and personal["enabled"]))
+            actor = ActorContext(
+                row["household_id"],
+                row["member_id"],
+                "MEMBER",
+                uuid4(),
+                "share",
+                personal_account=bool(personal and personal["enabled"]),
+            )
             try:
                 await card_inputs(repo, actor, CardTemplateData(**row["template_data"]["data"]))
                 image = await ready_asset(repo, actor, row["image_asset_id"], "CARD")

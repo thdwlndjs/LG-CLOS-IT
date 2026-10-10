@@ -21,13 +21,13 @@ class CardTemplateData(DTO):
     date: Date | None = None
     weather_label: str | None = None
     items: list[CardItem]
-    template_version: Literal["minimal-v1"] = "minimal-v1"
+    template_version: Literal["minimal-v1", "T1-v1", "T2-v1", "T3-v1", "T4-v1"] = "minimal-v1"
 
 
 class CardPrepareRequest(DTO):
     outfit_id: UUID
     context_snapshot_id: UUID | None = None
-    template_id: Literal["minimal-v1"]
+    template_id: Literal["minimal-v1", "T1-v1", "T2-v1", "T3-v1", "T4-v1"]
 
 
 class CardDraft(DTO):

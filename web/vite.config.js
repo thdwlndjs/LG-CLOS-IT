@@ -2,14 +2,18 @@ import { defineConfig } from "vite";
 
 const api = process.env.WEB_API_TARGET || "http://127.0.0.1:8000";
 const port = Number(process.env.WEB_PORT || 5173);
+const storage = process.env.WEB_STORAGE_TARGET || "http://localhost:9000";
+if (!/^http:\/\/(127\.0\.0\.1|localhost):\d+$/.test(storage))
+  throw new Error("Loopback storage required");
 if (!/^http:\/\/(127\.0\.0\.1|localhost):\d+$/.test(api))
   throw new Error("Loopback API required");
 const proxy = {
   "/api": { target: api, changeOrigin: true },
   "/health": { target: api, changeOrigin: true },
   "/local-storage/wardrobe-assets/": {
-    target: "http://localhost:9000",
-    changeOrigin: true,
+    target: storage,
+    changeOrigin: false,
+    headers: { host: "localhost:9000" },
     rewrite: (path) => path.replace("/local-storage", ""),
   },
 };

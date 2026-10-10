@@ -6,12 +6,16 @@ import {
   type ReactNode,
 } from "react";
 import geometry from "./data/mirror-geometry.json";
+import type { Garment } from "./core/types";
+import { WardrobeSceneLayers } from "./WardrobeSceneLayers";
 export function PhotoWardrobeStage({
   anchorIds,
   children,
+  garments = [],
 }: {
   anchorIds: string[];
   children: ReactNode;
+  garments?: readonly Garment[];
 }) {
   const viewport = useRef<HTMLDivElement>(null);
   const [size, setSize] = useState({ width: 1672, height: 941, mobile: false });
@@ -56,6 +60,7 @@ export function PhotoWardrobeStage({
     }
   };
   const active = new Set(anchorIds);
+  const dynamic = import.meta.env.VITE_HANDOFF_SCENE === "on";
   return (
     <div className="photo-wardrobe" data-display-mode={size.mobile ? "mobile" : "desktop"} ref={viewport}>
       <button
@@ -75,12 +80,12 @@ export function PhotoWardrobeStage({
         style={{ width: size.width, height: size.height }}
         data-scene-version={geometry.source.rgb_pixel_sha256}
       >
-        <img
+        {dynamic ? <WardrobeSceneLayers garments={garments}/> : <img
           className="photo-background"
           src="/assets/mirror-final/wardrobe-base-led-off.png"
           alt="열린 수납부와 중앙 미러가 있는 기준 옷장"
           draggable={false}
-        />
+        />}
         <div className="photo-led-layer" aria-hidden="true">
           {geometry.led_anchors.map((anchor) => {
             const [x, y] = anchor.source_xy_px;
@@ -99,7 +104,7 @@ export function PhotoWardrobeStage({
                   height: `${((radius * 2) / 941) * 100}%`,
                 }}
               >
-                <img
+                {!dynamic && <img
                   draggable={false}
                   src="/assets/mirror-final/wardrobe-reference.png"
                   style={{
@@ -109,7 +114,7 @@ export function PhotoWardrobeStage({
                     top: `${(-(y - radius) / (radius * 2)) * 100}%`,
                   }}
                   alt=""
-                />
+                />}
               </div>
             );
           })}

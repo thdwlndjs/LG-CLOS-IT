@@ -37,6 +37,12 @@ def test_queued_card_survives_worker_restart_and_renders(real_dsn, settings_valu
                     await asyncio.sleep(0.5)
                 assert job["status"] == "SUCCEEDED", job
                 assert job["result_asset"]["read_url"]
+                # A job may finish before the first full cycle (including retention).
+                # Readiness requires completion of the entire healthy cycle.
+                for _ in range(60):
+                    if restarted.last_success is not None:
+                        break
+                    await asyncio.sleep(0.5)
                 await restarted.probe()
             finally:
                 await restarted.close()

@@ -537,7 +537,13 @@ HIST-001~002, CARE-001~003은 [Sprint 5 구현 기준](SPRINT_5_CONTRACT_DECISIO
 
 ## Sprint 6 계약 보완 (2026-10-08)
 
-STO-002~004는 [Sprint 6 구현 기준](SPRINT_6_CONTRACT_DECISIONS.md)을 따른다. API 1.6은 기존 보관 경로와 DB의 item 상태를 일치시키고 분석 기간·계절·dry run·판단 근거·Job의 보관 결과·version·실제 확인 근거 및 CANCEL을 보완한다. 기존 reasoning JSONB에 판단 입력과 item 스냅샷을 보존한다. 승인만으로 위치를 갱신하지 않으며 부분 확인·최신 제약·예약 점유와 기존 의류 변경의 동시성을 검증한다. HLD/DDL/Seed 및 기존 migration은 변경하지 않는다.
+STO-002~004는 [Sprint 6 구현 기준](SPRINT_6_CONTRACT_DECISIONS.md)을 따른다. API 1.6은 기존 보관 경로와 DB의 item 상태를 일치시키고 분석 기간·계절·dry run·판단 근거·Job의 보관 결과·version·실제 확인 근거 및 CANCEL을 보완한다. 기존 reasoning JSONB에 판단 입력과 item 스냅샷을 보존한다. 승인만으로 위치를 갱신하지 않으며 부분 확인·최신 제약과 기존 의류 변경의 동시성을 검증한다. 최신 G1 계약에서는 승인 시 용량을 예약하지 않고 실제 이동 완료 시 가구 잠금 안에서 실점유와 배치 전체 용량을 재검증한다. HLD/DDL 및 기존 migration은 변경하지 않는다.
+
+### 2026-10-11 G1 실행 계약
+
+현재 승인 기준은 [P3~P10 실행 지시](handoff/SMART_WARDROBE_CODEX_HANDOFF_2026-10-11/execution/04_P3_P10_AUTONOMOUS_EXCUTION.md)다. 보유 의류와 LIKED 모두 VTON 입력을 지원하되 LIKED를 보유 의류·착용 이력·보유 코디카드로 자동 변환하지 않는다. 개인 계정의 가구 OWNER는 접근 가능한 기기의 가족 의류를 보관 이동할 수 있으며 소유자는 유지한다. 일반 구성원의 쓰기 범위는 기존대로 유지한다.
+
+옷장 scene API는 승인된 clean plate, 명시적으로 승인된 슬롯 좌표, 신뢰 가능한 DB 위치와 이미지가 있을 때만 의류 레이어를 반환한다. 불확실한 항목은 차단 이유로 반환한다. 카드 `T1-v1`~`T4-v1`은 렌더링 연결용 검토 대기 상태이며 원본 픽셀 복원 완료를 의미하지 않는다. 실제 상품 에셋과 Gate A/B 승인 전까지 최종 시연 품질의 인수조건은 미충족이다. 구현 범위와 검증 한계는 [P10 인계 보고](handoff/SMART_WARDROBE_CODEX_HANDOFF_2026-10-11/reports/P10_FINAL_HANDOFF.md)를 따른다.
 
 
 ## Sprint 7 계약 보완 (2026-10-09)
