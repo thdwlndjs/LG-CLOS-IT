@@ -1,3 +1,4 @@
+import { useCachedImage } from "./useCachedImage";
 import { useState } from "react";
 import type { Asset, Garment } from "./core/types";
 import { garmentDisplayPresentation } from "./lifeData/visualPresentation";
@@ -28,6 +29,8 @@ export function MirrorPhoto({
   const display = garment ? garmentDisplayPresentation(garment) : null,
     asset = display ? display.asset : originalAsset,
     example = display?.example ?? explicitExample;
+  const cached = useCachedImage(asset, loadEnabled);
+  const imageUrl = cached.url;
   const source = asset?.url
       ? `${asset.id}:${asset.version}:${asset.url}:${display?.revision ?? presentationRevision}`
       : "",
@@ -35,9 +38,9 @@ export function MirrorPhoto({
     [failed, setFailed] = useState("");
   const state = !source
     ? "missing"
-    : failed === source
+    : cached.failed || failed === source
       ? "error"
-      : loaded === source
+      : loaded === source && imageUrl
         ? "ready"
         : "loading";
   const status =
@@ -67,10 +70,10 @@ export function MirrorPhoto({
       data-photo-state={state}
       data-example-image={example || undefined}
     >
-      {loadEnabled && source && state !== "error" && (
+      {loadEnabled && source && imageUrl && state !== "error" && (
         <img
           key={source}
-          src={asset!.url!}
+          src={imageUrl}
           alt=""
           aria-hidden="true"
           draggable={false}

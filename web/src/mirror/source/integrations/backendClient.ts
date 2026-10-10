@@ -1,3 +1,8 @@
+import {
+  bindGarmentImage,
+  clearImageCache,
+  reconcileGarmentImages,
+} from "../imageBlobCache.js";
 import { createClient, assetUrl, upload, listAll } from "../../../api.js";
 import { emptyUI } from "../core/seed";
 import type {
@@ -59,6 +64,7 @@ export const rawApi = () => {
       member = null;
       deviceId = "";
       sessionGeneration++;
+      clearImageCache();
       for (const fn of listeners) fn();
     });
   }
@@ -80,6 +86,26 @@ export function bindStation(id: string, credential: string) {
   stationCredential = credential;
 }
 export function mapGarment(g: any): Garment {
+  const imageGeneration = sessionGeneration;
+  bindGarmentImage(
+    g.id,
+    g.image ? { id: g.image.asset_id } : null,
+    async () => {
+      const generation = imageGeneration;
+      if (generation !== sessionGeneration) throw new Error("Session changed");
+      const fresh: any = await api().get(`/garments/${g.id}`);
+      if (
+        generation !== sessionGeneration ||
+        fresh.image?.asset_id !== g.image?.asset_id
+      )
+        throw new Error("Image identity or session changed");
+      return {
+        id: fresh.image.asset_id,
+        url: assetUrl(fresh.image.read_url),
+        expiresAt: fresh.image.expires_at,
+      };
+    },
+  );
   const knownLocation =
     !g.stale && g.location_confidence != null && g.location_confidence >= 0.9;
   return {
@@ -100,6 +126,7 @@ export function mapGarment(g: any): Garment {
           version: 1,
           source: "storage",
           url: assetUrl(g.image.read_url),
+          expiresAt: g.image.expires_at,
         }
       : null,
     provenance: {
@@ -220,6 +247,7 @@ export class HttpRemoteBackend implements RemoteBackend {
     token = r.access_token;
     member = r.member;
     sessionGeneration++;
+    clearImageCache();
     drafts.clear();
     receiptKeys.clear();
     savedResults.clear();
@@ -234,6 +262,7 @@ export class HttpRemoteBackend implements RemoteBackend {
       token = "";
       member = null;
       sessionGeneration++;
+      clearImageCache();
       deviceId = "";
       drafts.clear();
       receiptKeys.clear();
@@ -254,6 +283,8 @@ export class HttpRemoteBackend implements RemoteBackend {
     const devices: any = await api().get("/integration/devices");
     deviceId = devices.items[0]?.id || "";
     const raw = await listAll(api(), "/garments", {});
+    if (generation !== sessionGeneration) throw new Error("Session changed");
+    reconcileGarmentImages(new Set(raw.map((g: any) => g.id)));
     for (const g of raw) garmentVersions.set(g.id, g.version);
     const garments = raw
       .filter((g: any) => g.device_id === deviceId)

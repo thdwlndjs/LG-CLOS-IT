@@ -9,6 +9,7 @@ export type Asset = {
   version: number;
   source: "packaged" | "upload" | "storage";
   url: string | null;
+  expiresAt?: string;
   needsReselection?: boolean;
 };
 export type Provenance = "demo" | "user" | "unconfirmed";

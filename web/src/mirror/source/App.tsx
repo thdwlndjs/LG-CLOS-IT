@@ -1,3 +1,4 @@
+import { useCachedImage } from "./useCachedImage";
 import { useEffect, useRef, useState, useSyncExternalStore } from "react";
 import {
   createDemoApp,
@@ -113,9 +114,14 @@ function Photo({
   className?: string;
 }) {
   const [failed, setFailed] = useState(false);
-  const url = asset && (blobUrls.get(asset.id) || asset.url);
+  const cached = useCachedImage(asset);
+  const url =
+    asset &&
+    (asset.source === "storage"
+      ? cached.url
+      : blobUrls.get(asset.id) || asset.url);
   useEffect(() => setFailed(false), [url]);
-  return url && !failed ? (
+  return url && !failed && !cached.failed ? (
     <img
       className={`garment-photo ${className}`}
       src={url}
