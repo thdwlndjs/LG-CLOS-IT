@@ -12,6 +12,7 @@ const metrics = () => page.evaluate(() => {
     mode: document.querySelector('.photo-wardrobe').dataset.displayMode,
     background: getComputedStyle(document.querySelector('.photo-background')).display,
     led: getComputedStyle(document.querySelector('.photo-led-layer')).display,
+    mirrorBackground: getComputedStyle(document.querySelector('.photo-mirror')).backgroundImage,
     horizontal: document.documentElement.scrollWidth > innerWidth };
 });
 const menu = name => page.getByRole('button', {name, exact:true}).click();
@@ -23,7 +24,7 @@ try {
     await page.waitForTimeout(150);
     const m = await metrics();
     assert.equal(m.horizontal,false);
-    if(width<768){m.mirror.forEach((v,i)=>assert.ok(Math.abs(v-[0,0,width,height][i])<1));assert.equal(m.background,'none');assert.equal(m.led,'none');}
+    if(width<768){m.mirror.forEach((v,i)=>assert.ok(Math.abs(v-[0,0,width,height][i])<1));assert.equal(m.background,'none');assert.equal(m.led,'none');assert.ok(m.mirrorBackground.includes('wardrobe-base-led-off.png'));}
     else {const scale=Math.min(width/1672,height/941);const expected=[(width-1672*scale)/2+714*scale,(height-941*scale)/2+28*scale,248*scale,824*scale];m.mirror.forEach((v,i)=>assert.ok(Math.abs(v-expected[i])<1));assert.notEqual(m.background,'none');}
     checks.push(m);
   }

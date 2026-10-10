@@ -15,7 +15,15 @@
   }
   [data-display-mode="mobile"] .photo-background,
   [data-display-mode="mobile"] .photo-led-layer { display: none; }
-  [data-display-mode="mobile"] .photo-mirror { background: #d0cbc3; }
+  /* Map only source pixels x=714..962, y=28..852 into the mobile mirror.
+     Reuse the original resource; no wardrobe pixels or new image asset. */
+  [data-display-mode="mobile"] .photo-mirror {
+    background-color: #d0cbc3;
+    background-image: url("/assets/mirror-final/wardrobe-base-led-off.png");
+    background-repeat: no-repeat;
+    background-size: 674.1935484% 114.1990291%;
+    background-position: 50.1404494% 23.9316239%;
+  }
   [data-display-mode="mobile"] .mx-surface { inset: 0; }
   [data-display-mode="mobile"] .mx-header {
     left: var(--mobile-content-left); right: var(--mobile-right);
