@@ -7,7 +7,7 @@
 - 작업 기준: [SECOND_HANDOFF_PLAN.md](SECOND_HANDOFF_PLAN.md). 작업 시작 main과 2차 공유본 `docs/integration_sources/SmartCloset_Team_20261010_004919_72054c8/src/`를 비교했다.
 - 시작 시 main과 origin/main은 같았고 tracked 변경·추적된 .env가 없었다.
 - 안정 버전 체크포인트 `972ee33`을 main에 커밋·푸시한 뒤 dev를 생성했다. 현재 main과 origin/main은 이 체크포인트 그대로다.
-- 통합 코드 커밋: `dfd2833 feat: integrate second handoff UI with existing backend`. 본 진행 문서는 별도 docs 커밋이다. 두 커밋 모두 dev에만 남기며 원격에 올리지 않는다.
+- 통합 코드 커밋: `dfd2833 feat: integrate second handoff UI with existing backend`. 추천 홈 후속 커밋: `d824004 feat: add daily outfit and seasonal storage demo`. 진행 문서는 별도 docs 커밋으로 관리한다. 모든 후속 커밋은 dev에만 남기며 원격에 올리지 않는다.
 - 원본 공유본은 수정하지 않고 미추적 상태로 보존한다. 환경변수·비밀정보·test-results는 커밋에서 제외한다.
 - backend, DB Migration, `docs/contracts/`, 기존 설계 문서, infra, 배포 설정은 변경하지 않았다.
 
@@ -17,7 +17,7 @@
 
 | 영역 | 구분·결과 | 주요 파일 | 검증·제한 |
 |---|---|---|---|
-| 미러 IA·내비게이션 | 공유본 개선 반영 완료 | MirrorExperience, MirrorHome, PhotoWardrobeStage | 좌우 옷장·중앙 미러의 배경·좌표 유지, 전체 화면 및 화면 이동 연결 |
+| 미러 IA·내비게이션 | 공유본 개선 및 추천 홈 반영 완료 | MirrorExperience, MirrorHome, PhotoWardrobeStage, homeRecommendations, homeServerActions | 좌우 옷장·중앙 미러의 배경·좌표 유지, 오늘의 코디/계절 보관 추천·출처 전환 |
 | 코디 편집·비교 | 공유본 신규/개선 반영 완료 | MirrorOutfitWorkspace, MirrorCompare | 카드 탐색→편집→비교→빠른 상의 교체→편집 복귀, 서버 허용 DRESS 유지 |
 | 사진·소유자·카드 정보 | 공유본 개선 및 기존 계약 연결 완료 | core/app, core/outfitAssets, outfitCardPresentation | 로딩/누락/오류 구분, 같은 기기의 다른 소유자 의류 조회, 사진 ID/버전 변경 시 오래된 선택 저장 차단 |
 | 업로드·Mock 피팅 | 기존 API 연결 완료 | ServerMockFitting, BackendPanel, MirrorRegistration | 명시적 동의·인물 사진 업로드→MOCK 비동기 작업→결과 조회, 실제 Decart 호출 없음 |
@@ -27,6 +27,19 @@
 | 메인 전용 기능 | 보존 | IntegrationActions, integrations/backendClient | 로그인/기기, Mock PURCHASED·LIKED, 일괄 적재, 보관·회수 도구 유지. /legacy 유지 |
 
 동일 기능은 메인 API 어댑터를 유지했다. 공유본의 별도 서버/PGlite/Supabase Auth·자동 생활 데이터 설치/보정은 중복 또는 계약 충돌로 도입하지 않았다. 예시 표시 도우미는 실제 DB 사진·위치·이력을 대체하지 않는다. 공유본의 개발자 `/dev` 앱을 새 제품 진입점으로 추가하지 않았다.
+
+## 추천 홈 시연 요구사항
+
+재현은 아래 [실행한 검증](#실행한-검증)과 [로컬 실행과 사용자 QA](#로컬-실행과-사용자-qa)를 따른다. 모드 전환 버튼은 홈의 시간/인사 아래, 관리 추천·사용 이력은 중앙 스마트미러 내부 스크롤 영역에 있다. 실제 기록의 `내 옷 추천 받기`와 `실제 보관 추천 조회`가 각각 아래 추천/보관 API를 호출한다.
+
+- 홈의 저장 코디 재조회 안내를 오늘의 코디 추천·계절 보관 추천·사용 이력으로 바꿨다. 기존 저장 카드 라이브러리는 코디 메뉴에 유지한다.
+- 조회 시점 실제 로컬 DB: 활성 보유 의류 6벌, 퇴역 시드 3벌, 착용/관리/환경 측정 0건. 감사 로그 105건·코디 세션 이벤트 9건은 기술적 사용 로그이며 실제 착용으로 계산하지 않는다.
+- 기본 `겨울 전환 시연`은 오늘 16°C→다음 주 7°C, 옷장/첫 번째 방/두 번째 방의 온도·습도 및 최근 7일 사용 횟수를 표시한다. 이 값은 Mock으로 생성한 화면 전용 시나리오다. 실제 보유 사진·의류 ID를 사용할 때도 착용 가능 상태·보온성을 확정하지 않는다. 실제 event/environment/app state에는 가짜 기록을 주입하지 않는다.
+- 방 비교는 시연용 범위(습도 40~55%, 온도 25°C 이하)로 두 번째 방을 후보로 제시한다. 소재별 안전 보관 권장치나 실제 방 측정값이 아니다. 나시·반팔은 설명용 예시이며 실제 보유로 등록하지 않는다. 이동은 자동 실행하지 않는다.
+- `실제 기록`은 서버 이력을 표시하고, 버튼으로 기존 `/context-snapshots`(MOCK 날씨), `/outfit-recommendations`, `/storage-optimization-jobs`(dry_run=true)를 호출한다. 의류 상태·위치·이력이 미확인이라 추천할 수 없으면 그 상태를 안내한다. 호출 결과를 Mock 성공으로 대체하지 않는다.
+- 실제 모드를 기본으로 시작하려면 Vite 실행 전 `$env:VITE_HOME_DEMO_SCENARIO = 'off'`를 설정한다. 미설정 시 시연 모드이며 화면에서 언제든 전환할 수 있다. 공개 환경 반영 여부는 이후 승인·배포 단계에서 결정한다.
+- OpenAI API·유료 서비스 호출은 추가하지 않았다. 현재는 규칙과 고정된 Mock 시나리오로 추천 이유를 표시한다. LLM 설명, 실제 주간 예보/센서, 보온성 메타데이터 검증은 별도 통합 범위이며 구현됐다고 보고하지 않는다.
+- 검증: 타입/빌드, 단위·회귀 25/25, 격리 DB 브라우저 E2E 11/11. Mock 화면/코디 비교 및 실제 추천·보관 조회 후 보유 의류·착용·관리·카드 건수가 자동 증가하지 않음을 확인했다. 로컬 실제 사진도 확인했다. 관리 추천/사용 이력은 중앙 미러 안에서 스크롤해 본다.
 
 ## 계약 충돌·미반영 범위
 
@@ -41,12 +54,12 @@
 ## 실행한 검증
 
 - 타입 검사·production build 통과. 기존 500KB 초과 번들 경고는 남아 있다.
-- API·캘린더 회귀 16/16, 변경 상태/사진 참조/공유 의류/DRESS/시간 입력 테스트 5/5 통과.
-- 격리 실DB+브라우저 E2E 10/10 통과. readiness(DB/Redis/Storage/renderer), 로그인·공유 기기·사진·등록, 편집/비교, Mock VTON, 응답 유실 후 확정 재시도·LED 자동 소등·자동 착용 미생성, 카드 PNG 공유, 별도 착용 취소/재시도/복구, 관리 일정/완료/위치 저장, LIKED 조회의 보유 의류 미생성 및 매장 LED 403을 확인했다.
+- API·캘린더 회귀 16/16, 변경 상태/사진 참조/공유 의류/DRESS/시간 입력 5/5, 홈 Mock 격리/사진/이력 집계 4/4: 총 25/25 통과.
+- 격리 실DB+브라우저 E2E 11/11 통과. 홈 Mock 시나리오·실제 추천 API·보관 dry-run을 추가로 확인했으며, readiness(DB/Redis/Storage/renderer), 로그인·공유 기기·사진·등록, 편집/비교, Mock VTON, 응답 유실 후 확정 재시도·LED 자동 소등·자동 착용 미생성, 카드 PNG 공유, 별도 착용 취소/재시도/복구, 관리 일정/완료/위치 저장, LIKED 조회의 보유 의류 미생성 및 매장 LED 403을 확인했다.
 - 관리 근거가 없는 테스트 의류는 가이드를 생성하지 않는 상태를 확인했다. 근거 있는 가이드 전체 및 구매 일괄 등록은 이번 E2E에서 재실행하지 않았다.
 - 테스트 쓰기는 전용 임시 DB/API/worker에만 수행했고 종료 시 자원을 정리했다. 실제 로컬·클라우드 DB의 적재/착용/관리 기록은 수정하지 않았다. 실제 로컬 보유 의류 6벌의 사진은 읽기 전용 브라우저 확인을 했다.
 - 시작 main·원본 2차 UI와 통합 UI를 실제 브라우저에서 확인했다. 전체 해상도/모든 UI 상태의 시각 QA가 완료됐다는 의미는 아니다.
-- 증적(로컬, Git 제외): test-results/second-handoff-live-evidence.json, second-handoff-browser-evidence.json, second-handoff-browser.log, second-handoff-compare.png, second-integrated-wardrobe.png. 최종 E2E 완료: 2026-10-10 06:12 KST.
+- 증적(로컬, Git 제외): test-results/second-handoff-live-evidence.json, second-handoff-browser-evidence.json, second-handoff-browser.log, second-handoff-compare.png, second-integrated-wardrobe.png. 최종 E2E 완료: 2026-10-10 12:16 KST. 홈 증적: test-results/home-owned-demo.png, home-storage-demo.png, home-winter-demo.png.
 - Ruff(신규 Python 검증 스크립트), Git diff whitespace, 커밋 대상 비밀정보 검사 통과. sip/shower의 독립 문서 검토 후 서비스 준비·데모 로그인 조건·정확한 코드 커밋을 보완했다. ssotize 감사에서 이 문서와 작업 지시의 계약/승인 범위 정합성을 확인했으며 다른 문서는 통합·변경하지 않았다. 검증은 외부 API 응답·DB 읽기·생성된 PNG를 확인하며, Mock 이미지의 실제 피팅 품질이나 사용자 시각 QA를 대신하지 않는다.
 
 재현 명령(프로젝트 루트, 기존 .venv·web 의존성·Compose API 이미지/서비스 필요):
@@ -55,7 +68,7 @@
 docker compose --env-file .env -f infra/compose.yaml --profile test up -d api worker postgres-test
 Invoke-RestMethod http://127.0.0.1:8000/health/ready
 npm run build --prefix web
-node --test web/test/api.test.mjs web/test/calendar.test.mjs web/test/second-handoff-state.test.mjs
+node --test web/test/api.test.mjs web/test/calendar.test.mjs web/test/second-handoff-state.test.mjs web/test/home-recommendations.test.mjs
 .\.venv\Scripts\python.exe scripts/verify_second_handoff.py
 ```
 
@@ -80,7 +93,7 @@ npm run dev --prefix web
 
 기존 .env와 설치된 web 의존성을 사용한다. 최초 의존성 설치가 필요할 때만 `npm ci --prefix web`을 실행한다.
 
-1. 마이→내 계정→시연용 로그인→옷장: 실제 보유 6벌 사진, 상세/검색, 계정·기기 표시.
+1. 마이→내 계정→시연용 로그인→홈: 오늘의 코디 추천, 겨울 전환 시연/실제 기록 전환, 아래로 스크롤해 계절·보관 추천과 사용 이력 확인. 옷장에서는 실제 보유 6벌 사진·상세/검색·기기 표시.
 2. 코디→새 코디→상의·하의 선택→미러로 비교: 상의 교체, 편집 복귀, 제목/카드 탐색.
 3. 명시적 인물 사진 동의·업로드→Mock 피팅→코디 확정: MOCK 표시와 LED 위치 확인 결과. 위치가 미확인인 실제 의류는 임의 점등하지 않는다. VTON 준비 조건 미충족은 오류 안내를 확인한다.
 4. 코디카드 저장→카드 이미지 공유: 실제 PNG와 공유 링크. 링크를 가진 사람은 만료 전 이미지를 볼 수 있다.
