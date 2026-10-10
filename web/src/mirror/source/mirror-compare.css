@@ -1,0 +1,455 @@
+/* L/B/C have independent surfaces within the same physical mirror. */
+.mx-surface[data-screen="outfit"] .mx-editor {
+  top: 14%;
+  bottom: 8%;
+  height: auto;
+  min-height: 0;
+}
+.mx-surface[data-outfit-view="compare"] .mx-header {
+  display: none;
+}
+.mc-compare {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 4;
+}
+.mc-compare button,
+.mc-compare .horizontal-pager {
+  pointer-events: auto;
+}
+.mc-heading {
+  position: absolute;
+  left: 20%;
+  right: 4%;
+  top: 4%;
+  display: flex;
+  gap: 3px;
+  align-items: center;
+  height: 44px;
+  min-width: 0;
+}
+.mc-heading > strong {
+  min-width: 0;
+  flex: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 15px;
+  text-shadow: 0 1px 6px white;
+}
+.mc-heading > button {
+  flex: none;
+  width: 36px;
+  min-width: 36px;
+  font-size: 21px;
+  background: #f6f6edb0;
+}
+.mc-compare-tools {
+  position: absolute;
+  top: 9%;
+  left: 20%;
+  right: 4%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 4px;
+}
+.mc-compare-tools button {
+  font-size: 12px;
+  background: #f6f6ede0;
+  padding: 3px 8px;
+  min-height: 36px;
+}
+.mc-compare-tools span {
+  font-size: 10px;
+  color: #40533f;
+}
+.mc-compare .mx-media-status {
+  top: 13.5%;
+  left: 20%;
+  right: 4%;
+  margin: 0;
+  min-height: 28px;
+  font-size: 10px;
+  line-height: 1.35;
+  padding: 5px 6px;
+  pointer-events: none;
+}
+.mc-empty {
+  position: absolute;
+  top: 30%;
+  left: 22%;
+  right: 6%;
+  text-align: center;
+  font-size: 13px;
+}
+.mc-empty .mx-panel-composition {
+  height: 145px;
+}
+.mc-empty p,
+.mc-empty small {
+  display: block;
+  background: #f6f6ede8;
+  padding: 7px;
+  border-radius: 6px;
+  margin: 5px 0;
+  font-size: 12px;
+}
+.mc-more {
+  position: absolute;
+  bottom: 11%;
+  left: 20%;
+  right: 4%;
+  display: flex;
+  flex-direction: column;
+  background: #f6f6eff5;
+  border: 1px solid #d8dfd0;
+  border-radius: 10px;
+  padding: 5px;
+  pointer-events: auto;
+  z-index: 7;
+}
+.mc-more button {
+  font-size: 13px;
+  text-align: left;
+  padding: 5px 12px;
+}
+.mc-primary {
+  position: absolute;
+  left: 20%;
+  right: 4%;
+  bottom: 3%;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  pointer-events: auto;
+}
+.mc-primary > .mx-primary {
+  width: 100%;
+  white-space: nowrap;
+  box-shadow: 0 2px 8px #243b2720;
+}
+.mc-primary .mc-record-link {
+  position: absolute;
+  bottom: 100%;
+  margin-bottom: 4px;
+  left: 0;
+  right: 0;
+  background: #f3f5e9ed;
+  min-height: 32px;
+  font-size: 12px;
+}
+.mc-quick {
+  position: absolute;
+  left: 20%;
+  right: 4%;
+  bottom: 13%;
+  background: #f5f5eceb;
+  border-radius: 9px;
+  padding: 5px;
+  pointer-events: auto;
+}
+.mc-quick header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 11px;
+  gap: 3px;
+}
+.mc-quick header button {
+  min-height: 30px;
+  font-size: 10px;
+  padding: 1px 3px;
+}
+.mc-candidates {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 4px;
+}
+.mc-candidates > button {
+  padding: 2px;
+  border: 1px solid transparent;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  min-width: 0;
+  background: #fafbf5;
+}
+.mc-candidates > button[aria-pressed="true"] {
+  border-color: #567758;
+  background: #e6eee2;
+}
+.mc-candidates .mirror-photo {
+  width: 100%;
+  height: 46px;
+  min-height: 46px;
+  flex: none;
+}
+.mc-candidates > button > span {
+  font-size: 10px;
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.mc-browse {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 28px;
+  font-size: 10px;
+}
+.mc-browse button {
+  min-height: 28px;
+  width: 40px;
+  padding: 0;
+  font-size: 18px;
+}
+.mx-surface[data-outfit-view="compare"] > .mx-toast {
+  top: 19%;
+  bottom: auto;
+  max-height: 15%;
+  font-size: 12px;
+}
+.mg-types:has(.mg-other) {
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+}
+.mg-extra-types {
+  display: flex;
+  gap: 3px;
+  flex-wrap: wrap;
+  background: #f6f5edee;
+  padding: 4px;
+  border-radius: 7px;
+}
+.mg-extra-types button {
+  font-size: 11px;
+  padding: 3px 6px;
+  min-height: 36px;
+}
+.mg-extra-types button[aria-pressed="true"] {
+  background: #5a735a;
+  color: white;
+}
+
+.mx-surface[data-outfit-view="compare"] > .mx-toast:not(.error) {
+  top: 0.5%;
+  bottom: auto;
+  padding: 3px 5px;
+  max-height: 30px;
+  font-size: 10px;
+  line-height: 1.3;
+  border: 0;
+  box-shadow: none;
+}
+
+/* Fixed comparison anchors: opening candidates or receiving a result never moves the CTA. */
+.mx-surface[data-mirror-ui="clear"]
+  .mc-compare
+  :is(
+    .mc-heading > button,
+    .mc-compare-tools button,
+    .mx-media-status,
+    .mc-empty p,
+    .mc-empty small,
+    .mc-more,
+    .mc-quick,
+    .mc-candidates > button,
+    .mc-primary > .mx-primary,
+    .mc-record-link
+  ) {
+  background: transparent !important;
+  background-image: none;
+  backdrop-filter: none;
+  box-shadow: none;
+  border: 0;
+  color: #17251f;
+  opacity: 1;
+  text-shadow: inherit;
+}
+.mx-surface[data-mirror-ui="clear"] .mc-compare button:hover {
+  background: transparent !important;
+}
+.mx-surface[data-mirror-ui="clear"] .mc-compare button:disabled {
+  color: #58625e;
+  opacity: 1;
+}
+.mx-surface[data-mirror-ui="clear"] .mc-heading > button {
+  width: 44px;
+  min-width: 44px;
+  min-height: 44px;
+}
+.mx-surface[data-mirror-ui="clear"] .mc-heading > strong {
+  font-size: 14px;
+  text-shadow: inherit;
+}
+.mx-surface[data-mirror-ui="clear"] .mc-compare-tools {
+  top: 9.5%;
+}
+.mx-surface[data-mirror-ui="clear"] .mc-compare-tools button {
+  min-height: 44px;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+.mx-surface[data-mirror-ui="clear"] .mc-compare-tools span {
+  color: #17251f;
+  font-size: 11px;
+}
+.mx-surface[data-mirror-ui="clear"] .mc-compare .mx-media-status {
+  top: 15%;
+  font-size: 11px;
+  padding: 0;
+  min-height: 28px;
+  line-height: 1.5;
+}
+.mx-surface[data-mirror-ui="clear"] .mc-primary {
+  top: 58%;
+  bottom: auto;
+  gap: 0;
+}
+.mx-surface[data-mirror-ui="clear"] .mc-compare .mc-primary > .mx-primary {
+  color: #17251f !important;
+  border: 1px solid #243d30;
+  border-radius: 3px;
+  min-height: 48px !important;
+  font-size: 15px !important;
+  padding: 6px;
+}
+.mx-surface[data-mirror-ui="clear"] .mc-feedback {
+  height: 44px;
+  display: flex;
+  align-items: start;
+}
+.mx-surface[data-mirror-ui="clear"] .mc-record-link {
+  position: static;
+  margin: 0;
+  width: 100%;
+  min-height: 44px;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  font-size: 12px;
+}
+.mx-surface[data-mirror-ui="clear"] .mc-quick {
+  top: 70%;
+  bottom: auto;
+  padding: 0;
+  border-radius: 0;
+}
+.mx-surface[data-mirror-ui="clear"] .mc-quick header button {
+  min-height: 44px;
+  font-size: 11px;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.mx-surface[data-mirror-ui="clear"] .mc-candidates {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+}
+.mx-surface[data-mirror-ui="clear"] .mc-candidates > button {
+  position: relative;
+  min-height: 76px;
+  padding: 3px;
+}
+.mx-surface[data-mirror-ui="clear"]
+  .mc-candidates
+  > button[aria-pressed="true"] {
+  outline: 1px solid #243d30;
+  outline-offset: -1px;
+}
+.mx-surface[data-mirror-ui="clear"] .mc-candidates > button > i {
+  position: absolute;
+  right: 3px;
+  top: 0;
+  font-size: 13px;
+  font-style: normal;
+}
+.mx-surface[data-mirror-ui="clear"] .mc-candidates .mirror-photo {
+  height: 48px;
+  min-height: 48px;
+}
+.mx-surface[data-mirror-ui="clear"] .mc-candidates > button > span {
+  font-size: 11px;
+}
+.mx-surface[data-mirror-ui="clear"] .mc-browse {
+  height: 44px;
+  font-size: 11px;
+}
+.mx-surface[data-mirror-ui="clear"] .mc-browse button {
+  min-height: 44px;
+  min-width: 44px;
+}
+.mx-surface[data-mirror-ui="clear"] .mc-more {
+  top: 23%;
+  bottom: auto;
+  padding: 0;
+  border-radius: 0;
+  gap: 2px;
+}
+.mx-surface[data-mirror-ui="clear"] .mc-more button {
+  min-height: 44px;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+.mx-surface[data-mirror-ui="clear"] .mc-empty {
+  top: 29%;
+}
+.mx-surface[data-mirror-ui="clear"] .mc-empty p,
+.mx-surface[data-mirror-ui="clear"] .mc-empty small {
+  padding: 2px;
+  margin: 2px 0;
+}
+
+.mx-surface[data-mirror-ui="clear"] .mc-composition-description {
+  position: absolute;
+  top: 7.8%;
+  left: 23%;
+  right: 8%;
+  font-size: 11px;
+  line-height: 15px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  background: transparent;
+  color: #17251f;
+}
+
+/* Existing comparison hit regions stay fixed; the added server controls own their inputs. */
+.mc-server-fitting {
+  position: absolute;
+  left: 20%;
+  right: 4%;
+  top: 18%;
+  z-index: 8;
+  pointer-events: auto;
+  font-size: 11px;
+}
+.mc-server-fitting > button {
+  min-height: 30px;
+  padding: 3px 8px;
+}
+.mc-server-fitting [role="group"] {
+  max-height: 360px;
+  overflow: auto;
+  padding: 8px;
+  background: #f8f7ed;
+  border-radius: 8px;
+  pointer-events: auto;
+}
+.mc-server-fitting input {
+  pointer-events: auto;
+  min-height: 28px;
+  max-width: 100%;
+}
+.mc-server-fitting input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  min-height: 16px;
+  display: inline-block;
+  vertical-align: middle;
+}
+.mc-server-fitting [role="status"] {
+  font-size: 10px;
+  line-height: 1.4;
+}

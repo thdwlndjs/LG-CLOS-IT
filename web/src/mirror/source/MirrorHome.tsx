@@ -1,3 +1,4 @@
+import { buildLifeSnapshot } from "./lifeSnapshot";
 import { useSyncExternalStore } from "react";
 import type { DemoApp } from "./core/app";
 import type { Outfit } from "./core/types";
@@ -7,6 +8,7 @@ import {
   type MirrorWeatherContext,
 } from "./mirrorPanelData";
 import { MirrorOutfitThumbnail } from "./MirrorPanelThumbnail";
+import { describeOutfitCard } from "./outfitCardPresentation";
 import "./mirror-panels.css";
 
 export function MirrorHome({
@@ -22,11 +24,15 @@ export function MirrorHome({
     today = useToday(),
     owner = state.activeProfileId;
   const profile = state.profiles.find((profile) => profile.id === owner),
-    outfits = app
-      .outfits()
-      .filter((outfit) => !outfit.name.startsWith("__"))
-      .slice(0, 3);
-  const currentWeather = mirrorHomeWeather(weather, owner, today.date);
+    outfits = app.cardOutfits().slice(0, 3);
+  const currentWeather = mirrorHomeWeather(weather, owner, today.date),
+    name = profile?.name ?? "내 옷장";
+  const life = buildLifeSnapshot(state, owner, { date: today.date });
+  const weatherText = life.weather
+    ? `${life.weather.summary} · ${life.weather.sourceLabel}`
+    : currentWeather
+      ? `${currentWeather.summary} · ${currentWeather.source}`
+      : "날씨 정보 없음";
   return (
     <section
       className="mx-home-panel"
@@ -34,36 +40,68 @@ export function MirrorHome({
       data-profile-id={owner}
     >
       <div className="mx-home-summary">
-        <time dateTime={today.date}>{today.time}</time>
-        <span>{today.label}</span>
-        <small className="mx-home-weather">
-          {currentWeather
-            ? `${currentWeather.summary} · ${currentWeather.source}`
-            : "날씨 정보 없음"}
-        </small>
-        <strong>{profile?.name ?? "내 옷장"}님</strong>
-        <p>
-          {outfits.length
-            ? "저장해 둔 코디를 다시 살펴보세요. 선택한 조합에서 자유롭게 바꿀 수 있어요."
-            : "옷장에서 옷을 찾아 나만의 조합을 만들어 보세요."}
-        </p>
+        <div className="mx-home-time">
+          <time dateTime={`${today.date}T${today.time}:00+09:00`}>
+            {today.time}
+          </time>
+          <span>{today.label}</span>
+          <small className="mx-home-weather">{weatherText}</small>
+        </div>
+        <div className="mx-home-greeting">
+          <strong
+            className="mx-home-name"
+            title={name}
+            aria-label={`${name}님`}
+          >
+            {name}님
+          </strong>
+          <p>
+            {life.shortFact ||
+              (outfits.length
+                ? "저장한 코디를 다시 입어보세요."
+                : "내 옷으로 코디를 만들어 보세요.")}
+          </p>
+        </div>
       </div>
       {outfits.length > 0 && (
         <div className="mx-home-side" aria-label="저장한 코디 다시 보기">
           <span>다시 입어볼 코디</span>
-          {outfits.map((outfit) => (
-            <button
-              type="button"
-              className="mx-home-mini"
-              key={outfit.id}
-              data-look-id={outfit.id}
-              aria-label={`${outfit.name} · 미러에서 조합 보기`}
-              onClick={() => onOpenOutfit(outfit)}
-            >
-              <MirrorOutfitThumbnail app={app} outfit={outfit} />
-              <strong>{outfit.name}</strong>
-            </button>
-          ))}
+          {outfits.map((outfit) => {
+            const card = describeOutfitCard({
+              outfit,
+              ownerId: owner,
+              garments: app.garments(),
+              externalItems: app.externalItems(),
+              deviceScoped: app.connection.kind === "supabase",
+            });
+            return (
+              <button
+                type="button"
+                className="mx-home-mini"
+                key={outfit.id}
+                data-look-id={outfit.id}
+                title={card.title}
+                aria-label={`${card.title} · ${card.description} · 미러로 입어보기`}
+                onClick={() => onOpenOutfit(outfit)}
+              >
+                <MirrorOutfitThumbnail app={app} outfit={outfit} />
+                <strong>{card.title}</strong>
+                {card.description !== card.title && (
+                  <span
+                    className="mx-card-description"
+                    title={card.description}
+                  >
+                    {card.description}
+                  </span>
+                )}
+                <small>
+                  {card.reuseStatus === "needs-review"
+                    ? "구성 확인 필요 · 입어보기"
+                    : "미러로 입어보기"}
+                </small>
+              </button>
+            );
+          })}
         </div>
       )}
     </section>

@@ -277,10 +277,21 @@ export function StorageCabinet({
   );
 }
 
+function defaultPerson(ownerId: string) {
+  if (ownerId.startsWith("local:scprep-20261009-v1:profile:"))
+    return {
+      id: `${ownerId}:person:pending`,
+      version: 1,
+      url: null,
+      label: "인물 자료 미연결",
+      reference: "이 프로필의 승인된 인물 사진 연결 대기",
+    };
+  return ownerId === PACK_PROFILE_ID
+    ? PERSON_REFERENCES[0]
+    : PERSON_REFERENCES[1];
+}
 function useMirrorPersonState(ownerId: string) {
-  const [selectedId, setSelectedId] = useState(
-    ownerId === PACK_PROFILE_ID ? PACK_PERSON.id : PERSON_REFERENCES[1].id,
-  );
+  const [selectedId, setSelectedId] = useState(defaultPerson(ownerId).id);
   const [localPerson, setLocalPerson] = useState<
     (MirrorPerson & { label: string; ownerId: string }) | null
   >(null);
@@ -299,15 +310,13 @@ function useMirrorPersonState(ownerId: string) {
   useEffect(() => {
     generation.current++;
     setPersonMessage("");
-    setSelectedId(
-      ownerId === PACK_PROFILE_ID ? PACK_PERSON.id : PERSON_REFERENCES[1].id,
-    );
+    setSelectedId(defaultPerson(ownerId).id);
   }, [ownerId]);
   const person =
     localPerson?.ownerId === ownerId && selectedId === localPerson.id
       ? localPerson
       : (PERSON_REFERENCES.find((p) => p.id === selectedId) ??
-        PERSON_REFERENCES[1]);
+        defaultPerson(ownerId));
   const upload = async (file: File | undefined) => {
     if (!file) return;
     if (

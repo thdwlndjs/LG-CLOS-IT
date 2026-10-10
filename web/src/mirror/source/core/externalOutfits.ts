@@ -13,16 +13,21 @@ export const OUTFIT_SLOT_NAMES: Record<Slot, string> = {
   bag: "가방",
   hat: "모자",
   accessory: "액세서리",
+  dress: "원피스",
 };
 export const OUTFIT_SLOT_KEYS = Object.keys(OUTFIT_SLOT_NAMES) as Slot[];
 export const hasExternalItems = (
   outfit: { externalItems?: ExternalOutfitItems } | null | undefined,
 ) => Object.keys(outfit?.externalItems ?? {}).length > 0;
+/** Local cards preserve one-piece garments; changing between separates and a dress is explicit. */
 export const completeOutfit = (
   outfit: Pick<OutfitDraft, "items" | "externalItems">,
-) =>
-  !!(outfit.items.top || outfit.externalItems?.top) &&
-  !!(outfit.items.bottom || outfit.externalItems?.bottom);
+) => {
+  const dress = !!(outfit.items.dress || outfit.externalItems?.dress),
+    top = !!(outfit.items.top || outfit.externalItems?.top),
+    bottom = !!(outfit.items.bottom || outfit.externalItems?.bottom);
+  return dress ? !top && !bottom : top && bottom;
+};
 export const slotIsLocked = (draft: OutfitDraft, slot: Slot) =>
   Boolean(draft.lockedSlots?.[slot] || (slot === "top" && draft.topLocked));
 export function validateExternalSelections(

@@ -323,6 +323,7 @@ export function buildFittingSnapshot(input: {
   outfit: SceneOutfit | null;
   garments: readonly Garment[];
   requestVersion: number;
+  deviceScoped?: boolean;
 }): { snapshot: FittingSnapshot | null; issues: FittingIssue[] } {
   const issues: FittingIssue[] = [];
   const { person, outfit } = input;
@@ -403,7 +404,8 @@ export function buildFittingSnapshot(input: {
       if (!garmentId) continue;
       const candidates = input.garments.filter(
         (garment) =>
-          garment.id === garmentId && garment.ownerId === input.ownerId,
+          garment.id === garmentId &&
+          (input.deviceScoped || garment.ownerId === input.ownerId),
       );
       if (candidates.length !== 1) {
         issues.push({
@@ -440,8 +442,9 @@ export function buildFittingSnapshot(input: {
         continue;
       }
       if (
-        "assetVersions" in outfit &&
-        outfit.assetVersions[garmentId] !== garment.asset.version
+        (outfit.assetVersions &&
+          outfit.assetVersions[garmentId] !== garment.asset.version) ||
+        (outfit.assetIds && outfit.assetIds[garmentId] !== garment.asset.id)
       ) {
         issues.push({
           code: "stale-outfit-asset",

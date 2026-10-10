@@ -1,7 +1,9 @@
 import { api } from "./integrations/backendClient";
-export async function pollJob(path: string) {
+export async function pollJob(path: string, client = api(), check = () => {}) {
   for (let i = 0; i < 120; i++) {
-    const row: any = await api().get(path);
+    check();
+    const row: any = await client.get(path);
+    check();
     if (["SUCCEEDED", "READY"].includes(row.status)) return row;
     if (["FAILED", "TIMED_OUT", "CANCELLED"].includes(row.status))
       throw new Error("작업 실패 · 저장되지 않았습니다.");

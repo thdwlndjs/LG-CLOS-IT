@@ -1,7 +1,8 @@
+import { ServerCareRecord } from "./ServerCareRecord";
 import { useEffect, useRef, useState } from "react";
 import { app } from "./appInstance";
 import type { Garment } from "./core/types";
-export function MirrorCareRecord({
+function LocalCareRecord({
   garment,
   onClose,
 }: {
@@ -137,5 +138,16 @@ export function MirrorCareRecord({
       </button>
       {message && <p role="status">{message}</p>}
     </section>
+  );
+}
+
+export function MirrorCareRecord(props: {
+  garment: Garment;
+  onClose: () => void;
+}) {
+  return app.connection.kind === "supabase" ? (
+    <ServerCareRecord {...props} />
+  ) : (
+    <LocalCareRecord {...props} />
   );
 }

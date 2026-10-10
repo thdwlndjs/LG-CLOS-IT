@@ -1,10 +1,10 @@
+import { lifeHistoryReadOptions } from "./lifeSnapshot";
+import { effectiveLifeEvents, lifeEventSource } from "./lifeHistory";
 import { useEffect, useRef, useState, useSyncExternalStore } from "react";
 import { app } from "./appInstance";
 import type { CareGuide, Garment } from "./core/types";
 import { MirrorGarmentGrid } from "./MirrorGarmentGrid";
 import { HorizontalPager } from "./HorizontalPager";
-import { api } from "./integrations/backendClient";
-import { listAll } from "../../api.js";
 export function MirrorCareOverview({
   onSelect,
 }: {
@@ -13,28 +13,14 @@ export function MirrorCareOverview({
   const state = useSyncExternalStore(app.subscribe, app.getState);
   const [view, setView] = useState<"schedule" | "guide">("guide"),
     [page, setPage] = useState(0);
-  const [schedules, setSchedules] = useState<any[]>([]);
-  const [scheduleError, setScheduleError] = useState("");
-  useEffect(() => {
-    let current = true;
-    setSchedules([]);
-    setScheduleError("");
-    void listAll(api(), "/care-schedules", { timezone: "Asia/Seoul" })
-      .then((rows: any[]) => {
-        if (current) setSchedules(rows);
-      })
-      .catch((e: Error) => {
-        if (current) setScheduleError(e.message);
-      });
-    return () => {
-      current = false;
-    };
-  }, [state.activeProfileId, state.revisionReceipts, view]);
   const garments = app.garments(),
-    events = app
-      .events()
-      .filter((e) => e.kind === "care")
-      .sort((a, b) => b.date.localeCompare(a.date));
+    events = effectiveLifeEvents(
+      state.activeProfileId,
+      app.events(),
+      lifeHistoryReadOptions(state, state.activeProfileId),
+    )
+      .events.filter((e) => e.kind === "care")
+      .reverse();
   useEffect(() => setPage(0), [state.activeProfileId, view]);
   return (
     <section className="mx-work mg-care-overview">
@@ -66,34 +52,9 @@ export function MirrorCareOverview({
         </>
       ) : (
         <>
-          <p className="mx-fine">서버에 등록된 관리 일정과 확인된 기록</p>
-          {scheduleError && <p role="status">{scheduleError}</p>}
-          {schedules.length > 0 && (
-            <HorizontalPager
-              label="관리 일정 탐색"
-              index={page}
-              onIndexChange={setPage}
-              peek={0}
-            >
-              {schedules.map((s) => (
-                <article className="mg-care-list" key={s.id}>
-                  <strong>
-                    {garments.find((g) => g.id === s.garment_id)?.name ||
-                      "연결 의류 확인 필요"}
-                  </strong>
-                  <p>
-                    {new Date(s.scheduled_at).toLocaleString("ko-KR", {
-                      timeZone: "Asia/Seoul",
-                    })}
-                  </p>
-                  <p>
-                    {s.care_type} · {s.status}
-                  </p>
-                  <p>{s.notes || ""}</p>
-                </article>
-              ))}
-            </HorizontalPager>
-          )}
+          <p className="mx-fine">
+            확인된 관리 기록 · 다음 관리일은 등록된 정보가 없어요.
+          </p>
           {events.length ? (
             <HorizontalPager
               label="관리 기록 탐색"
@@ -102,12 +63,23 @@ export function MirrorCareOverview({
               peek={0}
             >
               {events.map((event) => {
-                const g = garments.find((g) => g.id === event.garmentId);
+                const targets = garments.filter((g) =>
+                    event.garmentIds
+                      ? event.garmentIds.includes(g.id)
+                      : g.id === event.garmentId,
+                  ),
+                  g = targets[0];
                 return (
                   <article className="mg-care-list" key={event.id}>
-                    <strong>{g?.name ?? "연결 의류 확인 필요"}</strong>
+                    <strong>
+                      {targets.map((g) => g.name).join(" · ") ||
+                        "연결 의류 확인 필요"}
+                    </strong>
                     <p>{event.date}</p>
                     <p>{event.value}</p>
+                    {lifeEventSource(event) === "scenario_fixture" && (
+                      <small>시연 생활 기록 · 실제 사용자 이력 아님</small>
+                    )}
                     {g && (
                       <button onClick={() => onSelect(g)}>
                         이 옷의 관리법
@@ -117,24 +89,30 @@ export function MirrorCareOverview({
                 );
               })}
             </HorizontalPager>
-          ) : !schedules.length && !scheduleError ? (
+          ) : (
             <p className="mx-glass">
               관리 일정·기록이 아직 없어요. 마지막 세탁 후 경과일을 착용 일수로
               바꾸지 않아요.
             </p>
-          ) : null}
+          )}
         </>
       )}
     </section>
   );
 }
-export function MirrorCareHelp({ garment }: { garment: Garment }) {
+export function MirrorCareHelp({
+  garment,
+  evidenceAvailable = null,
+}: {
+  garment: Garment;
+  evidenceAvailable?: boolean | null;
+}) {
   const [guide, setGuide] = useState<CareGuide | null>(null),
     [busy, setBusy] = useState(false),
     [message, setMessage] = useState(""),
     [expanded, setExpanded] = useState(false);
   const mounted = useRef(true),
-    owner = app.getState().activeProfileId,
+    owner = garment.ownerId,
     id = garment.id,
     repository = app.repository;
   useEffect(() => {
@@ -144,7 +122,7 @@ export function MirrorCareHelp({ garment }: { garment: Garment }) {
     };
   }, []);
   const request = async () => {
-    if (busy) return;
+    if (busy || evidenceAvailable !== true) return;
     setBusy(true);
     setMessage("");
     try {
@@ -155,8 +133,10 @@ export function MirrorCareHelp({ garment }: { garment: Garment }) {
         app.repository !== repository
       )
         return;
-      if (result.status === "success") setGuide(result.data);
-      else setMessage(result.message);
+      if (result.status === "success") {
+        setGuide(result.data);
+        setExpanded(true);
+      } else setMessage(result.message);
     } catch {
       if (mounted.current && app.getState().activeProfileId === owner)
         setMessage(
@@ -166,6 +146,16 @@ export function MirrorCareHelp({ garment }: { garment: Garment }) {
       if (mounted.current) setBusy(false);
     }
   };
+  if (evidenceAvailable !== true)
+    return (
+      <div className="mg-care-helper">
+        <small>
+          {evidenceAvailable === false
+            ? "검토된 관리 근거를 보완하면 도움을 요청할 수 있어요."
+            : "확인된 근거를 먼저 불러온 뒤 관리 도움을 요청할 수 있어요."}
+        </small>
+      </div>
+    );
   return (
     <div className="mg-care-helper">
       <button disabled={busy} onClick={() => void request()}>
@@ -175,11 +165,13 @@ export function MirrorCareHelp({ garment }: { garment: Garment }) {
       {guide && (
         <>
           <small>
-            {guide.source === "provider"
-              ? "서버 관리 안내 · 확인된 라벨과 구분"
-              : guide.source === "prepared-demo"
-                ? "준비된 시연 안내 · 실제 라벨 아님"
-                : "확인할 정보 안내"}
+            {guide.source === "local-evidence-summary"
+              ? "저장된 근거 요약 · 로컬"
+              : guide.source === "provider"
+                ? "AI 안내 · 원문 근거와 구분"
+                : guide.source === "prepared-demo"
+                  ? "준비된 시연 안내 · 실제 라벨 아님"
+                  : "확인할 정보 안내"}
           </small>
           <button onClick={() => setExpanded(!expanded)}>
             {expanded ? "안내 닫기" : "안내 읽기"}

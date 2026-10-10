@@ -1,25 +1,93 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import type { Asset, Garment } from "./core/types";
+import { garmentDisplayPresentation } from "./lifeData/visualPresentation";
 import { HorizontalPager } from "./HorizontalPager";
+import { Icon } from "./Icons";
+import "./mirror-photo.css";
 export const GARMENT_PAGE_SIZE = 12;
+/** A photo is optional. Keep its frame and exact accessible name stable through loading or failure. */
 export function MirrorPhoto({
-  asset,
+  asset: originalAsset,
+  garment,
+  example: explicitExample = false,
+  presentationRevision = "",
   name,
+  emptyLabel = "사진 없음",
+  compact = false,
+  loadEnabled = true,
 }: {
-  asset: Asset | null | undefined;
+  asset?: Asset | null;
+  garment?: Garment;
+  example?: boolean;
+  presentationRevision?: string;
   name: string;
+  emptyLabel?: string;
+  compact?: boolean;
+  loadEnabled?: boolean;
 }) {
-  const [failed, setFailed] = useState(false);
-  useEffect(() => setFailed(false), [asset?.id, asset?.version, asset?.url]);
-  return asset?.url && !failed ? (
-    <img
-      src={asset.url}
-      alt={name}
-      draggable={false}
-      onError={() => setFailed(true)}
-    />
-  ) : (
-    <span className="mg-photo-empty">사진 없음</span>
+  const display = garment ? garmentDisplayPresentation(garment) : null,
+    asset = display ? display.asset : originalAsset,
+    example = display?.example ?? explicitExample;
+  const source = asset?.url
+      ? `${asset.id}:${asset.version}:${asset.url}:${display?.revision ?? presentationRevision}`
+      : "",
+    [loaded, setLoaded] = useState(""),
+    [failed, setFailed] = useState("");
+  const state = !source
+    ? "missing"
+    : failed === source
+      ? "error"
+      : loaded === source
+        ? "ready"
+        : "loading";
+  const status =
+    state === "ready"
+      ? ""
+      : state === "error"
+        ? "사진 오류"
+        : state === "loading"
+          ? "불러오는 중"
+          : emptyLabel;
+  const shortStatus =
+    state === "error"
+      ? "오류"
+      : state === "loading"
+        ? "준비 중"
+        : emptyLabel.includes("확인")
+          ? "확인"
+          : emptyLabel.includes("선택")
+            ? "선택 전"
+            : "없음";
+  return (
+    <span
+      className={`mirror-photo${compact ? " mirror-photo--compact" : ""}`}
+      role="img"
+      aria-label={`${name}${example ? " · 예시 이미지" : ""}${status ? " · " + status : ""}`}
+      title={`${name}${example ? " · 생성된 시연 예시 이미지" : ""}`}
+      data-photo-state={state}
+      data-example-image={example || undefined}
+    >
+      {loadEnabled && source && state !== "error" && (
+        <img
+          key={source}
+          src={asset!.url!}
+          alt=""
+          aria-hidden="true"
+          draggable={false}
+          onLoad={() => setLoaded(source)}
+          onError={() => setFailed(source)}
+        />
+      )}
+      {example && state === "ready" && (
+        <small className="mirror-photo-example">예시 이미지</small>
+      )}
+      {state !== "ready" && (
+        <span className="mirror-photo-placeholder" aria-hidden="true">
+          <Icon name="outfit" size={compact ? 16 : 24} />
+          <small>{compact ? shortStatus : status}</small>
+        </span>
+      )}
+    </span>
   );
 }
 export function garmentPages<T>(
@@ -67,11 +135,16 @@ export function MirrorGarmentGrid({
               className="mg-cell"
               key={g.id}
               data-garment-id={g.id}
+              title={g.name}
               aria-label={`${g.name} 선택`}
               aria-pressed={g.id === selectedId}
               onClick={() => onSelect(g)}
             >
-              <MirrorPhoto asset={g.asset} name={g.name} />
+              <MirrorPhoto
+                garment={g}
+                name={g.name}
+                loadEnabled={Math.abs(i - valid) <= 1}
+              />
               <span>{g.name}</span>
             </button>
           ))}

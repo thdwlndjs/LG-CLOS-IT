@@ -1,4 +1,10 @@
-import { useState, useSyncExternalStore, useRef, useLayoutEffect } from "react";
+import {
+  useState,
+  useSyncExternalStore,
+  useRef,
+  useLayoutEffect,
+  useEffect,
+} from "react";
 import type { DemoApp } from "./core/app";
 import { IntegrationActions } from "./IntegrationActions";
 import {
@@ -6,8 +12,16 @@ import {
   bindStation,
   currentMember,
   currentDevice,
+  onBackendSessionExpired,
 } from "./integrations/backendClient";
 export function BackendSessionBootstrap({ app }: { app: DemoApp }) {
+  useEffect(
+    () =>
+      onBackendSessionExpired(() => {
+        void app.configureRemote();
+      }),
+    [app],
+  );
   return null;
 }
 export const MirrorAccountPanel = BackendPanel;

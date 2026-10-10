@@ -1,4 +1,15 @@
-import { API_ORIGIN } from "../../../api.js";
+import { localLifeCareGuide } from "../localLifeCareGuide";
+import {
+  buildLifeSnapshot,
+  lifeHistoryReadOptions,
+  lifeAvailabilityBlock,
+} from "../lifeSnapshot";
+import { effectiveLifeEvents } from "../lifeHistory";
+import { outfitPurpose, withPurpose } from "./outfitRecording";
+import { outfitAssetRefs } from "./outfitAssets";
+import { automaticOutfitTitle } from "../outfitCardPresentation";
+import type { RecordActionOptions } from "./types";
+import { API_ORIGIN, STORAGE_BASE, assetUrl } from "../../../api.js";
 import {
   clone,
   DemoError,
@@ -72,6 +83,7 @@ const categories: Category[] = [
   "shoes",
   "hat",
   "accessory",
+  "dress",
 ];
 const registrationDefaults: Pick<RegistrationDraft, RegistrationField> = {
   name: "",
@@ -161,14 +173,19 @@ function validateAsset(asset: Asset | null): void {
 }
 
 function validCloudAsset(asset: Asset): boolean {
-  if (!API_ORIGIN || !asset.url || !/^[a-f0-9-]{36}$/.test(asset.id))
+  if (
+    (!API_ORIGIN && !STORAGE_BASE) ||
+    !asset.url ||
+    !/^[a-f0-9-]{36}$/.test(asset.id)
+  )
     return false;
   try {
     const url = new URL(asset.url);
     return (
-      url.origin === API_ORIGIN &&
+      (url.origin === API_ORIGIN ||
+        (!!STORAGE_BASE && assetUrl(asset.url) === asset.url)) &&
       new RegExp(
-        "^/wardrobe-assets/assets/[a-f0-9-]{36}/[a-f0-9-]{36}/" +
+        "^(?:/storage/v1/s3)?/wardrobe-assets/assets/[a-f0-9-]{36}/[a-f0-9-]{36}/" +
           asset.id +
           "/[a-f0-9]{32}$",
       ).test(url.pathname) &&
@@ -196,6 +213,7 @@ export class DemoApp {
   private localRepository?: DemoRepository;
   private remote?: RemoteBackend;
   private connectionRequest = 0;
+  private refreshRequest = 0;
   private draftQueue: Promise<void> = Promise.resolve();
   private draftStatus: "idle" | "saving" | "saved" | "error" = "idle";
   private draftMessage = "";
@@ -239,9 +257,15 @@ export class DemoApp {
     if (!this.remote) return;
     await this.draftQueue;
     const remote = this.remote,
-      owner = this.owner;
+      owner = this.owner,
+      request = ++this.refreshRequest;
     const next = await remote.state();
-    if (this.remote !== remote || this.owner !== owner) return;
+    if (
+      this.remote !== remote ||
+      this.owner !== owner ||
+      request !== this.refreshRequest
+    )
+      return;
     const ui = clone(this.ui());
     next.ui[owner] = {
       ...ui,
@@ -249,7 +273,12 @@ export class DemoApp {
         (g) => g.id,
       ),
     };
-    this.repository = new DemoRepository(undefined, () => next);
+    // Refresh one account without remounting its calendar, editor or pending confirmations.
+    this.repository.commit((state) => {
+      for (const key of Object.keys(state))
+        delete (state as unknown as Record<string, unknown>)[key];
+      Object.assign(state, next);
+    });
     this.emit();
   }
   private makeDraftId(prefix: string) {
@@ -1093,6 +1122,8 @@ export class DemoApp {
       ownerId: this.owner,
       revision: 1,
       name: "나의 코디",
+      nameOrigin: "auto",
+      purpose: "card",
       items: {},
       topLocked: false,
     };
@@ -1102,17 +1133,25 @@ export class DemoApp {
     return draft;
   }
   editOutfitName(name: string) {
-    this.ensureOutfitDraft();
+    const draft = this.ensureOutfitDraft(),
+      origin = name.trim() ? "user" : "auto",
+      next =
+        origin === "auto"
+          ? automaticOutfitTitle(draft, this.garments(), !!this.remote)
+          : name;
+    if (draft.name === next && draft.nameOrigin === origin) return;
     this.nextToken("recommendation");
     this.mutate((s) => {
       const d = s.outfitDrafts[this.owner];
-      d.name = name;
+      d.name = next;
+      d.nameOrigin = origin;
       d.revision++;
     });
   }
   setOutfitItem(slot: Slot, garmentId: string) {
     const garment = this.garment(garmentId);
     const draft = this.ensureOutfitDraft();
+    this.validateLocalDressSelection(slot, draft);
     if (garment.category !== slot)
       throw new DemoError(
         "VALIDATION",
@@ -1123,12 +1162,22 @@ export class DemoApp {
         "CONFLICT",
         "고정된 품목입니다. 고정을 해제한 뒤 변경해 주세요.",
       );
+    if (
+      draft.items[slot] === garmentId &&
+      !draft.externalItems?.[slot] &&
+      (!draft.assetIds ||
+        draft.assetIds[garmentId] === (garment.asset?.id ?? null)) &&
+      (!draft.assetVersions ||
+        draft.assetVersions[garmentId] === (garment.asset?.version ?? 0))
+    )
+      return;
     this.nextToken("recommendation");
     this.stopTryOn();
     this.mutate((s) => {
       const d = s.outfitDrafts[this.owner];
       d.items[slot] = garmentId;
       if (d.externalItems) delete d.externalItems[slot];
+      this.refreshOutfitMetadata(d, s, garmentId);
       d.revision++;
       s.ui[this.owner].operations.recommendation = { status: "idle" };
     });
@@ -1147,6 +1196,8 @@ export class DemoApp {
         ownerId: this.owner,
         revision: 1,
         name: "나의 코디",
+        nameOrigin: "auto",
+        purpose: "card",
         items: {},
         topLocked: false,
       };
@@ -1182,12 +1233,14 @@ export class DemoApp {
       const d = s.outfitDrafts[this.owner];
       delete d.items[slot];
       if (d.externalItems) delete d.externalItems[slot];
+      this.refreshOutfitMetadata(d, s);
       d.revision++;
     });
   }
   setExternalOutfitItem(slot: Slot, externalItemId: string) {
     const draft = this.ensureOutfitDraft(),
       item = this.externalItems().find((item) => item.id === externalItemId);
+    this.validateLocalDressSelection(slot, draft);
     if (!item || (item.category && item.category !== slot))
       throw new DemoError(
         "VALIDATION",
@@ -1216,6 +1269,7 @@ export class DemoApp {
         sourceLabel: item.sourceLabel,
         sourceUrl: item.sourceUrl,
       };
+      this.refreshOutfitMetadata(d, s);
       d.revision++;
       s.ui[this.owner].operations.recommendation = { status: "idle" };
     });
@@ -1235,10 +1289,10 @@ export class DemoApp {
   }
   /** Open an owned recommendation for editing without saving a card or recording wear. */
   openOutfitProposal(items: OutfitItems, name: string): OutfitDraft {
-    if (!items.top || !items.bottom || !name.trim())
+    if (!completeOutfit({ items }) || !name.trim())
       throw new DemoError(
         "VALIDATION",
-        "상의·하의와 코디 이름을 확인해 주세요.",
+        "상의·하의 또는 원피스와 코디 이름을 확인해 주세요.",
       );
     for (const [slot, garmentId] of Object.entries(items)) {
       if (this.garment(garmentId).category !== slot)
@@ -1262,6 +1316,7 @@ export class DemoApp {
       ownerId: this.owner,
       revision: 1,
       name: name.trim(),
+      purpose: "card",
       items: clone(items),
       topLocked: false,
     };
@@ -1278,18 +1333,20 @@ export class DemoApp {
         )
           previous.push(clone(current));
       }
+      this.refreshOutfitMetadata(draft, state);
       state.outfitDrafts[this.owner] = draft;
       state.ui[this.owner].operations.recommendation = { status: "idle" };
     });
     return this.outfitDraft()!;
   }
-  loadOutfitDraft(outfitId: string) {
+  loadOutfitDraft(outfitId: string, options?: { reuse?: boolean }) {
     const outfit = this.outfit(outfitId);
     const current = this.outfitDraft();
     this.nextToken("recommendation");
     this.stopTryOn();
     // Reopening the same unedited recommendation must not replace the original backup.
     if (
+      !options?.reuse &&
       current?.sourceOutfitId === outfitId &&
       sameOutfitComposition(current, outfit) &&
       current.name === outfit.name
@@ -1311,6 +1368,10 @@ export class DemoApp {
         draftId: this.makeDraftId("outfit-draft"),
         ownerId: this.owner,
         name: outfit.name,
+        ...(outfit.nameOrigin ? { nameOrigin: outfit.nameOrigin } : {}),
+        purpose: "card",
+        assetVersions: clone(outfit.assetVersions),
+        ...(outfit.assetIds ? { assetIds: clone(outfit.assetIds) } : {}),
         items: clone(outfit.items),
         ...(outfit.externalItems
           ? { externalItems: clone(outfit.externalItems) }
@@ -1355,13 +1416,18 @@ export class DemoApp {
   async proposeOutfit(
     conditions: OutfitConditions,
     reference?: string,
+    scope?: {
+      editableSlot?: Slot;
+      availabilityConfirmations?: AvailabilityConfirmation[];
+    },
   ): Promise<
     ActionResult<{ source: OutfitDraft; items: OutfitItems; label: string }>
   > {
     const source = clone(this.ensureOutfitDraft()),
       owner = this.owner,
       repository = this.repository,
-      token = this.nextToken("recommendation");
+      token = this.nextToken("recommendation"),
+      lifeRevision = buildLifeSnapshot(this.getState(), this.owner).revisionKey;
     if (hasExternalItems(source))
       return {
         status: "unavailable",
@@ -1369,18 +1435,33 @@ export class DemoApp {
           "내 옷 추천은 구매 후보를 자동 교체하지 않아요. 직접 조합을 유지해 주세요.",
       };
     this.status(owner, "recommendation", { status: "processing" });
+    const editableSlot = scope?.editableSlot,
+      confirmations =
+        scope?.availabilityConfirmations === undefined
+          ? undefined
+          : clone(scope.availabilityConfirmations);
+    if (editableSlot && !categories.includes(editableSlot))
+      throw new DemoError("VALIDATION", "교체할 종류를 확인해 주세요.");
     try {
       await this.draftQueue;
-      const items = this.remote
-        ? await this.remote.recommend(source, conditions, reference)
+      let items = this.remote
+        ? await this.remote.recommend(
+            source,
+            conditions,
+            reference,
+            confirmations,
+          )
         : reference
           ? null
           : await this.runner.recommend({
               conditions: clone(conditions),
               draft: source,
               garments: clone(this.garments()),
+              ...(editableSlot ? { editableSlot } : {}),
             });
       if (
+        buildLifeSnapshot(this.getState(), owner).revisionKey !==
+          lifeRevision ||
         this.owner !== owner ||
         this.repository !== repository ||
         token !== this.tokens.recommendation ||
@@ -1406,19 +1487,51 @@ export class DemoApp {
             "추천 의류 참조를 확인할 수 없어요.",
           );
       }
+      if (editableSlot) {
+        const candidate = items[editableSlot];
+        if (!candidate)
+          return {
+            status: "no-result",
+            message: "선택한 종류의 제안이 없어요.",
+          };
+        items = { ...source.items, [editableSlot]: candidate };
+      }
+      if (
+        confirmations !== undefined &&
+        Object.entries(items).some(([slot, id]) => {
+          if (editableSlot && slot !== editableSlot) return false;
+          const garment = this.garment(id);
+          return !confirmations.some(
+            (c) =>
+              c.garmentId === id &&
+              c.status === "available" &&
+              c.identity === reviewGarmentIdentity(garment),
+          );
+        })
+      )
+        return {
+          status: "no-result",
+          message: "제안한 옷의 현재 사용 가능 여부를 확인해 주세요.",
+        };
+      if (this.recommendationBlocked(items))
+        return {
+          status: "no-result",
+          message:
+            "세탁 검토나 건조 확인이 필요한 옷은 바로 입을 추천에서 제외했어요. 직접 조합은 계속할 수 있어요.",
+        };
       for (const slot of categories)
         if (slotIsLocked(source, slot) && source.items[slot] !== items[slot])
           return {
             status: "no-result",
             message: "고정한 품목과 다른 제안은 적용하지 않았어요.",
           };
-      const label = this.remote
-        ? "서버 의류 추천 · Mock 상황 정보"
-        : this.connection.kind === "local" || this.connection.mode === "mock"
+      const label =
+        this.connection.kind === "local" || this.connection.mode === "mock"
           ? "준비된 시연 제안"
           : this.connection.mode === "saved_result"
             ? "동일 입력의 저장 제안"
             : "현재 조건으로 받은 제안";
+      this.proposalLifeRevisions.set(source, lifeRevision);
       this.status(owner, "recommendation", {
         status: "success",
         message: label,
@@ -1434,6 +1547,21 @@ export class DemoApp {
     }
   }
   applyOutfitSuggestion(source: OutfitDraft, items: OutfitItems) {
+    if (this.recommendationBlocked(items))
+      throw new DemoError(
+        "CONFLICT",
+        "세탁·건조 상태를 확인한 뒤 추천을 다시 요청해 주세요.",
+      );
+    const capturedLife = this.proposalLifeRevisions.get(source);
+    if (
+      capturedLife !== undefined &&
+      capturedLife !==
+        buildLifeSnapshot(this.getState(), this.owner).revisionKey
+    )
+      throw new DemoError(
+        "CONFLICT",
+        "생활 기록이나 관리 근거가 바뀌었어요. 도움을 다시 요청해 주세요.",
+      );
     const current = this.outfitDraft();
     if (
       !current ||
@@ -1456,6 +1584,7 @@ export class DemoApp {
     this.stopTryOn();
     this.mutate((s) => {
       s.outfitDrafts[this.owner].items = clone(items);
+      this.refreshOutfitMetadata(s.outfitDrafts[this.owner], s);
       s.outfitDrafts[this.owner].revision++;
     });
   }
@@ -1472,6 +1601,10 @@ export class DemoApp {
           "구매 후보를 포함한 초안은 내 옷 전용 추천으로 덮어쓰지 않아요.",
       };
     const ownerId = this.owner;
+    const lifeRevision = buildLifeSnapshot(
+      this.getState(),
+      ownerId,
+    ).revisionKey;
     const token = this.nextToken("recommendation");
     const confirmations =
       availabilityConfirmations === undefined
@@ -1479,6 +1612,8 @@ export class DemoApp {
         : clone(availabilityConfirmations);
     this.status(ownerId, "recommendation", { status: "processing" });
     const current = () =>
+      buildLifeSnapshot(this.getState(), ownerId).revisionKey ===
+        lifeRevision &&
       this.owner === ownerId &&
       this.tokens.recommendation === token &&
       this.outfitDraft()?.draftId === snapshot.draftId &&
@@ -1530,6 +1665,7 @@ export class DemoApp {
         });
         return { status: "no-result", message };
       }
+      if (items && this.recommendationBlocked(items)) items = null;
       if (!items) {
         this.status(ownerId, "recommendation", {
           status: "no-result",
@@ -1550,6 +1686,7 @@ export class DemoApp {
       this.mutate((s) => {
         const d = s.outfitDrafts[ownerId];
         d.items = items;
+        this.refreshOutfitMetadata(d, s);
         d.revision++;
         s.ui[ownerId].operations.recommendation = {
           status: "success",
@@ -1581,6 +1718,7 @@ export class DemoApp {
         remote = this.remote,
         owner = this.owner,
         token = this.nextToken("recommendation"),
+        lifeRevision = buildLifeSnapshot(this.getState(), owner).revisionKey,
         confirmations =
           availabilityConfirmations === undefined
             ? undefined
@@ -1597,6 +1735,8 @@ export class DemoApp {
         confirmations,
       );
       if (
+        buildLifeSnapshot(this.getState(), owner).revisionKey !==
+          lifeRevision ||
         remote !== this.remote ||
         owner !== this.owner ||
         token !== this.tokens.recommendation ||
@@ -1626,9 +1766,11 @@ export class DemoApp {
         })
       )
         items = null;
+      if (items && this.recommendationBlocked(items)) items = null;
       if (items) {
         this.mutate((s) => {
           s.outfitDrafts[this.owner].items = items;
+          this.refreshOutfitMetadata(s.outfitDrafts[this.owner], s);
           s.outfitDrafts[this.owner].revision++;
         });
         return { status: "success", data: this.outfitDraft()! };
@@ -1643,10 +1785,12 @@ export class DemoApp {
     intentKey: string,
     options?: ActionOptions,
   ): Promise<SaveResult<Outfit>> {
+    if (!this.ensureOutfitDraft().name.trim()) this.editOutfitName("");
     const snapshot = clone(this.ensureOutfitDraft());
     const ownerId = this.owner;
     const resetGeneration = this.resetGeneration;
     if (this.remote) {
+      outfitAssetRefs(snapshot, this.garments(), true);
       const remote = this.remote;
       await this.draftQueue;
       const result = await remote.saveOutfit(snapshot, intentKey);
@@ -1663,18 +1807,57 @@ export class DemoApp {
         });
       return result;
     }
-    if (!completeOutfit(snapshot))
-      throw new DemoError("VALIDATION", "상의와 하의를 선택해 주세요.");
-    validateExternalSelections(snapshot, this.externalItems());
-    if (!snapshot.name.trim())
-      throw new DemoError("VALIDATION", "코디 이름을 입력해 주세요.");
-    const assetVersions: Record<string, number> = {};
-    for (const [slot, key] of Object.entries(snapshot.items)) {
-      const garment = this.garment(key);
-      if (garment.category !== slot)
-        throw new DemoError("VALIDATION", "코디 종류가 일치하지 않습니다.");
-      assetVersions[key] = garment.asset?.version ?? 0;
+    // A committed receipt is about the original request, not today's mutable garment photo.
+    const state = this.getState(),
+      intent = state.intents[stable([ownerId, "saveOutfit", intentKey])];
+    const priorId =
+      intent?.receiptId ??
+      state.revisionReceipts[
+        stable([ownerId, "saveOutfit", snapshot.draftId, snapshot.revision])
+      ];
+    const prior = state.receipts.find(
+      (row) =>
+        row.id === priorId &&
+        row.ownerId === ownerId &&
+        row.operation === "saveOutfit",
+    );
+    if (prior) {
+      const captured = JSON.parse(prior.fingerprint) as {
+        assetVersions?: Record<string, number>;
+      };
+      const replay = this.replayReceipt<Outfit>({
+        ownerId,
+        operation: "saveOutfit",
+        intentKey,
+        draftId: snapshot.draftId,
+        revision: snapshot.revision,
+        snapshot: {
+          ...snapshot,
+          savedOutfitId: undefined,
+          assetVersions: {
+            ...captured.assetVersions,
+            ...snapshot.assetVersions,
+          },
+        },
+        lookup: (s, key) =>
+          s.outfits.find((o) => o.id === key && o.ownerId === ownerId),
+      });
+      if (replay) {
+        this.status(ownerId, "saveOutfit", {
+          status: "success",
+          message: "기존 코디 저장 확인서를 다시 확인했습니다.",
+        });
+        return replay;
+      }
     }
+    const refs = outfitAssetRefs(snapshot, this.garments(), !!this.remote);
+    if (!completeOutfit(snapshot))
+      throw new DemoError(
+        "VALIDATION",
+        "상의·하의 또는 원피스를 선택해 주세요.",
+      );
+    validateExternalSelections(snapshot, this.externalItems());
+    const { assetVersions, assetIds } = refs;
     const request: ReceiptRequest<Outfit> = {
       ownerId,
       operation: "saveOutfit",
@@ -1705,6 +1888,9 @@ export class DemoApp {
         id: id("outfit"),
         ownerId,
         name: snapshot.name.trim(),
+        ...(snapshot.nameOrigin ? { nameOrigin: snapshot.nameOrigin } : {}),
+        purpose: "card",
+        assetIds,
         items: clone(snapshot.items),
         ...(hasExternalItems(snapshot)
           ? { externalItems: clone(snapshot.externalItems) }
@@ -1753,19 +1939,34 @@ export class DemoApp {
   ): Promise<ActionResult<CareGuide>> {
     const garment = clone(this.garment(garmentId));
     const ownerId = this.owner;
-    const token = this.nextToken("careGuide");
+    const token = this.nextToken("careGuide"),
+      life = buildLifeSnapshot(this.getState(), ownerId),
+      lifeRevision = life.revisionKey;
     this.status(ownerId, "careGuide", { status: "processing" });
     try {
       const guide = this.remote
         ? await this.remote.care(garmentId)
-        : await this.runner.careGuide(garment, options);
-      if (ownerId !== this.owner || token !== this.tokens.careGuide)
+        : life.namespace === "scprep-20261009-v1" &&
+            ownerId.startsWith("local:scprep-20261009-v1:profile:")
+          ? (await this.runner.simulate(options),
+            localLifeCareGuide(garment, life))
+          : await this.runner.careGuide(garment, options);
+      if (
+        buildLifeSnapshot(this.getState(), ownerId).revisionKey !==
+          lifeRevision ||
+        ownerId !== this.owner ||
+        token !== this.tokens.careGuide
+      )
         return {
           status: "stale",
           message: "이전 프로필·의류의 안내는 적용하지 않았습니다.",
         };
       this.status(ownerId, "careGuide", {
-        status: guide.source === "prepared-demo" ? "success" : "no-result",
+        status:
+          guide.source === "prepared-demo" ||
+          guide.source === "local-evidence-summary"
+            ? "success"
+            : "no-result",
       });
       return { status: "success", data: guide };
     } catch (error) {
@@ -1926,12 +2127,40 @@ export class DemoApp {
       options,
     );
   }
-  recordWear(
+  async recordWear(
     outfitId: string,
     date: string,
     intentKey: string,
     options?: ActionOptions,
-  ) {
+  ): Promise<SaveResult<DemoEvent>> {
+    const outfit = this.outfit(outfitId),
+      ownerId = this.owner;
+    if (!this.remote) {
+      const replay = this.replayReceipt<DemoEvent>({
+        ownerId,
+        operation: "wear",
+        intentKey,
+        draftId: stable(["wear", intentKey]),
+        revision: 1,
+        snapshot: {
+          ownerId,
+          kind: "wear",
+          targetId: outfitId,
+          value: "실제 착용 확인",
+          date,
+        },
+        lookup: (s, key) =>
+          s.events.find((e) => e.id === key && e.ownerId === ownerId),
+      });
+      if (replay) return replay;
+      if (hasExternalItems(outfit))
+        throw new DemoError(
+          "VALIDATION",
+          "구매 후보는 실제 착용으로 확인할 수 없어요.",
+        );
+      outfitAssetRefs(outfit, this.garments(), !!this.remote);
+    }
+    // The server checks its durable receipt first and validates current assets only for a new wear.
     return this.recordEvent(
       "wear",
       outfitId,
@@ -1944,7 +2173,7 @@ export class DemoApp {
   /** B5 records a selected/planned outfit only. Actual wear remains an independent explicit action. */
   async commitCurrentSelection(
     date: string,
-    options?: ActionOptions,
+    options?: RecordActionOptions,
   ): Promise<CommitCurrentSelectionResult> {
     const draft = this.outfitDraft();
     if (!draft || draft.ownerId !== this.owner)
@@ -1953,7 +2182,12 @@ export class DemoApp {
         "현재 사용자의 코디를 먼저 선택해 주세요.",
       );
     return this.commitSelection(
-      captureSelectionSubmission(draft, date, this.garments()),
+      captureSelectionSubmission(
+        draft,
+        date,
+        this.garments(),
+        options?.intentKey,
+      ),
       options,
     );
   }
@@ -1974,7 +2208,9 @@ export class DemoApp {
       source.ownerId !== this.owner ||
       submittedSnapshot.ownerId !== this.owner ||
       !source.draftId ||
-      source.revision !== submittedSnapshot.lookRevision
+      source.revision !== submittedSnapshot.lookRevision ||
+      (submittedSnapshot.sourceDraftId !== undefined &&
+        submittedSnapshot.sourceDraftId !== source.draftId)
     )
       throw new DemoError(
         "VALIDATION",
@@ -2025,7 +2261,7 @@ export class DemoApp {
           "사용자 또는 세션이 바뀌어 이전 선택의 후속 저장을 중단했어요. 현재 코디는 유지했어요.",
         );
     };
-    const key = stable([generation, sessionToken, submittedSnapshot]);
+    const key = stable([generation, sessionToken, source, submittedSnapshot]);
     const pending = this.selectionRequests.get(key);
     if (pending)
       return pending.then((result) => ({
@@ -2050,26 +2286,10 @@ export class DemoApp {
         sameOutfitComposition(outfit, submittedSnapshot) &&
         stable(outfit.assetVersions) ===
           stable(submittedSnapshot.assetVersions);
-      const existing = this.events().find(
-        (event) =>
-          event.kind === "plan" &&
-          event.date === date &&
-          this.outfits().some(
-            (outfit) => outfit.id === event.outfitId && matches(outfit),
-          ),
+      const intentKey = selectionSnapshotIntent(
+        snapshotDraft.draftId,
+        snapshotDraft.recordContext?.intentId,
       );
-      if (existing) {
-        const savedOutfit = clone(this.outfit(existing.outfitId!));
-        return {
-          event: clone(existing),
-          savedOutfit,
-          garmentIds: Object.values(savedOutfit.items),
-          replayed: true,
-          source,
-          submittedSnapshot: clone(submittedSnapshot),
-        };
-      }
-      const intentKey = selectionSnapshotIntent(snapshotDraft.draftId);
       let saved: SaveResult<Outfit>;
       if (this.remote) {
         const remote = this.remote;
@@ -2082,6 +2302,7 @@ export class DemoApp {
             "CONFLICT",
             "저장 응답의 코디 또는 사진 버전이 선택 시점과 달라요. 선택 기록은 추가하지 않았어요.",
           );
+        saved = { ...saved, entity: withPurpose(saved.entity, "selection") };
         this.applyRemoteSave(saved, "outfits", remote, generation);
       } else {
         const request: ReceiptRequest<Outfit> = {
@@ -2108,6 +2329,10 @@ export class DemoApp {
             id: id("outfit"),
             ownerId,
             name: snapshotDraft.name,
+            purpose: "selection",
+            ...(submittedSnapshot.assetIds
+              ? { assetIds: clone(submittedSnapshot.assetIds) }
+              : {}),
             items: clone(submittedSnapshot.items),
             ...(hasExternalItems(submittedSnapshot)
               ? { externalItems: clone(submittedSnapshot.externalItems) }
@@ -2129,7 +2354,10 @@ export class DemoApp {
       const recorded = await this.planOutfit(
         saved.entity.id,
         date,
-        selectionEventIntent(snapshotDraft.draftId),
+        selectionEventIntent(
+          snapshotDraft.draftId,
+          snapshotDraft.recordContext?.intentId,
+        ),
         options,
       );
       if (
@@ -2163,7 +2391,7 @@ export class DemoApp {
   /** The single explicit wear action saves the clicked composition, then records actual wear. */
   async wearCurrentOutfit(
     date: string,
-    options?: ActionOptions,
+    options?: RecordActionOptions,
   ): Promise<WearCurrentOutfitResult> {
     if (!isISODate(date))
       throw new DemoError("VALIDATION", "유효한 착용 날짜를 선택해 주세요.");
@@ -2173,11 +2401,15 @@ export class DemoApp {
         "VALIDATION",
         "구매 후보가 포함된 코디는 실제 착용으로 자동 기록하지 않습니다.",
       );
-    if (!draft?.items.top || !draft.items.bottom)
-      throw new DemoError("VALIDATION", "상의와 하의를 선택해 주세요.");
+    if (!draft || !completeOutfit(draft))
+      throw new DemoError(
+        "VALIDATION",
+        "상의·하의 또는 원피스를 선택해 주세요.",
+      );
     const clicked = clone(draft),
       ownerId = this.owner,
       generation = this.resetGeneration;
+    outfitAssetRefs(clicked, this.garments());
     const sessionToken = (this.tokens.wearSession ??= 0);
     const source = {
       ownerId,
@@ -2210,7 +2442,10 @@ export class DemoApp {
       sessionToken,
       ownerId,
       date,
+      clicked.draftId,
+      clicked.revision,
       clicked.items,
+      options?.intentKey,
     ]);
     const pending = this.wearRequests.get(key);
     if (pending)
@@ -2220,30 +2455,18 @@ export class DemoApp {
         replayed: true,
       }));
     const execute = async (): Promise<WearCurrentOutfitResult> => {
-      const snapshot = await wearSnapshotDraft(ownerId, date, clicked.items);
+      const snapshot = await wearSnapshotDraft(ownerId, date, clicked.items, {
+        draftId: clicked.draftId,
+        revision: clicked.revision,
+        ...(options?.intentKey !== undefined
+          ? { intentKey: options.intentKey }
+          : {}),
+      });
       checkCurrent();
-      // Reuse confirmed legacy/current events too, without making another saved card or LED command.
-      const existing = this.events().find(
-        (event) =>
-          event.kind === "wear" &&
-          event.date === date &&
-          this.outfits().some(
-            (outfit) =>
-              outfit.id === event.outfitId &&
-              stable(outfit.items) === stable(snapshot.items),
-          ),
+      const intentKey = wearSnapshotIntent(
+        snapshot.draftId,
+        snapshot.recordContext?.intentId,
       );
-      if (existing) {
-        const savedOutfit = clone(this.outfit(existing.outfitId!));
-        return {
-          event: clone(existing),
-          savedOutfit,
-          garmentIds: Object.values(savedOutfit.items),
-          replayed: true,
-          source,
-        };
-      }
-      const intentKey = wearSnapshotIntent(snapshot.draftId);
       let saved: SaveResult<Outfit>;
       if (this.remote) {
         const remote = this.remote;
@@ -2259,6 +2482,7 @@ export class DemoApp {
             "CONFLICT",
             "저장된 착용 코디의 소유자와 구성을 확인할 수 없어요.",
           );
+        saved = { ...saved, entity: withPurpose(saved.entity, "wear") };
         this.applyRemoteSave(saved, "outfits", remote, generation);
       } else {
         const request: ReceiptRequest<Outfit> = {
@@ -2282,6 +2506,8 @@ export class DemoApp {
             id: id("outfit"),
             ownerId,
             name: snapshot.name,
+            purpose: "wear",
+            assetIds: outfitAssetRefs(clicked, this.garments()).assetIds,
             items: clone(snapshot.items),
             revision: 1,
             assetVersions,
@@ -2300,7 +2526,7 @@ export class DemoApp {
       const recorded = await this.recordWear(
         saved.entity.id,
         date,
-        wearEventIntent(snapshot.draftId),
+        wearEventIntent(snapshot.draftId, snapshot.recordContext?.intentId),
         options,
       );
       if (
@@ -2440,6 +2666,144 @@ export class DemoApp {
     }
     this.sessionUrls.clear();
     this.listeners.clear();
+  }
+
+  private proposalLifeRevisions = new WeakMap<OutfitDraft, string>();
+  cardOutfits(): Outfit[] {
+    return this.outfits().filter(
+      (outfit) => outfitPurpose(outfit, this.getState()) === "card",
+    );
+  }
+  private recommendationBlocked(items: OutfitItems) {
+    const snapshot = buildLifeSnapshot(this.getState(), this.owner);
+    return Object.values(items).some((id) => {
+      const garment = snapshot.garments.find((g) => g.id === id);
+      return !!garment && !!lifeAvailabilityBlock(garment.history);
+    });
+  }
+  private refreshOutfitMetadata(
+    draft: OutfitDraft,
+    state: DemoState,
+    changedId?: string,
+  ) {
+    const ids = Object.values(draft.items);
+    draft.assetIds = Object.fromEntries(
+      ids.map((id) => [
+        id,
+        id !== changedId && draft.assetIds && Object.hasOwn(draft.assetIds, id)
+          ? draft.assetIds[id]
+          : (state.garments.find(
+              (g) =>
+                g.id === id && (this.remote || g.ownerId === draft.ownerId),
+            )?.asset?.id ?? null),
+      ]),
+    );
+    draft.assetVersions = Object.fromEntries(
+      ids.map((id) => [
+        id,
+        id !== changedId &&
+        draft.assetVersions &&
+        Object.hasOwn(draft.assetVersions, id)
+          ? draft.assetVersions[id]
+          : (state.garments.find(
+              (g) =>
+                g.id === id && (this.remote || g.ownerId === draft.ownerId),
+            )?.asset?.version ?? 0),
+      ]),
+    );
+    if (draft.nameOrigin === "auto")
+      draft.name = automaticOutfitTitle(draft, this.garments(), !!this.remote);
+  }
+  actualWearPrefill(
+    date: string,
+    selectedPlanId?: string,
+  ): {
+    status: "ready" | "choose-plan" | "no-plan" | "unavailable";
+    plans: DemoEvent[];
+    plan?: DemoEvent;
+    outfit?: Outfit;
+    message: string;
+  } {
+    if (!isISODate(date))
+      throw new DemoError("VALIDATION", "유효한 착용 날짜를 선택해 주세요.");
+    const plans = effectiveLifeEvents(
+      this.owner,
+      this.events(),
+      lifeHistoryReadOptions(this.getState(), this.owner),
+    )
+      .events.filter((e) => e.kind === "plan" && e.date === date)
+      .map(clone);
+    const plan = selectedPlanId
+      ? plans.find((e) => e.id === selectedPlanId)
+      : plans.length === 1
+        ? plans[0]
+        : undefined;
+    if (!plan)
+      return {
+        status: selectedPlanId
+          ? "unavailable"
+          : plans.length
+            ? "choose-plan"
+            : "no-plan",
+        plans,
+        message: selectedPlanId
+          ? "선택한 날짜와 프로필의 계획을 확인해 주세요."
+          : plans.length
+            ? "실제로 입은 계획을 선택해 주세요."
+            : "선택한 날짜에 계획이 없어요.",
+      };
+    const outfit = this.outfits().find((o) => o.id === plan.outfitId);
+    if (!outfit)
+      return {
+        status: "unavailable",
+        plans,
+        plan,
+        message: "원래 계획의 구성품을 확인할 수 없어요.",
+      };
+    try {
+      if (hasExternalItems(outfit))
+        throw new DemoError(
+          "VALIDATION",
+          "구매 후보는 실제 착용으로 확인할 수 없어요. 실제 입은 보유 의류만 선택해 주세요.",
+        );
+      outfitAssetRefs(outfit, this.garments(), !!this.remote);
+    } catch (error) {
+      return {
+        status: "unavailable",
+        plans,
+        plan,
+        outfit: clone(outfit),
+        message: (error as Error).message,
+      };
+    }
+    return {
+      status: "ready",
+      plans,
+      plan,
+      outfit: clone(outfit),
+      message: "계획을 미리 채웠어요. 실제 입은 옷과 날짜를 확인해 주세요.",
+    };
+  }
+  private validateLocalDressSelection(slot: Slot, draft: OutfitDraft) {
+    if (
+      slot === "dress" &&
+      (draft.items.top ||
+        draft.items.bottom ||
+        draft.externalItems?.top ||
+        draft.externalItems?.bottom)
+    )
+      throw new DemoError(
+        "CONFLICT",
+        "원피스를 넣으려면 현재 상의·하의를 조합에서 먼저 빼 주세요.",
+      );
+    if (
+      (slot === "top" || slot === "bottom") &&
+      (draft.items.dress || draft.externalItems?.dress)
+    )
+      throw new DemoError(
+        "CONFLICT",
+        "상·하의를 넣으려면 현재 원피스를 조합에서 먼저 빼 주세요.",
+      );
   }
 }
 

@@ -1,68 +1,118 @@
+import { useState } from "react";
+import type { Asset } from "./core/types";
 import type { DemoApp } from "./core/app";
-import type { Outfit } from "./core/types";
+import { MirrorPhoto } from "./MirrorGarmentGrid";
+import {
+  describeOutfitCard,
+  type OutfitCardSnapshot,
+  type OutfitCardSlot,
+} from "./outfitCardPresentation";
+import "./mirror-card.css";
 
-/** Composition from stored IDs and versions. Never borrow another look's fitting or updated image. */
+/** Every surface renders the same captured IDs and versions. No implicit fitting lookup or cover capture. */
 export function MirrorOutfitThumbnail({
   app,
   outfit,
+  className = "",
+  loadEnabled = true,
 }: {
   app: DemoApp;
-  outfit: Pick<Outfit, "name" | "items" | "externalItems"> & {
-    assetVersions?: Record<string, number>;
-  };
+  outfit: OutfitCardSnapshot & { cardAsset?: Asset };
+  className?: string;
+  loadEnabled?: boolean;
 }) {
-  const garments = app.garments(),
-    external = app.externalItems();
+  const [failed, setFailed] = useState<string | null>(null);
+  const image = outfit.cardAsset;
+  const card = describeOutfitCard({
+    outfit,
+    ownerId: app.getState().activeProfileId,
+    garments: app.garments(),
+    externalItems: app.externalItems(),
+    deviceScoped: app.connection.kind === "supabase",
+  });
+  if (image?.url && failed !== image.url && loadEnabled)
+    return (
+      <div
+        className={`mx-panel-composition ${className}`}
+        role="img"
+        aria-label={`${outfit.name} · 서버 생성 코디카드`}
+        data-card-preview="server-image"
+      >
+        <img
+          style={{ width: "100%", height: "100%", objectFit: "contain" }}
+          src={image.url}
+          alt={`${outfit.name} 서버 생성 코디카드`}
+          onError={() => setFailed(image.url)}
+        />
+      </div>
+    );
+  const main = card.slots.filter(
+      (row) =>
+        row.slot === "top" || row.slot === "bottom" || row.slot === "dress",
+    ),
+    secondary = card.slots.filter(
+      (row) =>
+        row.slot !== "top" && row.slot !== "bottom" && row.slot !== "dress",
+    );
+  const render = (row: OutfitCardSlot) => (
+    <span
+      data-slot={row.slot}
+      data-garment-id={row.garmentId}
+      data-external-item-id={row.externalItemId}
+      data-card-status={row.status}
+      className={
+        row.source === "external"
+          ? "mx-card-item mx-external-composition"
+          : "mx-card-item"
+      }
+      key={row.slot}
+      title={`${row.name} · ${row.sourceLabel}${row.notice ? " · " + row.notice : ""}`}
+    >
+      <MirrorPhoto
+        loadEnabled={loadEnabled}
+        asset={row.asset}
+        example={row.example}
+        presentationRevision={row.presentationRevision}
+        name={`${row.name}${row.source === "external" ? " · 구매 후보" : ""}`}
+        compact
+        emptyLabel={row.notice || "사진 없음"}
+      />
+      <small className="mx-card-missing-name" aria-hidden="true">
+        {row.label}
+      </small>
+      {row.source === "external" && (
+        <em title={`${row.sourceLabel} · 구매 후보`} aria-label="구매 후보">
+          <span className="mx-external-label">구매 후보</span>
+          <span className="mx-external-label-compact" aria-hidden="true">
+            후보
+          </span>
+        </em>
+      )}
+    </span>
+  );
   return (
     <div
-      className="mx-panel-composition"
-      aria-label={`${outfit.name} 구성 의류`}
+      className={`mx-panel-composition ${className}`}
+      role="img"
+      aria-label={`${card.title} · 구성형 카드 · ${card.description}`}
+      data-card-preview={card.previewKind}
+      data-card-description={card.description}
+      data-card-reuse-status={card.reuseStatus}
+      data-card-secondary={Boolean(secondary.length)}
     >
-      {Object.entries(outfit.items).map(([slot, id]) => {
-        const garment = garments.find((item) => item.id === id),
-          asset = garment?.asset,
-          exact =
-            !!asset &&
-            (!outfit.assetVersions ||
-              outfit.assetVersions[id] === asset.version);
-        return (
-          <span data-slot={slot} data-garment-id={id} key={slot}>
-            {exact && asset.url ? (
-              <img src={asset.url} alt={garment!.name} draggable={false} />
-            ) : (
-              <small>{garment?.name ?? "의류 정보 확인 필요"}</small>
-            )}
-          </span>
-        );
-      })}
-      {Object.entries(outfit.externalItems ?? {}).map(([slot, item]) => {
-        const asset = external.find(
-            (candidate) => candidate.id === item.externalItemId,
-          )?.asset,
-          exact =
-            asset &&
-            asset.id === item.assetId &&
-            asset.version === item.assetVersion;
-        return (
-          <span
-            data-slot={slot}
-            data-external-item-id={item.externalItemId}
-            className="mx-external-composition"
-            key={`external-${slot}`}
-          >
-            {exact && asset.url ? (
-              <img
-                src={asset.url}
-                alt={`${item.name} · 구매 후보`}
-                draggable={false}
-              />
-            ) : (
-              <small>{item.name}</small>
-            )}
-            <em>구매 후보</em>
-          </span>
-        );
-      })}
+      {main.length > 0 && (
+        <div className="mx-card-main">{main.map(render)}</div>
+      )}
+      {secondary.length > 0 && (
+        <div className="mx-card-secondary">{secondary.map(render)}</div>
+      )}
+      {card.slots.length === 0 && (
+        <span className="mx-card-empty">
+          {card.reuseStatus === "other-profile"
+            ? "프로필 확인 필요"
+            : "선택한 옷 없음"}
+        </span>
+      )}
     </div>
   );
 }

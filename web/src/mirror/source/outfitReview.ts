@@ -17,6 +17,7 @@ export const REVIEW_SLOT_LABELS: Record<Slot, string> = {
   shoes: "신발",
   hat: "모자",
   accessory: "액세서리",
+  dress: "원피스",
 };
 export type ReviewAvailability = "unknown" | "available" | "laundry" | "repair";
 export const REVIEW_AVAILABILITY_LABELS: Record<ReviewAvailability, string> = {

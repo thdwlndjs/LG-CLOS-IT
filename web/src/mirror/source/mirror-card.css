@@ -1,0 +1,167 @@
+/* One fixed transparent composition frame, shared by home, library, calendar and comparison. */
+.mx-surface .mx-panel-composition {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  min-width: 0;
+  min-height: 0;
+  background: transparent;
+  box-shadow: none;
+  backdrop-filter: none;
+  border: 0;
+  border-radius: 0;
+  overflow: hidden;
+}
+.mx-card-main {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  flex: 1;
+  min-width: 0;
+  min-height: 0;
+  gap: 3px;
+}
+.mx-card-secondary {
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+  flex: 0 0 27%;
+  min-width: 0;
+  min-height: 0;
+  gap: 2px;
+}
+.mx-card-secondary:only-child {
+  flex: 1;
+}
+.mx-card-item {
+  position: relative;
+  display: block;
+  min-width: 0;
+  min-height: 0;
+  overflow: hidden;
+  flex: 1;
+}
+.mx-panel-composition .mx-card-item > .mirror-photo {
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  object-fit: contain;
+  background: transparent;
+}
+.mx-panel-composition .mx-card-item > .mirror-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+  opacity: 1;
+  filter: none;
+  mix-blend-mode: normal;
+}
+.mx-panel-composition
+  .mx-card-item:has(.mirror-photo:not([data-photo-state="ready"]))
+  > .mirror-photo {
+  padding-bottom: 12px;
+}
+.mx-card-missing-name {
+  display: none;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  text-align: center;
+  font-size: 10px;
+  line-height: 12px;
+  white-space: nowrap;
+  color: inherit;
+  pointer-events: none;
+}
+.mx-card-item:has(.mirror-photo:not([data-photo-state="ready"]))
+  > .mx-card-missing-name {
+  display: block;
+}
+.mx-card-item.mx-external-composition > .mx-card-missing-name {
+  bottom: 12px;
+}
+.mx-panel-composition .mx-external-composition > .mirror-photo {
+  padding-bottom: 12px;
+}
+.mx-panel-composition .mx-external-composition em {
+  background: transparent;
+  box-shadow: none;
+  color: inherit;
+  font-size: 10px;
+  line-height: 12px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.mx-card-empty {
+  align-self: center;
+  margin: auto;
+  font-size: 11px;
+  line-height: 1.5;
+}
+.mx-surface .mx-card-description {
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: #101713;
+  font-size: 11px;
+  line-height: 1.5;
+  min-width: 0;
+  margin: 0;
+}
+.mx-home-mini > .mx-card-description {
+  font-size: 10px;
+  line-height: 14px;
+}
+.mx-home-mini .mx-card-secondary .mirror-photo-placeholder svg {
+  width: 11px;
+  height: 11px;
+}
+.mx-home-mini .mx-card-secondary .mirror-photo-placeholder small,
+.mx-home-mini .mx-card-secondary .mx-card-missing-name {
+  font-size: 8px;
+  line-height: 9px;
+}
+.mx-day-entry > strong {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.mx-wear-confirm {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+  background: transparent;
+  box-shadow: none;
+  backdrop-filter: none;
+}
+.mx-wear-confirm p,
+.mx-wear-status {
+  margin: 0;
+  font-size: 12px;
+  line-height: 1.55;
+  color: #101713;
+}
+.mx-wear-confirm > div {
+  display: flex;
+  gap: 6px;
+}
+.mx-surface[data-mirror-ui="clear"] .mx-wear-confirm button {
+  min-height: 44px;
+  background: transparent !important;
+  box-shadow: none;
+  border: 0;
+  color: #101713;
+  font-size: 12px;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+.mx-wear-confirm button:first-child {
+  flex: 1;
+}
+.mx-wear-status {
+  margin-top: 5px;
+}

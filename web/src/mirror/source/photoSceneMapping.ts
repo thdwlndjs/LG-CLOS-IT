@@ -1,3 +1,7 @@
+import {
+  reviewedBindingFor,
+  garmentDisplayPresentation,
+} from "./lifeData/visualPresentation";
 import geometry from "./data/mirror-geometry.json";
 import type { Garment } from "./core/types";
 import {
@@ -184,6 +188,7 @@ if (fixturesById.size !== PHOTO_DEMO_PLACEMENTS.length)
 export type PhotoLocationSource =
   "user-input" | "existing-record" | "demo-fixture" | "unknown";
 export type PhotoSourceAccuracy =
+  | "reviewed-demo-example"
   | "packaged-demo-exact"
   | "registered-asset"
   | "asset-missing"
@@ -224,6 +229,18 @@ export interface PhotoLocationResolution {
 function inspectSource(
   garment: Garment,
 ): Pick<PhotoResolvedLocation, "sourceAccuracy" | "sourceAsset"> {
+  const reviewed = reviewedBindingFor(garment),
+    display = garmentDisplayPresentation(garment);
+  if (reviewed && display.asset?.url)
+    return {
+      sourceAccuracy: "reviewed-demo-example",
+      sourceAsset: {
+        id: display.asset.id,
+        version: display.asset.version,
+        url: display.asset.url,
+        isSyntheticDemo: true,
+      },
+    };
   const asset = garment.asset;
   const hasAsset =
     !!asset?.id &&
@@ -277,11 +294,13 @@ export function resolvePhotoLocations(
   garments: readonly Garment[],
   ownerId: string,
   ids: readonly string[],
+  deviceScoped = false,
 ): PhotoLocationResolution {
   const items: PhotoResolvedLocation[] = [];
   for (const garmentId of new Set(ids)) {
     const matches = garments.filter(
-      (value) => value.id === garmentId && value.ownerId === ownerId,
+      (value) =>
+        value.id === garmentId && (deviceScoped || value.ownerId === ownerId),
     );
     const garment = matches.length === 1 ? matches[0] : null;
     const common = {
@@ -339,12 +358,31 @@ export function resolvePhotoLocations(
       items.push(row);
       continue;
     }
+    const reviewed = reviewedBindingFor(garment),
+      reviewedZone = reviewed?.scene
+        ? zonesById.get(reviewed.scene.visualZoneId)
+        : undefined;
+    const reviewedScene =
+      reviewed?.scene &&
+      reviewed.scene.version === PHOTO_SCENE_SOURCE.sceneAssetVersion &&
+      reviewedZone &&
+      reviewed.scene.ledAnchorIds.length === reviewedZone.anchorIds.length &&
+      reviewed.scene.ledAnchorIds.every((id) =>
+        reviewedZone.anchorIds.includes(id),
+      )
+        ? {
+            garmentId,
+            visualZoneId: reviewed.scene.visualZoneId,
+            reason: "검토된 공용 예시 이미지의 기존 장면 배치",
+          }
+        : undefined;
     const fixture =
-      garment.ownerId === PACK_PROFILE_ID &&
+      reviewedScene ??
+      (garment.ownerId === PACK_PROFILE_ID &&
       garment.provenance.location === "unconfirmed" &&
       source.sourceAccuracy === "packaged-demo-exact"
         ? fixturesById.get(garmentId)
-        : undefined;
+        : undefined);
     const visualZone = fixture && zonesById.get(fixture.visualZoneId);
     if (fixture && visualZone) {
       Object.assign(row, {

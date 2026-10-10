@@ -1,34 +1,35 @@
 import {
-  useEffect,
-  useRef,
-  useState,
-  useSyncExternalStore,
-  type CSSProperties,
-} from "react";
-import { app } from "./appInstance";
-import { navigateSurface } from "./surfaceNavigation";
-import {
-  MirrorCareEvidence,
-  type CareEvidenceItem,
-} from "./MirrorCareEvidence";
-import type { Asset, Garment, Outfit, OutfitItems, Slot } from "./core/types";
-import { MirrorAccountPanel, BackendSessionBootstrap } from "./BackendPanel";
-import { PhotoWardrobeStage } from "./PhotoWardrobeStage";
-import {
   api,
   currentDevice,
   currentMember,
 } from "./integrations/backendClient";
+import { confirmServerLook, saveServerCard } from "./secondHandoffActions";
+import {
+  careEvidenceOriginalText,
+  careEvidencePresentation,
+} from "./careEvidence";
+import { lifeHistoryReadOptions } from "./lifeSnapshot";
+import { useEffect, useRef, useState, useSyncExternalStore } from "react";
+import { app } from "./appInstance";
+import {
+  MirrorCareEvidence,
+  type CareEvidenceItem,
+} from "./MirrorCareEvidence";
+import type {
+  Asset,
+  Garment,
+  Outfit,
+  OutfitDraft,
+  OutfitItems,
+  Slot,
+} from "./core/types";
+import { MirrorAccountPanel, BackendSessionBootstrap } from "./BackendPanel";
+import { PhotoWardrobeStage } from "./PhotoWardrobeStage";
 import { HorizontalPager } from "./HorizontalPager";
 import { Icon } from "./Icons";
 import { useToday } from "./ScenarioControls";
-import { garmentWearSummary } from "./core/wearScenario";
-import {
-  captureSelectionSubmission,
-  type SelectionSubmission,
-} from "./core/selectionScenario";
+import { garmentLifeSummary } from "./lifeHistory";
 import { mirrorFittingSession } from "./mirrorFittingSession";
-import { FittingStreamVideo } from "./FittingStreamVideo";
 import { useMirrorPerson } from "./MirrorSceneView";
 import { PACK_PROFILE_ID, matchPreparedPackResult } from "./wardrobePack";
 import {
@@ -38,8 +39,9 @@ import {
   type FittingSnapshot,
   type FittingStreamBinding,
 } from "./mirrorScene";
+import { resolvePhotoLocations } from "./photoSceneMapping";
 import "./mirror-experience.css";
-import { MirrorGarmentGrid } from "./MirrorGarmentGrid";
+import { MirrorGarmentGrid, MirrorPhoto } from "./MirrorGarmentGrid";
 import { MirrorRegistration } from "./MirrorRegistration";
 import { MirrorHome } from "./MirrorHome";
 import { MirrorCalendar } from "./MirrorCalendar";
@@ -47,10 +49,14 @@ import { MirrorProfiles } from "./MirrorProfiles";
 import { MirrorCareOverview, MirrorCareHelp } from "./MirrorCareOverview";
 import { MirrorCareRecord } from "./MirrorCareRecord";
 import "./mirror-wardrobe.css";
-import { MirrorOutfitWorkspace } from "./MirrorOutfitWorkspace";
+import {
+  MirrorOutfitWorkspace,
+  createOutfitWorkspaceUI,
+  type MirrorOutfitWorkspaceUI,
+} from "./MirrorOutfitWorkspace";
+import { MirrorCompare } from "./MirrorCompare";
 import { MirrorForeground } from "./MirrorForeground";
-import { MirrorOutfitThumbnail } from "./MirrorPanelThumbnail";
-import { completeOutfit, sameOutfitComposition } from "./core/externalOutfits";
+import "./mirror-clear.css";
 
 const menus = [
   ["home", "home", "홈"],
@@ -69,6 +75,7 @@ const categoryNames: Record<string, string> = {
   bag: "가방",
   accessory: "액세서리",
   hat: "모자",
+  dress: "원피스",
 };
 
 type Displayed = {
@@ -77,42 +84,6 @@ type Displayed = {
   name: string;
   ownerId: string;
 };
-function Photo({ asset, name }: { asset: Asset | null; name: string }) {
-  const [failed, setFailed] = useState(false);
-  useEffect(() => setFailed(false), [asset?.id, asset?.version]);
-  return asset?.url && !failed ? (
-    <img
-      src={asset.url}
-      alt={name}
-      draggable={false}
-      onError={() => setFailed(true)}
-    />
-  ) : (
-    <span className="mx-missing">사진 미연결</span>
-  );
-}
-function OutfitThumb({
-  outfit,
-  garments,
-}: {
-  outfit: Pick<Outfit, "items" | "name">;
-  garments: Garment[];
-}) {
-  return (
-    <div className="mx-outfit-thumb" aria-label={outfit.name}>
-      {Object.entries(outfit.items).map(([slot, id]) => {
-        const g = garments.find((g) => g.id === id);
-        return (
-          g && (
-            <span key={slot} data-slot={slot} data-garment-id={id}>
-              <Photo asset={g.asset} name={g.name} />
-            </span>
-          )
-        );
-      })}
-    </div>
-  );
-}
 function useMirrorContext(ownerId: string) {
   const key = `smartcloset.mirror-ui.v2:${ownerId}`;
   const read = () => {
@@ -124,6 +95,7 @@ function useMirrorContext(ownerId: string) {
   };
   return { key, read };
 }
+const localLifeRuntime = false;
 export default function MirrorExperience() {
   const state = useSyncExternalStore(app.subscribe, app.getState);
   useSyncExternalStore(app.subscribe, () => JSON.stringify(app.connection));
@@ -132,6 +104,13 @@ export default function MirrorExperience() {
     garments = app.garments(),
     outfits = app.outfits(),
     today = useToday();
+  const [mockResult, setMockResult] = useState<{
+    url: string;
+    draftId: string;
+    revision: number;
+    owner: string;
+    label: string;
+  } | null>(null);
   const ownerRef = useRef(owner);
   ownerRef.current = owner;
   const person = useMirrorPerson(owner);
@@ -140,18 +119,30 @@ export default function MirrorExperience() {
   const paginationOwner = useRef(owner);
   const [registrationOpen, setRegistrationOpen] = useState(false),
     [careRecordOpen, setCareRecordOpen] = useState(false);
-  const [outfitWorkspace, setOutfitWorkspace] = useState(true),
-    [editTarget, setEditTarget] = useState<Slot | undefined>(undefined),
-    [workspaceTab, setWorkspaceTab] = useState<"mine" | "edit">("mine");
+  const [outfitView, setOutfitView] = useState<
+      "library" | "builder" | "compare"
+    >("library"),
+    [editTarget, setEditTarget] = useState<Slot | undefined>(undefined);
+  const builderReturn = useRef<"library" | "compare" | "calendar">("library");
+  const quickPicker = useRef(false);
+  const compareUI = useRef({ quick: false, more: false, page: 0 });
+  const workspaceMemory = useRef(
+    new Map<object, Map<string, MirrorOutfitWorkspaceUI>>(),
+  );
+  const repository = app.repository;
+  if (!workspaceMemory.current.has(repository))
+    workspaceMemory.current.set(repository, new Map());
+  const ownerUI = workspaceMemory.current.get(repository)!;
+  if (!ownerUI.has(owner)) ownerUI.set(owner, createOutfitWorkspaceUI());
+  const [otherTypesOpen, setOtherTypesOpen] = useState(false),
+    [cardSaving, setCardSaving] = useState(false);
+  const cardSaveBusy = useRef(false);
   const [section, setSection] = useState(() =>
     menus.some(([id]) => id === app.ui().screen) ? app.ui().screen : "home",
   );
   const [wardrobeIndex, setWardrobeIndex] = useState<number>(
-      saved.wardrobeIndex ?? 0,
-    ),
-    [homeIndex, setHomeIndex] = useState(0),
-    [lookIndex, setLookIndex] = useState(0),
-    [topIndex, setTopIndex] = useState(0);
+    saved.wardrobeIndex ?? 0,
+  );
   const [selectedId, setSelectedId] = useState<string | null>(null),
     [detailPage, setDetailPage] = useState(0),
     [labelOpen, setLabelOpen] = useState(false),
@@ -186,26 +177,23 @@ export default function MirrorExperience() {
       active = false;
       clearInterval(timer);
     };
-  }, [owner]);
-  const failedSubmission = useRef<SelectionSubmission | null>(null);
-  const failedScene = useRef<FittingSnapshot | null>(null),
-    componentActive = useRef(false);
+  }, [owner, app.repository]);
+  const componentActive = useRef(false);
   useEffect(() => {
     componentActive.current = true;
     return () => {
       componentActive.current = false;
     };
   }, []);
+  const [careAvailability, setCareAvailability] = useState<{
+    key: string;
+    available: boolean | null;
+  } | null>(null);
   const [labelEvidence, setLabelEvidence] = useState<CareEvidenceItem | null>(
     null,
   );
   const [streamBinding, setStreamBinding] =
     useState<FittingStreamBinding | null>(null);
-  const [controlsHidden, setControlsHidden] = useState(false);
-  const [mode, setMode] = useState<"outfit" | "topSwap">("outfit");
-  const [trayOpen, setTrayOpen] = useState(true),
-    [interacting, setInteracting] = useState(false),
-    [keyboard, setKeyboard] = useState(false);
   const [displayed, setDisplayed] = useState<Displayed | null>(null),
     [pendingDisplay, setPendingDisplay] = useState<Displayed | null>(null);
   const [fittingMessage, setFittingMessage] = useState(""),
@@ -213,16 +201,12 @@ export default function MirrorExperience() {
     [commitStatus, setCommitStatus] = useState<
       "idle" | "saving" | "saved" | "error"
     >("idle");
-  const [sourceOutfit, setSourceOutfit] = useState<Outfit | null>(null);
-  const [calendarIndex, setCalendarIndex] = useState(0);
   const comparisonActive = useRef(false),
-    comparisonDraftId = useRef<string | null>(null),
-    comparisonItems = useRef("");
+    comparisonDraftId = useRef<string | null>(null);
   const commitBusy = useRef(false),
     viewGeneration = useRef(0);
   const [authOpen, setAuthOpen] = useState(false);
   const draft = app.outfitDraft();
-  const draftItems = draft?.items ?? {};
   const pack = owner === PACK_PROFILE_ID;
   const ownedVisible = garments;
   const filtered = ownedVisible.filter(
@@ -235,16 +219,9 @@ export default function MirrorExperience() {
           .includes(query.trim().toLocaleLowerCase())),
   );
   const selected = garments.find((g) => g.id === selectedId);
-  const looks = outfits.filter(
-    (o) =>
-      !o.name.startsWith("__") &&
-      Object.values(o.items).every((id) => garments.some((g) => g.id === id)),
-  );
-  const topCandidates = garments.filter((g) => g.category === "top");
-  const currentItemsKey = JSON.stringify(draftItems);
-  const displayedKey = displayed ? JSON.stringify(displayed.items) : "";
   const sceneSnapshot = draft
     ? buildFittingSnapshot({
+        deviceScoped: app.connection.kind === "supabase",
         ownerId: owner,
         person: person.person,
         outfit: draft,
@@ -258,55 +235,90 @@ export default function MirrorExperience() {
     !!displayed &&
     displayed.ownerId === owner &&
     fittingSnapshotsMatch(displayed.candidate.snapshot, sceneSnapshot);
-  const events = app
-    .events()
-    .filter((e) => e.kind === "plan" || e.kind === "wear");
-  const todayEvents = events
-    .filter((e) => e.date === today.date)
-    .sort((a, b) => a.id.localeCompare(b.id));
-  const dateEvents = [...events].reverse();
-  const history = selected
-    ? garmentWearSummary(selected.id, owner, outfits, app.events())
-    : null;
-  const lastWash = selected
-    ? app
-        .events()
-        .filter(
-          (e) =>
-            e.garmentId === selected.id &&
-            e.kind === "care" &&
-            e.value === "세탁 완료",
-        )
-        .sort((a, b) => b.date.localeCompare(a.date))[0]
+  const locations = resolvePhotoLocations(
+    garments,
+    owner,
+    illumination?.ownerId === owner ? illumination.ids : [],
+    connection.kind === "supabase",
+  );
+  const selectedLocation = selected
+    ? resolvePhotoLocations(
+        garments,
+        owner,
+        [selected.id],
+        connection.kind === "supabase",
+      ).items[0]
     : undefined;
+  const history = selected
+    ? garmentLifeSummary(
+        selected.id,
+        owner,
+        outfits,
+        app.events(),
+        lifeHistoryReadOptions(state, owner),
+      )
+    : null;
   const sourceLabel =
     connection.kind === "supabase"
       ? "내 계정 · 원격 연결"
       : pack
         ? "로컬 시연 · 생성된 의류 자산"
-        : "로컬 시연 · 준비 자료";
+        : localLifeRuntime
+          ? "로컬 시연 저장 · 생활 기록"
+          : "로컬 시연 · 준비 자료";
   const activeStream =
     streamBinding &&
     fittingSnapshotsMatch(streamBinding.snapshot, sceneSnapshot)
       ? streamBinding.stream
       : null;
-  const sourceMode = activeStream
-    ? "실시간 수신 · 의류 표현 확인 필요"
-    : exactDisplayed
-      ? displayed?.candidate.origin === "prepared-static"
-        ? "준비된 정적 착장 · 실제 피팅 아님"
-        : displayed?.candidate.origin === "saved"
-          ? "저장된 실제 결과 재생"
-          : "실제 생성 결과 재생"
-      : displayed
-        ? "이전 착장 예시 · 선택 조합 미반영"
-        : fittingMessage || "선택 조합의 피팅 결과 없음";
+  const sourceMode =
+    mockResult &&
+    mockResult.owner === owner &&
+    mockResult.draftId === draft?.draftId &&
+    mockResult.revision === draft?.revision
+      ? mockResult.label
+      : activeStream
+        ? "실시간 수신 · 의류 표현 확인 필요"
+        : exactDisplayed
+          ? displayed?.candidate.origin === "prepared-static"
+            ? "준비된 정적 착장 · 실제 피팅 아님"
+            : displayed?.candidate.origin === "saved"
+              ? "저장된 실제 결과 재생"
+              : "실제 생성 결과 재생"
+          : displayed
+            ? "이전 착장 예시 · 선택 조합 미반영"
+            : fittingMessage || "선택 조합의 피팅 결과 없음";
   const mirrorRef = useRef<HTMLDivElement>(null);
+  const compareVisible = section === "outfit" && outfitView === "compare";
+  const compareVisibleRef = useRef(compareVisible);
+  compareVisibleRef.current = compareVisible;
+  const extraCategories = [...new Set(garments.map((g) => g.category))].filter(
+    (c) => !["top", "bottom", "outer"].includes(c),
+  );
+  useEffect(() => {
+    if (section !== "outfit") return;
+    const frame = requestAnimationFrame(() => {
+      const selector =
+        outfitView === "compare"
+          ? ".mc-heading button"
+          : outfitView === "builder"
+            ? ".mow-slot[aria-pressed=true]"
+            : ".mow-library-heading button";
+      mirrorRef.current
+        ?.querySelector<HTMLElement>(selector)
+        ?.focus({ preventScroll: true });
+    });
+    return () => cancelAnimationFrame(frame);
+  }, [section, outfitView, owner]);
   useEffect(
     () =>
       mirrorFittingSession.subscribe({
         onState: (value) => {
-          if (value.status !== "idle")
+          if (
+            compareVisibleRef.current &&
+            comparisonActive.current &&
+            value.status !== "idle"
+          )
             setFittingMessage(
               value.status === "processing"
                 ? "피팅을 준비하고 있어요"
@@ -319,6 +331,8 @@ export default function MirrorExperience() {
         },
         onResult: (candidate) => {
           if (
+            compareVisibleRef.current &&
+            comparisonActive.current &&
             candidate &&
             candidate.media?.kind !== "stream" &&
             fittingSnapshotsMatch(candidate.snapshot, sceneRef.current)
@@ -335,7 +349,10 @@ export default function MirrorExperience() {
         },
         onStream: (binding) => {
           setStreamBinding(
-            binding && fittingSnapshotsMatch(binding.snapshot, sceneRef.current)
+            compareVisibleRef.current &&
+              comparisonActive.current &&
+              binding &&
+              fittingSnapshotsMatch(binding.snapshot, sceneRef.current)
               ? binding
               : null,
           );
@@ -345,9 +362,10 @@ export default function MirrorExperience() {
   );
   useEffect(() => {
     comparisonActive.current = false;
+    quickPicker.current = false;
+    compareUI.current = { quick: false, more: false, page: 0 };
     mirrorFittingSession.bindContext(owner, app.repository);
-    failedSubmission.current = null;
-    failedScene.current = null;
+    failedServerDraft.current = null;
     setLabelEvidence(null);
     return () => {
       void mirrorFittingSession.stop();
@@ -361,40 +379,39 @@ export default function MirrorExperience() {
   }, [context.key, wardrobeIndex]);
   useEffect(() => {
     setCareRecordOpen(false);
+    setOutfitView("library");
+    setEditTarget(undefined);
+    setOtherTypesOpen(false);
+    setCardSaving(false);
     setSelectedId(null);
     setIllumination(null);
     setDisplayed(null);
+    setMockResult(null);
     setPendingDisplay(null);
-    setSourceOutfit(null);
     setNotice("");
     setCommitStatus("idle");
     setSection("home");
     setRegistrationOpen(false);
-    setMode("outfit");
-    setControlsHidden(false);
     setAuthOpen(false);
     paginationOwner.current = owner;
     setWardrobeIndex(context.read().wardrobeIndex ?? 0);
     setQuery(app.ui().query);
     setCategory(app.ui().category);
     viewGeneration.current++;
-  }, [owner]);
+  }, [owner, app.repository]);
   useEffect(() => {
     const key = (event: KeyboardEvent) => {
-      if (event.key === "Tab") setKeyboard(true);
-      if (event.key === "Escape") {
+      if (event.key === "Escape" && !document.fullscreenElement) {
         if (authOpen) setAuthOpen(false);
         else if (labelOpen) setLabelOpen(false);
         else if (selectedId) {
           setSelectedId(null);
           setIllumination(null);
           setSection("wardrobe");
-        } else setTrayOpen(true);
+        }
       }
     };
-    const pointer = () => setKeyboard(false);
     window.addEventListener("keydown", key);
-    window.addEventListener("pointerdown", pointer);
     const leave = () => {
       app.stopTryOn();
       void mirrorFittingSession.stop();
@@ -402,13 +419,12 @@ export default function MirrorExperience() {
     window.addEventListener("pagehide", leave);
     return () => {
       window.removeEventListener("keydown", key);
-      window.removeEventListener("pointerdown", pointer);
       window.removeEventListener("pagehide", leave);
       app.stopTryOn();
     };
   }, [labelOpen, selectedId, authOpen]);
   useEffect(() => {
-    if (!notice || commitStatus === "error") return;
+    if (!notice || commitStatus === "error" || commitStatus === "saved") return;
     const timer = setTimeout(() => setNotice(""), 3000);
     return () => clearTimeout(timer);
   }, [notice, commitStatus]);
@@ -448,43 +464,44 @@ export default function MirrorExperience() {
       if (previous?.isConnected) previous.focus({ preventScroll: true });
     };
   }, [authOpen, labelOpen]);
+  const endComparison = () => {
+    comparisonActive.current = false;
+    compareVisibleRef.current = false;
+    setStreamBinding(null);
+    setPendingDisplay(null);
+    setDisplayed(null);
+    setMockResult(null);
+    app.stopTryOn();
+    void mirrorFittingSession.stop();
+  };
   const navigate = (next: string) => {
+    quickPicker.current = false;
+    endComparison();
     setCareRecordOpen(false);
     setRegistrationOpen(false);
     viewGeneration.current++;
-    setControlsHidden(false);
-    if (next !== section && next !== "outfit") {
-      comparisonActive.current = false;
-      void mirrorFittingSession.stop();
-      setPendingDisplay(null);
-    }
     setNotice("");
     setAuthOpen(false);
     setLabelOpen(false);
-    if (next === "home") {
-      setIllumination(null);
-      setSelectedId(null);
-      setPendingDisplay(null);
-    }
-    if (next === "wardrobe") {
-      setSelectedId(null);
-      setIllumination(null);
-    }
-    if (next === "care") {
-      setSelectedId(null);
-      setIllumination(null);
-      setDetailPage(1);
-    }
+    setIllumination(null);
+    if (["home", "wardrobe", "care"].includes(next)) setSelectedId(null);
+    if (next === "care") setDetailPage(1);
     if (next === "outfit") {
-      setOutfitWorkspace(true);
-      setWorkspaceTab("mine");
+      setOutfitView("library");
       setEditTarget(undefined);
-      setTrayOpen(true);
-      setMode("outfit");
-      if (section !== "calendar") setIllumination(null);
     }
     setSection(next);
     app.setScreen(next);
+  };
+  const library = () => {
+    quickPicker.current = false;
+    compareUI.current = { quick: false, more: false, page: 0 };
+    endComparison();
+    viewGeneration.current++;
+    setOutfitView("library");
+    setEditTarget(undefined);
+    setNotice("");
+    setIllumination(null);
   };
   const selectGarment = (g: Garment) => {
     app.selectGarment(g.id);
@@ -494,13 +511,18 @@ export default function MirrorExperience() {
     setLabelOpen(false);
     setIllumination({ ownerId: owner, kind: "garmentFocus", ids: [g.id] });
     setNotice("");
-    if (currentMember())
+    if (connection.kind === "supabase") {
+      const repository = app.repository;
       void api()
         .send("POST", "/integration/led-commands", {
           device_id: currentDevice(),
           garment_ids: [g.id],
         })
-        .catch((e: Error) => setNotice(e.message));
+        .catch((error: Error) => {
+          if (ownerRef.current === owner && app.repository === repository)
+            setNotice(error.message);
+        });
+    }
   };
   const closeDetail = () => {
     setSelectedId(null);
@@ -515,12 +537,24 @@ export default function MirrorExperience() {
     if (!current) return;
     const selectedPerson = person.person;
     const snapshot = buildFittingSnapshot({
+      deviceScoped: app.connection.kind === "supabase",
       ownerId: owner,
       person: selectedPerson,
       outfit: current,
       garments: app.garments(),
       requestVersion: current.revision,
     }).snapshot;
+    if (
+      allowExecution &&
+      connection.kind === "supabase" &&
+      snapshot &&
+      mirrorFittingSession.getCurrentOperation()
+    ) {
+      setPendingDisplay(null);
+      setFittingMessage("현재 피팅에 선택한 조합을 연결하고 있어요");
+      void mirrorFittingSession.submitSelected(snapshot, current);
+      return;
+    }
     const candidate = matchPreparedPackResult(snapshot);
     if (candidate) {
       setPendingDisplay({
@@ -542,190 +576,270 @@ export default function MirrorExperience() {
     }
     return candidate;
   };
+  const previewDraft = () => {
+    const current = app.outfitDraft();
+    if (!current) return;
+    comparisonActive.current = true;
+    comparisonDraftId.current = current.draftId;
+    compareVisibleRef.current = true;
+    setOutfitView("compare");
+    setSection("outfit");
+    app.setScreen("outfit");
+    setIllumination(null);
+    setNotice("");
+    viewGeneration.current++;
+    chooseMedia(current.name, true);
+  };
   const openLook = (look: Outfit) => {
     try {
-      void mirrorFittingSession.stop();
+      endComparison();
       if (app.outfits().some((o) => o.id === look.id))
-        app.loadOutfitDraft(look.id);
+        app.loadOutfitDraft(look.id, { reuse: true });
       else app.openOutfitProposal(look.items, look.name);
-      comparisonActive.current = false;
-      setSourceOutfit(structuredClone(look));
-      setIllumination(null);
       setCommitStatus("idle");
-      setNotice("");
-      setMode("outfit");
-      setOutfitWorkspace(false);
-      setControlsHidden(false);
-      setSection("outfit");
-      app.setScreen("outfit");
-      chooseMedia(look.name);
+      previewDraft();
     } catch (e) {
       setNotice((e as Error).message);
     }
   };
-  const previewDraft = () => {
-    setAuthOpen(true);
-    const current = app.outfitDraft();
-    comparisonActive.current = true;
-    comparisonDraftId.current = current?.draftId ?? null;
-    comparisonItems.current = JSON.stringify([
-      current?.items,
-      current?.externalItems,
-    ]);
-    setOutfitWorkspace(false);
-    setIllumination(null);
-    if (current) chooseMedia(current.name, true);
-  };
   const editDraft = (slot?: Slot) => {
-    setWorkspaceTab("edit");
+    builderReturn.current = outfitView === "compare" ? "compare" : "library";
+    quickPicker.current = outfitView === "compare" && slot === "top";
+    // The top picker is part of the active comparison; keep its admitted operation and draft.
+    if (!quickPicker.current) endComparison();
+    else compareVisibleRef.current = false;
+    viewGeneration.current++;
     setEditTarget(slot);
-    setOutfitWorkspace(true);
+    setOutfitView("builder");
     setIllumination(null);
+    setNotice("");
+  };
+  const backFromBuilder = () => {
+    if (builderReturn.current === "compare") {
+      // Return is presentation only, not another execution intent.
+      const current = app.outfitDraft();
+      if (!quickPicker.current) comparisonActive.current = false;
+      quickPicker.current = false;
+      compareVisibleRef.current = true;
+      setOutfitView("compare");
+      if (current && !displayed) chooseMedia(current.name, false);
+    } else if (builderReturn.current === "calendar") {
+      quickPicker.current = false;
+      navigate("calendar");
+    } else library();
+  };
+  const selectedFromPicker = (slot: Slot) => {
+    if (!quickPicker.current || slot !== "top") return;
+    quickPicker.current = false;
+    compareVisibleRef.current = true;
+    setOutfitView("compare");
+    setEditTarget(undefined);
+    viewGeneration.current++;
+    const current = app.outfitDraft();
+    if (current)
+      chooseMedia(
+        current.name,
+        comparisonActive.current &&
+          comparisonDraftId.current === current.draftId,
+      );
+  };
+  const reuseLook = (look: Outfit) => {
+    try {
+      endComparison();
+      app.loadOutfitDraft(look.id, { reuse: true });
+      builderReturn.current = "calendar";
+      setEditTarget(undefined);
+      setOutfitView("builder");
+      setSection("outfit");
+      app.setScreen("outfit");
+      setCommitStatus("idle");
+      setIllumination(null);
+      setNotice("");
+      viewGeneration.current++;
+    } catch (e) {
+      setNotice((e as Error).message);
+    }
   };
   const draftChanged = () => {
     setIllumination(null);
     setCommitStatus("idle");
-    const current = app.outfitDraft();
-    if (current?.draftId !== comparisonDraftId.current)
-      comparisonActive.current = false;
-    const items = JSON.stringify([current?.items, current?.externalItems]);
-    const changed = items !== comparisonItems.current;
-    comparisonItems.current = items;
-    if (current) chooseMedia(current.name, comparisonActive.current && changed);
+    setPendingDisplay(null);
+    setDisplayed(null);
+    setMockResult(null);
   };
   const replaceTop = (g: Garment) => {
-    if (app.outfitDraft()?.items.top === g.id) return;
+    const current = app.outfitDraft();
+    if (!current || current.items.top === g.id) return;
+    if (current.topLocked || current.lockedSlots?.top) {
+      setNotice("상의가 고정되어 있어요. 조합 편집에서 고정을 해제해 주세요.");
+      return;
+    }
     try {
-      if (app.outfitDraft()?.topLocked) app.toggleTopLock();
       app.setOutfitItem("top", g.id);
       setIllumination(null);
       setCommitStatus("idle");
       setNotice("");
-      setTrayOpen(true);
-      chooseMedia(`${g.name}로 바꾼 코디`);
+      const next = app.outfitDraft()!;
+      chooseMedia(
+        next.name,
+        comparisonActive.current && comparisonDraftId.current === next.draftId,
+      );
     } catch (e) {
       setNotice((e as Error).message);
     }
   };
-  const finishSelectedFitting = (
-    submission: SelectionSubmission,
-    submittedScene: FittingSnapshot | null,
-  ) => {
+  const saveCard = async () => {
     const current = app.outfitDraft();
-    if (
-      !componentActive.current ||
-      current?.ownerId !== submission.source.ownerId ||
-      current.draftId !== submission.source.draftId ||
-      current.revision !== submission.source.revision ||
-      !fittingSnapshotsMatch(submittedScene, sceneRef.current)
-    )
-      return;
-    comparisonActive.current = false;
-    app.stopTryOn();
-    void mirrorFittingSession.stop();
+    if (!current || cardSaveBusy.current) return;
+    const captured = {
+      owner: current.ownerId,
+      repository: app.repository,
+      draftId: current.draftId,
+      revision: current.revision,
+    };
+    cardSaveBusy.current = true;
+    setCardSaving(true);
+    try {
+      const result = await app.saveOutfit(
+        `mirror-card:${current.draftId}:${current.revision}`,
+      );
+      if (
+        connection.kind === "supabase" &&
+        ownerRef.current === captured.owner &&
+        app.repository === captured.repository
+      ) {
+        await saveServerCard(result.entity.id);
+        if (
+          ownerRef.current === captured.owner &&
+          app.repository === captured.repository
+        )
+          await app.reloadRemote();
+      }
+      if (
+        componentActive.current &&
+        ownerRef.current === captured.owner &&
+        app.repository === captured.repository
+      )
+        setNotice(
+          app.outfitDraft()?.draftId !== captured.draftId ||
+            app.outfitDraft()?.revision !== captured.revision
+            ? "앞서 요청한 코디카드를 저장했어요. 새 조합은 유지해요."
+            : result.replayed
+              ? "이미 저장된 코디카드를 확인했어요"
+              : "코디카드를 저장했어요. 오늘 선택과는 별도예요.",
+        );
+    } catch (e) {
+      if (
+        componentActive.current &&
+        ownerRef.current === captured.owner &&
+        app.repository === captured.repository
+      )
+        setNotice((e as Error).message);
+    } finally {
+      cardSaveBusy.current = false;
+      if (
+        componentActive.current &&
+        ownerRef.current === captured.owner &&
+        app.repository === captured.repository
+      )
+        setCardSaving(false);
+    }
   };
-  const commit = async () => {
-    if (commitBusy.current || !draft) return;
+  const failedServerDraft = useRef<OutfitDraft | null>(null);
+  const commit = async (retry = false) => {
+    const captured = retry ? failedServerDraft.current : app.outfitDraft();
+    if (commitBusy.current || !captured) return;
+    if (app.connection.kind !== "supabase") {
+      setNotice("로그인 후 보유 의류 조합을 확정하세요.");
+      return;
+    }
+    if (!retry && failedServerDraft.current) {
+      setNotice("앞선 요청 결과를 먼저 확인하세요.");
+      return;
+    }
+    const snapshot = structuredClone(captured),
+      repository = app.repository,
+      generation = viewGeneration.current;
+    const current = () =>
+      componentActive.current &&
+      ownerRef.current === snapshot.ownerId &&
+      app.repository === repository;
+    failedServerDraft.current = snapshot;
     commitBusy.current = true;
     setCommitStatus("saving");
+    setNotice("코디를 확정하고 있습니다.");
     try {
-      if (Object.keys(draft.externalItems ?? {}).length)
-        throw new Error("LIKED items cannot be finalized as owned clothes");
-      const o: any = await api().send("POST", "/outfits", {
-        title: draft.name || "My Look",
-        status: "DRAFT",
-        items: Object.entries(draft.items).map(([slot, id]) => ({
-          slot: slot.toUpperCase(),
-          garment_id: id,
-          position: 0,
-        })),
-      });
-      const session: any = await api().send("POST", "/vton-sessions", {
-        member_id: currentMember().id,
-        source_screen: "OUTFIT_EDITOR",
-        outfit_id: o.id,
-      });
-      await api().send("POST", `/vton-sessions/${session.id}/end`, {
-        expected_revision: session.revision,
-        final_outfit_id: session.outfit_id,
-        save_outfit: false,
-      });
-      await api().send("POST", "/integration/led-commands", {
-        device_id: currentDevice(),
-        garment_ids: Object.values(draft.items),
-      });
+      const result = await confirmServerLook(snapshot);
+      if (!current()) return;
+      failedServerDraft.current = null;
+      if (generation !== viewGeneration.current) {
+        setCommitStatus("idle");
+        return;
+      }
+      endComparison();
       setCommitStatus("saved");
-      setNotice("Final selection saved; no plan or wear record created");
+      const applied =
+        result.led.applied_garment_ids?.length ??
+        result.led.anchor_ids?.length ??
+        0;
+      setNotice(
+        `코디 확정 완료 · 착용 예정/실제 착용 기록 없음${result.led.blocked ? " · 현재 접속 기기에서는 집 LED 제어가 차단됩니다." : applied ? " · 확인된 위치 LED" : " · LED는 서버 위치 확인 결과에 따릅니다."}`,
+      );
     } catch (e) {
-      setCommitStatus("error");
-      setNotice((e as Error).message);
+      if (current()) {
+        setCommitStatus("error");
+        setNotice((e as Error).message);
+      }
     } finally {
       commitBusy.current = false;
     }
   };
-  const retryCommit = async () => {
-    await commit();
-  };
+  const retryCommit = () => commit(true);
   const setFilters = (q: string, c: typeof category) => {
     setQuery(q);
     setCategory(c);
     setWardrobeIndex(0);
     app.setSearchFilters({ query: q, category: c });
   };
-  const profileName = pack
-    ? "내 옷장"
-    : (state.profiles.find((p) => p.id === owner)?.name ?? "내 옷장");
-  const sourceCaption = <span className="mx-source">{sourceLabel}</span>;
-  const renderLookCard = (look: Outfit) => {
-    const snap = buildFittingSnapshot({
-      ownerId: owner,
-      person: person.person,
-      outfit: { ...look, draftId: `card:${look.id}`, topLocked: false },
-      garments,
-      requestVersion: 1,
-    }).snapshot;
-    const media = matchPreparedPackResult(snap);
-    return (
-      <button
-        className="mx-look-card"
-        key={look.id}
-        data-look-id={look.id}
-        aria-label={`${look.name} 코디 열기`}
-        onClick={() => openLook(look)}
-      >
-        {media?.media?.kind === "image" ? (
-          <img src={media.media.url} alt={look.name} draggable={false} />
-        ) : (
-          <OutfitThumb outfit={look} garments={garments} />
-        )}
-        <strong>{look.name}</strong>
-        <small>눌러서 미러로 보기</small>
-      </button>
-    );
-  };
-  const renderGarmentCard = (g: Garment, onClick: () => void) => (
-    <button
-      className="mx-garment-card"
-      key={g.id}
-      data-garment-id={g.id}
-      aria-label={`${g.name} 선택`}
-      onClick={onClick}
-    >
-      <Photo asset={g.asset} name={g.name} />
-      <strong>{g.name}</strong>
-    </button>
+  const sourceCaption = (
+    <span className="mx-source">
+      {app.persistence.status === "ready"
+        ? sourceLabel
+        : "로컬 저장 불가 · 메모리에서만 유지"}
+    </span>
   );
   return (
-    <PhotoWardrobeStage anchorIds={serverAnchors}>
-      <BackendSessionBootstrap app={app} />
+    <PhotoWardrobeStage
+      anchorIds={
+        connection.kind === "supabase" ? serverAnchors : locations.anchorIds
+      }
+    >
+      {!localLifeRuntime && <BackendSessionBootstrap app={app} />}
       <div
         className="mx-surface"
+        data-mirror-ui="clear"
         ref={mirrorRef}
         data-screen={section}
+        data-outfit-view={section === "outfit" ? outfitView : undefined}
         data-selected-garment={selectedId ?? ""}
         data-look-revision={draft?.revision ?? 0}
       >
-        {(section === "home" || section === "outfit") &&
+        {compareVisible &&
+          mockResult?.owner === owner &&
+          mockResult.draftId === draft?.draftId &&
+          mockResult.revision === draft?.revision && (
+            <MirrorForeground
+              media={{
+                kind: "image",
+                url: mockResult.url,
+                label: mockResult.label,
+              }}
+              contextKey={JSON.stringify(mockResult)}
+              className="mx-person-result"
+            />
+          )}
+
+        {compareVisible &&
           !activeStream &&
           displayed?.ownerId === owner &&
           displayed.candidate.media &&
@@ -747,7 +861,7 @@ export default function MirrorExperience() {
               }
             />
           )}
-        {section === "outfit" && activeStream && (
+        {compareVisible && activeStream && (
           <MirrorForeground
             media={{
               kind: "stream",
@@ -777,6 +891,7 @@ export default function MirrorExperience() {
               )
                 return;
               if (
+                compareVisibleRef.current &&
                 fittingSnapshotsMatch(
                   pendingDisplay.candidate.snapshot,
                   sceneRef.current,
@@ -798,7 +913,6 @@ export default function MirrorExperience() {
             alt=""
             src={pendingDisplay.candidate.media.url}
             onLoad={(event) => {
-              const current = app.outfitDraft();
               if (
                 event.currentTarget.currentSrc !==
                 new URL(
@@ -810,6 +924,7 @@ export default function MirrorExperience() {
               )
                 return;
               if (
+                compareVisibleRef.current &&
                 pendingDisplay.ownerId === owner &&
                 fittingSnapshotsMatch(
                   pendingDisplay.candidate.snapshot,
@@ -827,25 +942,30 @@ export default function MirrorExperience() {
             }}
           />
         )}
-        <header className="mx-header">
-          <span>SMART CLOSET</span>
-          <strong>
-            {section === "wardrobe"
-              ? selected
-                ? "선택한 옷"
-                : "내 옷장"
-              : section === "care"
-                ? "라벨·관리법"
-                : section === "outfit"
-                  ? "오늘의 코디"
-                  : section === "calendar"
-                    ? "캘린더"
-                    : section === "my"
-                      ? "마이"
-                      : "좋은 하루예요"}
-          </strong>
-          {sourceCaption}
-        </header>
+        {section !== "home" &&
+          !(section === "outfit" && outfitView === "compare") && (
+            <header className="mx-header">
+              <span>SMART CLOSET</span>
+              <strong>
+                {section === "wardrobe"
+                  ? selected
+                    ? "선택한 옷"
+                    : "내 옷장"
+                  : section === "care"
+                    ? "라벨·관리법"
+                    : section === "outfit"
+                      ? outfitView === "library"
+                        ? "코디 탐색"
+                        : "의류 조합"
+                      : section === "calendar"
+                        ? "캘린더"
+                        : section === "my"
+                          ? "마이"
+                          : "좋은 하루예요"}
+              </strong>
+              {sourceCaption}
+            </header>
+          )}
         <nav className="mx-nav" aria-label="주 메뉴">
           {menus.map(([id, icon, label]) => (
             <button
@@ -901,27 +1021,41 @@ export default function MirrorExperience() {
                   {categoryNames[c]}
                 </button>
               ))}
+              {extraCategories.length > 0 && (
+                <button
+                  className="mg-other"
+                  aria-expanded={otherTypesOpen}
+                  aria-pressed={extraCategories.includes(category as Slot)}
+                  onClick={() => setOtherTypesOpen(!otherTypesOpen)}
+                >
+                  {extraCategories.includes(category as Slot)
+                    ? categoryNames[category]
+                    : "기타"}
+                </button>
+              )}
             </div>
-            <select
-              aria-label="의류 종류"
-              value={category}
-              onChange={(e) =>
-                setFilters(query, e.target.value as typeof category)
-              }
-            >
-              {["all", ...new Set(garments.map((g) => g.category))].map((c) => (
-                <option value={c} key={c}>
-                  {categoryNames[c] ?? c}
-                </option>
-              ))}
-            </select>
+            {otherTypesOpen && (
+              <div className="mg-extra-types" aria-label="기타 의류 종류">
+                {extraCategories.map((c) => (
+                  <button
+                    key={c}
+                    aria-pressed={category === c}
+                    onClick={() => {
+                      setFilters(query, c);
+                      setOtherTypesOpen(false);
+                    }}
+                  >
+                    {categoryNames[c] ?? c}
+                  </button>
+                ))}
+              </div>
+            )}
             <MirrorGarmentGrid
               garments={filtered}
               index={wardrobeIndex}
               onIndexChange={setWardrobeIndex}
               onSelect={selectGarment}
             />
-            <p className="mx-fine">옆으로 탐색 · 눌러서 이력과 위치</p>
           </section>
         )}
         {registrationOpen && section === "wardrobe" && (
@@ -948,8 +1082,8 @@ export default function MirrorExperience() {
                 </button>
               </div>
               <div className="mx-garment-context">
-                <Photo asset={selected.asset} name={selected.name} />
-                <span>{selected.location || "위치 미확인"}</span>
+                <MirrorPhoto garment={selected} name={selected.name} />
+                <span>{selectedLocation?.displayLabel ?? "위치 미확인"}</span>
               </div>
               <div className="mx-tabs" role="tablist" aria-label="의류 상세">
                 <button
@@ -984,22 +1118,54 @@ export default function MirrorExperience() {
                 showControls={false}
               >
                 <article className="mx-glass mx-history">
-                  <span>마지막 실제 착용</span>
-                  <strong>{history?.lastWornDate ?? "기록 없음"}</strong>
-                  <span>확인된 착용 일수</span>
-                  <strong data-wear-days={history?.wearDays ?? 0}>
-                    {history?.dates.length
-                      ? `${history.wearDays}일`
-                      : "착용 기록 없음"}
+                  <span>
+                    {history?.lastWashDate ? "지난 세탁 후 착용" : "착용 이력"}
+                  </span>
+                  <strong>
+                    {history?.lastWashDate
+                      ? `${history.wearsAfterLastWash}회 · ${history.wearDaysAfterLastWash}일`
+                      : history?.display}
                   </strong>
-                  <small>마지막 세탁 {lastWash?.date ?? "기록 없음"}</small>
-                  <small>오늘 선택·피팅은 착용에 포함하지 않아요.</small>
+                  <small>
+                    마지막 세탁 {history?.lastWashDate ?? "기록 없음"}
+                  </small>
+                  <small>
+                    마지막 실제 착용 {history?.lastWornDate ?? "기록 없음"}
+                  </small>
+                  <small data-wear-count={history?.wearCount ?? 0}>
+                    전체 기록된 착용{" "}
+                    <span data-wear-days={history?.wearDays ?? 0}>
+                      {history?.dates.length
+                        ? `${history.wearDays}일`
+                        : "기록 없음"}
+                    </span>
+                  </small>
+                  {history?.availability !==
+                    "no_recorded_block_not_cleanliness_confirmation" && (
+                    <small>
+                      {history?.availability === "drying_unconfirmed"
+                        ? "세탁 후 건조 완료 기록은 없어요."
+                        : "사용자 관찰: 세탁 대기로 표시했어요."}
+                    </small>
+                  )}
+                  <small>
+                    {history?.sourceKinds.includes("scenario_fixture")
+                      ? "시연 생활 기록 · 실제 사용자 이력 아님"
+                      : "오늘 선택·피팅은 착용에 포함하지 않아요."}
+                  </small>
                 </article>
                 <article className="mx-glass mx-care">
                   <MirrorCareEvidence
+                    evidence={state.careEvidence}
                     ownerId={owner}
                     garment={selected}
                     remote={connection.kind === "supabase"}
+                    onEvidenceState={(available) =>
+                      setCareAvailability({
+                        key: `${owner}:${selected.id}:${selected.revision}`,
+                        available,
+                      })
+                    }
                     onOpenOriginal={(evidence) => {
                       setLabelEvidence(evidence);
                       setLabelOpen(true);
@@ -1008,15 +1174,19 @@ export default function MirrorExperience() {
                   <MirrorCareHelp
                     key={`${owner}:${selected.id}`}
                     garment={selected}
+                    evidenceAvailable={
+                      careAvailability?.key ===
+                      `${owner}:${selected.id}:${selected.revision}`
+                        ? careAvailability.available
+                        : null
+                    }
                   />
                 </article>
               </HorizontalPager>
               <p className="mx-location-caption">
-                {serverAnchors.length
-                  ? "서버가 확인한 점등 구역을 확인하세요"
-                  : selected.location
-                    ? "등록된 위치 안내 · LED는 현재 소등 상태"
-                    : "이 옷의 위치는 아직 확인되지 않았어요"}
+                {selectedLocation?.anchorIds?.length
+                  ? "불이 켜진 구역 · 시연 위치"
+                  : ""}
               </p>
             </section>
           )}
@@ -1036,107 +1206,75 @@ export default function MirrorExperience() {
             }}
           />
         )}
-        {section === "outfit" && (
-          <>
-            <p className="mx-media-status" role="status">
-              {sourceMode}
-            </p>
-            {outfitWorkspace ? (
-              <section className="mx-editor">
-                <MirrorOutfitWorkspace
-                  key={`${owner}:${workspaceTab}:${editTarget ?? ""}`}
-                  initialTab={workspaceTab}
-                  initialSlot={editTarget}
-                  onOpenLook={openLook}
-                  onDraftChange={draftChanged}
-                  onRequestFitting={previewDraft}
-                  onNotice={setNotice}
-                />
-              </section>
-            ) : (
-              <>
-                {!displayed && !activeStream && (
-                  <div className="mx-selection-only">
-                    <MirrorOutfitThumbnail
-                      app={app}
-                      outfit={{
-                        items: draftItems,
-                        externalItems: draft?.externalItems,
-                        name: draft?.name ?? "선택 코디",
-                      }}
-                    />
-                    <p>선택한 구성품 · 피팅 미적용</p>
-                  </div>
-                )}
-                <section
-                  className="mx-preview-controls"
-                  aria-label="미러 조합 조작"
-                >
-                  <button
-                    className="mx-primary"
-                    disabled={
-                      commitStatus === "saving" ||
-                      !draft ||
-                      !completeOutfit(draft)
-                    }
-                    onClick={() => void commit()}
-                  >
-                    {commitStatus === "saving"
-                      ? "기록하는 중"
-                      : "이 옷으로 입기"}
-                  </button>
-                  <div className="mx-preview-edits">
-                    <button onClick={() => editDraft("top")}>
-                      상의 바꾸기
-                    </button>
-                    <button onClick={() => editDraft()}>조합 편집</button>
-                  </div>
-                  <button className="mx-preview-records" onClick={previewDraft}>
-                    피팅 시작
-                  </button>
-                  <button
-                    className="mx-preview-records"
-                    onClick={() => {
-                      app.setCalendarDate(today.date);
-                      navigate("calendar");
-                    }}
-                  >
-                    오늘 기록 보기
-                  </button>
-                  <p
-                    className="mx-selection-caption"
-                    data-selected-look={currentItemsKey}
-                  >
-                    {Object.values(draftItems)
-                      .map((id) => garments.find((g) => g.id === id)?.name)
-                      .filter(Boolean)
-                      .concat(
-                        Object.values(draft?.externalItems ?? {}).map(
-                          (item) => item.name + " (구매 후보)",
-                        ),
-                      )
-                      .join(" · ")}
-                  </p>
-                  {illumination?.kind === "confirmedLook" && (
-                    <p className="mx-location-caption">
-                      {serverAnchors.length
-                        ? "불이 켜진 구역에서 꺼내세요"
-                        : "LED 소등 · 위치 확인 필요"}
-                      {Object.keys(draft?.externalItems ?? {}).length
-                        ? " · 구매 후보는 보유옷이 아니에요"
-                        : ""}
-                    </p>
-                  )}
-                </section>
-              </>
-            )}
-          </>
-        )}
+        {section === "outfit" &&
+          (outfitView === "compare" ? (
+            <MirrorCompare
+              key={owner}
+              uiState={compareUI.current}
+              onUIStateChange={(value) => {
+                compareUI.current = value;
+              }}
+              draft={draft}
+              garments={garments}
+              hasMedia={!!displayed || !!activeStream || !!mockResult}
+              onMockResult={(url, label) => {
+                const d = app.outfitDraft();
+                if (d) {
+                  setDisplayed(null);
+                  setStreamBinding(null);
+                  setMockResult({
+                    url,
+                    draftId: d.draftId,
+                    revision: d.revision,
+                    owner,
+                    label: label || "Mock VTON 결과 · 실제 피팅 아님",
+                  });
+                }
+              }}
+              status={sourceMode}
+              onBack={library}
+              onEdit={editDraft}
+              onChooseTop={replaceTop}
+              onSave={() => void saveCard()}
+              onCommit={() => void commit(false)}
+              onEnd={library}
+              saving={cardSaving}
+              committing={commitStatus === "saving"}
+              recorded={commitStatus === "saved"}
+              onRecords={() => {
+                app.setCalendarDate(today.date);
+                navigate("calendar");
+              }}
+            />
+          ) : (
+            <section className="mx-editor">
+              <MirrorOutfitWorkspace
+                key={owner}
+                view={outfitView}
+                onViewChange={(view) => {
+                  endComparison();
+                  builderReturn.current = "library";
+                  setOutfitView(view);
+                  setEditTarget(undefined);
+                  viewGeneration.current++;
+                }}
+                onBack={backFromBuilder}
+                uiState={ownerUI.get(owner)}
+                onUIStateChange={(value) => ownerUI.set(owner, value)}
+                initialSlot={editTarget}
+                onOpenLook={openLook}
+                onDraftChange={draftChanged}
+                onSelected={selectedFromPicker}
+                onRequestFitting={previewDraft}
+                onNotice={setNotice}
+              />
+            </section>
+          ))}
         {section === "calendar" && (
           <MirrorCalendar
             app={app}
             today={today.date}
-            onReuse={openLook}
+            onReuse={reuseLook}
             onBrowseOutfits={() => navigate("outfit")}
           />
         )}
@@ -1152,8 +1290,9 @@ export default function MirrorExperience() {
             className={`mx-toast ${commitStatus === "error" ? "error" : ""}`}
             role="status"
           >
-            {notice}
-            {commitStatus === "error" && failedSubmission.current && (
+            {notice ||
+              "앞선 선택 기록을 확인해야 해요. 조합은 그대로 유지합니다."}
+            {commitStatus === "error" && failedServerDraft.current && (
               <button onClick={() => void retryCommit()}>
                 앞선 선택 기록 다시 확인
               </button>
@@ -1176,7 +1315,7 @@ export default function MirrorExperience() {
                 {labelEvidence.kind === "label"
                   ? "저장된 라벨 원문"
                   : labelEvidence.kind === "official_guidance"
-                    ? "저장된 공식 안내"
+                    ? careEvidencePresentation(labelEvidence).verificationLabel
                     : "직접 입력한 관리 근거"}
               </small>
               {labelEvidence.asset && (
@@ -1191,12 +1330,18 @@ export default function MirrorExperience() {
                   }}
                 />
               )}
-              <p className="mx-original-text">{labelEvidence.originalText}</p>
-              {labelEvidence.sourceRef && (
-                <p>출처 · {labelEvidence.sourceRef}</p>
+              <p className="mx-original-text">
+                {careEvidenceOriginalText(labelEvidence)}
+              </p>
+              {careEvidencePresentation(labelEvidence).sourceDomain && (
+                <p>
+                  출처 · {careEvidencePresentation(labelEvidence).sourceDomain}
+                </p>
               )}
               {labelEvidence.observedAt && (
-                <small>확인일 · {labelEvidence.observedAt.slice(0, 10)}</small>
+                <small>
+                  자료 기록일 · {labelEvidence.observedAt.slice(0, 10)}
+                </small>
               )}
             </section>
           )}

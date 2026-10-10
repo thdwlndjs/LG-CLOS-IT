@@ -260,6 +260,11 @@ export class HttpRemoteBackend implements RemoteBackend {
       .map(mapGarment);
     const rawOutfits = await listAll(api(), "/outfits", {});
     const cards: any[] = await listAll(api(), "/cards", {});
+    const history: any[] = await listAll(api(), "/history", {
+      timezone: "Asia/Seoul",
+    });
+    const careSchedules: any[] = await listAll(api(), "/care-schedules", {});
+    const liked: any = await api().get("/integration/shopping/liked");
     const outfits = rawOutfits
       .filter(
         (o: any) =>
@@ -279,9 +284,25 @@ export class HttpRemoteBackend implements RemoteBackend {
           url: assetUrl(card.image_asset.read_url),
         };
     }
-    const history: any[] = await listAll(api(), "/history", {
-      timezone: "Asia/Seoul",
-    });
+
+    // Project immutable server wear composition separately from mutable saved cards.
+    for (const h of history.filter(
+      (h) => h.kind === "WEAR" && h.status === "CONFIRMED" && h.items_snapshot,
+    )) {
+      const original = rawOutfits.find((o) => o.id === h.outfit_id);
+      const snapshot = mapOutfit(
+        {
+          id: `history:${h.id}`,
+          member_id: account.id,
+          title: original?.title || "실제 착용 기록",
+          version: original?.version || 1,
+          items: h.items_snapshot,
+        },
+        garments,
+      );
+      snapshot.purpose = "wear";
+      outfits.push(snapshot);
+    }
     if (generation !== sessionGeneration || member !== account)
       throw new BackendError(
         "unauthorized",
@@ -297,10 +318,29 @@ export class HttpRemoteBackend implements RemoteBackend {
         id: h.id,
         ownerId: member.id,
         kind: h.kind === "WEAR" ? "wear" : "care",
-        outfitId: h.outfit_id || undefined,
+        outfitId:
+          h.kind === "WEAR" && h.items_snapshot
+            ? `history:${h.id}`
+            : h.outfit_id || undefined,
         garmentId: h.garment_id || undefined,
         date: h.local_date,
-        value: h.description,
+        value:
+          h.kind === "CARE"
+            ? (
+                {
+                  WASH: "세탁 완료",
+                  DRY: "건조 완료",
+                  CLEAN: "전문 관리 완료",
+                } as Record<string, string>
+              )[
+                careSchedules.find((s) => s.care_event_id === h.id)?.care_type
+              ] || h.description
+            : h.description,
+        occurredAt: h.occurred_at,
+        timePrecision: "instant" as const,
+        inputSource: "user_confirmed",
+        sourceEventKey: h.id,
+        garmentIds: h.items_snapshot?.map((i: any) => i.garment_id),
       }));
     const ui = emptyUI();
     ui.calendarDate = new Date().toISOString().slice(0, 10);
@@ -312,7 +352,15 @@ export class HttpRemoteBackend implements RemoteBackend {
       garments,
       outfits,
       events,
-      externalItems: [],
+      externalItems: liked.items.map((item: any) => ({
+        id: item.id,
+        ownerId: account.id,
+        name: item.name,
+        category: item.category.toLowerCase(),
+        asset: null,
+        sourceLabel: item.source_label + " · LIKED · 보유 의류 아님",
+        sourceUrl: null,
+      })),
       registrationDrafts: {},
       outfitDrafts: {},
       ui: { [member.id]: ui },
@@ -394,6 +442,12 @@ export class HttpRemoteBackend implements RemoteBackend {
   async saveOutfit(d: OutfitDraft, intent: string) {
     const previous = savedResults.get(intent);
     if (previous) return { ...previous, replayed: true } as SaveResult<Outfit>;
+    if (
+      !(d.items.dress
+        ? !d.items.top && !d.items.bottom
+        : d.items.top && d.items.bottom)
+    )
+      throw new Error("상의·하의 또는 원피스를 선택하세요.");
     if (Object.keys(d.externalItems || {}).length)
       throw new Error("LIKED 상품은 코디·카드로 저장하지 않습니다.");
     const body = {
@@ -433,6 +487,11 @@ export class HttpRemoteBackend implements RemoteBackend {
     _r?: string,
     _a?: AvailabilityConfirmation[],
   ) {
+    if (_r)
+      throw new BackendError(
+        "unsupported_contract",
+        "현재 API는 참고 사진 기반 재구성을 지원하지 않습니다. 보유 의류 추천을 이용하세요.",
+      );
     const context: any = await api().send("POST", "/context-snapshots", {
       member_id: member.id,
       timezone: "Asia/Seoul",

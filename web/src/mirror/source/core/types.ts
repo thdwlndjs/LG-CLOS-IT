@@ -1,5 +1,8 @@
+import type { GarmentDisplayBinding } from "../lifeData/visualPresentation";
+import type { LifeProfileData } from "../lifeSnapshot";
+import type { CareEvidenceItem } from "../careEvidence";
 export type Category =
-  "top" | "bottom" | "outer" | "bag" | "shoes" | "hat" | "accessory";
+  "top" | "bottom" | "outer" | "bag" | "shoes" | "hat" | "accessory" | "dress";
 export type Slot = Category;
 export type Asset = {
   id: string;
@@ -10,6 +13,8 @@ export type Asset = {
 };
 export type Provenance = "demo" | "user" | "unconfirmed";
 export interface Garment {
+  /** null is an explicit display clear; undefined has never been bound. Fitting asset remains independent. */
+  displayBinding?: GarmentDisplayBinding | null;
   id: string;
   ownerId: string;
   asset: Asset | null;
@@ -58,7 +63,22 @@ export interface ExternalOutfitItem {
   sourceUrl: string | null;
 }
 export type ExternalOutfitItems = Partial<Record<Slot, ExternalOutfitItem>>;
+export type OutfitNameOrigin = "auto" | "user" | "legacy";
+export type OutfitPurpose = "card" | "selection" | "wear";
+export interface OutfitRecordContext {
+  kind: "selection" | "wear";
+  date: string;
+  sourceDraftId: string;
+  sourceRevision: number;
+  intentKey?: string;
+  intentId: string;
+}
 export interface OutfitDraft {
+  nameOrigin?: OutfitNameOrigin;
+  purpose?: OutfitPurpose;
+  assetIds?: Record<string, string | null>;
+  assetVersions?: Record<string, number>;
+  recordContext?: OutfitRecordContext;
   draftId: string;
   ownerId: string;
   revision: number;
@@ -71,6 +91,10 @@ export interface OutfitDraft {
   sourceOutfitId?: string;
 }
 export interface Outfit {
+  cardAsset?: Asset;
+  nameOrigin?: OutfitNameOrigin;
+  purpose?: OutfitPurpose;
+  assetIds?: Record<string, string | null>;
   id: string;
   ownerId: string;
   name: string;
@@ -78,9 +102,10 @@ export interface Outfit {
   revision: number;
   assetVersions: Record<string, number>;
   externalItems?: ExternalOutfitItems;
-  cardAsset?: Asset;
 }
+// Existing FastAPI-rendered card image remains available.
 export type EventKind = "care" | "movement" | "plan" | "wear";
+/** Optional read metadata preserves event time, revision and source without changing existing actions. */
 export interface DemoEvent {
   id: string;
   ownerId: string;
@@ -89,6 +114,17 @@ export interface DemoEvent {
   outfitId?: string;
   value: string;
   date: string;
+  occurredAt?: string;
+  timePrecision?: "date" | "instant";
+  scheduledAt?: string;
+  garmentIds?: string[];
+  inputSource?: string;
+  sourceEventKey?: string;
+  sourceRef?: string;
+  revision?: number;
+  voided?: boolean;
+  lifeKind?: string;
+  details?: Record<string, unknown>;
 }
 export interface Receipt {
   id: string;
@@ -131,6 +167,22 @@ export interface ProfileUI {
   operations: Record<OperationName, OperationState>;
 }
 export interface DemoState {
+  localRepairs?: Record<
+    string,
+    {
+      version: string;
+      sourceFingerprint: string;
+      appliedAt: string;
+      changedIds: string[];
+      conflicts: { id: string; reason: string }[];
+    }
+  >;
+  localDatasets?: Record<
+    string,
+    { version: string; sourceFingerprint: string; installedAt: string }
+  >;
+  lifeData?: Record<string, LifeProfileData>;
+  careEvidence?: CareEvidenceItem[];
   schemaVersion: 1;
   activeProfileId: string;
   profiles: { id: string; name: string }[];
@@ -157,6 +209,7 @@ export type Persistence = {
   message?: string;
 };
 export type ActionOptions = { delayMs?: number; fail?: boolean };
+export type RecordActionOptions = ActionOptions & { intentKey?: string };
 export type ActionResult<T> =
   | { status: "success"; data: T }
   | { status: "no-result" | "stale" | "unavailable"; message: string };
@@ -170,7 +223,8 @@ export interface CareGuide {
   garmentId: string;
   title: string;
   advice: string;
-  source: "prepared-demo" | "unconfirmed" | "provider";
+  source:
+    "prepared-demo" | "unconfirmed" | "provider" | "local-evidence-summary";
   actualCareRecorded: false;
 }
 export interface TryOnResult {

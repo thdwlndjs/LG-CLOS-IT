@@ -4,6 +4,7 @@ import type { Asset, Category } from "./core/types";
 import { HttpRemoteBackend, api } from "./integrations/backendClient";
 import { MirrorPhoto } from "./MirrorGarmentGrid";
 const types: { value: Category; label: string }[] = [
+  { value: "dress", label: "원피스" },
   { value: "top", label: "상의" },
   { value: "bottom", label: "하의" },
   { value: "outer", label: "아우터" },
@@ -222,6 +223,7 @@ export function MirrorRegistration({ onClose }: { onClose: () => void }) {
           <label>
             종류
             <select
+              aria-label="종류"
               value={draft.category}
               onChange={(e) =>
                 app.editRegistration({ category: e.target.value as Category })

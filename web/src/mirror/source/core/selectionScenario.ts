@@ -1,4 +1,6 @@
 import { clone, DemoError, isISODate, stable } from "./repository";
+import { recordContext } from "./outfitRecording";
+import { outfitAssetRefs } from "./outfitAssets";
 import {
   completeOutfit,
   hasExternalItems,
@@ -16,6 +18,9 @@ import type {
 export interface SelectionSnapshot {
   ownerId: string;
   date: string;
+  sourceDraftId?: string;
+  intentKey?: string;
+  assetIds?: Record<string, string | null>;
   items: OutfitItems;
   externalItems?: OutfitDraft["externalItems"];
   assetVersions: Record<string, number>;
@@ -36,6 +41,7 @@ export function captureSelectionSnapshot(
   draft: OutfitDraft,
   date: string,
   garments: readonly Garment[],
+  intentKey?: string,
 ): SelectionSnapshot {
   if (!isISODate(date))
     throw new DemoError("VALIDATION", "유효한 선택 날짜를 확인해 주세요.");
@@ -56,7 +62,10 @@ export function captureSelectionSnapshot(
     );
   const assetVersions: Record<string, number> = {};
   for (const [slot, garmentId] of Object.entries(draft.items)) {
-    const matches = garments.filter((garment) => garment.id === garmentId);
+    const matches = garments.filter(
+      (garment) =>
+        garment.id === garmentId && garment.ownerId === draft.ownerId,
+    );
     if (matches.length !== 1 || matches[0].category !== slot)
       throw new DemoError(
         "VALIDATION",
@@ -64,9 +73,13 @@ export function captureSelectionSnapshot(
       );
     assetVersions[garmentId] = matches[0].asset?.version ?? 0;
   }
+  const refs = outfitAssetRefs(draft, garments);
   return {
     ownerId: draft.ownerId,
     date,
+    sourceDraftId: draft.draftId,
+    ...(intentKey !== undefined ? { intentKey } : {}),
+    assetIds: refs.assetIds,
     items: clone(draft.items),
     ...(hasExternalItems(draft)
       ? { externalItems: clone(draft.externalItems) }
@@ -81,6 +94,7 @@ export function captureSelectionSubmission(
   draft: OutfitDraft,
   date: string,
   garments: readonly Garment[],
+  intentKey?: string,
 ): SelectionSubmission {
   return {
     source: {
@@ -88,7 +102,12 @@ export function captureSelectionSubmission(
       draftId: draft.draftId,
       revision: draft.revision,
     },
-    submittedSnapshot: captureSelectionSnapshot(draft, date, garments),
+    submittedSnapshot: captureSelectionSnapshot(
+      draft,
+      date,
+      garments,
+      intentKey,
+    ),
   };
 }
 
@@ -110,9 +129,27 @@ export async function selectionSnapshotDraft(
     byte.toString(16).padStart(2, "0"),
   ).join("");
   const draftId = `${hex.slice(0, 8)}-${hex.slice(8, 12)}-${hex.slice(12, 16)}-${hex.slice(16, 20)}-${hex.slice(20)}`;
+  const context = snapshot.sourceDraftId
+    ? await recordContext(
+        snapshot.ownerId,
+        "selection",
+        snapshot.date,
+        snapshot.sourceDraftId,
+        snapshot.lookRevision,
+        snapshot.intentKey,
+      )
+    : undefined;
   return {
     draftId,
     ownerId: snapshot.ownerId,
+    ...(context
+      ? {
+          purpose: "selection" as const,
+          recordContext: context,
+          ...(snapshot.assetIds ? { assetIds: clone(snapshot.assetIds) } : {}),
+          assetVersions: clone(snapshot.assetVersions),
+        }
+      : {}),
     revision: snapshot.lookRevision,
     name: `오늘의 코디 · ${snapshot.date}`,
     items: clone(snapshot.items),
@@ -122,10 +159,12 @@ export async function selectionSnapshotDraft(
     topLocked: false,
   };
 }
-export const selectionSnapshotIntent = (draftId: string) =>
-  `selection-snapshot-v1:${draftId}`;
-export const selectionEventIntent = (draftId: string) =>
-  `selection-plan-v1:${draftId}`;
+export const selectionSnapshotIntent = (draftId: string, intentId?: string) =>
+  intentId
+    ? `selection-snapshot-v2:${intentId}`
+    : `selection-snapshot-v1:${draftId}`;
+export const selectionEventIntent = (draftId: string, intentId?: string) =>
+  intentId ? `selection-plan-v2:${intentId}` : `selection-plan-v1:${draftId}`;
 
 /** Identify only our content-addressed internal snapshot, never a user draft with a similar name. */
 export async function isSelectionSnapshotDraft(
@@ -143,13 +182,29 @@ export async function isSelectionSnapshotDraft(
     draft.revision < 1
   )
     return false;
+  const context = draft.recordContext;
   const expected = await selectionSnapshotDraft({
     ownerId: draft.ownerId,
     date,
+    ...(context
+      ? {
+          sourceDraftId: context.sourceDraftId,
+          ...(context.intentKey !== undefined
+            ? { intentKey: context.intentKey }
+            : {}),
+          ...(draft.assetIds ? { assetIds: draft.assetIds } : {}),
+        }
+      : {}),
     items: draft.items,
     ...(hasExternalItems(draft) ? { externalItems: draft.externalItems } : {}),
     assetVersions,
     lookRevision: draft.revision,
   });
-  return expected.draftId === draft.draftId;
+  return (
+    expected.draftId === draft.draftId &&
+    (!context ||
+      (context.kind === "selection" &&
+        context.date === date &&
+        stable(expected.recordContext) === stable(context)))
+  );
 }

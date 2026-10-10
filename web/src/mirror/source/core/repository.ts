@@ -20,7 +20,8 @@ export class DemoError extends Error {
     this.name = "DemoError";
   }
 }
-export const clone = <T>(value: T): T => JSON.parse(JSON.stringify(value)) as T;
+export const clone = <T,>(value: T): T =>
+  JSON.parse(JSON.stringify(value)) as T;
 export const isISODate = (value: unknown): value is string =>
   typeof value === "string" &&
   /^\d{4}-\d{2}-\d{2}$/.test(value) &&
@@ -37,7 +38,7 @@ export function stable(value: unknown): string {
   return JSON.stringify(value);
 }
 
-function isValidState(value: unknown): value is DemoState {
+export function isValidState(value: unknown): value is DemoState {
   const record = (v: unknown): v is Record<string, unknown> =>
     !!v && typeof v === "object" && !Array.isArray(v);
   const text = (v: unknown): v is string => typeof v === "string";
@@ -84,6 +85,7 @@ function isValidState(value: unknown): value is DemoState {
     "shoes",
     "hat",
     "accessory",
+    "dress",
   ]);
   const validAsset = (a: unknown): a is Asset | null =>
     a === null ||
@@ -174,6 +176,36 @@ function isValidState(value: unknown): value is DemoState {
           (g) => g.id === id && g.ownerId === ownerId && g.category === slot,
         ),
     );
+  const outfitMetadata = (o: Record<string, unknown>) =>
+    (o.nameOrigin === undefined ||
+      ["auto", "user", "legacy"].includes(String(o.nameOrigin))) &&
+    (o.purpose === undefined ||
+      ["card", "selection", "wear"].includes(String(o.purpose))) &&
+    (o.assetIds === undefined ||
+      (record(o.assetIds) &&
+        Object.entries(o.assetIds).every(
+          ([id, value]) =>
+            Object.values(o.items as Record<string, string>).includes(id) &&
+            (value === null || text(value)),
+        ))) &&
+    (o.assetVersions === undefined ||
+      (record(o.assetVersions) &&
+        Object.entries(o.assetVersions).every(
+          ([id, value]) =>
+            Object.values(o.items as Record<string, string>).includes(id) &&
+            typeof value === "number" &&
+            Number.isSafeInteger(value) &&
+            value >= 0,
+        ))) &&
+    (o.recordContext === undefined ||
+      (record(o.recordContext) &&
+        ["selection", "wear"].includes(String(o.recordContext.kind)) &&
+        isISODate(o.recordContext.date) &&
+        text(o.recordContext.sourceDraftId) &&
+        positive(o.recordContext.sourceRevision) &&
+        text(o.recordContext.intentId) &&
+        (o.recordContext.intentKey === undefined ||
+          text(o.recordContext.intentKey))));
   const validOutfit = (o: unknown): o is Outfit =>
     record(o) &&
     text(o.id) &&
@@ -181,6 +213,7 @@ function isValidState(value: unknown): value is DemoState {
     profileIds.has(o.ownerId as string) &&
     text(o.name) &&
     positive(o.revision) &&
+    outfitMetadata(o) &&
     ownedItems(o.ownerId as string, o.items) &&
     externalSelections(o.ownerId as string, o.items, o.externalItems) &&
     record(o.assetVersions) &&
@@ -203,7 +236,18 @@ function isValidState(value: unknown): value is DemoState {
     text(e.value) &&
     isISODate(e.date) &&
     (e.kind === "care" || e.kind === "movement"
-      ? s.garments.some((g) => g.id === e.garmentId && g.ownerId === e.ownerId)
+      ? (e.garmentId !== undefined
+          ? s.garments.some(
+              (g) => g.id === e.garmentId && g.ownerId === e.ownerId,
+            )
+          : Array.isArray(e.garmentIds) && e.garmentIds.length > 0) &&
+        (e.garmentIds === undefined ||
+          (Array.isArray(e.garmentIds) &&
+            e.garmentIds.length > 0 &&
+            new Set(e.garmentIds).size === e.garmentIds.length &&
+            e.garmentIds.every((id) =>
+              s.garments.some((g) => g.id === id && g.ownerId === e.ownerId),
+            )))
       : s.outfits.some((o) => o.id === e.outfitId && o.ownerId === e.ownerId));
   if (!s.events.every(validEvent) || !unique(s.events)) return false;
   for (const p of s.profiles) {
@@ -274,6 +318,7 @@ function isValidState(value: unknown): value is DemoState {
     positive(d.revision) &&
     text(d.name) &&
     typeof d.topLocked === "boolean" &&
+    outfitMetadata(d) &&
     ownedItems(owner, d.items) &&
     externalSelections(owner, d.items, d.externalItems) &&
     (d.lockedSlots === undefined ||
@@ -420,7 +465,7 @@ export class DemoRepository {
   private blockedCorrupt = false;
   constructor(
     private storage?: StorageLike,
-    seed: () => DemoState = createSeed,
+    private seed: () => DemoState = createSeed,
   ) {
     this.state = seed();
     if (!storage) {
@@ -494,7 +539,7 @@ export class DemoRepository {
   reset(): void {
     const previous = this.blockedCorrupt;
     this.blockedCorrupt = false;
-    const next = createSeed();
+    const next = this.seed();
     if (!this.persist(next)) {
       this.blockedCorrupt = previous;
       throw new DemoError(

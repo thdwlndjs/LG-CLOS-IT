@@ -1,0 +1,367 @@
+/* Clear mirror is a presentation boundary, not an opacity effect.
+   Keep source image pixels and hit regions intact; only remove UI paint. */
+.mx-surface[data-mirror-ui="clear"] {
+  background: transparent;
+  background-image: none;
+  backdrop-filter: none;
+  box-shadow: none;
+  opacity: 1;
+  --mirror-ink: #17251f;
+  --mirror-ink-secondary: #293c31;
+  color: #17251f;
+  text-shadow:
+    -0.5px 0 #fff,
+    0.5px 0 #fff,
+    0 -0.5px #fff,
+    0 0.5px #fff;
+}
+.mx-surface[data-mirror-ui="clear"]
+  :is(
+    .mx-editor,
+    .mx-glass,
+    .mx-tabs,
+    .mg-types,
+    .mg-extra-types,
+    .mg-register-page,
+    .mg-care-list,
+    .mg-record-panel,
+    .mg-message,
+    .mg-guide-original,
+    .mx-toast,
+    .mx-media-status,
+    .mx-inline-dialog,
+    .mx-selection-caption,
+    .mx-outfit-thumb
+  ) {
+  background: transparent;
+  background-image: none;
+  backdrop-filter: none;
+  box-shadow: none;
+  border: 0;
+  border-radius: 0;
+  opacity: 1;
+}
+.mx-surface[data-mirror-ui="clear"]
+  :is(
+    .mx-header,
+    .mx-clock,
+    .mx-detail-heading > strong,
+    .mx-garment-context > span,
+    .mx-location-caption,
+    .mx-fine
+  ) {
+  color: #17251f;
+  text-shadow:
+    -0.5px 0 #fff,
+    0.5px 0 #fff,
+    0 -0.5px #fff,
+    0 0.5px #fff;
+}
+.mx-surface[data-mirror-ui="clear"]
+  :is(
+    .mx-nav,
+    .mx-detail,
+    .mx-wardrobe,
+    .mx-registration,
+    .mg-care-overview,
+    .mg-record-panel,
+    .mx-toast,
+    .mx-inline-dialog
+  )
+  button,
+.mx-surface[data-mirror-ui="clear"]
+  :is(
+    .mx-nav,
+    .mx-detail,
+    .mx-wardrobe,
+    .mx-registration,
+    .mg-care-overview,
+    .mg-record-panel,
+    .mx-toast,
+    .mx-inline-dialog
+  )
+  button:hover {
+  background: transparent !important;
+  background-image: none;
+  box-shadow: none;
+  color: #17251f;
+  opacity: 1;
+  text-shadow: inherit;
+}
+.mx-surface[data-mirror-ui="clear"]
+  :is(
+    .mx-nav,
+    .mx-detail,
+    .mx-wardrobe,
+    .mx-registration,
+    .mg-care-overview,
+    .mg-record-panel
+  )
+  button:disabled {
+  color: #58625e;
+  cursor: default;
+}
+.mx-surface[data-mirror-ui="clear"] .mx-nav button {
+  border-radius: 0;
+  position: relative;
+}
+.mx-surface[data-mirror-ui="clear"] .mx-nav button[aria-current]::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 25%;
+  right: 25%;
+  height: 2px;
+  background: #17251f;
+}
+.mx-surface[data-mirror-ui="clear"]
+  :is(.mg-types, .mg-extra-types, .mg-care-tabs)
+  button[aria-pressed="true"],
+.mx-surface[data-mirror-ui="clear"] .mx-tabs button[aria-selected="true"] {
+  text-decoration: underline;
+  text-underline-offset: 6px;
+  text-decoration-thickness: 2px;
+  font-weight: 700;
+}
+.mx-surface[data-mirror-ui="clear"] .mx-tabs {
+  gap: 6px;
+  margin-bottom: 12px;
+}
+.mx-surface[data-mirror-ui="clear"] .mx-garment-context > img {
+  background: transparent;
+  opacity: 1;
+}
+.mx-surface[data-mirror-ui="clear"]
+  :is(.mx-search, .mg-register-page, .mg-record-panel, .mx-inline-dialog)
+  :is(input, select, textarea) {
+  background: transparent;
+  background-image: none;
+  box-shadow: none;
+  border: 0;
+  border-bottom: 1px solid #33463c;
+  border-radius: 0;
+  color: #17251f;
+  min-height: 44px;
+  text-shadow: inherit;
+}
+.mx-surface[data-mirror-ui="clear"] .mg-consent input {
+  min-height: 24px;
+}
+.mx-surface[data-mirror-ui="clear"] input::file-selector-button {
+  background: transparent;
+  color: #17251f;
+  border: 0;
+  border-bottom: 1px solid #33463c;
+  min-height: 44px;
+  font: inherit;
+}
+.mx-surface[data-mirror-ui="clear"] :is(.mg-step-nav, .mg-care-helper) button,
+.mx-surface[data-mirror-ui="clear"] .mirror-care-evidence > button {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  min-height: 44px;
+}
+.mx-surface[data-mirror-ui="clear"] .mx-care {
+  min-height: 0;
+  gap: 12px;
+  padding: 6px 0;
+}
+.mx-surface[data-mirror-ui="clear"] .mx-history {
+  min-height: 0;
+  padding: 6px 0;
+}
+.mx-surface[data-mirror-ui="clear"] .mx-detail-heading > button {
+  min-width: 44px;
+}
+.mx-surface[data-mirror-ui="clear"] .mx-care .mirror-care-evidence p {
+  font-size: 14px;
+  line-height: 1.65;
+}
+.mx-surface[data-mirror-ui="clear"] .mg-care-helper {
+  gap: 4px;
+}
+.mx-surface[data-mirror-ui="clear"] .mx-toast {
+  padding: 5px 0;
+  color: #17251f;
+}
+.mx-surface[data-mirror-ui="clear"] .mx-toast.error {
+  color: #57210e;
+}
+.mx-surface[data-mirror-ui="clear"] .mx-toast > button {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  min-height: 44px !important;
+}
+.mx-surface[data-mirror-ui="clear"]
+  :is(.mx-nav, .mg-grid, .mg-types, .mg-extra-types, .mg-care-tabs, .mx-tabs) {
+  user-select: none;
+}
+.mx-surface[data-mirror-ui="clear"]
+  :is(button, a, input, textarea, select):focus-visible {
+  outline: 2px dashed #173b7b;
+  outline-offset: -2px;
+}
+.mx-surface[data-mirror-ui="clear"]
+  :is(.hp-controls, .horizontal-pager__controls)
+  button {
+  background: transparent;
+  box-shadow: none;
+  color: #17251f;
+  opacity: 1;
+}
+/* Explicit reading/account overlays replace underlying work, never tint the mirror. */
+.mx-surface[data-mirror-ui="clear"]:has(.mx-inline-dialog)
+  > :is(.mx-work, .mx-detail, .mx-editor, .mc-compare) {
+  visibility: hidden;
+}
+.mx-surface[data-mirror-ui="clear"] .mx-inline-dialog {
+  padding: 4px;
+  max-height: 70%;
+}
+/* Presentation control belongs to the room, outside the six application menus. */
+.photo-presentation-toggle {
+  position: absolute;
+  top: 10px;
+  right: 12px;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  min-width: 44px;
+  min-height: 44px;
+  padding: 6px 10px;
+  border: 0;
+  background: transparent;
+  color: #17251f;
+  font:
+    600 14px ClosetSans,
+    "Malgun Gothic",
+    sans-serif;
+  cursor: pointer;
+  text-shadow:
+    0 0 1px #fff,
+    1px 0 #fff,
+    -1px 0 #fff;
+}
+.photo-presentation-toggle > span:first-child {
+  font-size: 24px;
+}
+.photo-presentation-toggle:focus-visible {
+  outline: 2px dashed #173b7b;
+  outline-offset: -2px;
+}
+.photo-presentation-status {
+  position: absolute;
+  top: 58px;
+  right: 12px;
+  z-index: 20;
+  max-width: 320px;
+  font-size: 13px;
+  color: #17251f;
+  text-shadow:
+    0 0 1px white,
+    1px 0 white,
+    -1px 0 white;
+  pointer-events: none;
+}
+
+.mx-surface[data-mirror-ui="clear"] .mx-detail:has(.mg-care-helper) .mx-care {
+  min-height: 0;
+}
+.mx-surface[data-mirror-ui="clear"] .horizontal-pager__controls button {
+  border: 0;
+  border-radius: 0;
+}
+
+/* Five wardrobe type targets keep 44 px at the 1920 reference viewport. */
+.mx-surface[data-mirror-ui="clear"] .mx-wardrobe {
+  right: 2%;
+}
+.mx-surface[data-mirror-ui="clear"] .mg-types {
+  gap: 0;
+}
+.mx-surface[data-mirror-ui="clear"] .mg-record-entry {
+  min-width: 44px !important;
+}
+.mx-surface[data-mirror-ui="clear"]
+  :is(
+    .mx-source,
+    .mg-count,
+    .mg-step,
+    .mx-history small,
+    .mx-care small,
+    .mg-care-helper small,
+    .mx-location-caption,
+    .mx-detail-heading,
+    .mx-media-status,
+    .mc-compare-tools span,
+    .mc-browse
+  ) {
+  color: #101713;
+}
+
+/* Keyboard focus alone gets two adjacent strokes. No fill, blur, shadow or layout change.
+   One of black/white stays distinct over either the plant or the bright curtain. */
+.mx-surface[data-mirror-ui="clear"]
+  :is(button, a, .horizontal-pager__viewport):focus-visible {
+  position: relative;
+  outline: none !important;
+}
+.mx-surface[data-mirror-ui="clear"]
+  :is(button, a, .horizontal-pager__viewport):focus-visible::before {
+  content: "";
+  position: absolute;
+  inset: 2px;
+  z-index: 3;
+  pointer-events: none;
+  background: transparent;
+  background-image: none;
+  border: 2px dashed #10201a;
+  outline: 2px solid #fff;
+  outline-offset: 0;
+  border-radius: 2px;
+  box-shadow: none;
+  box-sizing: border-box;
+}
+.mx-surface[data-mirror-ui="clear"] :is(input, select, textarea):focus-visible {
+  outline: 2px solid #10201a;
+  outline-offset: 0;
+  border: 2px solid #fff;
+}
+.mx-surface[data-mirror-ui="clear"]
+  .mc-compare
+  .mc-primary
+  > .mx-primary:not(:focus-visible) {
+  outline: 1px solid #fff;
+  outline-offset: 0;
+}
+
+.photo-presentation-toggle:focus-visible {
+  outline: none;
+}
+.photo-presentation-toggle:focus-visible::before {
+  content: "";
+  position: absolute;
+  inset: 2px;
+  border: 2px dashed #10201a;
+  outline: 2px solid #fff;
+  outline-offset: 0;
+  pointer-events: none;
+  background: transparent;
+  box-shadow: none;
+}
+
+/* Worker progress stays accessible without a panel across the face. The fixed media status
+   above the portrait remains the visible source/result explanation. */
+.mx-surface[data-mirror-ui="clear"] .mirror-foreground__status {
+  top: 0;
+  left: 0;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  background: transparent;
+  border: 0;
+}

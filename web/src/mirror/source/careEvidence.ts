@@ -1,3 +1,10 @@
+import { careEvidencePresentation } from "./careEvidenceViewModel";
+export {
+  careEvidencePresentation,
+  careEvidenceOriginalText,
+  careEvidenceGrounding,
+  CARE_GROUNDING_REVISION,
+} from "./careEvidenceViewModel";
 import type { Asset, Garment } from "./core/types";
 export type CareEvidenceKind =
   "label" | "official_guidance" | "user_observation";
@@ -64,12 +71,19 @@ export function parseCareEvidence(
     result.evidence.length > 30
   )
     throw new Error("현재 의류의 관리 근거를 확인하지 못했어요.");
+  const localScope =
+    ownerId.startsWith("local:scprep-20261009-v1:profile:") &&
+    garmentId.startsWith("local:scprep-20261009-v1:garment:");
+  const validId = (id: string) =>
+    uuid.test(id) ||
+    (localScope &&
+      /^local:scprep-20261009-v1:evidence:[A-Za-z0-9_-]+$/.test(id));
   const ids = new Set<string>();
   for (const item of result.evidence) {
     if (
       !item ||
       typeof item.id !== "string" ||
-      !uuid.test(item.id) ||
+      !validId(item.id) ||
       ids.has(item.id) ||
       item.ownerId !== ownerId ||
       item.garmentId !== garmentId ||
@@ -112,4 +126,9 @@ export function careNotesEvidence(garment: Garment): CareEvidenceItem | null {
         asset: null,
       }
     : null;
+}
+
+/** Customer copy comes only from the care allowlist projection. */
+export function careEvidenceDisplayText(item: CareEvidenceItem): string {
+  return careEvidencePresentation(item).summary;
 }

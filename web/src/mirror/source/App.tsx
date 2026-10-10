@@ -67,6 +67,7 @@ import { app } from "./appInstance";
 import { navigateSurface } from "./surfaceNavigation";
 import { mirrorFittingSession } from "./mirrorFittingSession";
 const categories: Record<Category | "all", string> = {
+  dress: "원피스",
   all: "전체",
   top: "상의",
   bottom: "하의",
@@ -726,6 +727,7 @@ export default function App() {
       garmentId: g.id,
     });
   const fittingInput = buildFittingSnapshot({
+    deviceScoped: app.connection.kind === "supabase",
     ownerId: state.activeProfileId,
     person: personSelection.person,
     outfit: draft,

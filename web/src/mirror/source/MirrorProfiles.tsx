@@ -63,7 +63,8 @@ export function MirrorProfiles({
       </HorizontalPager>
       {!local && profiles.length === 1 && (
         <p className="mx-panel-note">
-          다른 가족 프로필은 공유 권한이 연결되면 표시돼요.
+          현재 로그인 계정의 프로필을 표시해요. 연결된 기기의 의류는 함께 조회할
+          수 있어요.
         </p>
       )}
       <button type="button" className="mx-profile-account" onClick={onAccount}>
