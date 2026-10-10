@@ -364,6 +364,38 @@ async def rollback(connection):
         for r in rows
     ):
         raise RuntimeError("Unexpected household inventory; refusing rollback")
+    changed = await connection.scalar(
+        text(
+            "SELECT count(*) FROM wardrobe.garment g "
+            "LEFT JOIN wardrobe.garment_state s ON s.garment_id=g.id "
+            "WHERE g.household_id=:h AND (g.version<>1 OR g.image_asset_id IS NOT NULL "
+            "OR g.retired_at IS NOT NULL OR s.version<>1 OR s.location_id IS NOT NULL "
+            "OR s.status<>'UNKNOWN' OR s.last_seen_at IS NOT NULL)"
+        ),
+        {"h": h},
+    )
+    if changed:
+        raise RuntimeError("Seed items changed through application; refusing rollback")
+    locations = (
+        (
+            await connection.execute(
+                text(
+                "SELECT id,attributes,capacity_units FROM wardrobe.storage_location WHERE household_id=:h"
+                ),
+                {"h": h},
+            )
+        )
+        .mappings()
+        .all()
+    )
+    allowed_locations = {identity(x) for x in ("WARDROBE", "EXT-room2", "EXT-entry")}
+    if any(
+        r["id"] not in allowed_locations
+        or r["capacity_units"] is not None
+        or r["attributes"] != {"is_demo": True, "capacity_verified": False}
+        for r in locations
+    ):
+        raise RuntimeError("Unexpected or edited location; refusing rollback")
     for statement in (
         "DELETE FROM wardrobe.garment_state WHERE garment_id IN (SELECT id FROM wardrobe.garment WHERE household_id=:h)",
         "DELETE FROM wardrobe.garment WHERE household_id=:h",
