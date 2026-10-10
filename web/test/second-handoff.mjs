@@ -145,6 +145,7 @@ async function loginPage(station = 1, user = 1) {
   await page.getByRole("button", { name: "내 계정", exact: true }).click();
   await page.getByLabel("계정", { exact: true }).fill(`integration-${user}`);
   await page.getByLabel("비밀번호", { exact: true }).fill(fixture.password);
+  await page.getByText("다른 기기에서 접속 · 선택", { exact: true }).click();
   await page
     .getByLabel("접속 기기 ID · 선택", { exact: true })
     .fill(`90000000-0000-4000-8000-${String(station).padStart(12, "0")}`);
@@ -632,6 +633,7 @@ try {
       const before = counts().garment;
       await page.getByRole("button", { name: "마이", exact: true }).click();
       await page.getByRole("button", { name: "내 계정", exact: true }).click();
+      await page.getByText("쇼핑 및 추가 기능", { exact: true }).click();
       await page
         .getByRole("button", { name: "LIKED 조회", exact: true })
         .click();

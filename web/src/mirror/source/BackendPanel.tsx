@@ -1,8 +1,6 @@
 import {
   useState,
   useSyncExternalStore,
-  useRef,
-  useLayoutEffect,
   useEffect,
 } from "react";
 import type { DemoApp } from "./core/app";
@@ -40,21 +38,6 @@ export function BackendPanel({
     [message, setMessage] = useState(""),
     [busy, setBusy] = useState(false);
   const connected = !!currentMember();
-  const pane = useRef<HTMLElement>(null);
-  useLayoutEffect(() => {
-    const node = pane.current,
-      parent = node?.closest(".mx-auth-dialog") as HTMLElement | null;
-    if (!node || !parent) return;
-    const style = getComputedStyle(parent);
-    const close = parent.querySelector(":scope > button") as HTMLElement | null;
-    node.style.maxHeight =
-      parseFloat(style.maxHeight) -
-      parseFloat(style.paddingTop) -
-      parseFloat(style.paddingBottom) -
-      (close?.offsetHeight || 0) +
-      "px";
-    node.style.overflowY = "auto";
-  }, [connected]);
   const submit = async () => {
     setBusy(true);
     try {
@@ -88,14 +71,25 @@ export function BackendPanel({
     }
   };
   return (
-    <section ref={pane} className="mirror-account-panel">
+    <section className="mirror-account-panel">
       <h3>{placement === "tools" ? "서버 연결" : "내 계정"}</h3>
       {connected ? (
         <>
-          <p>
-            {currentMember().display_name} · {currentDevice()}
-          </p>
-          <button onClick={() => void app.reloadRemote()}>
+          <div className="mirror-account-identity">
+            <span className="mirror-account-caption">로그인한 계정</span>
+            <strong>{currentMember().display_name}</strong>
+            <details className="mirror-account-device">
+              <summary>연결된 옷장</summary>
+              <p>{currentDevice()}</p>
+            </details>
+          </div>
+          <div className="mirror-account-actions">
+          <button disabled={busy} onClick={async () => {
+            setBusy(true); setMessage("");
+            try { await app.reloadRemote(); setMessage("내 옷장을 다시 불러왔습니다."); }
+            catch (e) { setMessage((e as Error).message); }
+            finally { setBusy(false); }
+          }}>
             내 옷장 다시 불러오기
           </button>
           <button
@@ -108,6 +102,7 @@ export function BackendPanel({
           >
             로그아웃
           </button>
+          </div>
         </>
       ) : (
         <form
@@ -116,13 +111,16 @@ export function BackendPanel({
             void submit();
           }}
         >
+          <p className="mirror-account-intro">내 계정으로 로그인해 연결된 옷장을 불러오세요.</p>
           <button
+            className="mirror-account-demo"
             type="button"
             disabled={busy}
             onClick={() => void demoLogin()}
           >
             시연용 로그인
           </button>
+          <div className="mirror-account-divider"><span>계정 로그인</span></div>
           <label>
             계정
             <input
@@ -142,6 +140,9 @@ export function BackendPanel({
               required
             />
           </label>
+          <details className="mirror-account-optional">
+            <summary>다른 기기에서 접속 · 선택</summary>
+            <p>접속 기기 정보가 있을 때만 입력하세요.</p>
           <label>
             접속 기기 ID · 선택
             <input
@@ -157,11 +158,17 @@ export function BackendPanel({
               onChange={(e) => setCredential(e.target.value)}
             />
           </label>
-          <button disabled={busy}>내 계정으로 로그인</button>
+          </details>
+          <button type="submit" disabled={busy}>내 계정으로 로그인</button>
         </form>
       )}
-      <p role="status">{message}</p>
-      {connected && <IntegrationActions />}
+      <p className="mirror-account-status" role="status">{message}</p>
+      {connected && (placement === "tools" ? <IntegrationActions /> :
+        <details className="mirror-account-tools">
+          <summary>쇼핑 및 추가 기능</summary>
+          <IntegrationActions />
+        </details>
+      )}
     </section>
   );
 }

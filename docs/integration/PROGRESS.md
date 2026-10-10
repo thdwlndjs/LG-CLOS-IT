@@ -183,3 +183,13 @@ Remove-Item Env:INTEGRATION_MOBILE
 ### 거울 배경 복원 QA
 
 모바일에서 거울 질감이 사라진 문제를 수정했다. `mirror-responsive.css`의 중앙 미러 배경만 변경하고 원본 리소스를 재사용한다. `responsive-browser.mjs`의 9개 뷰포트 및 사용자 액션 QA를 재실행해 통과했고, 모바일 홈 캡처를 직접 확인했다. 빌드 통과. DB·API·데스크톱 변경 없음. 실기기 미검증 항목은 그대로 남아 있다.
+
+## 내 계정 UI QA 수정 (2026-10-10)
+
+- 원인: `BackendPanel.tsx`가 부모의 `max-height: 70%`를 parseFloat로 70px처럼 계산하고 여백·닫기 버튼 높이를 빼서 패널이 실제 18px로 축소됐다. 모바일·데스크톱에서 재현했다.
+- 해당 수동 높이 계산을 제거했다. `mirror-account.css`에서 고정 제목/닫기 영역과 하나의 스크롤 본문을 flex로 배치하고 폼·버튼·긴 기기 ID의 폭과 줄바꿈을 정리했다. 옷장 및 미러 배경·계정/API 계약은 유지한다.
+- 로그인 폼은 시연 로그인과 계정 로그인을 구분한다. 선택 기기 정보는 `다른 기기에서 접속 · 선택`으로 접어두고, 로그인 후에는 이름·연결 옷장·새로고침·로그아웃을 먼저 표시한다. 기존 통합 기능은 삭제하지 않고 `쇼핑 및 추가 기능`에 모았다. 기존 tools 배치는 직접 접근을 유지한다.
+- 브라우저 QA: `node web/test/account-browser.mjs`에서 360×800, 390×844, 667×375, 1366×768, 1672×941의 입력·기기 설정 펼치기·로그인 버튼까지 스크롤·닫기 통과. 실제 시연 로그인·새로고침·기기 정보·LIKED 조회·로그아웃 통과, 페이지 오류 0. 변경 전후 모바일·데스크톱 화면 캡처를 직접 확인했다.
+- `npm test --prefix web` 33개, 빌드, `responsive-browser.mjs` 회귀 QA 통과. 격리 DB로 `INTEGRATION_MOBILE=1`의 전체 E2E 11개 통과: 일반 계정+기기 인증 로그인과 접힌 통합 기능 접근을 포함한다. 유료 API 미호출, Mock VTON·LED, 테스트 자원 정리 완료.
+- 증적: 미추적 `test-results/account-browser.json`, `account-before-*.png`, `account-after-*.png`, `second-handoff-browser-evidence.json`. 실제 모바일 키보드와 safe-area 미검증은 기존과 동일하다.
+- `dev`에서 커밋하며 main 병합·원격 푸시·배포는 수행하지 않는다. 실행은 기존 로컬 명령과 `node web/test/account-browser.mjs`를 사용한다.

@@ -58,6 +58,7 @@ import { MirrorCompare } from "./MirrorCompare";
 import { MirrorForeground } from "./MirrorForeground";
 import "./mirror-clear.css";
 import "./mirror-responsive.css";
+import "./mirror-account.css";
 
 const menus = [
   ["home", "home", "홈"],
@@ -1353,7 +1354,10 @@ export default function MirrorExperience() {
             aria-label="계정 연결"
             className="mx-inline-dialog mx-auth-dialog"
           >
-            <button onClick={() => setAuthOpen(false)}>닫기</button>
+            <header className="mirror-account-dialog-heading">
+              <h2>내 계정</h2>
+              <button onClick={() => setAuthOpen(false)}>닫기</button>
+            </header>
             <MirrorAccountPanel app={app} />
           </section>
         )}
