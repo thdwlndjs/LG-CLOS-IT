@@ -245,14 +245,12 @@ try {
           (img) => img.complete && img.naturalWidth > 0,
         ),
       );
-      const geometry = await page
-        .locator(".photo-mirror")
-        .evaluate((el) => ({
-          left: el.style.left,
-          top: el.style.top,
-          width: el.style.width,
-          height: el.style.height,
-        }));
+      const geometry = await page.locator(".photo-mirror").evaluate((el) => ({
+        left: el.style.left,
+        top: el.style.top,
+        width: el.style.width,
+        height: el.style.height,
+      }));
       assert.ok(
         geometry.left.startsWith("42.7033") &&
           geometry.top.startsWith("2.9755") &&
@@ -265,6 +263,67 @@ try {
     },
   );
   await step(
+    "home winter Mock scenario, real API recommendation and storage dry-run",
+    async () => {
+      const before = counts();
+      await page.getByRole("button", { name: "홈", exact: true }).click();
+      await page
+        .getByRole("heading", { name: "오늘의 코디 추천", exact: true })
+        .waitFor();
+      await page
+        .getByRole("heading", { name: "계절·보관 관리 추천", exact: true })
+        .waitFor();
+      assert.equal(
+        await page
+          .locator("[data-home-source]")
+          .getAttribute("data-home-source"),
+        "MOCK",
+      );
+      await page
+        .getByText("두 번째 방을 보관 후보로 추천해요.", { exact: true })
+        .waitFor();
+      await page
+        .getByRole("button", { name: "추천 코디 비교하기", exact: true })
+        .click();
+      await page.locator(".mc-heading").waitFor();
+      await page.getByRole("button", { name: "홈", exact: true }).click();
+      assert.deepEqual(counts(), before);
+      await page
+        .getByRole("button", { name: "실제 기록", exact: true })
+        .click();
+      assert.equal(
+        await page
+          .locator("[data-home-source]")
+          .getAttribute("data-home-source"),
+        "SERVER",
+      );
+      await page
+        .getByRole("button", { name: "내 옷 추천 받기", exact: true })
+        .click();
+      await page
+        .getByRole("status")
+        .filter({
+          hasText:
+            /보유 의류와 실제 이력 기반 추천|추천 가능한 의류가 없습니다/,
+        })
+        .waitFor({ timeout: 60000 });
+      await page
+        .getByRole("button", { name: "실제 보관 추천 조회", exact: true })
+        .click();
+      await page
+        .getByText("보관·회수 분석 완료 · 실제 이동은 실행하지 않았습니다.", {
+          exact: true,
+        })
+        .waitFor({ timeout: 60000 });
+      assert.deepEqual(counts(), before);
+      await page
+        .getByRole("button", { name: "겨울 전환 시연", exact: true })
+        .click();
+      await page.screenshot({ path: resolve(results, "home-winter-demo.png") });
+      await page.getByRole("button", { name: "옷장", exact: true }).click();
+    },
+  );
+  await step(
     "image upload and optional fields, DRESS registration through existing API",
     async () => {
       await page
@@ -273,13 +332,11 @@ try {
       await page
         .getByLabel("이미지 비공개 업로드 동의", { exact: true })
         .check();
-      await page
-        .getByLabel("사진 선택", { exact: true })
-        .setInputFiles({
-          name: "qa.png",
-          mimeType: "image/png",
-          buffer: image,
-        });
+      await page.getByLabel("사진 선택", { exact: true }).setInputFiles({
+        name: "qa.png",
+        mimeType: "image/png",
+        buffer: image,
+      });
       await page.waitForFunction(() =>
         document.querySelector(".mg-register-photo img")?.getAttribute("src"),
       );
@@ -348,13 +405,11 @@ try {
     await page
       .getByLabel("인물 사진 비공개 업로드에 동의합니다.", { exact: true })
       .check();
-    await page
-      .getByLabel("인물 사진", { exact: true })
-      .setInputFiles({
-        name: "person.png",
-        mimeType: "image/png",
-        buffer: image,
-      });
+    await page.getByLabel("인물 사진", { exact: true }).setInputFiles({
+      name: "person.png",
+      mimeType: "image/png",
+      buffer: image,
+    });
     await page.getByText("인물 사진 업로드 완료", { exact: true }).waitFor();
     await page
       .getByRole("button", { name: "Mock VTON 실행", exact: true })

@@ -575,3 +575,17 @@
 /* Keep explicit server forms and their receipts inside the existing mirror surface. */
 .mx-surface .mg-record-panel { bottom: 3%; overflow-y: auto; }
 .mx-surface .mg-record-panel > * { flex-shrink: 0; }
+
+/* Recommendation controls remain inside the existing central mirror. */
+.mx-home-recommendations { position:absolute;left:20%;right:4%;top:31%;bottom:3%;overflow-y:auto;pointer-events:auto;display:flex;flex-direction:column;gap:12px;min-width:0;padding:2px; }
+.mx-home-mode { display:flex;gap:5px; }
+.mx-home-mode button { flex:1;font-size:11px;min-height:36px; }
+.mx-home-mode button[aria-pressed="true"] { text-decoration:underline;font-weight:600; }
+.mx-home-advice { display:flex;flex-direction:column;gap:7px;min-width:0;border-top:1px solid #61766955;padding-top:9px; }
+.mx-home-advice h2 { font-size:14px;margin:0; }
+.mx-home-advice p,.mx-home-recommendations>p { font-size:12px;line-height:1.6;margin:0;overflow-wrap:anywhere; }
+.mx-home-advice small,.mx-home-recommendations>small { font-size:10px;line-height:1.5; }
+.mx-home-advice>div { display:flex;flex-direction:column;gap:7px; }
+.mx-home-advice .mx-panel-composition { height:130px; }
+.mx-home-advice button { min-height:42px;font-size:12px; }
+.mx-home-room-readings>div { display:flex;justify-content:space-between;gap:5px;font-size:11px; }
