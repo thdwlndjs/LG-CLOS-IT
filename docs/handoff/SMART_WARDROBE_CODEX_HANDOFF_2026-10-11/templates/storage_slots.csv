@@ -1,0 +1,21 @@
+﻿space_id,parent_space_id,kind,compartment_id,shelf_id,slot_id,capacity_unit,capacity_value,x_px,y_px,width_px,height_px,z_index,light_zone_id,image_reference,verification_status,notes
+WARDROBE,,physical-wardrobe,,,,,,,,,,,,,proposed,Demo physical device; not yet provisioned
+WARDROBE-A,WARDROBE,hanger-long,A,,,,,,,,,,,references/wardrobe/wardrobe_ui_original.png,proposed-unmeasured,Not a measured slot. M has no clothing slot; G hidden. A-F 35-item capacity is unapproved.
+WARDROBE-B,WARDROBE,hanger-top,B,,,,,,,,,,,references/wardrobe/wardrobe_ui_original.png,proposed-unmeasured,Not a measured slot. M has no clothing slot; G hidden. A-F 35-item capacity is unapproved.
+WARDROBE-C,WARDROBE,hanger-bottom,C,,,,,,,,,,,references/wardrobe/wardrobe_ui_original.png,proposed-unmeasured,Not a measured slot. M has no clothing slot; G hidden. A-F 35-item capacity is unapproved.
+WARDROBE-D,WARDROBE,shelf-folded,D,,,,,,,,,,,references/wardrobe/wardrobe_ui_original.png,proposed-unmeasured,Not a measured slot. M has no clothing slot; G hidden. A-F 35-item capacity is unapproved.
+WARDROBE-E,WARDROBE,shelf-folded,E,,,,,,,,,,,references/wardrobe/wardrobe_ui_original.png,proposed-unmeasured,Not a measured slot. M has no clothing slot; G hidden. A-F 35-item capacity is unapproved.
+WARDROBE-F,WARDROBE,shelf-folded,F,,,,,,,,,,,references/wardrobe/wardrobe_ui_original.png,proposed-unmeasured,Not a measured slot. M has no clothing slot; G hidden. A-F 35-item capacity is unapproved.
+WARDROBE-G,WARDROBE,drawer-hidden,G,,,,,,,,,,,references/wardrobe/wardrobe_ui_original.png,proposed-unmeasured,Not a measured slot. M has no clothing slot; G hidden. A-F 35-item capacity is unapproved.
+WARDROBE-M,WARDROBE,mirror-display,M,,,,,,,,,,,references/wardrobe/wardrobe_ui_original.png,proposed-unmeasured,Not a measured slot. M has no clothing slot; G hidden. A-F 35-item capacity is unapproved.
+EXT-room2,,external-room,,,,,,,,,,,,,proposed,Humidity suitability/capacity/location not measured; no LED remote claim
+EXT-entry,,accessory-space,,,,,,,,,,,,,proposed,Humidity suitability/capacity/location not measured; no LED remote claim
+WARDROBE-B,WARDROBE,candidate-slot,B,,B-01,,,,,,,,,,proposed-unmeasured,Candidate target after approval/measurement; not current physical observation
+WARDROBE-C,WARDROBE,candidate-slot,C,,C-02,,,,,,,,,,proposed-unmeasured,Candidate target after approval/measurement; not current physical observation
+WARDROBE-B,WARDROBE,candidate-slot,B,,B-03,,,,,,,,,,proposed-unmeasured,Candidate target after approval/measurement; not current physical observation
+WARDROBE-A,WARDROBE,candidate-slot,A,,A-04,,,,,,,,,,proposed-unmeasured,Candidate target after approval/measurement; not current physical observation
+WARDROBE-A,WARDROBE,candidate-slot,A,,A-05,,,,,,,,,,proposed-unmeasured,Candidate target after approval/measurement; not current physical observation
+WARDROBE-B,WARDROBE,candidate-slot,B,,B-06,,,,,,,,,,proposed-unmeasured,Candidate target after approval/measurement; not current physical observation
+WARDROBE-A,WARDROBE,candidate-slot,A,,A-07,,,,,,,,,,proposed-unmeasured,Candidate target after approval/measurement; not current physical observation
+WARDROBE-C,WARDROBE,candidate-slot,C,,C-08,,,,,,,,,,proposed-unmeasured,Candidate target after approval/measurement; not current physical observation
+WARDROBE-B,WARDROBE,candidate-slot,B,,B-13,,,,,,,,,,proposed-unmeasured,Candidate target after approval/measurement; not current physical observation
