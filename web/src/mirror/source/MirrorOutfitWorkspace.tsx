@@ -24,7 +24,7 @@ import "./mirror-outfit-workspace.css";
 
 export type MirrorOutfitWorkspaceUI = {
   librarySection: "mine" | "styles";
-  libraryFilter: "all" | "instagram" | "shopping";
+  libraryFilter: "owned" | "shopping";
   libraryPage: number;
   stylePage: number;
   selectedSlot: Slot;
@@ -39,7 +39,7 @@ export type MirrorOutfitWorkspaceUI = {
 };
 export const createOutfitWorkspaceUI = (): MirrorOutfitWorkspaceUI => ({
   librarySection: "mine",
-  libraryFilter: "all",
+  libraryFilter: "owned",
   libraryPage: 0,
   stylePage: 0,
   selectedSlot: "top",
@@ -242,7 +242,7 @@ export function MirrorOutfitWorkspace({
         : "unknown";
   const styles = externals.filter(
       (item) =>
-        ui.libraryFilter === "all" || sourceKind(item) === ui.libraryFilter,
+        sourceKind(item) === "shopping",
     ),
     styleSelected = externals.find((item) => item.id === ui.styleItemId);
   const looks = app.cardOutfits();
@@ -533,17 +533,16 @@ export function MirrorOutfitWorkspace({
             ) : (
               <>
                 <div className="mow-style-heading">
-                  <span>{externals.length > 0 ? "저장된 참고 자료" : ""}</span>
+                  <span>{ui.libraryFilter === "owned" ? "내 옷장 의류" : "쇼핑 구매 후보"}</span>
                   <button type="button" onClick={() => setStyleUpload(true)}>
                     사진 참고
                   </button>
                 </div>
-                {externals.length > 0 && (
+                {(
                   <nav className="mow-small-tabs" aria-label="스타일 출처">
                     {(
                       [
-                        ["all", "전체"],
-                        ["instagram", "인스타"],
+                        ["owned", "내 옷장"],
                         ["shopping", "쇼핑몰"],
                       ] as const
                     ).map(([value, label]) => (
@@ -552,7 +551,7 @@ export function MirrorOutfitWorkspace({
                         key={value}
                         aria-pressed={ui.libraryFilter === value}
                         onClick={() =>
-                          patch({ libraryFilter: value, stylePage: 0 })
+                          patch({ libraryFilter: value, stylePage: 0, styleItemId: null })
                         }
                       >
                         {label}
@@ -560,7 +559,28 @@ export function MirrorOutfitWorkspace({
                     ))}
                   </nav>
                 )}
-                {styles.length ? (
+                {ui.libraryFilter === "owned" ? (
+                  <MirrorGarmentGrid
+                    garments={app.garments()}
+                    index={ui.stylePage}
+                    onIndexChange={(stylePage) => patch({ stylePage })}
+                    label="내 옷장 의류"
+                    onSelect={(garment) => {
+                      run(() => {
+                        if (!app.outfitDraft()) app.startBlankOutfit();
+                        app.setOutfitItem(garment.category, garment.id);
+                        patch({
+                          selectedSlot: garment.category,
+                          source: "owned",
+                          summaryPage: Math.floor(OUTFIT_SLOT_KEYS.indexOf(garment.category) / 4),
+                          helpOpen: false,
+                        });
+                        setView("builder");
+                        onSelected?.(garment.category);
+                      });
+                    }}
+                  />
+                ) : styles.length ? (
                   externalGrid(
                     styles,
                     ui.stylePage,
@@ -569,7 +589,7 @@ export function MirrorOutfitWorkspace({
                     "스타일 참고 페이지",
                   )
                 ) : (
-                  <p className="mow-empty">아직 저장한 스타일이 없어요.</p>
+                  <p className="mow-empty">아직 쇼핑 후보가 없어요.</p>
                 )}
               </>
             )}
