@@ -1,0 +1,40 @@
+........................................................................ [ 25%]
+........................................................................ [ 51%]
+........................................................................ [ 77%]
+...............................................................          [100%]
+============================== warnings summary ===============================
+..\..\AppData\Local\Programs\Python\Python312\Lib\site-packages\fastapi\testclient.py:1
+  C:\Users\aicam\AppData\Local\Programs\Python\Python312\Lib\site-packages\fastapi\testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+    from starlette.testclient import TestClient as TestClient  # noqa
+
+tests/unit/test_supabase_storage.py: 1 warning
+tests/integration/test_handoff.py: 93 warnings
+tests/integration/test_inline_worker.py: 18 warnings
+tests/integration/test_sprint1_completion.py: 18 warnings
+tests/integration/test_sprint2_api.py: 8 warnings
+tests/integration/test_sprint3_api.py: 190 warnings
+tests/integration/test_sprint4_api.py: 178 warnings
+tests/e2e/test_acceptance.py: 84 warnings
+  C:\Users\aicam\Desktop\2��������Ʈ\.venv\Lib\site-packages\botocore\auth.py:422: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+    datetime_now = datetime.datetime.utcnow()
+
+tests/integration/test_demo_login.py: 2 warnings
+tests/integration/test_device_migration.py: 3 warnings
+tests/integration/test_handoff.py: 7 warnings
+tests/integration/test_inline_worker.py: 1 warning
+tests/integration/test_postgres_platform.py: 2 warnings
+tests/integration/test_sprint1_api.py: 11 warnings
+tests/integration/test_sprint1_completion.py: 3 warnings
+tests/integration/test_sprint2_api.py: 16 warnings
+tests/integration/test_sprint3_api.py: 19 warnings
+tests/integration/test_sprint4_api.py: 9 warnings
+tests/integration/test_sprint5_api.py: 18 warnings
+tests/integration/test_sprint5_migration.py: 3 warnings
+tests/integration/test_sprint6_api.py: 17 warnings
+tests/integration/test_sprint7_api.py: 7 warnings
+tests/e2e/test_acceptance.py: 9 warnings
+  C:\Users\aicam\Desktop\2��������Ʈ\.venv\Lib\site-packages\alembic\config.py:564: DeprecationWarning: No path_separator found in configuration; falling back to legacy splitting on spaces, commas, and colons for prepend_sys_path.  Consider adding path_separator=os to Alembic config.
+    util.warn_deprecated(
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+279 passed, 718 warnings in 123.08s (0:02:03)

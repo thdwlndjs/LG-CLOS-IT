@@ -1,0 +1,30 @@
+{
+  "checks": [
+    {
+      "name": "dedicated API readiness",
+      "result": "PASS"
+    },
+    {
+      "name": "signed synthetic image via isolated MinIO relay; browser decode",
+      "result": "PASS"
+    },
+    {
+      "name": "mom login/shared wardrobe/unknown locations",
+      "result": "PASS",
+      "count": 11
+    },
+    {
+      "name": "son login/shared wardrobe/unknown locations",
+      "result": "PASS",
+      "count": 11
+    },
+    {
+      "name": "missing clean plate fails closed; no imaginary garment layer",
+      "result": "PASS"
+    }
+  ],
+  "uncaught_errors": [],
+  "paid_calls": false,
+  "product_photos_verified": false,
+  "scene_visual_approval": false
+}

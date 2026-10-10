@@ -1,0 +1,78 @@
+[
+  {
+    "template": "T1-v1",
+    "reference": "references\\card\\T1_reference.png",
+    "reference_size": [
+      1440,
+      1800
+    ],
+    "reference_sha256": "96cf9617bdcbb859915073610333f011da32840de4020a77d92f1398dcffe39c",
+    "output": "reports\\evidence\\T1-v1-synthetic-test.png",
+    "output_size": [
+      1080,
+      1350
+    ],
+    "output_sha256": "842bd594ee224a12dd6e74d3b90817de9f8a2cf5b5ad74f99c3ed93ac619a0e2",
+    "fixture": "8x8 blue synthetic upload",
+    "gate_a": "NOT_PASSED",
+    "gate_b": "NOT_PASSED",
+    "reason": "Not reference-derived masks/transforms; no approved reconstruction or real product cutouts"
+  },
+  {
+    "template": "T2-v1",
+    "reference": "references\\card\\T2_reference.png",
+    "reference_size": [
+      1440,
+      1800
+    ],
+    "reference_sha256": "c156e925a80f4b974d4a5f565661d59eabed2ada641502ca18793878d4961c61",
+    "output": "reports\\evidence\\T2-v1-synthetic-test.png",
+    "output_size": [
+      1080,
+      1350
+    ],
+    "output_sha256": "302ff55849d0eb22f2ceedcad3e39aa7aaf6cad7c2a93556b4f1986ed79a7521",
+    "fixture": "8x8 blue synthetic upload",
+    "gate_a": "NOT_PASSED",
+    "gate_b": "NOT_PASSED",
+    "reason": "Not reference-derived masks/transforms; no approved reconstruction or real product cutouts"
+  },
+  {
+    "template": "T3-v1",
+    "reference": "references\\card\\T3_reference.png",
+    "reference_size": [
+      1440,
+      1800
+    ],
+    "reference_sha256": "d390f7f950a5e38731126762b25839c99f4b438d53926985eb4c4137fa5faece",
+    "output": "reports\\evidence\\T3-v1-synthetic-test.png",
+    "output_size": [
+      1080,
+      1350
+    ],
+    "output_sha256": "6384ffa2e75041c2f1558c72bcab2142e6dfe5455bc9dac0fd4b3688ff8c7c5e",
+    "fixture": "8x8 blue synthetic upload",
+    "gate_a": "NOT_PASSED",
+    "gate_b": "NOT_PASSED",
+    "reason": "Not reference-derived masks/transforms; no approved reconstruction or real product cutouts"
+  },
+  {
+    "template": "T4-v1",
+    "reference": "references\\card\\T4_reference.png",
+    "reference_size": [
+      1440,
+      1800
+    ],
+    "reference_sha256": "9d1fc74f050bc774ded943e729080f342ba7d7c2fc95b5216f80ac327ebc6554",
+    "output": "reports\\evidence\\T4-v1-synthetic-test.png",
+    "output_size": [
+      1080,
+      1350
+    ],
+    "output_sha256": "6b046b286a28651759bd269d6e4e14ebdcd92c55399162b864cfa53727c71a0b",
+    "fixture": "8x8 blue synthetic upload",
+    "gate_a": "NOT_PASSED",
+    "gate_b": "NOT_PASSED",
+    "reason": "Not reference-derived masks/transforms; no approved reconstruction or real product cutouts"
+  }
+]

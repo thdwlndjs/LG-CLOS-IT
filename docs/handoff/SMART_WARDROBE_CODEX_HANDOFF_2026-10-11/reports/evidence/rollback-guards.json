@@ -1,0 +1,11 @@
+{
+  "edited_garment_rollback_blocked": true,
+  "edited_location_rollback_blocked": true,
+  "counts_restored": {
+    "member": 2,
+    "device": 1,
+    "garment": 11,
+    "storage_location": 3,
+    "located": 0
+  }
+}

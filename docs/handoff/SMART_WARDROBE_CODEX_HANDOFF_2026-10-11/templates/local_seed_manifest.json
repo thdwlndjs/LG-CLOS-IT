@@ -1,0 +1,114 @@
+{
+  "target": "dedicated loopback test DB only",
+  "namespace": "smart-wardrobe-handoff-2026-10-11",
+  "counts": {
+    "members": 2,
+    "devices": 1,
+    "garments": 11,
+    "locations": 3,
+    "located": 0
+  },
+  "items": [
+    {
+      "garment_id": "784e0af1-a75d-51d1-aaf6-392ea5203e06",
+      "candidate_id": "PC01",
+      "seed_namespace": "smart-wardrobe-handoff-2026-10-11",
+      "is_demo": true,
+      "image_asset_id": null,
+      "location_id": null,
+      "wear_history_created": false
+    },
+    {
+      "garment_id": "4cefe75a-d960-5c15-9582-cb0bc9363ffc",
+      "candidate_id": "PC02",
+      "seed_namespace": "smart-wardrobe-handoff-2026-10-11",
+      "is_demo": true,
+      "image_asset_id": null,
+      "location_id": null,
+      "wear_history_created": false
+    },
+    {
+      "garment_id": "d2dc7362-a890-5ba6-b7c4-fd8968706a4d",
+      "candidate_id": "PC03",
+      "seed_namespace": "smart-wardrobe-handoff-2026-10-11",
+      "is_demo": true,
+      "image_asset_id": null,
+      "location_id": null,
+      "wear_history_created": false
+    },
+    {
+      "garment_id": "89520045-dfb9-5ada-a244-fac4b4c3650b",
+      "candidate_id": "PC04",
+      "seed_namespace": "smart-wardrobe-handoff-2026-10-11",
+      "is_demo": true,
+      "image_asset_id": null,
+      "location_id": null,
+      "wear_history_created": false
+    },
+    {
+      "garment_id": "7c3f252a-ad67-5e35-9c36-2fc0827c5b83",
+      "candidate_id": "PC05",
+      "seed_namespace": "smart-wardrobe-handoff-2026-10-11",
+      "is_demo": true,
+      "image_asset_id": null,
+      "location_id": null,
+      "wear_history_created": false
+    },
+    {
+      "garment_id": "1132e852-e1ef-54af-9c11-051168c5c1dc",
+      "candidate_id": "PC06",
+      "seed_namespace": "smart-wardrobe-handoff-2026-10-11",
+      "is_demo": true,
+      "image_asset_id": null,
+      "location_id": null,
+      "wear_history_created": false
+    },
+    {
+      "garment_id": "9ed92ec2-95f2-58aa-ab4e-f679b0f5a43b",
+      "candidate_id": "PC07",
+      "seed_namespace": "smart-wardrobe-handoff-2026-10-11",
+      "is_demo": true,
+      "image_asset_id": null,
+      "location_id": null,
+      "wear_history_created": false
+    },
+    {
+      "garment_id": "61c5592f-0856-53c6-b3d1-a8097ecd9cb1",
+      "candidate_id": "PC08",
+      "seed_namespace": "smart-wardrobe-handoff-2026-10-11",
+      "is_demo": true,
+      "image_asset_id": null,
+      "location_id": null,
+      "wear_history_created": false
+    },
+    {
+      "garment_id": "47393a84-4f99-5d83-81ab-da0e33df4725",
+      "candidate_id": "PC09",
+      "seed_namespace": "smart-wardrobe-handoff-2026-10-11",
+      "is_demo": true,
+      "image_asset_id": null,
+      "location_id": null,
+      "wear_history_created": false
+    },
+    {
+      "garment_id": "166fca4c-f96e-5476-aafd-8a07b192b135",
+      "candidate_id": "PC10",
+      "seed_namespace": "smart-wardrobe-handoff-2026-10-11",
+      "is_demo": true,
+      "image_asset_id": null,
+      "location_id": null,
+      "wear_history_created": false
+    },
+    {
+      "garment_id": "53610f3c-6ede-5bc6-811d-22b5b73b60a0",
+      "candidate_id": "PC11",
+      "seed_namespace": "smart-wardrobe-handoff-2026-10-11",
+      "is_demo": true,
+      "image_asset_id": null,
+      "location_id": null,
+      "wear_history_created": false
+    }
+  ],
+  "real_photos_loaded": false,
+  "cloud_imported": false
+}

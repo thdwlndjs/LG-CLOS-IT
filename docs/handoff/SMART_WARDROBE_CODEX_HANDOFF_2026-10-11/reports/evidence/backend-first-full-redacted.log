@@ -1,0 +1,493 @@
+........................................................................ [ 25%]
+........................................................................ [ 51%]
+.................F.....F................................................ [ 77%]
+...............................................................          [100%]
+================================== FAILURES ===================================
+_________________ test_scene_positive_synthetic_approved_slot _________________
+
+self = <sqlalchemy.dialects.postgresql.asyncpg.AsyncAdapt_asyncpg_cursor object at 0x000002B66F893160>
+operation = "UPDATE wardrobe.asset SET kind='OTHER', metadata=jsonb_build_object('scene_device_id',$1,'scene_role','clean-plate','visual_approval','approved','fixture','synthetic') WHERE id=$2"
+parameters = ('bdd1fdf5-c597-406f-b4d3-962365af5eb2', UUID('637b9782-6898-43d2-977a-474372ae6b0a'))
+
+    async def _prepare_and_execute(self, operation, parameters):
+        adapt_connection = self._adapt_connection
+
+        async with adapt_connection._execute_mutex:
+            if not adapt_connection._started:
+                await adapt_connection._start_transaction()
+
+            if parameters is None:
+                parameters = ()
+
+            try:
+>               prepared_stmt, attributes = await adapt_connection._prepare(
+                    operation, self._invalidate_schema_cache_asof
+                )
+
+..\..\AppData\Local\Programs\Python\Python312\Lib\site-packages\sqlalchemy\dialects\postgresql\asyncpg.py:526:
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+..\..\AppData\Local\Programs\Python\Python312\Lib\site-packages\sqlalchemy\dialects\postgresql\asyncpg.py:773: in _prepare
+    prepared_stmt = await self._connection.prepare(
+.venv\Lib\site-packages\asyncpg\connection.py:635: in prepare
+    return await self._prepare(
+.venv\Lib\site-packages\asyncpg\connection.py:653: in _prepare
+    stmt = await self._get_statement(
+.venv\Lib\site-packages\asyncpg\connection.py:432: in _get_statement
+    statement = await self._protocol.prepare(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+>   ???
+E   asyncpg.exceptions.IndeterminateDatatypeError: could not determine data type of parameter $1
+
+asyncpg\\protocol\\protocol.pyx:165: IndeterminateDatatypeError
+
+The above exception was the direct cause of the following exception:
+
+self = <sqlalchemy.engine.base.Connection object at 0x000002B66F915A60>
+dialect = <sqlalchemy.dialects.postgresql.asyncpg.PGDialect_asyncpg object at 0x000002B66DE9E870>
+context = <sqlalchemy.dialects.postgresql.asyncpg.PGExecutionContext_asyncpg object at 0x000002B66FA65190>
+statement = <sqlalchemy.dialects.postgresql.asyncpg.PGCompiler_asyncpg object at 0x000002B66F915E20>
+parameters = [('bdd1fdf5-c597-406f-b4d3-962365af5eb2', UUID('637b9782-6898-43d2-977a-474372ae6b0a'))]
+
+    def _exec_single_context(
+        self,
+        dialect: Dialect,
+        context: ExecutionContext,
+        statement: Union[str, Compiled],
+        parameters: Optional[_AnyMultiExecuteParams],
+    ) -> CursorResult[Any]:
+        """continue the _execute_context() method for a single DBAPI
+        cursor.execute() or cursor.executemany() call.
+
+        """
+        if dialect.bind_typing is BindTyping.SETINPUTSIZES:
+            generic_setinputsizes = context._prepare_set_input_sizes()
+
+            if generic_setinputsizes:
+                try:
+                    dialect.do_set_input_sizes(
+                        context.cursor, generic_setinputsizes, context
+                    )
+                except BaseException as e:
+                    self._handle_dbapi_exception(
+                        e, str(statement), parameters, None, context
+                    )
+
+        cursor, str_statement, parameters = (
+            context.cursor,
+            context.statement,
+            context.parameters,
+        )
+
+        effective_parameters: Optional[_AnyExecuteParams]
+
+        if not context.executemany:
+            effective_parameters = parameters[0]
+        else:
+            effective_parameters = parameters
+
+        if self._has_events or self.engine._has_events:
+            for fn in self.dispatch.before_cursor_execute:
+                str_statement, effective_parameters = fn(
+                    self,
+                    cursor,
+                    str_statement,
+                    effective_parameters,
+                    context,
+                    context.executemany,
+                )
+
+        if self._echo:
+            self._log_info(str_statement)
+
+            stats = context._get_cache_stats()
+
+            if not self.engine.hide_parameters:
+                self._log_info(
+                    "[%s] %r",
+                    stats,
+                    sql_util._repr_params(
+                        effective_parameters,
+                        batches=10,
+                        ismulti=context.executemany,
+                    ),
+                )
+            else:
+                self._log_info(
+                    "[%s] [SQL parameters hidden due to hide_parameters=True]",
+                    stats,
+                )
+
+        evt_handled: bool = False
+        try:
+            if context.execute_style is ExecuteStyle.EXECUTEMANY:
+                effective_parameters = cast(
+                    "_CoreMultiExecuteParams", effective_parameters
+                )
+                if self.dialect._has_events:
+                    for fn in self.dialect.dispatch.do_executemany:
+                        if fn(
+                            cursor,
+                            str_statement,
+                            effective_parameters,
+                            context,
+                        ):
+                            evt_handled = True
+                            break
+                if not evt_handled:
+                    self.dialect.do_executemany(
+                        cursor,
+                        str_statement,
+                        effective_parameters,
+                        context,
+                    )
+            elif not effective_parameters and context.no_parameters:
+                if self.dialect._has_events:
+                    for fn in self.dialect.dispatch.do_execute_no_params:
+                        if fn(cursor, str_statement, context):
+                            evt_handled = True
+                            break
+                if not evt_handled:
+                    self.dialect.do_execute_no_params(
+                        cursor, str_statement, context
+                    )
+            else:
+                effective_parameters = cast(
+                    "_CoreSingleExecuteParams", effective_parameters
+                )
+                if self.dialect._has_events:
+                    for fn in self.dialect.dispatch.do_execute:
+                        if fn(
+                            cursor,
+                            str_statement,
+                            effective_parameters,
+                            context,
+                        ):
+                            evt_handled = True
+                            break
+                if not evt_handled:
+>                   self.dialect.do_execute(
+                        cursor, str_statement, effective_parameters, context
+                    )
+
+..\..\AppData\Local\Programs\Python\Python312\Lib\site-packages\sqlalchemy\engine\base.py:1969:
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+..\..\AppData\Local\Programs\Python\Python312\Lib\site-packages\sqlalchemy\engine\default.py:952: in do_execute
+    cursor.execute(statement, parameters)
+..\..\AppData\Local\Programs\Python\Python312\Lib\site-packages\sqlalchemy\dialects\postgresql\asyncpg.py:585: in execute
+    self._adapt_connection.await_(
+..\..\AppData\Local\Programs\Python\Python312\Lib\site-packages\sqlalchemy\util\_concurrency_py3k.py:132: in await_only
+    return current.parent.switch(awaitable)  # type: ignore[no-any-return,attr-defined] # noqa: E501
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+..\..\AppData\Local\Programs\Python\Python312\Lib\site-packages\sqlalchemy\util\_concurrency_py3k.py:196: in greenlet_spawn
+    value = await result
+            ^^^^^^^^^^^^
+..\..\AppData\Local\Programs\Python\Python312\Lib\site-packages\sqlalchemy\dialects\postgresql\asyncpg.py:563: in _prepare_and_execute
+    self._handle_exception(error)
+..\..\AppData\Local\Programs\Python\Python312\Lib\site-packages\sqlalchemy\dialects\postgresql\asyncpg.py:513: in _handle_exception
+    self._adapt_connection._handle_exception(error)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = <AdaptedConnection <asyncpg.connection.Connection object at 0x000002B66EE548C0>>
+error = IndeterminateDatatypeError('could not determine data type of parameter $1')
+
+    def _handle_exception(self, error):
+        if self._connection.is_closed():
+            self._transaction = None
+            self._started = False
+
+        if not isinstance(error, AsyncAdapt_asyncpg_dbapi.Error):
+            exception_mapping = self.dbapi._asyncpg_error_translate
+
+            for super_ in type(error).__mro__:
+                if super_ in exception_mapping:
+                    translated_error = exception_mapping[super_](
+                        "%s: %s" % (type(error), error)
+                    )
+                    translated_error.pgcode = translated_error.sqlstate = (
+                        getattr(error, "sqlstate", None)
+                    )
+>                   raise translated_error from error
+E                   sqlalchemy.dialects.postgresql.asyncpg.AsyncAdapt_asyncpg_dbapi.ProgrammingError: <class 'asyncpg.exceptions.IndeterminateDatatypeError'>: could not determine data type of parameter $1
+
+..\..\AppData\Local\Programs\Python\Python312\Lib\site-packages\sqlalchemy\dialects\postgresql\asyncpg.py:797: ProgrammingError
+
+The above exception was the direct cause of the following exception:
+
+real_dsn = 'postgresql+asyncpg://postgres:[REDACTED]@127.0.0.1:56433/wardrobe_test_ce055f0f942c41ef8a04b31b5684b414'
+settings_values = {'app_env': 'test', 'database_url': 'postgresql+asyncpg://unit:unit@localhost/unit_test', 'redis_url': 'redis://localhost:6379/0', 'celery_broker_url': 'redis://localhost:6379/0', ...}
+
+    def test_scene_positive_synthetic_approved_slot(real_dsn, settings_values):
+        async def case(client, engine, settings, *unused):
+            async with prepared(client, engine, settings) as (_, person, resources):
+                await personal(client, engine, settings)
+                device = (await client.get("/api/v1/integration/devices")).json()["items"][0]["id"]
+                async with engine.begin() as c:
+                    await c.execute(
+                        text(
+                            "UPDATE wardrobe.asset SET kind='OTHER', metadata="
+                            "jsonb_build_object('scene_device_id',:d,'scene_role','clean-plate',"
+                            "'visual_approval','approved','fixture','synthetic') WHERE id=:a"
+                        ),
+                        {"d": device, "a": UUID(person)},
+                    )
+                    await c.execute(
+                        text("UPDATE wardrobe.garment_state SET location_id=NULL WHERE garment_id<>:g"),
+                        {"g": UUID(existing.GARMENT)},
+                    )
+                    await c.execute(
+                        text(
+                            "UPDATE wardrobe.storage_location SET attributes="
+                            'attributes || \'{"display_slot":{"approved":true,"x":0.1,'
+                            '"y":0.1,"width":0.2,"height":0.3}}\'::jsonb'
+                        )
+                    )
+                    await c.execute(
+                        text(
+                            "UPDATE wardrobe.garment_state SET location_confidence=1,"
+                            "last_seen_at=now() WHERE garment_id=:g"
+                        ),
+                        {"g": UUID(existing.GARMENT)},
+                    )
+                response = await client.get(f"/api/v1/integration/devices/{device}/scene")
+                assert response.status_code == 200, response.text
+                data = response.json()
+                assert data["frame"] is not None
+                assert len(data["items"]) == 1, data
+                item = data["items"][0]
+                assert item["garment_id"] == existing.GARMENT
+                assert item["image"]["asset_id"] is not None
+                assert item["geometry"]["width"] == 0.2
+                assert len(data["blocked"]) == 2
+
+>       run_case(real_dsn, settings_values, case)
+
+backend\tests\integration\test_handoff.py:99:
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+backend\tests\integration\test_sprint1_api.py:151: in run_case
+    asyncio.run(exercise(real_dsn, settings_values, case))
+..\..\AppData\Local\Programs\Python\Python312\Lib\asyncio\runners.py:195: in run
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+..\..\AppData\Local\Programs\Python\Python312\Lib\asyncio\runners.py:118: in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+..\..\AppData\Local\Programs\Python\Python312\Lib\asyncio\base_events.py:691: in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+backend\tests\integration\test_sprint1_api.py:147: in exercise
+    await case(client, engine, settings, response, key, body)
+backend\tests\integration\test_handoff.py:62: in case
+    await c.execute(
+..\..\AppData\Local\Programs\Python\Python312\Lib\site-packages\sqlalchemy\ext\asyncio\engine.py:659: in execute
+    result = await greenlet_spawn(
+..\..\AppData\Local\Programs\Python\Python312\Lib\site-packages\sqlalchemy\util\_concurrency_py3k.py:201: in greenlet_spawn
+    result = context.throw(*sys.exc_info())
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+..\..\AppData\Local\Programs\Python\Python312\Lib\site-packages\sqlalchemy\engine\base.py:1421: in execute
+    return meth(
+..\..\AppData\Local\Programs\Python\Python312\Lib\site-packages\sqlalchemy\sql\elements.py:526: in _execute_on_connection
+    return connection._execute_clauseelement(
+..\..\AppData\Local\Programs\Python\Python312\Lib\site-packages\sqlalchemy\engine\base.py:1643: in _execute_clauseelement
+    ret = self._execute_context(
+..\..\AppData\Local\Programs\Python\Python312\Lib\site-packages\sqlalchemy\engine\base.py:1848: in _execute_context
+    return self._exec_single_context(
+..\..\AppData\Local\Programs\Python\Python312\Lib\site-packages\sqlalchemy\engine\base.py:1988: in _exec_single_context
+    self._handle_dbapi_exception(
+..\..\AppData\Local\Programs\Python\Python312\Lib\site-packages\sqlalchemy\engine\base.py:2365: in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+..\..\AppData\Local\Programs\Python\Python312\Lib\site-packages\sqlalchemy\engine\base.py:1969: in _exec_single_context
+    self.dialect.do_execute(
+..\..\AppData\Local\Programs\Python\Python312\Lib\site-packages\sqlalchemy\engine\default.py:952: in do_execute
+    cursor.execute(statement, parameters)
+..\..\AppData\Local\Programs\Python\Python312\Lib\site-packages\sqlalchemy\dialects\postgresql\asyncpg.py:585: in execute
+    self._adapt_connection.await_(
+..\..\AppData\Local\Programs\Python\Python312\Lib\site-packages\sqlalchemy\util\_concurrency_py3k.py:132: in await_only
+    return current.parent.switch(awaitable)  # type: ignore[no-any-return,attr-defined] # noqa: E501
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+..\..\AppData\Local\Programs\Python\Python312\Lib\site-packages\sqlalchemy\util\_concurrency_py3k.py:196: in greenlet_spawn
+    value = await result
+            ^^^^^^^^^^^^
+..\..\AppData\Local\Programs\Python\Python312\Lib\site-packages\sqlalchemy\dialects\postgresql\asyncpg.py:563: in _prepare_and_execute
+    self._handle_exception(error)
+..\..\AppData\Local\Programs\Python\Python312\Lib\site-packages\sqlalchemy\dialects\postgresql\asyncpg.py:513: in _handle_exception
+    self._adapt_connection._handle_exception(error)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = <AdaptedConnection <asyncpg.connection.Connection object at 0x000002B66EE548C0>>
+error = IndeterminateDatatypeError('could not determine data type of parameter $1')
+
+    def _handle_exception(self, error):
+        if self._connection.is_closed():
+            self._transaction = None
+            self._started = False
+
+        if not isinstance(error, AsyncAdapt_asyncpg_dbapi.Error):
+            exception_mapping = self.dbapi._asyncpg_error_translate
+
+            for super_ in type(error).__mro__:
+                if super_ in exception_mapping:
+                    translated_error = exception_mapping[super_](
+                        "%s: %s" % (type(error), error)
+                    )
+                    translated_error.pgcode = translated_error.sqlstate = (
+                        getattr(error, "sqlstate", None)
+                    )
+>                   raise translated_error from error
+E                   sqlalchemy.exc.ProgrammingError: (sqlalchemy.dialects.postgresql.asyncpg.ProgrammingError) <class 'asyncpg.exceptions.IndeterminateDatatypeError'>: could not determine data type of parameter $1
+E                   [SQL: UPDATE wardrobe.asset SET kind='OTHER', metadata=jsonb_build_object('scene_device_id',$1,'scene_role','clean-plate','visual_approval','approved','fixture','synthetic') WHERE id=$2]
+E                   [parameters: ('bdd1fdf5-c597-406f-b4d3-962365af5eb2', UUID('637b9782-6898-43d2-977a-474372ae6b0a'))]
+E                   (Background on this error at: https://sqlalche.me/e/20/f405)
+
+..\..\AppData\Local\Programs\Python\Python312\Lib\site-packages\sqlalchemy\dialects\postgresql\asyncpg.py:797: ProgrammingError
+---------------------------- Captured stderr call -----------------------------
+{"timestamp": "2026-10-10T17:36:36.740571+00:00", "level": "INFO", "event": "http_request", "request_id": "f3c7564c-e629-421b-8db3-72281043d64d", "correlation_id": "f3c7564c-e629-421b-8db3-72281043d64d", "method": "POST", "status": 201, "duration_ms": 167.25}
+{"timestamp": "2026-10-10T17:36:36.780602+00:00", "level": "INFO", "event": "http_request", "request_id": "2d8e2dd6-906e-4d1b-b956-71b508e9ea8c", "correlation_id": "2d8e2dd6-906e-4d1b-b956-71b508e9ea8c", "method": "GET", "status": 200, "duration_ms": 26.8}
+{"timestamp": "2026-10-10T17:36:36.826710+00:00", "level": "INFO", "event": "http_request", "request_id": "3bdac9f8-b675-47fb-9d16-0fc7b3593334", "correlation_id": "3bdac9f8-b675-47fb-9d16-0fc7b3593334", "method": "PUT", "status": 200, "duration_ms": 45.2}
+{"timestamp": "2026-10-10T17:36:36.872064+00:00", "level": "INFO", "event": "http_request", "request_id": "7d548b62-06ec-4508-b6be-abc97f3ddff4", "correlation_id": "7d548b62-06ec-4508-b6be-abc97f3ddff4", "method": "POST", "status": 201, "duration_ms": 44.12}
+{"timestamp": "2026-10-10T17:36:37.409586+00:00", "level": "INFO", "event": "http_request", "request_id": "cc207c10-f035-4d8c-975f-65b94f535ab1", "correlation_id": "cc207c10-f035-4d8c-975f-65b94f535ab1", "method": "POST", "status": 201, "duration_ms": 141.68}
+{"timestamp": "2026-10-10T17:36:37.461007+00:00", "level": "INFO", "event": "http_request", "request_id": "dd28a21f-6cdb-40cb-9202-c22244eb897e", "correlation_id": "dd28a21f-6cdb-40cb-9202-c22244eb897e", "method": "POST", "status": 201, "duration_ms": 49.63}
+{"timestamp": "2026-10-10T17:36:37.984408+00:00", "level": "INFO", "event": "http_request", "request_id": "2a18863f-2c7e-409e-b95c-dfa7354879d6", "correlation_id": "2a18863f-2c7e-409e-b95c-dfa7354879d6", "method": "POST", "status": 201, "duration_ms": 77.36}
+{"timestamp": "2026-10-10T17:36:38.330771+00:00", "level": "INFO", "event": "http_request", "request_id": "d8dc12a5-3b74-4128-944a-9f9b8484b8eb", "correlation_id": "d8dc12a5-3b74-4128-944a-9f9b8484b8eb", "method": "POST", "status": 201, "duration_ms": 335.21}
+{"timestamp": "2026-10-10T17:36:39.594809+00:00", "level": "INFO", "event": "http_request", "request_id": "09077310-bc8f-4493-b43c-f53d36b7babd", "correlation_id": "09077310-bc8f-4493-b43c-f53d36b7babd", "method": "GET", "status": 200, "duration_ms": 413.38}
+------------------------------ Captured log call ------------------------------
+INFO     wardrobe:logging.py:72 http_request
+INFO     wardrobe:logging.py:72 http_request
+INFO     wardrobe:logging.py:72 http_request
+INFO     wardrobe:logging.py:72 http_request
+INFO     wardrobe:logging.py:72 http_request
+INFO     wardrobe:logging.py:72 http_request
+INFO     wardrobe:logging.py:72 http_request
+INFO     wardrobe:logging.py:72 http_request
+INFO     wardrobe:logging.py:72 http_request
+____________ test_queued_card_survives_worker_restart_and_renders _____________
+
+real_dsn = 'postgresql+asyncpg://postgres:[REDACTED]@127.0.0.1:56433/wardrobe_test_cbc952a5c5e745b799e16f8d8f896c43'
+settings_values = {'app_env': 'test', 'database_url': 'postgresql+asyncpg://unit:unit@localhost/unit_test', 'redis_url': 'redis://localhost:6379/0', 'celery_broker_url': 'redis://localhost:6379/0', ...}
+
+    def test_queued_card_survives_worker_restart_and_renders(real_dsn, settings_values):
+        async def case(client, engine, settings, *unused):
+            async with prepared(client, engine, settings) as (_, person, resources):
+                worker = InlineWorker(settings, resources)
+                worker.start()
+                await asyncio.sleep(0.1)
+                await worker.close()
+                card = (await draft(client)).json()
+                queued = await render(client, card)
+                assert queued.status_code == 202, queued.text
+                job_id = queued.json()["job_id"]
+                restarted = InlineWorker(settings, resources)
+                restarted.start()
+                try:
+                    for _ in range(60):
+                        job = (await client.get("/api/v1/jobs/" + job_id)).json()
+                        if job["status"] != "QUEUED" and job["status"] != "RUNNING":
+                            break
+                        await asyncio.sleep(0.5)
+                    assert job["status"] == "SUCCEEDED", job
+                    assert job["result_asset"]["read_url"]
+                    await restarted.probe()
+                finally:
+                    await restarted.close()
+
+>       run_case(real_dsn, settings_values, case)
+
+backend\tests\integration\test_inline_worker.py:44:
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+backend\tests\integration\test_sprint1_api.py:151: in run_case
+    asyncio.run(exercise(real_dsn, settings_values, case))
+..\..\AppData\Local\Programs\Python\Python312\Lib\asyncio\runners.py:195: in run
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+..\..\AppData\Local\Programs\Python\Python312\Lib\asyncio\runners.py:118: in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+..\..\AppData\Local\Programs\Python\Python312\Lib\asyncio\base_events.py:691: in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+backend\tests\integration\test_sprint1_api.py:147: in exercise
+    await case(client, engine, settings, response, key, body)
+backend\tests\integration\test_inline_worker.py:40: in case
+    await restarted.probe()
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = <app.application.inline_worker.InlineWorker object at 0x000002B66E106C30>
+
+    async def probe(self):
+        if (not self.task or self.task.done() or not self.healthy or self.last_success is None
+                or monotonic() - self.last_success > 120):
+>           raise RuntimeError("Inline worker unavailable")
+E           RuntimeError: Inline worker unavailable
+
+backend\app\application\inline_worker.py:66: RuntimeError
+---------------------------- Captured stderr call -----------------------------
+{"timestamp": "2026-10-10T17:37:03.867067+00:00", "level": "INFO", "event": "http_request", "request_id": "8a7ab71b-3328-428a-9983-e49273065b5c", "correlation_id": "8a7ab71b-3328-428a-9983-e49273065b5c", "method": "POST", "status": 201, "duration_ms": 194.57}
+{"timestamp": "2026-10-10T17:37:03.908414+00:00", "level": "INFO", "event": "http_request", "request_id": "35439a6d-c52e-4b68-a23e-950a5b7cb1a2", "correlation_id": "35439a6d-c52e-4b68-a23e-950a5b7cb1a2", "method": "GET", "status": 200, "duration_ms": 27.29}
+{"timestamp": "2026-10-10T17:37:03.958127+00:00", "level": "INFO", "event": "http_request", "request_id": "6e099ab0-a56b-44cc-b66d-2dca4183b7e8", "correlation_id": "6e099ab0-a56b-44cc-b66d-2dca4183b7e8", "method": "PUT", "status": 200, "duration_ms": 48.63}
+{"timestamp": "2026-10-10T17:37:04.021245+00:00", "level": "INFO", "event": "http_request", "request_id": "d650b423-da26-4841-8de2-d641c19c5fff", "correlation_id": "d650b423-da26-4841-8de2-d641c19c5fff", "method": "POST", "status": 201, "duration_ms": 61.73}
+{"timestamp": "2026-10-10T17:37:04.512494+00:00", "level": "INFO", "event": "http_request", "request_id": "716eeefc-dbf8-4f94-8976-2ea8c81e944a", "correlation_id": "716eeefc-dbf8-4f94-8976-2ea8c81e944a", "method": "POST", "status": 201, "duration_ms": 102.47}
+{"timestamp": "2026-10-10T17:37:04.552774+00:00", "level": "INFO", "event": "http_request", "request_id": "64aab98e-d0b0-43ae-bd09-ad078e5479d5", "correlation_id": "64aab98e-d0b0-43ae-bd09-ad078e5479d5", "method": "POST", "status": 201, "duration_ms": 38.86}
+{"timestamp": "2026-10-10T17:37:05.064133+00:00", "level": "INFO", "event": "http_request", "request_id": "cf0e578a-2c0b-43f3-9213-4659bc06390c", "correlation_id": "cf0e578a-2c0b-43f3-9213-4659bc06390c", "method": "POST", "status": 201, "duration_ms": 99.51}
+{"timestamp": "2026-10-10T17:37:05.408175+00:00", "level": "INFO", "event": "http_request", "request_id": "8993472c-c184-416b-8792-c8346bbb8de8", "correlation_id": "8993472c-c184-416b-8792-c8346bbb8de8", "method": "POST", "status": 201, "duration_ms": 330.99}
+{"timestamp": "2026-10-10T17:37:05.646983+00:00", "level": "INFO", "event": "http_request", "request_id": "2406e63a-3834-4d8e-963f-0c747e643a65", "correlation_id": "2406e63a-3834-4d8e-963f-0c747e643a65", "method": "POST", "status": 201, "duration_ms": 127.65}
+{"timestamp": "2026-10-10T17:37:05.724917+00:00", "level": "INFO", "event": "http_request", "request_id": "f97ae446-67a2-408b-ba2c-ca3c2d6d2abf", "correlation_id": "f97ae446-67a2-408b-ba2c-ca3c2d6d2abf", "method": "POST", "status": 202, "duration_ms": 76.48}
+{"timestamp": "2026-10-10T17:37:05.802123+00:00", "level": "INFO", "event": "http_request", "request_id": "1f012366-0ff9-4524-8890-4abc752c1a3c", "correlation_id": "1f012366-0ff9-4524-8890-4abc752c1a3c", "method": "GET", "status": 200, "duration_ms": 75.78}
+{"timestamp": "2026-10-10T17:37:05.888716+00:00", "level": "INFO", "event": "job_event", "correlation_id": "f97ae446-67a2-408b-ba2c-ca3c2d6d2abf", "job_id": "46e3f9db-ea17-430f-a37d-1630371451dc", "provider_mode": "INTERNAL", "attempts": 1, "outcome": "CardGenerationStarted"}
+{"timestamp": "2026-10-10T17:37:06.465658+00:00", "level": "INFO", "event": "http_request", "request_id": "9923ba5a-3491-4108-adf2-20e178f50b6c", "correlation_id": "9923ba5a-3491-4108-adf2-20e178f50b6c", "method": "GET", "status": 200, "duration_ms": 35.57}
+{"timestamp": "2026-10-10T17:37:06.945934+00:00", "level": "INFO", "event": "job_event", "correlation_id": "f97ae446-67a2-408b-ba2c-ca3c2d6d2abf", "job_id": "46e3f9db-ea17-430f-a37d-1630371451dc", "provider_mode": "INTERNAL", "attempts": 1, "outcome": "CardGenerated"}
+{"timestamp": "2026-10-10T17:37:07.027428+00:00", "level": "INFO", "event": "http_request", "request_id": "aaf64d8b-1349-4cd0-870e-a15ecbadb7c2", "correlation_id": "aaf64d8b-1349-4cd0-870e-a15ecbadb7c2", "method": "GET", "status": 200, "duration_ms": 71.37}
+------------------------------ Captured log call ------------------------------
+INFO     wardrobe:logging.py:72 http_request
+INFO     wardrobe:logging.py:72 http_request
+INFO     wardrobe:logging.py:72 http_request
+INFO     wardrobe:logging.py:72 http_request
+INFO     wardrobe:logging.py:72 http_request
+INFO     wardrobe:logging.py:72 http_request
+INFO     wardrobe:logging.py:72 http_request
+INFO     wardrobe:logging.py:72 http_request
+INFO     wardrobe:logging.py:72 http_request
+INFO     wardrobe:logging.py:72 http_request
+INFO     wardrobe:logging.py:72 http_request
+INFO     wardrobe:vton_worker.py:20 job_event
+INFO     wardrobe:logging.py:72 http_request
+INFO     wardrobe:vton_worker.py:20 job_event
+INFO     wardrobe:logging.py:72 http_request
+============================== warnings summary ===============================
+..\..\AppData\Local\Programs\Python\Python312\Lib\site-packages\fastapi\testclient.py:1
+  C:\Users\aicam\AppData\Local\Programs\Python\Python312\Lib\site-packages\fastapi\testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+    from starlette.testclient import TestClient as TestClient  # noqa
+
+tests/unit/test_supabase_storage.py: 1 warning
+tests/integration/test_handoff.py: 92 warnings
+tests/integration/test_inline_worker.py: 18 warnings
+tests/integration/test_sprint1_completion.py: 18 warnings
+tests/integration/test_sprint2_api.py: 8 warnings
+tests/integration/test_sprint3_api.py: 190 warnings
+tests/integration/test_sprint4_api.py: 178 warnings
+tests/e2e/test_acceptance.py: 84 warnings
+  C:\Users\aicam\Desktop\2��������Ʈ\.venv\Lib\site-packages\botocore\auth.py:422: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+    datetime_now = datetime.datetime.utcnow()
+
+tests/integration/test_demo_login.py: 2 warnings
+tests/integration/test_device_migration.py: 3 warnings
+tests/integration/test_handoff.py: 7 warnings
+tests/integration/test_inline_worker.py: 1 warning
+tests/integration/test_postgres_platform.py: 2 warnings
+tests/integration/test_sprint1_api.py: 11 warnings
+tests/integration/test_sprint1_completion.py: 3 warnings
+tests/integration/test_sprint2_api.py: 16 warnings
+tests/integration/test_sprint3_api.py: 19 warnings
+tests/integration/test_sprint4_api.py: 9 warnings
+tests/integration/test_sprint5_api.py: 18 warnings
+tests/integration/test_sprint5_migration.py: 3 warnings
+tests/integration/test_sprint6_api.py: 17 warnings
+tests/integration/test_sprint7_api.py: 7 warnings
+tests/e2e/test_acceptance.py: 9 warnings
+  C:\Users\aicam\Desktop\2��������Ʈ\.venv\Lib\site-packages\alembic\config.py:564: DeprecationWarning: No path_separator found in configuration; falling back to legacy splitting on spaces, commas, and colons for prepend_sys_path.  Consider adding path_separator=os to Alembic config.
+    util.warn_deprecated(
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ===========================
+FAILED backend\tests\integration\test_handoff.py::test_scene_positive_synthetic_approved_slot
+FAILED backend\tests\integration\test_inline_worker.py::test_queued_card_survives_worker_restart_and_renders
+2 failed, 277 passed, 717 warnings in 232.63s (0:03:52)

@@ -1,0 +1,446 @@
+........................................................................ [ 25%]
+........................................................................ [ 51%]
+.................F...................................................... [ 77%]
+...............................................................          [100%]
+================================== FAILURES ===================================
+_________________ test_scene_positive_synthetic_approved_slot _________________
+
+self = <sqlalchemy.engine.base.Connection object at 0x00000261859BEDE0>
+dialect = <sqlalchemy.dialects.postgresql.asyncpg.PGDialect_asyncpg object at 0x000002618405DDF0>
+constructor = <bound method DefaultExecutionContext._init_compiled of <class 'sqlalchemy.dialects.postgresql.asyncpg.PGExecutionContext_asyncpg'>>
+statement = <sqlalchemy.dialects.postgresql.asyncpg.PGCompiler_asyncpg object at 0x00000261840C7D70>
+parameters = (), execution_options = immutabledict({})
+args = (<sqlalchemy.dialects.postgresql.asyncpg.PGCompiler_asyncpg object at 0x00000261840C7D70>, (), <sqlalchemy.sql.element...ct at 0x00000261859BE9C0>, [BindParameter('0', None, type_=NullType()), BindParameter('true', None, type_=NullType())])
+kw = {'cache_hit': <CacheStats.CACHE_MISS: 1>}
+
+    def _execute_context(
+        self,
+        dialect: Dialect,
+        constructor: Callable[..., ExecutionContext],
+        statement: Union[str, Compiled],
+        parameters: Optional[_AnyMultiExecuteParams],
+        execution_options: _ExecuteOptions,
+        *args: Any,
+        **kw: Any,
+    ) -> CursorResult[Any]:
+        """Create an :class:`.ExecutionContext` and execute, returning
+        a :class:`_engine.CursorResult`."""
+
+        if execution_options:
+            yp = execution_options.get("yield_per", None)
+            if yp:
+                execution_options = execution_options.union(
+                    {"stream_results": True, "max_row_buffer": yp}
+                )
+        try:
+            conn = self._dbapi_connection
+            if conn is None:
+                conn = self._revalidate_connection()
+
+>           context = constructor(
+                dialect, self, conn, execution_options, *args, **kw
+            )
+
+..\..\AppData\Local\Programs\Python\Python312\Lib\site-packages\sqlalchemy\engine\base.py:1817:
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+..\..\AppData\Local\Programs\Python\Python312\Lib\site-packages\sqlalchemy\engine\default.py:1410: in _init_compiled
+    compiled.construct_params(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = <sqlalchemy.dialects.postgresql.asyncpg.PGCompiler_asyncpg object at 0x00000261840C7D70>
+params = None
+extracted_parameters = [BindParameter('0', None, type_=NullType()), BindParameter('true', None, type_=NullType())]
+escape_names = False, _group_number = None, _check = True
+_no_postcompile = False
+
+    def construct_params(
+        self,
+        params: Optional[_CoreSingleExecuteParams] = None,
+        extracted_parameters: Optional[Sequence[BindParameter[Any]]] = None,
+        escape_names: bool = True,
+        _group_number: Optional[int] = None,
+        _check: bool = True,
+        _no_postcompile: bool = False,
+    ) -> _MutableCoreSingleExecuteParams:
+        """return a dictionary of bind parameter keys and values"""
+
+        if self._render_postcompile and not _no_postcompile:
+            assert self._post_compile_expanded_state is not None
+            if not params:
+                return dict(self._post_compile_expanded_state.parameters)
+            else:
+                raise exc.InvalidRequestError(
+                    "can't construct new parameters when render_postcompile "
+                    "is used; the statement is hard-linked to the original "
+                    "parameters.  Use construct_expanded_state to generate a "
+                    "new statement and parameters."
+                )
+
+        has_escaped_names = escape_names and bool(self.escaped_bind_names)
+
+        if extracted_parameters:
+            # related the bound parameters collected in the original cache key
+            # to those collected in the incoming cache key.  They will not have
+            # matching names but they will line up positionally in the same
+            # way.   The parameters present in self.bind_names may be clones of
+            # these original cache key params in the case of DML but the .key
+            # will be guaranteed to match.
+            if self.cache_key is None:
+                raise exc.CompileError(
+                    "This compiled object has no original cache key; "
+                    "can't pass extracted_parameters to construct_params"
+                )
+            else:
+                orig_extracted = self.cache_key[1]
+
+            ckbm_tuple = self._cache_key_bind_match
+            assert ckbm_tuple is not None
+            ckbm, _ = ckbm_tuple
+            resolved_extracted = {
+                bind: extracted
+                for b, extracted in zip(orig_extracted, extracted_parameters)
+                for bind in ckbm[b]
+            }
+        else:
+            resolved_extracted = None
+
+        if params:
+            pd = {}
+            for bindparam, name in self.bind_names.items():
+                escaped_name = (
+                    self.escaped_bind_names.get(name, name)
+                    if has_escaped_names
+                    else name
+                )
+
+                if bindparam.key in params:
+                    pd[escaped_name] = params[bindparam.key]
+                elif name in params:
+                    pd[escaped_name] = params[name]
+
+                elif _check and bindparam.required:
+                    if _group_number:
+                        raise exc.InvalidRequestError(
+                            "A value is required for bind parameter %r, "
+                            "in parameter group %d"
+                            % (bindparam.key, _group_number),
+                            code="cd3x",
+                        )
+                    else:
+                        raise exc.InvalidRequestError(
+                            "A value is required for bind parameter %r"
+                            % bindparam.key,
+                            code="cd3x",
+                        )
+                else:
+                    if resolved_extracted:
+                        value_param = resolved_extracted.get(
+                            bindparam, bindparam
+                        )
+                    else:
+                        value_param = bindparam
+
+                    if bindparam.callable:
+                        pd[escaped_name] = value_param.effective_value
+                    else:
+                        pd[escaped_name] = value_param.value
+            return pd
+        else:
+            pd = {}
+            for bindparam, name in self.bind_names.items():
+                escaped_name = (
+                    self.escaped_bind_names.get(name, name)
+                    if has_escaped_names
+                    else name
+                )
+
+                if _check and bindparam.required:
+                    if _group_number:
+                        raise exc.InvalidRequestError(
+                            "A value is required for bind parameter %r, "
+                            "in parameter group %d"
+                            % (bindparam.key, _group_number),
+                            code="cd3x",
+                        )
+                    else:
+>                       raise exc.InvalidRequestError(
+                            "A value is required for bind parameter %r"
+                            % bindparam.key,
+                            code="cd3x",
+                        )
+E                       sqlalchemy.exc.InvalidRequestError: A value is required for bind parameter 'true' (Background on this error at: https://sqlalche.me/e/20/cd3x)
+
+..\..\AppData\Local\Programs\Python\Python312\Lib\site-packages\sqlalchemy\sql\compiler.py:1963: InvalidRequestError
+
+The above exception was the direct cause of the following exception:
+
+real_dsn = 'postgresql+asyncpg://postgres:[REDACTED]@127.0.0.1:56433/wardrobe_test_cad1de6951bc4c19966873915ae848ca'
+settings_values = {'app_env': 'test', 'database_url': 'postgresql+asyncpg://unit:unit@localhost/unit_test', 'redis_url': 'redis://localhost:6379/0', 'celery_broker_url': 'redis://localhost:6379/0', ...}
+
+    def test_scene_positive_synthetic_approved_slot(real_dsn, settings_values):
+        async def case(client, engine, settings, *unused):
+            async with prepared(client, engine, settings) as (_, person, resources):
+                await personal(client, engine, settings)
+                device = (await client.get("/api/v1/integration/devices")).json()["items"][0]["id"]
+                async with engine.begin() as c:
+                    await c.execute(
+                        text(
+                            "UPDATE wardrobe.asset SET kind='OTHER', metadata="
+                            "jsonb_build_object('scene_device_id',CAST(:d AS text),'scene_role','clean-plate',"
+                            "'visual_approval','approved','fixture','synthetic') WHERE id=:a"
+                        ),
+                        {"d": device, "a": UUID(person)},
+                    )
+                    await c.execute(
+                        text("UPDATE wardrobe.garment_state SET location_id=NULL WHERE garment_id<>:g"),
+                        {"g": UUID(existing.GARMENT)},
+                    )
+                    await c.execute(
+                        text(
+                            "UPDATE wardrobe.storage_location SET attributes="
+                            'attributes || \'{"display_slot":{"approved":true,"x":0.1,'
+                            '"y":0.1,"width":0.2,"height":0.3}}\'::jsonb'
+                        )
+                    )
+                    await c.execute(
+                        text(
+                            "UPDATE wardrobe.garment_state SET location_confidence=1,"
+                            "last_seen_at=now() WHERE garment_id=:g"
+                        ),
+                        {"g": UUID(existing.GARMENT)},
+                    )
+                response = await client.get(f"/api/v1/integration/devices/{device}/scene")
+                assert response.status_code == 200, response.text
+                data = response.json()
+                assert data["frame"] is not None
+                assert len(data["items"]) == 1, data
+                item = data["items"][0]
+                assert item["garment_id"] == existing.GARMENT
+                assert item["image"]["asset_id"] is not None
+                assert item["geometry"]["width"] == 0.2
+                assert len(data["blocked"]) == 2
+
+>       run_case(real_dsn, settings_values, case)
+
+backend\tests\integration\test_handoff.py:99:
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+backend\tests\integration\test_sprint1_api.py:151: in run_case
+    asyncio.run(exercise(real_dsn, settings_values, case))
+..\..\AppData\Local\Programs\Python\Python312\Lib\asyncio\runners.py:195: in run
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+..\..\AppData\Local\Programs\Python\Python312\Lib\asyncio\runners.py:118: in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+..\..\AppData\Local\Programs\Python\Python312\Lib\asyncio\base_events.py:691: in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+backend\tests\integration\test_sprint1_api.py:147: in exercise
+    await case(client, engine, settings, response, key, body)
+backend\tests\integration\test_handoff.py:74: in case
+    await c.execute(
+..\..\AppData\Local\Programs\Python\Python312\Lib\site-packages\sqlalchemy\ext\asyncio\engine.py:659: in execute
+    result = await greenlet_spawn(
+..\..\AppData\Local\Programs\Python\Python312\Lib\site-packages\sqlalchemy\util\_concurrency_py3k.py:190: in greenlet_spawn
+    result = context.switch(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+..\..\AppData\Local\Programs\Python\Python312\Lib\site-packages\sqlalchemy\engine\base.py:1421: in execute
+    return meth(
+..\..\AppData\Local\Programs\Python\Python312\Lib\site-packages\sqlalchemy\sql\elements.py:526: in _execute_on_connection
+    return connection._execute_clauseelement(
+..\..\AppData\Local\Programs\Python\Python312\Lib\site-packages\sqlalchemy\engine\base.py:1643: in _execute_clauseelement
+    ret = self._execute_context(
+..\..\AppData\Local\Programs\Python\Python312\Lib\site-packages\sqlalchemy\engine\base.py:1823: in _execute_context
+    self._handle_dbapi_exception(
+..\..\AppData\Local\Programs\Python\Python312\Lib\site-packages\sqlalchemy\engine\base.py:2365: in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+..\..\AppData\Local\Programs\Python\Python312\Lib\site-packages\sqlalchemy\engine\base.py:1817: in _execute_context
+    context = constructor(
+..\..\AppData\Local\Programs\Python\Python312\Lib\site-packages\sqlalchemy\engine\default.py:1410: in _init_compiled
+    compiled.construct_params(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = <sqlalchemy.dialects.postgresql.asyncpg.PGCompiler_asyncpg object at 0x00000261840C7D70>
+params = None
+extracted_parameters = [BindParameter('0', None, type_=NullType()), BindParameter('true', None, type_=NullType())]
+escape_names = False, _group_number = None, _check = True
+_no_postcompile = False
+
+    def construct_params(
+        self,
+        params: Optional[_CoreSingleExecuteParams] = None,
+        extracted_parameters: Optional[Sequence[BindParameter[Any]]] = None,
+        escape_names: bool = True,
+        _group_number: Optional[int] = None,
+        _check: bool = True,
+        _no_postcompile: bool = False,
+    ) -> _MutableCoreSingleExecuteParams:
+        """return a dictionary of bind parameter keys and values"""
+
+        if self._render_postcompile and not _no_postcompile:
+            assert self._post_compile_expanded_state is not None
+            if not params:
+                return dict(self._post_compile_expanded_state.parameters)
+            else:
+                raise exc.InvalidRequestError(
+                    "can't construct new parameters when render_postcompile "
+                    "is used; the statement is hard-linked to the original "
+                    "parameters.  Use construct_expanded_state to generate a "
+                    "new statement and parameters."
+                )
+
+        has_escaped_names = escape_names and bool(self.escaped_bind_names)
+
+        if extracted_parameters:
+            # related the bound parameters collected in the original cache key
+            # to those collected in the incoming cache key.  They will not have
+            # matching names but they will line up positionally in the same
+            # way.   The parameters present in self.bind_names may be clones of
+            # these original cache key params in the case of DML but the .key
+            # will be guaranteed to match.
+            if self.cache_key is None:
+                raise exc.CompileError(
+                    "This compiled object has no original cache key; "
+                    "can't pass extracted_parameters to construct_params"
+                )
+            else:
+                orig_extracted = self.cache_key[1]
+
+            ckbm_tuple = self._cache_key_bind_match
+            assert ckbm_tuple is not None
+            ckbm, _ = ckbm_tuple
+            resolved_extracted = {
+                bind: extracted
+                for b, extracted in zip(orig_extracted, extracted_parameters)
+                for bind in ckbm[b]
+            }
+        else:
+            resolved_extracted = None
+
+        if params:
+            pd = {}
+            for bindparam, name in self.bind_names.items():
+                escaped_name = (
+                    self.escaped_bind_names.get(name, name)
+                    if has_escaped_names
+                    else name
+                )
+
+                if bindparam.key in params:
+                    pd[escaped_name] = params[bindparam.key]
+                elif name in params:
+                    pd[escaped_name] = params[name]
+
+                elif _check and bindparam.required:
+                    if _group_number:
+                        raise exc.InvalidRequestError(
+                            "A value is required for bind parameter %r, "
+                            "in parameter group %d"
+                            % (bindparam.key, _group_number),
+                            code="cd3x",
+                        )
+                    else:
+                        raise exc.InvalidRequestError(
+                            "A value is required for bind parameter %r"
+                            % bindparam.key,
+                            code="cd3x",
+                        )
+                else:
+                    if resolved_extracted:
+                        value_param = resolved_extracted.get(
+                            bindparam, bindparam
+                        )
+                    else:
+                        value_param = bindparam
+
+                    if bindparam.callable:
+                        pd[escaped_name] = value_param.effective_value
+                    else:
+                        pd[escaped_name] = value_param.value
+            return pd
+        else:
+            pd = {}
+            for bindparam, name in self.bind_names.items():
+                escaped_name = (
+                    self.escaped_bind_names.get(name, name)
+                    if has_escaped_names
+                    else name
+                )
+
+                if _check and bindparam.required:
+                    if _group_number:
+                        raise exc.InvalidRequestError(
+                            "A value is required for bind parameter %r, "
+                            "in parameter group %d"
+                            % (bindparam.key, _group_number),
+                            code="cd3x",
+                        )
+                    else:
+>                       raise exc.InvalidRequestError(
+                            "A value is required for bind parameter %r"
+                            % bindparam.key,
+                            code="cd3x",
+                        )
+E                       sqlalchemy.exc.StatementError: (sqlalchemy.exc.InvalidRequestError) A value is required for bind parameter 'true'
+E                       [SQL: UPDATE wardrobe.storage_location SET attributes=attributes || '{"display_slot":{"approved"$1,"x"$2.1,"y"$2.1,"width"$2.2,"height"$2.3}}'::jsonb]
+E                       (Background on this error at: https://sqlalche.me/e/20/cd3x)
+
+..\..\AppData\Local\Programs\Python\Python312\Lib\site-packages\sqlalchemy\sql\compiler.py:1963: StatementError
+---------------------------- Captured stderr call -----------------------------
+{"timestamp": "2026-10-10T17:41:16.889109+00:00", "level": "INFO", "event": "http_request", "request_id": "7fc2b867-040a-48cc-bcfa-96d9dd2aca4d", "correlation_id": "7fc2b867-040a-48cc-bcfa-96d9dd2aca4d", "method": "POST", "status": 201, "duration_ms": 164.19}
+{"timestamp": "2026-10-10T17:41:16.923193+00:00", "level": "INFO", "event": "http_request", "request_id": "144f18d0-bd40-46f6-b419-e5d5a5a10f4f", "correlation_id": "144f18d0-bd40-46f6-b419-e5d5a5a10f4f", "method": "GET", "status": 200, "duration_ms": 27.03}
+{"timestamp": "2026-10-10T17:41:16.971443+00:00", "level": "INFO", "event": "http_request", "request_id": "24507a02-43af-47d3-8555-f91d30547520", "correlation_id": "24507a02-43af-47d3-8555-f91d30547520", "method": "PUT", "status": 200, "duration_ms": 46.82}
+{"timestamp": "2026-10-10T17:41:17.025992+00:00", "level": "INFO", "event": "http_request", "request_id": "e4ef3116-077c-44e3-87c9-60891c990960", "correlation_id": "e4ef3116-077c-44e3-87c9-60891c990960", "method": "POST", "status": 201, "duration_ms": 53.0}
+{"timestamp": "2026-10-10T17:41:17.389298+00:00", "level": "INFO", "event": "http_request", "request_id": "233aca5a-cd95-4172-8bea-86045f0c6f34", "correlation_id": "233aca5a-cd95-4172-8bea-86045f0c6f34", "method": "POST", "status": 201, "duration_ms": 101.31}
+{"timestamp": "2026-10-10T17:41:17.428668+00:00", "level": "INFO", "event": "http_request", "request_id": "9251299d-e9de-4244-94f8-86d49bb12bf1", "correlation_id": "9251299d-e9de-4244-94f8-86d49bb12bf1", "method": "POST", "status": 201, "duration_ms": 38.51}
+{"timestamp": "2026-10-10T17:41:17.799352+00:00", "level": "INFO", "event": "http_request", "request_id": "41b607c4-0048-4ba6-b2d6-4d44843c5b90", "correlation_id": "41b607c4-0048-4ba6-b2d6-4d44843c5b90", "method": "POST", "status": 201, "duration_ms": 70.69}
+{"timestamp": "2026-10-10T17:41:18.054881+00:00", "level": "INFO", "event": "http_request", "request_id": "c270b909-2d0a-411c-9675-a197e1e46e03", "correlation_id": "c270b909-2d0a-411c-9675-a197e1e46e03", "method": "POST", "status": 201, "duration_ms": 245.12}
+{"timestamp": "2026-10-10T17:41:19.111144+00:00", "level": "INFO", "event": "http_request", "request_id": "6491b861-5a85-4c0e-9f78-ae662dfaa7a7", "correlation_id": "6491b861-5a85-4c0e-9f78-ae662dfaa7a7", "method": "GET", "status": 200, "duration_ms": 440.36}
+------------------------------ Captured log call ------------------------------
+INFO     wardrobe:logging.py:72 http_request
+INFO     wardrobe:logging.py:72 http_request
+INFO     wardrobe:logging.py:72 http_request
+INFO     wardrobe:logging.py:72 http_request
+INFO     wardrobe:logging.py:72 http_request
+INFO     wardrobe:logging.py:72 http_request
+INFO     wardrobe:logging.py:72 http_request
+INFO     wardrobe:logging.py:72 http_request
+INFO     wardrobe:logging.py:72 http_request
+============================== warnings summary ===============================
+..\..\AppData\Local\Programs\Python\Python312\Lib\site-packages\fastapi\testclient.py:1
+  C:\Users\aicam\AppData\Local\Programs\Python\Python312\Lib\site-packages\fastapi\testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+    from starlette.testclient import TestClient as TestClient  # noqa
+
+tests/unit/test_supabase_storage.py: 1 warning
+tests/integration/test_handoff.py: 92 warnings
+tests/integration/test_inline_worker.py: 18 warnings
+tests/integration/test_sprint1_completion.py: 18 warnings
+tests/integration/test_sprint2_api.py: 8 warnings
+tests/integration/test_sprint3_api.py: 190 warnings
+tests/integration/test_sprint4_api.py: 178 warnings
+tests/e2e/test_acceptance.py: 84 warnings
+  C:\Users\aicam\Desktop\2��������Ʈ\.venv\Lib\site-packages\botocore\auth.py:422: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+    datetime_now = datetime.datetime.utcnow()
+
+tests/integration/test_demo_login.py: 2 warnings
+tests/integration/test_device_migration.py: 3 warnings
+tests/integration/test_handoff.py: 7 warnings
+tests/integration/test_inline_worker.py: 1 warning
+tests/integration/test_postgres_platform.py: 2 warnings
+tests/integration/test_sprint1_api.py: 11 warnings
+tests/integration/test_sprint1_completion.py: 3 warnings
+tests/integration/test_sprint2_api.py: 16 warnings
+tests/integration/test_sprint3_api.py: 19 warnings
+tests/integration/test_sprint4_api.py: 9 warnings
+tests/integration/test_sprint5_api.py: 18 warnings
+tests/integration/test_sprint5_migration.py: 3 warnings
+tests/integration/test_sprint6_api.py: 17 warnings
+tests/integration/test_sprint7_api.py: 7 warnings
+tests/e2e/test_acceptance.py: 9 warnings
+  C:\Users\aicam\Desktop\2��������Ʈ\.venv\Lib\site-packages\alembic\config.py:564: DeprecationWarning: No path_separator found in configuration; falling back to legacy splitting on spaces, commas, and colons for prepend_sys_path.  Consider adding path_separator=os to Alembic config.
+    util.warn_deprecated(
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ===========================
+FAILED backend\tests\integration\test_handoff.py::test_scene_positive_synthetic_approved_slot
+1 failed, 278 passed, 717 warnings in 297.99s (0:04:57)
