@@ -151,3 +151,31 @@ npm run dev --prefix web
 
 - [추가 변경 지시서](MOBILE_MIRROR_RESPONSIVE_CHANGE_REQUEST.md)를 작성했다. 데스크톱 원본은 유지하고 모바일에서 좌우 옷장 없이 미러가 전체 화면을 채우는 변경 범위·대상 파일·QA 기준을 정리했다.
 - 로컬 브라우저에서 현재 390×844 화면의 미러가 약 58×192px로 축소되는 원인을 확인했다. 반응형 구현 코드는 수정하지 않았으며 구현·실기기 검증은 후속 작업이다.
+
+## 모바일 미러 반응형 구현 (2026-10-10)
+
+- 작업 브랜치는 `dev`이며 main 병합·원격 푸시·배포는 수행하지 않는다. 기준은 [반응형 지시서](MOBILE_MIRROR_RESPONSIVE_CHANGE_REQUEST.md)다.
+- `PhotoWardrobeStage.tsx`에서 폭 768px 미만은 실제 뷰포트 크기로 미러를 배치한다. 기존 children을 유지해 표시 모드 전환으로 상태를 재생성하지 않는다. 데스크톱 사진 배율·미러 좌표·geometry 자료는 유지했다.
+- `mirror-responsive.css`를 마지막에 추가해 모바일에서 좌우 사진과 LED 사진 레이어를 숨기고 기존 배경색을 사용했다. 메뉴 순서는 유지하고 작업·홈·모달·비교 영역에 세로 스크롤을 적용했다. 안전 여백, dvh fallback, 16px 입력과 주요 터치 영역을 추가했다. `web/index.html`에 viewport-fit=cover를 추가했다.
+- 모바일 비교에서 전체 화면 버튼이 더 보기 버튼을 가리는 문제를 확인해 전체 화면 버튼을 좌측 상단으로 이동했다. DB·API·인증·이미지 캐시·LED 권한·원본 설계 문서는 변경하지 않았다.
+- 자동 QA: `node web/test/responsive-browser.mjs`에서 9개 뷰포트(360×800, 390×844, 430×932, 767×844, 667×375, 768×844 및 데스크톱 3종)의 미러 치수·배경 비노출·페이지 수평 스크롤 없음을 확인했다. 실제 시연 계정의 의류 6개·사진·검색·등록 화면·두 스타일 탭·코디 선택을 확인했다. 낮은 가로 화면에서 등록 하단 버튼까지 스크롤로 접근했다. 왕복 resize에서 로그인·초안 유지, 의류/사진 추가 요청 0, 브라우저 오류 0이었다.
+- 데스크톱 3종의 홈·옷장·코디 캡처에서 좌우 물리적 옷장 18개 영역 픽셀이 변경 전과 동일했다. 미러 좌표도 기존 계산과 1px 이내로 일치했다. 전체 동적 UI의 픽셀 동일성을 주장하는 결과는 아니다.
+- 단위 테스트 33개 통과. 빌드는 통과했고 기존 큰 번들 경고는 남아 있다. 격리 DB·Redis·MinIO를 사용하는 기존 데스크톱 E2E 11개가 통과했다. 최신 빌드의 390×844 모바일 E2E도 11개 전부 통과했다(브라우저 오류 0, 실제 DB·스토리지·renderer 사용, VTON·LED는 Mock). 실제 이미지 업로드·의류 등록·코디카드 생성/공유·착용/관리 기록·쇼핑/권한 검증과 격리 자원 정리가 포함된다.
+- LED QA는 2초 TTL보다 긴 모바일 스크롤·재확인 때문에 잘못 실패하지 않도록 실제 LED 명령 HTTP 응답의 ON·anchor_ids를 먼저 검증하고, 별도 상태 API에서 자동 소등을 확인하도록 수정했다. TTL이나 제품 로직을 늘리거나 생략하지 않았다.
+- 증적은 미추적 `test-results/responsive-browser.json`, `responsive-mobile-*.png`, `responsive-before-*.png`, `responsive-after-*.png`, `second-handoff-browser-evidence.json`에 저장한다. 실행한 격리 E2E는 테스트 데이터·컨테이너를 종료 시 정리한다. Mock VTON·LED만 사용하며 유료 API를 호출하지 않는다.
+- **미검증:** 실제 iOS Safari·Android Chrome의 키보드, 주소창, 노치/제스처 safe-area 및 실제 기기 회전. 진행 중 VTON의 resize는 별도 재현이 필요하다. 현재 결과는 Chromium 뷰포트 QA이며 지시서의 모든 검증 완료로 판정하지 않는다.
+
+재현(PowerShell, 프로젝트 루트):
+
+```powershell
+npm run dev --prefix web -- --host 127.0.0.1 --port 5181
+# 별도 터미널, 기존 로컬 API/DB/Redis/MinIO 및 renderer 실행 필요
+node web/test/responsive-browser.mjs
+npm test --prefix web
+npm run build --prefix web
+$env:INTEGRATION_MOBILE='1'
+.\.venv\Scripts\python.exe scripts/verify_second_handoff.py
+Remove-Item Env:INTEGRATION_MOBILE
+# 기본 데스크톱 E2E
+.\.venv\Scripts\python.exe scripts/verify_second_handoff.py
+```

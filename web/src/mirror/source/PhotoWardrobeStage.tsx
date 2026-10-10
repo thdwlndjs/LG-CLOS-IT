@@ -14,7 +14,7 @@ export function PhotoWardrobeStage({
   children: ReactNode;
 }) {
   const viewport = useRef<HTMLDivElement>(null);
-  const [size, setSize] = useState({ width: 1672, height: 941 });
+  const [size, setSize] = useState({ width: 1672, height: 941, mobile: false });
   useEffect(() => {
     const node = viewport.current;
     if (!node) return;
@@ -23,7 +23,10 @@ export function PhotoWardrobeStage({
         entry.contentRect.width / 1672,
         entry.contentRect.height / 941,
       );
-      setSize({ width: 1672 * scale, height: 941 * scale });
+      const mobile = entry.contentRect.width < 768;
+      setSize(mobile
+        ? { width: entry.contentRect.width, height: entry.contentRect.height, mobile }
+        : { width: 1672 * scale, height: 941 * scale, mobile });
     });
     observer.observe(node);
     return () => observer.disconnect();
@@ -54,7 +57,7 @@ export function PhotoWardrobeStage({
   };
   const active = new Set(anchorIds);
   return (
-    <div className="photo-wardrobe" ref={viewport}>
+    <div className="photo-wardrobe" data-display-mode={size.mobile ? "mobile" : "desktop"} ref={viewport}>
       <button
         className="photo-presentation-toggle"
         aria-label={fullscreen ? "전체 화면 나가기" : "전체 화면으로 보기"}
@@ -69,7 +72,7 @@ export function PhotoWardrobeStage({
       </span>
       <div
         className="photo-stage"
-        style={size}
+        style={{ width: size.width, height: size.height }}
         data-scene-version={geometry.source.rgb_pixel_sha256}
       >
         <img
@@ -116,11 +119,11 @@ export function PhotoWardrobeStage({
           aria-label="스마트 옷장 미러"
           style={
             {
-              left: "42.7033493%",
-              top: "2.975558%",
-              width: "14.8325359%",
-              height: "87.5664187%",
-              "--mirror-width": `${(size.width * 248) / 1672}px`,
+              left: size.mobile ? 0 : "42.7033493%",
+              top: size.mobile ? 0 : "2.975558%",
+              width: size.mobile ? "100%" : "14.8325359%",
+              height: size.mobile ? "100%" : "87.5664187%",
+              "--mirror-width": `${size.mobile ? size.width : (size.width * 248) / 1672}px`,
             } as CSSProperties
           }
         >

@@ -39,6 +39,7 @@ const save = async () => {
         paid_api_called: false,
         hardware: "MOCK",
         isolated: true,
+        viewport: process.env.INTEGRATION_MOBILE === "1" ? "390x844" : "1672x941",
       },
       null,
       2,
@@ -214,7 +215,7 @@ try {
     preview: { host: "127.0.0.1", port: 5174, strictPort: true },
   });
   browser = await chromium.launch({ headless: true });
-  page = await browser.newPage({ viewport: { width: 1672, height: 941 } });
+  page = await browser.newPage({ viewport: process.env.INTEGRATION_MOBILE === "1" ? { width: 390, height: 844 } : { width: 1672, height: 941 } });
   page.setDefaultTimeout(15000);
   page.on("response", async (response) => {
     if (response.status() >= 400 && response.url().includes("/care-schedules"))
@@ -251,7 +252,12 @@ try {
         width: el.style.width,
         height: el.style.height,
       }));
-      assert.ok(
+      if (process.env.INTEGRATION_MOBILE === "1") {
+        assert.equal(geometry.left, "0px");
+        assert.equal(geometry.top, "0px");
+        assert.equal(geometry.width, "100%");
+        assert.equal(geometry.height, "100%");
+      } else assert.ok(
         geometry.left.startsWith("42.7033") &&
           geometry.top.startsWith("2.9755") &&
           geometry.width.startsWith("14.8325") &&
@@ -424,6 +430,7 @@ try {
     async () => {
       const before = counts();
       let lost = false;
+      const initialLedResponse = page.waitForResponse(r => r.url().endsWith("/integration/led-commands") && r.request().method() === "POST" && r.ok());
       await page.route("**/api/v1/vton-sessions/*/end", async (route) => {
         const response = await route.fetch();
         if (!lost) {
@@ -444,14 +451,10 @@ try {
         .getByText(/코디 확정 완료 · 착용 예정\/실제 착용 기록 없음/)
         .waitFor();
       assert.equal(counts().wear_event, before.wear_event);
-      assert.ok(
-        (
-          await req(
-            "GET",
-            `/integration/devices/${fixture.device_id}/led-state`,
-          )
-        ).anchor_ids.length > 0,
-      );
+      // Capture the actual LED command response: mobile scrolling can exceed the test's 2s TTL.
+      const initialLedState = await (await initialLedResponse).json();
+      assert.equal(initialLedState.status, "ON");
+      assert.ok(initialLedState.anchor_ids.length > 0);
       await page.waitForTimeout(2300);
       assert.deepEqual(
         (

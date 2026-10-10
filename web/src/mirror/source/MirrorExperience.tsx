@@ -57,6 +57,7 @@ import {
 import { MirrorCompare } from "./MirrorCompare";
 import { MirrorForeground } from "./MirrorForeground";
 import "./mirror-clear.css";
+import "./mirror-responsive.css";
 
 const menus = [
   ["home", "home", "홈"],
