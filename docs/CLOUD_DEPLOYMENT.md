@@ -26,7 +26,7 @@ API readiness에서 database/redis/storage/renderer/worker 모두 ok를 실제 �
 ## 데이터 적재 결과
 
 - 승인된 private 계획의 실제 보유 의류 6벌을 기존 등록 API로 적재했다. 상품 원본 이미지와 실제 보유 의류는 구분한다. 기존 승인 계획에서 상품 URL·전달 라벨 불일치, 공식 상품 본문 확인 불가, 같은 미확정 상품 재참조로 보류한 4건은 등록하지 않는다. 이는 승인된 6건 범위 밖의 미확정 적재 항목이다.
-- 클라우드 사용자·기기를 새로 준비하고 로컬 journal·asset ID·MinIO key를 복사하지 않았다. 클라우드 개인 계정 1개, 기기 1개이다.
+- 클라우드 사용자·기기를 새로 준비하고 로컬 journal·asset ID·MinIO key를 복사하지 않았다. 초기 적재는 클라우드 개인 계정 1개·기기 1개였고, 공개 시연용 MEMBER 계정 1개를 같은 기기에 별도로 연결했다.
 - verified TLS pg_dump 백업 후 동의 설정 API → upload intent → S3 PUT → SHA256 finalize → 의류 등록 API를 실행했다.
 - 모든 사진 다운로드 SHA256이 검증된 상품 이미지와 일치한다. 재실행 결과 verified=6, created_this_run=0, held=4이다.
 - 독립 SQL 조회에서 garment=6, READY GARMENT assets=6, wear_event=0, care_event=0, garment_observation=0을 확인했다. 의류 상태 UNKNOWN, 위치·마지막 관측·confidence가 미확정 상태임을 API로 확인했다.

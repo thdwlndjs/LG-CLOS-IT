@@ -19,7 +19,10 @@
 - 실제 클라우드에 별도 MEMBER/기기 연결을 준비했다. 재실행 created=false를 확인했다. 기존 실제 의류 6벌은 소유자·이미지·착용 기록을 바꾸지 않고 기기 연결 계약으로 조회한다. 공개 계정의 공유 데이터와 운영상 조회 범위는 [CLOUD_DEPLOYMENT.md](../CLOUD_DEPLOYMENT.md#계정과-환경변수)에 기록했다.
 - 검증: 단위/계약 157개 통과, 설정 17개 포함, 실 PostgreSQL/Redis 로그인 통합 2개 통과. 공개 로그인·다른 household 404·기존 소유자의 의류 수정 차단·비밀번호 로그인 차단·로그아웃 토큰 취소 및 비활성/미준비 실패를 확인한다. Ruff 및 OpenAPI validator 통과.
 - 환경 오류: Windows pytest 기본 Temp 접근 거부는 Git 제외 basetemp로, 테스트 PostgreSQL 55432 포트 바인딩 거부는 Git 제외 Compose override에서 테스트 DB 호스트 포트를 제거해 해결했다. 시스템 권한·보안 설정을 변경하지 않았다. 클라우드 DB TLS는 기존 공식 CA로 검증하며 인증서 검증을 끄지 않았다.
-- 배포 상태: 테스트 완료 후 commit/push와 Actions 배포, 실제 공개 버튼 QA 진행 중. 배포 완료와 브라우저 검증을 확인하기 전 완료 판정하지 않는다.
+- 구현 커밋 `4878d34` main 푸시 및 [CI 38041047056](https://github.com/thdwlndjs/LG-CLOS-IT/actions/runs/38041047056) frontend/backend/free-cloud-image/deploy 성공. [Deployment smoke 38041245481](https://github.com/thdwlndjs/LG-CLOS-IT/actions/runs/38041245481)도 통과했지만 이후 실제 API가 이전 `37f695d`를 응답하고 브라우저 로그인 403을 재현했다. 따라서 해당 smoke 성공만으로 완료 처리하지 않았다.
+- Render 상태와 실제 응답 불일치는 재시작 후에도 지속됐다. [공식 Trigger Deploy API](https://api-docs.render.com/reference/create-deploy)로 동일 검증 커밋 `4878d34`를 `clearCache=clear` 재배포했고 이후 실제 버전/ready를 확인했다. 플랫폼 내부 원인은 확정하지 않으며 코드 결함과 배포 실행 상태를 구분한다. 서비스 플랜은 free 그대로다.
+- 최종 실제 Vercel 브라우저: 시연용 버튼 200 → MEMBER 세션 → 의류 사진 6/6 ready → 로그아웃 성공. pageerror=0, 실패 요청=0. 실제 의류 6벌/READY 사진 6개, 착용/관리 기록 0건을 독립 SQL로 확인했다. JWT 토큰·서명 URL 쿼리·비밀번호는 증적에 기록하지 않는다. 증적: Git 제외 `test-results/public-demo-browser.json`, `test-results/public-demo-wardrobe-success.png`.
+- 공개 시연 재현: `node web/test/public-demo-browser.mjs`. 기본 Vercel 주소와 기존 공개 옷장 6벌을 사용한다. 다른 공개 프론트는 `PUBLIC_WEB_ORIGIN` 환경변수로 지정한다. 일반 개인 계정의 비밀번호는 필요하지 않다.
 
 ## 기능별 결과
 
@@ -111,7 +114,7 @@ API 이미지 또는 renderer 이미지가 없는 환경은 먼저 `docker compo
 서버가 꺼져 있을 때 프로젝트 루트에서:
 
 ```powershell
-git switch dev
+git switch main
 docker compose --env-file .env -f infra/compose.yaml up -d
 $env:WEB_PORT = '5181'
 npm run dev --prefix web
