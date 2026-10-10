@@ -193,3 +193,9 @@ Remove-Item Env:INTEGRATION_MOBILE
 - `npm test --prefix web` 33개, 빌드, `responsive-browser.mjs` 회귀 QA 통과. 격리 DB로 `INTEGRATION_MOBILE=1`의 전체 E2E 11개 통과: 일반 계정+기기 인증 로그인과 접힌 통합 기능 접근을 포함한다. 유료 API 미호출, Mock VTON·LED, 테스트 자원 정리 완료.
 - 증적: 미추적 `test-results/account-browser.json`, `account-before-*.png`, `account-after-*.png`, `second-handoff-browser-evidence.json`. 실제 모바일 키보드와 safe-area 미검증은 기존과 동일하다.
 - `dev`에서 커밋하며 main 병합·원격 푸시·배포는 수행하지 않는다. 실행은 기존 로컬 명령과 `node web/test/account-browser.mjs`를 사용한다.
+
+### 내 계정 디자인 정합성 수정
+
+앞선 계정 레이아웃 수정에서 불투명한 넓은 카드 배경을 추가한 것은 기존 clear mirror 규격에 맞지 않았다. `mirror-account.css`를 수정해 계정을 기존 작업 영역(데스크톱 left 20%, right 4%, top 24%; 모바일 메뉴 오른쪽)에 배치했다. 내용 높이에 맞추되 가용 높이를 넘으면 본문만 스크롤한다. 배경 채움·블러·그림자·둥근 카드와 입력창 채움을 제거하고 기존 투명 UI·하단 선·텍스트 스타일로 되돌렸다. 18px 높이 오류 수정과 기능 구분은 유지한다.
+
+계정 브라우저 QA 5개 뷰포트와 시연 로그인·새로고침·LIKED 조회·로그아웃 재실행 통과, 오류 0. 배경 투명·블러 없음·그림자 없음·메뉴 영역 비침범을 자동 검증했고 로그인 전후 캡처를 직접 확인했다. 빌드 통과. 이번 수정 후 전체 E2E는 반복하지 않았으며, 앞선 일반 로그인/기기 인증 E2E 결과와 구분한다. dev에만 커밋한다.

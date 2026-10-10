@@ -1,11 +1,11 @@
 /* Account overlay owns one scroll area; never derive pixel heights from percentages. */
 .mx-surface[data-mirror-ui="clear"] .mx-auth-dialog {
-  top: 13%; bottom: 6%; left: 5%; right: 5%;
-  height: auto; min-height: 0; max-height: none;
-  padding: 12px; display: flex; flex-direction: column; gap: 12px;
-  overflow: hidden; border: 1px solid #fff8; border-radius: 12px;
-  background: #f8f7eff0; backdrop-filter: blur(8px);
-  text-shadow: none; box-shadow: 0 8px 24px #17251f18;
+  top: 24%; bottom: auto; left: 20%; right: 4%;
+  height: auto; min-height: 0; max-height: 68%;
+  padding: 4px; display: flex; flex-direction: column; gap: 10px;
+  overflow: hidden; border: 0; border-radius: 0;
+  background: transparent; backdrop-filter: none;
+  text-shadow: inherit; box-shadow: none;
 }
 .mx-auth-dialog .mirror-account-dialog-heading {
   display: flex; align-items: center; justify-content: space-between; gap: 8px;
@@ -25,12 +25,12 @@
 .mx-auth-dialog .mirror-account-panel label { gap: 6px; font-size: 13px; }
 .mx-surface[data-mirror-ui="clear"] .mx-auth-dialog .mirror-account-panel input {
   width: 100%; min-width: 0; padding: 9px 10px; min-height: 44px;
-  border: 1px solid #33463c50; border-radius: 6px; background: #ffffffb0;
+  border: 0; border-bottom: 1px solid #33463c; border-radius: 0; background: transparent;
   font-size: 16px;
 }
 .mx-auth-dialog .mirror-account-panel button { width: 100%; padding: 8px; line-height: 1.4; }
-.mx-auth-dialog .mirror-account-panel .mirror-account-demo { border: 1px solid #516f51; background: #edf1e7; border-radius: 6px; }
-.mx-surface[data-mirror-ui="clear"] .mx-auth-dialog .mirror-account-panel button[type="submit"] { border-radius: 6px; background: #4d6a50 !important; color: #fff !important; }
+.mx-auth-dialog .mirror-account-panel .mirror-account-demo { border: 1px solid #516f51; background: transparent; border-radius: 0; }
+.mx-surface[data-mirror-ui="clear"] .mx-auth-dialog .mirror-account-panel button[type="submit"] { border-radius: 0; background: transparent !important; color: #17251f !important; text-decoration: underline; text-underline-offset: 5px; }
 .mirror-account-divider { display: flex; align-items: center; gap: 8px; color: #576257; font-size: 12px; }
 .mirror-account-divider::before,.mirror-account-divider::after { content: ""; flex: 1; height: 1px; background: #33463c30; }
 .mx-auth-dialog .mirror-account-panel details { min-width: 0; border-top: 1px solid #33463c25; padding-top: 8px; }
@@ -43,14 +43,15 @@
 .mx-auth-dialog .mirror-account-identity > strong { font-size: 18px; }
 .mx-auth-dialog .mirror-account-device p { margin: 0; font-size: 12px; font-family: monospace; }
 .mx-auth-dialog .mirror-account-actions { display: flex; flex-direction: column; gap: 8px; }
-.mx-auth-dialog .mirror-account-actions button { border: 1px solid #33463c35; border-radius: 6px; }
+.mx-auth-dialog .mirror-account-actions button { border: 0; border-bottom: 1px solid #33463c35; border-radius: 0; }
 .mx-auth-dialog .mirror-account-panel .mirror-account-status { margin: 0; font-size: 13px; }
 .mirror-account-status:empty { display: none; }
 .mx-auth-dialog .mirror-account-tools .backend-panel { display: flex; flex-direction: column; gap: 10px; min-width: 0; padding: 4px 0; background: none; }
 .mx-auth-dialog .mirror-account-tools .backend-panel :is(input,select,img) { max-width: 100%; min-width: 0; }
 @media (max-width: 767px) {
   [data-display-mode="mobile"] .mx-surface[data-mirror-ui="clear"] .mx-auth-dialog {
-    top: calc(var(--mobile-top) + 48px); bottom: var(--mobile-bottom);
-    left: var(--mobile-left); right: var(--mobile-right); padding: 16px;
+    top: var(--mobile-content-top); bottom: auto;
+    max-height: calc(100% - var(--mobile-content-top) - var(--mobile-bottom));
+    left: var(--mobile-content-left); right: var(--mobile-right); padding: 4px;
   }
 }

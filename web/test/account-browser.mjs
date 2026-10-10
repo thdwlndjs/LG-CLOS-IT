@@ -8,6 +8,7 @@ try{
  for(const [width,height] of [[360,800],[390,844],[667,375],[1366,768],[1672,941]]){
   await p.setViewportSize({width,height});await p.goto(process.env.ACCOUNT_ORIGIN||'http://127.0.0.1:5181');await open();
   const panel=p.locator('.mx-auth-dialog .mirror-account-panel');
+  const presentation=await p.locator('.mx-auth-dialog').evaluate(e=>{const s=getComputedStyle(e);return {background:s.backgroundColor,blur:s.backdropFilter,shadow:s.boxShadow,left:e.getBoundingClientRect().left}});assert.equal(presentation.background,'rgba(0, 0, 0, 0)');assert.equal(presentation.blur,'none');assert.equal(presentation.shadow,'none');const navRight=await p.locator('.mx-nav').evaluate(e=>e.getBoundingClientRect().right);assert.ok(presentation.left>=navRight);
   await p.getByLabel('계정',{exact:true}).fill('qa-user');await p.getByLabel('비밀번호',{exact:true}).fill('qa-password');
   await p.getByText('다른 기기에서 접속 · 선택',{exact:true}).click();await p.getByLabel('접속 기기 ID · 선택',{exact:true}).fill('qa-device');
   const submit=p.getByRole('button',{name:'내 계정으로 로그인',exact:true});await submit.scrollIntoViewIfNeeded();
