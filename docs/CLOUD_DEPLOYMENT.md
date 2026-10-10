@@ -41,7 +41,13 @@ $env:PYTHONPATH='backend'
 
 ## 계정과 환경변수
 
-클라우드에서는 시연용 인증을 비활성화하고 개인 계정 JWT 인증을 사용한다. 화면의 마이 → 내 계정에서 로그인한다. 로그인 ID는 프로젝트 루트 `C:\Users\aicam\Desktop\2차프로젝트\.env.cloud`의 `CLOUD_IMPORT_LOGIN`, 비밀번호는 `CLOUD_IMPORT_PASSWORD`에서 확인한다. 비밀번호는 채팅·문서·프론트 코드에 기록하지 않는다.
+클라우드는 `AUTH_MODE=JWT`, `DEMO_AUTH_ENABLED=false`를 유지한다. 공개 시연용 버튼은 별도 opt-in `PUBLIC_DEMO_LOGIN_ENABLED=true`와 지정된 `PUBLIC_DEMO_MEMBER_ID`로 활성화한다. 기존 개인 계정의 비밀번호나 OWNER 세션을 제공하지 않고, 기존 시연 옷장에 연결된 `public-demo` MEMBER의 개인 계정 JWT를 발급한다. 일반 계정은 화면의 마이 → 내 계정에서 로그인한다. 로그인 ID는 프로젝트 루트 `C:\Users\aicam\Desktop\2차프로젝트\.env.cloud`의 `CLOUD_IMPORT_LOGIN`, 비밀번호는 `CLOUD_IMPORT_PASSWORD`에서 확인한다. 비밀번호는 채팅·문서·프론트 코드에 기록하지 않는다.
+
+공개 시연 계정 준비는 `scripts/provision_public_demo.py --env-file .env.cloud`로 수행한다. 기존 `CLOUD_IMPORT_LOGIN` 계정의 명시적 단일 기기를 확인하고 별도 MEMBER와 기기 연결만 추가한다. 의류 소유자·이미지·착용 이력을 복사하거나 변경하지 않으며 재실행 시 계정을 중복 생성하지 않는다. 출력된 member_id를 Render `PUBLIC_DEMO_MEMBER_ID`에 설정한다. 비밀번호 로그인은 불가능한 credential을 사용한다. 계정·기기 연결이 없거나 비활성/잘못된 역할이면 503으로 실패하며 다른 사용자로 대체하지 않는다.
+
+공개 시연 사용자는 같은 시연 계정의 데이터를 공유하며, 연결된 옷장의 기존 의류 6벌을 조회할 수 있다. 기존 소유자의 의류 수정은 기존 소유권 검사로 차단된다. 시연 계정이 직접 생성한 데이터는 기존 MEMBER 권한으로 사용할 수 있다. 이 옷장에 이후 개인용 데이터나 추가 기기를 연결하면 공개 조회 범위에 포함될 수 있으므로 공개 시연 대상만 연결한다. 새 로그인 중단은 feature flag를 false로, 발급된 세션까지 중단하려면 account_credential.enabled를 false로 설정한다. 일반 JWT 검증·로그아웃 revocation·API rate limit과 저장소 Private 설정은 유지한다. 실제 유료 API는 활성화하지 않는다.
+
+Render의 개별 환경변수만 [공식 Update Env Var API](https://api-docs.render.com/reference/update-env-var)로 설정한다. 전체 변수 목록을 덮어쓰지 않는다. 이 수정의 배포·실제 버튼 QA 결과는 통합 PROGRESS에 기록한다.
 
 Vercel production에는 공개 설정 `VITE_API_BASE_URL`, `VITE_STORAGE_BASE_URL`만 입력했다. 프론트 API 클라이언트는 지정된 Supabase 프로젝트의 wardrobe-assets/assets 및 업로드 staging 경로만 허용한다. 다른 프로젝트·버킷·비HTTPS 주소는 거부한다. 화면 구조·크기·이미지·좌표는 변경하지 않았다.
 

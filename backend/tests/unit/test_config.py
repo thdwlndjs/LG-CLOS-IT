@@ -43,3 +43,15 @@ def test_environment_overrides_dotenv(tmp_path, monkeypatch, settings_values):
                     encoding="utf-8")
     monkeypatch.setenv("LOG_LEVEL", "ERROR")
     assert load_settings(path).log_level == "ERROR"
+
+
+def test_public_demo_requires_explicit_principal_without_legacy_demo(settings_values):
+    production = settings_values | dict(app_env="production", public_deployment=True,
+                                        auth_mode="JWT", demo_auth_enabled=False)
+    with pytest.raises(ValidationError):
+        Settings(**(production | dict(public_demo_login_enabled=True)))
+    settings = Settings(**(production | dict(public_demo_login_enabled=True,
+        public_demo_member_id="20000000-0000-4000-8000-000000000002")))
+    assert settings.auth_mode == "JWT"
+    assert not settings.demo_auth_enabled
+    assert settings.public_demo_login_enabled

@@ -1,15 +1,25 @@
 # 2차 공유본 통합 진행 현황
 
-검증 완료, `dev`에서 사용자 로컬 QA와 최종 승인을 기다린다. 승인 전 `main` 병합·추가 원격 푸시·배포 금지.
+사용자가 main 반영을 승인해 통합 및 이미지 캐시 변경을 `37f695d`까지 main에 반영·푸시했다. 후속 공개 시연 로그인 수정은 main에서 검증·커밋·배포하며 진행 상태를 아래에 기록한다.
 
 ## 기준과 Git 상태
 
 - 작업 기준: [SECOND_HANDOFF_PLAN.md](SECOND_HANDOFF_PLAN.md). 작업 시작 main과 2차 공유본 `docs/integration_sources/SmartCloset_Team_20261010_004919_72054c8/src/`를 비교했다.
 - 시작 시 main과 origin/main은 같았고 tracked 변경·추적된 .env가 없었다.
-- 안정 버전 체크포인트 `972ee33`을 main에 커밋·푸시한 뒤 dev를 생성했다. 현재 main과 origin/main은 이 체크포인트 그대로다.
-- 통합 코드 커밋: `dfd2833 feat: integrate second handoff UI with existing backend`. 추천 홈 후속 커밋: `d824004 feat: add daily outfit and seasonal storage demo`. 진행 문서는 별도 docs 커밋으로 관리한다. 모든 후속 커밋은 dev에만 남기며 원격에 올리지 않는다.
+- 안정 버전 체크포인트 `972ee33`을 main에 커밋·푸시한 뒤 dev를 생성했다. 이후 사용자 승인으로 main/origin/main을 `37f695d`까지 갱신했다.
+- 통합 코드 커밋: `dfd2833 feat: integrate second handoff UI with existing backend`. 추천 홈 후속 커밋: `d824004 feat: add daily outfit and seasonal storage demo`. 진행 문서는 별도 docs 커밋으로 관리한다. 초기 통합은 dev에서 수행했고, 사용자 승인 이후 main으로 반영했다.
 - 원본 공유본은 수정하지 않고 미추적 상태로 보존한다. 환경변수·비밀정보·test-results는 커밋에서 제외한다.
-- backend, DB Migration, `docs/contracts/`, 기존 설계 문서, infra, 배포 설정은 변경하지 않았다.
+- 초기 2차 UI 통합에서는 backend·DB·배포 계약을 변경하지 않았다. 후속 공개 시연 로그인은 아래 범위만 추가하며 DB Schema/Migration 및 원본 설계 문서는 유지한다.
+
+## 공개 시연 로그인 수정
+
+- 재현: Vercel 버튼 → Render `POST /api/v1/integration/demo-login`이 `403 Demo login is disabled`로 실패했다. 로컬은 200. 공개 버튼은 유지하고 백엔드 opt-in을 추가했다.
+- 코드: `backend/app/core/config.py`, `backend/app/api/v1/integration.py`, `scripts/provision_public_demo.py`, `render.yaml`. 기존 JWT·레거시 로컬 DEMO 계약·기기별 조회·소유권·Private Storage를 유지한다.
+- `PUBLIC_DEMO_LOGIN_ENABLED`는 기본 false, 활성화 시 명시적 `PUBLIC_DEMO_MEMBER_ID` 필수다. 지정 계정은 login=public-demo, enabled=true, role=MEMBER, 기기 연결 조건을 모두 만족해야 한다. 클라이언트가 사용자 ID를 선택하지 못한다. 기존 개인 OWNER 계정으로 대체하지 않는다.
+- 실제 클라우드에 별도 MEMBER/기기 연결을 준비했다. 재실행 created=false를 확인했다. 기존 실제 의류 6벌은 소유자·이미지·착용 기록을 바꾸지 않고 기기 연결 계약으로 조회한다. 공개 계정의 공유 데이터와 운영상 조회 범위는 [CLOUD_DEPLOYMENT.md](../CLOUD_DEPLOYMENT.md#계정과-환경변수)에 기록했다.
+- 검증: 단위/계약 157개 통과, 설정 17개 포함, 실 PostgreSQL/Redis 로그인 통합 2개 통과. 공개 로그인·다른 household 404·기존 소유자의 의류 수정 차단·비밀번호 로그인 차단·로그아웃 토큰 취소 및 비활성/미준비 실패를 확인한다. Ruff 및 OpenAPI validator 통과.
+- 환경 오류: Windows pytest 기본 Temp 접근 거부는 Git 제외 basetemp로, 테스트 PostgreSQL 55432 포트 바인딩 거부는 Git 제외 Compose override에서 테스트 DB 호스트 포트를 제거해 해결했다. 시스템 권한·보안 설정을 변경하지 않았다. 클라우드 DB TLS는 기존 공식 CA로 검증하며 인증서 검증을 끄지 않았다.
+- 배포 상태: 테스트 완료 후 commit/push와 Actions 배포, 실제 공개 버튼 QA 진행 중. 배포 완료와 브라우저 검증을 확인하기 전 완료 판정하지 않는다.
 
 ## 기능별 결과
 
@@ -107,7 +117,7 @@ $env:WEB_PORT = '5181'
 npm run dev --prefix web
 ```
 
-시연용 로그인은 기존 로컬 demo 계정에 접속하며 현재 작업 환경에서 적재된 보유 6벌을 조회한다. 로컬/test + DEMO_AUTH_ENABLED + AUTH_MODE=DEMO 조건의 기존 API 기능이다. 공개 배포에서는 차단된다. 데이터가 없는 새 DB에서는 6벌을 기대하지 않으며 Fixture를 자동 설치하지 않는다. 계정 미준비(503)나 비활성(403)은 기존 환경 설정·계정 준비 상태를 확인한다.
+시연용 로그인은 기존 로컬 demo 계정에 접속하며 현재 작업 환경에서 적재된 보유 6벌을 조회한다. 로컬/test + DEMO_AUTH_ENABLED + AUTH_MODE=DEMO 조건의 기존 API 기능이다. 공개 배포는 아래 별도 MEMBER opt-in 경로를 사용한다. 데이터가 없는 새 DB에서는 6벌을 기대하지 않으며 Fixture를 자동 설치하지 않는다. 계정 미준비(503)나 비활성(403)은 기존 환경 설정·계정 준비 상태를 확인한다.
 
 기존 .env와 설치된 web 의존성을 사용한다. 최초 의존성 설치가 필요할 때만 `npm ci --prefix web`을 실행한다.
 
@@ -126,4 +136,4 @@ npm run dev --prefix web
 1. 사용자 로컬 시각/조작 QA와 피드백 반영을 dev에서 진행한다. 미승인 상태다.
 2. 물리 LED, 실제 Decart 유료 요청, 클라우드 재배포는 이번 작업의 미검증 범위다.
 3. 소급 관리 완료·착용 예정·참고 사진 재구성이 필요하면 계약 변경 여부를 먼저 결정한다.
-4. 최종 승인 후에만 main 병합·원격 푸시·배포를 진행한다. 충돌은 덮어쓰지 않고 보고한다.
+4. main 반영은 사용자 승인으로 완료했다. 후속 변경도 커밋과 실제 배포 검증을 기록하고 원격 충돌은 덮어쓰지 않는다.

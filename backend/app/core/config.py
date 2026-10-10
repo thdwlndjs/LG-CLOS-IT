@@ -2,6 +2,7 @@ import os
 from pathlib import Path
 from typing import Literal
 from urllib.parse import urlparse
+from uuid import UUID
 
 from dotenv import dotenv_values
 from pydantic import BaseModel, ConfigDict, Field, SecretStr, model_validator
@@ -36,6 +37,8 @@ class Settings(BaseModel):
     storage_public_base_url: str = "http://localhost:9000"
     auth_mode: Literal["DEMO", "JWT"] = "DEMO"
     demo_auth_enabled: bool = True
+    public_demo_login_enabled: bool = False
+    public_demo_member_id: UUID | None = None
     jwt_secret: SecretStr
     jwt_issuer: str = "smart-wardrobe"
     jwt_audience: str = "smart-wardrobe-api"
@@ -75,6 +78,8 @@ class Settings(BaseModel):
         local = self.app_env in {"local", "test"} and not self.public_deployment
         if not local and (self.demo_auth_enabled or self.auth_mode == "DEMO"):
             raise ConfigurationError("Demo authentication is permitted only in local/test")
+        if self.public_demo_login_enabled and self.public_demo_member_id is None:
+            raise ConfigurationError("Public demo login requires PUBLIC_DEMO_MEMBER_ID")
         if self.auth_mode == "DEMO" and not self.demo_auth_enabled:
             raise ConfigurationError("AUTH_MODE=DEMO requires DEMO_AUTH_ENABLED=true")
         if self.vton_provider == "DECART":
