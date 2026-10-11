@@ -591,6 +591,7 @@ if __name__ == "__main__":
             CARD_RENDERER_URL="http://127.0.0.1:3300",
             DECART_API_KEY="",
             PUBLIC_DEMO_LOGIN_ENABLED="false",
+            LOCAL_DEMO_MEMBER_ID=str(identity("son")),
             STORAGE_PUBLIC_BASE_URL="http://localhost:9000",
             N8N_ENABLED="false",
             LED_OFF_SECONDS="10",

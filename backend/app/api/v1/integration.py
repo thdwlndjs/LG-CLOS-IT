@@ -87,17 +87,23 @@ async def demo_login(request: Request):
                   and settings.demo_auth_enabled and settings.auth_mode == "DEMO")
     if not public_demo and not local_demo:
         raise ApiError(403, "FORBIDDEN", "Demo login is disabled")
-    member_id = (settings.public_demo_member_id if public_demo
-                 else UUID("20000000-0000-4000-8000-000000000001"))
+    configured_local = local_demo and not public_demo and settings.local_demo_member_id is not None
+    member_id = (settings.public_demo_member_id if public_demo else settings.local_demo_member_id
+                 if configured_local else UUID("20000000-0000-4000-8000-000000000001"))
     async with request.app.state.resources.database.sessions.begin() as session:
         member = await Sprint1Repository(session).one(
             "SELECT m.* FROM wardrobe.member m JOIN wardrobe.account_credential c "
-            "ON c.member_id=m.id WHERE m.id=:member AND c.login=:login AND c.enabled "
+            "ON c.member_id=m.id WHERE m.id=:member "
+            "AND (c.login=:login OR :configured_local) AND c.enabled "
+            "AND (NOT :configured_local OR (m.role='MEMBER' AND EXISTS "
+            "(SELECT 1 FROM wardrobe.device_member dm WHERE dm.member_id=m.id "
+            "AND dm.household_id=m.household_id))) "
             "AND (NOT :public_demo OR (m.role='MEMBER' AND EXISTS "
             "(SELECT 1 FROM wardrobe.device_member dm WHERE dm.member_id=m.id "
             "AND dm.household_id=m.household_id)))",
             member=member_id, login="public-demo" if public_demo else "demo",
             public_demo=public_demo,
+            configured_local=configured_local,
         )
         if member is None:
             raise ApiError(503, "DEPENDENCY_UNAVAILABLE", "Demo account is not provisioned")

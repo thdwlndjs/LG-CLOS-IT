@@ -143,3 +143,7 @@ node test/remediation-browser.mjs
 새 Git clone의 비교 캡처에는 사용자 제공 패키지의 `references/card/T1_reference.png`~`T4_reference.png`가 동일 패키지 경로에 필요하다. contracts/·execution/·references/는 기존 미추적 인계 입력이다. Gate A는 원본별 문구 제거·좌표·레이어/접힘·명시 복원 영역을 확인하고, Gate B는 실제 선택 품목의 색상/재질/브랜드 식별과 원본의 접힘·가림 구조를 함께 확인한다. 픽셀 동일성이나 PNG 저장 성공으로 통과 처리하지 않으며 기존 카드 계약의 수동 시각 인수가 필요하다.
 
 코드와 보고서는 로컬 Conventional Commit으로 보존한다. 커밋 해시는 `REMEDIATION_CHECKPOINT.md`에 기록한다. **전체 완료·배포 완료로 판정하지 않는다.**
+
+## 후속 사용자 QA: 시연 버튼
+
+카드 작업을 중단하고 시연용 로그인503을 재현·수정했다. 별도 시정 DB에는 기존 고정 demo 계정이 없어 발생했다. `scripts/remediation_local.py serve`는 LOCAL_DEMO_MEMBER_ID로 기존 아들 MEMBER를 명시하여 로그인한다. 로컬/test·비공개·DEMO 조건과 활성 credential/기기 연결을 검사하며 공개 배포 설정은 변경하지 않았다. 실제 버튼200→가족4인/의류52/사진52→scene→로그아웃을 브라우저에서 확인했다. demo-login/config 실DB20 tests와 Ruff PASS. web `node test/demo-login-remediation.mjs`로 재현 가능하다. 나머지 카드 시각 Gate/문서 정합성 미완료 판정은 유지한다.
