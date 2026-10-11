@@ -82,12 +82,13 @@ export function PhotoWardrobeStage({
         style={{ width: size.width, height: size.height }}
         data-scene-version={geometry.source.rgb_pixel_sha256}
       >
-        {dynamic ? <WardrobeSceneLayers garments={garments} anchorIds={anchorIds} onSelect={onSelectGarment}/> : <img
+        <img
           className="photo-background"
-          src="/assets/mirror-final/wardrobe-base-led-off.png"
+          src={dynamic ? "/assets/remediation/wardrobe-clean-plate-v1.png" : "/assets/mirror-final/wardrobe-base-led-off.png"}
           alt="열린 수납부와 중앙 미러가 있는 기준 옷장"
           draggable={false}
-        />}
+        />
+        {dynamic && <WardrobeSceneLayers garments={garments} anchorIds={anchorIds} onSelect={onSelectGarment}/>}
         {!dynamic && <div className="photo-led-layer" aria-hidden="true">
           {geometry.led_anchors.map((anchor) => {
             const [x, y] = anchor.source_xy_px;

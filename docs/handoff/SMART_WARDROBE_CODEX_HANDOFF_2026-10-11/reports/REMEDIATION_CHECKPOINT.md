@@ -28,3 +28,7 @@ shower cold read는 판정/재개 발췌문을 읽었으며 전체 보고서 검
 
 - 구현 커밋: `6f5b667` — verified photos/격리 DB/scene/추천/Mock E2E 연결.
 - 보고서·증적 커밋: HEAD에서 `docs: record remediation evidence and incomplete visual gates` 메시지로 식별한다. 원격 push 없음.
+
+## 사용자 QA 후 배경 수정
+
+로그인 전/scene frame 미확보 시 동적 stage가 원본 이미지를 숨겨 임시 배경만 남던 결함을 수정했다. PhotoWardrobeStage는 동적 모드에서도 생성된 빈 옷장 이미지를 항상 기본으로 표시하고 서버 frame/의류를 위에 표시한다. photo-db-scene의 임시 갈색 gradient를 제거했다. Playwright 새 비로그인 세션에서 clean plate decode 및 overlay backgroundImage=none 확인, TypeScript/Vite build PASS. 캡처는 ignored test-results/remediation/background-fallback-fixed.png. 카드 Gate A/B 및 전체 PARTIAL 판정 유지.

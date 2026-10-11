@@ -593,6 +593,6 @@
 .mx-home-advice .mx-home-carousel {display:flex;flex-direction:row;overflow-x:auto;scroll-snap-type:x mandatory;gap:12px;}
 .mx-home-carousel>div {flex:0 0 100%;min-width:0;scroll-snap-align:start;display:flex;flex-direction:column;gap:7px;}
 
-.photo-db-scene{position:absolute;inset:0;overflow:hidden;background:linear-gradient(90deg,#756550,#a28c72 42%,transparent 42%,transparent 58%,#a28c72 58%,#756550);pointer-events:none}
+.photo-db-scene{position:absolute;inset:0;overflow:hidden;pointer-events:none}
 .photo-scene-status{position:absolute;bottom:2%;left:2%;max-width:36%;background:#f5f0e9dc;color:#333;padding:7px;font-size:12px}
 .photo-db-scene~.photo-led-layer .photo-led[data-led="on"]{background:#b9ff91;box-shadow:0 0 12px #b9ff91}
