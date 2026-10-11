@@ -45,6 +45,8 @@ for variant in spec["variants"]:
         neighbor_before = brightness(base, variant["neighbor_bounds"])
         neighbor_after = brightness(selected, variant["neighbor_bounds"])
         assert neighbor_after < neighbor_before, "Same-rail neighbor was illuminated"
+        silhouette = Image.open(HERE / (variant["id"] + "-silhouette-mask.png")).convert("RGBA")
+        alpha = silhouette.getchannel("A").load()
         sector_part = next(p for p in spec["compartments"] if p["id"] == variant["id"])
         px, py, pw, ph = sector_part["bounds"]
         bp, sp = base.load(), selected.load()
@@ -52,13 +54,20 @@ for variant in spec["variants"]:
             sum(sp[x, y]) > sum(bp[x, y])
             for y in range(py, py + ph)
             for x in range(px, px + pw)
-            if not contains(variant["sector_bounds"], x, y)
+            if alpha[x, y] == 0
         )
-        assert bright_outside_sector == 0, "Brightened another hanging sector"
+        assert bright_outside_sector == 0, "Brightened outside garment/hanger silhouette"
+        hanger_probe = (264, 146, 3, 8) if variant["id"] == "A" else (515, 146, 4, 8)
+        hanger_before = brightness(base, hanger_probe)
+        hanger_after = brightness(selected, hanger_probe)
+        assert hanger_after > hanger_before, "Selected hanger did not brighten"
         neighbor = {
             "same_rail_neighbor_luminance_before": neighbor_before,
             "same_rail_neighbor_luminance_after": neighbor_after,
             "brightened_pixels_outside_selected_sector": bright_outside_sector,
+            "mask_type": "cloth silhouette + wooden hanger + metal hook",
+            "hanger_luminance_before": hanger_before,
+            "hanger_luminance_after": hanger_after,
         }
     dimmed = []
     for part in spec["compartments"]:

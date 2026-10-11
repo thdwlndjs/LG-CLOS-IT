@@ -21,7 +21,15 @@
   y.addColorStop(0,'transparent');y.addColorStop(fy,'white');y.addColorStop(1-fy,'white');y.addColorStop(1,'transparent');
   g.fillStyle=y;g.fillRect(0,0,w,h);return c;
  }
- const dimLayers={},restoreLayers={};
+ const dimLayers={},restoreLayers={},silhouetteLayers={};
+ function silhouette(variant){
+  const c=create(),g=c.getContext('2d');
+  g.fillStyle='#fff';g.fill(new Path2D(variant.cloth_path));
+  g.fill(new Path2D(variant.hanger_path));
+  g.strokeStyle='#fff';g.lineWidth=1.8;g.lineCap='round';
+  g.stroke(new Path2D(variant.hook_path));
+  return c;
+ }
  function makeLayers(){
   for(const part of spec.compartments){
    const [x,y,w,h]=part.bounds,c=create(),g=c.getContext('2d');
@@ -30,13 +38,17 @@
   }
   for(const variant of spec.variants){
    const [x,y,w,h]=variant.sector_bounds || variant.bounds,c=create(),g=c.getContext('2d');
-   g.drawImage(images[variant.id],x,y,w,h,x,y,w,h);
-   g.globalCompositeOperation='destination-in';g.drawImage(mask(w,h,variant.sector_bounds?3:6),x,y);
+   const shape=variant.cloth_path?silhouette(variant):null;
+   g.drawImage(images[variant.id],0,0);
+   g.globalCompositeOperation='destination-in';
+   if(shape){g.drawImage(shape,0,0);silhouetteLayers[variant.id]=shape}
+   else g.drawImage(mask(w,h,6),x,y);
    images[variant.id+'-layer']=c;
    if(variant.sector_bounds){
     const restore=create(),r=restore.getContext('2d');
-    r.drawImage(base,x,y,w,h,x,y,w,h);
-    r.globalCompositeOperation='destination-in';r.drawImage(mask(w,h,3),x,y);
+    r.drawImage(base,0,0);
+    r.globalCompositeOperation='destination-in';
+    if(shape)r.drawImage(shape,0,0);else r.drawImage(mask(w,h,3),x,y);
     restoreLayers[variant.id]=restore;
    }
   }
@@ -84,6 +96,7 @@
   dim.oninput=draw;ui.onchange=draw;
   auto.onchange=()=>settle(selected,auto.checked?'선택 유지 · 검수용 5초 자동 소등':'선택 유지 · 자동 소등 해제');
   window.lightingReady=true;
+  window.lightingSilhouetteData=Object.fromEntries(Object.entries(silhouetteLayers).map(([id,c])=>[id,c.toDataURL('image/png')]));
  }
  boot().catch(e=>{status.textContent=e.message;window.lightingError=e.message});
 })();

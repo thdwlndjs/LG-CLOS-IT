@@ -1,5 +1,5 @@
 {
-  "status": "HANGER_SECTOR_REVIEW_PENDING",
+  "status": "HANGER_SILHOUETTE_REVIEW_PENDING",
   "six_garment_samples_approved": true,
   "base": "../wardrobe-visual-samples-v1/wardrobe-composite.png",
   "mirror_ui": "../wardrobe-visual-samples-v1/app-before.png",
@@ -169,10 +169,10 @@
       "tool": "image_gen.imagegen",
       "original_generated_path": "C:\\Users\\aicam\\.codex\\generated_images\\01a11a04-161b-71c1-b091-cdb004c0a66c\\exec-a9697de9-ab72-4110-8a14-f5bfa50e202e.png",
       "sector_bounds": [
-        232,
-        155,
-        39,
-        480
+        224,
+        120,
+        54,
+        516
       ],
       "neighbor_bounds": [
         288,
@@ -181,11 +181,14 @@
         430
       ],
       "review_bounds": [
-        92,
-        145,
-        284,
-        519
-      ]
+        212,
+        118,
+        105,
+        530
+      ],
+      "cloth_path": "M 260 155 C 252 154 248 160 243 173 C 234 182 232 194 231 214 L 228 275 L 226 350 L 225 422 L 228 434 L 227 510 L 227 629 Q 245 633 265 629 L 266 538 L 267 438 Q 272 408 272 362 L 274 218 Q 274 190 270 174 L 269 163 Z",
+      "hanger_path": "M 264 142 L 271 143 L 268 157 L 260 156 Z",
+      "hook_path": "M 270 142 L 272 129 Q 272 122 269 122"
     },
     {
       "id": "B",
@@ -208,10 +211,10 @@
       "tool": "image_gen.imagegen",
       "original_generated_path": "C:\\Users\\aicam\\.codex\\generated_images\\01a11a04-161b-71c1-b091-cdb004c0a66c\\exec-7012b5cc-414f-426f-81a7-2193e3015b4e.png",
       "sector_bounds": [
-        490,
-        155,
-        42,
-        275
+        484,
+        120,
+        52,
+        309
       ],
       "neighbor_bounds": [
         458,
@@ -220,11 +223,14 @@
         220
       ],
       "review_bounds": [
-        402,
-        147,
-        286,
-        283
-      ]
+        465,
+        118,
+        98,
+        319
+      ],
+      "cloth_path": "M 507 155 L 523 155 Q 526 176 527 192 L 528 250 L 529 336 L 528 407 L 533 415 Q 518 428 501 420 L 494 411 L 491 390 Q 486 354 487 310 L 488 271 Q 489 228 494 209 L 501 187 L 505 171 Z",
+      "hanger_path": "M 514 142 L 522 143 L 522 156 L 511 156 L 512 148 Z",
+      "hook_path": "M 517 142 L 519 129 Q 520 122 517 122"
     },
     {
       "id": "E1",

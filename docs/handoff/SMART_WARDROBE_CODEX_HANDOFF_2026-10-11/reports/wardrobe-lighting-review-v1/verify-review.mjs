@@ -16,6 +16,8 @@ try {
  const dims=await page.evaluate(()=>window.lightingDimensions);
  for(const d of dims){assert.ok(Math.abs(d.width-1672)<=1);assert.ok(Math.abs(d.height-941)<=1)}
  await page.locator('#ui').uncheck();
+ const silhouettes=await page.evaluate(()=>window.lightingSilhouetteData);
+ for(const [id,data] of Object.entries(silhouettes))await writeFile(here+id+'-silhouette-mask.png',Buffer.from(data.split(',')[1],'base64'));
  const settled=()=>page.waitForFunction(()=>window.lightingState.settled);
  const save=async name=>writeFile(here+name,Buffer.from(await page.locator('#scene').evaluate(n=>n.toDataURL('image/png').split(',')[1]),'base64'));
  await settled();await save('baseline.png');
