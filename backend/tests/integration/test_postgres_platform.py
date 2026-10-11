@@ -71,6 +71,7 @@ def test_real_postgres_baseline_and_seed():
                 assert names == expected | {
                     "device", "device_member", "account_credential", "access_station",
                     "lighting_zone", "led_command", "shopping_import", "external_vton_job",
+                    "liked_item", "scene_placement",
                 }
                 assert await connection.scalar(text(
                     "SELECT count(*) FROM wardrobe.garment WHERE device_id IS NOT NULL")) == 3
@@ -84,7 +85,7 @@ def test_real_postgres_baseline_and_seed():
                 )
                 assert (
                     await connection.scalar(text("SELECT version_num FROM public.alembic_version"))
-                    == "0004_device_integration"
+                    == "0005_stage_b_data"
                 )
                 enum_count = await connection.scalar(
                     text(

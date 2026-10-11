@@ -1,0 +1,506 @@
+........................................................................ [ 24%]
+................................................................FF...... [ 48%]
+........................................................................ [ 72%]
+........................................................................ [ 96%]
+...........                                                              [100%]
+================================== FAILURES ===================================
+__________ test_database_interests_are_personal_not_owned_or_global ___________
+
+real_dsn = 'postgresql+asyncpg://postgres:mtdzlESxduSLdiLJGDinEDmRMGxWXTKNx5uTxgpJ91Q@127.0.0.1:56433/wardrobe_test_882f3b24058547b1a57755746f848ffe'
+settings_values = {'app_env': 'test', 'database_url': 'postgresql+asyncpg://unit:unit@localhost/unit_test', 'redis_url': 'redis://localhost:6379/0', 'celery_broker_url': 'redis://localhost:6379/0', ...}
+
+    def test_database_interests_are_personal_not_owned_or_global(real_dsn, settings_values):
+        async def case(client, engine, settings, *unused):
+            async with prepared(client, engine, settings):
+                ids = {m: uuid4() for m in [existing.OWNER, existing.FAMILY]}
+                async with engine.begin() as c:
+                    image = await c.scalar(
+                        text("SELECT image_asset_id FROM wardrobe.garment WHERE id=:g"),
+                        {"g": UUID(existing.GARMENT)},
+                    )
+                    for member, item in ids.items():
+                        await c.execute(
+                            text(
+                                "INSERT INTO wardrobe.liked_item(id,household_id,member_id,product_id,"
+                                "name,"
+                                "category,color,image_asset_id,metadata) "
+                                "VALUES(:id,:h,:m,'catalog-1','Interest','TOP','WHITE',:a,'{}')"
+                            ),
+                            {"id": item, "h": UUID(existing.HOUSEHOLD), "m": UUID(member), "a": image},
+                        )
+                for member, other in [
+                    (existing.OWNER, existing.FAMILY),
+                    (existing.FAMILY, existing.OWNER),
+                ]:
+                    await personal(client, engine, settings, member)
+                    response = await client.get("/api/v1/integration/shopping/liked")
+                    assert response.status_code == 200
+                    assert [i["id"] for i in response.json()["items"]] == [str(ids[member])]
+                    assert response.json()["items"][0]["image_asset"]["asset_id"] == str(image)
+                    assert (
+                        await client.get("/api/v1/integration/shopping/liked/" + str(ids[other]))
+                    ).status_code == 404
+                async with engine.connect() as c:
+                    assert await c.scalar(text("SELECT count(*) FROM wardrobe.garment")) == 4
+
+>       existing.run_case(real_dsn, settings_values, case)
+
+tests\integration\test_stage_b.py:54:
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+tests\integration\test_sprint1_api.py:151: in run_case
+    asyncio.run(exercise(real_dsn, settings_values, case))
+..\..\..\AppData\Local\Programs\Python\Python312\Lib\asyncio\runners.py:195: in run
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+..\..\..\AppData\Local\Programs\Python\Python312\Lib\asyncio\runners.py:118: in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+..\..\..\AppData\Local\Programs\Python\Python312\Lib\asyncio\base_events.py:691: in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+tests\integration\test_sprint1_api.py:147: in exercise
+    await case(client, engine, settings, response, key, body)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+client = <httpx.AsyncClient object at 0x0000021F35F9C080>
+engine = <sqlalchemy.ext.asyncio.engine.AsyncEngine object at 0x0000021F3648DF50>
+settings = Settings(app_env='test', public_deployment=False, app_timezone='UTC', log_level='INFO', database_url=SecretStr('******...ion='CELERY', n8n_webhook_secret=SecretStr(''), cors_allowed_origins='http://localhost:5173', health_timeout_seconds=5)
+unused = (<Response [201 Created]>, {'Idempotency-Key': '8e0c8aa0-09e7-4ed5-a31b-bc8425b2d786'}, {'household_id': '10000000-0000-4000-8000-000000000001', 'member_id': '20000000-0000-4000-8000-000000000001', 'demo_mode': True})
+
+    async def case(client, engine, settings, *unused):
+        async with prepared(client, engine, settings):
+            ids = {m: uuid4() for m in [existing.OWNER, existing.FAMILY]}
+            async with engine.begin() as c:
+                image = await c.scalar(
+                    text("SELECT image_asset_id FROM wardrobe.garment WHERE id=:g"),
+                    {"g": UUID(existing.GARMENT)},
+                )
+                for member, item in ids.items():
+                    await c.execute(
+                        text(
+                            "INSERT INTO wardrobe.liked_item(id,household_id,member_id,product_id,"
+                            "name,"
+                            "category,color,image_asset_id,metadata) "
+                            "VALUES(:id,:h,:m,'catalog-1','Interest','TOP','WHITE',:a,'{}')"
+                        ),
+                        {"id": item, "h": UUID(existing.HOUSEHOLD), "m": UUID(member), "a": image},
+                    )
+            for member, other in [
+                (existing.OWNER, existing.FAMILY),
+                (existing.FAMILY, existing.OWNER),
+            ]:
+                await personal(client, engine, settings, member)
+                response = await client.get("/api/v1/integration/shopping/liked")
+>               assert response.status_code == 200
+E               assert 401 == 200
+E                +  where 401 = <Response [401 Unauthorized]>.status_code
+
+tests\integration\test_stage_b.py:45: AssertionError
+---------------------------- Captured stderr call -----------------------------
+{"timestamp": "2026-10-11T15:44:21.345293+00:00", "level": "INFO", "event": "http_request", "request_id": "309c903d-325e-4ea8-b4e1-839a75ec1883", "correlation_id": "309c903d-325e-4ea8-b4e1-839a75ec1883", "method": "POST", "status": 201, "duration_ms": 126.62}
+{"timestamp": "2026-10-11T15:44:21.365005+00:00", "level": "INFO", "event": "http_request", "request_id": "91121dff-3742-4567-b58f-e5c46bcc70c2", "correlation_id": "91121dff-3742-4567-b58f-e5c46bcc70c2", "method": "GET", "status": 200, "duration_ms": 13.77}
+{"timestamp": "2026-10-11T15:44:21.386008+00:00", "level": "INFO", "event": "http_request", "request_id": "f27bc101-3665-4e34-a3e7-f36fb1042c54", "correlation_id": "f27bc101-3665-4e34-a3e7-f36fb1042c54", "method": "PUT", "status": 200, "duration_ms": 20.21}
+{"timestamp": "2026-10-11T15:44:21.415178+00:00", "level": "INFO", "event": "http_request", "request_id": "9374b244-9c20-4f74-a1ac-7bdf2f268648", "correlation_id": "9374b244-9c20-4f74-a1ac-7bdf2f268648", "method": "POST", "status": 201, "duration_ms": 28.29}
+{"timestamp": "2026-10-11T15:44:21.851962+00:00", "level": "INFO", "event": "http_request", "request_id": "a853563f-7640-4e37-ab58-3ab5465929dc", "correlation_id": "a853563f-7640-4e37-ab58-3ab5465929dc", "method": "POST", "status": 201, "duration_ms": 90.91}
+{"timestamp": "2026-10-11T15:44:21.889941+00:00", "level": "INFO", "event": "http_request", "request_id": "23a353dc-79af-4599-8e97-32d72e79fc5e", "correlation_id": "23a353dc-79af-4599-8e97-32d72e79fc5e", "method": "POST", "status": 201, "duration_ms": 36.7}
+{"timestamp": "2026-10-11T15:44:22.285053+00:00", "level": "INFO", "event": "http_request", "request_id": "e3a654b7-4ccd-45bf-b78b-206e7d44212c", "correlation_id": "e3a654b7-4ccd-45bf-b78b-206e7d44212c", "method": "POST", "status": 201, "duration_ms": 60.64}
+{"timestamp": "2026-10-11T15:44:22.515644+00:00", "level": "INFO", "event": "http_request", "request_id": "99f78eb4-bb2e-41d9-9646-c125fcfeb369", "correlation_id": "99f78eb4-bb2e-41d9-9646-c125fcfeb369", "method": "POST", "status": 201, "duration_ms": 218.42}
+{"timestamp": "2026-10-11T15:44:23.505592+00:00", "level": "INFO", "event": "http_request", "request_id": "02daf638-f8cc-4c80-a0a6-22b7692e0121", "correlation_id": "02daf638-f8cc-4c80-a0a6-22b7692e0121", "method": "GET", "status": 200, "duration_ms": 218.75}
+{"timestamp": "2026-10-11T15:44:23.539940+00:00", "level": "INFO", "event": "http_request", "request_id": "5ab6fa31-276f-438f-9358-83bc33d0dde4", "correlation_id": "5ab6fa31-276f-438f-9358-83bc33d0dde4", "method": "GET", "status": 404, "duration_ms": 33.58}
+{"timestamp": "2026-10-11T15:44:24.433303+00:00", "level": "INFO", "event": "http_request", "request_id": "786390f0-39f5-4b65-97e8-8586c0e3af9a", "correlation_id": "786390f0-39f5-4b65-97e8-8586c0e3af9a", "method": "GET", "status": 401, "duration_ms": 14.67}
+------------------------------ Captured log call ------------------------------
+INFO     wardrobe:logging.py:72 http_request
+INFO     wardrobe:logging.py:72 http_request
+INFO     wardrobe:logging.py:72 http_request
+INFO     wardrobe:logging.py:72 http_request
+INFO     wardrobe:logging.py:72 http_request
+INFO     wardrobe:logging.py:72 http_request
+INFO     wardrobe:logging.py:72 http_request
+INFO     wardrobe:logging.py:72 http_request
+INFO     wardrobe:logging.py:72 http_request
+INFO     wardrobe:logging.py:72 http_request
+INFO     wardrobe:logging.py:72 http_request
+______ test_compartment_multiple_items_and_invalid_geometry_fail_closed _______
+
+self = <sqlalchemy.engine.base.Connection object at 0x0000021F31CAC8F0>
+dialect = <sqlalchemy.dialects.postgresql.asyncpg.PGDialect_asyncpg object at 0x0000021F35F5CAD0>
+constructor = <bound method DefaultExecutionContext._init_compiled of <class 'sqlalchemy.dialects.postgresql.asyncpg.PGExecutionContext_asyncpg'>>
+statement = <sqlalchemy.dialects.postgresql.asyncpg.PGCompiler_asyncpg object at 0x0000021F35F5C5C0>
+parameters = [{'other': UUID('40000000-0000-4000-8000-000000000004')}]
+execution_options = immutabledict({})
+args = (<sqlalchemy.dialects.postgresql.asyncpg.PGCompiler_asyncpg object at 0x0000021F35F5C5C0>, [{'other': UUID('40000000-0...one, type_=NullType()), BindParameter('other', None, type_=NullType()), BindParameter('true', None, type_=NullType())])
+kw = {'cache_hit': <CacheStats.CACHE_MISS: 1>}
+
+    def _execute_context(
+        self,
+        dialect: Dialect,
+        constructor: Callable[..., ExecutionContext],
+        statement: Union[str, Compiled],
+        parameters: Optional[_AnyMultiExecuteParams],
+        execution_options: _ExecuteOptions,
+        *args: Any,
+        **kw: Any,
+    ) -> CursorResult[Any]:
+        """Create an :class:`.ExecutionContext` and execute, returning
+        a :class:`_engine.CursorResult`."""
+
+        if execution_options:
+            yp = execution_options.get("yield_per", None)
+            if yp:
+                execution_options = execution_options.union(
+                    {"stream_results": True, "max_row_buffer": yp}
+                )
+        try:
+            conn = self._dbapi_connection
+            if conn is None:
+                conn = self._revalidate_connection()
+
+>           context = constructor(
+                dialect, self, conn, execution_options, *args, **kw
+            )
+
+..\..\..\AppData\Local\Programs\Python\Python312\Lib\site-packages\sqlalchemy\engine\base.py:1817:
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+..\..\..\AppData\Local\Programs\Python\Python312\Lib\site-packages\sqlalchemy\engine\default.py:1417: in _init_compiled
+    compiled.construct_params(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = <sqlalchemy.dialects.postgresql.asyncpg.PGCompiler_asyncpg object at 0x0000021F35F5C5C0>
+params = {'other': UUID('40000000-0000-4000-8000-000000000004')}
+extracted_parameters = [BindParameter('0', None, type_=NullType()), BindParameter('other', None, type_=NullType()), BindParameter('true', None, type_=NullType())]
+escape_names = False, _group_number = 0, _check = True, _no_postcompile = False
+
+    def construct_params(
+        self,
+        params: Optional[_CoreSingleExecuteParams] = None,
+        extracted_parameters: Optional[Sequence[BindParameter[Any]]] = None,
+        escape_names: bool = True,
+        _group_number: Optional[int] = None,
+        _check: bool = True,
+        _no_postcompile: bool = False,
+    ) -> _MutableCoreSingleExecuteParams:
+        """return a dictionary of bind parameter keys and values"""
+
+        if self._render_postcompile and not _no_postcompile:
+            assert self._post_compile_expanded_state is not None
+            if not params:
+                return dict(self._post_compile_expanded_state.parameters)
+            else:
+                raise exc.InvalidRequestError(
+                    "can't construct new parameters when render_postcompile "
+                    "is used; the statement is hard-linked to the original "
+                    "parameters.  Use construct_expanded_state to generate a "
+                    "new statement and parameters."
+                )
+
+        has_escaped_names = escape_names and bool(self.escaped_bind_names)
+
+        if extracted_parameters:
+            # related the bound parameters collected in the original cache key
+            # to those collected in the incoming cache key.  They will not have
+            # matching names but they will line up positionally in the same
+            # way.   The parameters present in self.bind_names may be clones of
+            # these original cache key params in the case of DML but the .key
+            # will be guaranteed to match.
+            if self.cache_key is None:
+                raise exc.CompileError(
+                    "This compiled object has no original cache key; "
+                    "can't pass extracted_parameters to construct_params"
+                )
+            else:
+                orig_extracted = self.cache_key[1]
+
+            ckbm_tuple = self._cache_key_bind_match
+            assert ckbm_tuple is not None
+            ckbm, _ = ckbm_tuple
+            resolved_extracted = {
+                bind: extracted
+                for b, extracted in zip(orig_extracted, extracted_parameters)
+                for bind in ckbm[b]
+            }
+        else:
+            resolved_extracted = None
+
+        if params:
+            pd = {}
+            for bindparam, name in self.bind_names.items():
+                escaped_name = (
+                    self.escaped_bind_names.get(name, name)
+                    if has_escaped_names
+                    else name
+                )
+
+                if bindparam.key in params:
+                    pd[escaped_name] = params[bindparam.key]
+                elif name in params:
+                    pd[escaped_name] = params[name]
+
+                elif _check and bindparam.required:
+                    if _group_number:
+                        raise exc.InvalidRequestError(
+                            "A value is required for bind parameter %r, "
+                            "in parameter group %d"
+                            % (bindparam.key, _group_number),
+                            code="cd3x",
+                        )
+                    else:
+>                       raise exc.InvalidRequestError(
+                            "A value is required for bind parameter %r"
+                            % bindparam.key,
+                            code="cd3x",
+                        )
+E                       sqlalchemy.exc.InvalidRequestError: A value is required for bind parameter 'true' (Background on this error at: https://sqlalche.me/e/20/cd3x)
+
+..\..\..\AppData\Local\Programs\Python\Python312\Lib\site-packages\sqlalchemy\sql\compiler.py:1927: InvalidRequestError
+
+The above exception was the direct cause of the following exception:
+
+real_dsn = 'postgresql+asyncpg://postgres:mtdzlESxduSLdiLJGDinEDmRMGxWXTKNx5uTxgpJ91Q@127.0.0.1:56433/wardrobe_test_55559d6368f14f2a8fef642eb6f229d1'
+settings_values = {'app_env': 'test', 'database_url': 'postgresql+asyncpg://unit:unit@localhost/unit_test', 'redis_url': 'redis://localhost:6379/0', 'celery_broker_url': 'redis://localhost:6379/0', ...}
+
+    def test_compartment_multiple_items_and_invalid_geometry_fail_closed(real_dsn, settings_values):
+        async def case(client, engine, settings, *unused):
+            async with prepared(client, engine, settings) as (_, person, resources):
+                await personal(client, engine, settings)
+                device = (await client.get("/api/v1/integration/devices")).json()["items"][0]["id"]
+                async with engine.begin() as c:
+                    await c.execute(
+                        text(
+                            "UPDATE wardrobe.asset SET kind='OTHER',metadata="
+                            "jsonb_build_object('scene_device_id',CAST(:d AS text),"
+                            "'scene_role','clean-plate',"
+                            "'visual_approval','approved') WHERE id=:a"
+                        ),
+                        {"d": device, "a": UUID(person)},
+                    )
+                    await c.execute(
+                        text(
+                            "UPDATE wardrobe.garment_state SET last_seen_at=now(),location_confidence=1"
+                        )
+                    )
+                    await c.execute(
+                        text(
+                            "INSERT INTO wardrobe.scene_placement(garment_id,source_location_id,"
+                            "compartment_id,geometry,namespace) "
+                            "SELECT g.id,s.location_id,s.location_id,"
+                            '\'{"approved":true,"x":0.1,"y":0.1,"width":0.2,"height":0.1}\','
+                            "'test-stage-b' FROM wardrobe.garment g "
+                            "JOIN wardrobe.garment_state s ON s.garment_id=g.id "
+                            "WHERE g.id<>:other"
+                        ),
+                        {"other": UUID(existing.OTHER_GARMENT)},
+                    )
+                response = await client.get("/api/v1/integration/devices/" + device + "/scene")
+                assert response.status_code == 200, response.text
+                assert len(response.json()["items"]) == 3
+                assert len({i["location_id"] for i in response.json()["items"]}) == 1
+                async with engine.begin() as c:
+                    await c.execute(
+                        text(
+                            "UPDATE wardrobe.scene_placement SET "
+                            "geometry=jsonb_set(geometry,'{x}','1.2')"
+                        )
+                    )
+                response = await client.get("/api/v1/integration/devices/" + device + "/scene")
+                assert response.status_code == 200 and response.json()["items"] == []
+                assert all(i["reason"] == "SLOT_UNAPPROVED" for i in response.json()["blocked"])
+
+>       existing.run_case(real_dsn, settings_values, case)
+
+tests\integration\test_stage_b.py:104:
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+tests\integration\test_sprint1_api.py:151: in run_case
+    asyncio.run(exercise(real_dsn, settings_values, case))
+..\..\..\AppData\Local\Programs\Python\Python312\Lib\asyncio\runners.py:195: in run
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+..\..\..\AppData\Local\Programs\Python\Python312\Lib\asyncio\runners.py:118: in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+..\..\..\AppData\Local\Programs\Python\Python312\Lib\asyncio\base_events.py:691: in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+tests\integration\test_sprint1_api.py:147: in exercise
+    await case(client, engine, settings, response, key, body)
+tests\integration\test_stage_b.py:77: in case
+    await c.execute(
+..\..\..\AppData\Local\Programs\Python\Python312\Lib\site-packages\sqlalchemy\ext\asyncio\engine.py:659: in execute
+    result = await greenlet_spawn(
+..\..\..\AppData\Local\Programs\Python\Python312\Lib\site-packages\sqlalchemy\util\_concurrency_py3k.py:190: in greenlet_spawn
+    result = context.switch(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+..\..\..\AppData\Local\Programs\Python\Python312\Lib\site-packages\sqlalchemy\engine\base.py:1421: in execute
+    return meth(
+..\..\..\AppData\Local\Programs\Python\Python312\Lib\site-packages\sqlalchemy\sql\elements.py:526: in _execute_on_connection
+    return connection._execute_clauseelement(
+..\..\..\AppData\Local\Programs\Python\Python312\Lib\site-packages\sqlalchemy\engine\base.py:1643: in _execute_clauseelement
+    ret = self._execute_context(
+..\..\..\AppData\Local\Programs\Python\Python312\Lib\site-packages\sqlalchemy\engine\base.py:1823: in _execute_context
+    self._handle_dbapi_exception(
+..\..\..\AppData\Local\Programs\Python\Python312\Lib\site-packages\sqlalchemy\engine\base.py:2365: in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+..\..\..\AppData\Local\Programs\Python\Python312\Lib\site-packages\sqlalchemy\engine\base.py:1817: in _execute_context
+    context = constructor(
+..\..\..\AppData\Local\Programs\Python\Python312\Lib\site-packages\sqlalchemy\engine\default.py:1417: in _init_compiled
+    compiled.construct_params(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = <sqlalchemy.dialects.postgresql.asyncpg.PGCompiler_asyncpg object at 0x0000021F35F5C5C0>
+params = {'other': UUID('40000000-0000-4000-8000-000000000004')}
+extracted_parameters = [BindParameter('0', None, type_=NullType()), BindParameter('other', None, type_=NullType()), BindParameter('true', None, type_=NullType())]
+escape_names = False, _group_number = 0, _check = True, _no_postcompile = False
+
+    def construct_params(
+        self,
+        params: Optional[_CoreSingleExecuteParams] = None,
+        extracted_parameters: Optional[Sequence[BindParameter[Any]]] = None,
+        escape_names: bool = True,
+        _group_number: Optional[int] = None,
+        _check: bool = True,
+        _no_postcompile: bool = False,
+    ) -> _MutableCoreSingleExecuteParams:
+        """return a dictionary of bind parameter keys and values"""
+
+        if self._render_postcompile and not _no_postcompile:
+            assert self._post_compile_expanded_state is not None
+            if not params:
+                return dict(self._post_compile_expanded_state.parameters)
+            else:
+                raise exc.InvalidRequestError(
+                    "can't construct new parameters when render_postcompile "
+                    "is used; the statement is hard-linked to the original "
+                    "parameters.  Use construct_expanded_state to generate a "
+                    "new statement and parameters."
+                )
+
+        has_escaped_names = escape_names and bool(self.escaped_bind_names)
+
+        if extracted_parameters:
+            # related the bound parameters collected in the original cache key
+            # to those collected in the incoming cache key.  They will not have
+            # matching names but they will line up positionally in the same
+            # way.   The parameters present in self.bind_names may be clones of
+            # these original cache key params in the case of DML but the .key
+            # will be guaranteed to match.
+            if self.cache_key is None:
+                raise exc.CompileError(
+                    "This compiled object has no original cache key; "
+                    "can't pass extracted_parameters to construct_params"
+                )
+            else:
+                orig_extracted = self.cache_key[1]
+
+            ckbm_tuple = self._cache_key_bind_match
+            assert ckbm_tuple is not None
+            ckbm, _ = ckbm_tuple
+            resolved_extracted = {
+                bind: extracted
+                for b, extracted in zip(orig_extracted, extracted_parameters)
+                for bind in ckbm[b]
+            }
+        else:
+            resolved_extracted = None
+
+        if params:
+            pd = {}
+            for bindparam, name in self.bind_names.items():
+                escaped_name = (
+                    self.escaped_bind_names.get(name, name)
+                    if has_escaped_names
+                    else name
+                )
+
+                if bindparam.key in params:
+                    pd[escaped_name] = params[bindparam.key]
+                elif name in params:
+                    pd[escaped_name] = params[name]
+
+                elif _check and bindparam.required:
+                    if _group_number:
+                        raise exc.InvalidRequestError(
+                            "A value is required for bind parameter %r, "
+                            "in parameter group %d"
+                            % (bindparam.key, _group_number),
+                            code="cd3x",
+                        )
+                    else:
+>                       raise exc.InvalidRequestError(
+                            "A value is required for bind parameter %r"
+                            % bindparam.key,
+                            code="cd3x",
+                        )
+E                       sqlalchemy.exc.StatementError: (sqlalchemy.exc.InvalidRequestError) A value is required for bind parameter 'true'
+E                       [SQL: INSERT INTO wardrobe.scene_placement(garment_id,source_location_id,compartment_id,geometry,namespace) SELECT g.id,s.location_id,s.location_id,'{"approved"$1,"x"$2.1,"y"$2.1,"width"$2.2,"height"$2.1}','test-stage-b' FROM wardrobe.garment g JOIN wardrobe.garment_state s ON s.garment_id=g.id WHERE g.id<>$3]
+E                       [parameters: [{'other': UUID('40000000-0000-4000-8000-000000000004')}]]
+E                       (Background on this error at: https://sqlalche.me/e/20/cd3x)
+
+..\..\..\AppData\Local\Programs\Python\Python312\Lib\site-packages\sqlalchemy\sql\compiler.py:1927: StatementError
+---------------------------- Captured stderr call -----------------------------
+{"timestamp": "2026-10-11T15:44:26.630915+00:00", "level": "INFO", "event": "http_request", "request_id": "41a87f51-0b15-42d7-b361-de9fbbab8578", "correlation_id": "41a87f51-0b15-42d7-b361-de9fbbab8578", "method": "POST", "status": 201, "duration_ms": 200.38}
+{"timestamp": "2026-10-11T15:44:26.664673+00:00", "level": "INFO", "event": "http_request", "request_id": "bd7cf267-51df-4f35-bee9-e86303f0bdcc", "correlation_id": "bd7cf267-51df-4f35-bee9-e86303f0bdcc", "method": "GET", "status": 200, "duration_ms": 24.4}
+{"timestamp": "2026-10-11T15:44:26.705761+00:00", "level": "INFO", "event": "http_request", "request_id": "c86b4702-84d2-46b5-87fd-187814358672", "correlation_id": "c86b4702-84d2-46b5-87fd-187814358672", "method": "PUT", "status": 200, "duration_ms": 40.75}
+{"timestamp": "2026-10-11T15:44:26.756305+00:00", "level": "INFO", "event": "http_request", "request_id": "afb7bbdb-45be-4bc5-a947-231a7c18f837", "correlation_id": "afb7bbdb-45be-4bc5-a947-231a7c18f837", "method": "POST", "status": 201, "duration_ms": 48.43}
+{"timestamp": "2026-10-11T15:44:27.259241+00:00", "level": "INFO", "event": "http_request", "request_id": "df67bc9a-18f1-42a2-a833-b0b13a0aa494", "correlation_id": "df67bc9a-18f1-42a2-a833-b0b13a0aa494", "method": "POST", "status": 201, "duration_ms": 103.17}
+{"timestamp": "2026-10-11T15:44:27.305979+00:00", "level": "INFO", "event": "http_request", "request_id": "efb787ac-e0df-4dbb-9d22-d8e70440559b", "correlation_id": "efb787ac-e0df-4dbb-9d22-d8e70440559b", "method": "POST", "status": 201, "duration_ms": 45.62}
+{"timestamp": "2026-10-11T15:44:27.778616+00:00", "level": "INFO", "event": "http_request", "request_id": "07fdc62a-148c-4d9b-bd4b-ed4b00e36a51", "correlation_id": "07fdc62a-148c-4d9b-bd4b-ed4b00e36a51", "method": "POST", "status": 201, "duration_ms": 66.12}
+{"timestamp": "2026-10-11T15:44:28.050781+00:00", "level": "INFO", "event": "http_request", "request_id": "2ef9d05e-6b35-4108-a427-7296e7d376ac", "correlation_id": "2ef9d05e-6b35-4108-a427-7296e7d376ac", "method": "POST", "status": 201, "duration_ms": 263.09}
+{"timestamp": "2026-10-11T15:44:29.529671+00:00", "level": "INFO", "event": "http_request", "request_id": "701d6925-a7f0-4d2a-adc5-a9450b80529b", "correlation_id": "701d6925-a7f0-4d2a-adc5-a9450b80529b", "method": "GET", "status": 200, "duration_ms": 567.43}
+------------------------------ Captured log call ------------------------------
+INFO     wardrobe:logging.py:72 http_request
+INFO     wardrobe:logging.py:72 http_request
+INFO     wardrobe:logging.py:72 http_request
+INFO     wardrobe:logging.py:72 http_request
+INFO     wardrobe:logging.py:72 http_request
+INFO     wardrobe:logging.py:72 http_request
+INFO     wardrobe:logging.py:72 http_request
+INFO     wardrobe:logging.py:72 http_request
+INFO     wardrobe:logging.py:72 http_request
+============================== warnings summary ===============================
+..\..\..\AppData\Local\Programs\Python\Python312\Lib\site-packages\fastapi\testclient.py:1
+  C:\Users\aicam\AppData\Local\Programs\Python\Python312\Lib\site-packages\fastapi\testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+    from starlette.testclient import TestClient as TestClient  # noqa
+
+tests/e2e/test_acceptance.py: 9 warnings
+tests/integration/test_demo_login.py: 5 warnings
+tests/integration/test_device_migration.py: 3 warnings
+tests/integration/test_handoff.py: 7 warnings
+tests/integration/test_inline_worker.py: 1 warning
+tests/integration/test_postgres_platform.py: 2 warnings
+tests/integration/test_sprint1_api.py: 11 warnings
+tests/integration/test_sprint1_completion.py: 3 warnings
+tests/integration/test_sprint2_api.py: 16 warnings
+tests/integration/test_sprint3_api.py: 19 warnings
+tests/integration/test_sprint4_api.py: 9 warnings
+tests/integration/test_sprint5_api.py: 18 warnings
+tests/integration/test_sprint5_migration.py: 3 warnings
+tests/integration/test_sprint6_api.py: 17 warnings
+tests/integration/test_sprint7_api.py: 7 warnings
+tests/integration/test_stage_b.py: 2 warnings
+  C:\Users\aicam\Desktop\2차프로젝트\.venv\Lib\site-packages\alembic\config.py:564: DeprecationWarning: No path_separator found in configuration; falling back to legacy splitting on spaces, commas, and colons for prepend_sys_path.  Consider adding path_separator=os to Alembic config.
+    util.warn_deprecated(
+
+tests/e2e/test_acceptance.py: 84 warnings
+tests/integration/test_handoff.py: 94 warnings
+tests/integration/test_inline_worker.py: 18 warnings
+tests/integration/test_sprint1_completion.py: 18 warnings
+tests/integration/test_sprint2_api.py: 8 warnings
+tests/integration/test_sprint3_api.py: 190 warnings
+tests/integration/test_sprint4_api.py: 178 warnings
+tests/integration/test_stage_b.py: 26 warnings
+tests/unit/test_supabase_storage.py: 1 warning
+  C:\Users\aicam\Desktop\2차프로젝트\.venv\Lib\site-packages\botocore\auth.py:422: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+    datetime_now = datetime.datetime.utcnow()
+
+..\..\..\AppData\Local\Programs\Python\Python312\Lib\site-packages\_pytest\cacheprovider.py:469
+  C:\Users\aicam\AppData\Local\Programs\Python\Python312\Lib\site-packages\_pytest\cacheprovider.py:469: PytestCacheWarning: could not create cache path C:\Users\aicam\Desktop\2차프로젝트\backend\.pytest_cache\v\cache\nodeids: [WinError 5] 액세스가 거부되었습니다: 'C:\\Users\\aicam\\Desktop\\2차프로젝트\\backend\\.pytest_cache\\v\\cache'
+    config.cache.set("cache/nodeids", sorted(self.cached_nodeids))
+
+..\..\..\AppData\Local\Programs\Python\Python312\Lib\site-packages\_pytest\cacheprovider.py:423
+  C:\Users\aicam\AppData\Local\Programs\Python\Python312\Lib\site-packages\_pytest\cacheprovider.py:423: PytestCacheWarning: could not create cache path C:\Users\aicam\Desktop\2차프로젝트\backend\.pytest_cache\v\cache\lastfailed: [WinError 5] 액세스가 거부되었습니다: 'C:\\Users\\aicam\\Desktop\\2차프로젝트\\backend\\.pytest_cache\\v\\cache'
+    config.cache.set("cache/lastfailed", self.lastfailed)
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ===========================
+FAILED tests/integration/test_stage_b.py::test_database_interests_are_personal_not_owned_or_global
+FAILED tests/integration/test_stage_b.py::test_compartment_multiple_items_and_invalid_geometry_fail_closed
+2 failed, 297 passed, 752 warnings in 354.15s (0:05:54)

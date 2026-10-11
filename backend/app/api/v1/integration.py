@@ -277,7 +277,10 @@ async def illuminate(request: Request, actor: Actor, body: Illuminate, key: Key)
                 "FROM wardrobe.garment g LEFT JOIN wardrobe.garment_state s ON s.garment_id=g.id "
                 "LEFT JOIN wardrobe.storage_location l ON l.id=s.location_id "
                 "AND l.household_id=g.household_id LEFT JOIN wardrobe.lighting_zone z "
-                "ON z.location_id=l.id AND z.device_id=g.device_id "
+                "ON z.location_id=coalesce((SELECT p.compartment_id "
+                "FROM wardrobe.scene_placement p "
+                "WHERE p.garment_id=g.id AND p.source_location_id=s.location_id),l.id) "
+                "AND z.device_id=g.device_id "
                 "WHERE g.id=:id AND g.device_id=:device AND g.household_id=:household "
                 "AND g.retired_at IS NULL", id=garment_id, device=body.device_id,
                 household=actor.household_id,

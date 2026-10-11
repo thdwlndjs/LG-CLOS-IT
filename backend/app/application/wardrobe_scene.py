@@ -79,9 +79,20 @@ async def scene(request, repo, actor, device_id):
         h=actor.household_id,
         device=str(device_id),
     )
-    garments, total = await repo.garments(actor, {"device_id": device_id}, 101, 0)
-    if total > 100:
-        raise ApiError(422, "SCENE_LIMIT_EXCEEDED", "Scene supports up to 100 items")
+    garments, total = await repo.garments(actor, {"device_id": device_id}, 251, 0)
+    if total > 250:
+        raise ApiError(422, "SCENE_LIMIT_EXCEEDED", "Scene supports up to 250 items")
+    placements = {
+        r["garment_id"]: r
+        for r in await repo.all(
+            "SELECT p.*,l.attributes,z.anchor_id FROM wardrobe.scene_placement p "
+            "JOIN wardrobe.storage_location l ON l.id=p.compartment_id "
+            "LEFT JOIN wardrobe.lighting_zone z ON z.location_id=l.id AND z.device_id=:device "
+            "WHERE l.household_id=:h",
+            device=device_id,
+            h=actor.household_id,
+        )
+    }
     counts = Counter(g["location_id"] for g in garments if g["location_id"])
     items, blocked = [], []
     asset_ids = [g["image_asset_id"] for g in garments if g["image_asset_id"]]
@@ -120,13 +131,27 @@ async def scene(request, repo, actor, device_id):
     )
     service = Sprint1(request)
     for garment in garments:
+        placement = placements.get(garment["id"])
+        if placement and placement["source_location_id"] != garment["location_id"]:
+            placement = None
         bound = slots.get(garment["location_id"])
+        if placement:
+            bound = (
+                {
+                    "id": placement["compartment_id"],
+                    "attributes": {"display_slot": {"alignment": "shelf"}},
+                    "anchor_id": placement["anchor_id"],
+                },
+                approved_slot({"display_slot": placement["geometry"]}),
+            )
         # External boxes and closed drawers are intentional non-visible storage,
         # not missing or guessed positions. They remain available in garment UI.
         if bound and bound[0]["attributes"].get("scene_visibility") in {"hidden", "external"}:
-            if (bound[0]["attributes"].get("scene_visibility") == "hidden"
-                    and bound[0]["attributes"].get("display_slot", {}).get("basis")
-                    == "image_traced_demo_subdivision"):
+            if (
+                bound[0]["attributes"].get("scene_visibility") == "hidden"
+                and bound[0]["attributes"].get("display_slot", {}).get("basis")
+                == "image_traced_demo_subdivision"
+            ):
                 blocked.append({"garment_id": str(garment["id"]), "reason": "SLOT_UNAPPROVED"})
             continue
         reason = (
@@ -139,7 +164,7 @@ async def scene(request, repo, actor, device_id):
             else "SLOT_UNAPPROVED"
             if bound is None or bound[1] is None
             else "SLOT_OCCUPANCY_CONFLICT"
-            if counts[garment["location_id"]] != 1
+            if not placement and counts[garment["location_id"]] != 1
             else None
         )
         dto = await service.dto(garment) if reason is None else None

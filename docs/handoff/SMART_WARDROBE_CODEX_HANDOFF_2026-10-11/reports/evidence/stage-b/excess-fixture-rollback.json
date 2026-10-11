@@ -1,0 +1,16 @@
+{
+  "reason": "Reuse eight AVAILABLE OUTER garments with existing folded derivatives; initial category filter was too narrow",
+  "removed_stage_b_only_ids": [
+    "c46e2402-1e86-5a5c-a935-9e370cd7a1cc",
+    "440cd68d-3b05-59a4-b3d7-589051e57f92",
+    "2686ed21-50d4-58ed-b048-63971f5544e8",
+    "1b449f5c-8a9a-5a1a-9fd3-1b1b83d3483e",
+    "11fd9a2d-357f-52ea-9a24-195fdfd77eee",
+    "c7bdca72-4000-50dd-a285-02f59737d52a",
+    "b19d1bf8-8e15-563c-9b90-2acdfcb37d12",
+    "ef6f5701-adf0-5e5e-8899-9af15e407684"
+  ],
+  "original_76_removed": 0,
+  "outfit_refs": 0,
+  "foreign_key_checks": "enforced within transaction"
+}

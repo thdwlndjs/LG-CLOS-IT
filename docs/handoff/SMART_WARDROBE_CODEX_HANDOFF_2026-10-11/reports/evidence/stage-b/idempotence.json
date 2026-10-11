@@ -1,0 +1,167 @@
+{
+  "before": {
+    "garment": {
+      "count": 104,
+      "rows_hash": "9c25cd08af173271a591890edd021fb1"
+    },
+    "garment_state": {
+      "count": 104,
+      "rows_hash": "1d9272586a47e39c8ef88704693276c0"
+    },
+    "asset": {
+      "count": 271,
+      "rows_hash": "1108d61488cc16aac90d60c3d33c16e0"
+    },
+    "outfit": {
+      "count": 248,
+      "rows_hash": "ec6d342a9a342d99a4c0ae261c83f3d7"
+    },
+    "outfit_item": {
+      "count": 616,
+      "rows_hash": "0f0b33752bb19653244a674de9026030"
+    },
+    "outfit_card": {
+      "count": 97,
+      "rows_hash": "b3bf1d577fe8dae1f7b05ea626ecac73"
+    },
+    "vton_job": {
+      "count": 27,
+      "rows_hash": "f913909d9c3c06f47faa6a481b724c1a"
+    },
+    "context_snapshot": {
+      "count": 123,
+      "rows_hash": "42e1c638a5ba092aba395cd8a9ca6ea4"
+    },
+    "wear_event": {
+      "count": 108,
+      "rows_hash": "6c3ebd2ca77889862ce285b6ec4198cd"
+    },
+    "liked_item": {
+      "count": 6,
+      "rows_hash": "364076b52384f631d4e7f28ace2d021c"
+    },
+    "scene_placement": {
+      "count": 66,
+      "rows_hash": "ea67eb0f10810cd9fda0e5207db2c121"
+    },
+    "storage_location": {
+      "count": 100,
+      "rows_hash": "7438939707abc83ab3f9edd40e893a8a"
+    },
+    "lighting_zone": {
+      "count": 96,
+      "rows_hash": "739a302e8b6b4a67208708cf8853650e"
+    }
+  },
+  "runs": [
+    {
+      "garment": {
+        "count": 104,
+        "rows_hash": "9c25cd08af173271a591890edd021fb1"
+      },
+      "garment_state": {
+        "count": 104,
+        "rows_hash": "1d9272586a47e39c8ef88704693276c0"
+      },
+      "asset": {
+        "count": 271,
+        "rows_hash": "1108d61488cc16aac90d60c3d33c16e0"
+      },
+      "outfit": {
+        "count": 248,
+        "rows_hash": "ec6d342a9a342d99a4c0ae261c83f3d7"
+      },
+      "outfit_item": {
+        "count": 616,
+        "rows_hash": "0f0b33752bb19653244a674de9026030"
+      },
+      "outfit_card": {
+        "count": 97,
+        "rows_hash": "b3bf1d577fe8dae1f7b05ea626ecac73"
+      },
+      "vton_job": {
+        "count": 27,
+        "rows_hash": "f913909d9c3c06f47faa6a481b724c1a"
+      },
+      "context_snapshot": {
+        "count": 123,
+        "rows_hash": "42e1c638a5ba092aba395cd8a9ca6ea4"
+      },
+      "wear_event": {
+        "count": 108,
+        "rows_hash": "6c3ebd2ca77889862ce285b6ec4198cd"
+      },
+      "liked_item": {
+        "count": 6,
+        "rows_hash": "364076b52384f631d4e7f28ace2d021c"
+      },
+      "scene_placement": {
+        "count": 66,
+        "rows_hash": "ea67eb0f10810cd9fda0e5207db2c121"
+      },
+      "storage_location": {
+        "count": 100,
+        "rows_hash": "7438939707abc83ab3f9edd40e893a8a"
+      },
+      "lighting_zone": {
+        "count": 96,
+        "rows_hash": "739a302e8b6b4a67208708cf8853650e"
+      }
+    },
+    {
+      "garment": {
+        "count": 104,
+        "rows_hash": "9c25cd08af173271a591890edd021fb1"
+      },
+      "garment_state": {
+        "count": 104,
+        "rows_hash": "1d9272586a47e39c8ef88704693276c0"
+      },
+      "asset": {
+        "count": 271,
+        "rows_hash": "1108d61488cc16aac90d60c3d33c16e0"
+      },
+      "outfit": {
+        "count": 248,
+        "rows_hash": "ec6d342a9a342d99a4c0ae261c83f3d7"
+      },
+      "outfit_item": {
+        "count": 616,
+        "rows_hash": "0f0b33752bb19653244a674de9026030"
+      },
+      "outfit_card": {
+        "count": 97,
+        "rows_hash": "b3bf1d577fe8dae1f7b05ea626ecac73"
+      },
+      "vton_job": {
+        "count": 27,
+        "rows_hash": "f913909d9c3c06f47faa6a481b724c1a"
+      },
+      "context_snapshot": {
+        "count": 123,
+        "rows_hash": "42e1c638a5ba092aba395cd8a9ca6ea4"
+      },
+      "wear_event": {
+        "count": 108,
+        "rows_hash": "6c3ebd2ca77889862ce285b6ec4198cd"
+      },
+      "liked_item": {
+        "count": 6,
+        "rows_hash": "364076b52384f631d4e7f28ace2d021c"
+      },
+      "scene_placement": {
+        "count": 66,
+        "rows_hash": "ea67eb0f10810cd9fda0e5207db2c121"
+      },
+      "storage_location": {
+        "count": 100,
+        "rows_hash": "7438939707abc83ab3f9edd40e893a8a"
+      },
+      "lighting_zone": {
+        "count": 96,
+        "rows_hash": "739a302e8b6b4a67208708cf8853650e"
+      }
+    }
+  ],
+  "duplicate_or_changed_rows": 0
+}

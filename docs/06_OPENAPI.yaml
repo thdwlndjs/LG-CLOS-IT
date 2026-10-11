@@ -4419,6 +4419,36 @@ paths:
       x-fsd-ids:
       - STYLE-001
       - VTON-002
+  /api/v1/integration/shopping/liked/{item_id}:
+    get:
+      tags:
+      - Integration
+      summary: Liked Item
+      operationId: liked_item_api_v1_integration_shopping_liked__item_id__get
+      security:
+      - BearerAuth: []
+      parameters:
+      - name: item_id
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+          title: Item Id
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+          description: Unprocessable Entity
+      x-fsd-ids:
+      - STYLE-001
 components:
   securitySchemes:
     BearerAuth:
@@ -6741,7 +6771,7 @@ components:
           title: Quality Status
         total:
           type: integer
-          maximum: 100.0
+          maximum: 250.0
           minimum: 0.0
           title: Total
       additionalProperties: false

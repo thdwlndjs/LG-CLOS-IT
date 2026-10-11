@@ -1,0 +1,51 @@
+
+> smart-wardrobe-web@1.0.0 test
+> node --test test/*.test.mjs
+
+✔ Supabase signed images and uploads require the explicitly configured project and path (4.5096ms)
+✔ cloud API configuration requires exact HTTPS origin (0.7862ms)
+✔ cloud images and shares use only configured API host (0.3431ms)
+✔ query preserves false/zero and omits missing values (0.4672ms)
+✔ asset relay accepts only fixed signed local bucket (0.4645ms)
+✔ share links preserve local API path only (0.1699ms)
+✔ style links refuse script/data URLs (0.2288ms)
+✔ uncertain mutation retry keeps idempotency key; new successful action uses new key (42.0207ms)
+✔ conflict is surfaced and preserves version header (1.2544ms)
+✔ unauthorized response clears user session (0.8306ms)
+✔ read failures do not invent successful data (0.6031ms)
+✔ 204 deletion returns null without JSON parsing (0.2515ms)
+✔ upload rejects unsupported or oversize file before requesting intent (0.4626ms)
+✔ calendar covers leap February and weekday offset (4.5925ms)
+✔ calendar covers December boundary (0.5769ms)
+✔ invalid month is rejected (0.5489ms)
+✔ server storage/laundry states stay out of wearable recommendations while family items remain accessible (6.7485ms)
+✔ carousel has up to three unique owned combinations and never pads missing inventory (0.8955ms)
+✔ Mock recommendations only refer to supplied accessible photos and never mutate real data (0.6667ms)
+✔ Missing photos and incomplete looks do not generate a fake complete recommendation (0.3371ms)
+✔ Mock usage counts remain stable after a wardrobe reorder (0.3858ms)
+✔ Actual use counters exclude plans, selections, cancelled and scenario events (0.5126ms)
+✔ inventory refresh retains scene derivatives and frame, deletion releases the garment derivative (46.5143ms)
+✔ cache hit and concurrent consumers download once without URL reissue (3.8062ms)
+✔ expired cache miss refreshes once before download (1.5729ms)
+✔ 403 refresh and retry is bounded at one, failed cache is evicted (2.3107ms)
+✔ replacement, deletion and logout revoke object URLs (3.3864ms)
+✔ logout during an in-flight download cannot repopulate cache (0.9512ms)
+✔ changed server identity and non-expiry errors do not retry old image (1.1577ms)
+✔ individual invalidation during response cannot refresh or resurrect old cache (0.5347ms)
+✔ distinct asset versions never reuse another version blob (2.2478ms)
+✔ scene crops only external photo padding, retaining foreground aspect ratio (1.2897ms)
+✔ unknown and out-of-bounds masks preserve full source viewport (0.4546ms)
+✔ generated atlas uses a bounded cell crop without stretching other sprites (0.2232ms)
+✔ device-scoped selection retains actual owner and exact shared image metadata (7.2044ms)
+✔ changed photo ID with unchanged version rejects stale remote save before any mutation (2.1246ms)
+✔ selecting the same exact photo does not invalidate a comparison draft (0.9934ms)
+✔ DRESS is supported by current remote contract and explicitly excludes separates (1.2302ms)
+✔ actual timestamps require user time and reject rolled-over dates (1.7579ms)
+ℹ tests 39
+ℹ suites 0
+ℹ pass 39
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1756.3269

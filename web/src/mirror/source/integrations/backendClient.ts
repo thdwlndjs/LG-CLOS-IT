@@ -239,13 +239,28 @@ export class HttpRemoteBackend implements RemoteBackend {
     });
     return this.acceptLogin(r);
   }
-  async demoProfiles(): Promise<{profile: "son" | "mother"; display_name: string; age: number; relationship: string}[]> {
-    const r: any = await api().send("GET", "/integration/demo-profiles", undefined);
+  async demoProfiles(): Promise<
+    {
+      profile: "son" | "mother";
+      display_name: string;
+      age: number;
+      relationship: string;
+    }[]
+  > {
+    const r: any = await api().send(
+      "GET",
+      "/integration/demo-profiles",
+      undefined,
+    );
     return r.items;
   }
   async demoLogin(profile?: "son" | "mother") {
     bindStation("", "");
-    const r: any = await api().send("POST", "/integration/demo-login", profile ? {profile} : {});
+    const r: any = await api().send(
+      "POST",
+      "/integration/demo-login",
+      profile ? { profile } : {},
+    );
     return this.acceptLogin(r);
   }
   private acceptLogin(r: any) {
@@ -393,9 +408,15 @@ export class HttpRemoteBackend implements RemoteBackend {
         ownerId: account.id,
         name: item.name,
         category: item.category.toLowerCase(),
-        asset: null,
+        asset: item.image_asset
+          ? {
+              id: item.image_asset.asset_id,
+              version: 1,
+              url: assetUrl(item.image_asset.read_url),
+            }
+          : null,
         sourceLabel: item.source_label + " · LIKED · 보유 의류 아님",
-        sourceUrl: null,
+        sourceUrl: item.source_url || null,
       })),
       registrationDrafts: {},
       outfitDrafts: {},

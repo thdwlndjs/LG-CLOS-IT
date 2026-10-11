@@ -4,6 +4,7 @@ from fastapi import Request
 from pydantic import BaseModel, ConfigDict
 
 from app.api.v1.integration import Actor, Key, accessible, router
+from app.application.assets import signed_asset
 from app.application.common.idempotency import idempotent
 from app.application.sprint3 import ready_asset
 from app.core.errors import ApiError
@@ -28,8 +29,45 @@ async def purchases(actor: Actor):
 
 
 @router.get("/shopping/liked", openapi_extra={"x-fsd-ids": ["STYLE-001", "SET-001"]})
-async def liked(actor: Actor):
-    return dict(items=list_items("LIKED"), provider="MOCK", is_mock=True)
+async def liked(request: Request, actor: Actor):
+    async with request.app.state.resources.database.sessions.begin() as session:
+        repo = Sprint1Repository(session)
+        rows = await repo.all(
+            "SELECT i.*,a.id AS asset_id,a.asset_key,a.content_type FROM wardrobe.liked_item i "
+            "JOIN wardrobe.asset a ON a.id=i.image_asset_id AND a.status='READY' "
+            "AND a.kind='GARMENT' "
+            "AND a.household_id=i.household_id "
+            "WHERE i.member_id=:m AND i.household_id=:h ORDER BY i.id",
+            m=actor.member_id,
+            h=actor.household_id,
+        )
+        return dict(
+            items=[
+                dict(
+                    id=str(r["id"]),
+                    product_id=r["product_id"],
+                    name=r["name"],
+                    source_url=r["metadata"].get("product_reference", {}).get("official_url"),
+                    category=r["category"],
+                    color=r["color"],
+                    source_label="Synthetic database interest",
+                    image_asset=signed_asset(request.app.state.settings, r),
+                    is_mock=True,
+                )
+                for r in rows
+            ],
+            provider="DEMO_DB",
+            is_mock=True,
+        )
+
+
+@router.get("/shopping/liked/{item_id}", openapi_extra={"x-fsd-ids": ["STYLE-001"]})
+async def liked_item(request: Request, actor: Actor, item_id: UUID):
+    result = await liked(request, actor)
+    found = next((i for i in result["items"] if i["id"] == str(item_id)), None)
+    if found is None:
+        raise ApiError(404, "NOT_FOUND", "Interest not found")
+    return found
 
 
 @router.post("/shopping/purchases/bulk-import", status_code=201,

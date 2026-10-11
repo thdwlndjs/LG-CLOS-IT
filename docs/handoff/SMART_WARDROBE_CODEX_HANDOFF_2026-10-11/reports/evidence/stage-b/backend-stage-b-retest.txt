@@ -1,0 +1,19 @@
+........                                                                 [100%]
+============================== warnings summary ===============================
+tests/integration/test_stage_b.py::test_database_interests_are_personal_not_owned_or_global
+tests/integration/test_stage_b.py::test_compartment_multiple_items_and_invalid_geometry_fail_closed
+tests/integration/test_postgres_platform.py::test_real_postgres_baseline_and_seed
+tests/integration/test_postgres_platform.py::test_real_postgres_baseline_and_seed
+  C:\Users\aicam\Desktop\2차프로젝트\.venv\Lib\site-packages\alembic\config.py:564: DeprecationWarning: No path_separator found in configuration; falling back to legacy splitting on spaces, commas, and colons for prepend_sys_path.  Consider adding path_separator=os to Alembic config.
+    util.warn_deprecated(
+
+tests/integration/test_stage_b.py: 32 warnings
+  C:\Users\aicam\Desktop\2차프로젝트\.venv\Lib\site-packages\botocore\auth.py:422: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+    datetime_now = datetime.datetime.utcnow()
+
+..\..\..\AppData\Local\Programs\Python\Python312\Lib\site-packages\_pytest\cacheprovider.py:469
+  C:\Users\aicam\AppData\Local\Programs\Python\Python312\Lib\site-packages\_pytest\cacheprovider.py:469: PytestCacheWarning: could not create cache path C:\Users\aicam\Desktop\2차프로젝트\backend\.pytest_cache\v\cache\nodeids: [WinError 5] 액세스가 거부되었습니다: 'C:\\Users\\aicam\\Desktop\\2차프로젝트\\backend\\.pytest_cache\\v\\cache'
+    config.cache.set("cache/nodeids", sorted(self.cached_nodeids))
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+8 passed, 37 warnings in 17.49s

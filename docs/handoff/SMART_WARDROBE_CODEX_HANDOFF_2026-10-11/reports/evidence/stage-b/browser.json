@@ -1,0 +1,2316 @@
+[
+  {
+    "profile": "김수진",
+    "ids": [
+      "1adf7dde-eaed-53f9-ac0e-8497078fa703",
+      "1b92cf0a-82ad-567a-b1b5-7022111fccaf",
+      "1f8dcda3-eb5c-5744-bbd7-98e2b7adef98",
+      "20cb6b2b-1f68-542e-9150-d9e1e0a189c5",
+      "21901819-11cb-56f0-9492-026b6b6166fe",
+      "26b4405e-901e-5e94-94c0-6135105b0b8c",
+      "2904fd43-cb31-530d-b4bd-2d9783d3c762",
+      "2d5ec79d-bdcf-582b-a78d-a6734b287c65",
+      "2f2a46af-3507-5f7d-a53f-5b2bab1e7af5",
+      "33d87c69-53a3-5062-9428-fdf2d12a2bce",
+      "3e2e7757-e7fe-5096-b955-5978f9551311",
+      "454faefc-acf0-593d-a5b1-15a1b45b097e",
+      "4d1f6a17-44b8-5c0b-8248-eb009565da12",
+      "59e7a4ca-3acb-5250-a2d6-8f7703984934",
+      "6318748a-24b8-5a50-bf13-c925293f0ea1",
+      "715489be-2fd6-5576-b58c-bd991c9c2c32",
+      "7893136d-24c1-5af3-8986-05089c8f2f18",
+      "80cd394e-6f5b-5ef5-95d4-a1dae823a1ed",
+      "821ae500-52f4-5879-b275-9a23bc327a3a",
+      "825237a9-8853-59de-bd73-4ec198b7e033",
+      "883a6a25-4c2c-510b-bbe5-0ca8e5a44e32",
+      "900b7fa4-0e9c-5dd1-afd2-1c89ac2eaade",
+      "94513db1-6b4c-5b06-a088-1abf46df8712",
+      "a0232e79-b5d9-5525-a298-3054de415599",
+      "a18baaab-a984-5245-a7a3-28bbd27e20ab",
+      "a72e0c37-5f7f-5acf-bd50-7f8c65b8f23d",
+      "b8c03e66-e150-52b2-8d25-41fcba2d4720",
+      "c349dc83-4312-5479-bb8e-094931f8a30b",
+      "df4082b6-d86e-53e7-a427-924c641a5145",
+      "df91ef4a-594c-570d-b32d-2b109efe8bab",
+      "e29bc367-5d11-5bbf-8fcb-9813c24c6f17",
+      "f35667ff-7520-5184-abf0-d35865244624",
+      "f84f09ec-6c6f-59fc-8438-3b80c620c3d9",
+      "fa6caeb1-0966-58c2-a81e-2754d7643c2c",
+      "ff39dfae-abdd-5ca3-8986-d1ba2cf0eccd",
+      "bc35f9b1-3a49-46d7-b0df-4631d2d3e3e9",
+      "dbfcdf61-e6c8-42ae-82e3-6c0ef39f8806",
+      "a4ac8980-d9fb-4442-aa6f-158cc9270277",
+      "a418bd50-1612-4f95-a030-e54b6a820fe5",
+      "6ba02802-d475-44f0-935a-e1050b50cf84",
+      "59e18c18-7553-41d9-bc88-014dd65e7b21",
+      "9f37a700-3578-4af2-9f8e-f36b869b5961",
+      "449c07e3-04b7-42af-b7b0-79ae8bdbf400",
+      "3049ddf0-d7cb-43c5-b9d8-87936db3e346",
+      "901a7b5c-d23c-4ec1-b434-5d8b41e6dd85",
+      "6df03b25-1edd-4a0b-b003-609ea9d25781",
+      "24c575ab-9dff-4bab-8d72-5dcc61d712b7",
+      "393354b9-bf4d-4c62-9456-8a810288e870",
+      "b5b5600d-3a67-48f6-8a63-7d8164bb9030",
+      "3518be70-15ef-462f-a130-7205a663205c",
+      "e2f39099-1da1-42a6-abed-827c494f53b9",
+      "59aaa9b2-d32c-4634-8324-e229cf91ce7b",
+      "0e707336-0417-42f8-8b6f-f655ee0e94a0",
+      "0d1ef3df-bbbe-4a2a-9fd7-56bf8dd945f9",
+      "49dd09f9-430c-4705-bbbf-6a77d8131677",
+      "0d5afe1b-7832-4885-8eb5-341bb57cb90e",
+      "fd1ce769-aab6-4227-83e0-c550cd9ecb45",
+      "2568aead-2410-4bab-9208-6d4f54109927",
+      "a2f054f7-6967-4add-bf4a-b61af158f0e2",
+      "00caadf4-b6bc-5d77-ad83-5087a2579b65",
+      "01d7378b-ec70-5035-bd0a-88b420767a48",
+      "053eb5bd-f212-5c7a-8757-69d511d5dabe",
+      "0d7ee270-4445-5529-9fda-46e0ca87cd8a",
+      "11251df3-4107-575c-b871-47e5d6efeed3",
+      "3aa71ad7-4b8e-5e40-a5ab-4ccef829b457",
+      "59f470a8-c063-5bef-b7d2-f7350c9039cb",
+      "5ac6ea1d-c00f-5aa4-ae85-82081fa3444f",
+      "622a268d-dda1-56a2-944d-6c12df3f4458",
+      "652c91d0-df18-5066-9600-852a9e1d9e8e",
+      "6a0331fb-9e5b-5153-91df-5f34afdaf691",
+      "6a39ca49-8a8c-52c6-b999-5797f7d2f188",
+      "826b60ea-d5e8-5d82-920e-d61a4009898e",
+      "869734e9-a720-5471-bb80-91bf4b6cdd8c",
+      "8901515e-6ad7-51fc-8273-01284e04991d",
+      "89cca9bf-12cf-5fb2-b7ea-9cb38793fbb1",
+      "8afda102-37de-54fa-8c14-d473096205a6",
+      "934d1ed2-2217-5875-ae29-b702b92c7a4b",
+      "9813c705-e718-53ae-b1ab-9e7bafd4565e",
+      "9a592908-46aa-5cb5-ae6e-4588e80195d0",
+      "9a8c11b4-4213-555f-aee6-70dd26494a30",
+      "b4c04595-b1cc-5380-abb5-a4a89324087f",
+      "cdf93107-16da-5dfd-821f-be69d76be007",
+      "d0ef9f43-50c9-5fee-8980-f501b8128baa",
+      "d65f4291-ba26-5e0a-9547-9d4dddc2bf54",
+      "dda8dc76-975b-5283-8e66-c23dc6883b40",
+      "f21f98ef-184e-5e45-80aa-4552b848d8a4",
+      "fdc6ebaa-33d3-5edc-9477-18fd44a7b360"
+    ],
+    "scene": [
+      {
+        "garment_id": "1adf7dde-eaed-53f9-ac0e-8497078fa703",
+        "location_id": "eb128a88-7443-5ea6-9dfb-975270cadf4f",
+        "anchor_id": "STAGE-B-E1",
+        "geometry": {
+          "x": 0.5992822966507177,
+          "y": 0.13071200850159406,
+          "width": 0.0645933014354067,
+          "height": 0.023379383634431455,
+          "z_index": 20
+        }
+      },
+      {
+        "garment_id": "1b92cf0a-82ad-567a-b1b5-7022111fccaf",
+        "location_id": "eb128a88-7443-5ea6-9dfb-975270cadf4f",
+        "anchor_id": "STAGE-B-E1",
+        "geometry": {
+          "x": 0.5992822966507177,
+          "y": 0.1073326248671626,
+          "width": 0.0645933014354067,
+          "height": 0.023379383634431455,
+          "z_index": 21
+        }
+      },
+      {
+        "garment_id": "1f8dcda3-eb5c-5744-bbd7-98e2b7adef98",
+        "location_id": "eb128a88-7443-5ea6-9dfb-975270cadf4f",
+        "anchor_id": "STAGE-B-E1",
+        "geometry": {
+          "x": 0.5992822966507177,
+          "y": 0.08395324123273114,
+          "width": 0.0645933014354067,
+          "height": 0.023379383634431455,
+          "z_index": 22
+        }
+      },
+      {
+        "garment_id": "20cb6b2b-1f68-542e-9150-d9e1e0a189c5",
+        "location_id": "eb128a88-7443-5ea6-9dfb-975270cadf4f",
+        "anchor_id": "STAGE-B-E1",
+        "geometry": {
+          "x": 0.6788277511961722,
+          "y": 0.13071200850159406,
+          "width": 0.0645933014354067,
+          "height": 0.023379383634431455,
+          "z_index": 20
+        }
+      },
+      {
+        "garment_id": "21901819-11cb-56f0-9492-026b6b6166fe",
+        "location_id": "eb128a88-7443-5ea6-9dfb-975270cadf4f",
+        "anchor_id": "STAGE-B-E1",
+        "geometry": {
+          "x": 0.6788277511961722,
+          "y": 0.1073326248671626,
+          "width": 0.0645933014354067,
+          "height": 0.023379383634431455,
+          "z_index": 21
+        }
+      },
+      {
+        "garment_id": "26b4405e-901e-5e94-94c0-6135105b0b8c",
+        "location_id": "40b480ba-14dd-5796-af79-b257bcdaadff",
+        "anchor_id": "STAGE-B-E2",
+        "geometry": {
+          "x": 0.5992822966507177,
+          "y": 0.25717321997874604,
+          "width": 0.0645933014354067,
+          "height": 0.023379383634431455,
+          "z_index": 20
+        }
+      },
+      {
+        "garment_id": "2904fd43-cb31-530d-b4bd-2d9783d3c762",
+        "location_id": "40b480ba-14dd-5796-af79-b257bcdaadff",
+        "anchor_id": "STAGE-B-E2",
+        "geometry": {
+          "x": 0.5992822966507177,
+          "y": 0.23379383634431455,
+          "width": 0.0645933014354067,
+          "height": 0.023379383634431455,
+          "z_index": 21
+        }
+      },
+      {
+        "garment_id": "2d5ec79d-bdcf-582b-a78d-a6734b287c65",
+        "location_id": "40b480ba-14dd-5796-af79-b257bcdaadff",
+        "anchor_id": "STAGE-B-E2",
+        "geometry": {
+          "x": 0.5992822966507177,
+          "y": 0.2104144527098831,
+          "width": 0.0645933014354067,
+          "height": 0.023379383634431455,
+          "z_index": 22
+        }
+      },
+      {
+        "garment_id": "2f2a46af-3507-5f7d-a53f-5b2bab1e7af5",
+        "location_id": "40b480ba-14dd-5796-af79-b257bcdaadff",
+        "anchor_id": "STAGE-B-E2",
+        "geometry": {
+          "x": 0.6788277511961722,
+          "y": 0.25717321997874604,
+          "width": 0.0645933014354067,
+          "height": 0.023379383634431455,
+          "z_index": 20
+        }
+      },
+      {
+        "garment_id": "33d87c69-53a3-5062-9428-fdf2d12a2bce",
+        "location_id": "40b480ba-14dd-5796-af79-b257bcdaadff",
+        "anchor_id": "STAGE-B-E2",
+        "geometry": {
+          "x": 0.6788277511961722,
+          "y": 0.23379383634431455,
+          "width": 0.0645933014354067,
+          "height": 0.023379383634431455,
+          "z_index": 21
+        }
+      },
+      {
+        "garment_id": "3e2e7757-e7fe-5096-b955-5978f9551311",
+        "location_id": "40b480ba-14dd-5796-af79-b257bcdaadff",
+        "anchor_id": "STAGE-B-E2",
+        "geometry": {
+          "x": 0.6788277511961722,
+          "y": 0.2104144527098831,
+          "width": 0.0645933014354067,
+          "height": 0.023379383634431455,
+          "z_index": 22
+        }
+      },
+      {
+        "garment_id": "454faefc-acf0-593d-a5b1-15a1b45b097e",
+        "location_id": "b0bc76f0-1708-5dcb-8235-cac2a748a849",
+        "anchor_id": "STAGE-B-E3",
+        "geometry": {
+          "x": 0.5992822966507177,
+          "y": 0.38150903294367694,
+          "width": 0.0645933014354067,
+          "height": 0.023379383634431455,
+          "z_index": 20
+        }
+      },
+      {
+        "garment_id": "4d1f6a17-44b8-5c0b-8248-eb009565da12",
+        "location_id": "b0bc76f0-1708-5dcb-8235-cac2a748a849",
+        "anchor_id": "STAGE-B-E3",
+        "geometry": {
+          "x": 0.5992822966507177,
+          "y": 0.35812964930924546,
+          "width": 0.0645933014354067,
+          "height": 0.023379383634431455,
+          "z_index": 21
+        }
+      },
+      {
+        "garment_id": "59e7a4ca-3acb-5250-a2d6-8f7703984934",
+        "location_id": "b0bc76f0-1708-5dcb-8235-cac2a748a849",
+        "anchor_id": "STAGE-B-E3",
+        "geometry": {
+          "x": 0.5992822966507177,
+          "y": 0.33475026567481403,
+          "width": 0.0645933014354067,
+          "height": 0.023379383634431455,
+          "z_index": 22
+        }
+      },
+      {
+        "garment_id": "6318748a-24b8-5a50-bf13-c925293f0ea1",
+        "location_id": "b0bc76f0-1708-5dcb-8235-cac2a748a849",
+        "anchor_id": "STAGE-B-E3",
+        "geometry": {
+          "x": 0.6788277511961722,
+          "y": 0.38150903294367694,
+          "width": 0.0645933014354067,
+          "height": 0.023379383634431455,
+          "z_index": 20
+        }
+      },
+      {
+        "garment_id": "715489be-2fd6-5576-b58c-bd991c9c2c32",
+        "location_id": "b0bc76f0-1708-5dcb-8235-cac2a748a849",
+        "anchor_id": "STAGE-B-E3",
+        "geometry": {
+          "x": 0.6788277511961722,
+          "y": 0.35812964930924546,
+          "width": 0.0645933014354067,
+          "height": 0.023379383634431455,
+          "z_index": 21
+        }
+      },
+      {
+        "garment_id": "7893136d-24c1-5af3-8986-05089c8f2f18",
+        "location_id": "b0bc76f0-1708-5dcb-8235-cac2a748a849",
+        "anchor_id": "STAGE-B-E3",
+        "geometry": {
+          "x": 0.6788277511961722,
+          "y": 0.33475026567481403,
+          "width": 0.0645933014354067,
+          "height": 0.023379383634431455,
+          "z_index": 22
+        }
+      },
+      {
+        "garment_id": "80cd394e-6f5b-5ef5-95d4-a1dae823a1ed",
+        "location_id": "3fa03e54-0119-5507-b99b-6cd14098c8c2",
+        "anchor_id": "STAGE-B-E4",
+        "geometry": {
+          "x": 0.5992822966507177,
+          "y": 0.512221041445271,
+          "width": 0.0645933014354067,
+          "height": 0.023379383634431455,
+          "z_index": 20
+        }
+      },
+      {
+        "garment_id": "821ae500-52f4-5879-b275-9a23bc327a3a",
+        "location_id": "3fa03e54-0119-5507-b99b-6cd14098c8c2",
+        "anchor_id": "STAGE-B-E4",
+        "geometry": {
+          "x": 0.5992822966507177,
+          "y": 0.48884165781083955,
+          "width": 0.0645933014354067,
+          "height": 0.023379383634431455,
+          "z_index": 21
+        }
+      },
+      {
+        "garment_id": "825237a9-8853-59de-bd73-4ec198b7e033",
+        "location_id": "3fa03e54-0119-5507-b99b-6cd14098c8c2",
+        "anchor_id": "STAGE-B-E4",
+        "geometry": {
+          "x": 0.5992822966507177,
+          "y": 0.46546227417640806,
+          "width": 0.0645933014354067,
+          "height": 0.023379383634431455,
+          "z_index": 22
+        }
+      },
+      {
+        "garment_id": "883a6a25-4c2c-510b-bbe5-0ca8e5a44e32",
+        "location_id": "3fa03e54-0119-5507-b99b-6cd14098c8c2",
+        "anchor_id": "STAGE-B-E4",
+        "geometry": {
+          "x": 0.6788277511961722,
+          "y": 0.512221041445271,
+          "width": 0.0645933014354067,
+          "height": 0.023379383634431455,
+          "z_index": 20
+        }
+      },
+      {
+        "garment_id": "900b7fa4-0e9c-5dd1-afd2-1c89ac2eaade",
+        "location_id": "3fa03e54-0119-5507-b99b-6cd14098c8c2",
+        "anchor_id": "STAGE-B-E4",
+        "geometry": {
+          "x": 0.6788277511961722,
+          "y": 0.48884165781083955,
+          "width": 0.0645933014354067,
+          "height": 0.023379383634431455,
+          "z_index": 21
+        }
+      },
+      {
+        "garment_id": "94513db1-6b4c-5b06-a088-1abf46df8712",
+        "location_id": "3fa03e54-0119-5507-b99b-6cd14098c8c2",
+        "anchor_id": "STAGE-B-E4",
+        "geometry": {
+          "x": 0.6788277511961722,
+          "y": 0.46546227417640806,
+          "width": 0.0645933014354067,
+          "height": 0.023379383634431455,
+          "z_index": 22
+        }
+      },
+      {
+        "garment_id": "a0232e79-b5d9-5525-a298-3054de415599",
+        "location_id": "5d7fe4ad-732c-5ea9-8970-f04c84a37f8a",
+        "anchor_id": "STAGE-B-F1",
+        "geometry": {
+          "x": 0.7834928229665071,
+          "y": 0.13177470775770456,
+          "width": 0.0645933014354067,
+          "height": 0.023379383634431455,
+          "z_index": 20
+        }
+      },
+      {
+        "garment_id": "a18baaab-a984-5245-a7a3-28bbd27e20ab",
+        "location_id": "5d7fe4ad-732c-5ea9-8970-f04c84a37f8a",
+        "anchor_id": "STAGE-B-F1",
+        "geometry": {
+          "x": 0.7834928229665071,
+          "y": 0.10839532412327312,
+          "width": 0.0645933014354067,
+          "height": 0.023379383634431455,
+          "z_index": 21
+        }
+      },
+      {
+        "garment_id": "a72e0c37-5f7f-5acf-bd50-7f8c65b8f23d",
+        "location_id": "5d7fe4ad-732c-5ea9-8970-f04c84a37f8a",
+        "anchor_id": "STAGE-B-F1",
+        "geometry": {
+          "x": 0.8911483253588517,
+          "y": 0.13177470775770456,
+          "width": 0.0645933014354067,
+          "height": 0.023379383634431455,
+          "z_index": 20
+        }
+      },
+      {
+        "garment_id": "b8c03e66-e150-52b2-8d25-41fcba2d4720",
+        "location_id": "5d7fe4ad-732c-5ea9-8970-f04c84a37f8a",
+        "anchor_id": "STAGE-B-F1",
+        "geometry": {
+          "x": 0.8911483253588517,
+          "y": 0.10839532412327312,
+          "width": 0.0645933014354067,
+          "height": 0.023379383634431455,
+          "z_index": 21
+        }
+      },
+      {
+        "garment_id": "c349dc83-4312-5479-bb8e-094931f8a30b",
+        "location_id": "5d7fe4ad-732c-5ea9-8970-f04c84a37f8a",
+        "anchor_id": "STAGE-B-F1",
+        "geometry": {
+          "x": 0.8911483253588517,
+          "y": 0.08501594048884166,
+          "width": 0.0645933014354067,
+          "height": 0.023379383634431455,
+          "z_index": 22
+        }
+      },
+      {
+        "garment_id": "df4082b6-d86e-53e7-a427-924c641a5145",
+        "location_id": "bf572cae-2306-5b60-a6a6-7ee1d2c2fc3b",
+        "anchor_id": "STAGE-B-F2",
+        "geometry": {
+          "x": 0.7834928229665071,
+          "y": 0.25717321997874604,
+          "width": 0.0645933014354067,
+          "height": 0.023379383634431455,
+          "z_index": 20
+        }
+      },
+      {
+        "garment_id": "df91ef4a-594c-570d-b32d-2b109efe8bab",
+        "location_id": "bf572cae-2306-5b60-a6a6-7ee1d2c2fc3b",
+        "anchor_id": "STAGE-B-F2",
+        "geometry": {
+          "x": 0.7834928229665071,
+          "y": 0.23379383634431455,
+          "width": 0.0645933014354067,
+          "height": 0.023379383634431455,
+          "z_index": 21
+        }
+      },
+      {
+        "garment_id": "e29bc367-5d11-5bbf-8fcb-9813c24c6f17",
+        "location_id": "bf572cae-2306-5b60-a6a6-7ee1d2c2fc3b",
+        "anchor_id": "STAGE-B-F2",
+        "geometry": {
+          "x": 0.7834928229665071,
+          "y": 0.2104144527098831,
+          "width": 0.0645933014354067,
+          "height": 0.023379383634431455,
+          "z_index": 22
+        }
+      },
+      {
+        "garment_id": "f35667ff-7520-5184-abf0-d35865244624",
+        "location_id": "bf572cae-2306-5b60-a6a6-7ee1d2c2fc3b",
+        "anchor_id": "STAGE-B-F2",
+        "geometry": {
+          "x": 0.8911483253588517,
+          "y": 0.25717321997874604,
+          "width": 0.0645933014354067,
+          "height": 0.023379383634431455,
+          "z_index": 20
+        }
+      },
+      {
+        "garment_id": "f84f09ec-6c6f-59fc-8438-3b80c620c3d9",
+        "location_id": "bf572cae-2306-5b60-a6a6-7ee1d2c2fc3b",
+        "anchor_id": "STAGE-B-F2",
+        "geometry": {
+          "x": 0.8911483253588517,
+          "y": 0.23379383634431455,
+          "width": 0.0645933014354067,
+          "height": 0.023379383634431455,
+          "z_index": 21
+        }
+      },
+      {
+        "garment_id": "fa6caeb1-0966-58c2-a81e-2754d7643c2c",
+        "location_id": "bf572cae-2306-5b60-a6a6-7ee1d2c2fc3b",
+        "anchor_id": "STAGE-B-F2",
+        "geometry": {
+          "x": 0.8911483253588517,
+          "y": 0.2104144527098831,
+          "width": 0.0645933014354067,
+          "height": 0.023379383634431455,
+          "z_index": 22
+        }
+      },
+      {
+        "garment_id": "ff39dfae-abdd-5ca3-8986-d1ba2cf0eccd",
+        "location_id": "0b86a817-11f1-5f5f-9ab9-ddc46885d09c",
+        "anchor_id": "STAGE-B-F3",
+        "geometry": {
+          "x": 0.7834928229665071,
+          "y": 0.35812964930924546,
+          "width": 0.0645933014354067,
+          "height": 0.023379383634431455,
+          "z_index": 21
+        }
+      },
+      {
+        "garment_id": "bc35f9b1-3a49-46d7-b0df-4631d2d3e3e9",
+        "location_id": "3a133bba-b4ab-51a4-b3e0-432221bb343e",
+        "anchor_id": "APPROVED-A1",
+        "geometry": {
+          "x": 0.04724880382775119,
+          "y": 0.12858660998937302,
+          "width": 0.03588516746411483,
+          "height": 0.5377258235919234,
+          "z_index": 11
+        }
+      },
+      {
+        "garment_id": "dbfcdf61-e6c8-42ae-82e3-6c0ef39f8806",
+        "location_id": "2176d703-c624-553d-bb5f-69fdd291af40",
+        "anchor_id": "APPROVED-A2",
+        "geometry": {
+          "x": 0.07535885167464115,
+          "y": 0.12858660998937302,
+          "width": 0.02930622009569378,
+          "height": 0.5377258235919234,
+          "z_index": 12
+        }
+      },
+      {
+        "garment_id": "a4ac8980-d9fb-4442-aa6f-158cc9270277",
+        "location_id": "cc524f16-f974-5f82-847f-655b14df96e9",
+        "anchor_id": "APPROVED-A3",
+        "geometry": {
+          "x": 0.09569377990430622,
+          "y": 0.12858660998937302,
+          "width": 0.03110047846889952,
+          "height": 0.5356004250797024,
+          "z_index": 13
+        }
+      },
+      {
+        "garment_id": "a418bd50-1612-4f95-a030-e54b6a820fe5",
+        "location_id": "5d25dc88-a3fd-5040-b741-997626780146",
+        "anchor_id": "APPROVED-A4",
+        "geometry": {
+          "x": 0.12021531100478469,
+          "y": 0.12858660998937302,
+          "width": 0.025119617224880382,
+          "height": 0.49415515409139216,
+          "z_index": 14
+        }
+      },
+      {
+        "garment_id": "6ba02802-d475-44f0-935a-e1050b50cf84",
+        "location_id": "b4a066f6-620e-50d5-aecc-2dd7243e2fb6",
+        "anchor_id": "APPROVED-A5",
+        "geometry": {
+          "x": 0.1339712918660287,
+          "y": 0.12858660998937302,
+          "width": 0.03648325358851675,
+          "height": 0.5451647183846972,
+          "z_index": 15
+        }
+      },
+      {
+        "garment_id": "59e18c18-7553-41d9-bc88-014dd65e7b21",
+        "location_id": "637bf332-0c15-5425-84c0-6b5cccd5cf46",
+        "anchor_id": "APPROVED-A6",
+        "geometry": {
+          "x": 0.16267942583732056,
+          "y": 0.12858660998937302,
+          "width": 0.030502392344497607,
+          "height": 0.5419766206163655,
+          "z_index": 16
+        }
+      },
+      {
+        "garment_id": "9f37a700-3578-4af2-9f8e-f36b869b5961",
+        "location_id": "5f7e1e02-6775-5177-9ff1-528e15963d2a",
+        "anchor_id": "APPROVED-A7",
+        "geometry": {
+          "x": 0.18660287081339713,
+          "y": 0.12858660998937302,
+          "width": 0.03648325358851675,
+          "height": 0.5419766206163655,
+          "z_index": 17
+        }
+      },
+      {
+        "garment_id": "449c07e3-04b7-42af-b7b0-79ae8bdbf400",
+        "location_id": "ccd3cb47-3efc-5640-842c-bdae5a5dcade",
+        "anchor_id": "APPROVED-B1",
+        "geometry": {
+          "x": 0.23863636363636365,
+          "y": 0.12858660998937302,
+          "width": 0.03708133971291866,
+          "height": 0.3283740701381509,
+          "z_index": 11
+        }
+      },
+      {
+        "garment_id": "3049ddf0-d7cb-43c5-b9d8-87936db3e346",
+        "location_id": "95bc3593-abb6-590f-b9b0-458f8c4533d7",
+        "anchor_id": "APPROVED-B2",
+        "geometry": {
+          "x": 0.26674641148325356,
+          "y": 0.12858660998937302,
+          "width": 0.03110047846889952,
+          "height": 0.3273113708820404,
+          "z_index": 12
+        }
+      },
+      {
+        "garment_id": "901a7b5c-d23c-4ec1-b434-5d8b41e6dd85",
+        "location_id": "0cb65035-e7ed-5074-a5ea-40c004125ddf",
+        "anchor_id": "APPROVED-B3",
+        "geometry": {
+          "x": 0.28708133971291866,
+          "y": 0.12221041445270989,
+          "width": 0.045454545454545456,
+          "height": 0.3379383634431456,
+          "z_index": 13
+        }
+      },
+      {
+        "garment_id": "6df03b25-1edd-4a0b-b003-609ea9d25781",
+        "location_id": "194942e3-3e35-56b7-8d42-8c8fbf649f70",
+        "anchor_id": "APPROVED-B4",
+        "geometry": {
+          "x": 0.319377990430622,
+          "y": 0.12858660998937302,
+          "width": 0.03409090909090909,
+          "height": 0.3336875664187035,
+          "z_index": 14
+        }
+      },
+      {
+        "garment_id": "24c575ab-9dff-4bab-8d72-5dcc61d712b7",
+        "location_id": "67a05349-7fa3-5574-8259-0b537b789a93",
+        "anchor_id": "APPROVED-B5",
+        "geometry": {
+          "x": 0.3444976076555024,
+          "y": 0.12858660998937302,
+          "width": 0.02930622009569378,
+          "height": 0.33581296493092455,
+          "z_index": 15
+        }
+      },
+      {
+        "garment_id": "393354b9-bf4d-4c62-9456-8a810288e870",
+        "location_id": "7dba2ffe-bb89-5d95-a067-12100d3a6493",
+        "anchor_id": "APPROVED-B6",
+        "geometry": {
+          "x": 0.36901913875598086,
+          "y": 0.12858660998937302,
+          "width": 0.03588516746411483,
+          "height": 0.3336875664187035,
+          "z_index": 16
+        }
+      },
+      {
+        "garment_id": "b5b5600d-3a67-48f6-8a63-7d8164bb9030",
+        "location_id": "a1e34730-28b2-5ee9-b9b9-7bfe3e42e8e6",
+        "anchor_id": "APPROVED-C1",
+        "geometry": {
+          "x": 0.24222488038277512,
+          "y": 0.5037194473963869,
+          "width": 0.023923444976076555,
+          "height": 0.2731137088204038,
+          "z_index": 11
+        }
+      },
+      {
+        "garment_id": "3518be70-15ef-462f-a130-7205a663205c",
+        "location_id": "78f553e7-992b-5761-ab7c-184215d7051a",
+        "anchor_id": "APPROVED-C2",
+        "geometry": {
+          "x": 0.2619617224880383,
+          "y": 0.5037194473963869,
+          "width": 0.022727272727272728,
+          "height": 0.2731137088204038,
+          "z_index": 12
+        }
+      },
+      {
+        "garment_id": "e2f39099-1da1-42a6-abed-827c494f53b9",
+        "location_id": "d556db5f-0127-55a0-be5b-5876b849bd74",
+        "anchor_id": "APPROVED-C3",
+        "geometry": {
+          "x": 0.28169856459330145,
+          "y": 0.5037194473963869,
+          "width": 0.022129186602870814,
+          "height": 0.2731137088204038,
+          "z_index": 13
+        }
+      },
+      {
+        "garment_id": "59aaa9b2-d32c-4634-8324-e229cf91ce7b",
+        "location_id": "c6f25b7b-25ac-5703-b760-0f13822505a3",
+        "anchor_id": "APPROVED-C4",
+        "geometry": {
+          "x": 0.3020334928229665,
+          "y": 0.5037194473963869,
+          "width": 0.020933014354066987,
+          "height": 0.2731137088204038,
+          "z_index": 14
+        }
+      },
+      {
+        "garment_id": "0e707336-0417-42f8-8b6f-f655ee0e94a0",
+        "location_id": "ddd31bf3-f95b-5dc4-80f1-da8d1d2506ba",
+        "anchor_id": "APPROVED-C5",
+        "geometry": {
+          "x": 0.3211722488038278,
+          "y": 0.5037194473963869,
+          "width": 0.0215311004784689,
+          "height": 0.27523910733262485,
+          "z_index": 15
+        }
+      },
+      {
+        "garment_id": "0d1ef3df-bbbe-4a2a-9fd7-56bf8dd945f9",
+        "location_id": "6ef61497-b7ed-58f9-b24f-08254ee832b0",
+        "anchor_id": "APPROVED-C6",
+        "geometry": {
+          "x": 0.34210526315789475,
+          "y": 0.5037194473963869,
+          "width": 0.022129186602870814,
+          "height": 0.27523910733262485,
+          "z_index": 16
+        }
+      },
+      {
+        "garment_id": "49dd09f9-430c-4705-bbbf-6a77d8131677",
+        "location_id": "1b228c5c-eeeb-5bf3-af3e-062d9bbe2d6e",
+        "anchor_id": "APPROVED-C7",
+        "geometry": {
+          "x": 0.36064593301435405,
+          "y": 0.5037194473963869,
+          "width": 0.023923444976076555,
+          "height": 0.27417640807651433,
+          "z_index": 17
+        }
+      },
+      {
+        "garment_id": "0d5afe1b-7832-4885-8eb5-341bb57cb90e",
+        "location_id": "7fe976b0-a792-52cc-b21e-0a5d63ce6f2c",
+        "anchor_id": "APPROVED-C8",
+        "geometry": {
+          "x": 0.37978468899521534,
+          "y": 0.5037194473963869,
+          "width": 0.028708133971291867,
+          "height": 0.2731137088204038,
+          "z_index": 18
+        }
+      },
+      {
+        "garment_id": "fd1ce769-aab6-4227-83e0-c550cd9ecb45",
+        "location_id": "0b86a817-11f1-5f5f-9ab9-ddc46885d09c",
+        "anchor_id": "STAGE-B-F3",
+        "geometry": {
+          "x": 0.7834928229665071,
+          "y": 0.38150903294367694,
+          "width": 0.0645933014354067,
+          "height": 0.023379383634431455,
+          "z_index": 20
+        }
+      },
+      {
+        "garment_id": "2568aead-2410-4bab-9208-6d4f54109927",
+        "location_id": "eb128a88-7443-5ea6-9dfb-975270cadf4f",
+        "anchor_id": "STAGE-B-E1",
+        "geometry": {
+          "x": 0.6788277511961722,
+          "y": 0.08395324123273114,
+          "width": 0.0645933014354067,
+          "height": 0.023379383634431455,
+          "z_index": 22
+        }
+      },
+      {
+        "garment_id": "a2f054f7-6967-4add-bf4a-b61af158f0e2",
+        "location_id": "5d7fe4ad-732c-5ea9-8970-f04c84a37f8a",
+        "anchor_id": "STAGE-B-F1",
+        "geometry": {
+          "x": 0.7834928229665071,
+          "y": 0.08501594048884166,
+          "width": 0.0645933014354067,
+          "height": 0.023379383634431455,
+          "z_index": 22
+        }
+      },
+      {
+        "garment_id": "00caadf4-b6bc-5d77-ad83-5087a2579b65",
+        "location_id": "997745af-7ec6-50be-ae80-1ce03f5ba710",
+        "anchor_id": "STAGE-B-F6",
+        "geometry": {
+          "x": 0.7834928229665071,
+          "y": 0.740701381509033,
+          "width": 0.0645933014354067,
+          "height": 0.023379383634431455,
+          "z_index": 20
+        }
+      },
+      {
+        "garment_id": "01d7378b-ec70-5035-bd0a-88b420767a48",
+        "location_id": "4076e3a0-b5f8-51a1-ba35-8df56a371757",
+        "anchor_id": "STAGE-B-F7",
+        "geometry": {
+          "x": 0.8911483253588517,
+          "y": 0.873538788522848,
+          "width": 0.0645933014354067,
+          "height": 0.023379383634431455,
+          "z_index": 20
+        }
+      },
+      {
+        "garment_id": "053eb5bd-f212-5c7a-8757-69d511d5dabe",
+        "location_id": "a723370e-5066-54f8-b012-7ab3cc44bf60",
+        "anchor_id": "STAGE-B-F4",
+        "geometry": {
+          "x": 0.8911483253588517,
+          "y": 0.45908607863974493,
+          "width": 0.0645933014354067,
+          "height": 0.023379383634431455,
+          "z_index": 22
+        }
+      },
+      {
+        "garment_id": "0d7ee270-4445-5529-9fda-46e0ca87cd8a",
+        "location_id": "a723370e-5066-54f8-b012-7ab3cc44bf60",
+        "anchor_id": "STAGE-B-F4",
+        "geometry": {
+          "x": 0.7834928229665071,
+          "y": 0.5058448459086079,
+          "width": 0.0645933014354067,
+          "height": 0.023379383634431455,
+          "z_index": 20
+        }
+      },
+      {
+        "garment_id": "11251df3-4107-575c-b871-47e5d6efeed3",
+        "location_id": "4076e3a0-b5f8-51a1-ba35-8df56a371757",
+        "anchor_id": "STAGE-B-F7",
+        "geometry": {
+          "x": 0.7834928229665071,
+          "y": 0.873538788522848,
+          "width": 0.0645933014354067,
+          "height": 0.023379383634431455,
+          "z_index": 20
+        }
+      },
+      {
+        "garment_id": "3aa71ad7-4b8e-5e40-a5ab-4ccef829b457",
+        "location_id": "0b86a817-11f1-5f5f-9ab9-ddc46885d09c",
+        "anchor_id": "STAGE-B-F3",
+        "geometry": {
+          "x": 0.8911483253588517,
+          "y": 0.33475026567481403,
+          "width": 0.0645933014354067,
+          "height": 0.023379383634431455,
+          "z_index": 22
+        }
+      },
+      {
+        "garment_id": "59f470a8-c063-5bef-b7d2-f7350c9039cb",
+        "location_id": "4076e3a0-b5f8-51a1-ba35-8df56a371757",
+        "anchor_id": "STAGE-B-F7",
+        "geometry": {
+          "x": 0.8911483253588517,
+          "y": 0.8267800212539851,
+          "width": 0.0645933014354067,
+          "height": 0.023379383634431455,
+          "z_index": 22
+        }
+      },
+      {
+        "garment_id": "5ac6ea1d-c00f-5aa4-ae85-82081fa3444f",
+        "location_id": "997745af-7ec6-50be-ae80-1ce03f5ba710",
+        "anchor_id": "STAGE-B-F6",
+        "geometry": {
+          "x": 0.7834928229665071,
+          "y": 0.69394261424017,
+          "width": 0.0645933014354067,
+          "height": 0.023379383634431455,
+          "z_index": 22
+        }
+      },
+      {
+        "garment_id": "622a268d-dda1-56a2-944d-6c12df3f4458",
+        "location_id": "cecb917e-03b5-50b7-8e33-f0ef4dc1d313",
+        "anchor_id": "STAGE-B-F5",
+        "geometry": {
+          "x": 0.7834928229665071,
+          "y": 0.6238044633368757,
+          "width": 0.0645933014354067,
+          "height": 0.023379383634431455,
+          "z_index": 20
+        }
+      },
+      {
+        "garment_id": "652c91d0-df18-5066-9600-852a9e1d9e8e",
+        "location_id": "cecb917e-03b5-50b7-8e33-f0ef4dc1d313",
+        "anchor_id": "STAGE-B-F5",
+        "geometry": {
+          "x": 0.7834928229665071,
+          "y": 0.5770456960680127,
+          "width": 0.0645933014354067,
+          "height": 0.023379383634431455,
+          "z_index": 22
+        }
+      },
+      {
+        "garment_id": "6a0331fb-9e5b-5153-91df-5f34afdaf691",
+        "location_id": "4076e3a0-b5f8-51a1-ba35-8df56a371757",
+        "anchor_id": "STAGE-B-F7",
+        "geometry": {
+          "x": 0.7834928229665071,
+          "y": 0.8501594048884166,
+          "width": 0.0645933014354067,
+          "height": 0.023379383634431455,
+          "z_index": 21
+        }
+      },
+      {
+        "garment_id": "6a39ca49-8a8c-52c6-b999-5797f7d2f188",
+        "location_id": "4076e3a0-b5f8-51a1-ba35-8df56a371757",
+        "anchor_id": "STAGE-B-F7",
+        "geometry": {
+          "x": 0.8911483253588517,
+          "y": 0.8501594048884166,
+          "width": 0.0645933014354067,
+          "height": 0.023379383634431455,
+          "z_index": 21
+        }
+      },
+      {
+        "garment_id": "826b60ea-d5e8-5d82-920e-d61a4009898e",
+        "location_id": "0b86a817-11f1-5f5f-9ab9-ddc46885d09c",
+        "anchor_id": "STAGE-B-F3",
+        "geometry": {
+          "x": 0.8911483253588517,
+          "y": 0.38150903294367694,
+          "width": 0.0645933014354067,
+          "height": 0.023379383634431455,
+          "z_index": 20
+        }
+      },
+      {
+        "garment_id": "869734e9-a720-5471-bb80-91bf4b6cdd8c",
+        "location_id": "a723370e-5066-54f8-b012-7ab3cc44bf60",
+        "anchor_id": "STAGE-B-F4",
+        "geometry": {
+          "x": 0.8911483253588517,
+          "y": 0.4824654622741764,
+          "width": 0.0645933014354067,
+          "height": 0.023379383634431455,
+          "z_index": 21
+        }
+      },
+      {
+        "garment_id": "8901515e-6ad7-51fc-8273-01284e04991d",
+        "location_id": "0b86a817-11f1-5f5f-9ab9-ddc46885d09c",
+        "anchor_id": "STAGE-B-F3",
+        "geometry": {
+          "x": 0.7834928229665071,
+          "y": 0.33475026567481403,
+          "width": 0.0645933014354067,
+          "height": 0.023379383634431455,
+          "z_index": 22
+        }
+      },
+      {
+        "garment_id": "89cca9bf-12cf-5fb2-b7ea-9cb38793fbb1",
+        "location_id": "cecb917e-03b5-50b7-8e33-f0ef4dc1d313",
+        "anchor_id": "STAGE-B-F5",
+        "geometry": {
+          "x": 0.7834928229665071,
+          "y": 0.6004250797024442,
+          "width": 0.0645933014354067,
+          "height": 0.023379383634431455,
+          "z_index": 21
+        }
+      },
+      {
+        "garment_id": "8afda102-37de-54fa-8c14-d473096205a6",
+        "location_id": "a723370e-5066-54f8-b012-7ab3cc44bf60",
+        "anchor_id": "STAGE-B-F4",
+        "geometry": {
+          "x": 0.7834928229665071,
+          "y": 0.45908607863974493,
+          "width": 0.0645933014354067,
+          "height": 0.023379383634431455,
+          "z_index": 22
+        }
+      },
+      {
+        "garment_id": "934d1ed2-2217-5875-ae29-b702b92c7a4b",
+        "location_id": "cecb917e-03b5-50b7-8e33-f0ef4dc1d313",
+        "anchor_id": "STAGE-B-F5",
+        "geometry": {
+          "x": 0.8911483253588517,
+          "y": 0.6238044633368757,
+          "width": 0.0645933014354067,
+          "height": 0.023379383634431455,
+          "z_index": 20
+        }
+      },
+      {
+        "garment_id": "9813c705-e718-53ae-b1ab-9e7bafd4565e",
+        "location_id": "cecb917e-03b5-50b7-8e33-f0ef4dc1d313",
+        "anchor_id": "STAGE-B-F5",
+        "geometry": {
+          "x": 0.8911483253588517,
+          "y": 0.6004250797024442,
+          "width": 0.0645933014354067,
+          "height": 0.023379383634431455,
+          "z_index": 21
+        }
+      },
+      {
+        "garment_id": "9a592908-46aa-5cb5-ae6e-4588e80195d0",
+        "location_id": "997745af-7ec6-50be-ae80-1ce03f5ba710",
+        "anchor_id": "STAGE-B-F6",
+        "geometry": {
+          "x": 0.7834928229665071,
+          "y": 0.7173219978746015,
+          "width": 0.0645933014354067,
+          "height": 0.023379383634431455,
+          "z_index": 21
+        }
+      },
+      {
+        "garment_id": "9a8c11b4-4213-555f-aee6-70dd26494a30",
+        "location_id": "cecb917e-03b5-50b7-8e33-f0ef4dc1d313",
+        "anchor_id": "STAGE-B-F5",
+        "geometry": {
+          "x": 0.8911483253588517,
+          "y": 0.5770456960680127,
+          "width": 0.0645933014354067,
+          "height": 0.023379383634431455,
+          "z_index": 22
+        }
+      },
+      {
+        "garment_id": "b4c04595-b1cc-5380-abb5-a4a89324087f",
+        "location_id": "997745af-7ec6-50be-ae80-1ce03f5ba710",
+        "anchor_id": "STAGE-B-F6",
+        "geometry": {
+          "x": 0.8911483253588517,
+          "y": 0.740701381509033,
+          "width": 0.0645933014354067,
+          "height": 0.023379383634431455,
+          "z_index": 20
+        }
+      },
+      {
+        "garment_id": "cdf93107-16da-5dfd-821f-be69d76be007",
+        "location_id": "a723370e-5066-54f8-b012-7ab3cc44bf60",
+        "anchor_id": "STAGE-B-F4",
+        "geometry": {
+          "x": 0.8911483253588517,
+          "y": 0.5058448459086079,
+          "width": 0.0645933014354067,
+          "height": 0.023379383634431455,
+          "z_index": 20
+        }
+      },
+      {
+        "garment_id": "d0ef9f43-50c9-5fee-8980-f501b8128baa",
+        "location_id": "997745af-7ec6-50be-ae80-1ce03f5ba710",
+        "anchor_id": "STAGE-B-F6",
+        "geometry": {
+          "x": 0.8911483253588517,
+          "y": 0.69394261424017,
+          "width": 0.0645933014354067,
+          "height": 0.023379383634431455,
+          "z_index": 22
+        }
+      },
+      {
+        "garment_id": "d65f4291-ba26-5e0a-9547-9d4dddc2bf54",
+        "location_id": "4076e3a0-b5f8-51a1-ba35-8df56a371757",
+        "anchor_id": "STAGE-B-F7",
+        "geometry": {
+          "x": 0.7834928229665071,
+          "y": 0.8267800212539851,
+          "width": 0.0645933014354067,
+          "height": 0.023379383634431455,
+          "z_index": 22
+        }
+      },
+      {
+        "garment_id": "dda8dc76-975b-5283-8e66-c23dc6883b40",
+        "location_id": "a723370e-5066-54f8-b012-7ab3cc44bf60",
+        "anchor_id": "STAGE-B-F4",
+        "geometry": {
+          "x": 0.7834928229665071,
+          "y": 0.4824654622741764,
+          "width": 0.0645933014354067,
+          "height": 0.023379383634431455,
+          "z_index": 21
+        }
+      },
+      {
+        "garment_id": "f21f98ef-184e-5e45-80aa-4552b848d8a4",
+        "location_id": "997745af-7ec6-50be-ae80-1ce03f5ba710",
+        "anchor_id": "STAGE-B-F6",
+        "geometry": {
+          "x": 0.8911483253588517,
+          "y": 0.7173219978746015,
+          "width": 0.0645933014354067,
+          "height": 0.023379383634431455,
+          "z_index": 21
+        }
+      },
+      {
+        "garment_id": "fdc6ebaa-33d3-5edc-9477-18fd44a7b360",
+        "location_id": "0b86a817-11f1-5f5f-9ab9-ddc46885d09c",
+        "anchor_id": "STAGE-B-F3",
+        "geometry": {
+          "x": 0.8911483253588517,
+          "y": 0.35812964930924546,
+          "width": 0.0645933014354067,
+          "height": 0.023379383634431455,
+          "z_index": 21
+        }
+      }
+    ],
+    "liked": [
+      {
+        "id": "109a3620-6ddd-5ed4-b19e-2f2c63018bb1",
+        "category": "OUTER",
+        "image_asset_id": "7cc1653f-383c-4a84-b9ab-b1983b8a34ce"
+      },
+      {
+        "id": "122aa70c-6e44-518e-84eb-9be13a0718d3",
+        "category": "BOTTOM",
+        "image_asset_id": "7a0d8a2e-ac38-4a97-860e-4f8bffa78123"
+      },
+      {
+        "id": "4a4011ec-5c0b-5506-bc47-ffb65719830b",
+        "category": "TOP",
+        "image_asset_id": "23fc96e0-1eb3-47a7-9339-4175559654d0"
+      }
+    ],
+    "errors": [],
+    "unexpectedMutations": []
+  },
+  {
+    "profile": "최휘재",
+    "ids": [
+      "1adf7dde-eaed-53f9-ac0e-8497078fa703",
+      "1b92cf0a-82ad-567a-b1b5-7022111fccaf",
+      "1f8dcda3-eb5c-5744-bbd7-98e2b7adef98",
+      "20cb6b2b-1f68-542e-9150-d9e1e0a189c5",
+      "21901819-11cb-56f0-9492-026b6b6166fe",
+      "26b4405e-901e-5e94-94c0-6135105b0b8c",
+      "2904fd43-cb31-530d-b4bd-2d9783d3c762",
+      "2d5ec79d-bdcf-582b-a78d-a6734b287c65",
+      "2f2a46af-3507-5f7d-a53f-5b2bab1e7af5",
+      "33d87c69-53a3-5062-9428-fdf2d12a2bce",
+      "3e2e7757-e7fe-5096-b955-5978f9551311",
+      "454faefc-acf0-593d-a5b1-15a1b45b097e",
+      "4d1f6a17-44b8-5c0b-8248-eb009565da12",
+      "59e7a4ca-3acb-5250-a2d6-8f7703984934",
+      "6318748a-24b8-5a50-bf13-c925293f0ea1",
+      "715489be-2fd6-5576-b58c-bd991c9c2c32",
+      "7893136d-24c1-5af3-8986-05089c8f2f18",
+      "80cd394e-6f5b-5ef5-95d4-a1dae823a1ed",
+      "821ae500-52f4-5879-b275-9a23bc327a3a",
+      "825237a9-8853-59de-bd73-4ec198b7e033",
+      "883a6a25-4c2c-510b-bbe5-0ca8e5a44e32",
+      "900b7fa4-0e9c-5dd1-afd2-1c89ac2eaade",
+      "94513db1-6b4c-5b06-a088-1abf46df8712",
+      "a0232e79-b5d9-5525-a298-3054de415599",
+      "a18baaab-a984-5245-a7a3-28bbd27e20ab",
+      "a72e0c37-5f7f-5acf-bd50-7f8c65b8f23d",
+      "b8c03e66-e150-52b2-8d25-41fcba2d4720",
+      "c349dc83-4312-5479-bb8e-094931f8a30b",
+      "df4082b6-d86e-53e7-a427-924c641a5145",
+      "df91ef4a-594c-570d-b32d-2b109efe8bab",
+      "e29bc367-5d11-5bbf-8fcb-9813c24c6f17",
+      "f35667ff-7520-5184-abf0-d35865244624",
+      "f84f09ec-6c6f-59fc-8438-3b80c620c3d9",
+      "fa6caeb1-0966-58c2-a81e-2754d7643c2c",
+      "ff39dfae-abdd-5ca3-8986-d1ba2cf0eccd",
+      "bc35f9b1-3a49-46d7-b0df-4631d2d3e3e9",
+      "dbfcdf61-e6c8-42ae-82e3-6c0ef39f8806",
+      "a4ac8980-d9fb-4442-aa6f-158cc9270277",
+      "a418bd50-1612-4f95-a030-e54b6a820fe5",
+      "6ba02802-d475-44f0-935a-e1050b50cf84",
+      "59e18c18-7553-41d9-bc88-014dd65e7b21",
+      "9f37a700-3578-4af2-9f8e-f36b869b5961",
+      "449c07e3-04b7-42af-b7b0-79ae8bdbf400",
+      "3049ddf0-d7cb-43c5-b9d8-87936db3e346",
+      "901a7b5c-d23c-4ec1-b434-5d8b41e6dd85",
+      "6df03b25-1edd-4a0b-b003-609ea9d25781",
+      "24c575ab-9dff-4bab-8d72-5dcc61d712b7",
+      "393354b9-bf4d-4c62-9456-8a810288e870",
+      "b5b5600d-3a67-48f6-8a63-7d8164bb9030",
+      "3518be70-15ef-462f-a130-7205a663205c",
+      "e2f39099-1da1-42a6-abed-827c494f53b9",
+      "59aaa9b2-d32c-4634-8324-e229cf91ce7b",
+      "0e707336-0417-42f8-8b6f-f655ee0e94a0",
+      "0d1ef3df-bbbe-4a2a-9fd7-56bf8dd945f9",
+      "49dd09f9-430c-4705-bbbf-6a77d8131677",
+      "0d5afe1b-7832-4885-8eb5-341bb57cb90e",
+      "fd1ce769-aab6-4227-83e0-c550cd9ecb45",
+      "2568aead-2410-4bab-9208-6d4f54109927",
+      "a2f054f7-6967-4add-bf4a-b61af158f0e2",
+      "00caadf4-b6bc-5d77-ad83-5087a2579b65",
+      "01d7378b-ec70-5035-bd0a-88b420767a48",
+      "053eb5bd-f212-5c7a-8757-69d511d5dabe",
+      "0d7ee270-4445-5529-9fda-46e0ca87cd8a",
+      "11251df3-4107-575c-b871-47e5d6efeed3",
+      "3aa71ad7-4b8e-5e40-a5ab-4ccef829b457",
+      "59f470a8-c063-5bef-b7d2-f7350c9039cb",
+      "5ac6ea1d-c00f-5aa4-ae85-82081fa3444f",
+      "622a268d-dda1-56a2-944d-6c12df3f4458",
+      "652c91d0-df18-5066-9600-852a9e1d9e8e",
+      "6a0331fb-9e5b-5153-91df-5f34afdaf691",
+      "6a39ca49-8a8c-52c6-b999-5797f7d2f188",
+      "826b60ea-d5e8-5d82-920e-d61a4009898e",
+      "869734e9-a720-5471-bb80-91bf4b6cdd8c",
+      "8901515e-6ad7-51fc-8273-01284e04991d",
+      "89cca9bf-12cf-5fb2-b7ea-9cb38793fbb1",
+      "8afda102-37de-54fa-8c14-d473096205a6",
+      "934d1ed2-2217-5875-ae29-b702b92c7a4b",
+      "9813c705-e718-53ae-b1ab-9e7bafd4565e",
+      "9a592908-46aa-5cb5-ae6e-4588e80195d0",
+      "9a8c11b4-4213-555f-aee6-70dd26494a30",
+      "b4c04595-b1cc-5380-abb5-a4a89324087f",
+      "cdf93107-16da-5dfd-821f-be69d76be007",
+      "d0ef9f43-50c9-5fee-8980-f501b8128baa",
+      "d65f4291-ba26-5e0a-9547-9d4dddc2bf54",
+      "dda8dc76-975b-5283-8e66-c23dc6883b40",
+      "f21f98ef-184e-5e45-80aa-4552b848d8a4",
+      "fdc6ebaa-33d3-5edc-9477-18fd44a7b360"
+    ],
+    "scene": [
+      {
+        "garment_id": "1adf7dde-eaed-53f9-ac0e-8497078fa703",
+        "location_id": "eb128a88-7443-5ea6-9dfb-975270cadf4f",
+        "anchor_id": "STAGE-B-E1",
+        "geometry": {
+          "x": 0.5992822966507177,
+          "y": 0.13071200850159406,
+          "width": 0.0645933014354067,
+          "height": 0.023379383634431455,
+          "z_index": 20
+        }
+      },
+      {
+        "garment_id": "1b92cf0a-82ad-567a-b1b5-7022111fccaf",
+        "location_id": "eb128a88-7443-5ea6-9dfb-975270cadf4f",
+        "anchor_id": "STAGE-B-E1",
+        "geometry": {
+          "x": 0.5992822966507177,
+          "y": 0.1073326248671626,
+          "width": 0.0645933014354067,
+          "height": 0.023379383634431455,
+          "z_index": 21
+        }
+      },
+      {
+        "garment_id": "1f8dcda3-eb5c-5744-bbd7-98e2b7adef98",
+        "location_id": "eb128a88-7443-5ea6-9dfb-975270cadf4f",
+        "anchor_id": "STAGE-B-E1",
+        "geometry": {
+          "x": 0.5992822966507177,
+          "y": 0.08395324123273114,
+          "width": 0.0645933014354067,
+          "height": 0.023379383634431455,
+          "z_index": 22
+        }
+      },
+      {
+        "garment_id": "20cb6b2b-1f68-542e-9150-d9e1e0a189c5",
+        "location_id": "eb128a88-7443-5ea6-9dfb-975270cadf4f",
+        "anchor_id": "STAGE-B-E1",
+        "geometry": {
+          "x": 0.6788277511961722,
+          "y": 0.13071200850159406,
+          "width": 0.0645933014354067,
+          "height": 0.023379383634431455,
+          "z_index": 20
+        }
+      },
+      {
+        "garment_id": "21901819-11cb-56f0-9492-026b6b6166fe",
+        "location_id": "eb128a88-7443-5ea6-9dfb-975270cadf4f",
+        "anchor_id": "STAGE-B-E1",
+        "geometry": {
+          "x": 0.6788277511961722,
+          "y": 0.1073326248671626,
+          "width": 0.0645933014354067,
+          "height": 0.023379383634431455,
+          "z_index": 21
+        }
+      },
+      {
+        "garment_id": "26b4405e-901e-5e94-94c0-6135105b0b8c",
+        "location_id": "40b480ba-14dd-5796-af79-b257bcdaadff",
+        "anchor_id": "STAGE-B-E2",
+        "geometry": {
+          "x": 0.5992822966507177,
+          "y": 0.25717321997874604,
+          "width": 0.0645933014354067,
+          "height": 0.023379383634431455,
+          "z_index": 20
+        }
+      },
+      {
+        "garment_id": "2904fd43-cb31-530d-b4bd-2d9783d3c762",
+        "location_id": "40b480ba-14dd-5796-af79-b257bcdaadff",
+        "anchor_id": "STAGE-B-E2",
+        "geometry": {
+          "x": 0.5992822966507177,
+          "y": 0.23379383634431455,
+          "width": 0.0645933014354067,
+          "height": 0.023379383634431455,
+          "z_index": 21
+        }
+      },
+      {
+        "garment_id": "2d5ec79d-bdcf-582b-a78d-a6734b287c65",
+        "location_id": "40b480ba-14dd-5796-af79-b257bcdaadff",
+        "anchor_id": "STAGE-B-E2",
+        "geometry": {
+          "x": 0.5992822966507177,
+          "y": 0.2104144527098831,
+          "width": 0.0645933014354067,
+          "height": 0.023379383634431455,
+          "z_index": 22
+        }
+      },
+      {
+        "garment_id": "2f2a46af-3507-5f7d-a53f-5b2bab1e7af5",
+        "location_id": "40b480ba-14dd-5796-af79-b257bcdaadff",
+        "anchor_id": "STAGE-B-E2",
+        "geometry": {
+          "x": 0.6788277511961722,
+          "y": 0.25717321997874604,
+          "width": 0.0645933014354067,
+          "height": 0.023379383634431455,
+          "z_index": 20
+        }
+      },
+      {
+        "garment_id": "33d87c69-53a3-5062-9428-fdf2d12a2bce",
+        "location_id": "40b480ba-14dd-5796-af79-b257bcdaadff",
+        "anchor_id": "STAGE-B-E2",
+        "geometry": {
+          "x": 0.6788277511961722,
+          "y": 0.23379383634431455,
+          "width": 0.0645933014354067,
+          "height": 0.023379383634431455,
+          "z_index": 21
+        }
+      },
+      {
+        "garment_id": "3e2e7757-e7fe-5096-b955-5978f9551311",
+        "location_id": "40b480ba-14dd-5796-af79-b257bcdaadff",
+        "anchor_id": "STAGE-B-E2",
+        "geometry": {
+          "x": 0.6788277511961722,
+          "y": 0.2104144527098831,
+          "width": 0.0645933014354067,
+          "height": 0.023379383634431455,
+          "z_index": 22
+        }
+      },
+      {
+        "garment_id": "454faefc-acf0-593d-a5b1-15a1b45b097e",
+        "location_id": "b0bc76f0-1708-5dcb-8235-cac2a748a849",
+        "anchor_id": "STAGE-B-E3",
+        "geometry": {
+          "x": 0.5992822966507177,
+          "y": 0.38150903294367694,
+          "width": 0.0645933014354067,
+          "height": 0.023379383634431455,
+          "z_index": 20
+        }
+      },
+      {
+        "garment_id": "4d1f6a17-44b8-5c0b-8248-eb009565da12",
+        "location_id": "b0bc76f0-1708-5dcb-8235-cac2a748a849",
+        "anchor_id": "STAGE-B-E3",
+        "geometry": {
+          "x": 0.5992822966507177,
+          "y": 0.35812964930924546,
+          "width": 0.0645933014354067,
+          "height": 0.023379383634431455,
+          "z_index": 21
+        }
+      },
+      {
+        "garment_id": "59e7a4ca-3acb-5250-a2d6-8f7703984934",
+        "location_id": "b0bc76f0-1708-5dcb-8235-cac2a748a849",
+        "anchor_id": "STAGE-B-E3",
+        "geometry": {
+          "x": 0.5992822966507177,
+          "y": 0.33475026567481403,
+          "width": 0.0645933014354067,
+          "height": 0.023379383634431455,
+          "z_index": 22
+        }
+      },
+      {
+        "garment_id": "6318748a-24b8-5a50-bf13-c925293f0ea1",
+        "location_id": "b0bc76f0-1708-5dcb-8235-cac2a748a849",
+        "anchor_id": "STAGE-B-E3",
+        "geometry": {
+          "x": 0.6788277511961722,
+          "y": 0.38150903294367694,
+          "width": 0.0645933014354067,
+          "height": 0.023379383634431455,
+          "z_index": 20
+        }
+      },
+      {
+        "garment_id": "715489be-2fd6-5576-b58c-bd991c9c2c32",
+        "location_id": "b0bc76f0-1708-5dcb-8235-cac2a748a849",
+        "anchor_id": "STAGE-B-E3",
+        "geometry": {
+          "x": 0.6788277511961722,
+          "y": 0.35812964930924546,
+          "width": 0.0645933014354067,
+          "height": 0.023379383634431455,
+          "z_index": 21
+        }
+      },
+      {
+        "garment_id": "7893136d-24c1-5af3-8986-05089c8f2f18",
+        "location_id": "b0bc76f0-1708-5dcb-8235-cac2a748a849",
+        "anchor_id": "STAGE-B-E3",
+        "geometry": {
+          "x": 0.6788277511961722,
+          "y": 0.33475026567481403,
+          "width": 0.0645933014354067,
+          "height": 0.023379383634431455,
+          "z_index": 22
+        }
+      },
+      {
+        "garment_id": "80cd394e-6f5b-5ef5-95d4-a1dae823a1ed",
+        "location_id": "3fa03e54-0119-5507-b99b-6cd14098c8c2",
+        "anchor_id": "STAGE-B-E4",
+        "geometry": {
+          "x": 0.5992822966507177,
+          "y": 0.512221041445271,
+          "width": 0.0645933014354067,
+          "height": 0.023379383634431455,
+          "z_index": 20
+        }
+      },
+      {
+        "garment_id": "821ae500-52f4-5879-b275-9a23bc327a3a",
+        "location_id": "3fa03e54-0119-5507-b99b-6cd14098c8c2",
+        "anchor_id": "STAGE-B-E4",
+        "geometry": {
+          "x": 0.5992822966507177,
+          "y": 0.48884165781083955,
+          "width": 0.0645933014354067,
+          "height": 0.023379383634431455,
+          "z_index": 21
+        }
+      },
+      {
+        "garment_id": "825237a9-8853-59de-bd73-4ec198b7e033",
+        "location_id": "3fa03e54-0119-5507-b99b-6cd14098c8c2",
+        "anchor_id": "STAGE-B-E4",
+        "geometry": {
+          "x": 0.5992822966507177,
+          "y": 0.46546227417640806,
+          "width": 0.0645933014354067,
+          "height": 0.023379383634431455,
+          "z_index": 22
+        }
+      },
+      {
+        "garment_id": "883a6a25-4c2c-510b-bbe5-0ca8e5a44e32",
+        "location_id": "3fa03e54-0119-5507-b99b-6cd14098c8c2",
+        "anchor_id": "STAGE-B-E4",
+        "geometry": {
+          "x": 0.6788277511961722,
+          "y": 0.512221041445271,
+          "width": 0.0645933014354067,
+          "height": 0.023379383634431455,
+          "z_index": 20
+        }
+      },
+      {
+        "garment_id": "900b7fa4-0e9c-5dd1-afd2-1c89ac2eaade",
+        "location_id": "3fa03e54-0119-5507-b99b-6cd14098c8c2",
+        "anchor_id": "STAGE-B-E4",
+        "geometry": {
+          "x": 0.6788277511961722,
+          "y": 0.48884165781083955,
+          "width": 0.0645933014354067,
+          "height": 0.023379383634431455,
+          "z_index": 21
+        }
+      },
+      {
+        "garment_id": "94513db1-6b4c-5b06-a088-1abf46df8712",
+        "location_id": "3fa03e54-0119-5507-b99b-6cd14098c8c2",
+        "anchor_id": "STAGE-B-E4",
+        "geometry": {
+          "x": 0.6788277511961722,
+          "y": 0.46546227417640806,
+          "width": 0.0645933014354067,
+          "height": 0.023379383634431455,
+          "z_index": 22
+        }
+      },
+      {
+        "garment_id": "a0232e79-b5d9-5525-a298-3054de415599",
+        "location_id": "5d7fe4ad-732c-5ea9-8970-f04c84a37f8a",
+        "anchor_id": "STAGE-B-F1",
+        "geometry": {
+          "x": 0.7834928229665071,
+          "y": 0.13177470775770456,
+          "width": 0.0645933014354067,
+          "height": 0.023379383634431455,
+          "z_index": 20
+        }
+      },
+      {
+        "garment_id": "a18baaab-a984-5245-a7a3-28bbd27e20ab",
+        "location_id": "5d7fe4ad-732c-5ea9-8970-f04c84a37f8a",
+        "anchor_id": "STAGE-B-F1",
+        "geometry": {
+          "x": 0.7834928229665071,
+          "y": 0.10839532412327312,
+          "width": 0.0645933014354067,
+          "height": 0.023379383634431455,
+          "z_index": 21
+        }
+      },
+      {
+        "garment_id": "a72e0c37-5f7f-5acf-bd50-7f8c65b8f23d",
+        "location_id": "5d7fe4ad-732c-5ea9-8970-f04c84a37f8a",
+        "anchor_id": "STAGE-B-F1",
+        "geometry": {
+          "x": 0.8911483253588517,
+          "y": 0.13177470775770456,
+          "width": 0.0645933014354067,
+          "height": 0.023379383634431455,
+          "z_index": 20
+        }
+      },
+      {
+        "garment_id": "b8c03e66-e150-52b2-8d25-41fcba2d4720",
+        "location_id": "5d7fe4ad-732c-5ea9-8970-f04c84a37f8a",
+        "anchor_id": "STAGE-B-F1",
+        "geometry": {
+          "x": 0.8911483253588517,
+          "y": 0.10839532412327312,
+          "width": 0.0645933014354067,
+          "height": 0.023379383634431455,
+          "z_index": 21
+        }
+      },
+      {
+        "garment_id": "c349dc83-4312-5479-bb8e-094931f8a30b",
+        "location_id": "5d7fe4ad-732c-5ea9-8970-f04c84a37f8a",
+        "anchor_id": "STAGE-B-F1",
+        "geometry": {
+          "x": 0.8911483253588517,
+          "y": 0.08501594048884166,
+          "width": 0.0645933014354067,
+          "height": 0.023379383634431455,
+          "z_index": 22
+        }
+      },
+      {
+        "garment_id": "df4082b6-d86e-53e7-a427-924c641a5145",
+        "location_id": "bf572cae-2306-5b60-a6a6-7ee1d2c2fc3b",
+        "anchor_id": "STAGE-B-F2",
+        "geometry": {
+          "x": 0.7834928229665071,
+          "y": 0.25717321997874604,
+          "width": 0.0645933014354067,
+          "height": 0.023379383634431455,
+          "z_index": 20
+        }
+      },
+      {
+        "garment_id": "df91ef4a-594c-570d-b32d-2b109efe8bab",
+        "location_id": "bf572cae-2306-5b60-a6a6-7ee1d2c2fc3b",
+        "anchor_id": "STAGE-B-F2",
+        "geometry": {
+          "x": 0.7834928229665071,
+          "y": 0.23379383634431455,
+          "width": 0.0645933014354067,
+          "height": 0.023379383634431455,
+          "z_index": 21
+        }
+      },
+      {
+        "garment_id": "e29bc367-5d11-5bbf-8fcb-9813c24c6f17",
+        "location_id": "bf572cae-2306-5b60-a6a6-7ee1d2c2fc3b",
+        "anchor_id": "STAGE-B-F2",
+        "geometry": {
+          "x": 0.7834928229665071,
+          "y": 0.2104144527098831,
+          "width": 0.0645933014354067,
+          "height": 0.023379383634431455,
+          "z_index": 22
+        }
+      },
+      {
+        "garment_id": "f35667ff-7520-5184-abf0-d35865244624",
+        "location_id": "bf572cae-2306-5b60-a6a6-7ee1d2c2fc3b",
+        "anchor_id": "STAGE-B-F2",
+        "geometry": {
+          "x": 0.8911483253588517,
+          "y": 0.25717321997874604,
+          "width": 0.0645933014354067,
+          "height": 0.023379383634431455,
+          "z_index": 20
+        }
+      },
+      {
+        "garment_id": "f84f09ec-6c6f-59fc-8438-3b80c620c3d9",
+        "location_id": "bf572cae-2306-5b60-a6a6-7ee1d2c2fc3b",
+        "anchor_id": "STAGE-B-F2",
+        "geometry": {
+          "x": 0.8911483253588517,
+          "y": 0.23379383634431455,
+          "width": 0.0645933014354067,
+          "height": 0.023379383634431455,
+          "z_index": 21
+        }
+      },
+      {
+        "garment_id": "fa6caeb1-0966-58c2-a81e-2754d7643c2c",
+        "location_id": "bf572cae-2306-5b60-a6a6-7ee1d2c2fc3b",
+        "anchor_id": "STAGE-B-F2",
+        "geometry": {
+          "x": 0.8911483253588517,
+          "y": 0.2104144527098831,
+          "width": 0.0645933014354067,
+          "height": 0.023379383634431455,
+          "z_index": 22
+        }
+      },
+      {
+        "garment_id": "ff39dfae-abdd-5ca3-8986-d1ba2cf0eccd",
+        "location_id": "0b86a817-11f1-5f5f-9ab9-ddc46885d09c",
+        "anchor_id": "STAGE-B-F3",
+        "geometry": {
+          "x": 0.7834928229665071,
+          "y": 0.35812964930924546,
+          "width": 0.0645933014354067,
+          "height": 0.023379383634431455,
+          "z_index": 21
+        }
+      },
+      {
+        "garment_id": "bc35f9b1-3a49-46d7-b0df-4631d2d3e3e9",
+        "location_id": "3a133bba-b4ab-51a4-b3e0-432221bb343e",
+        "anchor_id": "APPROVED-A1",
+        "geometry": {
+          "x": 0.04724880382775119,
+          "y": 0.12858660998937302,
+          "width": 0.03588516746411483,
+          "height": 0.5377258235919234,
+          "z_index": 11
+        }
+      },
+      {
+        "garment_id": "dbfcdf61-e6c8-42ae-82e3-6c0ef39f8806",
+        "location_id": "2176d703-c624-553d-bb5f-69fdd291af40",
+        "anchor_id": "APPROVED-A2",
+        "geometry": {
+          "x": 0.07535885167464115,
+          "y": 0.12858660998937302,
+          "width": 0.02930622009569378,
+          "height": 0.5377258235919234,
+          "z_index": 12
+        }
+      },
+      {
+        "garment_id": "a4ac8980-d9fb-4442-aa6f-158cc9270277",
+        "location_id": "cc524f16-f974-5f82-847f-655b14df96e9",
+        "anchor_id": "APPROVED-A3",
+        "geometry": {
+          "x": 0.09569377990430622,
+          "y": 0.12858660998937302,
+          "width": 0.03110047846889952,
+          "height": 0.5356004250797024,
+          "z_index": 13
+        }
+      },
+      {
+        "garment_id": "a418bd50-1612-4f95-a030-e54b6a820fe5",
+        "location_id": "5d25dc88-a3fd-5040-b741-997626780146",
+        "anchor_id": "APPROVED-A4",
+        "geometry": {
+          "x": 0.12021531100478469,
+          "y": 0.12858660998937302,
+          "width": 0.025119617224880382,
+          "height": 0.49415515409139216,
+          "z_index": 14
+        }
+      },
+      {
+        "garment_id": "6ba02802-d475-44f0-935a-e1050b50cf84",
+        "location_id": "b4a066f6-620e-50d5-aecc-2dd7243e2fb6",
+        "anchor_id": "APPROVED-A5",
+        "geometry": {
+          "x": 0.1339712918660287,
+          "y": 0.12858660998937302,
+          "width": 0.03648325358851675,
+          "height": 0.5451647183846972,
+          "z_index": 15
+        }
+      },
+      {
+        "garment_id": "59e18c18-7553-41d9-bc88-014dd65e7b21",
+        "location_id": "637bf332-0c15-5425-84c0-6b5cccd5cf46",
+        "anchor_id": "APPROVED-A6",
+        "geometry": {
+          "x": 0.16267942583732056,
+          "y": 0.12858660998937302,
+          "width": 0.030502392344497607,
+          "height": 0.5419766206163655,
+          "z_index": 16
+        }
+      },
+      {
+        "garment_id": "9f37a700-3578-4af2-9f8e-f36b869b5961",
+        "location_id": "5f7e1e02-6775-5177-9ff1-528e15963d2a",
+        "anchor_id": "APPROVED-A7",
+        "geometry": {
+          "x": 0.18660287081339713,
+          "y": 0.12858660998937302,
+          "width": 0.03648325358851675,
+          "height": 0.5419766206163655,
+          "z_index": 17
+        }
+      },
+      {
+        "garment_id": "449c07e3-04b7-42af-b7b0-79ae8bdbf400",
+        "location_id": "ccd3cb47-3efc-5640-842c-bdae5a5dcade",
+        "anchor_id": "APPROVED-B1",
+        "geometry": {
+          "x": 0.23863636363636365,
+          "y": 0.12858660998937302,
+          "width": 0.03708133971291866,
+          "height": 0.3283740701381509,
+          "z_index": 11
+        }
+      },
+      {
+        "garment_id": "3049ddf0-d7cb-43c5-b9d8-87936db3e346",
+        "location_id": "95bc3593-abb6-590f-b9b0-458f8c4533d7",
+        "anchor_id": "APPROVED-B2",
+        "geometry": {
+          "x": 0.26674641148325356,
+          "y": 0.12858660998937302,
+          "width": 0.03110047846889952,
+          "height": 0.3273113708820404,
+          "z_index": 12
+        }
+      },
+      {
+        "garment_id": "901a7b5c-d23c-4ec1-b434-5d8b41e6dd85",
+        "location_id": "0cb65035-e7ed-5074-a5ea-40c004125ddf",
+        "anchor_id": "APPROVED-B3",
+        "geometry": {
+          "x": 0.28708133971291866,
+          "y": 0.12221041445270989,
+          "width": 0.045454545454545456,
+          "height": 0.3379383634431456,
+          "z_index": 13
+        }
+      },
+      {
+        "garment_id": "6df03b25-1edd-4a0b-b003-609ea9d25781",
+        "location_id": "194942e3-3e35-56b7-8d42-8c8fbf649f70",
+        "anchor_id": "APPROVED-B4",
+        "geometry": {
+          "x": 0.319377990430622,
+          "y": 0.12858660998937302,
+          "width": 0.03409090909090909,
+          "height": 0.3336875664187035,
+          "z_index": 14
+        }
+      },
+      {
+        "garment_id": "24c575ab-9dff-4bab-8d72-5dcc61d712b7",
+        "location_id": "67a05349-7fa3-5574-8259-0b537b789a93",
+        "anchor_id": "APPROVED-B5",
+        "geometry": {
+          "x": 0.3444976076555024,
+          "y": 0.12858660998937302,
+          "width": 0.02930622009569378,
+          "height": 0.33581296493092455,
+          "z_index": 15
+        }
+      },
+      {
+        "garment_id": "393354b9-bf4d-4c62-9456-8a810288e870",
+        "location_id": "7dba2ffe-bb89-5d95-a067-12100d3a6493",
+        "anchor_id": "APPROVED-B6",
+        "geometry": {
+          "x": 0.36901913875598086,
+          "y": 0.12858660998937302,
+          "width": 0.03588516746411483,
+          "height": 0.3336875664187035,
+          "z_index": 16
+        }
+      },
+      {
+        "garment_id": "b5b5600d-3a67-48f6-8a63-7d8164bb9030",
+        "location_id": "a1e34730-28b2-5ee9-b9b9-7bfe3e42e8e6",
+        "anchor_id": "APPROVED-C1",
+        "geometry": {
+          "x": 0.24222488038277512,
+          "y": 0.5037194473963869,
+          "width": 0.023923444976076555,
+          "height": 0.2731137088204038,
+          "z_index": 11
+        }
+      },
+      {
+        "garment_id": "3518be70-15ef-462f-a130-7205a663205c",
+        "location_id": "78f553e7-992b-5761-ab7c-184215d7051a",
+        "anchor_id": "APPROVED-C2",
+        "geometry": {
+          "x": 0.2619617224880383,
+          "y": 0.5037194473963869,
+          "width": 0.022727272727272728,
+          "height": 0.2731137088204038,
+          "z_index": 12
+        }
+      },
+      {
+        "garment_id": "e2f39099-1da1-42a6-abed-827c494f53b9",
+        "location_id": "d556db5f-0127-55a0-be5b-5876b849bd74",
+        "anchor_id": "APPROVED-C3",
+        "geometry": {
+          "x": 0.28169856459330145,
+          "y": 0.5037194473963869,
+          "width": 0.022129186602870814,
+          "height": 0.2731137088204038,
+          "z_index": 13
+        }
+      },
+      {
+        "garment_id": "59aaa9b2-d32c-4634-8324-e229cf91ce7b",
+        "location_id": "c6f25b7b-25ac-5703-b760-0f13822505a3",
+        "anchor_id": "APPROVED-C4",
+        "geometry": {
+          "x": 0.3020334928229665,
+          "y": 0.5037194473963869,
+          "width": 0.020933014354066987,
+          "height": 0.2731137088204038,
+          "z_index": 14
+        }
+      },
+      {
+        "garment_id": "0e707336-0417-42f8-8b6f-f655ee0e94a0",
+        "location_id": "ddd31bf3-f95b-5dc4-80f1-da8d1d2506ba",
+        "anchor_id": "APPROVED-C5",
+        "geometry": {
+          "x": 0.3211722488038278,
+          "y": 0.5037194473963869,
+          "width": 0.0215311004784689,
+          "height": 0.27523910733262485,
+          "z_index": 15
+        }
+      },
+      {
+        "garment_id": "0d1ef3df-bbbe-4a2a-9fd7-56bf8dd945f9",
+        "location_id": "6ef61497-b7ed-58f9-b24f-08254ee832b0",
+        "anchor_id": "APPROVED-C6",
+        "geometry": {
+          "x": 0.34210526315789475,
+          "y": 0.5037194473963869,
+          "width": 0.022129186602870814,
+          "height": 0.27523910733262485,
+          "z_index": 16
+        }
+      },
+      {
+        "garment_id": "49dd09f9-430c-4705-bbbf-6a77d8131677",
+        "location_id": "1b228c5c-eeeb-5bf3-af3e-062d9bbe2d6e",
+        "anchor_id": "APPROVED-C7",
+        "geometry": {
+          "x": 0.36064593301435405,
+          "y": 0.5037194473963869,
+          "width": 0.023923444976076555,
+          "height": 0.27417640807651433,
+          "z_index": 17
+        }
+      },
+      {
+        "garment_id": "0d5afe1b-7832-4885-8eb5-341bb57cb90e",
+        "location_id": "7fe976b0-a792-52cc-b21e-0a5d63ce6f2c",
+        "anchor_id": "APPROVED-C8",
+        "geometry": {
+          "x": 0.37978468899521534,
+          "y": 0.5037194473963869,
+          "width": 0.028708133971291867,
+          "height": 0.2731137088204038,
+          "z_index": 18
+        }
+      },
+      {
+        "garment_id": "fd1ce769-aab6-4227-83e0-c550cd9ecb45",
+        "location_id": "0b86a817-11f1-5f5f-9ab9-ddc46885d09c",
+        "anchor_id": "STAGE-B-F3",
+        "geometry": {
+          "x": 0.7834928229665071,
+          "y": 0.38150903294367694,
+          "width": 0.0645933014354067,
+          "height": 0.023379383634431455,
+          "z_index": 20
+        }
+      },
+      {
+        "garment_id": "2568aead-2410-4bab-9208-6d4f54109927",
+        "location_id": "eb128a88-7443-5ea6-9dfb-975270cadf4f",
+        "anchor_id": "STAGE-B-E1",
+        "geometry": {
+          "x": 0.6788277511961722,
+          "y": 0.08395324123273114,
+          "width": 0.0645933014354067,
+          "height": 0.023379383634431455,
+          "z_index": 22
+        }
+      },
+      {
+        "garment_id": "a2f054f7-6967-4add-bf4a-b61af158f0e2",
+        "location_id": "5d7fe4ad-732c-5ea9-8970-f04c84a37f8a",
+        "anchor_id": "STAGE-B-F1",
+        "geometry": {
+          "x": 0.7834928229665071,
+          "y": 0.08501594048884166,
+          "width": 0.0645933014354067,
+          "height": 0.023379383634431455,
+          "z_index": 22
+        }
+      },
+      {
+        "garment_id": "00caadf4-b6bc-5d77-ad83-5087a2579b65",
+        "location_id": "997745af-7ec6-50be-ae80-1ce03f5ba710",
+        "anchor_id": "STAGE-B-F6",
+        "geometry": {
+          "x": 0.7834928229665071,
+          "y": 0.740701381509033,
+          "width": 0.0645933014354067,
+          "height": 0.023379383634431455,
+          "z_index": 20
+        }
+      },
+      {
+        "garment_id": "01d7378b-ec70-5035-bd0a-88b420767a48",
+        "location_id": "4076e3a0-b5f8-51a1-ba35-8df56a371757",
+        "anchor_id": "STAGE-B-F7",
+        "geometry": {
+          "x": 0.8911483253588517,
+          "y": 0.873538788522848,
+          "width": 0.0645933014354067,
+          "height": 0.023379383634431455,
+          "z_index": 20
+        }
+      },
+      {
+        "garment_id": "053eb5bd-f212-5c7a-8757-69d511d5dabe",
+        "location_id": "a723370e-5066-54f8-b012-7ab3cc44bf60",
+        "anchor_id": "STAGE-B-F4",
+        "geometry": {
+          "x": 0.8911483253588517,
+          "y": 0.45908607863974493,
+          "width": 0.0645933014354067,
+          "height": 0.023379383634431455,
+          "z_index": 22
+        }
+      },
+      {
+        "garment_id": "0d7ee270-4445-5529-9fda-46e0ca87cd8a",
+        "location_id": "a723370e-5066-54f8-b012-7ab3cc44bf60",
+        "anchor_id": "STAGE-B-F4",
+        "geometry": {
+          "x": 0.7834928229665071,
+          "y": 0.5058448459086079,
+          "width": 0.0645933014354067,
+          "height": 0.023379383634431455,
+          "z_index": 20
+        }
+      },
+      {
+        "garment_id": "11251df3-4107-575c-b871-47e5d6efeed3",
+        "location_id": "4076e3a0-b5f8-51a1-ba35-8df56a371757",
+        "anchor_id": "STAGE-B-F7",
+        "geometry": {
+          "x": 0.7834928229665071,
+          "y": 0.873538788522848,
+          "width": 0.0645933014354067,
+          "height": 0.023379383634431455,
+          "z_index": 20
+        }
+      },
+      {
+        "garment_id": "3aa71ad7-4b8e-5e40-a5ab-4ccef829b457",
+        "location_id": "0b86a817-11f1-5f5f-9ab9-ddc46885d09c",
+        "anchor_id": "STAGE-B-F3",
+        "geometry": {
+          "x": 0.8911483253588517,
+          "y": 0.33475026567481403,
+          "width": 0.0645933014354067,
+          "height": 0.023379383634431455,
+          "z_index": 22
+        }
+      },
+      {
+        "garment_id": "59f470a8-c063-5bef-b7d2-f7350c9039cb",
+        "location_id": "4076e3a0-b5f8-51a1-ba35-8df56a371757",
+        "anchor_id": "STAGE-B-F7",
+        "geometry": {
+          "x": 0.8911483253588517,
+          "y": 0.8267800212539851,
+          "width": 0.0645933014354067,
+          "height": 0.023379383634431455,
+          "z_index": 22
+        }
+      },
+      {
+        "garment_id": "5ac6ea1d-c00f-5aa4-ae85-82081fa3444f",
+        "location_id": "997745af-7ec6-50be-ae80-1ce03f5ba710",
+        "anchor_id": "STAGE-B-F6",
+        "geometry": {
+          "x": 0.7834928229665071,
+          "y": 0.69394261424017,
+          "width": 0.0645933014354067,
+          "height": 0.023379383634431455,
+          "z_index": 22
+        }
+      },
+      {
+        "garment_id": "622a268d-dda1-56a2-944d-6c12df3f4458",
+        "location_id": "cecb917e-03b5-50b7-8e33-f0ef4dc1d313",
+        "anchor_id": "STAGE-B-F5",
+        "geometry": {
+          "x": 0.7834928229665071,
+          "y": 0.6238044633368757,
+          "width": 0.0645933014354067,
+          "height": 0.023379383634431455,
+          "z_index": 20
+        }
+      },
+      {
+        "garment_id": "652c91d0-df18-5066-9600-852a9e1d9e8e",
+        "location_id": "cecb917e-03b5-50b7-8e33-f0ef4dc1d313",
+        "anchor_id": "STAGE-B-F5",
+        "geometry": {
+          "x": 0.7834928229665071,
+          "y": 0.5770456960680127,
+          "width": 0.0645933014354067,
+          "height": 0.023379383634431455,
+          "z_index": 22
+        }
+      },
+      {
+        "garment_id": "6a0331fb-9e5b-5153-91df-5f34afdaf691",
+        "location_id": "4076e3a0-b5f8-51a1-ba35-8df56a371757",
+        "anchor_id": "STAGE-B-F7",
+        "geometry": {
+          "x": 0.7834928229665071,
+          "y": 0.8501594048884166,
+          "width": 0.0645933014354067,
+          "height": 0.023379383634431455,
+          "z_index": 21
+        }
+      },
+      {
+        "garment_id": "6a39ca49-8a8c-52c6-b999-5797f7d2f188",
+        "location_id": "4076e3a0-b5f8-51a1-ba35-8df56a371757",
+        "anchor_id": "STAGE-B-F7",
+        "geometry": {
+          "x": 0.8911483253588517,
+          "y": 0.8501594048884166,
+          "width": 0.0645933014354067,
+          "height": 0.023379383634431455,
+          "z_index": 21
+        }
+      },
+      {
+        "garment_id": "826b60ea-d5e8-5d82-920e-d61a4009898e",
+        "location_id": "0b86a817-11f1-5f5f-9ab9-ddc46885d09c",
+        "anchor_id": "STAGE-B-F3",
+        "geometry": {
+          "x": 0.8911483253588517,
+          "y": 0.38150903294367694,
+          "width": 0.0645933014354067,
+          "height": 0.023379383634431455,
+          "z_index": 20
+        }
+      },
+      {
+        "garment_id": "869734e9-a720-5471-bb80-91bf4b6cdd8c",
+        "location_id": "a723370e-5066-54f8-b012-7ab3cc44bf60",
+        "anchor_id": "STAGE-B-F4",
+        "geometry": {
+          "x": 0.8911483253588517,
+          "y": 0.4824654622741764,
+          "width": 0.0645933014354067,
+          "height": 0.023379383634431455,
+          "z_index": 21
+        }
+      },
+      {
+        "garment_id": "8901515e-6ad7-51fc-8273-01284e04991d",
+        "location_id": "0b86a817-11f1-5f5f-9ab9-ddc46885d09c",
+        "anchor_id": "STAGE-B-F3",
+        "geometry": {
+          "x": 0.7834928229665071,
+          "y": 0.33475026567481403,
+          "width": 0.0645933014354067,
+          "height": 0.023379383634431455,
+          "z_index": 22
+        }
+      },
+      {
+        "garment_id": "89cca9bf-12cf-5fb2-b7ea-9cb38793fbb1",
+        "location_id": "cecb917e-03b5-50b7-8e33-f0ef4dc1d313",
+        "anchor_id": "STAGE-B-F5",
+        "geometry": {
+          "x": 0.7834928229665071,
+          "y": 0.6004250797024442,
+          "width": 0.0645933014354067,
+          "height": 0.023379383634431455,
+          "z_index": 21
+        }
+      },
+      {
+        "garment_id": "8afda102-37de-54fa-8c14-d473096205a6",
+        "location_id": "a723370e-5066-54f8-b012-7ab3cc44bf60",
+        "anchor_id": "STAGE-B-F4",
+        "geometry": {
+          "x": 0.7834928229665071,
+          "y": 0.45908607863974493,
+          "width": 0.0645933014354067,
+          "height": 0.023379383634431455,
+          "z_index": 22
+        }
+      },
+      {
+        "garment_id": "934d1ed2-2217-5875-ae29-b702b92c7a4b",
+        "location_id": "cecb917e-03b5-50b7-8e33-f0ef4dc1d313",
+        "anchor_id": "STAGE-B-F5",
+        "geometry": {
+          "x": 0.8911483253588517,
+          "y": 0.6238044633368757,
+          "width": 0.0645933014354067,
+          "height": 0.023379383634431455,
+          "z_index": 20
+        }
+      },
+      {
+        "garment_id": "9813c705-e718-53ae-b1ab-9e7bafd4565e",
+        "location_id": "cecb917e-03b5-50b7-8e33-f0ef4dc1d313",
+        "anchor_id": "STAGE-B-F5",
+        "geometry": {
+          "x": 0.8911483253588517,
+          "y": 0.6004250797024442,
+          "width": 0.0645933014354067,
+          "height": 0.023379383634431455,
+          "z_index": 21
+        }
+      },
+      {
+        "garment_id": "9a592908-46aa-5cb5-ae6e-4588e80195d0",
+        "location_id": "997745af-7ec6-50be-ae80-1ce03f5ba710",
+        "anchor_id": "STAGE-B-F6",
+        "geometry": {
+          "x": 0.7834928229665071,
+          "y": 0.7173219978746015,
+          "width": 0.0645933014354067,
+          "height": 0.023379383634431455,
+          "z_index": 21
+        }
+      },
+      {
+        "garment_id": "9a8c11b4-4213-555f-aee6-70dd26494a30",
+        "location_id": "cecb917e-03b5-50b7-8e33-f0ef4dc1d313",
+        "anchor_id": "STAGE-B-F5",
+        "geometry": {
+          "x": 0.8911483253588517,
+          "y": 0.5770456960680127,
+          "width": 0.0645933014354067,
+          "height": 0.023379383634431455,
+          "z_index": 22
+        }
+      },
+      {
+        "garment_id": "b4c04595-b1cc-5380-abb5-a4a89324087f",
+        "location_id": "997745af-7ec6-50be-ae80-1ce03f5ba710",
+        "anchor_id": "STAGE-B-F6",
+        "geometry": {
+          "x": 0.8911483253588517,
+          "y": 0.740701381509033,
+          "width": 0.0645933014354067,
+          "height": 0.023379383634431455,
+          "z_index": 20
+        }
+      },
+      {
+        "garment_id": "cdf93107-16da-5dfd-821f-be69d76be007",
+        "location_id": "a723370e-5066-54f8-b012-7ab3cc44bf60",
+        "anchor_id": "STAGE-B-F4",
+        "geometry": {
+          "x": 0.8911483253588517,
+          "y": 0.5058448459086079,
+          "width": 0.0645933014354067,
+          "height": 0.023379383634431455,
+          "z_index": 20
+        }
+      },
+      {
+        "garment_id": "d0ef9f43-50c9-5fee-8980-f501b8128baa",
+        "location_id": "997745af-7ec6-50be-ae80-1ce03f5ba710",
+        "anchor_id": "STAGE-B-F6",
+        "geometry": {
+          "x": 0.8911483253588517,
+          "y": 0.69394261424017,
+          "width": 0.0645933014354067,
+          "height": 0.023379383634431455,
+          "z_index": 22
+        }
+      },
+      {
+        "garment_id": "d65f4291-ba26-5e0a-9547-9d4dddc2bf54",
+        "location_id": "4076e3a0-b5f8-51a1-ba35-8df56a371757",
+        "anchor_id": "STAGE-B-F7",
+        "geometry": {
+          "x": 0.7834928229665071,
+          "y": 0.8267800212539851,
+          "width": 0.0645933014354067,
+          "height": 0.023379383634431455,
+          "z_index": 22
+        }
+      },
+      {
+        "garment_id": "dda8dc76-975b-5283-8e66-c23dc6883b40",
+        "location_id": "a723370e-5066-54f8-b012-7ab3cc44bf60",
+        "anchor_id": "STAGE-B-F4",
+        "geometry": {
+          "x": 0.7834928229665071,
+          "y": 0.4824654622741764,
+          "width": 0.0645933014354067,
+          "height": 0.023379383634431455,
+          "z_index": 21
+        }
+      },
+      {
+        "garment_id": "f21f98ef-184e-5e45-80aa-4552b848d8a4",
+        "location_id": "997745af-7ec6-50be-ae80-1ce03f5ba710",
+        "anchor_id": "STAGE-B-F6",
+        "geometry": {
+          "x": 0.8911483253588517,
+          "y": 0.7173219978746015,
+          "width": 0.0645933014354067,
+          "height": 0.023379383634431455,
+          "z_index": 21
+        }
+      },
+      {
+        "garment_id": "fdc6ebaa-33d3-5edc-9477-18fd44a7b360",
+        "location_id": "0b86a817-11f1-5f5f-9ab9-ddc46885d09c",
+        "anchor_id": "STAGE-B-F3",
+        "geometry": {
+          "x": 0.8911483253588517,
+          "y": 0.35812964930924546,
+          "width": 0.0645933014354067,
+          "height": 0.023379383634431455,
+          "z_index": 21
+        }
+      }
+    ],
+    "liked": [
+      {
+        "id": "0e758280-cef4-591a-a59c-cf0546dfc912",
+        "category": "OUTER",
+        "image_asset_id": "c4a34783-d297-4bba-a6df-2b0ce1237268"
+      },
+      {
+        "id": "16e52fc6-76a3-5728-8928-64959f560243",
+        "category": "BOTTOM",
+        "image_asset_id": "0507394e-669f-4aca-aaaa-c5882005393f"
+      },
+      {
+        "id": "bd27547d-e8a3-52d4-9db6-273482d73a73",
+        "category": "TOP",
+        "image_asset_id": "e35d61e9-8e95-4a0c-a09f-d59143e73bf7"
+      }
+    ],
+    "errors": [],
+    "unexpectedMutations": []
+  }
+]

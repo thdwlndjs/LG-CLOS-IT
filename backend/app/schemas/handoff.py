@@ -44,4 +44,4 @@ class WardrobeScene(DTO):
     items: list[SceneItem]
     blocked: list[SceneBlocked]
     quality_status: Literal["approved", "BLOCKED_CLEAN_PLATE"]
-    total: int = Field(ge=0, le=100)
+    total: int = Field(ge=0, le=250)

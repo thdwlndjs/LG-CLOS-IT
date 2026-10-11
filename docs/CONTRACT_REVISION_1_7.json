@@ -15,7 +15,7 @@
     "03_ARCHITECTURE_HLD_v1.1.md": "bc2da35a2ebdd29805798e9ee15c6ce64494d3475fd0304f64f26d5c31d5c1b4",
     "04_FSD.md": "25f65541bbd5bd2e6ad671c403e37df35592455bd71a2184a8ca296ad7f810a1",
     "05_BACKEND_LLD.md": "e1788c759369c815e300717c2bacd42ff9f745dc3f2d589139e89193425f60fa",
-    "06_OPENAPI.yaml": "881a0ed01d5a1daa101a1f24dd796f428659371c48143666fe4e0d61180c1086",
+    "06_OPENAPI.yaml": "5bfdfc5f528adf859c44d9680a2a77def504749fd0ddad51f7f258c886aac2d5",
     "07_DATABASE_SCHEMA.sql": "79f5facd4c42b322b19cca244209cb95336a557234c2bd2a19c30156e9f26935",
     "07_DATABASE_SEED.sql": "a0cbd33d2461fe616ed4cfe0e2a81587ba571c7df9858bdf06612718bd1a6418",
     "08_IMPLEMENTATION_PLAN.md": "c76e1e8a7be44f884bfbaaf1a6abf7bce6f383f17baae5afa408343cc5115b7e"
@@ -77,6 +77,15 @@
         "08_IMPLEMENTATION_PLAN.md": "c76e1e8a7be44f884bfbaaf1a6abf7bce6f383f17baae5afa408343cc5115b7e"
       },
       "scope": "A1 policy overlay; existing wire paths and schema unchanged"
+    },
+    {
+      "id": "2026-10-12-stage-b",
+      "authorized_by": "Stage B execution instruction; minimum additive DB/API changes",
+      "base_head": "6895603",
+      "previous_current_sha256": {
+        "06_OPENAPI.yaml": "881a0ed01d5a1daa101a1f24dd796f428659371c48143666fe4e0d61180c1086"
+      },
+      "scope": "Scene limit 250; user-scoped liked detail; no legacy operation removed"
     }
   ]
 }

@@ -191,40 +191,6 @@ export function IntegrationActions() {
         disabled={busy}
         onClick={() =>
           void run(async () => {
-            const r: any = await api().get("/integration/shopping/purchases");
-            setShopping(r.items);
-            setMessage("Synthetic Mock 구매 내역");
-          })
-        }
-      >
-        구매 내역 전체 조회
-      </button>
-      <button
-        disabled={busy}
-        onClick={() =>
-          void run(async () => {
-            const r: any = await api().send(
-              "POST",
-              "/integration/shopping/purchases/bulk-import",
-              { device_id: currentDevice() },
-            );
-            setShopping(r.results);
-            await app.reloadRemote();
-            const duplicates = r.results.filter(
-              (row: any) => row.reason === "ALREADY_IMPORTED",
-            ).length;
-            setMessage(
-              `등록 ${r.counts.registered}건 · 중복 ${duplicates}건 · 검토 ${r.counts.needs_review}건 · 제외 ${r.counts.skipped}건`,
-            );
-          })
-        }
-      >
-        구매 내역 일괄 등록
-      </button>
-      <button
-        disabled={busy}
-        onClick={() =>
-          void run(async () => {
             const r: any = await api().get("/integration/shopping/liked");
             setShopping(r.items);
             setMessage("LIKED · 보유 의류 아님");

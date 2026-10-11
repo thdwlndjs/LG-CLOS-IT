@@ -1,0 +1,8 @@
+﻿requirement_id,status,implementation,evidence,remaining
+POC-D01,PASS,original76 and left21 preserved,evidence/stage-b/db-api.json,none
+POC-D02,PARTIAL,right66 unique garments and11 compartments,evidence/stage-b/browser.json,side-fold visual gate and canonical detail location
+POC-D03,PASS,personal DB interests3 per profile,evidence/stage-b/db-api.json,C-stage VTON integration not exercised
+POC-D04,PASS_B_SCOPE,purchase actions removed from PoC tools,evidence/stage-b/browser.json,G full navigation audit pending
+POC-H02,PASS_B_DATA,54 historical wear/context per profile,evidence/stage-b/db-api.json,E recommendation and context consumption pending
+B-IDEMPOTENCE,PASS,full row hashes after two seed reruns,evidence/stage-b/idempotence.json,none
+B-VISUAL,FAIL,actual screenshots compared to original,evidence/stage-b/김수진-wardrobe.png,35 legacy derivatives have incorrect fold view and scale

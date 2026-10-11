@@ -1,0 +1,32 @@
+{
+  "zone_count": 11,
+  "mapped_items": 66,
+  "same_compartment_mock_command": {
+    "id": "6f748ccb-6e0b-4e34-8b7d-2252cd516828",
+    "device_id": "89f0aed9-e5a0-4735-be50-8058d2b88061",
+    "controller": "MOCK",
+    "status": "ON",
+    "anchor_ids": [
+      "STAGE-B-F3"
+    ],
+    "expires_at": "2026-10-11T15:56:31.928545+00:00"
+  },
+  "unused_existing_categories": [
+    {
+      "category": "ACCESSORY",
+      "status": "AVAILABLE",
+      "count": 8
+    },
+    {
+      "category": "OUTER",
+      "status": "STORED",
+      "count": 8
+    },
+    {
+      "category": "SHOES",
+      "status": "AVAILABLE",
+      "count": 1
+    }
+  ],
+  "note": "Only existing Mock controller; shared compartment dedup checked, 30-second D-stage behavior not tested"
+}
