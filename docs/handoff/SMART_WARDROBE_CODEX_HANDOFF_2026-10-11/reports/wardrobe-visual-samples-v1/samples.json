@@ -1,0 +1,94 @@
+{
+  "status": "SIX_SAMPLES_AWAITING_APPROVAL",
+  "candidate_layout_approved": true,
+  "reference": "../wardrobe-visual-review/reference-unchanged.png",
+  "width": 1672,
+  "height": 941,
+  "method": "Six separate built-in imagegen context edits; native browser clips only target regions onto unchanged original. Position-specific scene patches, not isolated reusable transparent sprites.",
+  "samples": [
+    {
+      "id": "A5",
+      "description": "Replace ONLY the fifth long hanging coat from the left in the first cabinet, whose wooden hanger hook is at x266 y145 on the 1672x941 image. Replace its navy wool with the BLACK double-breasted wool/cashmere coat in image 2. Keep its narrow side-on facing, almost edge-on shoulder, natural sleeve dropping down, layered occlusion by neighboring coats, original hem height and exact hanger. Do NOT widen or separate coats. Its visible footprint is approximately x231..283 y154..631.",
+      "bounds": [
+        232,
+        140,
+        54,
+        495
+      ],
+      "file": "A5-context.png",
+      "generation_prompt": "Use case: precise-object-edit. Image 1 is the original wardrobe edit target and authoritative camera/shape/lighting reference; image 2 is ONLY product fabric/color/construction identity, never a flat pasted catalog image. Produce a photorealistic wardrobe scene at EXACT same framing and 1672:941 aspect ratio as image 1. Preserve every cabinet, mirror, lighting, original neighboring garment, shelf, drawer and all spacing. Only the precisely identified ONE garment changes. Preserve its original silhouette scale, hanger angle or folded perspective, adjacency/overlap and physical shadows. This is a six-sample approval workflow but this output contains ONLY this ONE target replacement. No labels/text, no collage, no UI, no garment isolation or front-facing catalog photo. Replace ONLY the fifth long hanging coat from the left in the first cabinet, whose wooden hanger hook is at x266 y145 on the 1672x941 image. Replace its navy wool with the BLACK double-breasted wool/cashmere coat in image 2. Keep its narrow side-on facing, almost edge-on shoulder, natural sleeve dropping down, layered occlusion by neighboring coats, original hem height and exact hanger. Do NOT widen or separate coats. Its visible footprint is approximately x231..283 y154..631.",
+      "tool": "image_gen.imagegen",
+      "original_generated_path": "C:\\Users\\aicam\\.codex\\generated_images\\01a11a04-161b-71c1-b091-cdb004c0a66c\\exec-80b35087-b996-4aa1-b01d-56b7d0c79a35.png"
+    },
+    {
+      "id": "B3",
+      "description": "Replace ONLY the third hanging top in the second cabinet upper rail, hook at x517 y145. Change it to the light vintage indigo western DENIM SHIRT in image 2, with denim seam/yoke, flap pocket subtly visible on the narrow exposed facing, relaxed hem. Preserve original narrow side-hung orientation, one visible sleeve forward, shoulders crowded between neighboring garments, identical hem height, wooden hanger and shadows. Footprint approximately x484..532 y154..426.",
+      "bounds": [
+        484,
+        140,
+        51,
+        289
+      ],
+      "file": "B3-context.png",
+      "generation_prompt": "Use case: precise-object-edit. Image 1 original wardrobe is edit target. Image 2 denim shirt is product identity only. Preserve image1 EXACTLY including 1672x941 dimensions and all surrounding clothes. In the SECOND cabinet from the left, UPPER hanging row, there are six garments: white, pale blue, medium blue, dark grey, tan, white. Replace ONLY the THIRD garment, medium-blue garment whose hanger hook is at x517 y145, body in x491..532. Do NOT replace the SECOND garment at x477: that pale blue second garment must remain exactly as original. Change the third blue garment to a naturally side-hanging Western vintage-indigo denim shirt, with subtle denim yoke and visible chest flap pocket at right edge, snap buttons, denim texture, natural sleeve with button cuff. Preserve its ORIGINAL narrow side profile, shoulder angle, hem height y426, all overlaps and shadows. It is nearly edge-on, not wide front-facing. Do not change any other garment including its neighboring pale blue second garment. No flat pasted product image, labels, collage or reframing.",
+      "tool": "image_gen.imagegen",
+      "original_generated_path": "C:\\Users\\aicam\\.codex\\generated_images\\01a11a04-161b-71c1-b091-cdb004c0a66c\\exec-2a280df1-6ccc-4364-9afc-ed3842c87950.png"
+    },
+    {
+      "id": "C6",
+      "description": "Replace ONLY the sixth pair of trousers on the lower rail of the second cabinet, hanger at x587 y497, with ECRU loose-straight denim jeans from image 2. Fold/clip onto the identical existing wooden trouser hanger as the original, narrow overlapping silhouette, two aligned hanging legs, weighty natural denim folds, exposed waistband and subtle seam; preserve original side-on angle and hem height. Do not display wide frontal spread-out legs. Footprint approximately x577..608 y516..725.",
+      "bounds": [
+        576,
+        490,
+        34,
+        238
+      ],
+      "file": "C6-context.png",
+      "generation_prompt": "Use case: precise-object-edit. Image 1 is the original wardrobe edit target and authoritative camera/shape/lighting reference; image 2 is ONLY product fabric/color/construction identity, never a flat pasted catalog image. Produce a photorealistic wardrobe scene at EXACT same framing and 1672:941 aspect ratio as image 1. Preserve every cabinet, mirror, lighting, original neighboring garment, shelf, drawer and all spacing. Only the precisely identified ONE garment changes. Preserve its original silhouette scale, hanger angle or folded perspective, adjacency/overlap and physical shadows. This is a six-sample approval workflow but this output contains ONLY this ONE target replacement. No labels/text, no collage, no UI, no garment isolation or front-facing catalog photo. Replace ONLY the sixth pair of trousers on the lower rail of the second cabinet, hanger at x587 y497, with ECRU loose-straight denim jeans from image 2. Fold/clip onto the identical existing wooden trouser hanger as the original, narrow overlapping silhouette, two aligned hanging legs, weighty natural denim folds, exposed waistband and subtle seam; preserve original side-on angle and hem height. Do not display wide frontal spread-out legs. Footprint approximately x577..608 y516..725.",
+      "tool": "image_gen.imagegen",
+      "original_generated_path": "C:\\Users\\aicam\\.codex\\generated_images\\01a11a04-161b-71c1-b091-cdb004c0a66c\\exec-42996b4b-b415-4e11-9444-40416fb74770.png"
+    },
+    {
+      "id": "K1",
+      "description": "Replace ONLY TOP garment of the LEFT three-garment folded stack on the TOP shelf of the first cabinet to the right of the mirror, footprint x1007..1113 y99..117. It must be the SAND merino HALF-ZIP knit in image 2, folded with sleeves tucked inside. Match the existing compact shallow side-view folded geometry, curved fold on left, thin top plane, subtly ribbed edge and contact shadow on the layer below. Do not unfold it, do not show a frontal sweater, do not add a whole stack, keep the other two garments below identical.",
+      "bounds": [
+        1005,
+        96,
+        112,
+        24
+      ],
+      "file": "K1-context.png",
+      "generation_prompt": "Use case: precise-object-edit. Image 1 is the original wardrobe edit target and authoritative camera/shape/lighting reference; image 2 is ONLY product fabric/color/construction identity, never a flat pasted catalog image. Produce a photorealistic wardrobe scene at EXACT same framing and 1672:941 aspect ratio as image 1. Preserve every cabinet, mirror, lighting, original neighboring garment, shelf, drawer and all spacing. Only the precisely identified ONE garment changes. Preserve its original silhouette scale, hanger angle or folded perspective, adjacency/overlap and physical shadows. This is a six-sample approval workflow but this output contains ONLY this ONE target replacement. No labels/text, no collage, no UI, no garment isolation or front-facing catalog photo. Replace ONLY TOP garment of the LEFT three-garment folded stack on the TOP shelf of the first cabinet to the right of the mirror, footprint x1007..1113 y99..117. It must be the SAND merino HALF-ZIP knit in image 2, folded with sleeves tucked inside. Match the existing compact shallow side-view folded geometry, curved fold on left, thin top plane, subtly ribbed edge and contact shadow on the layer below. Do not unfold it, do not show a frontal sweater, do not add a whole stack, keep the other two garments below identical.",
+      "tool": "image_gen.imagegen",
+      "original_generated_path": "C:\\Users\\aicam\\.codex\\generated_images\\01a11a04-161b-71c1-b091-cdb004c0a66c\\exec-26f664d2-3475-4454-999f-466921c5d7e7.png"
+    },
+    {
+      "id": "K2",
+      "description": "Precise object edit. Image1 original wardrobe, image2 navy half-zip knit for fabric identity. Keep framing EXACT 1672x941. On TOP shelf immediately to RIGHT of center mirror, RIGHT stack of THREE navy folded clothes. Modify ONLY SECOND garment counting from top, the MIDDLE layer (x1130..1242,y121..135). The top layer at y100..120 must remain original unchanged, bottom layer y136..149 unchanged. Make middle layer fine NAVY merino knit from image2, tucked sleeves, narrow thin folded side-on rectangular layer with curved left folded edge, barely visible top plane because top layer covers it, natural contact shadow, matched scale and perspective. Do NOT modify TOP layer. No frontal garment pasted, no text. Every other pixel/garment/cabinet/mirror unchanged.",
+      "bounds": [
+        1128,
+        120,
+        116,
+        17
+      ],
+      "file": "K2-context.png",
+      "generation_prompt": "Precise object edit. Image1 original wardrobe, image2 navy half-zip knit for fabric identity. Keep framing EXACT 1672x941. On TOP shelf immediately to RIGHT of center mirror, RIGHT stack of THREE navy folded clothes. Modify ONLY SECOND garment counting from top, the MIDDLE layer (x1130..1242,y121..135). The top layer at y100..120 must remain original unchanged, bottom layer y136..149 unchanged. Make middle layer fine NAVY merino knit from image2, tucked sleeves, narrow thin folded side-on rectangular layer with curved left folded edge, barely visible top plane because top layer covers it, natural contact shadow, matched scale and perspective. Do NOT modify TOP layer. No frontal garment pasted, no text. Every other pixel/garment/cabinet/mirror unchanged.",
+      "tool": "image_gen.imagegen",
+      "original_generated_path": "C:\\Users\\aicam\\.codex\\generated_images\\01a11a04-161b-71c1-b091-cdb004c0a66c\\exec-ed739c25-b241-4b55-931c-b2d159189544.png"
+    },
+    {
+      "id": "K3",
+      "description": "Replace ONLY TOP garment of LEFT three-garment folded stack on the FOURTH shelf of first cabinet right of mirror, footprint x1006..1114 y445..466. It must be the CHARCOAL fine merino CREW-NECK knit in image 2. Tuck sleeves inside, shallow rectangular side fold, round soft fold edge, fine knit surface, slight top plane visibility exactly like original, contact shadows. Preserve the other two layers and full stack 2 stacks x 3 garments per shelf.",
+      "bounds": [
+        1003,
+        440,
+        115,
+        29
+      ],
+      "file": "K3-context.png",
+      "generation_prompt": "Use case: precise-object-edit. Image 1 is the original wardrobe edit target and authoritative camera/shape/lighting reference; image 2 is ONLY product fabric/color/construction identity, never a flat pasted catalog image. Produce a photorealistic wardrobe scene at EXACT same framing and 1672:941 aspect ratio as image 1. Preserve every cabinet, mirror, lighting, original neighboring garment, shelf, drawer and all spacing. Only the precisely identified ONE garment changes. Preserve its original silhouette scale, hanger angle or folded perspective, adjacency/overlap and physical shadows. This is a six-sample approval workflow but this output contains ONLY this ONE target replacement. No labels/text, no collage, no UI, no garment isolation or front-facing catalog photo. Replace ONLY TOP garment of LEFT three-garment folded stack on the FOURTH shelf of first cabinet right of mirror, footprint x1006..1114 y445..466. It must be the CHARCOAL fine merino CREW-NECK knit in image 2. Tuck sleeves inside, shallow rectangular side fold, round soft fold edge, fine knit surface, slight top plane visibility exactly like original, contact shadows. Preserve the other two layers and full stack 2 stacks x 3 garments per shelf.",
+      "tool": "image_gen.imagegen",
+      "original_generated_path": "C:\\Users\\aicam\\.codex\\generated_images\\01a11a04-161b-71c1-b091-cdb004c0a66c\\exec-5fcb0736-3253-47fc-ae2b-e273daacb154.png"
+    }
+  ]
+}

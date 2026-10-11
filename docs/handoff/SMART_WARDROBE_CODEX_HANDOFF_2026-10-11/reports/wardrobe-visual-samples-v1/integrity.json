@@ -1,0 +1,22 @@
+{
+  "status": "PASS",
+  "reference_sha256": "abc5cdf750a55f8054ddf1c8d77875d3c99d2006ebeffc2e211f169dbd521a26",
+  "changed_pixels_outside_six_regions": 0,
+  "changed_pixels_by_region": {
+    "A5": 26476,
+    "B3": 14726,
+    "C6": 8082,
+    "K1": 2686,
+    "K2": 1971,
+    "K3": 3327
+  },
+  "generated_file_sha256": {
+    "A5": "164c82a4343ec1fc83b7467887bf7fa04b3961e500ba80d0f50b2a719848b33e",
+    "B3": "e96d5673a438e75c150128b8cd61e53a31829fc5fc8bed6f92bdba2d7697c8cc",
+    "C6": "1c72df25fa24ee28ed50360ddaab88b6d9bd3af07b7fa1d54da36f0dc83df1f7",
+    "K1": "93a2032fc88262642eb3c03d444313cb225489198b33a77ce1b17d0dbd922587",
+    "K2": "7cb1b9dc7555dacf8c0b6cab21e88aa360da9a6a3f3bbf32a1a53506c86b4177",
+    "K3": "70dac03e58cf69585e76cf3114402e82de7ae7b752dbdd50bcbb883a17dc242a"
+  },
+  "limitations": "Position-specific rectangular patches; excludes neither every neighboring cloth pixel inside each region nor UI composite. No claim of isolated alpha assets or human visual approval."
+}

@@ -1,0 +1,41 @@
+{
+  "render": "PASS",
+  "sample_count": 6,
+  "dimensions": [
+    {
+      "id": "A5",
+      "width": 1672,
+      "height": 941
+    },
+    {
+      "id": "B3",
+      "width": 1672,
+      "height": 941
+    },
+    {
+      "id": "C6",
+      "width": 1672,
+      "height": 941
+    },
+    {
+      "id": "K1",
+      "width": 1672,
+      "height": 941
+    },
+    {
+      "id": "K2",
+      "width": 1671,
+      "height": 941
+    },
+    {
+      "id": "K3",
+      "width": 1672,
+      "height": 941
+    }
+  ],
+  "review_network_requests": 0,
+  "app_applied": false,
+  "db_applied": false,
+  "visual_approval": "PENDING_USER",
+  "note": "Rendering verification only. Actual-screen composite uses read-only captured mirror UI; not an integrated runtime screenshot."
+}
