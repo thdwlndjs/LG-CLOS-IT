@@ -14,6 +14,8 @@ export type Asset = {
 };
 export type Provenance = "demo" | "user" | "unconfirmed";
 export interface Garment {
+  /** Optional server availability, retained for recommendations; never inferred from photos. */
+  serverStatus?: "AVAILABLE" | "IN_USE" | "LAUNDRY" | "CARE" | "STORED" | "UNKNOWN" | "RETIRED";
   /** null is an explicit display clear; undefined has never been bound. Fitting asset remains independent. */
   displayBinding?: GarmentDisplayBinding | null;
   id: string;

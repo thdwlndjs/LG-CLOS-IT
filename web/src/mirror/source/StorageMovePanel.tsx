@@ -1,11 +1,12 @@
 import { useRef, useState } from "react";
-import { api, currentMember } from "./integrations/backendClient";
+import { api, currentDevice, currentMember } from "./integrations/backendClient";
 import { homeServerStorageAdvice } from "./homeServerActions";
 import type { DemoApp } from "./core/app";
 
 /** Approval is intent. Only an explicit physical completion updates locations. */
 export function StorageMovePanel({ app }: { app: DemoApp }) {
   const [actions, setActions] = useState<any[]>([]);
+  const [locationNames, setLocationNames] = useState<Record<string,string>>({});
   const [checked, setChecked] = useState<Record<string, boolean>>({});
   const [busy, setBusy] = useState(false);
   const [message, setMessage] = useState("");
@@ -37,9 +38,13 @@ export function StorageMovePanel({ app }: { app: DemoApp }) {
     }
   };
   const reload = async (check: () => void) => {
-    const result: any = await api().get("/storage-actions");
+    const [result, locations]: any[] = await Promise.all([
+      api().get("/storage-actions"),
+      api().get(`/integration/devices/${currentDevice()}/locations`),
+    ]);
     check();
     setActions(result.items);
+    setLocationNames(Object.fromEntries(locations.items.map((l: any) => [l.id,l.name])));
     setChecked({});
   };
   return (
@@ -89,7 +94,7 @@ export function StorageMovePanel({ app }: { app: DemoApp }) {
               {app.garments().find((g) => g.id === item.garment_id)?.name ??
                 item.garment_id}
               {" → "}
-              {item.destination_location_id} · 실제 이동 완료
+              {locationNames[item.destination_location_id] ?? item.destination_location_id} · 실제 이동 완료
             </label>
           ))}
           {action.status === "PROPOSED" && (

@@ -24,6 +24,7 @@ class SceneItem(DTO):
     image: Asset
     geometry: SceneGeometry
     anchor_id: str | None
+    image_mask: dict | None = None
 
 
 class SceneBlocked(DTO):

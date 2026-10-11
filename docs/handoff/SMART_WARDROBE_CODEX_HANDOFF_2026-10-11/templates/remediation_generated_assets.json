@@ -1,0 +1,92 @@
+[
+  {
+    "path": "web/public/assets/remediation/cards/T1-background.png",
+    "sha256": "2f90a5e4e824f94744d6b7af3dc1aab3bfce602f0bc99f169a06947cdb73a71d",
+    "tool": "built-in image_gen",
+    "role": "card_empty_plate",
+    "source": "docs/handoff/SMART_WARDROBE_CODEX_HANDOFF_2026-10-11/references/card/T1_reference.png",
+    "reconstructed_pixels": true,
+    "approval": "manual visual review pending",
+    "rights": "No commercial redistribution rights inferred"
+  },
+  {
+    "path": "web/public/assets/remediation/cards/T1-restored.png",
+    "sha256": "5ea95b77160e0b5452bf9959059a9215a7a1d9860596d16d233c400165661be1",
+    "tool": "built-in image_gen",
+    "role": "card_caption_removal",
+    "source": "docs/handoff/SMART_WARDROBE_CODEX_HANDOFF_2026-10-11/references/card/T1_reference.png",
+    "reconstructed_pixels": true,
+    "approval": "manual visual review pending",
+    "rights": "No commercial redistribution rights inferred"
+  },
+  {
+    "path": "web/public/assets/remediation/cards/T2-background.png",
+    "sha256": "5283a31dfb52a584eb666a1e225315a8ee2cdf4c70bc8a8245906d47a5fa3958",
+    "tool": "built-in image_gen",
+    "role": "card_empty_plate",
+    "source": "docs/handoff/SMART_WARDROBE_CODEX_HANDOFF_2026-10-11/references/card/T2_reference.png",
+    "reconstructed_pixels": true,
+    "approval": "manual visual review pending",
+    "rights": "No commercial redistribution rights inferred"
+  },
+  {
+    "path": "web/public/assets/remediation/cards/T2-restored.png",
+    "sha256": "1307e7bd8e8cc5912f10677ce1aa42e3bbea41941888fb91e3971d2addcdaef5",
+    "tool": "built-in image_gen",
+    "role": "card_caption_removal",
+    "source": "docs/handoff/SMART_WARDROBE_CODEX_HANDOFF_2026-10-11/references/card/T2_reference.png",
+    "reconstructed_pixels": true,
+    "approval": "manual visual review pending",
+    "rights": "No commercial redistribution rights inferred"
+  },
+  {
+    "path": "web/public/assets/remediation/cards/T3-background.png",
+    "sha256": "e6ea4af62f30585eb49bdf0a327b2b7f9af710f838d4c2e2ffa716ac04f3290e",
+    "tool": "built-in image_gen",
+    "role": "card_empty_plate",
+    "source": "docs/handoff/SMART_WARDROBE_CODEX_HANDOFF_2026-10-11/references/card/T3_reference.png",
+    "reconstructed_pixels": true,
+    "approval": "manual visual review pending",
+    "rights": "No commercial redistribution rights inferred"
+  },
+  {
+    "path": "web/public/assets/remediation/cards/T3-restored.png",
+    "sha256": "ac84e1206a417bd3c0bfb78e4bf2402f4e2bb1b01b9c2c28d5880ca1e16ad630",
+    "tool": "built-in image_gen",
+    "role": "card_caption_removal",
+    "source": "docs/handoff/SMART_WARDROBE_CODEX_HANDOFF_2026-10-11/references/card/T3_reference.png",
+    "reconstructed_pixels": true,
+    "approval": "manual visual review pending",
+    "rights": "No commercial redistribution rights inferred"
+  },
+  {
+    "path": "web/public/assets/remediation/cards/T4-background.png",
+    "sha256": "75952a1eac339bc28fa64199961583179d8268c0211d5c85b042d5f262831058",
+    "tool": "built-in image_gen",
+    "role": "card_empty_plate",
+    "source": "docs/handoff/SMART_WARDROBE_CODEX_HANDOFF_2026-10-11/references/card/T4_reference.png",
+    "reconstructed_pixels": true,
+    "approval": "manual visual review pending",
+    "rights": "No commercial redistribution rights inferred"
+  },
+  {
+    "path": "web/public/assets/remediation/cards/T4-restored.png",
+    "sha256": "4d70eeab2a469028a53d72ffe148354f483bdc1d214a5c12f53e22a66ac7281b",
+    "tool": "built-in image_gen",
+    "role": "card_caption_removal",
+    "source": "docs/handoff/SMART_WARDROBE_CODEX_HANDOFF_2026-10-11/references/card/T4_reference.png",
+    "reconstructed_pixels": true,
+    "approval": "manual visual review pending",
+    "rights": "No commercial redistribution rights inferred"
+  },
+  {
+    "path": "web/public/assets/remediation/wardrobe-clean-plate-v1.png",
+    "sha256": "409f991a72271d1e2847c56061c38779bd512f0bd8f03c724caf2a651c5cddf2",
+    "tool": "built-in image_gen",
+    "role": "clean_plate",
+    "source": "web/public/assets/mirror-final/wardrobe-base-led-off.png",
+    "reconstructed_pixels": true,
+    "approval": "manual visual review pending",
+    "rights": "No commercial redistribution rights inferred"
+  }
+]

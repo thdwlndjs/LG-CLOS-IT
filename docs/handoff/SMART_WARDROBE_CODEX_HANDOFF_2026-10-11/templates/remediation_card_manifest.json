@@ -1,0 +1,126 @@
+[
+  {
+    "template": "T1",
+    "files": [
+      {
+        "role": "original",
+        "path": "docs/handoff/SMART_WARDROBE_CODEX_HANDOFF_2026-10-11/references/card/T1_reference.png",
+        "sha256": "96cf9617bdcbb859915073610333f011da32840de4020a77d92f1398dcffe39c"
+      },
+      {
+        "role": "reconstructed",
+        "path": "web/public/assets/remediation/cards/T1-restored.png",
+        "sha256": "5ea95b77160e0b5452bf9959059a9215a7a1d9860596d16d233c400165661be1"
+      },
+      {
+        "role": "empty_plate",
+        "path": "web/public/assets/remediation/cards/T1-background.png",
+        "sha256": "2f90a5e4e824f94744d6b7af3dc1aab3bfce602f0bc99f169a06947cdb73a71d"
+      },
+      {
+        "role": "registered_photo_PNG",
+        "path": "docs/handoff/SMART_WARDROBE_CODEX_HANDOFF_2026-10-11/reports/evidence/remediation/mom-T1-v1.png",
+        "sha256": "e79ffe229dba739cc0c2b0ea7278d56eaa3620f6d5a5ee842721882eaffcb5a5"
+      }
+    ],
+    "reconstruction_basis": "imagegen editing of supplied reference; hidden text/gradient pixels inferred",
+    "geometry_basis": "manual visible-pixel bounding boxes and rotations, retained independent template layouts",
+    "gate_a": "PARTIAL: extracted individual reference folds/occlusion layers not fully reproduced",
+    "gate_b": "PARTIAL: actual source pixels preserved via SVG masks; fine folding/occlusion retargeting not faithful",
+    "gate_c_local": "PASS: actual registered photo PNG saved and downloaded in local browser",
+    "commercial_rights": "unconfirmed, no remote publication authorized"
+  },
+  {
+    "template": "T2",
+    "files": [
+      {
+        "role": "original",
+        "path": "docs/handoff/SMART_WARDROBE_CODEX_HANDOFF_2026-10-11/references/card/T2_reference.png",
+        "sha256": "c156e925a80f4b974d4a5f565661d59eabed2ada641502ca18793878d4961c61"
+      },
+      {
+        "role": "reconstructed",
+        "path": "web/public/assets/remediation/cards/T2-restored.png",
+        "sha256": "1307e7bd8e8cc5912f10677ce1aa42e3bbea41941888fb91e3971d2addcdaef5"
+      },
+      {
+        "role": "empty_plate",
+        "path": "web/public/assets/remediation/cards/T2-background.png",
+        "sha256": "5283a31dfb52a584eb666a1e225315a8ee2cdf4c70bc8a8245906d47a5fa3958"
+      },
+      {
+        "role": "registered_photo_PNG",
+        "path": "docs/handoff/SMART_WARDROBE_CODEX_HANDOFF_2026-10-11/reports/evidence/remediation/mom-T2-v1.png",
+        "sha256": "60ac9e40b778ac65dc00ec9f12e67f07ac988dc4c64811a9119a46f9eb2ed050"
+      }
+    ],
+    "reconstruction_basis": "imagegen editing of supplied reference; hidden text/gradient pixels inferred",
+    "geometry_basis": "manual visible-pixel bounding boxes and rotations, retained independent template layouts",
+    "gate_a": "PARTIAL: extracted individual reference folds/occlusion layers not fully reproduced",
+    "gate_b": "PARTIAL: actual source pixels preserved via SVG masks; fine folding/occlusion retargeting not faithful",
+    "gate_c_local": "PASS: actual registered photo PNG saved and downloaded in local browser",
+    "commercial_rights": "unconfirmed, no remote publication authorized"
+  },
+  {
+    "template": "T3",
+    "files": [
+      {
+        "role": "original",
+        "path": "docs/handoff/SMART_WARDROBE_CODEX_HANDOFF_2026-10-11/references/card/T3_reference.png",
+        "sha256": "d390f7f950a5e38731126762b25839c99f4b438d53926985eb4c4137fa5faece"
+      },
+      {
+        "role": "reconstructed",
+        "path": "web/public/assets/remediation/cards/T3-restored.png",
+        "sha256": "ac84e1206a417bd3c0bfb78e4bf2402f4e2bb1b01b9c2c28d5880ca1e16ad630"
+      },
+      {
+        "role": "empty_plate",
+        "path": "web/public/assets/remediation/cards/T3-background.png",
+        "sha256": "e6ea4af62f30585eb49bdf0a327b2b7f9af710f838d4c2e2ffa716ac04f3290e"
+      },
+      {
+        "role": "registered_photo_PNG",
+        "path": "docs/handoff/SMART_WARDROBE_CODEX_HANDOFF_2026-10-11/reports/evidence/remediation/mom-T3-v1.png",
+        "sha256": "ab4a768bb66abf5ba93a104f564f3c1cffc2ec40986b787028c7aefaf44cdc8a"
+      }
+    ],
+    "reconstruction_basis": "imagegen editing of supplied reference; hidden text/gradient pixels inferred",
+    "geometry_basis": "manual visible-pixel bounding boxes and rotations, retained independent template layouts",
+    "gate_a": "PARTIAL: extracted individual reference folds/occlusion layers not fully reproduced",
+    "gate_b": "PARTIAL: actual source pixels preserved via SVG masks; fine folding/occlusion retargeting not faithful",
+    "gate_c_local": "PASS: actual registered photo PNG saved and downloaded in local browser",
+    "commercial_rights": "unconfirmed, no remote publication authorized"
+  },
+  {
+    "template": "T4",
+    "files": [
+      {
+        "role": "original",
+        "path": "docs/handoff/SMART_WARDROBE_CODEX_HANDOFF_2026-10-11/references/card/T4_reference.png",
+        "sha256": "9d1fc74f050bc774ded943e729080f342ba7d7c2fc95b5216f80ac327ebc6554"
+      },
+      {
+        "role": "reconstructed",
+        "path": "web/public/assets/remediation/cards/T4-restored.png",
+        "sha256": "4d70eeab2a469028a53d72ffe148354f483bdc1d214a5c12f53e22a66ac7281b"
+      },
+      {
+        "role": "empty_plate",
+        "path": "web/public/assets/remediation/cards/T4-background.png",
+        "sha256": "75952a1eac339bc28fa64199961583179d8268c0211d5c85b042d5f262831058"
+      },
+      {
+        "role": "registered_photo_PNG",
+        "path": "docs/handoff/SMART_WARDROBE_CODEX_HANDOFF_2026-10-11/reports/evidence/remediation/mom-T4-v1.png",
+        "sha256": "752817e33039fc16564da1f0ac32f023375533f130a713d3ecadf7b7168bd355"
+      }
+    ],
+    "reconstruction_basis": "imagegen editing of supplied reference; hidden text/gradient pixels inferred",
+    "geometry_basis": "manual visible-pixel bounding boxes and rotations, retained independent template layouts",
+    "gate_a": "PARTIAL: extracted individual reference folds/occlusion layers not fully reproduced",
+    "gate_b": "PARTIAL: actual source pixels preserved via SVG masks; fine folding/occlusion retargeting not faithful",
+    "gate_c_local": "PASS: actual registered photo PNG saved and downloaded in local browser",
+    "commercial_rights": "unconfirmed, no remote publication authorized"
+  }
+]

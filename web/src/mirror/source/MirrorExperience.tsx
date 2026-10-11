@@ -823,6 +823,7 @@ export default function MirrorExperience() {
   return (
     <PhotoWardrobeStage
       garments={garments}
+      onSelectGarment={selectGarment}
       anchorIds={
         connection.kind === "supabase" ? serverAnchors : locations.anchorIds
       }

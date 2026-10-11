@@ -3,6 +3,7 @@ WORKDIR /app
 COPY renderer/package.json renderer/package-lock.json ./
 RUN npm ci --omit=dev && npm cache clean --force
 COPY renderer/src ./src
+COPY renderer/assets ./assets
 COPY renderer/test ./test
 USER pwuser
 ENV NODE_ENV=production

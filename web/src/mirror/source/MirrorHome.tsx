@@ -44,6 +44,9 @@ export function MirrorHome({
   const generation = useRef(0),
     sending = useRef(false);
   useEffect(() => {
+    setScenario(import.meta.env.VITE_HOME_DEMO_SCENARIO !== "off");
+  }, [owner]);
+  useEffect(() => {
     generation.current++;
     sending.current = false;
     setBusy(false);

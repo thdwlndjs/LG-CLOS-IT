@@ -6,6 +6,8 @@ export function homeDemoChoices(
   owner: string,
   date: string,
 ) {
+  // Caller already supplies device-accessible family inventory. Keep that contract.
+  garments = garments.filter(g => g.serverStatus === undefined || g.serverStatus === "AVAILABLE");
   const result: { outfit: Outfit; reasons: string[] }[] = [];
   const seen = new Set<string>();
   for (
@@ -47,6 +49,7 @@ export function winterHomeScenario(
   owner: string,
   date: string,
 ) {
+  garments = garments.filter(g => g.serverStatus === undefined || g.serverStatus === "AVAILABLE");
   const usage = garments.map((g) => ({
     garmentId: g.id,
     name: g.name,
@@ -71,6 +74,9 @@ export function winterHomeScenario(
     items.bottom = bottom.id;
   } else if (dress) items.dress = dress.id;
   if (outer) items.outer = outer.id;
+  const accessory = leastUsed("accessory"), shoes = leastUsed("shoes");
+  if (accessory) items.accessory = accessory.id;
+  if (shoes) items.shoes = shoes.id;
   const selected = garments.filter((g) => Object.values(items).includes(g.id));
   const outfit: Outfit | null =
     (top && bottom) || dress

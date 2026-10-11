@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useId, useState } from "react";
 import { api, currentDevice } from "./integrations/backendClient";
 import { assetUrl } from "../../api.js";
 import { bindGarmentImage } from "./imageBlobCache.js";
@@ -18,12 +18,21 @@ function SceneImage({
   raw,
   style,
   itemId,
+  mask,
 }: {
   raw: any;
   style?: React.CSSProperties;
   itemId?: string;
+  mask?: { width: number; height: number; path: string };
 }) {
+  const clipId = useId().replace(/:/g, "");
   const image = useCachedImage(asset(raw));
+  if (image.url && mask) return (
+    <svg style={style} data-scene-item-id={itemId} viewBox={`0 0 ${mask.width} ${mask.height}`}>
+      <defs><clipPath id={clipId}><path d={mask.path}/></clipPath></defs>
+      <image href={image.url} width={mask.width} height={mask.height} clipPath={`url(#${clipId})`}/>
+    </svg>
+  );
   return image.url ? (
     <img
       data-scene-item-id={itemId}
@@ -38,8 +47,12 @@ function SceneImage({
 }
 export function WardrobeSceneLayers({
   garments,
+  anchorIds = [],
+  onSelect,
 }: {
   garments: readonly Garment[];
+  anchorIds?: readonly string[];
+  onSelect?: (garment: Garment) => void;
 }) {
   const [scene, setScene] = useState<any>(null);
   const [error, setError] = useState("");
@@ -105,6 +118,7 @@ export function WardrobeSceneLayers({
           key={item.garment_id}
           itemId={item.garment_id}
           raw={item.image}
+          mask={item.image_mask}
           style={{
             position: "absolute",
             left: `${item.geometry.x * 100}%`,
@@ -115,6 +129,22 @@ export function WardrobeSceneLayers({
             objectFit: "contain",
           }}
         />
+      ))}
+      {onSelect && scene?.items.map((item: any) => (
+        <button key={`hit:${item.garment_id}`} aria-label={`${item.name} 위치 보기`}
+          data-scene-hit-id={item.garment_id} onClick={() => {
+            const garment = garments.find(g => g.id === item.garment_id);
+            if (garment) onSelect(garment);
+          }} style={{position:"absolute",left:`${item.geometry.x*100}%`,top:`${item.geometry.y*100}%`,
+            width:`${item.geometry.width*100}%`,height:`${item.geometry.height*100}%`,
+            zIndex:80,background:"transparent",border:0,cursor:"pointer",pointerEvents:"auto"}} />
+      ))}
+      {scene?.items.filter((item: any) => item.anchor_id && anchorIds.includes(item.anchor_id)).map((item: any) => (
+        <div key={`led:${item.garment_id}`} data-anchor-id={item.anchor_id} data-led="on"
+          className="photo-scene-led" aria-label={`${item.name} 보관 슬롯`}
+          style={{position:"absolute",left:`${item.geometry.x*100}%`,top:`${item.geometry.y*100}%`,
+            width:`${item.geometry.width*100}%`,height:`${item.geometry.height*100}%`,
+            zIndex:100, border:"2px solid #ffd97a",boxShadow:"0 0 12px #ffe096",borderRadius:4,pointerEvents:"none"}} />
       ))}
       {!scene?.frame && (
         <span className="photo-scene-status">

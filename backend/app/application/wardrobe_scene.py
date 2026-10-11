@@ -53,9 +53,26 @@ async def scene(request, repo, actor, device_id):
         raise ApiError(422, "SCENE_LIMIT_EXCEEDED", "Scene supports up to 100 items")
     counts = Counter(g["location_id"] for g in garments if g["location_id"])
     items, blocked = [], []
+    asset_ids = [g["image_asset_id"] for g in garments if g["image_asset_id"]]
+    masks = (
+        {
+            str(r["id"]): r["metadata"].get("display_mask")
+            for r in await repo.all(
+                "SELECT id,metadata FROM wardrobe.asset WHERE id=ANY(:ids) AND household_id=:h",
+                ids=asset_ids,
+                h=actor.household_id,
+            )
+        }
+        if asset_ids
+        else {}
+    )
     service = Sprint1(request)
     for garment in garments:
         bound = slots.get(garment["location_id"])
+        # External boxes and closed drawers are intentional non-visible storage,
+        # not missing or guessed positions. They remain available in garment UI.
+        if bound and bound[0]["attributes"].get("scene_visibility") in {"hidden", "external"}:
+            continue
         reason = (
             "CLEAN_PLATE_UNAPPROVED"
             if frame is None
@@ -85,6 +102,7 @@ async def scene(request, repo, actor, device_id):
                 "image": dto.image.model_dump(mode="json"),
                 "geometry": geometry,
                 "anchor_id": location["anchor_id"],
+                "image_mask": masks.get(str(garment["image_asset_id"])),
             }
         )
     return {

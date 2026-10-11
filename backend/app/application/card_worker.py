@@ -144,7 +144,13 @@ async def execute_card(settings, resources, row, renderer):
                 encoded = f"data:{asset['content_type']};base64," + base64.b64encode(
                     content
                 ).decode("ascii")
-            images.append(dict(slot=item.slot, image=encoded))
+            images.append(
+                dict(
+                    slot=item.slot,
+                    image=encoded,
+                    display_mask=asset["metadata"].get("display_mask") if asset else None,
+                )
+            )
         payload = dict(
             template=card["template_id"],
             format=row["output_format"],

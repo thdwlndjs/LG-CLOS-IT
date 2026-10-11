@@ -72,6 +72,9 @@ def test_generated_sprint1_operations_and_components_match_source(settings):
         if name in {"Garment", "GarmentUpsert"}:
             schema = dict(schema, properties={k: v for k, v in schema["properties"].items()
                                              if k not in {"device_id", "name"}})
+        if name == "SceneItem":
+            schema = dict(schema, properties={k: v for k, v in schema["properties"].items()
+                                             if k != "image_mask"})
         assert normalized(schema) == normalized(source["components"]["schemas"][name]), name
 
 
@@ -83,3 +86,12 @@ def test_additive_garment_fields_preserve_required_contract(settings):
         assert schema["properties"]["device_id"]["anyOf"] == [
             {"type": "string", "format": "uuid"}, {"type": "null"}]
         assert "brand" not in schema["properties"] and "size" not in schema["properties"]
+
+
+def test_scene_mask_is_an_optional_additive_render_hint(settings):
+    schema = create_app(settings).openapi()["components"]["schemas"]["SceneItem"]
+    assert "image_mask" not in schema["required"]
+    from app.schemas.handoff import SceneItem
+    assert SceneItem.model_fields["image_mask"].default is None
+    assert schema["properties"]["image_mask"]["anyOf"] == [
+        {"type": "object", "additionalProperties": True}, {"type": "null"}]

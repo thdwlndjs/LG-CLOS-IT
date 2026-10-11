@@ -113,6 +113,7 @@ export function mapGarment(g: any): Garment {
     ownerId: g.owner_id,
     name: g.name || `${g.color} ${g.category}`,
     category: g.category.toLowerCase(),
+    serverStatus: g.status,
     color: g.color,
     features: [],
     material: g.material || "",

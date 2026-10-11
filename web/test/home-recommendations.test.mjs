@@ -18,6 +18,17 @@ const garment = (id, category, ownerId = "me", photo = true) => ({
   name: id,
   asset: photo ? { id: "asset-" + id, version: 2, url: "/image" } : null,
 });
+test("server storage/laundry states stay out of wearable recommendations while family items remain accessible", () => {
+  const shared={...garment("family-top","top","family"),serverStatus:"AVAILABLE"};
+  const stored={...garment("stored-top","top"),serverStatus:"STORED"};
+  const laundry={...garment("laundry-outer","outer"),serverStatus:"LAUNDRY"};
+  const bottom={...garment("bottom","bottom"),serverStatus:"AVAILABLE"};
+  const items=[shared,stored,laundry,bottom],before=structuredClone(items);
+  const choices=homeDemoChoices(items,"me","2026-10-11");
+  assert.equal(choices.length,1);
+  assert.deepEqual(choices[0].outfit.items,{top:"family-top",bottom:"bottom"});
+  assert.deepEqual(items,before);
+});
 test("carousel has up to three unique owned combinations and never pads missing inventory", () => {
   const garments = [garment("t1","top"),garment("t2","top"),garment("t3","top"),garment("b","bottom")];
   const snapshot = structuredClone(garments);

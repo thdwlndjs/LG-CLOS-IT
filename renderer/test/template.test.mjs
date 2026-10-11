@@ -14,3 +14,9 @@ test('reject URL fetching and malformed input', () => {
   assert.throws(() => validate({...base,template:'untrusted'}));
   assert.throws(() => validate({...base,items:[]}));
 });
+test('reject unsafe SVG mask commands and unbounded dimensions', () => {
+  const item={slot:'TOP',image:null,display_mask:{width:384,height:384,path:'M0 0h1v1h-1z'}};
+  assert.doesNotThrow(()=>validate({...base,items:[item]}));
+  assert.throws(()=>validate({...base,items:[{...item,display_mask:{...item.display_mask,width:100000}}]}));
+  assert.throws(()=>validate({...base,items:[{...item,display_mask:{...item.display_mask,path:'<script>alert(1)</script>'}}]}));
+});

@@ -9,6 +9,11 @@ export function validate(payload) {
       || typeof payload.style_tag !== 'string' || payload.style_tag.length > 1000
       || !Array.isArray(payload.items) || payload.items.length < 1 || payload.items.length > 6) throw Error('invalid');
   for (const item of payload.items) {
+    if (item?.display_mask != null) {
+      const m=item.display_mask;
+      if (!Number.isInteger(m.width)||!Number.isInteger(m.height)||m.width<1||m.height<1||m.width>4096||m.height>4096
+        ||typeof m.path!=='string'||m.path.length>500000||!/^[Mhvz\d .-]+$/.test(m.path)) throw Error('invalid mask');
+    }
     if (!item || typeof item.slot !== 'string' || item.slot.length > 30
         || (item.image !== null && (typeof item.image !== 'string'
         || item.image.length > 14_000_000

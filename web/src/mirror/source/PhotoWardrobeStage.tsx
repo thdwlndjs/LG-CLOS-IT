@@ -12,10 +12,12 @@ export function PhotoWardrobeStage({
   anchorIds,
   children,
   garments = [],
+  onSelectGarment,
 }: {
   anchorIds: string[];
   children: ReactNode;
   garments?: readonly Garment[];
+  onSelectGarment?: (garment: Garment) => void;
 }) {
   const viewport = useRef<HTMLDivElement>(null);
   const [size, setSize] = useState({ width: 1672, height: 941, mobile: false });
@@ -80,13 +82,13 @@ export function PhotoWardrobeStage({
         style={{ width: size.width, height: size.height }}
         data-scene-version={geometry.source.rgb_pixel_sha256}
       >
-        {dynamic ? <WardrobeSceneLayers garments={garments}/> : <img
+        {dynamic ? <WardrobeSceneLayers garments={garments} anchorIds={anchorIds} onSelect={onSelectGarment}/> : <img
           className="photo-background"
           src="/assets/mirror-final/wardrobe-base-led-off.png"
           alt="열린 수납부와 중앙 미러가 있는 기준 옷장"
           draggable={false}
         />}
-        <div className="photo-led-layer" aria-hidden="true">
+        {!dynamic && <div className="photo-led-layer" aria-hidden="true">
           {geometry.led_anchors.map((anchor) => {
             const [x, y] = anchor.source_xy_px;
             const radius =
@@ -118,7 +120,7 @@ export function PhotoWardrobeStage({
               </div>
             );
           })}
-        </div>
+        </div>}
         <main
           className="photo-mirror"
           aria-label="스마트 옷장 미러"
