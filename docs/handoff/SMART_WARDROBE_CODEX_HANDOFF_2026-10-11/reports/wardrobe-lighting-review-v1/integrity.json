@@ -4,8 +4,13 @@
   "checks": [
     {
       "selected": "A",
-      "cloth_mean_luminance_before": 35.8394,
-      "cloth_mean_luminance_after": 46.7902,
+      "cloth_mean_luminance_before": 22.379,
+      "cloth_mean_luminance_after": 30.5353,
+      "hanger_sector_check": {
+        "same_rail_neighbor_luminance_before": 87.6843,
+        "same_rail_neighbor_luminance_after": 57.0538,
+        "brightened_pixels_outside_selected_sector": 0
+      },
       "unselected_compartments_dimmed": [
         "B",
         "C",
@@ -26,8 +31,13 @@
     },
     {
       "selected": "B",
-      "cloth_mean_luminance_before": 116.8833,
-      "cloth_mean_luminance_after": 123.5105,
+      "cloth_mean_luminance_before": 160.3262,
+      "cloth_mean_luminance_after": 163.9311,
+      "hanger_sector_check": {
+        "same_rail_neighbor_luminance_before": 205.9482,
+        "same_rail_neighbor_luminance_after": 134.6661,
+        "brightened_pixels_outside_selected_sector": 0
+      },
       "unselected_compartments_dimmed": [
         "A",
         "C",
@@ -50,6 +60,7 @@
       "selected": "E1",
       "cloth_mean_luminance_before": 147.7261,
       "cloth_mean_luminance_after": 155.9978,
+      "hanger_sector_check": null,
       "unselected_compartments_dimmed": [
         "A",
         "B",

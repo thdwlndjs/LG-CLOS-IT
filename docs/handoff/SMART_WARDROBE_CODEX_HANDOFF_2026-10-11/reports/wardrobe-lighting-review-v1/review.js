@@ -21,7 +21,7 @@
   y.addColorStop(0,'transparent');y.addColorStop(fy,'white');y.addColorStop(1-fy,'white');y.addColorStop(1,'transparent');
   g.fillStyle=y;g.fillRect(0,0,w,h);return c;
  }
- const dimLayers={};
+ const dimLayers={},restoreLayers={};
  function makeLayers(){
   for(const part of spec.compartments){
    const [x,y,w,h]=part.bounds,c=create(),g=c.getContext('2d');
@@ -29,19 +29,27 @@
    g.globalCompositeOperation='destination-in';g.drawImage(mask(w,h),x,y);dimLayers[part.id]=c;
   }
   for(const variant of spec.variants){
-   const [x,y,w,h]=variant.bounds,c=create(),g=c.getContext('2d');
+   const [x,y,w,h]=variant.sector_bounds || variant.bounds,c=create(),g=c.getContext('2d');
    g.drawImage(images[variant.id],x,y,w,h,x,y,w,h);
-   g.globalCompositeOperation='destination-in';g.drawImage(mask(w,h,6),x,y);
+   g.globalCompositeOperation='destination-in';g.drawImage(mask(w,h,variant.sector_bounds?3:6),x,y);
    images[variant.id+'-layer']=c;
+   if(variant.sector_bounds){
+    const restore=create(),r=restore.getContext('2d');
+    r.drawImage(base,x,y,w,h,x,y,w,h);
+    r.globalCompositeOperation='destination-in';r.drawImage(mask(w,h,3),x,y);
+    restoreLayers[variant.id]=restore;
+   }
   }
  }
  function draw(){
   ctx.clearRect(0,0,1672,941);ctx.drawImage(base,0,0);
   for(const part of spec.compartments){
-   const amount=Number(dim.value)*activity*(1-(weights[part.id]||0));
+   const narrow=!!spec.variants.find(v=>v.id===part.id)?.sector_bounds;
+   const amount=Number(dim.value)*activity*(1-(narrow?0:(weights[part.id]||0)));
    if(amount>0){ctx.globalAlpha=amount;ctx.drawImage(dimLayers[part.id],0,0)}
   }
   for(const v of spec.variants){
+   if(restoreLayers[v.id]){ctx.globalAlpha=weights[v.id];ctx.drawImage(restoreLayers[v.id],0,0)}
    ctx.globalAlpha=spec.relight_mix*weights[v.id];ctx.drawImage(images[v.id+'-layer'],0,0);
   }
   ctx.globalAlpha=1;

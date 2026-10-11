@@ -58,7 +58,7 @@ try {
    const pair=document.createElement('div');Object.assign(pair.style,{display:'flex',gap:'12px'});
    for(const [label,img] of [['기본 조명',base],['선택 칸 표면 조명',lit]]){
     const col=document.createElement('div');col.style.flex='1';col.style.minWidth='0';const title=document.createElement('p');title.textContent=label;
-    const c=document.createElement('canvas'),[x,y,w,h]=v.detail;c.width=w*3;c.height=h*3;
+    const c=document.createElement('canvas'),[x,y,w,h]=v.review_bounds || v.detail;c.width=w*3;c.height=h*3;
     c.style.width='100%';c.style.height='auto';c.style.maxHeight='680px';c.style.objectFit='contain';
     c.getContext('2d').drawImage(img,x,y,w,h,0,0,c.width,c.height);col.append(title,c);pair.append(col);
    }

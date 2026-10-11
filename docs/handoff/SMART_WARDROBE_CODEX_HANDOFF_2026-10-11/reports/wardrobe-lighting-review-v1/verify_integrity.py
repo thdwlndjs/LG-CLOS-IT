@@ -40,6 +40,26 @@ for variant in spec["variants"]:
     before = brightness(base, variant["detail"])
     after = brightness(selected, variant["detail"])
     assert after > before, f"{variant['id']} surface did not brighten"
+    neighbor = None
+    if "sector_bounds" in variant:
+        neighbor_before = brightness(base, variant["neighbor_bounds"])
+        neighbor_after = brightness(selected, variant["neighbor_bounds"])
+        assert neighbor_after < neighbor_before, "Same-rail neighbor was illuminated"
+        sector_part = next(p for p in spec["compartments"] if p["id"] == variant["id"])
+        px, py, pw, ph = sector_part["bounds"]
+        bp, sp = base.load(), selected.load()
+        bright_outside_sector = sum(
+            sum(sp[x, y]) > sum(bp[x, y])
+            for y in range(py, py + ph)
+            for x in range(px, px + pw)
+            if not contains(variant["sector_bounds"], x, y)
+        )
+        assert bright_outside_sector == 0, "Brightened another hanging sector"
+        neighbor = {
+            "same_rail_neighbor_luminance_before": neighbor_before,
+            "same_rail_neighbor_luminance_after": neighbor_after,
+            "brightened_pixels_outside_selected_sector": bright_outside_sector,
+        }
     dimmed = []
     for part in spec["compartments"]:
         if part["id"] != variant["id"]:
@@ -60,6 +80,7 @@ for variant in spec["variants"]:
             "selected": variant["id"],
             "cloth_mean_luminance_before": before,
             "cloth_mean_luminance_after": after,
+            "hanger_sector_check": neighbor,
             "unselected_compartments_dimmed": dimmed,
             "outside_compartments_changed_pixels": outside,
         }
