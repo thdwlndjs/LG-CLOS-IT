@@ -1,0 +1,56 @@
+[
+  {
+    "profile": "김수진",
+    "approved_geometry_preserved": true,
+    "visual": [
+      {
+        "phase": "desktop-before",
+        "side": "left",
+        "changed_pixels": 0
+      },
+      {
+        "phase": "desktop-before",
+        "side": "right",
+        "changed_pixels": 0
+      },
+      {
+        "phase": "desktop-after",
+        "side": "left",
+        "changed_pixels": 0
+      },
+      {
+        "phase": "desktop-after",
+        "side": "right",
+        "changed_pixels": 0
+      }
+    ],
+    "pass_result": true
+  },
+  {
+    "profile": "최휘재",
+    "approved_geometry_preserved": true,
+    "visual": [
+      {
+        "phase": "desktop-before",
+        "side": "left",
+        "changed_pixels": 0
+      },
+      {
+        "phase": "desktop-before",
+        "side": "right",
+        "changed_pixels": 0
+      },
+      {
+        "phase": "desktop-after",
+        "side": "left",
+        "changed_pixels": 0
+      },
+      {
+        "phase": "desktop-after",
+        "side": "right",
+        "changed_pixels": 0
+      }
+    ],
+    "pass_result": true
+  }
+]

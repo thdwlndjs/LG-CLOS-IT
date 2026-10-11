@@ -1,6 +1,6 @@
 # C단계 구현 및 검증 결과
 
-기준 `a1e439b`, B-01 승인 `aed6b48`. C1~C6 사용자 승인에 따른 **기존 Mock 흐름 구현·검증은 PASS**다. 다만 이후 최종 점검에서 **C4 추가 반응형 Scene 정합성은 FAIL**로 확인되어 해당 완료 게이트는 미충족이다. 아래 추가 감사 결과와 승인 대기 수정안을 참조한다. 실제 VTON 시착 품질은 미검증이다. A1과 B-01은 유지하고 B-02는 DEFERRED다. D~G는 수행하지 않았다.
+기준 `a1e439b`, B-01 승인 `aed6b48`. C1~C6 Mock 흐름과 **사용자가 추가 승인한 C4 반응형 Scene 정합성 수정·검증은 PASS**다. C단계 최종 Mock 검증 완료로 판정한다. 최초 반응형 FAIL 증적은 이력으로 보존하고, 아래 후속 승인 수정 결과에 최종 PASS를 기록한다. 실제 VTON 시착 품질은 미검증이다. A1과 B-01은 유지하고 B-02는 DEFERRED다. D~G는 수행하지 않았다.
 
 ## 구현 결과와 요구사항 추적
 
@@ -76,7 +76,7 @@ npm run build
 
 독립 cold read에서 실제 시착 게이트의 승인자·품질 PASS 기준·미지원 슬롯 처리·원본 변경 검사와 draft 편집의 차이를 확인했다. 승인자는 사용자로 명시하고, 미래 품질 판정 정책은 미확정으로 남겼으며, 원본 DB 변경 검사와 현재 선택 편집을 분리했다. 검증 독립성 검사에서는 모든 입력이 같은 이미지였던 초기 fixture를 서로 다른 이미지로 보완하고 저장소 원본과 worker bytes를 직접 비교했다. 실제 시착 품질을 Mock의 입력 통과로 대체하지 않았다. A1·실행 계약·API·최종 보고를 대조했으며 임의의 추가 제품 정책은 도입하지 않았다.
 
-## C4 추가 감사 — 반응형 스마트미러 Scene 정합성
+## C4 최초 감사 — 반응형 스마트미러 Scene 정합성 (수정 전 FAIL)
 
 사용자 지시에 따라 제품·업무 데이터 변경 없이 실제 두 프로필의 화면 크기를 전환했다. 검사 세션의 로그인 인증만 수행했으며 제품 코드·CSS·의류/위치 등 업무 DB·에셋·기존 계약서는 수정하지 않았다. 보고서와 브라우저 증적만 추가한다. 기존 Mock 테스트 PASS를 반응형 Scene PASS로 확대하지 않는다.
 
@@ -103,4 +103,29 @@ npm run build
 
 권장 제품 수정은 **`web/src/mirror/source/mirror-responsive.css` 한 파일의 기존 모바일 미디어 규칙에 `.photo-db-scene { display:none; }`를 포함**하는 것이다. 부모를 숨겨 그 하위 frame·SVG/image·투명 에셋·상태/조명 표현·hit button을 함께 제거하고, 중앙 `.photo-mirror`와 거울 배경 효과는 유지한다. 미러까지 포함하는 `.photo-wardrobe`/`.photo-stage` 전체를 숨기거나 개별 의류 opacity만 낮추는 방식은 사용하지 않는다. DB·에셋·geometry·데스크톱 규칙·B-02·LED 정책 변경은 필요하지 않다.
 
-승인 후 회귀 검증에는 두 프로필의 동일 크기 전환, **767px 이하** 모바일 Scene 유효 표시/클릭 영역 0, 미러 hit-test Scene 0, 실제 내비게이션 클릭 성공, desktop87개 ID·좌표·필터 복귀 일치, 거울 배경 효과 및 프로필/화면 상태 보존을 포함해야 한다. **768px은 데스크톱 Scene 표시를 유지하는 경계 검사**로 구분한다. **수정은 실행하지 않았으며 사용자 승인 대기**다. D~G는 시작하지 않았다.
+최초 감사에서는 **767px 이하** 모바일 Scene 유효 표시/클릭 영역 0, 미러 hit-test Scene 0, 실제 내비게이션 클릭 성공, desktop87개 ID·좌표·필터 복귀 일치, 거울 배경 효과 및 프로필/화면 상태 보존을 승인 후 기준으로 제안했다. **768px은 데스크톱 Scene 표시를 유지하는 경계 검사**로 구분했다. 당시 수정은 실행하지 않고 사용자 승인을 기다렸으며, 이후 명시적 승인에 따른 결과는 다음 절에 기록한다. D~G는 시작하지 않았다.
+
+## C4 후속 승인 수정 — 반응형 Scene 검증 PASS
+
+사용자는 `mirror-responsive.css` 한 파일의 부모 Scene 숨김 수정을 승인했다. 제품 수정은 기존 `@media (max-width: 767px)`의 숨김 선택자 목록에 **`[data-display-mode="mobile"] .photo-db-scene,` 한 줄을 추가**한 것이 전부다. 숨김은 해당 Scene 하위 요소에만 적용하며, 자식 87개를 개별 제어하지 않는다. `.photo-wardrobe`/`.photo-stage` 전체나 중앙 거울을 숨기지 않는다. 중앙 미러 코드·기존 거울 배경 규칙과 DB·API·Snapshot·VTON·에셋·geometry·데스크톱 스타일은 변경하지 않았다. 미러 안의 일반 상품 사진과 기능 UI는 숨김 대상이 아니다.
+
+| 승인 검증 항목 | 판정 | 실제 결과 |
+|---|---|---|
+| 두 프로필 390px 모바일 Scene 및 클릭 영역 숨김 | **PASS** | 김수진·최휘재 모두 `.photo-db-scene` 유효 표시 없음, Scene 자식/의류/클릭 영역 표시 0개. DOM의 87개 ID는 유지되며 부모 숨김만 적용 |
+| 가림 및 이벤트 가로채기 없음 | **PASS** | 각 모바일 미러 12×12 표본의 Scene top target 0/144. 이전 41/144에서 0으로 감소. 실제 네비게이션 버튼 중앙 hit-test 모두 통과 |
+| 홈·옷장·코디·마이 정상 이동 | **PASS** | 두 프로필에서 실제 클릭 성공 및 `data-screen`이 home/wardrobe/outfit/my로 변경됨을 각각 확인 |
+| 모바일 → 데스크톱 복원 | **PASS** | 390/667/767px 모바일에서 모든 Scene 표시·hit 0. 768px 및 1672px 데스크톱은 의류 87개·hit 87개 정상 표시. 두 프로필에서 복귀 후 ID·표시/클릭 rect·filter 일치 |
+| B-01 승인 배치 및 시각 유지 | **PASS** | 수정 전 감사 증적의 1672×941 geometry와 수정 후 초기/복귀 geometry 일치. 기존 왼쪽 및 오른쪽 옷장 영역의 캡처 픽셀 차이 각각 0. 중앙 미러의 시간/콘텐츠는 픽셀 비교에서 제외 |
+| 관련 프론트 회귀 | **PASS** | `npm test` 48 PASS / 0 FAIL / 0 SKIP. `npm run build` TypeScript·Vite 통과. 기존 500kB chunk 경고는 동일하며 이번 수정 범위에서 제외 |
+
+실행 크기 순서는 각 프로필에서 **1672×941 → 390×844 → 667×375 → 767×844 → 768×844 → 1672×941**이다. 실제 이미지 decode와 브라우저 렌더링을 확인하고 JS 오류 0건을 기록했다. 제품·업무 데이터 변경 요청은 없으며 검사 인증용 demo-login만 각 프로필 1회 수행했다. 첫 브라우저 시도는 프로필 화면 대기에서 시간 초과됐고, 검증 스크립트 보완 중 한글 문자열 인코딩 문제도 발생했다. 해당 시도를 PASS로 처리하지 않았으며 UTF-8 원문/Unicode escape로 검증 도구를 정리한 최종 실행에서 두 프로필의 모든 항목이 통과했다. 추가 제품 수정은 없었다.
+
+증적:
+
+- [최종 실측 JSON](evidence/stage-c/responsive-scene-fix/results.json)
+- [데스크톱 geometry 및 픽셀 비교](evidence/stage-c/responsive-scene-fix/desktop-comparison.json): 1672×941 이미지의 왼쪽 `(0,0)-(700,941)` 및 오른쪽 `(980,0)-(1672,941)` 영역을 수정 전/후 동일 조건에서 비교. 두 프로필의 초기/복귀 모두 변경 픽셀 0.
+- [김수진 390px](evidence/stage-c/responsive-scene-fix/김수진-mobile-portrait.png), [최휘재 390px](evidence/stage-c/responsive-scene-fix/최휘재-mobile-portrait.png)
+- [김수진 desktop 복귀](evidence/stage-c/responsive-scene-fix/김수진-desktop-after.png), [최휘재 desktop 복귀](evidence/stage-c/responsive-scene-fix/최휘재-desktop-after.png). 같은 폴더에 각 크기의 캡처를 보존한다.
+- [재현 스크립트](evidence/stage-c/responsive-scene-fix/verify.mjs): 프로젝트 루트에서 `node docs/handoff/SMART_WARDROBE_CODEX_HANDOFF_2026-10-11/reports/evidence/stage-c/responsive-scene-fix/verify.mjs`. 로컬 API 18081·웹 5193 필요.
+
+**C4 반응형 추가 완료 게이트를 PASS로 변경한다. C단계 최종 Mock 검증은 완료이며 실제 시착 품질 게이트는 계속 별도다.** 기존 백엔드 215 PASS는 이전 C 검증 기록이고 이번 CSS 수정에서 백엔드 테스트를 재실행했다고 주장하지 않는다. 수정 파일과 문서·증적을 함께 로컬 커밋에 남기고 이번 작업을 종료한다. 원격 push·배포는 하지 않으며 D~G 착수는 별도 사용자 승인 대기다.

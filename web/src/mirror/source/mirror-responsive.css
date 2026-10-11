@@ -14,6 +14,7 @@
     --mobile-content-left: calc(var(--mobile-left) + 62px);
   }
   [data-display-mode="mobile"] .photo-background,
+  [data-display-mode="mobile"] .photo-db-scene,
   [data-display-mode="mobile"] .photo-led-layer { display: none; }
   /* Map only source pixels x=714..962, y=28..852 into the mobile mirror.
      Reuse the original resource; no wardrobe pixels or new image asset. */

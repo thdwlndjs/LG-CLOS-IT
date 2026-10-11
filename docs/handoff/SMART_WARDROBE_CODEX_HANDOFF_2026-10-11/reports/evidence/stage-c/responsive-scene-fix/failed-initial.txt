@@ -1,0 +1,263 @@
+TimeoutError: locator.click: Timeout 30000ms exceeded.
+Call log:
+[2m  - waiting for getByRole('button', { name: '?', exact: true })[22m
+
+⛶
+전체 화면
+표시 보류 7개 · 위치·사진 확인 필요
+홈
+옷장
+코디
+캘린더
+케어
+마이
+08:17
+10월 12일 월요일
+겨울 전환 시연 · 오늘 16°C → 다음 주 7°C · Mock 예보
+김수진님
+
+오늘 입을 옷과 계절에 맞는 보관을 제안해요.
+
+겨울 전환 시연
+실제 기록
+시연 예보·환경·사용 이력 / 실제 보유 사진
+오늘의 코디 추천
+기온 하락에 대비한 레이어드 코디
+
+시연 예보: 다음 주 기온이 16°C에서 7°C로 내려갑니다.
+
+최근 7일 사용 횟수가 낮은 의류를 우선 조합했습니다. 사용 횟수는 Mock입니다.
+
+겉옷을 더한 구성입니다. 실제 보온성·착용 가능 상태는 확인하세요.
+
+AI 입어보기
+기온 하락에 대비한 레이어드 코디
+
+시연 예보: 다음 주 기온이 16°C에서 7°C로 내려갑니다.
+
+최근 7일 사용 횟수가 낮은 의류를 우선 조합했습니다. 사용 횟수는 Mock입니다.
+
+겉옷을 더한 구성입니다. 실제 보온성·착용 가능 상태는 확인하세요.
+
+AI 입어보기
+기온 하락에 대비한 레이어드 코디
+
+시연 예보: 다음 주 기온이 16°C에서 7°C로 내려갑니다.
+
+최근 7일 사용 횟수가 낮은 의류를 우선 조합했습니다. 사용 횟수는 Mock입니다.
+
+겉옷을 더한 구성입니다. 실제 보온성·착용 가능 상태는 확인하세요.
+
+AI 입어보기
+계절·보관 관리 추천
+
+시연 예보에서 다음 주 기온이 내려갑니다. 따뜻한 옷을 가까운 옷장에 두고, 나시·반팔 등 여름옷은 옷장 밖 보관을 검토해보세요.
+
+나시·반팔은 설명용 예시이며 보유 의류로 등록하지 않습니다.
+옷장
+22°C · 습도 58%
+첫 번째 방
+23°C · 습도 72%
+두 번째 방
+20°C · 습도 45%
+
+두 번째 방을 보관 후보로 추천해요. 습도 45%로 시연 기준 범위에 들어갑니다.
+
+Mock 기준: 습도 40~55%, 온도 25°C 이하. 소재별 실제 권장치가 아닙니다. 실제 이동 전 환경·빈 공간·케어 제약을 확인하세요.
+사용 이력
+
+실제 착용 완료 18건 · 관리 완료 0건
+
+아래는 최근 7일 시연용 사용 횟수입니다. 실제 착용 기록과 분리합니다.
+
+SnowDrifter Beanie · Mock 3회
+
+W's Cap MW Crew · Mock 3회
+
+M's LW Stormshadow Jkt · Mock 4회
+
+W's Houdini Jkt · Mock 3회
+
+Women's Los Gatos Vest · Mock 1회
+
+Men's Home Water Trout Organic T-Shirt · Mock 4회
+
+M's Tidal Threads Camp Shirt · Mock 3회
+
+Men’s Minimalist Wavefarer® Board Shorts - 19" · Mock 2회
+
+M's Hydropeak Boardshorts - 21 in. · Mock 3회
+
+Women's Super Free Alpine Jacket · Mock 0회
+
+W's Necessity Top · Mock 3회
+
+Ultralight Black Hole® Mini Hip Pack 1L · Mock 2회
+
+M's Multi Trails Shorts - 6 in. · Mock 2회
+
+W's L/S Regenerative Organic Certified Cotton Tee · Mock 2회
+
+M's Stretch Polo · Mock 1회
+
+W's Down Sweater Hoody Pullover · Mock 3회
+
+Women's Hampi Rock Pants - Regular · Mock 1회
+
+M's Triolet Pants · Mock 4회
+
+M's Cap Cool Sun Hoody - Water People Banner · Mock 0회
+
+M's Strataspire Responsibili-Tee · Mock 0회
+
+M's Micro Puff Zip Vest · Mock 4회
+
+W's Capilene® 2 V-Neck · Mock 3회
+
+W's Micro D®-Luxe 1/4 Zip · Mock 4회
+
+Snowdrifter Beanie · Mock 0회
+
+W's Everyday Cord Straight Pants · Mock 1회
+
+Refugio Pack 28L · Mock 2회
+
+W's Cap Cool Daily Shirt - Fitz Roy Nimbus · Mock 1회
+
+Black Hole Cube 14L · Mock 3회
+
+Men's Stretch Velocity Full-Zip · Mock 2회
+
+Women's Tech Skort · Mock 0회
+
+Men's Baggies™ Shorts - 5" · Mock 4회
+
+M's Hydropeak Side Shore Boardshorts - 18 in. · Mock 4회
+
+Dirt Roamer Waist Pack · Mock 2회
+
+Men's Capilene® Cool Daily Hoody · Mock 3회
+
+Fitz Roy Icon Responsibili-Tee® · Mock 2회
+
+Women's Long-Sleeved '73 Text Logo Responsibili-Tee® · Mock 1회
+
+Atom Sling 8L · Mock 3회
+
+M's Upstride Jkt · Mock 0회
+
+Ultralight Black Hole® Mini Hip Pack 1L · Mock 0회
+
+M's Daily Polo · Mock 1회
+
+W's Daily Crew · Mock 3회
+
+W's Cashmere Tunic · Mock 1회
+
+Women's Glorya Tank · Mock 2회
+
+1461 Smooth Leather Oxford Shoes · Mock 2회
+
+(W) WOOL TAILORED DOUBLE-BREASTED MAXI COAT_ CAMEL · Mock 0회
+
+FELTED WOOL TAILORED COAT_ CHARCOAL · Mock 0회
+
+HERRINGBONE WOOL RAGLAN OVERCOAT_ PATINA TAUPE · Mock 1회
+
+HERRINGBONE WOOL DOUBLE-BREASTED COAT_ MOSS BROWN · Mock 3회
+
+WOOL AND CASHMERE DOUBLE-BREASTED COAT_ BLACK · Mock 0회
+
+WOOL AND CASHMERE TAILORED COAT_ DEEP BROWN · Mock 3회
+
+(W) HIGH-NECK BELTED WOOL COAT_ HEATHER GREY · Mock 3회
+
+HIGH DENSITY STRIPED COTTON SHIRT_ WHITE · Mock 0회
+
+HIGH DENSITY STRIPED COTTON SHIRT_ SKY COBALT · Mock 1회
+
+DENIM WESTERN SHIRT_ VINTAGE INDIGO · Mock 2회
+
+WOOL FLANNEL BELTED STAND COLLAR BOMBER_ CHARCOAL ANTHRACITE · Mock 3회
+
+HIGH NECK MERINO WOOL BUTTON-UP KNITTED BLOUSON_ TAUPE · Mock 0회
+
+LEATHER COLLAR PADDED HUNTING JACKET_ BLACK · Mock 1회
+
+SLIM-STRAIGHT DENIM JEANS_ RINSED BLACK · Mock 2회
+
+CROSS TUCK WIDE TROUSERS_ GREY PINSTRIPE · Mock 1회
+
+COTTON DRILL PLEATED CHINO PANTS_ NAVY · Mock 4회
+
+COTTON DRILL PLEATED CHINO PANTS_ BEIGE · Mock 2회
+
+RE-CUT WIDE LEG CARGO PANTS_ BLACK · Mock 4회
+
+LOOSE STRAIGHT BUCKLE-BACK JEANS_ ECRU · Mock 2회
+
+FLOCKED DENIM LOOSE FLARED PANTS_ BROWN · Mock 2회
+
+WOOL CARPENTER TROUSERS_ NAVY · Mock 4회
+
+MERINO WOOL HALF-ZIP JUMPER_ SAND · Mock 3회
+
+MERINO WOOL HALF-ZIP JUMPER_ NAVY · Mock 2회
+
+SUPER FINE MERINO WOOL CREW-NECK KNIT_ CHARCOAL · Mock 1회
+
+MERINO WOOL HALF-ZIP JUMPER_ NAVY · Mock 3회
+
+MERINO WOOL HALF-ZIP JUMPER_ NAVY · Mock 2회
+
+MERINO WOOL HALF-ZIP JUMPER_ SAND · Mock 2회
+
+MERINO WOOL HALF-ZIP JUMPER_ NAVY · Mock 0회
+
+MERINO WOOL HALF-ZIP JUMPER_ NAVY · Mock 1회
+
+MERINO WOOL HALF-ZIP JUMPER_ SAND · Mock 1회
+
+MERINO WOOL HALF-ZIP JUMPER_ SAND · Mock 2회
+
+MERINO WOOL HALF-ZIP JUMPER_ SAND · Mock 0회
+
+MERINO WOOL HALF-ZIP JUMPER_ NAVY · Mock 2회
+
+MERINO WOOL HALF-ZIP JUMPER_ SAND · Mock 1회
+
+SUPER FINE MERINO WOOL CREW-NECK KNIT_ CHARCOAL · Mock 4회
+
+SUPER FINE MERINO WOOL CREW-NECK KNIT_ CHARCOAL · Mock 2회
+
+MERINO WOOL HALF-ZIP JUMPER_ NAVY · Mock 3회
+
+SUPER FINE MERINO WOOL CREW-NECK KNIT_ CHARCOAL · Mock 1회
+
+MERINO WOOL HALF-ZIP JUMPER_ SAND · Mock 1회
+
+SUPER FINE MERINO WOOL CREW-NECK KNIT_ CHARCOAL · Mock 0회
+
+MERINO WOOL HALF-ZIP JUMPER_ SAND · Mock 0회
+
+MERINO WOOL HALF-ZIP JUMPER_ NAVY · Mock 3회
+
+SUPER FINE MERINO WOOL CREW-NECK KNIT_ CHARCOAL · Mock 1회
+
+SUPER FINE MERINO WOOL CREW-NECK KNIT_ CHARCOAL · Mock 0회
+
+MERINO WOOL HALF-ZIP JUMPER_ SAND · Mock 2회
+
+MERINO WOOL HALF-ZIP JUMPER_ NAVY · Mock 4회
+
+MERINO WOOL HALF-ZIP JUMPER_ NAVY · Mock 2회
+
+MERINO WOOL HALF-ZIP JUMPER_ SAND · Mock 2회
+
+MERINO WOOL HALF-ZIP JUMPER_ SAND · Mock 0회
+
+SUPER FINE MERINO WOOL CREW-NECK KNIT_ CHARCOAL · Mock 3회
+
+SUPER FINE MERINO WOOL CREW-NECK KNIT_ CHARCOAL · Mock 4회
+
+SUPER FINE MERINO WOOL CREW-NECK KNIT_ CHARCOAL · Mock 2회
