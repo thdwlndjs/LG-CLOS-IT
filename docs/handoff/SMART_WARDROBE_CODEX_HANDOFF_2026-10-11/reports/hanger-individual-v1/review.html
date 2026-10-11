@@ -1,0 +1,29 @@
+<!doctype html><html lang="ko"><meta charset="utf-8">
+<title>행거 개별 픽셀 분리 검수</title>
+<style>body{margin:20px;background:#eee9e1;color:#29251f;font:16px system-ui}button,select,input{margin:5px;padding:8px}canvas{width:100%;height:auto;display:block}#stage{max-width:1672px}#assets{display:grid;grid-template-columns:repeat(7,1fr);gap:12px}figure{margin:0;padding:12px;background:#333;color:white}figure img{height:250px;max-width:100%;object-fit:contain;background:repeating-conic-gradient(#444 0% 25%,#666 0% 50%) 0/16px 16px}#status{min-height:2em}</style>
+<h1>행거 의류 21벌 개별 에셋</h1>
+<p>원본 픽셀 분리 · 조명 기능과 무관하게 개별 배치. 숨겨진 의류 뒷부분은 복원 전입니다. 가장자리/제거 화면은 추가 시각 검수가 필요합니다.</p>
+<button id="original">원본</button><button id="assembled">개별 에셋 재합성</button><button id="empty">행거 전체 숨기기</button>
+<label>개별 의류 <select id="item"></select></label><button id="remove">선택 의류 숨기기</button><button id="move">선택 의류 오른쪽 이동</button>
+<p id="status"></p><div id="stage"><canvas id="scene" width="1672" height="941"></canvas></div><h2>투명 PNG 개별 보기</h2><div id="assets"></div>
+<script type="module">
+const spec=await fetch('manifest.json').then(r=>r.json());
+const load=src=>new Promise((resolve,reject)=>{const im=new Image;im.onload=()=>resolve(im);im.onerror=reject;im.src=src});
+const original=await load(spec.source),base=await load(spec.background),clean=await load(spec.clean_underlay),images={};
+for(const item of spec.items){images[item.id]=await load(item.file);const option=document.createElement('option');option.value=item.id;option.textContent=item.id;document.querySelector('#item').append(option);
+ const fig=document.createElement('figure'),caption=document.createElement('figcaption'),img=document.createElement('img');caption.textContent=item.id;img.src=item.file;fig.append(caption,img);document.querySelector('#assets').append(fig)}
+const canvas=document.querySelector('#scene'),ctx=canvas.getContext('2d');
+function draw(mode='assembled',id=''){
+ ctx.clearRect(0,0,canvas.width,canvas.height);
+ ctx.drawImage(mode==='original'?original:base,0,0);
+ if(['empty','remove','move'].includes(mode))for(const row of spec.rows){
+  if(mode!=='empty'&&row.id!==id[0])continue;
+  const [x,y,w,h]=row.bounds;ctx.drawImage(clean,x,y,w,h,x,y,w,h);
+ }
+ if(!['original','empty'].includes(mode))for(const item of spec.items){if(mode==='remove'&&item.id===id)continue;ctx.drawImage(images[item.id],item.x+(mode==='move'&&item.id===id?80:0),item.y)}
+ document.querySelector('#status').textContent=mode+' '+id+(mode==='assembled'?' · 原본과 픽셀 차이 '+spec.changed_pixels:'');
+ window.hangerState={mode,id};
+}
+for(const mode of ['original','assembled','empty','remove','move'])document.querySelector('#'+mode).onclick=()=>draw(mode,document.querySelector('#item').value);
+draw();window.hangerReady=true;
+</script></html>

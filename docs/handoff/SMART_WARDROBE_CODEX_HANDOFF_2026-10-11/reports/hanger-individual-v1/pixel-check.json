@@ -1,0 +1,112 @@
+{
+  "status": "PASS",
+  "recomposition_changed_pixels": 0,
+  "items": [
+    {
+      "id": "A1",
+      "alpha": "binary-transparent",
+      "opaque_rgb": "matches-original-source"
+    },
+    {
+      "id": "A2",
+      "alpha": "binary-transparent",
+      "opaque_rgb": "matches-original-source"
+    },
+    {
+      "id": "A3",
+      "alpha": "binary-transparent",
+      "opaque_rgb": "matches-original-source"
+    },
+    {
+      "id": "A4",
+      "alpha": "binary-transparent",
+      "opaque_rgb": "matches-original-source"
+    },
+    {
+      "id": "A5",
+      "alpha": "binary-transparent",
+      "opaque_rgb": "matches-original-source"
+    },
+    {
+      "id": "A6",
+      "alpha": "binary-transparent",
+      "opaque_rgb": "matches-original-source"
+    },
+    {
+      "id": "A7",
+      "alpha": "binary-transparent",
+      "opaque_rgb": "matches-original-source"
+    },
+    {
+      "id": "B1",
+      "alpha": "binary-transparent",
+      "opaque_rgb": "matches-original-source"
+    },
+    {
+      "id": "B2",
+      "alpha": "binary-transparent",
+      "opaque_rgb": "matches-original-source"
+    },
+    {
+      "id": "B3",
+      "alpha": "binary-transparent",
+      "opaque_rgb": "matches-original-source"
+    },
+    {
+      "id": "B4",
+      "alpha": "binary-transparent",
+      "opaque_rgb": "matches-original-source"
+    },
+    {
+      "id": "B5",
+      "alpha": "binary-transparent",
+      "opaque_rgb": "matches-original-source"
+    },
+    {
+      "id": "B6",
+      "alpha": "binary-transparent",
+      "opaque_rgb": "matches-original-source"
+    },
+    {
+      "id": "C1",
+      "alpha": "binary-transparent",
+      "opaque_rgb": "matches-original-source"
+    },
+    {
+      "id": "C2",
+      "alpha": "binary-transparent",
+      "opaque_rgb": "matches-original-source"
+    },
+    {
+      "id": "C3",
+      "alpha": "binary-transparent",
+      "opaque_rgb": "matches-original-source"
+    },
+    {
+      "id": "C4",
+      "alpha": "binary-transparent",
+      "opaque_rgb": "matches-original-source"
+    },
+    {
+      "id": "C5",
+      "alpha": "binary-transparent",
+      "opaque_rgb": "matches-original-source"
+    },
+    {
+      "id": "C6",
+      "alpha": "binary-transparent",
+      "opaque_rgb": "matches-original-source"
+    },
+    {
+      "id": "C7",
+      "alpha": "binary-transparent",
+      "opaque_rgb": "matches-original-source"
+    },
+    {
+      "id": "C8",
+      "alpha": "binary-transparent",
+      "opaque_rgb": "matches-original-source"
+    }
+  ],
+  "scope": "Independent Pillow reading of exported PNGs; does not verify segmentation labels or hidden geometry"
+}

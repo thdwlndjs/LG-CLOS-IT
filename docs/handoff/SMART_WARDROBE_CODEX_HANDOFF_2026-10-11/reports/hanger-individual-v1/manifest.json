@@ -1,0 +1,322 @@
+{
+  "status": "EXTRACTED_VISIBLE_PIXELS_EDGE_REVIEW_PENDING",
+  "scope": "21 hanging items; folded shelves remain in background",
+  "source": "../wardrobe-visual-samples-v1/wardrobe-composite.png",
+  "source_sha256": "7eaeadf0cf3beaf0cbc6fff166457a0ca6ad8a0c9f4e17b8afc55a084a56086f",
+  "background": "hanger-empty-background.png",
+  "clean_underlay": "hanger-clean-underlay.png",
+  "rows": [
+    {
+      "id": "A",
+      "bounds": [
+        78,
+        121,
+        300,
+        551
+      ]
+    },
+    {
+      "id": "B",
+      "bounds": [
+        398,
+        121,
+        289,
+        316
+      ]
+    },
+    {
+      "id": "C",
+      "bounds": [
+        400,
+        475,
+        288,
+        263
+      ]
+    }
+  ],
+  "width": 1672,
+  "height": 941,
+  "changed_pixels": 0,
+  "method": "Binary visible-pixel ownership masks; original RGB; no resizing or regeneration",
+  "limitations": [
+    "Masks need independent visual edge inspection: pixel-exact recomposition alone does not prove correct segmentation.",
+    "Hidden portions of overlapping garments are not reconstructed; moving exposes missing portions.",
+    "Background is original outside traced silhouettes and prior clean plate inside. Traces may retain unassigned edge fragments.",
+    "No product API/DB changes or lighting variants in this extraction step."
+  ],
+  "items": [
+    {
+      "id": "A1",
+      "hook_x": 120,
+      "cloth_path": "M 116 155 L 109 162 L 102 178 L 96 215 L 91 279 L 85 370 L 82 447 L 84 511 L 95 515 L 94 622 L 119 625 L 139 621 L 141 546 L 137 440 L 134 308 L 137 210 L 132 172 L 125 156 Z",
+      "hanger_path": "M 117 141 L 124 142 L 122 158 L 113 159 Z",
+      "hook_path": "M 120 142 L 122 129 Q 123 122 120 122",
+      "x": 79,
+      "y": 121,
+      "width": 60,
+      "height": 506,
+      "pixel_count": 19543,
+      "file": "A1.png"
+    },
+    {
+      "id": "A2",
+      "hook_x": 157,
+      "cloth_path": "M 152 155 L 143 164 L 138 183 L 131 224 L 128 318 L 126 432 L 129 518 L 126 619 L 151 624 L 172 618 L 174 539 L 172 438 L 175 278 L 170 199 L 165 164 Z",
+      "hanger_path": "M 154 141 L 161 142 L 159 158 L 150 159 Z",
+      "hook_path": "M 157 142 L 159 129 Q 160 122 157 122",
+      "x": 126,
+      "y": 121,
+      "width": 49,
+      "height": 506,
+      "pixel_count": 18085,
+      "file": "A2.png"
+    },
+    {
+      "id": "A3",
+      "hook_x": 192,
+      "cloth_path": "M 187 155 L 178 171 L 173 200 L 169 264 L 165 370 L 160 477 L 163 518 L 173 520 L 169 617 L 194 621 L 207 614 L 211 517 L 213 394 L 212 257 L 211 195 L 203 164 Z",
+      "hanger_path": "M 189 141 L 196 142 L 194 158 L 185 159 Z",
+      "hook_path": "M 192 142 L 194 129 Q 195 122 192 122",
+      "x": 160,
+      "y": 121,
+      "width": 52,
+      "height": 504,
+      "pixel_count": 17523,
+      "file": "A3.png"
+    },
+    {
+      "id": "A4",
+      "hook_x": 229,
+      "cloth_path": "M 224 155 L 216 168 L 213 198 L 207 263 L 204 351 L 201 453 L 202 516 L 203 578 L 225 584 L 240 579 L 247 524 L 248 436 L 249 344 L 246 237 L 241 184 L 233 157 Z",
+      "hanger_path": "M 226 141 L 233 142 L 231 158 L 222 159 Z",
+      "hook_path": "M 229 142 L 231 129 Q 232 122 229 122",
+      "x": 201,
+      "y": 121,
+      "width": 42,
+      "height": 465,
+      "pixel_count": 10080,
+      "file": "A4.png"
+    },
+    {
+      "id": "A5",
+      "hook_x": 266,
+      "cloth_path": "M 260 155 C 252 154 248 160 243 173 C 234 182 232 194 231 214 L 228 275 L 226 350 L 225 422 L 228 434 L 227 510 L 227 629 Q 245 633 265 629 L 266 538 L 267 438 Q 272 408 272 362 L 274 218 Q 274 190 270 174 L 269 163 Z",
+      "hanger_path": "M 264 142 L 271 143 L 268 157 L 260 156 Z",
+      "hook_path": "M 270 142 L 272 129 Q 272 122 269 122",
+      "x": 224,
+      "y": 121,
+      "width": 61,
+      "height": 513,
+      "pixel_count": 22959,
+      "file": "A5.png"
+    },
+    {
+      "id": "A6",
+      "hook_x": 303,
+      "cloth_path": "M 296 155 L 286 170 L 281 192 L 277 241 L 274 329 L 272 423 L 273 506 L 281 516 L 279 626 L 301 630 L 320 622 L 319 520 L 319 413 L 318 326 L 319 234 L 314 185 L 308 161 Z",
+      "hanger_path": "M 300 141 L 307 142 L 305 158 L 296 159 Z",
+      "hook_path": "M 303 142 L 305 129 Q 306 122 303 122",
+      "x": 272,
+      "y": 121,
+      "width": 51,
+      "height": 510,
+      "pixel_count": 18777,
+      "file": "A6.png"
+    },
+    {
+      "id": "A7",
+      "hook_x": 341,
+      "cloth_path": "M 333 155 L 326 167 L 321 192 L 318 243 L 316 319 L 312 407 L 312 505 L 318 515 L 317 622 L 340 625 L 361 616 L 360 528 L 365 513 L 365 427 L 363 335 L 365 239 L 361 188 L 352 162 L 345 155 Z",
+      "hanger_path": "M 338 141 L 345 142 L 343 158 L 334 159 Z",
+      "hook_path": "M 341 142 L 343 129 Q 344 122 341 122",
+      "x": 312,
+      "y": 121,
+      "width": 61,
+      "height": 510,
+      "pixel_count": 25862,
+      "file": "A7.png"
+    },
+    {
+      "id": "B1",
+      "hook_x": 434,
+      "cloth_path": "M 428 155 L 420 170 L 414 193 L 409 227 L 404 274 L 401 332 L 403 375 L 410 396 L 424 399 L 423 416 L 438 424 L 458 417 L 463 405 L 459 369 L 457 281 L 453 211 L 448 174 L 441 157 Z",
+      "hanger_path": "M 431 141 L 438 142 L 436 158 L 427 159 Z",
+      "hook_path": "M 434 142 L 436 129 Q 437 122 434 122",
+      "x": 399,
+      "y": 121,
+      "width": 62,
+      "height": 309,
+      "pixel_count": 12370,
+      "file": "B1.png"
+    },
+    {
+      "id": "B2",
+      "hook_x": 477,
+      "cloth_path": "M 470 155 L 461 171 L 455 198 L 451 230 L 447 282 L 446 339 L 449 387 L 461 410 L 483 423 L 499 417 L 496 387 L 495 324 L 494 253 L 491 206 L 485 171 L 480 156 Z",
+      "hanger_path": "M 474 141 L 481 142 L 479 158 L 470 159 Z",
+      "hook_path": "M 477 142 L 479 129 Q 480 122 477 122",
+      "x": 446,
+      "y": 121,
+      "width": 52,
+      "height": 308,
+      "pixel_count": 10764,
+      "file": "B2.png"
+    },
+    {
+      "id": "B3",
+      "hook_x": 517,
+      "cloth_path": "M 507 155 L 523 155 Q 526 176 527 192 L 528 250 L 529 336 L 528 407 L 533 415 Q 518 428 501 420 L 494 411 L 491 390 Q 486 354 487 310 L 488 271 Q 489 228 494 209 L 501 187 L 505 171 Z",
+      "hanger_path": "M 514 142 L 522 143 L 522 156 L 511 156 L 512 148 Z",
+      "hook_path": "M 517 142 L 519 129 Q 520 122 517 122",
+      "x": 486,
+      "y": 121,
+      "width": 53,
+      "height": 310,
+      "pixel_count": 12310,
+      "file": "B3.png"
+    },
+    {
+      "id": "B4",
+      "hook_x": 559,
+      "cloth_path": "M 553 155 L 548 171 L 544 197 L 538 226 L 534 268 L 535 337 L 541 396 L 549 405 L 549 425 L 568 431 L 589 423 L 591 409 L 585 367 L 584 303 L 581 235 L 574 184 L 565 156 Z",
+      "hanger_path": "M 556 141 L 563 142 L 561 158 L 552 159 Z",
+      "hook_path": "M 559 142 L 561 129 Q 562 122 559 122",
+      "x": 534,
+      "y": 121,
+      "width": 57,
+      "height": 314,
+      "pixel_count": 11768,
+      "file": "B4.png"
+    },
+    {
+      "id": "B5",
+      "hook_x": 603,
+      "cloth_path": "M 597 155 L 589 172 L 584 198 L 581 244 L 578 313 L 576 386 L 585 405 L 603 412 L 607 433 L 625 429 L 636 419 L 631 378 L 633 309 L 630 232 L 623 182 L 611 157 Z",
+      "hanger_path": "M 600 141 L 607 142 L 605 158 L 596 159 Z",
+      "hook_path": "M 603 142 L 605 129 Q 606 122 603 122",
+      "x": 576,
+      "y": 121,
+      "width": 49,
+      "height": 316,
+      "pixel_count": 11322,
+      "file": "B5.png"
+    },
+    {
+      "id": "B6",
+      "hook_x": 645,
+      "cloth_path": "M 638 155 L 631 171 L 626 195 L 623 229 L 621 285 L 619 349 L 617 400 L 625 414 L 625 429 L 644 433 L 665 423 L 671 402 L 669 333 L 669 252 L 665 203 L 656 170 L 649 155 Z",
+      "hanger_path": "M 642 141 L 649 142 L 647 158 L 638 159 Z",
+      "hook_path": "M 645 142 L 647 129 Q 648 122 645 122",
+      "x": 617,
+      "y": 121,
+      "width": 60,
+      "height": 314,
+      "pixel_count": 14553,
+      "file": "B6.png"
+    },
+    {
+      "id": "C1",
+      "hook_x": 429,
+      "cloth_path": "M 419 515 L 416 533 L 413 597 L 410 664 L 408 722 L 424 728 L 442 724 L 444 640 L 444 557 L 438 519 Z",
+      "hanger_path": "M 423 494 L 436 495 L 435 518 L 420 519 Z",
+      "hook_path": "M 429 495 L 430 481 Q 431 474 428 475",
+      "x": 405,
+      "y": 474,
+      "width": 40,
+      "height": 257,
+      "pixel_count": 7254,
+      "file": "C1.png"
+    },
+    {
+      "id": "C2",
+      "hook_x": 460,
+      "cloth_path": "M 451 515 L 445 537 L 442 591 L 439 652 L 438 720 L 454 725 L 472 723 L 475 665 L 475 591 L 470 530 L 466 516 Z",
+      "hanger_path": "M 454 494 L 467 495 L 466 518 L 451 519 Z",
+      "hook_path": "M 460 495 L 461 481 Q 462 474 459 475",
+      "x": 438,
+      "y": 474,
+      "width": 38,
+      "height": 257,
+      "pixel_count": 7485,
+      "file": "C2.png"
+    },
+    {
+      "id": "C3",
+      "hook_x": 491,
+      "cloth_path": "M 482 515 L 477 533 L 475 596 L 473 661 L 471 722 L 487 725 L 504 723 L 507 659 L 506 583 L 501 529 L 496 515 Z",
+      "hanger_path": "M 485 494 L 498 495 L 497 518 L 482 519 Z",
+      "hook_path": "M 491 495 L 492 481 Q 493 474 490 475",
+      "x": 471,
+      "y": 474,
+      "width": 37,
+      "height": 257,
+      "pixel_count": 7397,
+      "file": "C3.png"
+    },
+    {
+      "id": "C4",
+      "hook_x": 523,
+      "cloth_path": "M 515 515 L 511 533 L 508 592 L 505 667 L 505 723 L 522 727 L 540 722 L 541 650 L 538 577 L 535 529 L 529 515 Z",
+      "hanger_path": "M 517 494 L 530 495 L 529 518 L 514 519 Z",
+      "hook_path": "M 523 495 L 524 481 Q 525 474 522 475",
+      "x": 505,
+      "y": 474,
+      "width": 35,
+      "height": 257,
+      "pixel_count": 7309,
+      "file": "C4.png"
+    },
+    {
+      "id": "C5",
+      "hook_x": 555,
+      "cloth_path": "M 548 515 L 544 534 L 541 587 L 538 651 L 537 722 L 552 726 L 570 722 L 573 661 L 573 590 L 569 529 L 562 515 Z",
+      "hanger_path": "M 549 494 L 562 495 L 561 518 L 546 519 Z",
+      "hook_path": "M 555 495 L 556 481 Q 557 474 554 475",
+      "x": 537,
+      "y": 474,
+      "width": 36,
+      "height": 259,
+      "pixel_count": 7661,
+      "file": "C5.png"
+    },
+    {
+      "id": "C6",
+      "hook_x": 587,
+      "cloth_path": "M 580 515 L 577 531 L 578 562 L 577 620 L 576 683 L 577 726 L 594 730 L 609 725 L 608 658 L 607 590 L 603 535 L 598 516 Z",
+      "hanger_path": "M 581 494 L 594 495 L 593 518 L 578 519 Z",
+      "hook_path": "M 587 495 L 588 481 Q 589 474 586 475",
+      "x": 572,
+      "y": 474,
+      "width": 37,
+      "height": 259,
+      "pixel_count": 7687,
+      "file": "C6.png"
+    },
+    {
+      "id": "C7",
+      "hook_x": 618,
+      "cloth_path": "M 614 515 L 608 534 L 609 593 L 607 654 L 606 720 L 622 726 L 640 722 L 643 664 L 641 598 L 637 540 L 630 516 Z",
+      "hanger_path": "M 612 494 L 625 495 L 624 518 L 609 519 Z",
+      "hook_path": "M 618 495 L 619 481 Q 620 474 617 475",
+      "x": 603,
+      "y": 474,
+      "width": 40,
+      "height": 258,
+      "pixel_count": 7829,
+      "file": "C7.png"
+    },
+    {
+      "id": "C8",
+      "hook_x": 650,
+      "cloth_path": "M 654 516 L 649 533 L 647 591 L 646 651 L 645 722 L 660 726 L 676 719 L 679 650 L 676 588 L 671 536 L 665 518 Z",
+      "hanger_path": "M 644 494 L 657 495 L 656 518 L 641 519 Z",
+      "hook_path": "M 650 495 L 651 481 Q 652 474 649 475",
+      "x": 635,
+      "y": 474,
+      "width": 48,
+      "height": 257,
+      "pixel_count": 8875,
+      "file": "C8.png"
+    }
+  ]
+}

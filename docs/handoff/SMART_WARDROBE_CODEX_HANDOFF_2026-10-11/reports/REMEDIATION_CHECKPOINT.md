@@ -81,3 +81,8 @@ GET /integration/demo-profiles 및 기존 POST /integration/demo-login의 선택
 
 ## Lights OFF / ON asset replacement
 Latest instruction replaces the 60% overlay implementation: generated wardrobe-lights-off-v2.png, existing selected relit assets, no black layers. Review code switched; app/DB rollout pending.
+
+
+## Individual hanger extraction checkpoint
+Understood as: permanent individual garment layers in the normal scene, not find-only masks; preserve the current approved visual composition.
+21 transparent source-pixel PNGs and original coordinates exported to hanger-individual-v1. Reassembly matches original pixels exactly; independent PNG readback passed. Browser hide actions for all21 and move previews passed. Edge quality and occluded backs remain incomplete; app/DB/light variants not applied. See hanger-individual-v1/REPORT.md for current scope and resume steps.
