@@ -1,0 +1,215 @@
+{
+  "status": "LIGHTING_AWAITING_USER_APPROVAL",
+  "six_garment_samples_approved": true,
+  "base": "../wardrobe-visual-samples-v1/wardrobe-composite.png",
+  "mirror_ui": "../wardrobe-visual-samples-v1/app-before.png",
+  "width": 1672,
+  "height": 941,
+  "scope": "Review-only lighting prototype; no app, API, DB or hardware integration",
+  "dim_alpha": 0.34,
+  "relight_mix": 0.8,
+  "auto_off_ms": 5000,
+  "fade_ms": 320,
+  "compartments": [
+    {
+      "id": "A",
+      "bounds": [
+        92,
+        94,
+        284,
+        578
+      ]
+    },
+    {
+      "id": "B",
+      "bounds": [
+        402,
+        94,
+        286,
+        339
+      ]
+    },
+    {
+      "id": "C",
+      "bounds": [
+        402,
+        484,
+        286,
+        246
+      ]
+    },
+    {
+      "id": "D",
+      "bounds": [
+        92,
+        742,
+        284,
+        105
+      ]
+    },
+    {
+      "id": "E1",
+      "bounds": [
+        990,
+        66,
+        282,
+        86
+      ]
+    },
+    {
+      "id": "E2",
+      "bounds": [
+        990,
+        179,
+        282,
+        88
+      ]
+    },
+    {
+      "id": "E3",
+      "bounds": [
+        990,
+        288,
+        282,
+        96
+      ]
+    },
+    {
+      "id": "E4",
+      "bounds": [
+        990,
+        405,
+        282,
+        98
+      ]
+    },
+    {
+      "id": "F1",
+      "bounds": [
+        1300,
+        66,
+        282,
+        86
+      ]
+    },
+    {
+      "id": "F2",
+      "bounds": [
+        1300,
+        179,
+        282,
+        88
+      ]
+    },
+    {
+      "id": "F3",
+      "bounds": [
+        1300,
+        288,
+        282,
+        96
+      ]
+    },
+    {
+      "id": "F4",
+      "bounds": [
+        1300,
+        405,
+        282,
+        98
+      ]
+    },
+    {
+      "id": "F5",
+      "bounds": [
+        1300,
+        522,
+        282,
+        98
+      ]
+    },
+    {
+      "id": "F6",
+      "bounds": [
+        1300,
+        638,
+        282,
+        85
+      ]
+    },
+    {
+      "id": "F7",
+      "bounds": [
+        1300,
+        743,
+        282,
+        105
+      ]
+    }
+  ],
+  "variants": [
+    {
+      "id": "A",
+      "title": "A5 검정 코트 찾기",
+      "bounds": [
+        92,
+        145,
+        284,
+        519
+      ],
+      "detail": [
+        225,
+        145,
+        64,
+        490
+      ],
+      "target": "Relight INSIDE FIRST cabinet from left: seven long hanging coats between x92..376,y145..664. The selected black coat is fifth at x266. Brighten sleeve and lapel surface with nuanced textile highlights and softly shaded fold valleys; neighboring coats within same compartment receive gentle consistent fill. Keep the wood rails, top light recess, hanger hook row at y120, drawer below y675 and cabinet frames unchanged.",
+      "file": "A-relit-context.png",
+      "prompt": "Use case: lighting-weather precise relighting ONLY. Image1 is approved photorealistic wardrobe asset composition. Preserve EXACT 1672x941 framing, cabinet geometry, ALL garments' shape, angle, size, hangers, folds, spacing, perspective, exact camera and colors. No restyling, no new objects, no repositioning. Modify light exposure on the ONE specified compartment only. Soft concealed high-CRI warm-neutral diffuse light from above/front grazes actual fabric surfaces, making stitching, yarn, sleeve creases, lapel folds and contact shadows naturally readable. Light follows garment volume: ridges brighten but inner folds remain shaded. Subtle physical reflected light, NOT flat white overlay, NOT front-facing catalog garments. Never add a visible LED emitter point, glowing dot, halo, bloom, lens flare, rim-light outline, light beam or blown-out white hotspot. No new light at the upper rail. Background illumination of all other compartments, mirror, doors, frames and floor remains exactly as image1; do not dim the whole scene. This is a selected-slot surface-lighting reference: ambient dimming of other slots will be done separately in the native review. Target garment highlights moderately about one stop brighter, dark colors retain their identity, no washed-out fabrics. Relight INSIDE FIRST cabinet from left: seven long hanging coats between x92..376,y145..664. The selected black coat is fifth at x266. Brighten sleeve and lapel surface with nuanced textile highlights and softly shaded fold valleys; neighboring coats within same compartment receive gentle consistent fill. Keep the wood rails, top light recess, hanger hook row at y120, drawer below y675 and cabinet frames unchanged.",
+      "tool": "image_gen.imagegen",
+      "original_generated_path": "C:\\Users\\aicam\\.codex\\generated_images\\01a11a04-161b-71c1-b091-cdb004c0a66c\\exec-a9697de9-ab72-4110-8a14-f5bfa50e202e.png"
+    },
+    {
+      "id": "B",
+      "title": "B3 데님 셔츠 찾기",
+      "bounds": [
+        402,
+        147,
+        286,
+        283
+      ],
+      "detail": [
+        484,
+        147,
+        52,
+        282
+      ],
+      "target": "Relight ONLY UPPER clothing compartment of SECOND cabinet from left: six short tops between x402..688,y147..430. Selected denim shirt is third at x517. Make its denim yoke seam, chest flap pocket, snaps and naturally folded sleeve surface more readable with soft grazing illumination. Other shirts in same compartment receive compatible diffuse fill. Do not light lower pants compartment, rail at y120, drawer or other cabinets.",
+      "file": "B-relit-context.png",
+      "prompt": "Use case: lighting-weather precise relighting ONLY. Image1 is approved photorealistic wardrobe asset composition. Preserve EXACT 1672x941 framing, cabinet geometry, ALL garments' shape, angle, size, hangers, folds, spacing, perspective, exact camera and colors. No restyling, no new objects, no repositioning. Modify light exposure on the ONE specified compartment only. Soft concealed high-CRI warm-neutral diffuse light from above/front grazes actual fabric surfaces, making stitching, yarn, sleeve creases, lapel folds and contact shadows naturally readable. Light follows garment volume: ridges brighten but inner folds remain shaded. Subtle physical reflected light, NOT flat white overlay, NOT front-facing catalog garments. Never add a visible LED emitter point, glowing dot, halo, bloom, lens flare, rim-light outline, light beam or blown-out white hotspot. No new light at the upper rail. Background illumination of all other compartments, mirror, doors, frames and floor remains exactly as image1; do not dim the whole scene. This is a selected-slot surface-lighting reference: ambient dimming of other slots will be done separately in the native review. Target garment highlights moderately about one stop brighter, dark colors retain their identity, no washed-out fabrics. Relight ONLY UPPER clothing compartment of SECOND cabinet from left: six short tops between x402..688,y147..430. Selected denim shirt is third at x517. Make its denim yoke seam, chest flap pocket, snaps and naturally folded sleeve surface more readable with soft grazing illumination. Other shirts in same compartment receive compatible diffuse fill. Do not light lower pants compartment, rail at y120, drawer or other cabinets.",
+      "tool": "image_gen.imagegen",
+      "original_generated_path": "C:\\Users\\aicam\\.codex\\generated_images\\01a11a04-161b-71c1-b091-cdb004c0a66c\\exec-7012b5cc-414f-426f-81a7-2193e3015b4e.png"
+    },
+    {
+      "id": "E1",
+      "title": "K1·K2 접힌 니트 찾기",
+      "bounds": [
+        995,
+        95,
+        260,
+        56
+      ],
+      "detail": [
+        1001,
+        94,
+        120,
+        57
+      ],
+      "target": "Relight ONLY the two three-layer FOLDED knit stacks on TOP shelf of cabinet immediately RIGHT of central mirror. Clothing area x995..1255,y95..151. Gentle diffuse light grazes sand knit curved fold ribs on left and navy knit on right, exposing yarn/fold contours while preserving narrow layered shadows. Keep EXACT 2 stacks x3 layers and original side perspective. Do not add visible ceiling emitters or light upper empty wood and other shelves.",
+      "file": "E1-relit-context.png",
+      "prompt": "Use case: lighting-weather precise relighting ONLY. Image1 is approved photorealistic wardrobe asset composition. Preserve EXACT 1672x941 framing, cabinet geometry, ALL garments' shape, angle, size, hangers, folds, spacing, perspective, exact camera and colors. No restyling, no new objects, no repositioning. Modify light exposure on the ONE specified compartment only. Soft concealed high-CRI warm-neutral diffuse light from above/front grazes actual fabric surfaces, making stitching, yarn, sleeve creases, lapel folds and contact shadows naturally readable. Light follows garment volume: ridges brighten but inner folds remain shaded. Subtle physical reflected light, NOT flat white overlay, NOT front-facing catalog garments. Never add a visible LED emitter point, glowing dot, halo, bloom, lens flare, rim-light outline, light beam or blown-out white hotspot. No new light at the upper rail. Background illumination of all other compartments, mirror, doors, frames and floor remains exactly as image1; do not dim the whole scene. This is a selected-slot surface-lighting reference: ambient dimming of other slots will be done separately in the native review. Target garment highlights moderately about one stop brighter, dark colors retain their identity, no washed-out fabrics. Relight ONLY the two three-layer FOLDED knit stacks on TOP shelf of cabinet immediately RIGHT of central mirror. Clothing area x995..1255,y95..151. Gentle diffuse light grazes sand knit curved fold ribs on left and navy knit on right, exposing yarn/fold contours while preserving narrow layered shadows. Keep EXACT 2 stacks x3 layers and original side perspective. Do not add visible ceiling emitters or light upper empty wood and other shelves.",
+      "tool": "image_gen.imagegen",
+      "original_generated_path": "C:\\Users\\aicam\\.codex\\generated_images\\01a11a04-161b-71c1-b091-cdb004c0a66c\\exec-d552a2e8-d13e-40e8-9b02-b6d0fbd4d9db.png"
+    }
+  ]
+}

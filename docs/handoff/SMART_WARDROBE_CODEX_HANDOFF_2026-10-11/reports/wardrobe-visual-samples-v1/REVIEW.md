@@ -1,6 +1,6 @@
 # 옷장 의류 6개 시각 검수
 
-상품 후보·배치 방향은 승인되었으며, 이번 산출물은 다음 사용자 승인 대상이다. 행거 3개와 선반 측면 접힘 3개를 built-in `image_gen.imagegen`으로 각각 생성했다. 상품 사진은 색·소재·구조 참고로만 사용했고, 최종 화면에는 생성된 옆으로 걸린 모습과 측면 접힘을 합성했다.
+상품 후보·배치 방향 및 샘플 6개는 사용자 승인 완료다. 행거 3개와 선반 측면 접힘 3개를 built-in `image_gen.imagegen`으로 각각 생성했다. 상품 사진은 색·소재·구조 참고로만 사용했고, 최종 화면에는 생성된 옆으로 걸린 모습과 측면 접힘을 합성했다. 다음 게이트는 [의류 찾기 표면 조명 검수](../wardrobe-lighting-review-v1/REVIEW.md)다.
 
 | 샘플 | 위치 | 표현 |
 |---|---|---|
@@ -19,8 +19,8 @@
 
 B3 초안은 2번째 행거에 생성되어 폐기하고 3번째 행거로 재생성했다. K2 초안도 맨 위 층에 생성되어 폐기하고 승인안의 중간 층으로 재생성했다. 다른 선반의 층수와 묶음 수는 그대로 유지한다.
 
-브라우저 렌더 검증은 6개 이미지 로딩 PASS, 합성 영역 밖 픽셀 변경 0 및 원본 SHA256 유지 PASS다. 결과는 `verification.json`과 `integrity.json`에 기록했다. K2 생성 원본만 너비1671px이며 나머지는1672px, 높이는 모두941px이다. 패치는 리사이즈 없이 동일 좌표에서 합성했다. 자동 검증의 PASS는 파일 로딩과 합성 영역 확인이며 시각적 완성도 승인과 구분한다. 전체 품질은 사용자 검수 대기 상태다.
+브라우저 렌더 검증은 6개 이미지 로딩 PASS, 합성 영역 밖 픽셀 변경 0 및 원본 SHA256 유지 PASS다. 결과는 `verification.json`과 `integrity.json`에 기록했다. K2 생성 원본만 너비1671px이며 나머지는1672px, 높이는 모두941px이다. 패치는 리사이즈 없이 동일 좌표에서 합성했다. 자동 검증의 PASS는 파일 로딩과 합성 영역 확인이며 시각적 완성도 승인과 구분한다. 사용자는 이후 이 샘플을 승인했다. 당시 검증 JSON의 승인 대기 값은 검증 시점 기록이며 현재 상태는 `samples.json`을 기준으로 한다.
 
 재현: 프로젝트 루트에서 `node docs/handoff/SMART_WARDROBE_CODEX_HANDOFF_2026-10-11/reports/wardrobe-visual-samples-v1/render-review.mjs`, 이어서 `.venv/Scripts/python.exe docs/handoff/SMART_WARDROBE_CODEX_HANDOFF_2026-10-11/reports/wardrobe-visual-samples-v1/verify_integrity.py`. 로컬 검수 URL은 `http://127.0.0.1:5194/wardrobe-visual-samples-v1/review.html`. 서버 재시작 명령은 `.venv/Scripts/python.exe -m http.server 5194 --bind 127.0.0.1 --directory docs/handoff/SMART_WARDROBE_CODEX_HANDOFF_2026-10-11/reports`다.
 
-현재 게이트: **샘플 6개 승인 대기**. 나머지 에셋 생성·앱 코드·DB·운영 저장소 변경·원격 push·배포는 수행하지 않았다. 승인 후에도 장면 패치를 제품 원본 이미지로 덮어쓰지 않고, 승인된 배치와 기존 계약에 맞는 파생 에셋으로 반영해야 한다.
+현재 게이트: **샘플 6개 승인 완료, 표면 조명 검수 대기**. 나머지 에셋 생성·앱 코드·DB·운영 저장소 변경·원격 push·배포는 수행하지 않았다. 조명 검수 후에도 장면 패치를 제품 원본 이미지로 덮어쓰지 않고, 승인된 배치와 기존 계약에 맞는 파생 에셋으로 반영해야 한다.

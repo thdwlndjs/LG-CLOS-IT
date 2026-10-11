@@ -1,0 +1,79 @@
+{
+  "status": "PASS",
+  "approved_base_sha256": "7eaeadf0cf3beaf0cbc6fff166457a0ca6ad8a0c9f4e17b8afc55a084a56086f",
+  "checks": [
+    {
+      "selected": "A",
+      "cloth_mean_luminance_before": 35.8394,
+      "cloth_mean_luminance_after": 46.7902,
+      "unselected_compartments_dimmed": [
+        "B",
+        "C",
+        "D",
+        "E1",
+        "E2",
+        "E3",
+        "E4",
+        "F1",
+        "F2",
+        "F3",
+        "F4",
+        "F5",
+        "F6",
+        "F7"
+      ],
+      "outside_compartments_changed_pixels": 0
+    },
+    {
+      "selected": "B",
+      "cloth_mean_luminance_before": 116.8833,
+      "cloth_mean_luminance_after": 123.5105,
+      "unselected_compartments_dimmed": [
+        "A",
+        "C",
+        "D",
+        "E1",
+        "E2",
+        "E3",
+        "E4",
+        "F1",
+        "F2",
+        "F3",
+        "F4",
+        "F5",
+        "F6",
+        "F7"
+      ],
+      "outside_compartments_changed_pixels": 0
+    },
+    {
+      "selected": "E1",
+      "cloth_mean_luminance_before": 147.7261,
+      "cloth_mean_luminance_after": 155.9978,
+      "unselected_compartments_dimmed": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E2",
+        "E3",
+        "E4",
+        "F1",
+        "F2",
+        "F3",
+        "F4",
+        "F5",
+        "F6",
+        "F7"
+      ],
+      "outside_compartments_changed_pixels": 0
+    }
+  ],
+  "auto_off_and_unknown_restore_approved_base_exactly": true,
+  "generated_sha256": {
+    "A": "4da743afa4f16eb801295995068f80fe0aed8a0ef84f9296306eb9bf2b5bb6a6",
+    "B": "c4d273e8e771a08fc5c9d2103150c4f636914f2135b39181b65726043b4be4f2",
+    "E1": "d4c0cf0b615fd69d286a3a74c8f2e8f215451bf126c8cb81c997af43c2115993"
+  },
+  "limitation": "Mean PNG luminance checks only, not lux, physical fabric fidelity, product-level E2E, or user visual approval."
+}

@@ -1,0 +1,56 @@
+{
+  "status": "PASS",
+  "checks": [
+    {
+      "scenario": "A selected",
+      "status": "PASS"
+    },
+    {
+      "scenario": "B selected",
+      "status": "PASS"
+    },
+    {
+      "scenario": "E1 selected",
+      "status": "PASS"
+    },
+    {
+      "scenario": "three compartments together",
+      "status": "PASS"
+    },
+    {
+      "scenario": "unknown location restores ambient, no arbitrary selection",
+      "status": "PASS"
+    },
+    {
+      "scenario": "5-second preview timer restores ambient and cancels dimming",
+      "status": "PASS"
+    },
+    {
+      "scenario": "new selection clears previous compartment",
+      "status": "PASS"
+    }
+  ],
+  "dimensions": [
+    {
+      "id": "A",
+      "width": 1671,
+      "height": 941
+    },
+    {
+      "id": "B",
+      "width": 1672,
+      "height": 941
+    },
+    {
+      "id": "E1",
+      "width": 1672,
+      "height": 941
+    }
+  ],
+  "page_errors": [],
+  "external_or_api_requests": [],
+  "local_static_requests": 7,
+  "review_url": "http://127.0.0.1:5194/wardrobe-lighting-review-v1/review.html",
+  "visual_approval": "PENDING_USER",
+  "scope": "Review-only canvas interaction; not application or hardware verification"
+}

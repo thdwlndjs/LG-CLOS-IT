@@ -65,10 +65,10 @@ GET /integration/demo-profiles 및 기존 POST /integration/demo-login의 선택
 
 재현: 루트 `.venv/Scripts/python.exe scripts/remediation_local.py personas`(격리 DB 이름만 갱신), `.venv/Scripts/python.exe scripts/remediation_local.py serve`(API 18081; 두 로컬 ID 자동 설정). web에서 `npm run dev -- --host 127.0.0.1 --port 5193`, `node test/demo-personas-browser.mjs`. 브라우저 테스트는 마이 → 프로필 선택에서 엄마 → 아들 → 엄마 직접 전환, 각 계정 가족 의류52/사진52/소유자4, 사용 중 표시, 내 계정에 프로필 카드 없음까지 확인했다. 계정 ID 서로 다름, page error0, PASS. 기존 backend demo-login 실DB4 tests 및 web38 tests PASS; 이번 UI 위치 수정 후 TypeScript/Vite build PASS(기존 bundle 크기 경고). 증적: evidence/remediation/demo-personas.png 및 demo-personas-browser.json. 원격push/배포/운영 DB 변경 없음. 전체 시정 PARTIAL 판정 유지.
 
-## 원본 보존 방향 승인 · 의류 샘플 6개 검수 대기
+## 의류 샘플 6개 승인 · 의류 찾기 표면 조명 검수 대기
 
-현재 sprite의 형태·각도·크기·간격·배치는 승인되지 않았다. Codex 수정 전 팀원 원본 `wardrobe-base-led-off.png`를 시각적 기준으로 사용한다. [후보·배치 승인안](wardrobe-visual-review/REVIEW.md), [HTML 시안](wardrobe-visual-review/proposal.html)에 공식 상품 후보33개(왼쪽21개+가족 대표12개), 원본 좌표를 보존하는 배치도·CSS 조명 연출안을 작성했다. 왼쪽 행거21자리 중 휘재18, 오른쪽은 선반당2묶음×3층을 제안한다. 기준 원본과 공유본 파일 해시 동일, 공식 사진33개 decode 및 후보 상품 ID 중복 없음 확인. 외형 교체 합성 결과/에셋은 이번 단계에서 생성하지 않았다.
+기존 앱의 전체 sprite 외형은 승인되지 않았다. Codex 수정 전 팀원 원본 `wardrobe-base-led-off.png`를 시각적 기준으로 사용한다. [후보·배치 승인안](wardrobe-visual-review/REVIEW.md), [HTML 시안](wardrobe-visual-review/proposal.html)에 공식 상품 후보33개(왼쪽21개+가족 대표12개), 원본 좌표를 보존하는 배치도·CSS 조명 연출안을 작성했다. 왼쪽 행거21자리 중 휘재18, 오른쪽은 선반당2묶음×3층을 제안한다. 기준 원본과 공유본 파일 해시 동일, 공식 사진33개 decode 및 후보 상품 ID 중복 없음 확인. 원본 보존 방식의 새 샘플 6개는 아래와 같이 승인되었으며 전체 의류 교체는 아직 진행하지 않았다.
 
-상품 후보와 배치 방향은 사용자 승인 완료. 이후 사용자 지시에 따라 행거 A5·B3·C6, 선반 K1·K2·K3를 먼저 생성했다. 현재 산출물·재현 명령·승인 게이트는 [샘플 6개 검수 보고서](wardrobe-visual-samples-v1/REVIEW.md)를 기준으로 재개한다. 위치별 장면 패치를 원본 옷장에 합성하고 실제 미러 UI 캡처를 결합한 검수본도 제공한다. 앱에 연결한 실행 증적과 구분한다. 생성 6개 decode 및 원본 합성 영역 밖 픽셀 변경0 확인, 사용자 시각 완성도 승인 대기. B3·K2 잘못된 위치 초안은 재생성하여 수정했다.
+상품 후보·배치 방향과 행거 A5·B3·C6 및 선반 K1·K2·K3 샘플은 사용자 승인 완료. 추가 요청에 따라 비선택 칸 감광·선택 칸 표면 조명을 구현한 검수용 합성을 제공한다. 현재 산출물·재현 명령·승인 게이트는 [표면 조명 검수 보고서](wardrobe-lighting-review-v1/REVIEW.md)를 기준으로 재개한다. 검정 코트 칸·데님 셔츠 칸·니트 선반의 생성 조명 참고 이미지와 네이티브 검수 코드를 작성했다. 기본34% 감광, 표면 참고80% 혼합, 320ms 전환, 검수용5초 자동 소등, 새 발광점·글로우·선택 테두리 없음. 브라우저 단일/동시/전환/위치미확인/자동소등 PASS, 선택 의류 밝기 증가·비선택14칸 감광·수납부 밖 픽셀 변경0·소등 시 기본 이미지 완전복귀 PASS. 조명 시각 품질은 사용자 검수 대기이며 실제 앱·서버 LED·하드웨어 검증과 구분한다.
 
-원본은 시각적93자리이며 현재 격리 DB52개와 다르다. 최종 적재 수량·선반 전체 상품 배정은 미확정이다. 샘플 6개 승인 전 나머지 에셋 생성·앱·DB·운영 저장소 변경·원격push·배포를 진행하지 않는다. 기존 후보 승인안 파일의 대기 표시는 당시 제안 단계의 기록이며 현재 게이트는 샘플 승인이다. 현재 로컬 앱에 새 샘플을 적용하지 않았다.
+원본은 시각적93자리이며 현재 격리 DB52개와 다르다. 최종 적재 수량·선반 전체 상품 배정은 미확정이다. 사용자 지시로 조명 검수 후 다음 단계로 진행하므로 현재 나머지 에셋 생성·앱·DB·운영 저장소 변경·원격push·배포는 진행하지 않는다. 이전 후보·샘플 검증 증적의 승인 대기 값은 당시 기록이며 현재 게이트는 조명 승인이다. 현재 로컬 앱에는 새 의류 샘플과 조명 검수안을 적용하지 않았다.
