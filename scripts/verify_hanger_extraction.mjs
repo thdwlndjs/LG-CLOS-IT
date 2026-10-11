@@ -9,6 +9,8 @@ const browser=await chromium.launch();
 try{
  const page=await browser.newPage({viewport:{width:1712,height:1200}}),errors=[];page.on('pageerror',e=>errors.push(e.message));
  await page.goto('http://127.0.0.1:5194/hanger-individual-v1/review.html');await page.waitForFunction(()=>window.hangerReady);
+ assert.equal(await page.evaluate(()=>window.b3CleanApplied),true);
+ await page.locator('#clean-b3').uncheck();
  const manifest=JSON.parse(await readFile(resolve(here,'manifest.json'),'utf8'));assert.equal(manifest.items.length,21);
  const save=async name=>writeFile(resolve(here,name),Buffer.from(await page.locator('#scene').evaluate(c=>c.toDataURL().split(',')[1]),'base64'));
  const assembled=await page.locator('#scene').evaluate(c=>c.getContext('2d').getImageData(0,0,c.width,c.height).data);
@@ -21,7 +23,25 @@ try{
  await page.locator('#item').selectOption('A5');await page.locator('#remove').click();await save('A5-hidden.png');await page.locator('#move').click();await save('A5-moved.png');
  await page.locator('#item').selectOption('B3');await page.locator('#remove').click();await save('B3-hidden.png');await page.locator('#move').click();await save('B3-moved.png');
  await page.locator('#assets').screenshot({path:resolve(here,'individual-assets-board.png')});
+ await page.locator('#assembled').click();
+ const before=await page.locator('#scene').evaluate(c=>Array.from(c.getContext('2d').getImageData(0,0,c.width,c.height).data));
+ await page.locator('#clean-b3').check();
+ const change=await page.locator('#scene').evaluate((c,before)=>{
+  const after=c.getContext('2d').getImageData(0,0,c.width,c.height).data;let changed=0,outside=0;
+  for(let i=0;i<after.length;i+=4)if(after[i]!==before[i]||after[i+1]!==before[i+1]||after[i+2]!==before[i+2]){
+   changed++;const pixel=i/4,x=pixel%c.width,y=Math.floor(pixel/c.width);if(x<486||x>=539||y<121||y>=431)outside++;
+  }return {changed_pixels:changed,outside_B3_canvas:outside};
+ },before);
+ assert.ok(change.changed_pixels>0);assert.equal(change.outside_B3_canvas,0);
+ await save('B3-clean-in-wardrobe.png');
+ await page.locator('#scene').evaluate(c=>{
+  const zoom=document.createElement('canvas');zoom.id='b3-zoom';zoom.width=520;zoom.height=1340;
+  zoom.getContext('2d').drawImage(c,460,112,130,335,0,0,520,1340);document.body.append(zoom);
+ });
+ await page.locator('#b3-zoom').screenshot({path:resolve(here,'B3-clean-in-wardrobe-detail.png')});
+ await page.locator('#item').selectOption('B3');await page.locator('#remove').click();assert.equal(await page.evaluate(()=>window.hangerState.id),'B3');
+ await page.locator('#move').click();assert.equal(await page.evaluate(()=>window.hangerState.mode),'move');
  assert.deepEqual(errors,[]);
- await writeFile(resolve(here,'browser-check.json'),JSON.stringify({status:'PASS',recomposition_changed_channels:equal,individual_hide_action_ids:cases,page_errors:errors,scope:'Local extraction preview, not app/DB integration',visual_edge_quality:'NOT_CONFIRMED',hidden_surface_reconstruction:'NOT_IMPLEMENTED'},null,2)+'\n');
+ await writeFile(resolve(here,'browser-check.json'),JSON.stringify({status:'PASS',recomposition_changed_channels:equal,clean_B3_default:true,clean_B3_change:change,individual_hide_action_ids:cases,page_errors:errors,scope:'Local extraction preview, not app/DB integration',visual_edge_quality:'NOT_CONFIRMED',hidden_surface_reconstruction:'NOT_IMPLEMENTED'},null,2)+'\n');
  console.log('PASS: exact reassembly, 21 hide actions, move previews, no page errors. Visual segmentation quality is separate.');
 }finally{await browser.close()}

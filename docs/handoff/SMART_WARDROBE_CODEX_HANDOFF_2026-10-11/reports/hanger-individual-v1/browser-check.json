@@ -1,6 +1,11 @@
 {
   "status": "PASS",
   "recomposition_changed_channels": 0,
+  "clean_B3_default": true,
+  "clean_B3_change": {
+    "changed_pixels": 12548,
+    "outside_B3_canvas": 0
+  },
   "individual_hide_action_ids": [
     "A1",
     "A2",
