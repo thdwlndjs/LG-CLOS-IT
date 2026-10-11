@@ -111,3 +111,7 @@ node test/stage-b-browser.mjs
 `mandela` 점검에서는 시드가 만든 개수만 검사하면 시각 성공을 스스로 증명하는 오류가 생길 수 있다고 분리했다. 적재 전 행 해시·사용자 승인 manifest·원본 PNG·실제 브라우저를 별도 기준으로 사용했고, 수량 검사 통과에도 시각 FAIL을 유지했다. OpenAPI 검사는 구조 정합성 검사이며 사용자 플로우 합격 증거로 사용하지 않았다.
 
 `ssotize`는 읽기 전용으로 계약·보고서·추적표·체크포인트를 대조했다. A 산출물의 과거 승인대기 문구를 현재 완료 상태로 해석하지 않으며 실행 상태는 이 보고서와 연결 체크포인트를 따른다. 기존 계약 통합·재작성은 하지 않았다. `re0`로 초기 수량을 최종104개와 오류 회수 내역으로 정리했다. 외부 시장·제품 안전성 주장과 도구 중립성 주장이 없어 이번 인계에서는 `factchk` 외부 조회와 `detool`을 적용하지 않았다.
+
+## Local commit checkpoint
+
+Implementation and evidence: `6f108ba` (`feat(poc): add stage B demo data and compartment bindings`). Base contract commit: `6895603`. Status remains **PARTIAL**. No remote push. Test log encoding and trailing whitespace were normalized without changing recorded outcomes.

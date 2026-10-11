@@ -23,3 +23,7 @@
 재개 환경: 격리 로컬 PostgreSQL `wardrobe_test_remediation`, API18081, Vite5193, MinIO19000, Redis16379, renderer3300. 프로젝트 루트에서 `scripts/remediation_local.py serve`; 적재 `scripts/stage_b_seed.py`; 검사 `scripts/stage_b_verify.py`, `stage_b_idempotence.py`; web에서 `node test/stage-b-browser.mjs`. 실행 환경변수와 자세한 명령은 결과 보고서에 있다. `stage_b_compartments.py`만 기존 MOCK LED 명령을 만든다.
 
 산출물: Migration0005, 개인 관심 DB/API, Scene 물리 칸 바인딩, 시드·검사4개 스크립트, 독립 DB/브라우저 검사, 보고서·추적표·증적. 로컬 커밋 메시지는 `feat(poc): add stage B demo data and compartment bindings`이며 해시는 Git log와 최종 보고 메시지에서 확인한다. 원격에는 보내지 않는다.
+
+## Local commit checkpoint
+
+Implementation and evidence: `6f108ba` (`feat(poc): add stage B demo data and compartment bindings`). Base contract commit: `6895603`. Status remains **PARTIAL**. No remote push. Test log encoding and trailing whitespace were normalized without changing recorded outcomes.
