@@ -1,0 +1,497 @@
+{
+  "url": "http://127.0.0.1:5193",
+  "initial": {
+    "source": "MOCK",
+    "cards": [
+      "composition",
+      "composition",
+      "composition"
+    ],
+    "usageVisible": true,
+    "sceneItems": 24
+  },
+  "server": {
+    "source": "SERVER",
+    "cards": [],
+    "usageVisible": true
+  },
+  "initialMutationPaths": [],
+  "shelf": [
+    {
+      "garment_id": "fd1ce769-aab6-4227-83e0-c550cd9ecb45",
+      "anchor_id": "APPROVED-K1",
+      "geometry": {
+        "x": 0.6010765550239234,
+        "y": 0.10201912858660998,
+        "width": 0.06698564593301436,
+        "height": 0.025504782146652496,
+        "z_index": 11
+      },
+      "image_mask": {
+        "width": 112,
+        "height": 24
+      }
+    },
+    {
+      "garment_id": "2568aead-2410-4bab-9208-6d4f54109927",
+      "anchor_id": "APPROVED-K2",
+      "geometry": {
+        "x": 0.6746411483253588,
+        "y": 0.1275239107332625,
+        "width": 0.06937799043062201,
+        "height": 0.018065887353878853,
+        "z_index": 12
+      },
+      "image_mask": {
+        "width": 116,
+        "height": 17
+      }
+    },
+    {
+      "garment_id": "a2f054f7-6967-4add-bf4a-b61af158f0e2",
+      "anchor_id": "APPROVED-K3",
+      "geometry": {
+        "x": 0.5998803827751196,
+        "y": 0.4675876726886291,
+        "width": 0.0687799043062201,
+        "height": 0.030818278427205102,
+        "z_index": 13
+      },
+      "image_mask": {
+        "width": 115,
+        "height": 29
+      }
+    }
+  ],
+  "sceneMapping": {
+    "items": [
+      {
+        "garment_id": "bc35f9b1-3a49-46d7-b0df-4631d2d3e3e9",
+        "anchor_id": "APPROVED-A1",
+        "geometry": {
+          "x": 0.04724880382775119,
+          "y": 0.12858660998937302,
+          "width": 0.03588516746411483,
+          "height": 0.5377258235919234,
+          "z_index": 11
+        }
+      },
+      {
+        "garment_id": "dbfcdf61-e6c8-42ae-82e3-6c0ef39f8806",
+        "anchor_id": "APPROVED-A2",
+        "geometry": {
+          "x": 0.07535885167464115,
+          "y": 0.12858660998937302,
+          "width": 0.02930622009569378,
+          "height": 0.5377258235919234,
+          "z_index": 12
+        }
+      },
+      {
+        "garment_id": "a4ac8980-d9fb-4442-aa6f-158cc9270277",
+        "anchor_id": "APPROVED-A3",
+        "geometry": {
+          "x": 0.09569377990430622,
+          "y": 0.12858660998937302,
+          "width": 0.03110047846889952,
+          "height": 0.5356004250797024,
+          "z_index": 13
+        }
+      },
+      {
+        "garment_id": "a418bd50-1612-4f95-a030-e54b6a820fe5",
+        "anchor_id": "APPROVED-A4",
+        "geometry": {
+          "x": 0.12021531100478469,
+          "y": 0.12858660998937302,
+          "width": 0.025119617224880382,
+          "height": 0.49415515409139216,
+          "z_index": 14
+        }
+      },
+      {
+        "garment_id": "6ba02802-d475-44f0-935a-e1050b50cf84",
+        "anchor_id": "APPROVED-A5",
+        "geometry": {
+          "x": 0.1339712918660287,
+          "y": 0.12858660998937302,
+          "width": 0.03648325358851675,
+          "height": 0.5451647183846972,
+          "z_index": 15
+        }
+      },
+      {
+        "garment_id": "59e18c18-7553-41d9-bc88-014dd65e7b21",
+        "anchor_id": "APPROVED-A6",
+        "geometry": {
+          "x": 0.16267942583732056,
+          "y": 0.12858660998937302,
+          "width": 0.030502392344497607,
+          "height": 0.5419766206163655,
+          "z_index": 16
+        }
+      },
+      {
+        "garment_id": "9f37a700-3578-4af2-9f8e-f36b869b5961",
+        "anchor_id": "APPROVED-A7",
+        "geometry": {
+          "x": 0.18660287081339713,
+          "y": 0.12858660998937302,
+          "width": 0.03648325358851675,
+          "height": 0.5419766206163655,
+          "z_index": 17
+        }
+      },
+      {
+        "garment_id": "449c07e3-04b7-42af-b7b0-79ae8bdbf400",
+        "anchor_id": "APPROVED-B1",
+        "geometry": {
+          "x": 0.23863636363636365,
+          "y": 0.12858660998937302,
+          "width": 0.03708133971291866,
+          "height": 0.3283740701381509,
+          "z_index": 11
+        }
+      },
+      {
+        "garment_id": "3049ddf0-d7cb-43c5-b9d8-87936db3e346",
+        "anchor_id": "APPROVED-B2",
+        "geometry": {
+          "x": 0.26674641148325356,
+          "y": 0.12858660998937302,
+          "width": 0.03110047846889952,
+          "height": 0.3273113708820404,
+          "z_index": 12
+        }
+      },
+      {
+        "garment_id": "901a7b5c-d23c-4ec1-b434-5d8b41e6dd85",
+        "anchor_id": "APPROVED-B3",
+        "geometry": {
+          "x": 0.28708133971291866,
+          "y": 0.12221041445270989,
+          "width": 0.045454545454545456,
+          "height": 0.3379383634431456,
+          "z_index": 13
+        }
+      },
+      {
+        "garment_id": "6df03b25-1edd-4a0b-b003-609ea9d25781",
+        "anchor_id": "APPROVED-B4",
+        "geometry": {
+          "x": 0.319377990430622,
+          "y": 0.12858660998937302,
+          "width": 0.03409090909090909,
+          "height": 0.3336875664187035,
+          "z_index": 14
+        }
+      },
+      {
+        "garment_id": "24c575ab-9dff-4bab-8d72-5dcc61d712b7",
+        "anchor_id": "APPROVED-B5",
+        "geometry": {
+          "x": 0.3444976076555024,
+          "y": 0.12858660998937302,
+          "width": 0.02930622009569378,
+          "height": 0.33581296493092455,
+          "z_index": 15
+        }
+      },
+      {
+        "garment_id": "393354b9-bf4d-4c62-9456-8a810288e870",
+        "anchor_id": "APPROVED-B6",
+        "geometry": {
+          "x": 0.36901913875598086,
+          "y": 0.12858660998937302,
+          "width": 0.03588516746411483,
+          "height": 0.3336875664187035,
+          "z_index": 16
+        }
+      },
+      {
+        "garment_id": "b5b5600d-3a67-48f6-8a63-7d8164bb9030",
+        "anchor_id": "APPROVED-C1",
+        "geometry": {
+          "x": 0.24222488038277512,
+          "y": 0.5037194473963869,
+          "width": 0.023923444976076555,
+          "height": 0.2731137088204038,
+          "z_index": 11
+        }
+      },
+      {
+        "garment_id": "3518be70-15ef-462f-a130-7205a663205c",
+        "anchor_id": "APPROVED-C2",
+        "geometry": {
+          "x": 0.2619617224880383,
+          "y": 0.5037194473963869,
+          "width": 0.022727272727272728,
+          "height": 0.2731137088204038,
+          "z_index": 12
+        }
+      },
+      {
+        "garment_id": "e2f39099-1da1-42a6-abed-827c494f53b9",
+        "anchor_id": "APPROVED-C3",
+        "geometry": {
+          "x": 0.28169856459330145,
+          "y": 0.5037194473963869,
+          "width": 0.022129186602870814,
+          "height": 0.2731137088204038,
+          "z_index": 13
+        }
+      },
+      {
+        "garment_id": "59aaa9b2-d32c-4634-8324-e229cf91ce7b",
+        "anchor_id": "APPROVED-C4",
+        "geometry": {
+          "x": 0.3020334928229665,
+          "y": 0.5037194473963869,
+          "width": 0.020933014354066987,
+          "height": 0.2731137088204038,
+          "z_index": 14
+        }
+      },
+      {
+        "garment_id": "0e707336-0417-42f8-8b6f-f655ee0e94a0",
+        "anchor_id": "APPROVED-C5",
+        "geometry": {
+          "x": 0.3211722488038278,
+          "y": 0.5037194473963869,
+          "width": 0.0215311004784689,
+          "height": 0.27523910733262485,
+          "z_index": 15
+        }
+      },
+      {
+        "garment_id": "0d1ef3df-bbbe-4a2a-9fd7-56bf8dd945f9",
+        "anchor_id": "APPROVED-C6",
+        "geometry": {
+          "x": 0.34210526315789475,
+          "y": 0.5037194473963869,
+          "width": 0.022129186602870814,
+          "height": 0.27523910733262485,
+          "z_index": 16
+        }
+      },
+      {
+        "garment_id": "49dd09f9-430c-4705-bbbf-6a77d8131677",
+        "anchor_id": "APPROVED-C7",
+        "geometry": {
+          "x": 0.36064593301435405,
+          "y": 0.5037194473963869,
+          "width": 0.023923444976076555,
+          "height": 0.27417640807651433,
+          "z_index": 17
+        }
+      },
+      {
+        "garment_id": "0d5afe1b-7832-4885-8eb5-341bb57cb90e",
+        "anchor_id": "APPROVED-C8",
+        "geometry": {
+          "x": 0.37978468899521534,
+          "y": 0.5037194473963869,
+          "width": 0.028708133971291867,
+          "height": 0.2731137088204038,
+          "z_index": 18
+        }
+      },
+      {
+        "garment_id": "fd1ce769-aab6-4227-83e0-c550cd9ecb45",
+        "anchor_id": "APPROVED-K1",
+        "geometry": {
+          "x": 0.6010765550239234,
+          "y": 0.10201912858660998,
+          "width": 0.06698564593301436,
+          "height": 0.025504782146652496,
+          "z_index": 11
+        }
+      },
+      {
+        "garment_id": "2568aead-2410-4bab-9208-6d4f54109927",
+        "anchor_id": "APPROVED-K2",
+        "geometry": {
+          "x": 0.6746411483253588,
+          "y": 0.1275239107332625,
+          "width": 0.06937799043062201,
+          "height": 0.018065887353878853,
+          "z_index": 12
+        }
+      },
+      {
+        "garment_id": "a2f054f7-6967-4add-bf4a-b61af158f0e2",
+        "anchor_id": "APPROVED-K3",
+        "geometry": {
+          "x": 0.5998803827751196,
+          "y": 0.4675876726886291,
+          "width": 0.0687799043062201,
+          "height": 0.030818278427205102,
+          "z_index": 13
+        }
+      }
+    ],
+    "blocked": [
+      {
+        "garment_id": "1656f0b8-7238-5fed-b0dc-27b01fc833d0",
+        "reason": "SLOT_UNAPPROVED"
+      },
+      {
+        "garment_id": "1adf7dde-eaed-53f9-ac0e-8497078fa703",
+        "reason": "SLOT_UNAPPROVED"
+      },
+      {
+        "garment_id": "1b92cf0a-82ad-567a-b1b5-7022111fccaf",
+        "reason": "SLOT_UNAPPROVED"
+      },
+      {
+        "garment_id": "1f8dcda3-eb5c-5744-bbd7-98e2b7adef98",
+        "reason": "SLOT_UNAPPROVED"
+      },
+      {
+        "garment_id": "20cb6b2b-1f68-542e-9150-d9e1e0a189c5",
+        "reason": "SLOT_UNAPPROVED"
+      },
+      {
+        "garment_id": "2f2a46af-3507-5f7d-a53f-5b2bab1e7af5",
+        "reason": "SLOT_UNAPPROVED"
+      },
+      {
+        "garment_id": "33d3cc8b-b76c-569e-9fe5-2f56010c9f82",
+        "reason": "SLOT_UNAPPROVED"
+      },
+      {
+        "garment_id": "51d97dc2-1125-5f5b-849e-d646d4c73f78",
+        "reason": "SLOT_UNAPPROVED"
+      },
+      {
+        "garment_id": "59e7a4ca-3acb-5250-a2d6-8f7703984934",
+        "reason": "SLOT_UNAPPROVED"
+      },
+      {
+        "garment_id": "6318748a-24b8-5a50-bf13-c925293f0ea1",
+        "reason": "SLOT_UNAPPROVED"
+      },
+      {
+        "garment_id": "715489be-2fd6-5576-b58c-bd991c9c2c32",
+        "reason": "SLOT_UNAPPROVED"
+      },
+      {
+        "garment_id": "74924c45-29a6-52e0-87b8-c03128c6d0e3",
+        "reason": "SLOT_UNAPPROVED"
+      },
+      {
+        "garment_id": "7893136d-24c1-5af3-8986-05089c8f2f18",
+        "reason": "SLOT_UNAPPROVED"
+      },
+      {
+        "garment_id": "821ae500-52f4-5879-b275-9a23bc327a3a",
+        "reason": "SLOT_UNAPPROVED"
+      },
+      {
+        "garment_id": "841b0db9-8551-57dd-9968-d6b2ca839900",
+        "reason": "SLOT_UNAPPROVED"
+      },
+      {
+        "garment_id": "883a6a25-4c2c-510b-bbe5-0ca8e5a44e32",
+        "reason": "SLOT_UNAPPROVED"
+      },
+      {
+        "garment_id": "900b7fa4-0e9c-5dd1-afd2-1c89ac2eaade",
+        "reason": "SLOT_UNAPPROVED"
+      },
+      {
+        "garment_id": "90f82d12-2dd8-588d-8894-7bf32622fdc9",
+        "reason": "SLOT_UNAPPROVED"
+      },
+      {
+        "garment_id": "94513db1-6b4c-5b06-a088-1abf46df8712",
+        "reason": "SLOT_UNAPPROVED"
+      },
+      {
+        "garment_id": "a0232e79-b5d9-5525-a298-3054de415599",
+        "reason": "SLOT_UNAPPROVED"
+      },
+      {
+        "garment_id": "a18baaab-a984-5245-a7a3-28bbd27e20ab",
+        "reason": "SLOT_UNAPPROVED"
+      },
+      {
+        "garment_id": "a72e0c37-5f7f-5acf-bd50-7f8c65b8f23d",
+        "reason": "SLOT_UNAPPROVED"
+      },
+      {
+        "garment_id": "b224de18-94bb-54be-b2dc-bcabc8e8aac0",
+        "reason": "SLOT_UNAPPROVED"
+      },
+      {
+        "garment_id": "b8c03e66-e150-52b2-8d25-41fcba2d4720",
+        "reason": "SLOT_UNAPPROVED"
+      },
+      {
+        "garment_id": "c349dc83-4312-5479-bb8e-094931f8a30b",
+        "reason": "SLOT_UNAPPROVED"
+      },
+      {
+        "garment_id": "df4082b6-d86e-53e7-a427-924c641a5145",
+        "reason": "SLOT_UNAPPROVED"
+      },
+      {
+        "garment_id": "df91ef4a-594c-570d-b32d-2b109efe8bab",
+        "reason": "SLOT_UNAPPROVED"
+      },
+      {
+        "garment_id": "e29bc367-5d11-5bbf-8fcb-9813c24c6f17",
+        "reason": "SLOT_UNAPPROVED"
+      },
+      {
+        "garment_id": "f35667ff-7520-5184-abf0-d35865244624",
+        "reason": "SLOT_UNAPPROVED"
+      },
+      {
+        "garment_id": "f84f09ec-6c6f-59fc-8438-3b80c620c3d9",
+        "reason": "SLOT_UNAPPROVED"
+      },
+      {
+        "garment_id": "fa6caeb1-0966-58c2-a81e-2754d7643c2c",
+        "reason": "SLOT_UNAPPROVED"
+      },
+      {
+        "garment_id": "ff39dfae-abdd-5ca3-8986-d1ba2cf0eccd",
+        "reason": "SLOT_UNAPPROVED"
+      }
+    ],
+    "domIds": [
+      "bc35f9b1-3a49-46d7-b0df-4631d2d3e3e9",
+      "dbfcdf61-e6c8-42ae-82e3-6c0ef39f8806",
+      "a4ac8980-d9fb-4442-aa6f-158cc9270277",
+      "a418bd50-1612-4f95-a030-e54b6a820fe5",
+      "6ba02802-d475-44f0-935a-e1050b50cf84",
+      "59e18c18-7553-41d9-bc88-014dd65e7b21",
+      "9f37a700-3578-4af2-9f8e-f36b869b5961",
+      "449c07e3-04b7-42af-b7b0-79ae8bdbf400",
+      "3049ddf0-d7cb-43c5-b9d8-87936db3e346",
+      "901a7b5c-d23c-4ec1-b434-5d8b41e6dd85",
+      "6df03b25-1edd-4a0b-b003-609ea9d25781",
+      "24c575ab-9dff-4bab-8d72-5dcc61d712b7",
+      "393354b9-bf4d-4c62-9456-8a810288e870",
+      "b5b5600d-3a67-48f6-8a63-7d8164bb9030",
+      "3518be70-15ef-462f-a130-7205a663205c",
+      "e2f39099-1da1-42a6-abed-827c494f53b9",
+      "59aaa9b2-d32c-4634-8324-e229cf91ce7b",
+      "0e707336-0417-42f8-8b6f-f655ee0e94a0",
+      "0d1ef3df-bbbe-4a2a-9fd7-56bf8dd945f9",
+      "49dd09f9-430c-4705-bbbf-6a77d8131677",
+      "0d5afe1b-7832-4885-8eb5-341bb57cb90e",
+      "fd1ce769-aab6-4227-83e0-c550cd9ecb45",
+      "2568aead-2410-4bab-9208-6d4f54109927",
+      "a2f054f7-6967-4add-bf4a-b61af158f0e2"
+    ]
+  },
+  "selection": {
+    "ledAttempts": 1,
+    "dimmed": 0,
+    "note": "LED POST aborted deliberately; no controller execution claimed"
+  },
+  "errors": [],
+  "scope": "read-only product inspection; demo login session only; no recommendation/storage/card creation"
+}

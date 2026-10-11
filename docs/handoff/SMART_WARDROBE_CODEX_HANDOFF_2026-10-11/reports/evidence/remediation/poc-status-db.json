@@ -1,0 +1,1690 @@
+{
+  "captured_at": "2026-10-11T14:08:35.428313+00:00",
+  "database": "wardrobe_test_remediation",
+  "scope": "all wardrobe tables in isolated local DB; not production",
+  "readonly": true,
+  "tables": {
+    "access_station": {
+      "count": 1,
+      "columns": [
+        {
+          "column_name": "id",
+          "data_type": "uuid"
+        },
+        {
+          "column_name": "name",
+          "data_type": "text"
+        },
+        {
+          "column_name": "kind",
+          "data_type": "text"
+        },
+        {
+          "column_name": "device_id",
+          "data_type": "uuid"
+        },
+        {
+          "column_name": "credential_hash",
+          "data_type": "text"
+        },
+        {
+          "column_name": "enabled",
+          "data_type": "boolean"
+        }
+      ]
+    },
+    "account_credential": {
+      "count": 4,
+      "columns": [
+        {
+          "column_name": "member_id",
+          "data_type": "uuid"
+        },
+        {
+          "column_name": "login",
+          "data_type": "text"
+        },
+        {
+          "column_name": "password_hash",
+          "data_type": "text"
+        },
+        {
+          "column_name": "enabled",
+          "data_type": "boolean"
+        }
+      ]
+    },
+    "asset": {
+      "count": 271,
+      "columns": [
+        {
+          "column_name": "id",
+          "data_type": "uuid"
+        },
+        {
+          "column_name": "household_id",
+          "data_type": "uuid"
+        },
+        {
+          "column_name": "owner_id",
+          "data_type": "uuid"
+        },
+        {
+          "column_name": "asset_key",
+          "data_type": "text"
+        },
+        {
+          "column_name": "content_type",
+          "data_type": "text"
+        },
+        {
+          "column_name": "kind",
+          "data_type": "text"
+        },
+        {
+          "column_name": "status",
+          "data_type": "USER-DEFINED"
+        },
+        {
+          "column_name": "byte_size",
+          "data_type": "bigint"
+        },
+        {
+          "column_name": "metadata",
+          "data_type": "jsonb"
+        },
+        {
+          "column_name": "created_at",
+          "data_type": "timestamp with time zone"
+        },
+        {
+          "column_name": "finalized_at",
+          "data_type": "timestamp with time zone"
+        },
+        {
+          "column_name": "upload_expires_at",
+          "data_type": "timestamp with time zone"
+        },
+        {
+          "column_name": "retention_expires_at",
+          "data_type": "timestamp with time zone"
+        }
+      ]
+    },
+    "audit_log": {
+      "count": 2023,
+      "columns": [
+        {
+          "column_name": "id",
+          "data_type": "uuid"
+        },
+        {
+          "column_name": "actor_member_id",
+          "data_type": "uuid"
+        },
+        {
+          "column_name": "household_id",
+          "data_type": "uuid"
+        },
+        {
+          "column_name": "action",
+          "data_type": "text"
+        },
+        {
+          "column_name": "target_type",
+          "data_type": "text"
+        },
+        {
+          "column_name": "target_id",
+          "data_type": "uuid"
+        },
+        {
+          "column_name": "correlation_id",
+          "data_type": "text"
+        },
+        {
+          "column_name": "details",
+          "data_type": "jsonb"
+        },
+        {
+          "column_name": "occurred_at",
+          "data_type": "timestamp with time zone"
+        }
+      ]
+    },
+    "card_render_job": {
+      "count": 97,
+      "columns": [
+        {
+          "column_name": "job_id",
+          "data_type": "uuid"
+        },
+        {
+          "column_name": "card_id",
+          "data_type": "uuid"
+        },
+        {
+          "column_name": "template_version",
+          "data_type": "text"
+        },
+        {
+          "column_name": "output_width",
+          "data_type": "integer"
+        },
+        {
+          "column_name": "output_height",
+          "data_type": "integer"
+        },
+        {
+          "column_name": "output_format",
+          "data_type": "text"
+        }
+      ]
+    },
+    "care_event": {
+      "count": 0,
+      "columns": [
+        {
+          "column_name": "id",
+          "data_type": "uuid"
+        },
+        {
+          "column_name": "garment_id",
+          "data_type": "uuid"
+        },
+        {
+          "column_name": "schedule_id",
+          "data_type": "uuid"
+        },
+        {
+          "column_name": "performed_by",
+          "data_type": "uuid"
+        },
+        {
+          "column_name": "care_type",
+          "data_type": "text"
+        },
+        {
+          "column_name": "performed_at",
+          "data_type": "timestamp with time zone"
+        },
+        {
+          "column_name": "details",
+          "data_type": "jsonb"
+        },
+        {
+          "column_name": "outcome",
+          "data_type": "text"
+        },
+        {
+          "column_name": "cancelled_at",
+          "data_type": "timestamp with time zone"
+        }
+      ]
+    },
+    "care_profile": {
+      "count": 0,
+      "columns": [
+        {
+          "column_name": "garment_id",
+          "data_type": "uuid"
+        },
+        {
+          "column_name": "special_care",
+          "data_type": "boolean"
+        },
+        {
+          "column_name": "care_group",
+          "data_type": "text"
+        },
+        {
+          "column_name": "care_constraints",
+          "data_type": "jsonb"
+        },
+        {
+          "column_name": "updated_at",
+          "data_type": "timestamp with time zone"
+        },
+        {
+          "column_name": "version",
+          "data_type": "integer"
+        }
+      ]
+    },
+    "care_schedule": {
+      "count": 0,
+      "columns": [
+        {
+          "column_name": "id",
+          "data_type": "uuid"
+        },
+        {
+          "column_name": "garment_id",
+          "data_type": "uuid"
+        },
+        {
+          "column_name": "scheduled_at",
+          "data_type": "timestamp with time zone"
+        },
+        {
+          "column_name": "care_type",
+          "data_type": "text"
+        },
+        {
+          "column_name": "status",
+          "data_type": "USER-DEFINED"
+        },
+        {
+          "column_name": "notes",
+          "data_type": "text"
+        },
+        {
+          "column_name": "created_by",
+          "data_type": "uuid"
+        },
+        {
+          "column_name": "completed_at",
+          "data_type": "timestamp with time zone"
+        },
+        {
+          "column_name": "created_at",
+          "data_type": "timestamp with time zone"
+        },
+        {
+          "column_name": "updated_at",
+          "data_type": "timestamp with time zone"
+        },
+        {
+          "column_name": "recurrence_days",
+          "data_type": "integer"
+        },
+        {
+          "column_name": "recurrence_timezone",
+          "data_type": "text"
+        },
+        {
+          "column_name": "next_schedule_id",
+          "data_type": "uuid"
+        },
+        {
+          "column_name": "version",
+          "data_type": "integer"
+        }
+      ]
+    },
+    "consent_history": {
+      "count": 4,
+      "columns": [
+        {
+          "column_name": "id",
+          "data_type": "uuid"
+        },
+        {
+          "column_name": "member_id",
+          "data_type": "uuid"
+        },
+        {
+          "column_name": "granted",
+          "data_type": "boolean"
+        },
+        {
+          "column_name": "policy_version",
+          "data_type": "text"
+        },
+        {
+          "column_name": "changed_at",
+          "data_type": "timestamp with time zone"
+        }
+      ]
+    },
+    "context_snapshot": {
+      "count": 13,
+      "columns": [
+        {
+          "column_name": "id",
+          "data_type": "uuid"
+        },
+        {
+          "column_name": "member_id",
+          "data_type": "uuid"
+        },
+        {
+          "column_name": "captured_at",
+          "data_type": "timestamp with time zone"
+        },
+        {
+          "column_name": "timezone",
+          "data_type": "text"
+        },
+        {
+          "column_name": "weather",
+          "data_type": "jsonb"
+        },
+        {
+          "column_name": "schedule",
+          "data_type": "jsonb"
+        },
+        {
+          "column_name": "location_label",
+          "data_type": "text"
+        },
+        {
+          "column_name": "is_holiday",
+          "data_type": "boolean"
+        },
+        {
+          "column_name": "source_mode",
+          "data_type": "text"
+        }
+      ]
+    },
+    "device": {
+      "count": 1,
+      "columns": [
+        {
+          "column_name": "id",
+          "data_type": "uuid"
+        },
+        {
+          "column_name": "household_id",
+          "data_type": "uuid"
+        },
+        {
+          "column_name": "name",
+          "data_type": "text"
+        }
+      ]
+    },
+    "device_member": {
+      "count": 4,
+      "columns": [
+        {
+          "column_name": "device_id",
+          "data_type": "uuid"
+        },
+        {
+          "column_name": "member_id",
+          "data_type": "uuid"
+        },
+        {
+          "column_name": "household_id",
+          "data_type": "uuid"
+        }
+      ]
+    },
+    "domain_event_outbox": {
+      "count": 1173,
+      "columns": [
+        {
+          "column_name": "id",
+          "data_type": "uuid"
+        },
+        {
+          "column_name": "aggregate_type",
+          "data_type": "text"
+        },
+        {
+          "column_name": "aggregate_id",
+          "data_type": "uuid"
+        },
+        {
+          "column_name": "event_type",
+          "data_type": "text"
+        },
+        {
+          "column_name": "schema_version",
+          "data_type": "integer"
+        },
+        {
+          "column_name": "household_id",
+          "data_type": "uuid"
+        },
+        {
+          "column_name": "correlation_id",
+          "data_type": "text"
+        },
+        {
+          "column_name": "payload",
+          "data_type": "jsonb"
+        },
+        {
+          "column_name": "status",
+          "data_type": "USER-DEFINED"
+        },
+        {
+          "column_name": "attempts",
+          "data_type": "integer"
+        },
+        {
+          "column_name": "next_attempt_at",
+          "data_type": "timestamp with time zone"
+        },
+        {
+          "column_name": "published_at",
+          "data_type": "timestamp with time zone"
+        },
+        {
+          "column_name": "created_at",
+          "data_type": "timestamp with time zone"
+        },
+        {
+          "column_name": "last_error",
+          "data_type": "text"
+        }
+      ]
+    },
+    "environment_reading": {
+      "count": 65,
+      "columns": [
+        {
+          "column_name": "id",
+          "data_type": "uuid"
+        },
+        {
+          "column_name": "location_id",
+          "data_type": "uuid"
+        },
+        {
+          "column_name": "temperature_c",
+          "data_type": "numeric"
+        },
+        {
+          "column_name": "humidity_pct",
+          "data_type": "numeric"
+        },
+        {
+          "column_name": "light_lux",
+          "data_type": "numeric"
+        },
+        {
+          "column_name": "measured_at",
+          "data_type": "timestamp with time zone"
+        },
+        {
+          "column_name": "source",
+          "data_type": "USER-DEFINED"
+        }
+      ]
+    },
+    "external_vton_job": {
+      "count": 6,
+      "columns": [
+        {
+          "column_name": "job_id",
+          "data_type": "uuid"
+        },
+        {
+          "column_name": "external_item_id",
+          "data_type": "text"
+        },
+        {
+          "column_name": "provider",
+          "data_type": "text"
+        },
+        {
+          "column_name": "person_asset_id",
+          "data_type": "uuid"
+        },
+        {
+          "column_name": "result_asset_id",
+          "data_type": "uuid"
+        }
+      ]
+    },
+    "garment": {
+      "count": 76,
+      "columns": [
+        {
+          "column_name": "id",
+          "data_type": "uuid"
+        },
+        {
+          "column_name": "household_id",
+          "data_type": "uuid"
+        },
+        {
+          "column_name": "owner_id",
+          "data_type": "uuid"
+        },
+        {
+          "column_name": "category",
+          "data_type": "text"
+        },
+        {
+          "column_name": "color",
+          "data_type": "text"
+        },
+        {
+          "column_name": "material",
+          "data_type": "text"
+        },
+        {
+          "column_name": "name",
+          "data_type": "text"
+        },
+        {
+          "column_name": "image_asset_id",
+          "data_type": "uuid"
+        },
+        {
+          "column_name": "season_tags",
+          "data_type": "ARRAY"
+        },
+        {
+          "column_name": "care_label",
+          "data_type": "jsonb"
+        },
+        {
+          "column_name": "attributes",
+          "data_type": "jsonb"
+        },
+        {
+          "column_name": "version",
+          "data_type": "integer"
+        },
+        {
+          "column_name": "created_at",
+          "data_type": "timestamp with time zone"
+        },
+        {
+          "column_name": "updated_at",
+          "data_type": "timestamp with time zone"
+        },
+        {
+          "column_name": "retired_at",
+          "data_type": "timestamp with time zone"
+        },
+        {
+          "column_name": "device_id",
+          "data_type": "uuid"
+        }
+      ]
+    },
+    "garment_observation": {
+      "count": 114,
+      "columns": [
+        {
+          "column_name": "id",
+          "data_type": "uuid"
+        },
+        {
+          "column_name": "garment_id",
+          "data_type": "uuid"
+        },
+        {
+          "column_name": "location_id",
+          "data_type": "uuid"
+        },
+        {
+          "column_name": "sensor_type",
+          "data_type": "USER-DEFINED"
+        },
+        {
+          "column_name": "confidence",
+          "data_type": "numeric"
+        },
+        {
+          "column_name": "observed_at",
+          "data_type": "timestamp with time zone"
+        },
+        {
+          "column_name": "received_at",
+          "data_type": "timestamp with time zone"
+        },
+        {
+          "column_name": "sensor_id",
+          "data_type": "text"
+        },
+        {
+          "column_name": "raw_payload",
+          "data_type": "jsonb"
+        }
+      ]
+    },
+    "garment_share": {
+      "count": 0,
+      "columns": [
+        {
+          "column_name": "garment_id",
+          "data_type": "uuid"
+        },
+        {
+          "column_name": "member_id",
+          "data_type": "uuid"
+        },
+        {
+          "column_name": "household_id",
+          "data_type": "uuid"
+        },
+        {
+          "column_name": "created_at",
+          "data_type": "timestamp with time zone"
+        }
+      ]
+    },
+    "garment_state": {
+      "count": 76,
+      "columns": [
+        {
+          "column_name": "garment_id",
+          "data_type": "uuid"
+        },
+        {
+          "column_name": "location_id",
+          "data_type": "uuid"
+        },
+        {
+          "column_name": "status",
+          "data_type": "USER-DEFINED"
+        },
+        {
+          "column_name": "location_confidence",
+          "data_type": "numeric"
+        },
+        {
+          "column_name": "last_seen_at",
+          "data_type": "timestamp with time zone"
+        },
+        {
+          "column_name": "updated_at",
+          "data_type": "timestamp with time zone"
+        },
+        {
+          "column_name": "version",
+          "data_type": "integer"
+        }
+      ]
+    },
+    "garment_tag": {
+      "count": 0,
+      "columns": [
+        {
+          "column_name": "id",
+          "data_type": "uuid"
+        },
+        {
+          "column_name": "garment_id",
+          "data_type": "uuid"
+        },
+        {
+          "column_name": "tag_value",
+          "data_type": "text"
+        },
+        {
+          "column_name": "tag_type",
+          "data_type": "text"
+        },
+        {
+          "column_name": "attached_at",
+          "data_type": "timestamp with time zone"
+        },
+        {
+          "column_name": "detached_at",
+          "data_type": "timestamp with time zone"
+        }
+      ]
+    },
+    "household": {
+      "count": 1,
+      "columns": [
+        {
+          "column_name": "id",
+          "data_type": "uuid"
+        },
+        {
+          "column_name": "name",
+          "data_type": "text"
+        },
+        {
+          "column_name": "created_at",
+          "data_type": "timestamp with time zone"
+        }
+      ]
+    },
+    "idempotency_key": {
+      "count": 884,
+      "columns": [
+        {
+          "column_name": "id",
+          "data_type": "uuid"
+        },
+        {
+          "column_name": "member_id",
+          "data_type": "uuid"
+        },
+        {
+          "column_name": "operation",
+          "data_type": "text"
+        },
+        {
+          "column_name": "key_value",
+          "data_type": "text"
+        },
+        {
+          "column_name": "request_hash",
+          "data_type": "text"
+        },
+        {
+          "column_name": "response_status",
+          "data_type": "integer"
+        },
+        {
+          "column_name": "response_body",
+          "data_type": "jsonb"
+        },
+        {
+          "column_name": "resource_id",
+          "data_type": "uuid"
+        },
+        {
+          "column_name": "created_at",
+          "data_type": "timestamp with time zone"
+        },
+        {
+          "column_name": "expires_at",
+          "data_type": "timestamp with time zone"
+        }
+      ]
+    },
+    "job": {
+      "count": 155,
+      "columns": [
+        {
+          "column_name": "id",
+          "data_type": "uuid"
+        },
+        {
+          "column_name": "household_id",
+          "data_type": "uuid"
+        },
+        {
+          "column_name": "member_id",
+          "data_type": "uuid"
+        },
+        {
+          "column_name": "kind",
+          "data_type": "text"
+        },
+        {
+          "column_name": "status",
+          "data_type": "USER-DEFINED"
+        },
+        {
+          "column_name": "progress_pct",
+          "data_type": "smallint"
+        },
+        {
+          "column_name": "attempt_count",
+          "data_type": "integer"
+        },
+        {
+          "column_name": "max_attempts",
+          "data_type": "integer"
+        },
+        {
+          "column_name": "request_payload",
+          "data_type": "jsonb"
+        },
+        {
+          "column_name": "result_ref",
+          "data_type": "text"
+        },
+        {
+          "column_name": "error_code",
+          "data_type": "text"
+        },
+        {
+          "column_name": "error_message_safe",
+          "data_type": "text"
+        },
+        {
+          "column_name": "correlation_id",
+          "data_type": "text"
+        },
+        {
+          "column_name": "lease_owner",
+          "data_type": "text"
+        },
+        {
+          "column_name": "leased_until",
+          "data_type": "timestamp with time zone"
+        },
+        {
+          "column_name": "created_at",
+          "data_type": "timestamp with time zone"
+        },
+        {
+          "column_name": "updated_at",
+          "data_type": "timestamp with time zone"
+        },
+        {
+          "column_name": "started_at",
+          "data_type": "timestamp with time zone"
+        },
+        {
+          "column_name": "finished_at",
+          "data_type": "timestamp with time zone"
+        },
+        {
+          "column_name": "next_attempt_at",
+          "data_type": "timestamp with time zone"
+        }
+      ]
+    },
+    "led_command": {
+      "count": 68,
+      "columns": [
+        {
+          "column_name": "id",
+          "data_type": "uuid"
+        },
+        {
+          "column_name": "member_id",
+          "data_type": "uuid"
+        },
+        {
+          "column_name": "station_id",
+          "data_type": "uuid"
+        },
+        {
+          "column_name": "device_id",
+          "data_type": "uuid"
+        },
+        {
+          "column_name": "idempotency_key",
+          "data_type": "uuid"
+        },
+        {
+          "column_name": "fingerprint",
+          "data_type": "text"
+        },
+        {
+          "column_name": "anchor_ids",
+          "data_type": "ARRAY"
+        },
+        {
+          "column_name": "expires_at",
+          "data_type": "timestamp with time zone"
+        },
+        {
+          "column_name": "created_at",
+          "data_type": "timestamp with time zone"
+        }
+      ]
+    },
+    "lighting_zone": {
+      "count": 85,
+      "columns": [
+        {
+          "column_name": "location_id",
+          "data_type": "uuid"
+        },
+        {
+          "column_name": "device_id",
+          "data_type": "uuid"
+        },
+        {
+          "column_name": "anchor_id",
+          "data_type": "text"
+        }
+      ]
+    },
+    "member": {
+      "count": 4,
+      "columns": [
+        {
+          "column_name": "id",
+          "data_type": "uuid"
+        },
+        {
+          "column_name": "household_id",
+          "data_type": "uuid"
+        },
+        {
+          "column_name": "display_name",
+          "data_type": "text"
+        },
+        {
+          "column_name": "role",
+          "data_type": "text"
+        },
+        {
+          "column_name": "external_subject",
+          "data_type": "text"
+        },
+        {
+          "column_name": "created_at",
+          "data_type": "timestamp with time zone"
+        }
+      ]
+    },
+    "member_settings": {
+      "count": 4,
+      "columns": [
+        {
+          "column_name": "member_id",
+          "data_type": "uuid"
+        },
+        {
+          "column_name": "timezone",
+          "data_type": "text"
+        },
+        {
+          "column_name": "units",
+          "data_type": "text"
+        },
+        {
+          "column_name": "weather_mode",
+          "data_type": "text"
+        },
+        {
+          "column_name": "calendar_enabled",
+          "data_type": "boolean"
+        },
+        {
+          "column_name": "vton_provider",
+          "data_type": "text"
+        },
+        {
+          "column_name": "notifications_enabled",
+          "data_type": "boolean"
+        },
+        {
+          "column_name": "updated_at",
+          "data_type": "timestamp with time zone"
+        },
+        {
+          "column_name": "image_upload_consent",
+          "data_type": "boolean"
+        }
+      ]
+    },
+    "outfit": {
+      "count": 140,
+      "columns": [
+        {
+          "column_name": "id",
+          "data_type": "uuid"
+        },
+        {
+          "column_name": "member_id",
+          "data_type": "uuid"
+        },
+        {
+          "column_name": "title",
+          "data_type": "text"
+        },
+        {
+          "column_name": "status",
+          "data_type": "USER-DEFINED"
+        },
+        {
+          "column_name": "version",
+          "data_type": "integer"
+        },
+        {
+          "column_name": "created_at",
+          "data_type": "timestamp with time zone"
+        },
+        {
+          "column_name": "updated_at",
+          "data_type": "timestamp with time zone"
+        }
+      ]
+    },
+    "outfit_card": {
+      "count": 97,
+      "columns": [
+        {
+          "column_name": "id",
+          "data_type": "uuid"
+        },
+        {
+          "column_name": "outfit_id",
+          "data_type": "uuid"
+        },
+        {
+          "column_name": "member_id",
+          "data_type": "uuid"
+        },
+        {
+          "column_name": "session_id",
+          "data_type": "uuid"
+        },
+        {
+          "column_name": "template_id",
+          "data_type": "text"
+        },
+        {
+          "column_name": "template_data",
+          "data_type": "jsonb"
+        },
+        {
+          "column_name": "status",
+          "data_type": "text"
+        },
+        {
+          "column_name": "image_asset_id",
+          "data_type": "uuid"
+        },
+        {
+          "column_name": "is_saved",
+          "data_type": "boolean"
+        },
+        {
+          "column_name": "share_token_hash",
+          "data_type": "text"
+        },
+        {
+          "column_name": "share_expires_at",
+          "data_type": "timestamp with time zone"
+        },
+        {
+          "column_name": "created_at",
+          "data_type": "timestamp with time zone"
+        },
+        {
+          "column_name": "updated_at",
+          "data_type": "timestamp with time zone"
+        }
+      ]
+    },
+    "outfit_feedback": {
+      "count": 14,
+      "columns": [
+        {
+          "column_name": "id",
+          "data_type": "uuid"
+        },
+        {
+          "column_name": "session_id",
+          "data_type": "uuid"
+        },
+        {
+          "column_name": "outfit_id",
+          "data_type": "uuid"
+        },
+        {
+          "column_name": "feedback_type",
+          "data_type": "text"
+        },
+        {
+          "column_name": "rating",
+          "data_type": "smallint"
+        },
+        {
+          "column_name": "changes",
+          "data_type": "jsonb"
+        },
+        {
+          "column_name": "created_at",
+          "data_type": "timestamp with time zone"
+        }
+      ]
+    },
+    "outfit_item": {
+      "count": 400,
+      "columns": [
+        {
+          "column_name": "outfit_id",
+          "data_type": "uuid"
+        },
+        {
+          "column_name": "garment_id",
+          "data_type": "uuid"
+        },
+        {
+          "column_name": "slot",
+          "data_type": "text"
+        },
+        {
+          "column_name": "position",
+          "data_type": "integer"
+        }
+      ]
+    },
+    "outfit_session": {
+      "count": 41,
+      "columns": [
+        {
+          "column_name": "id",
+          "data_type": "uuid"
+        },
+        {
+          "column_name": "member_id",
+          "data_type": "uuid"
+        },
+        {
+          "column_name": "source_screen",
+          "data_type": "text"
+        },
+        {
+          "column_name": "status",
+          "data_type": "USER-DEFINED"
+        },
+        {
+          "column_name": "revision",
+          "data_type": "integer"
+        },
+        {
+          "column_name": "outfit_id",
+          "data_type": "uuid"
+        },
+        {
+          "column_name": "context_snapshot_id",
+          "data_type": "uuid"
+        },
+        {
+          "column_name": "final_outfit_id",
+          "data_type": "uuid"
+        },
+        {
+          "column_name": "final_items_snapshot",
+          "data_type": "jsonb"
+        },
+        {
+          "column_name": "created_at",
+          "data_type": "timestamp with time zone"
+        },
+        {
+          "column_name": "updated_at",
+          "data_type": "timestamp with time zone"
+        },
+        {
+          "column_name": "ended_at",
+          "data_type": "timestamp with time zone"
+        }
+      ]
+    },
+    "outfit_session_event": {
+      "count": 55,
+      "columns": [
+        {
+          "column_name": "id",
+          "data_type": "uuid"
+        },
+        {
+          "column_name": "session_id",
+          "data_type": "uuid"
+        },
+        {
+          "column_name": "event_type",
+          "data_type": "text"
+        },
+        {
+          "column_name": "revision",
+          "data_type": "integer"
+        },
+        {
+          "column_name": "payload",
+          "data_type": "jsonb"
+        },
+        {
+          "column_name": "occurred_at",
+          "data_type": "timestamp with time zone"
+        }
+      ]
+    },
+    "shopping_import": {
+      "count": 0,
+      "columns": [
+        {
+          "column_name": "member_id",
+          "data_type": "uuid"
+        },
+        {
+          "column_name": "provider",
+          "data_type": "text"
+        },
+        {
+          "column_name": "external_item_id",
+          "data_type": "text"
+        },
+        {
+          "column_name": "unit",
+          "data_type": "integer"
+        },
+        {
+          "column_name": "garment_id",
+          "data_type": "uuid"
+        },
+        {
+          "column_name": "created_at",
+          "data_type": "timestamp with time zone"
+        }
+      ]
+    },
+    "storage_action": {
+      "count": 25,
+      "columns": [
+        {
+          "column_name": "id",
+          "data_type": "uuid"
+        },
+        {
+          "column_name": "household_id",
+          "data_type": "uuid"
+        },
+        {
+          "column_name": "requested_by",
+          "data_type": "uuid"
+        },
+        {
+          "column_name": "approved_by",
+          "data_type": "uuid"
+        },
+        {
+          "column_name": "action_type",
+          "data_type": "text"
+        },
+        {
+          "column_name": "status",
+          "data_type": "USER-DEFINED"
+        },
+        {
+          "column_name": "reasoning",
+          "data_type": "jsonb"
+        },
+        {
+          "column_name": "version",
+          "data_type": "integer"
+        },
+        {
+          "column_name": "created_at",
+          "data_type": "timestamp with time zone"
+        },
+        {
+          "column_name": "updated_at",
+          "data_type": "timestamp with time zone"
+        },
+        {
+          "column_name": "approved_at",
+          "data_type": "timestamp with time zone"
+        },
+        {
+          "column_name": "completed_at",
+          "data_type": "timestamp with time zone"
+        },
+        {
+          "column_name": "expires_at",
+          "data_type": "timestamp with time zone"
+        }
+      ]
+    },
+    "storage_action_item": {
+      "count": 308,
+      "columns": [
+        {
+          "column_name": "id",
+          "data_type": "uuid"
+        },
+        {
+          "column_name": "action_id",
+          "data_type": "uuid"
+        },
+        {
+          "column_name": "garment_id",
+          "data_type": "uuid"
+        },
+        {
+          "column_name": "source_location_id",
+          "data_type": "uuid"
+        },
+        {
+          "column_name": "destination_location_id",
+          "data_type": "uuid"
+        },
+        {
+          "column_name": "status",
+          "data_type": "USER-DEFINED"
+        },
+        {
+          "column_name": "confirmed_at",
+          "data_type": "timestamp with time zone"
+        },
+        {
+          "column_name": "confirmation_method",
+          "data_type": "text"
+        },
+        {
+          "column_name": "failure_reason",
+          "data_type": "text"
+        }
+      ]
+    },
+    "storage_location": {
+      "count": 89,
+      "columns": [
+        {
+          "column_name": "id",
+          "data_type": "uuid"
+        },
+        {
+          "column_name": "household_id",
+          "data_type": "uuid"
+        },
+        {
+          "column_name": "parent_location_id",
+          "data_type": "uuid"
+        },
+        {
+          "column_name": "name",
+          "data_type": "text"
+        },
+        {
+          "column_name": "location_type",
+          "data_type": "text"
+        },
+        {
+          "column_name": "capacity_units",
+          "data_type": "integer"
+        },
+        {
+          "column_name": "attributes",
+          "data_type": "jsonb"
+        },
+        {
+          "column_name": "created_at",
+          "data_type": "timestamp with time zone"
+        }
+      ]
+    },
+    "style_reference": {
+      "count": 0,
+      "columns": [
+        {
+          "column_name": "id",
+          "data_type": "uuid"
+        },
+        {
+          "column_name": "member_id",
+          "data_type": "uuid"
+        },
+        {
+          "column_name": "source",
+          "data_type": "text"
+        },
+        {
+          "column_name": "source_url",
+          "data_type": "text"
+        },
+        {
+          "column_name": "image_asset_id",
+          "data_type": "uuid"
+        },
+        {
+          "column_name": "title",
+          "data_type": "text"
+        },
+        {
+          "column_name": "created_at",
+          "data_type": "timestamp with time zone"
+        }
+      ]
+    },
+    "vton_job": {
+      "count": 27,
+      "columns": [
+        {
+          "column_name": "job_id",
+          "data_type": "uuid"
+        },
+        {
+          "column_name": "session_id",
+          "data_type": "uuid"
+        },
+        {
+          "column_name": "outfit_revision",
+          "data_type": "integer"
+        },
+        {
+          "column_name": "provider",
+          "data_type": "text"
+        },
+        {
+          "column_name": "provider_job_id",
+          "data_type": "text"
+        },
+        {
+          "column_name": "person_asset_id",
+          "data_type": "uuid"
+        },
+        {
+          "column_name": "result_asset_id",
+          "data_type": "uuid"
+        },
+        {
+          "column_name": "provider_metadata",
+          "data_type": "jsonb"
+        }
+      ]
+    },
+    "wear_event": {
+      "count": 0,
+      "columns": [
+        {
+          "column_name": "id",
+          "data_type": "uuid"
+        },
+        {
+          "column_name": "member_id",
+          "data_type": "uuid"
+        },
+        {
+          "column_name": "outfit_id",
+          "data_type": "uuid"
+        },
+        {
+          "column_name": "session_id",
+          "data_type": "uuid"
+        },
+        {
+          "column_name": "context_snapshot_id",
+          "data_type": "uuid"
+        },
+        {
+          "column_name": "worn_at",
+          "data_type": "timestamp with time zone"
+        },
+        {
+          "column_name": "confirmation_method",
+          "data_type": "text"
+        },
+        {
+          "column_name": "confirmation_ref",
+          "data_type": "text"
+        },
+        {
+          "column_name": "confirmed_at",
+          "data_type": "timestamp with time zone"
+        },
+        {
+          "column_name": "items_snapshot",
+          "data_type": "jsonb"
+        },
+        {
+          "column_name": "cancelled_at",
+          "data_type": "timestamp with time zone"
+        },
+        {
+          "column_name": "version",
+          "data_type": "integer"
+        }
+      ]
+    }
+  },
+  "summaries": {
+    "garment_state": [
+      {
+        "status": "AVAILABLE",
+        "n": 68,
+        "located": 68,
+        "confident": 68
+      },
+      {
+        "status": "STORED",
+        "n": 8,
+        "located": 8,
+        "confident": 8
+      }
+    ],
+    "context_completeness": [
+      {
+        "source_mode": "MOCK",
+        "n": 13,
+        "location_present": 0,
+        "holiday_present": 0,
+        "with_schedule": 0
+      }
+    ],
+    "context_weather_keys": [
+      {
+        "key": "temperature_c"
+      },
+      {
+        "key": "humidity_pct"
+      },
+      {
+        "key": "precipitation_mm"
+      },
+      {
+        "key": "_provenance"
+      },
+      {
+        "key": "condition"
+      }
+    ],
+    "feedback_types": [
+      {
+        "feedback_type": "ACCEPTED",
+        "n": 14,
+        "rated": 0
+      }
+    ],
+    "wear_links": [
+      {
+        "n": 0,
+        "context_linked": 0,
+        "session_linked": 0
+      }
+    ],
+    "positions": [
+      {
+        "n": 76,
+        "slotted": 76
+      }
+    ],
+    "observations": [
+      {
+        "sensor_type": "MOCK",
+        "n": 90
+      },
+      {
+        "sensor_type": "MANUAL",
+        "n": 24
+      }
+    ],
+    "outbox_events": [
+      {
+        "event_type": "AssetFinalized",
+        "n": 141
+      },
+      {
+        "event_type": "CardDraftPrepared",
+        "n": 97
+      },
+      {
+        "event_type": "CardGenerated",
+        "n": 97
+      },
+      {
+        "event_type": "CardGenerationRequested",
+        "n": 97
+      },
+      {
+        "event_type": "CardGenerationStarted",
+        "n": 97
+      },
+      {
+        "event_type": "CardSaved",
+        "n": 97
+      },
+      {
+        "event_type": "ContextCaptured",
+        "n": 13
+      },
+      {
+        "event_type": "GarmentObserved",
+        "n": 38
+      },
+      {
+        "event_type": "GarmentRegistered",
+        "n": 24
+      },
+      {
+        "event_type": "GarmentStateChanged",
+        "n": 34
+      },
+      {
+        "event_type": "OutfitRecommended",
+        "n": 13
+      },
+      {
+        "event_type": "OutfitSaved",
+        "n": 66
+      },
+      {
+        "event_type": "SettingsUpdated",
+        "n": 55
+      },
+      {
+        "event_type": "StorageActionApproved",
+        "n": 20
+      },
+      {
+        "event_type": "StorageActionConfirmed",
+        "n": 24
+      },
+      {
+        "event_type": "StorageActionProposed",
+        "n": 25
+      },
+      {
+        "event_type": "StorageMovementConfirmed",
+        "n": 24
+      },
+      {
+        "event_type": "StorageOptimizationCompleted",
+        "n": 25
+      },
+      {
+        "event_type": "StorageOptimizationRequested",
+        "n": 25
+      },
+      {
+        "event_type": "StorageOptimizationStarted",
+        "n": 25
+      },
+      {
+        "event_type": "VtonJobRequested",
+        "n": 27
+      },
+      {
+        "event_type": "VtonJobStarted",
+        "n": 27
+      },
+      {
+        "event_type": "VtonJobSucceeded",
+        "n": 27
+      },
+      {
+        "event_type": "VtonSessionCreated",
+        "n": 41
+      },
+      {
+        "event_type": "VtonSessionEnded",
+        "n": 14
+      }
+    ]
+  }
+}
