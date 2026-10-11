@@ -1,4 +1,5 @@
 {
+  "entry": "누가 옷장을 사용하나요?",
   "results": [
     {
       "profile": "mother",
@@ -7,8 +8,8 @@
       "count": 52,
       "photos": 52,
       "owners": 4,
-      "login": "PASS",
-      "logout": "PASS"
+      "member": "김수진",
+      "result": "PASS"
     },
     {
       "profile": "son",
@@ -17,8 +18,18 @@
       "count": 52,
       "photos": 52,
       "owners": 4,
-      "login": "PASS",
-      "logout": "PASS"
+      "member": "최휘재",
+      "result": "PASS"
+    },
+    {
+      "profile": "mother",
+      "name": "김수진",
+      "member_id": "0b43d34d-0ae6-53cd-8f37-f95b32a01451",
+      "count": 52,
+      "photos": 52,
+      "owners": 4,
+      "member": "김수진",
+      "result": "PASS"
     }
   ],
   "errors": [],

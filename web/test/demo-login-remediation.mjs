@@ -19,7 +19,7 @@ try {
  await page.goto('http://127.0.0.1:5193');
  await account();
  const response=page.waitForResponse(r=>r.url().includes('/integration/demo-login'));
- await page.getByRole('button',{name:/최휘재.*시연용 로그인/}).click();
+ await page.getByRole('button',{name:'시연용 로그인',exact:true}).click();
  assert.equal((await response).status(),200);
  let state;
  for(let i=0;i<60;i++){
@@ -42,6 +42,6 @@ try {
  assert.equal((await logout).status(),200);
  await page.waitForTimeout(300);
  if(!(await page.getByRole('dialog').count()))await account();
- await page.getByRole('button',{name:/최휘재.*시연용 로그인/}).waitFor();
+ await page.getByRole('button',{name:'시연용 로그인',exact:true}).waitFor();
  console.log(JSON.stringify({demo_button:'PASS',family_data:state,scene:'PASS',logout:'PASS'}));
 }finally{await browser.close();}

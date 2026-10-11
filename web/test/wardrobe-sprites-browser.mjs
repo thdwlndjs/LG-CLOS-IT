@@ -11,7 +11,7 @@ try{
  await page.goto('http://127.0.0.1:5193');
  await page.getByRole('button',{name:'마이',exact:true}).click();
  await page.getByRole('button',{name:'내 계정',exact:true}).click();
- await page.getByRole('button',{name:/최휘재.*시연용 로그인/}).click();
+ await page.getByRole('button',{name:'시연용 로그인',exact:true}).click();
  let stats;
  for(let i=0;i<60;i++){
   stats=await page.evaluate(async()=>{
