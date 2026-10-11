@@ -1,0 +1,35 @@
+{
+  "changed_or_deleted": {
+    "garment": [],
+    "garment_state": [],
+    "scene_placement": [],
+    "outfit": [],
+    "outfit_item": [],
+    "outfit_card": [],
+    "vton_job": [],
+    "wear_event": [],
+    "liked_item": [],
+    "context_snapshot": [],
+    "storage_location": [],
+    "lighting_zone": [],
+    "asset": [],
+    "visual_files": []
+  },
+  "added": {
+    "garment": 0,
+    "garment_state": 0,
+    "scene_placement": 0,
+    "outfit": 0,
+    "outfit_item": 0,
+    "outfit_card": 0,
+    "vton_job": 0,
+    "wear_event": 0,
+    "liked_item": 0,
+    "context_snapshot": 0,
+    "storage_location": 0,
+    "lighting_zone": 0,
+    "asset": 59,
+    "visual_files": 0
+  },
+  "pass_preservation": true
+}

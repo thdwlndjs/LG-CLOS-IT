@@ -1,0 +1,484 @@
+[
+  {
+    "profile": "김수진",
+    "jobs": [
+      {
+        "job_id": "2ff91f4e-b62c-4501-a74c-825c1a9f4e71",
+        "request_snapshot": {
+          "schema_version": "poc-vton-c1",
+          "request_id": "2ff91f4e-b62c-4501-a74c-825c1a9f4e71",
+          "household_id": "843fa374-b366-5ed4-a3ab-d2b980713e1a",
+          "member_id": "0b43d34d-0ae6-53cd-8f37-f95b32a01451",
+          "client_context_id": "75d52134-dec5-4d3f-848d-5897c504d1a1",
+          "draft_id": "24e6043d-7aa5-47f0-93dd-17be2387d1d8",
+          "draft_revision": 6,
+          "submitted_at": "2026-10-11T22:52:40.273586Z",
+          "provider": "MOCK",
+          "person": {
+            "asset_id": "8fbd361b-47db-4386-8d2e-54fd20e1de59",
+            "checksum_sha256": "90484eb6779f4d9ece3ec8b7c0fbe88fe1c833b77dba4fcef866b096727ff9d1"
+          },
+          "items": [
+            {
+              "kind": "OWNED",
+              "id": "1adf7dde-eaed-53f9-ac0e-8497078fa703",
+              "slot": "TOP",
+              "position": 0,
+              "owner_id": "0b43d34d-0ae6-53cd-8f37-f95b32a01451",
+              "source_version": 2,
+              "asset_id": "23fc96e0-1eb3-47a7-9339-4175559654d0",
+              "checksum_sha256": "e917a6c00c67c147c8d470da20207bfebfc8c9d729cd47a7506e7ab4cd2d6e59",
+              "source_fingerprint": "374ab6bbc391163e45230c55c66f7fc33b48d3dad99cf3a2e8e6fb72febf586f"
+            },
+            {
+              "kind": "OWNED",
+              "id": "2904fd43-cb31-530d-b4bd-2d9783d3c762",
+              "slot": "BOTTOM",
+              "position": 0,
+              "owner_id": "55328e5c-6a05-5ac7-af55-77ece0a86dd8",
+              "source_version": 3,
+              "asset_id": "0b2c69c5-4e20-4b9d-ab9e-2d4bf9db81f3",
+              "checksum_sha256": "bebeea70324182dab097c7710b4bb93261e94fe3e93dc7d63291ddf19611c598",
+              "source_fingerprint": "5652809b5c6b0e75ee941a5b8894b2a6ef85eb141057311075615cfb11d0552a"
+            }
+          ],
+          "contains_liked": false,
+          "input_fingerprint": "cacd929a47e817f50b8ec0d4260cae3e200d2c028122f39a854d0e2edc91317e"
+        },
+        "is_mock": true,
+        "result_semantics": "MOCK_RECEIPT_NOT_REAL_TRY_ON"
+      },
+      {
+        "job_id": "48cf23f9-063c-47be-8467-7070929b66bd",
+        "request_snapshot": {
+          "schema_version": "poc-vton-c1",
+          "request_id": "48cf23f9-063c-47be-8467-7070929b66bd",
+          "household_id": "843fa374-b366-5ed4-a3ab-d2b980713e1a",
+          "member_id": "0b43d34d-0ae6-53cd-8f37-f95b32a01451",
+          "client_context_id": "75d52134-dec5-4d3f-848d-5897c504d1a1",
+          "draft_id": "24e6043d-7aa5-47f0-93dd-17be2387d1d8",
+          "draft_revision": 8,
+          "submitted_at": "2026-10-11T22:52:44.440777Z",
+          "provider": "MOCK",
+          "person": {
+            "asset_id": "8fbd361b-47db-4386-8d2e-54fd20e1de59",
+            "checksum_sha256": "90484eb6779f4d9ece3ec8b7c0fbe88fe1c833b77dba4fcef866b096727ff9d1"
+          },
+          "items": [
+            {
+              "kind": "LIKED",
+              "id": "4a4011ec-5c0b-5506-bc47-ffb65719830b",
+              "slot": "TOP",
+              "position": 0,
+              "owner_id": "0b43d34d-0ae6-53cd-8f37-f95b32a01451",
+              "source_version": null,
+              "asset_id": "23fc96e0-1eb3-47a7-9339-4175559654d0",
+              "checksum_sha256": "e917a6c00c67c147c8d470da20207bfebfc8c9d729cd47a7506e7ab4cd2d6e59",
+              "source_fingerprint": "6914b81b55383d5f55ddd03e61aee2e67529fbcba01126d6017a1c6d275cd8e1"
+            },
+            {
+              "kind": "LIKED",
+              "id": "122aa70c-6e44-518e-84eb-9be13a0718d3",
+              "slot": "BOTTOM",
+              "position": 0,
+              "owner_id": "0b43d34d-0ae6-53cd-8f37-f95b32a01451",
+              "source_version": null,
+              "asset_id": "7a0d8a2e-ac38-4a97-860e-4f8bffa78123",
+              "checksum_sha256": "bdeeea56c4732ebfec394bd01c6043d35ff99b0db750b831046c56197444c6b0",
+              "source_fingerprint": "dddc7cae469378c1f1f7c403c5787eedbaa183758cbcfe33af2bf6fb8c43d8a9"
+            }
+          ],
+          "contains_liked": true,
+          "input_fingerprint": "0381d6307ffb07434b91469ed564e01e490bbde2cd9f308ff101bef73ca85554"
+        },
+        "is_mock": true,
+        "result_semantics": "MOCK_RECEIPT_NOT_REAL_TRY_ON"
+      },
+      {
+        "job_id": "b955b2a2-d7fd-49e7-90fa-0932268319fa",
+        "request_snapshot": {
+          "schema_version": "poc-vton-c1",
+          "request_id": "b955b2a2-d7fd-49e7-90fa-0932268319fa",
+          "household_id": "843fa374-b366-5ed4-a3ab-d2b980713e1a",
+          "member_id": "0b43d34d-0ae6-53cd-8f37-f95b32a01451",
+          "client_context_id": "75d52134-dec5-4d3f-848d-5897c504d1a1",
+          "draft_id": "24e6043d-7aa5-47f0-93dd-17be2387d1d8",
+          "draft_revision": 11,
+          "submitted_at": "2026-10-11T22:52:45.766750Z",
+          "provider": "MOCK",
+          "person": {
+            "asset_id": "8fbd361b-47db-4386-8d2e-54fd20e1de59",
+            "checksum_sha256": "90484eb6779f4d9ece3ec8b7c0fbe88fe1c833b77dba4fcef866b096727ff9d1"
+          },
+          "items": [
+            {
+              "kind": "OWNED",
+              "id": "1adf7dde-eaed-53f9-ac0e-8497078fa703",
+              "slot": "TOP",
+              "position": 0,
+              "owner_id": "0b43d34d-0ae6-53cd-8f37-f95b32a01451",
+              "source_version": 2,
+              "asset_id": "23fc96e0-1eb3-47a7-9339-4175559654d0",
+              "checksum_sha256": "e917a6c00c67c147c8d470da20207bfebfc8c9d729cd47a7506e7ab4cd2d6e59",
+              "source_fingerprint": "374ab6bbc391163e45230c55c66f7fc33b48d3dad99cf3a2e8e6fb72febf586f"
+            },
+            {
+              "kind": "LIKED",
+              "id": "122aa70c-6e44-518e-84eb-9be13a0718d3",
+              "slot": "BOTTOM",
+              "position": 0,
+              "owner_id": "0b43d34d-0ae6-53cd-8f37-f95b32a01451",
+              "source_version": null,
+              "asset_id": "7a0d8a2e-ac38-4a97-860e-4f8bffa78123",
+              "checksum_sha256": "bdeeea56c4732ebfec394bd01c6043d35ff99b0db750b831046c56197444c6b0",
+              "source_fingerprint": "dddc7cae469378c1f1f7c403c5787eedbaa183758cbcfe33af2bf6fb8c43d8a9"
+            }
+          ],
+          "contains_liked": true,
+          "input_fingerprint": "bbeafa5e9fc8c07b4fb822c9dea9e6ea93aa735f77b5bc98902772fc214f7100"
+        },
+        "is_mock": true,
+        "result_semantics": "MOCK_RECEIPT_NOT_REAL_TRY_ON"
+      },
+      {
+        "job_id": "8b3395ce-430c-453c-9c1b-0baac31c5e26",
+        "request_snapshot": {
+          "schema_version": "poc-vton-c1",
+          "request_id": "8b3395ce-430c-453c-9c1b-0baac31c5e26",
+          "household_id": "843fa374-b366-5ed4-a3ab-d2b980713e1a",
+          "member_id": "0b43d34d-0ae6-53cd-8f37-f95b32a01451",
+          "client_context_id": "75d52134-dec5-4d3f-848d-5897c504d1a1",
+          "draft_id": "24e6043d-7aa5-47f0-93dd-17be2387d1d8",
+          "draft_revision": 12,
+          "submitted_at": "2026-10-11T22:52:48.374447Z",
+          "provider": "MOCK",
+          "person": {
+            "asset_id": "8fbd361b-47db-4386-8d2e-54fd20e1de59",
+            "checksum_sha256": "90484eb6779f4d9ece3ec8b7c0fbe88fe1c833b77dba4fcef866b096727ff9d1"
+          },
+          "items": [
+            {
+              "kind": "OWNED",
+              "id": "1adf7dde-eaed-53f9-ac0e-8497078fa703",
+              "slot": "TOP",
+              "position": 0,
+              "owner_id": "0b43d34d-0ae6-53cd-8f37-f95b32a01451",
+              "source_version": 2,
+              "asset_id": "23fc96e0-1eb3-47a7-9339-4175559654d0",
+              "checksum_sha256": "e917a6c00c67c147c8d470da20207bfebfc8c9d729cd47a7506e7ab4cd2d6e59",
+              "source_fingerprint": "374ab6bbc391163e45230c55c66f7fc33b48d3dad99cf3a2e8e6fb72febf586f"
+            },
+            {
+              "kind": "OWNED",
+              "id": "2904fd43-cb31-530d-b4bd-2d9783d3c762",
+              "slot": "BOTTOM",
+              "position": 0,
+              "owner_id": "55328e5c-6a05-5ac7-af55-77ece0a86dd8",
+              "source_version": 3,
+              "asset_id": "0b2c69c5-4e20-4b9d-ab9e-2d4bf9db81f3",
+              "checksum_sha256": "bebeea70324182dab097c7710b4bb93261e94fe3e93dc7d63291ddf19611c598",
+              "source_fingerprint": "5652809b5c6b0e75ee941a5b8894b2a6ef85eb141057311075615cfb11d0552a"
+            }
+          ],
+          "contains_liked": false,
+          "input_fingerprint": "cacd929a47e817f50b8ec0d4260cae3e200d2c028122f39a854d0e2edc91317e"
+        },
+        "is_mock": true,
+        "result_semantics": "MOCK_RECEIPT_NOT_REAL_TRY_ON"
+      }
+    ],
+    "errors": [],
+    "selectionDuringPending": true,
+    "currentDraftPreserved": true,
+    "likedFollowupSideEffects": 0,
+    "exitResultCleared": true,
+    "profileSwitchLatePostBlocked": true,
+    "lateAcceptedJob": {
+      "job_id": "a9efb28d-ca1b-4777-9191-d1b2e8c2b046",
+      "request_snapshot": {
+        "schema_version": "poc-vton-c1",
+        "request_id": "a9efb28d-ca1b-4777-9191-d1b2e8c2b046",
+        "household_id": "843fa374-b366-5ed4-a3ab-d2b980713e1a",
+        "member_id": "0b43d34d-0ae6-53cd-8f37-f95b32a01451",
+        "client_context_id": "75d52134-dec5-4d3f-848d-5897c504d1a1",
+        "draft_id": "24e6043d-7aa5-47f0-93dd-17be2387d1d8",
+        "draft_revision": 13,
+        "submitted_at": "2026-10-11T22:52:50.595276Z",
+        "provider": "MOCK",
+        "person": {
+          "asset_id": "8fbd361b-47db-4386-8d2e-54fd20e1de59",
+          "checksum_sha256": "90484eb6779f4d9ece3ec8b7c0fbe88fe1c833b77dba4fcef866b096727ff9d1"
+        },
+        "items": [
+          {
+            "kind": "OWNED",
+            "id": "2904fd43-cb31-530d-b4bd-2d9783d3c762",
+            "slot": "BOTTOM",
+            "position": 0,
+            "owner_id": "55328e5c-6a05-5ac7-af55-77ece0a86dd8",
+            "source_version": 3,
+            "asset_id": "0b2c69c5-4e20-4b9d-ab9e-2d4bf9db81f3",
+            "checksum_sha256": "bebeea70324182dab097c7710b4bb93261e94fe3e93dc7d63291ddf19611c598",
+            "source_fingerprint": "5652809b5c6b0e75ee941a5b8894b2a6ef85eb141057311075615cfb11d0552a"
+          },
+          {
+            "kind": "LIKED",
+            "id": "4a4011ec-5c0b-5506-bc47-ffb65719830b",
+            "slot": "TOP",
+            "position": 0,
+            "owner_id": "0b43d34d-0ae6-53cd-8f37-f95b32a01451",
+            "source_version": null,
+            "asset_id": "23fc96e0-1eb3-47a7-9339-4175559654d0",
+            "checksum_sha256": "e917a6c00c67c147c8d470da20207bfebfc8c9d729cd47a7506e7ab4cd2d6e59",
+            "source_fingerprint": "6914b81b55383d5f55ddd03e61aee2e67529fbcba01126d6017a1c6d275cd8e1"
+          }
+        ],
+        "contains_liked": true,
+        "input_fingerprint": "160a72481ac492e217ff6aa02a5f0d63ef26cc18efd9c893208e3f1439378251"
+      }
+    },
+    "ownedResultWithLikedDraftUsesOwnedSnapshot": true,
+    "unexpectedMutations": []
+  },
+  {
+    "profile": "최휘재",
+    "jobs": [
+      {
+        "job_id": "eb3d9966-0525-4fd1-b9a7-14dd2bf01ac0",
+        "request_snapshot": {
+          "schema_version": "poc-vton-c1",
+          "request_id": "eb3d9966-0525-4fd1-b9a7-14dd2bf01ac0",
+          "household_id": "843fa374-b366-5ed4-a3ab-d2b980713e1a",
+          "member_id": "55328e5c-6a05-5ac7-af55-77ece0a86dd8",
+          "client_context_id": "598fc665-f206-4247-934d-6feee7df7712",
+          "draft_id": "e8c25936-2deb-465a-9062-188aec185d7f",
+          "draft_revision": 6,
+          "submitted_at": "2026-10-11T22:53:04.378520Z",
+          "provider": "MOCK",
+          "person": {
+            "asset_id": "4dc151f8-b8ef-4d11-84c1-b5072d6db51b",
+            "checksum_sha256": "90484eb6779f4d9ece3ec8b7c0fbe88fe1c833b77dba4fcef866b096727ff9d1"
+          },
+          "items": [
+            {
+              "kind": "OWNED",
+              "id": "1adf7dde-eaed-53f9-ac0e-8497078fa703",
+              "slot": "TOP",
+              "position": 0,
+              "owner_id": "0b43d34d-0ae6-53cd-8f37-f95b32a01451",
+              "source_version": 2,
+              "asset_id": "23fc96e0-1eb3-47a7-9339-4175559654d0",
+              "checksum_sha256": "e917a6c00c67c147c8d470da20207bfebfc8c9d729cd47a7506e7ab4cd2d6e59",
+              "source_fingerprint": "374ab6bbc391163e45230c55c66f7fc33b48d3dad99cf3a2e8e6fb72febf586f"
+            },
+            {
+              "kind": "OWNED",
+              "id": "2904fd43-cb31-530d-b4bd-2d9783d3c762",
+              "slot": "BOTTOM",
+              "position": 0,
+              "owner_id": "55328e5c-6a05-5ac7-af55-77ece0a86dd8",
+              "source_version": 3,
+              "asset_id": "0b2c69c5-4e20-4b9d-ab9e-2d4bf9db81f3",
+              "checksum_sha256": "bebeea70324182dab097c7710b4bb93261e94fe3e93dc7d63291ddf19611c598",
+              "source_fingerprint": "5652809b5c6b0e75ee941a5b8894b2a6ef85eb141057311075615cfb11d0552a"
+            }
+          ],
+          "contains_liked": false,
+          "input_fingerprint": "da430cf1260f5485202b9cd09ed9b3470b1ca98956a54cf1184deabea9d4bc1d"
+        },
+        "is_mock": true,
+        "result_semantics": "MOCK_RECEIPT_NOT_REAL_TRY_ON"
+      },
+      {
+        "job_id": "51d50dcc-88f4-4580-99bc-373318a39621",
+        "request_snapshot": {
+          "schema_version": "poc-vton-c1",
+          "request_id": "51d50dcc-88f4-4580-99bc-373318a39621",
+          "household_id": "843fa374-b366-5ed4-a3ab-d2b980713e1a",
+          "member_id": "55328e5c-6a05-5ac7-af55-77ece0a86dd8",
+          "client_context_id": "598fc665-f206-4247-934d-6feee7df7712",
+          "draft_id": "e8c25936-2deb-465a-9062-188aec185d7f",
+          "draft_revision": 8,
+          "submitted_at": "2026-10-11T22:53:05.403540Z",
+          "provider": "MOCK",
+          "person": {
+            "asset_id": "4dc151f8-b8ef-4d11-84c1-b5072d6db51b",
+            "checksum_sha256": "90484eb6779f4d9ece3ec8b7c0fbe88fe1c833b77dba4fcef866b096727ff9d1"
+          },
+          "items": [
+            {
+              "kind": "LIKED",
+              "id": "bd27547d-e8a3-52d4-9db6-273482d73a73",
+              "slot": "TOP",
+              "position": 0,
+              "owner_id": "55328e5c-6a05-5ac7-af55-77ece0a86dd8",
+              "source_version": null,
+              "asset_id": "e35d61e9-8e95-4a0c-a09f-d59143e73bf7",
+              "checksum_sha256": "5ebd16f6c0440a2edddc5cab0b151c1b060fe1bce44cbb50afe053077699dfdb",
+              "source_fingerprint": "17db1368efb3218fa7a9a6cb8be5347b65143744d2800fd2bac6776ea9dda1e8"
+            },
+            {
+              "kind": "LIKED",
+              "id": "16e52fc6-76a3-5728-8928-64959f560243",
+              "slot": "BOTTOM",
+              "position": 0,
+              "owner_id": "55328e5c-6a05-5ac7-af55-77ece0a86dd8",
+              "source_version": null,
+              "asset_id": "0507394e-669f-4aca-aaaa-c5882005393f",
+              "checksum_sha256": "eef434c9aa195393ca4e2db5892f844e8f1ea51c84148afd0fb10a254e55f3cc",
+              "source_fingerprint": "44820033d6d0ba73bf6c9a2188059889c021561e870801ff743a2c7069a95602"
+            }
+          ],
+          "contains_liked": true,
+          "input_fingerprint": "e4a8d58e54f3af79ac909ab2ba5133fcdf0a0fc94d021973740d9295b3377d1e"
+        },
+        "is_mock": true,
+        "result_semantics": "MOCK_RECEIPT_NOT_REAL_TRY_ON"
+      },
+      {
+        "job_id": "a8ec9049-c60d-4924-99dd-71a8027d4c6e",
+        "request_snapshot": {
+          "schema_version": "poc-vton-c1",
+          "request_id": "a8ec9049-c60d-4924-99dd-71a8027d4c6e",
+          "household_id": "843fa374-b366-5ed4-a3ab-d2b980713e1a",
+          "member_id": "55328e5c-6a05-5ac7-af55-77ece0a86dd8",
+          "client_context_id": "598fc665-f206-4247-934d-6feee7df7712",
+          "draft_id": "e8c25936-2deb-465a-9062-188aec185d7f",
+          "draft_revision": 11,
+          "submitted_at": "2026-10-11T22:53:08.336383Z",
+          "provider": "MOCK",
+          "person": {
+            "asset_id": "4dc151f8-b8ef-4d11-84c1-b5072d6db51b",
+            "checksum_sha256": "90484eb6779f4d9ece3ec8b7c0fbe88fe1c833b77dba4fcef866b096727ff9d1"
+          },
+          "items": [
+            {
+              "kind": "OWNED",
+              "id": "1adf7dde-eaed-53f9-ac0e-8497078fa703",
+              "slot": "TOP",
+              "position": 0,
+              "owner_id": "0b43d34d-0ae6-53cd-8f37-f95b32a01451",
+              "source_version": 2,
+              "asset_id": "23fc96e0-1eb3-47a7-9339-4175559654d0",
+              "checksum_sha256": "e917a6c00c67c147c8d470da20207bfebfc8c9d729cd47a7506e7ab4cd2d6e59",
+              "source_fingerprint": "374ab6bbc391163e45230c55c66f7fc33b48d3dad99cf3a2e8e6fb72febf586f"
+            },
+            {
+              "kind": "LIKED",
+              "id": "16e52fc6-76a3-5728-8928-64959f560243",
+              "slot": "BOTTOM",
+              "position": 0,
+              "owner_id": "55328e5c-6a05-5ac7-af55-77ece0a86dd8",
+              "source_version": null,
+              "asset_id": "0507394e-669f-4aca-aaaa-c5882005393f",
+              "checksum_sha256": "eef434c9aa195393ca4e2db5892f844e8f1ea51c84148afd0fb10a254e55f3cc",
+              "source_fingerprint": "44820033d6d0ba73bf6c9a2188059889c021561e870801ff743a2c7069a95602"
+            }
+          ],
+          "contains_liked": true,
+          "input_fingerprint": "62863ceed5494b98fd18c405d2295027a577d9203deba33c07f31843975a17a2"
+        },
+        "is_mock": true,
+        "result_semantics": "MOCK_RECEIPT_NOT_REAL_TRY_ON"
+      },
+      {
+        "job_id": "4dbf1db4-afc5-4838-8f3f-afdb9fba921a",
+        "request_snapshot": {
+          "schema_version": "poc-vton-c1",
+          "request_id": "4dbf1db4-afc5-4838-8f3f-afdb9fba921a",
+          "household_id": "843fa374-b366-5ed4-a3ab-d2b980713e1a",
+          "member_id": "55328e5c-6a05-5ac7-af55-77ece0a86dd8",
+          "client_context_id": "598fc665-f206-4247-934d-6feee7df7712",
+          "draft_id": "e8c25936-2deb-465a-9062-188aec185d7f",
+          "draft_revision": 12,
+          "submitted_at": "2026-10-11T22:53:10.836630Z",
+          "provider": "MOCK",
+          "person": {
+            "asset_id": "4dc151f8-b8ef-4d11-84c1-b5072d6db51b",
+            "checksum_sha256": "90484eb6779f4d9ece3ec8b7c0fbe88fe1c833b77dba4fcef866b096727ff9d1"
+          },
+          "items": [
+            {
+              "kind": "OWNED",
+              "id": "1adf7dde-eaed-53f9-ac0e-8497078fa703",
+              "slot": "TOP",
+              "position": 0,
+              "owner_id": "0b43d34d-0ae6-53cd-8f37-f95b32a01451",
+              "source_version": 2,
+              "asset_id": "23fc96e0-1eb3-47a7-9339-4175559654d0",
+              "checksum_sha256": "e917a6c00c67c147c8d470da20207bfebfc8c9d729cd47a7506e7ab4cd2d6e59",
+              "source_fingerprint": "374ab6bbc391163e45230c55c66f7fc33b48d3dad99cf3a2e8e6fb72febf586f"
+            },
+            {
+              "kind": "OWNED",
+              "id": "2904fd43-cb31-530d-b4bd-2d9783d3c762",
+              "slot": "BOTTOM",
+              "position": 0,
+              "owner_id": "55328e5c-6a05-5ac7-af55-77ece0a86dd8",
+              "source_version": 3,
+              "asset_id": "0b2c69c5-4e20-4b9d-ab9e-2d4bf9db81f3",
+              "checksum_sha256": "bebeea70324182dab097c7710b4bb93261e94fe3e93dc7d63291ddf19611c598",
+              "source_fingerprint": "5652809b5c6b0e75ee941a5b8894b2a6ef85eb141057311075615cfb11d0552a"
+            }
+          ],
+          "contains_liked": false,
+          "input_fingerprint": "da430cf1260f5485202b9cd09ed9b3470b1ca98956a54cf1184deabea9d4bc1d"
+        },
+        "is_mock": true,
+        "result_semantics": "MOCK_RECEIPT_NOT_REAL_TRY_ON"
+      }
+    ],
+    "errors": [],
+    "selectionDuringPending": true,
+    "currentDraftPreserved": true,
+    "likedFollowupSideEffects": 0,
+    "exitResultCleared": true,
+    "profileSwitchLatePostBlocked": true,
+    "lateAcceptedJob": {
+      "job_id": "072a8934-5224-4615-82f8-0de5bde82069",
+      "request_snapshot": {
+        "schema_version": "poc-vton-c1",
+        "request_id": "072a8934-5224-4615-82f8-0de5bde82069",
+        "household_id": "843fa374-b366-5ed4-a3ab-d2b980713e1a",
+        "member_id": "55328e5c-6a05-5ac7-af55-77ece0a86dd8",
+        "client_context_id": "598fc665-f206-4247-934d-6feee7df7712",
+        "draft_id": "e8c25936-2deb-465a-9062-188aec185d7f",
+        "draft_revision": 13,
+        "submitted_at": "2026-10-11T22:53:11.992050Z",
+        "provider": "MOCK",
+        "person": {
+          "asset_id": "4dc151f8-b8ef-4d11-84c1-b5072d6db51b",
+          "checksum_sha256": "90484eb6779f4d9ece3ec8b7c0fbe88fe1c833b77dba4fcef866b096727ff9d1"
+        },
+        "items": [
+          {
+            "kind": "OWNED",
+            "id": "2904fd43-cb31-530d-b4bd-2d9783d3c762",
+            "slot": "BOTTOM",
+            "position": 0,
+            "owner_id": "55328e5c-6a05-5ac7-af55-77ece0a86dd8",
+            "source_version": 3,
+            "asset_id": "0b2c69c5-4e20-4b9d-ab9e-2d4bf9db81f3",
+            "checksum_sha256": "bebeea70324182dab097c7710b4bb93261e94fe3e93dc7d63291ddf19611c598",
+            "source_fingerprint": "5652809b5c6b0e75ee941a5b8894b2a6ef85eb141057311075615cfb11d0552a"
+          },
+          {
+            "kind": "LIKED",
+            "id": "bd27547d-e8a3-52d4-9db6-273482d73a73",
+            "slot": "TOP",
+            "position": 0,
+            "owner_id": "55328e5c-6a05-5ac7-af55-77ece0a86dd8",
+            "source_version": null,
+            "asset_id": "e35d61e9-8e95-4a0c-a09f-d59143e73bf7",
+            "checksum_sha256": "5ebd16f6c0440a2edddc5cab0b151c1b060fe1bce44cbb50afe053077699dfdb",
+            "source_fingerprint": "17db1368efb3218fa7a9a6cb8be5347b65143744d2800fd2bac6776ea9dda1e8"
+          }
+        ],
+        "contains_liked": true,
+        "input_fingerprint": "5e1fa712e9f70c4c3dabd92f621f2eaa947f91926124003cd476304305d34c7c"
+      }
+    },
+    "ownedResultWithLikedDraftUsesOwnedSnapshot": true,
+    "unexpectedMutations": []
+  }
+]
