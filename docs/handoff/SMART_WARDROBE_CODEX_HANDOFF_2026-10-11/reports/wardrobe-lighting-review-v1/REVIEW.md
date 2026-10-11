@@ -39,3 +39,7 @@ node docs/handoff/SMART_WARDROBE_CODEX_HANDOFF_2026-10-11/reports/wardrobe-light
 ```
 
 현재 상태: **옷걸이·의류 윤곽 조명 수정본 검수 대기**. 사각형 섹터가 맞지 않는다는 사용자 피드백에 따라 옷걸이를 포함한 윤곽 마스크로 교체했다. 새 상품·조명 이미지를 생성하지 않고 기존 조명 참고 이미지와 네이티브 벡터 마스크를 사용했다. 검수 승인 후 나머지 파생 에셋 생성과 기존 계약에 따른 앱·DB 연결 단계로 진행한다. 이번 변경은 보고서·검수 코드·증적에 한정하며 제품 코드·환경설정·DB·운영 저장소·원격 push·배포를 변경하지 않았다.
+
+
+## Superseding update: OFF / ON assets
+The above 60% overlay description is historical and superseded. Current implementation uses a generated OFF base and selected ON assets without black overlays. See ASSET_SWAP_V2.md.

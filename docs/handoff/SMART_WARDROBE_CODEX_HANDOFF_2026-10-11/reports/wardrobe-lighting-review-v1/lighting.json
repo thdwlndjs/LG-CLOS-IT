@@ -1,13 +1,12 @@
 {
-  "status": "HANGER_SILHOUETTE_APPROVED",
+  "status": "LIGHTS_OFF_ASSET_SWAP_REVIEW",
   "six_garment_samples_approved": true,
-  "base": "../wardrobe-visual-samples-v1/wardrobe-composite.png",
+  "base": "wardrobe-lights-off-v2.png",
   "mirror_ui": "../wardrobe-visual-samples-v1/app-before.png",
   "width": 1672,
   "height": 941,
   "scope": "Review-only lighting prototype; no app, API, DB or hardware integration",
-  "dim_alpha": 0.6,
-  "relight_mix": 0.8,
+  "relight_mix": 1,
   "auto_off_ms": 5000,
   "fade_ms": 320,
   "compartments": [
@@ -254,5 +253,6 @@
       "original_generated_path": "C:\\Users\\aicam\\.codex\\generated_images\\01a11a04-161b-71c1-b091-cdb004c0a66c\\exec-d552a2e8-d13e-40e8-9b02-b6d0fbd4d9db.png"
     }
   ],
-  "approval_note": "2026-10-11 ??? ??: ?? ???? ?? ?? ?? ??, ??? ?? 60%."
+  "approval_note": "?? ??? ??: ?? ??? ??, ?? ?? ???? ?? ?? ?? ?? ??.",
+  "render_mode": "off-base-with-selected-on-asset"
 }

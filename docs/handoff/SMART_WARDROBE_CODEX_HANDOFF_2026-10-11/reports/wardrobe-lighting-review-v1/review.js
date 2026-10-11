@@ -2,7 +2,7 @@
 (() => {
  const spec=window.LIGHTING_REVIEW;
  const scene=document.querySelector('#scene'),ctx=scene.getContext('2d');
- const status=document.querySelector('#status'),dim=document.querySelector('#dim');
+ const status=document.querySelector('#status');
  const auto=document.querySelector('#auto'),ui=document.querySelector('#ui');
  const reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;
  const images={},weights=Object.fromEntries(spec.variants.map(v=>[v.id,0]));
@@ -21,7 +21,7 @@
   y.addColorStop(0,'transparent');y.addColorStop(fy,'white');y.addColorStop(1-fy,'white');y.addColorStop(1,'transparent');
   g.fillStyle=y;g.fillRect(0,0,w,h);return c;
  }
- const dimLayers={},restoreLayers={},silhouetteLayers={};
+ const silhouetteLayers={};
  function silhouette(variant){
   const c=create(),g=c.getContext('2d');
   g.fillStyle='#fff';g.fill(new Path2D(variant.cloth_path));
@@ -31,11 +31,6 @@
   return c;
  }
  function makeLayers(){
-  for(const part of spec.compartments){
-   const [x,y,w,h]=part.bounds,c=create(),g=c.getContext('2d');
-   g.fillStyle='#000';g.fillRect(x,y,w,h);
-   g.globalCompositeOperation='destination-in';g.drawImage(mask(w,h),x,y);dimLayers[part.id]=c;
-  }
   for(const variant of spec.variants){
    const [x,y,w,h]=variant.sector_bounds || variant.bounds,c=create(),g=c.getContext('2d');
    const shape=variant.cloth_path?silhouette(variant):null;
@@ -44,30 +39,16 @@
    if(shape){g.drawImage(shape,0,0);silhouetteLayers[variant.id]=shape}
    else g.drawImage(mask(w,h,6),x,y);
    images[variant.id+'-layer']=c;
-   if(variant.sector_bounds){
-    const restore=create(),r=restore.getContext('2d');
-    r.drawImage(base,0,0);
-    r.globalCompositeOperation='destination-in';
-    if(shape)r.drawImage(shape,0,0);else r.drawImage(mask(w,h,3),x,y);
-    restoreLayers[variant.id]=restore;
-   }
   }
  }
  function draw(){
   ctx.clearRect(0,0,1672,941);ctx.drawImage(base,0,0);
-  for(const part of spec.compartments){
-   const narrow=!!spec.variants.find(v=>v.id===part.id)?.sector_bounds;
-   const amount=Number(dim.value)*activity*(1-(narrow?0:(weights[part.id]||0)));
-   if(amount>0){ctx.globalAlpha=amount;ctx.drawImage(dimLayers[part.id],0,0)}
-  }
   for(const v of spec.variants){
-   if(restoreLayers[v.id]){ctx.globalAlpha=weights[v.id];ctx.drawImage(restoreLayers[v.id],0,0)}
    ctx.globalAlpha=spec.relight_mix*weights[v.id];ctx.drawImage(images[v.id+'-layer'],0,0);
   }
   ctx.globalAlpha=1;
   if(ui.checked)ctx.drawImage(mirror,712,22,255,832,712,22,255,832);
   window.lightingState={selected:[...selected],weights:{...weights},activity,reason:lastReason,settled:raf===0,autoArmed:!!timer};
-  document.querySelector('#dim-value').textContent=Math.round(Number(dim.value)*100)+'%';
  }
  function settle(ids,reason){
   clearTimeout(timer);timer=0;cancelAnimationFrame(raf);raf=0;
@@ -93,7 +74,7 @@
   makeLayers();draw();status.textContent='기본 조명 · 의류 찾기를 선택하세요';
   document.querySelectorAll('button[data-selection]').forEach(b=>b.onclick=()=>settle(b.dataset.selection?b.dataset.selection.split(','):[],b.textContent.trim()));
   document.querySelector('#unknown').onclick=()=>settle([],'위치 미확인 — 임의 칸을 점등하지 않음');
-  dim.oninput=draw;ui.onchange=draw;
+  ui.onchange=draw;
   auto.onchange=()=>settle(selected,auto.checked?'선택 유지 · 검수용 5초 자동 소등':'선택 유지 · 자동 소등 해제');
   window.lightingReady=true;
   window.lightingSilhouetteData=Object.fromEntries(Object.entries(silhouetteLayers).map(([id,c])=>[id,c.toDataURL('image/png')]));
