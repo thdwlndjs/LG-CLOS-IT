@@ -1,0 +1,1645 @@
+{
+  "method": "SELECT-only metadata; SVG meet fit derived for108x22 geometry; width is viewport fit not measured opaque edge",
+  "rows": [
+    {
+      "asset_id": "d90477db-08d7-4ecf-b618-0313d94ad5b3",
+      "garment_instances": 11,
+      "distinct_crops": 1,
+      "crop_aspect_ratio_range": [
+        4.666666666666667,
+        4.666666666666667
+      ],
+      "estimated_fit_width_px_range": [
+        102.66666666666667,
+        102.66666666666667
+      ]
+    },
+    {
+      "asset_id": "626da61d-d317-4209-a293-92a23563f94f",
+      "garment_instances": 10,
+      "distinct_crops": 1,
+      "crop_aspect_ratio_range": [
+        6.823529411764706,
+        6.823529411764706
+      ],
+      "estimated_fit_width_px_range": [
+        108,
+        108
+      ]
+    },
+    {
+      "asset_id": "0970a195-ee98-4be8-b671-52edc1cf2093",
+      "garment_instances": 10,
+      "distinct_crops": 1,
+      "crop_aspect_ratio_range": [
+        3.9655172413793105,
+        3.9655172413793105
+      ],
+      "estimated_fit_width_px_range": [
+        87.24137931034483,
+        87.24137931034483
+      ]
+    },
+    {
+      "asset_id": "63c638dc-94b3-46e6-bcae-791325928a17",
+      "garment_instances": 8,
+      "distinct_crops": 8,
+      "crop_aspect_ratio_range": [
+        0.855072463768116,
+        1.0054347826086956
+      ],
+      "estimated_fit_width_px_range": [
+        18.81159420289855,
+        22.1195652173913
+      ]
+    },
+    {
+      "asset_id": "35251985-086d-4b35-9b99-ab7179cd0af8",
+      "garment_instances": 8,
+      "distinct_crops": 8,
+      "crop_aspect_ratio_range": [
+        0.9322033898305084,
+        1.1162790697674418
+      ],
+      "estimated_fit_width_px_range": [
+        20.508474576271187,
+        24.558139534883722
+      ]
+    },
+    {
+      "asset_id": "59b5a049-cec1-405b-8939-7152461fc6e7",
+      "garment_instances": 8,
+      "distinct_crops": 8,
+      "crop_aspect_ratio_range": [
+        0.9108910891089109,
+        1.0446927374301676
+      ],
+      "estimated_fit_width_px_range": [
+        20.03960396039604,
+        22.983240223463685
+      ]
+    },
+    {
+      "asset_id": "a71c4006-1989-467d-8831-07c5f9543639",
+      "garment_instances": 8,
+      "distinct_crops": 8,
+      "crop_aspect_ratio_range": [
+        0.8373205741626795,
+        0.964824120603015
+      ],
+      "estimated_fit_width_px_range": [
+        18.42105263157895,
+        21.22613065326633
+      ]
+    },
+    {
+      "asset_id": "a904490e-727c-4845-9940-7707627c7083",
+      "garment_instances": 3,
+      "distinct_crops": 3,
+      "crop_aspect_ratio_range": [
+        0.9513513513513514,
+        0.9837837837837838
+      ],
+      "estimated_fit_width_px_range": [
+        20.92972972972973,
+        21.643243243243244
+      ]
+    }
+  ],
+  "mapping": {
+    "d90477db-08d7-4ecf-b618-0313d94ad5b3": [
+      {
+        "id": "3aa71ad7-4b8e-5e40-a5ab-4ccef829b457",
+        "name": "MERINO WOOL HALF-ZIP JUMPER_ SAND",
+        "crop": [
+          0,
+          0,
+          112,
+          24
+        ],
+        "size": [
+          112,
+          24
+        ],
+        "geometry": {
+          "x": 0.8911483253588517,
+          "y": 0.33475026567481403,
+          "width": 0.0645933014354067,
+          "height": 0.023379383634431455,
+          "z_index": 22,
+          "approved": true,
+          "alignment": "shelf"
+        }
+      },
+      {
+        "id": "8901515e-6ad7-51fc-8273-01284e04991d",
+        "name": "MERINO WOOL HALF-ZIP JUMPER_ SAND",
+        "crop": [
+          0,
+          0,
+          112,
+          24
+        ],
+        "size": [
+          112,
+          24
+        ],
+        "geometry": {
+          "x": 0.7834928229665071,
+          "y": 0.33475026567481403,
+          "width": 0.0645933014354067,
+          "height": 0.023379383634431455,
+          "z_index": 22,
+          "approved": true,
+          "alignment": "shelf"
+        }
+      },
+      {
+        "id": "fd1ce769-aab6-4227-83e0-c550cd9ecb45",
+        "name": "MERINO WOOL HALF-ZIP JUMPER_ SAND",
+        "crop": [
+          0,
+          0,
+          112,
+          24
+        ],
+        "size": [
+          112,
+          24
+        ],
+        "geometry": {
+          "x": 0.7834928229665071,
+          "y": 0.38150903294367694,
+          "width": 0.0645933014354067,
+          "height": 0.023379383634431455,
+          "z_index": 20,
+          "approved": true,
+          "alignment": "shelf"
+        }
+      },
+      {
+        "id": "59f470a8-c063-5bef-b7d2-f7350c9039cb",
+        "name": "MERINO WOOL HALF-ZIP JUMPER_ SAND",
+        "crop": [
+          0,
+          0,
+          112,
+          24
+        ],
+        "size": [
+          112,
+          24
+        ],
+        "geometry": {
+          "x": 0.8911483253588517,
+          "y": 0.8267800212539851,
+          "width": 0.0645933014354067,
+          "height": 0.023379383634431455,
+          "z_index": 22,
+          "approved": true,
+          "alignment": "shelf"
+        }
+      },
+      {
+        "id": "d65f4291-ba26-5e0a-9547-9d4dddc2bf54",
+        "name": "MERINO WOOL HALF-ZIP JUMPER_ SAND",
+        "crop": [
+          0,
+          0,
+          112,
+          24
+        ],
+        "size": [
+          112,
+          24
+        ],
+        "geometry": {
+          "x": 0.7834928229665071,
+          "y": 0.8267800212539851,
+          "width": 0.0645933014354067,
+          "height": 0.023379383634431455,
+          "z_index": 22,
+          "approved": true,
+          "alignment": "shelf"
+        }
+      },
+      {
+        "id": "5ac6ea1d-c00f-5aa4-ae85-82081fa3444f",
+        "name": "MERINO WOOL HALF-ZIP JUMPER_ SAND",
+        "crop": [
+          0,
+          0,
+          112,
+          24
+        ],
+        "size": [
+          112,
+          24
+        ],
+        "geometry": {
+          "x": 0.7834928229665071,
+          "y": 0.69394261424017,
+          "width": 0.0645933014354067,
+          "height": 0.023379383634431455,
+          "z_index": 22,
+          "approved": true,
+          "alignment": "shelf"
+        }
+      },
+      {
+        "id": "d0ef9f43-50c9-5fee-8980-f501b8128baa",
+        "name": "MERINO WOOL HALF-ZIP JUMPER_ SAND",
+        "crop": [
+          0,
+          0,
+          112,
+          24
+        ],
+        "size": [
+          112,
+          24
+        ],
+        "geometry": {
+          "x": 0.8911483253588517,
+          "y": 0.69394261424017,
+          "width": 0.0645933014354067,
+          "height": 0.023379383634431455,
+          "z_index": 22,
+          "approved": true,
+          "alignment": "shelf"
+        }
+      },
+      {
+        "id": "053eb5bd-f212-5c7a-8757-69d511d5dabe",
+        "name": "MERINO WOOL HALF-ZIP JUMPER_ SAND",
+        "crop": [
+          0,
+          0,
+          112,
+          24
+        ],
+        "size": [
+          112,
+          24
+        ],
+        "geometry": {
+          "x": 0.8911483253588517,
+          "y": 0.45908607863974493,
+          "width": 0.0645933014354067,
+          "height": 0.023379383634431455,
+          "z_index": 22,
+          "approved": true,
+          "alignment": "shelf"
+        }
+      },
+      {
+        "id": "8afda102-37de-54fa-8c14-d473096205a6",
+        "name": "MERINO WOOL HALF-ZIP JUMPER_ SAND",
+        "crop": [
+          0,
+          0,
+          112,
+          24
+        ],
+        "size": [
+          112,
+          24
+        ],
+        "geometry": {
+          "x": 0.7834928229665071,
+          "y": 0.45908607863974493,
+          "width": 0.0645933014354067,
+          "height": 0.023379383634431455,
+          "z_index": 22,
+          "approved": true,
+          "alignment": "shelf"
+        }
+      },
+      {
+        "id": "652c91d0-df18-5066-9600-852a9e1d9e8e",
+        "name": "MERINO WOOL HALF-ZIP JUMPER_ SAND",
+        "crop": [
+          0,
+          0,
+          112,
+          24
+        ],
+        "size": [
+          112,
+          24
+        ],
+        "geometry": {
+          "x": 0.7834928229665071,
+          "y": 0.5770456960680127,
+          "width": 0.0645933014354067,
+          "height": 0.023379383634431455,
+          "z_index": 22,
+          "approved": true,
+          "alignment": "shelf"
+        }
+      },
+      {
+        "id": "9a8c11b4-4213-555f-aee6-70dd26494a30",
+        "name": "MERINO WOOL HALF-ZIP JUMPER_ SAND",
+        "crop": [
+          0,
+          0,
+          112,
+          24
+        ],
+        "size": [
+          112,
+          24
+        ],
+        "geometry": {
+          "x": 0.8911483253588517,
+          "y": 0.5770456960680127,
+          "width": 0.0645933014354067,
+          "height": 0.023379383634431455,
+          "z_index": 22,
+          "approved": true,
+          "alignment": "shelf"
+        }
+      }
+    ],
+    "626da61d-d317-4209-a293-92a23563f94f": [
+      {
+        "id": "826b60ea-d5e8-5d82-920e-d61a4009898e",
+        "name": "MERINO WOOL HALF-ZIP JUMPER_ NAVY",
+        "crop": [
+          0,
+          0,
+          116,
+          17
+        ],
+        "size": [
+          116,
+          17
+        ],
+        "geometry": {
+          "x": 0.8911483253588517,
+          "y": 0.38150903294367694,
+          "width": 0.0645933014354067,
+          "height": 0.023379383634431455,
+          "z_index": 20,
+          "approved": true,
+          "alignment": "shelf"
+        }
+      },
+      {
+        "id": "01d7378b-ec70-5035-bd0a-88b420767a48",
+        "name": "MERINO WOOL HALF-ZIP JUMPER_ NAVY",
+        "crop": [
+          0,
+          0,
+          116,
+          17
+        ],
+        "size": [
+          116,
+          17
+        ],
+        "geometry": {
+          "x": 0.8911483253588517,
+          "y": 0.873538788522848,
+          "width": 0.0645933014354067,
+          "height": 0.023379383634431455,
+          "z_index": 20,
+          "approved": true,
+          "alignment": "shelf"
+        }
+      },
+      {
+        "id": "11251df3-4107-575c-b871-47e5d6efeed3",
+        "name": "MERINO WOOL HALF-ZIP JUMPER_ NAVY",
+        "crop": [
+          0,
+          0,
+          116,
+          17
+        ],
+        "size": [
+          116,
+          17
+        ],
+        "geometry": {
+          "x": 0.7834928229665071,
+          "y": 0.873538788522848,
+          "width": 0.0645933014354067,
+          "height": 0.023379383634431455,
+          "z_index": 20,
+          "approved": true,
+          "alignment": "shelf"
+        }
+      },
+      {
+        "id": "00caadf4-b6bc-5d77-ad83-5087a2579b65",
+        "name": "MERINO WOOL HALF-ZIP JUMPER_ NAVY",
+        "crop": [
+          0,
+          0,
+          116,
+          17
+        ],
+        "size": [
+          116,
+          17
+        ],
+        "geometry": {
+          "x": 0.7834928229665071,
+          "y": 0.740701381509033,
+          "width": 0.0645933014354067,
+          "height": 0.023379383634431455,
+          "z_index": 20,
+          "approved": true,
+          "alignment": "shelf"
+        }
+      },
+      {
+        "id": "b4c04595-b1cc-5380-abb5-a4a89324087f",
+        "name": "MERINO WOOL HALF-ZIP JUMPER_ NAVY",
+        "crop": [
+          0,
+          0,
+          116,
+          17
+        ],
+        "size": [
+          116,
+          17
+        ],
+        "geometry": {
+          "x": 0.8911483253588517,
+          "y": 0.740701381509033,
+          "width": 0.0645933014354067,
+          "height": 0.023379383634431455,
+          "z_index": 20,
+          "approved": true,
+          "alignment": "shelf"
+        }
+      },
+      {
+        "id": "0d7ee270-4445-5529-9fda-46e0ca87cd8a",
+        "name": "MERINO WOOL HALF-ZIP JUMPER_ NAVY",
+        "crop": [
+          0,
+          0,
+          116,
+          17
+        ],
+        "size": [
+          116,
+          17
+        ],
+        "geometry": {
+          "x": 0.7834928229665071,
+          "y": 0.5058448459086079,
+          "width": 0.0645933014354067,
+          "height": 0.023379383634431455,
+          "z_index": 20,
+          "approved": true,
+          "alignment": "shelf"
+        }
+      },
+      {
+        "id": "cdf93107-16da-5dfd-821f-be69d76be007",
+        "name": "MERINO WOOL HALF-ZIP JUMPER_ NAVY",
+        "crop": [
+          0,
+          0,
+          116,
+          17
+        ],
+        "size": [
+          116,
+          17
+        ],
+        "geometry": {
+          "x": 0.8911483253588517,
+          "y": 0.5058448459086079,
+          "width": 0.0645933014354067,
+          "height": 0.023379383634431455,
+          "z_index": 20,
+          "approved": true,
+          "alignment": "shelf"
+        }
+      },
+      {
+        "id": "622a268d-dda1-56a2-944d-6c12df3f4458",
+        "name": "MERINO WOOL HALF-ZIP JUMPER_ NAVY",
+        "crop": [
+          0,
+          0,
+          116,
+          17
+        ],
+        "size": [
+          116,
+          17
+        ],
+        "geometry": {
+          "x": 0.7834928229665071,
+          "y": 0.6238044633368757,
+          "width": 0.0645933014354067,
+          "height": 0.023379383634431455,
+          "z_index": 20,
+          "approved": true,
+          "alignment": "shelf"
+        }
+      },
+      {
+        "id": "934d1ed2-2217-5875-ae29-b702b92c7a4b",
+        "name": "MERINO WOOL HALF-ZIP JUMPER_ NAVY",
+        "crop": [
+          0,
+          0,
+          116,
+          17
+        ],
+        "size": [
+          116,
+          17
+        ],
+        "geometry": {
+          "x": 0.8911483253588517,
+          "y": 0.6238044633368757,
+          "width": 0.0645933014354067,
+          "height": 0.023379383634431455,
+          "z_index": 20,
+          "approved": true,
+          "alignment": "shelf"
+        }
+      },
+      {
+        "id": "2568aead-2410-4bab-9208-6d4f54109927",
+        "name": "MERINO WOOL HALF-ZIP JUMPER_ NAVY",
+        "crop": [
+          0,
+          0,
+          116,
+          17
+        ],
+        "size": [
+          116,
+          17
+        ],
+        "geometry": {
+          "x": 0.6788277511961722,
+          "y": 0.08395324123273114,
+          "width": 0.0645933014354067,
+          "height": 0.023379383634431455,
+          "z_index": 22,
+          "approved": true,
+          "alignment": "shelf"
+        }
+      }
+    ],
+    "0970a195-ee98-4be8-b671-52edc1cf2093": [
+      {
+        "id": "fdc6ebaa-33d3-5edc-9477-18fd44a7b360",
+        "name": "SUPER FINE MERINO WOOL CREW-NECK KNIT_ CHARCOAL",
+        "crop": [
+          0,
+          0,
+          115,
+          29
+        ],
+        "size": [
+          115,
+          29
+        ],
+        "geometry": {
+          "x": 0.8911483253588517,
+          "y": 0.35812964930924546,
+          "width": 0.0645933014354067,
+          "height": 0.023379383634431455,
+          "z_index": 21,
+          "approved": true,
+          "alignment": "shelf"
+        }
+      },
+      {
+        "id": "6a0331fb-9e5b-5153-91df-5f34afdaf691",
+        "name": "SUPER FINE MERINO WOOL CREW-NECK KNIT_ CHARCOAL",
+        "crop": [
+          0,
+          0,
+          115,
+          29
+        ],
+        "size": [
+          115,
+          29
+        ],
+        "geometry": {
+          "x": 0.7834928229665071,
+          "y": 0.8501594048884166,
+          "width": 0.0645933014354067,
+          "height": 0.023379383634431455,
+          "z_index": 21,
+          "approved": true,
+          "alignment": "shelf"
+        }
+      },
+      {
+        "id": "6a39ca49-8a8c-52c6-b999-5797f7d2f188",
+        "name": "SUPER FINE MERINO WOOL CREW-NECK KNIT_ CHARCOAL",
+        "crop": [
+          0,
+          0,
+          115,
+          29
+        ],
+        "size": [
+          115,
+          29
+        ],
+        "geometry": {
+          "x": 0.8911483253588517,
+          "y": 0.8501594048884166,
+          "width": 0.0645933014354067,
+          "height": 0.023379383634431455,
+          "z_index": 21,
+          "approved": true,
+          "alignment": "shelf"
+        }
+      },
+      {
+        "id": "a2f054f7-6967-4add-bf4a-b61af158f0e2",
+        "name": "SUPER FINE MERINO WOOL CREW-NECK KNIT_ CHARCOAL",
+        "crop": [
+          0,
+          0,
+          115,
+          29
+        ],
+        "size": [
+          115,
+          29
+        ],
+        "geometry": {
+          "x": 0.7834928229665071,
+          "y": 0.08501594048884166,
+          "width": 0.0645933014354067,
+          "height": 0.023379383634431455,
+          "z_index": 22,
+          "approved": true,
+          "alignment": "shelf"
+        }
+      },
+      {
+        "id": "9a592908-46aa-5cb5-ae6e-4588e80195d0",
+        "name": "SUPER FINE MERINO WOOL CREW-NECK KNIT_ CHARCOAL",
+        "crop": [
+          0,
+          0,
+          115,
+          29
+        ],
+        "size": [
+          115,
+          29
+        ],
+        "geometry": {
+          "x": 0.7834928229665071,
+          "y": 0.7173219978746015,
+          "width": 0.0645933014354067,
+          "height": 0.023379383634431455,
+          "z_index": 21,
+          "approved": true,
+          "alignment": "shelf"
+        }
+      },
+      {
+        "id": "f21f98ef-184e-5e45-80aa-4552b848d8a4",
+        "name": "SUPER FINE MERINO WOOL CREW-NECK KNIT_ CHARCOAL",
+        "crop": [
+          0,
+          0,
+          115,
+          29
+        ],
+        "size": [
+          115,
+          29
+        ],
+        "geometry": {
+          "x": 0.8911483253588517,
+          "y": 0.7173219978746015,
+          "width": 0.0645933014354067,
+          "height": 0.023379383634431455,
+          "z_index": 21,
+          "approved": true,
+          "alignment": "shelf"
+        }
+      },
+      {
+        "id": "869734e9-a720-5471-bb80-91bf4b6cdd8c",
+        "name": "SUPER FINE MERINO WOOL CREW-NECK KNIT_ CHARCOAL",
+        "crop": [
+          0,
+          0,
+          115,
+          29
+        ],
+        "size": [
+          115,
+          29
+        ],
+        "geometry": {
+          "x": 0.8911483253588517,
+          "y": 0.4824654622741764,
+          "width": 0.0645933014354067,
+          "height": 0.023379383634431455,
+          "z_index": 21,
+          "approved": true,
+          "alignment": "shelf"
+        }
+      },
+      {
+        "id": "dda8dc76-975b-5283-8e66-c23dc6883b40",
+        "name": "SUPER FINE MERINO WOOL CREW-NECK KNIT_ CHARCOAL",
+        "crop": [
+          0,
+          0,
+          115,
+          29
+        ],
+        "size": [
+          115,
+          29
+        ],
+        "geometry": {
+          "x": 0.7834928229665071,
+          "y": 0.4824654622741764,
+          "width": 0.0645933014354067,
+          "height": 0.023379383634431455,
+          "z_index": 21,
+          "approved": true,
+          "alignment": "shelf"
+        }
+      },
+      {
+        "id": "89cca9bf-12cf-5fb2-b7ea-9cb38793fbb1",
+        "name": "SUPER FINE MERINO WOOL CREW-NECK KNIT_ CHARCOAL",
+        "crop": [
+          0,
+          0,
+          115,
+          29
+        ],
+        "size": [
+          115,
+          29
+        ],
+        "geometry": {
+          "x": 0.7834928229665071,
+          "y": 0.6004250797024442,
+          "width": 0.0645933014354067,
+          "height": 0.023379383634431455,
+          "z_index": 21,
+          "approved": true,
+          "alignment": "shelf"
+        }
+      },
+      {
+        "id": "9813c705-e718-53ae-b1ab-9e7bafd4565e",
+        "name": "SUPER FINE MERINO WOOL CREW-NECK KNIT_ CHARCOAL",
+        "crop": [
+          0,
+          0,
+          115,
+          29
+        ],
+        "size": [
+          115,
+          29
+        ],
+        "geometry": {
+          "x": 0.8911483253588517,
+          "y": 0.6004250797024442,
+          "width": 0.0645933014354067,
+          "height": 0.023379383634431455,
+          "z_index": 21,
+          "approved": true,
+          "alignment": "shelf"
+        }
+      }
+    ],
+    "63c638dc-94b3-46e6-bcae-791325928a17": [
+      {
+        "id": "ff39dfae-abdd-5ca3-8986-d1ba2cf0eccd",
+        "name": "Women's Glorya Tank",
+        "crop": [
+          192,
+          743,
+          188,
+          213
+        ],
+        "size": [
+          1536,
+          1024
+        ],
+        "geometry": {
+          "x": 0.7834928229665071,
+          "y": 0.35812964930924546,
+          "width": 0.0645933014354067,
+          "height": 0.023379383634431455,
+          "z_index": 21,
+          "approved": true,
+          "alignment": "shelf"
+        }
+      },
+      {
+        "id": "900b7fa4-0e9c-5dd1-afd2-1c89ac2eaade",
+        "name": "W's Everyday Cord Straight Pants",
+        "crop": [
+          391,
+          748,
+          184,
+          208
+        ],
+        "size": [
+          1536,
+          1024
+        ],
+        "geometry": {
+          "x": 0.6788277511961722,
+          "y": 0.48884165781083955,
+          "width": 0.0645933014354067,
+          "height": 0.023379383634431455,
+          "z_index": 21,
+          "approved": true,
+          "alignment": "shelf"
+        }
+      },
+      {
+        "id": "2904fd43-cb31-530d-b4bd-2d9783d3c762",
+        "name": "Men’s Minimalist Wavefarer® Board Shorts - 19\"",
+        "crop": [
+          1158,
+          756,
+          186,
+          201
+        ],
+        "size": [
+          1536,
+          1024
+        ],
+        "geometry": {
+          "x": 0.5992822966507177,
+          "y": 0.23379383634431455,
+          "width": 0.0645933014354067,
+          "height": 0.023379383634431455,
+          "z_index": 21,
+          "approved": true,
+          "alignment": "shelf"
+        }
+      },
+      {
+        "id": "a18baaab-a984-5245-a7a3-28bbd27e20ab",
+        "name": "Women's Tech Skort",
+        "crop": [
+          584,
+          761,
+          182,
+          195
+        ],
+        "size": [
+          1536,
+          1024
+        ],
+        "geometry": {
+          "x": 0.7834928229665071,
+          "y": 0.10839532412327312,
+          "width": 0.0645933014354067,
+          "height": 0.023379383634431455,
+          "z_index": 21,
+          "approved": true,
+          "alignment": "shelf"
+        }
+      },
+      {
+        "id": "a72e0c37-5f7f-5acf-bd50-7f8c65b8f23d",
+        "name": "Men's Baggies™ Shorts - 5\"",
+        "crop": [
+          775,
+          771,
+          185,
+          184
+        ],
+        "size": [
+          1536,
+          1024
+        ],
+        "geometry": {
+          "x": 0.8911483253588517,
+          "y": 0.13177470775770456,
+          "width": 0.0645933014354067,
+          "height": 0.023379383634431455,
+          "z_index": 20,
+          "approved": true,
+          "alignment": "shelf"
+        }
+      },
+      {
+        "id": "b8c03e66-e150-52b2-8d25-41fcba2d4720",
+        "name": "M's Hydropeak Side Shore Boardshorts - 18 in.",
+        "crop": [
+          1344,
+          764,
+          182,
+          192
+        ],
+        "size": [
+          1536,
+          1024
+        ],
+        "geometry": {
+          "x": 0.8911483253588517,
+          "y": 0.10839532412327312,
+          "width": 0.0645933014354067,
+          "height": 0.023379383634431455,
+          "z_index": 21,
+          "approved": true,
+          "alignment": "shelf"
+        }
+      },
+      {
+        "id": "454faefc-acf0-593d-a5b1-15a1b45b097e",
+        "name": "W's L/S Regenerative Organic Certified Cotton Tee",
+        "crop": [
+          15,
+          749,
+          177,
+          207
+        ],
+        "size": [
+          1536,
+          1024
+        ],
+        "geometry": {
+          "x": 0.5992822966507177,
+          "y": 0.38150903294367694,
+          "width": 0.0645933014354067,
+          "height": 0.023379383634431455,
+          "z_index": 20,
+          "approved": true,
+          "alignment": "shelf"
+        }
+      },
+      {
+        "id": "715489be-2fd6-5576-b58c-bd991c9c2c32",
+        "name": "M's Triolet Pants",
+        "crop": [
+          960,
+          744,
+          190,
+          213
+        ],
+        "size": [
+          1536,
+          1024
+        ],
+        "geometry": {
+          "x": 0.6788277511961722,
+          "y": 0.35812964930924546,
+          "width": 0.0645933014354067,
+          "height": 0.023379383634431455,
+          "z_index": 21,
+          "approved": true,
+          "alignment": "shelf"
+        }
+      }
+    ],
+    "35251985-086d-4b35-9b99-ab7179cd0af8": [
+      {
+        "id": "80cd394e-6f5b-5ef5-95d4-a1dae823a1ed",
+        "name": "M's Strataspire Responsibili-Tee",
+        "crop": [
+          1358,
+          764,
+          165,
+          177
+        ],
+        "size": [
+          1536,
+          1024
+        ],
+        "geometry": {
+          "x": 0.5992822966507177,
+          "y": 0.512221041445271,
+          "width": 0.0645933014354067,
+          "height": 0.023379383634431455,
+          "z_index": 20,
+          "approved": true,
+          "alignment": "shelf"
+        }
+      },
+      {
+        "id": "825237a9-8853-59de-bd73-4ec198b7e033",
+        "name": "W's Capilene® 2 V-Neck",
+        "crop": [
+          768,
+          767,
+          190,
+          174
+        ],
+        "size": [
+          1536,
+          1024
+        ],
+        "geometry": {
+          "x": 0.5992822966507177,
+          "y": 0.46546227417640806,
+          "width": 0.0645933014354067,
+          "height": 0.023379383634431455,
+          "z_index": 22,
+          "approved": true,
+          "alignment": "shelf"
+        }
+      },
+      {
+        "id": "94513db1-6b4c-5b06-a088-1abf46df8712",
+        "name": "W's Cap Cool Daily Shirt - Fitz Roy Nimbus",
+        "crop": [
+          973,
+          769,
+          175,
+          171
+        ],
+        "size": [
+          1536,
+          1024
+        ],
+        "geometry": {
+          "x": 0.6788277511961722,
+          "y": 0.46546227417640806,
+          "width": 0.0645933014354067,
+          "height": 0.023379383634431455,
+          "z_index": 22,
+          "approved": true,
+          "alignment": "shelf"
+        }
+      },
+      {
+        "id": "33d87c69-53a3-5062-9428-fdf2d12a2bce",
+        "name": "W's Necessity Top",
+        "crop": [
+          1163,
+          759,
+          179,
+          183
+        ],
+        "size": [
+          1536,
+          1024
+        ],
+        "geometry": {
+          "x": 0.6788277511961722,
+          "y": 0.23379383634431455,
+          "width": 0.0645933014354067,
+          "height": 0.023379383634431455,
+          "z_index": 21,
+          "approved": true,
+          "alignment": "shelf"
+        }
+      },
+      {
+        "id": "c349dc83-4312-5479-bb8e-094931f8a30b",
+        "name": "Men's Capilene® Cool Daily Hoody",
+        "crop": [
+          18,
+          769,
+          174,
+          171
+        ],
+        "size": [
+          1536,
+          1024
+        ],
+        "geometry": {
+          "x": 0.8911483253588517,
+          "y": 0.08501594048884166,
+          "width": 0.0645933014354067,
+          "height": 0.023379383634431455,
+          "z_index": 22,
+          "approved": true,
+          "alignment": "shelf"
+        }
+      },
+      {
+        "id": "7893136d-24c1-5af3-8986-05089c8f2f18",
+        "name": "M's Cap Cool Sun Hoody - Water People Banner",
+        "crop": [
+          192,
+          766,
+          192,
+          174
+        ],
+        "size": [
+          1536,
+          1024
+        ],
+        "geometry": {
+          "x": 0.6788277511961722,
+          "y": 0.33475026567481403,
+          "width": 0.0645933014354067,
+          "height": 0.023379383634431455,
+          "z_index": 22,
+          "approved": true,
+          "alignment": "shelf"
+        }
+      },
+      {
+        "id": "fa6caeb1-0966-58c2-a81e-2754d7643c2c",
+        "name": "W's Cashmere Tunic",
+        "crop": [
+          384,
+          769,
+          192,
+          172
+        ],
+        "size": [
+          1536,
+          1024
+        ],
+        "geometry": {
+          "x": 0.8911483253588517,
+          "y": 0.2104144527098831,
+          "width": 0.0645933014354067,
+          "height": 0.023379383634431455,
+          "z_index": 22,
+          "approved": true,
+          "alignment": "shelf"
+        }
+      },
+      {
+        "id": "21901819-11cb-56f0-9492-026b6b6166fe",
+        "name": "Men's Home Water Trout Organic T-Shirt",
+        "crop": [
+          593,
+          768,
+          175,
+          172
+        ],
+        "size": [
+          1536,
+          1024
+        ],
+        "geometry": {
+          "x": 0.6788277511961722,
+          "y": 0.1073326248671626,
+          "width": 0.0645933014354067,
+          "height": 0.023379383634431455,
+          "z_index": 21,
+          "approved": true,
+          "alignment": "shelf"
+        }
+      }
+    ],
+    "59b5a049-cec1-405b-8939-7152461fc6e7": [
+      {
+        "id": "821ae500-52f4-5879-b275-9a23bc327a3a",
+        "name": "M's Micro Puff Zip Vest",
+        "crop": [
+          965,
+          761,
+          187,
+          179
+        ],
+        "size": [
+          1536,
+          1024
+        ],
+        "geometry": {
+          "x": 0.5992822966507177,
+          "y": 0.48884165781083955,
+          "width": 0.0645933014354067,
+          "height": 0.023379383634431455,
+          "z_index": 21,
+          "approved": true,
+          "alignment": "shelf"
+        }
+      },
+      {
+        "id": "2d5ec79d-bdcf-582b-a78d-a6734b287c65",
+        "name": "M's Hydropeak Boardshorts - 21 in.",
+        "crop": [
+          11,
+          762,
+          175,
+          178
+        ],
+        "size": [
+          1536,
+          1024
+        ],
+        "geometry": {
+          "x": 0.5992822966507177,
+          "y": 0.2104144527098831,
+          "width": 0.0645933014354067,
+          "height": 0.023379383634431455,
+          "z_index": 22,
+          "approved": true,
+          "alignment": "shelf"
+        }
+      },
+      {
+        "id": "3e2e7757-e7fe-5096-b955-5978f9551311",
+        "name": "M's Multi Trails Shorts - 6 in.",
+        "crop": [
+          196,
+          762,
+          179,
+          175
+        ],
+        "size": [
+          1536,
+          1024
+        ],
+        "geometry": {
+          "x": 0.6788277511961722,
+          "y": 0.2104144527098831,
+          "width": 0.0645933014354067,
+          "height": 0.023379383634431455,
+          "z_index": 22,
+          "approved": true,
+          "alignment": "shelf"
+        }
+      },
+      {
+        "id": "a0232e79-b5d9-5525-a298-3054de415599",
+        "name": "Men's Stretch Velocity Full-Zip",
+        "crop": [
+          1346,
+          760,
+          180,
+          179
+        ],
+        "size": [
+          1536,
+          1024
+        ],
+        "geometry": {
+          "x": 0.7834928229665071,
+          "y": 0.13177470775770456,
+          "width": 0.0645933014354067,
+          "height": 0.023379383634431455,
+          "z_index": 20,
+          "approved": true,
+          "alignment": "shelf"
+        }
+      },
+      {
+        "id": "6318748a-24b8-5a50-bf13-c925293f0ea1",
+        "name": "Women's Hampi Rock Pants - Regular",
+        "crop": [
+          386,
+          740,
+          190,
+          198
+        ],
+        "size": [
+          1536,
+          1024
+        ],
+        "geometry": {
+          "x": 0.6788277511961722,
+          "y": 0.38150903294367694,
+          "width": 0.0645933014354067,
+          "height": 0.023379383634431455,
+          "z_index": 20,
+          "approved": true,
+          "alignment": "shelf"
+        }
+      },
+      {
+        "id": "e29bc367-5d11-5bbf-8fcb-9813c24c6f17",
+        "name": "M's Upstride Jkt",
+        "crop": [
+          770,
+          739,
+          184,
+          202
+        ],
+        "size": [
+          1536,
+          1024
+        ],
+        "geometry": {
+          "x": 0.7834928229665071,
+          "y": 0.2104144527098831,
+          "width": 0.0645933014354067,
+          "height": 0.023379383634431455,
+          "z_index": 22,
+          "approved": true,
+          "alignment": "shelf"
+        }
+      },
+      {
+        "id": "1b92cf0a-82ad-567a-b1b5-7022111fccaf",
+        "name": "M's LW Stormshadow Jkt",
+        "crop": [
+          1152,
+          738,
+          184,
+          202
+        ],
+        "size": [
+          1536,
+          1024
+        ],
+        "geometry": {
+          "x": 0.5992822966507177,
+          "y": 0.1073326248671626,
+          "width": 0.0645933014354067,
+          "height": 0.023379383634431455,
+          "z_index": 21,
+          "approved": true,
+          "alignment": "shelf"
+        }
+      },
+      {
+        "id": "20cb6b2b-1f68-542e-9150-d9e1e0a189c5",
+        "name": "Women's Los Gatos Vest",
+        "crop": [
+          576,
+          753,
+          184,
+          187
+        ],
+        "size": [
+          1536,
+          1024
+        ],
+        "geometry": {
+          "x": 0.6788277511961722,
+          "y": 0.13071200850159406,
+          "width": 0.0645933014354067,
+          "height": 0.023379383634431455,
+          "z_index": 20,
+          "approved": true,
+          "alignment": "shelf"
+        }
+      }
+    ],
+    "a71c4006-1989-467d-8831-07c5f9543639": [
+      {
+        "id": "883a6a25-4c2c-510b-bbe5-0ca8e5a44e32",
+        "name": "W's Micro D®-Luxe 1/4 Zip",
+        "crop": [
+          384,
+          756,
+          192,
+          212
+        ],
+        "size": [
+          1536,
+          1024
+        ],
+        "geometry": {
+          "x": 0.6788277511961722,
+          "y": 0.512221041445271,
+          "width": 0.0645933014354067,
+          "height": 0.023379383634431455,
+          "z_index": 20,
+          "approved": true,
+          "alignment": "shelf"
+        }
+      },
+      {
+        "id": "26b4405e-901e-5e94-94c0-6135105b0b8c",
+        "name": "M's Tidal Threads Camp Shirt",
+        "crop": [
+          17,
+          759,
+          175,
+          209
+        ],
+        "size": [
+          1536,
+          1024
+        ],
+        "geometry": {
+          "x": 0.5992822966507177,
+          "y": 0.25717321997874604,
+          "width": 0.0645933014354067,
+          "height": 0.023379383634431455,
+          "z_index": 20,
+          "approved": true,
+          "alignment": "shelf"
+        }
+      },
+      {
+        "id": "4d1f6a17-44b8-5c0b-8248-eb009565da12",
+        "name": "M's Stretch Polo",
+        "crop": [
+          576,
+          764,
+          192,
+          205
+        ],
+        "size": [
+          1536,
+          1024
+        ],
+        "geometry": {
+          "x": 0.5992822966507177,
+          "y": 0.35812964930924546,
+          "width": 0.0645933014354067,
+          "height": 0.023379383634431455,
+          "z_index": 21,
+          "approved": true,
+          "alignment": "shelf"
+        }
+      },
+      {
+        "id": "df4082b6-d86e-53e7-a427-924c641a5145",
+        "name": "Fitz Roy Icon Responsibili-Tee®",
+        "crop": [
+          768,
+          764,
+          192,
+          204
+        ],
+        "size": [
+          1536,
+          1024
+        ],
+        "geometry": {
+          "x": 0.7834928229665071,
+          "y": 0.25717321997874604,
+          "width": 0.0645933014354067,
+          "height": 0.023379383634431455,
+          "z_index": 20,
+          "approved": true,
+          "alignment": "shelf"
+        }
+      },
+      {
+        "id": "df91ef4a-594c-570d-b32d-2b109efe8bab",
+        "name": "Women's Long-Sleeved '73 Text Logo Responsibili-Tee®",
+        "crop": [
+          192,
+          769,
+          192,
+          199
+        ],
+        "size": [
+          1536,
+          1024
+        ],
+        "geometry": {
+          "x": 0.7834928229665071,
+          "y": 0.23379383634431455,
+          "width": 0.0645933014354067,
+          "height": 0.023379383634431455,
+          "z_index": 21,
+          "approved": true,
+          "alignment": "shelf"
+        }
+      },
+      {
+        "id": "f35667ff-7520-5184-abf0-d35865244624",
+        "name": "M's Daily Polo",
+        "crop": [
+          1158,
+          761,
+          183,
+          207
+        ],
+        "size": [
+          1536,
+          1024
+        ],
+        "geometry": {
+          "x": 0.8911483253588517,
+          "y": 0.25717321997874604,
+          "width": 0.0645933014354067,
+          "height": 0.023379383634431455,
+          "z_index": 20,
+          "approved": true,
+          "alignment": "shelf"
+        }
+      },
+      {
+        "id": "f84f09ec-6c6f-59fc-8438-3b80c620c3d9",
+        "name": "W's Daily Crew",
+        "crop": [
+          1347,
+          771,
+          182,
+          197
+        ],
+        "size": [
+          1536,
+          1024
+        ],
+        "geometry": {
+          "x": 0.8911483253588517,
+          "y": 0.23379383634431455,
+          "width": 0.0645933014354067,
+          "height": 0.023379383634431455,
+          "z_index": 21,
+          "approved": true,
+          "alignment": "shelf"
+        }
+      },
+      {
+        "id": "1adf7dde-eaed-53f9-ac0e-8497078fa703",
+        "name": "W's Cap MW Crew",
+        "crop": [
+          960,
+          768,
+          192,
+          200
+        ],
+        "size": [
+          1536,
+          1024
+        ],
+        "geometry": {
+          "x": 0.5992822966507177,
+          "y": 0.13071200850159406,
+          "width": 0.0645933014354067,
+          "height": 0.023379383634431455,
+          "z_index": 20,
+          "approved": true,
+          "alignment": "shelf"
+        }
+      }
+    ],
+    "a904490e-727c-4845-9940-7707627c7083": [
+      {
+        "id": "2f2a46af-3507-5f7d-a53f-5b2bab1e7af5",
+        "name": "Women's Super Free Alpine Jacket",
+        "crop": [
+          390,
+          752,
+          182,
+          185
+        ],
+        "size": [
+          1536,
+          1024
+        ],
+        "geometry": {
+          "x": 0.6788277511961722,
+          "y": 0.25717321997874604,
+          "width": 0.0645933014354067,
+          "height": 0.023379383634431455,
+          "z_index": 20,
+          "approved": true,
+          "alignment": "shelf"
+        }
+      },
+      {
+        "id": "59e7a4ca-3acb-5250-a2d6-8f7703984934",
+        "name": "W's Down Sweater Hoody Pullover",
+        "crop": [
+          16,
+          753,
+          176,
+          185
+        ],
+        "size": [
+          1536,
+          1024
+        ],
+        "geometry": {
+          "x": 0.5992822966507177,
+          "y": 0.33475026567481403,
+          "width": 0.0645933014354067,
+          "height": 0.023379383634431455,
+          "z_index": 22,
+          "approved": true,
+          "alignment": "shelf"
+        }
+      },
+      {
+        "id": "1f8dcda3-eb5c-5744-bbd7-98e2b7adef98",
+        "name": "W's Houdini Jkt",
+        "crop": [
+          200,
+          751,
+          181,
+          186
+        ],
+        "size": [
+          1536,
+          1024
+        ],
+        "geometry": {
+          "x": 0.5992822966507177,
+          "y": 0.08395324123273114,
+          "width": 0.0645933014354067,
+          "height": 0.023379383634431455,
+          "z_index": 22,
+          "approved": true,
+          "alignment": "shelf"
+        }
+      }
+    ]
+  }
+}
