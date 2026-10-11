@@ -1,0 +1,26 @@
+{
+  "results": [
+    {
+      "profile": "mother",
+      "name": "김수진",
+      "member_id": "0b43d34d-0ae6-53cd-8f37-f95b32a01451",
+      "count": 52,
+      "photos": 52,
+      "owners": 4,
+      "login": "PASS",
+      "logout": "PASS"
+    },
+    {
+      "profile": "son",
+      "name": "최휘재",
+      "member_id": "55328e5c-6a05-5ac7-af55-77ece0a86dd8",
+      "count": 52,
+      "photos": 52,
+      "owners": 4,
+      "login": "PASS",
+      "logout": "PASS"
+    }
+  ],
+  "errors": [],
+  "result": "PASS"
+}

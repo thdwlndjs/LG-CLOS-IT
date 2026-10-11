@@ -36,6 +36,30 @@ def engine():
     return create_async_engine(environment()["DATABASE_URL"])
 
 
+async def demo_personas():
+    """Update only names of the two existing isolated demonstration members."""
+    e = engine()
+    try:
+        async with e.begin() as c:
+            for key, name in (("mom", "김수진"), ("son", "최휘재")):
+                result = await c.execute(
+                    text(
+                        "UPDATE wardrobe.member SET display_name=:name "
+                        "WHERE id=:id AND household_id=:household"
+                    ),
+                    {
+                        "name": name,
+                        "id": identity(key),
+                        "household": identity("household"),
+                    },
+                )
+                if result.rowcount != 1:
+                    raise RuntimeError("Provision the isolated demo members first")
+        print("Existing demo personas updated; garment ownership and history preserved")
+    finally:
+        await e.dispose()
+
+
 def products():
     return json.loads(
         (PACKAGE / "templates/remediation_products.json").read_text(encoding="utf-8")
@@ -185,8 +209,8 @@ async def seed():
                 },
             )
             for owner, name, role in [
-                ("mom", "엄마", "OWNER"),
-                ("son", "아들", "MEMBER"),
+                ("mom", "김수진", "OWNER"),
+                ("son", "최휘재", "MEMBER"),
                 ("dad", "아빠", "MEMBER"),
                 ("daughter", "딸", "MEMBER"),
             ]:
@@ -570,7 +594,8 @@ async def provision():
 if __name__ == "__main__":
     mode = argparse.ArgumentParser()
     mode.add_argument(
-        "mode", choices=["prepare", "serve", "provision", "verify", "layout"]
+        "mode",
+        choices=["prepare", "serve", "provision", "verify", "layout", "personas"],
     )
     selected = mode.parse_args().mode
     if selected == "prepare":
@@ -602,6 +627,7 @@ if __name__ == "__main__":
             DECART_API_KEY="",
             PUBLIC_DEMO_LOGIN_ENABLED="false",
             LOCAL_DEMO_MEMBER_ID=str(identity("son")),
+            LOCAL_DEMO_MOTHER_MEMBER_ID=str(identity("mom")),
             STORAGE_PUBLIC_BASE_URL="http://localhost:9000",
             N8N_ENABLED="false",
             LED_OFF_SECONDS="10",
@@ -615,6 +641,8 @@ if __name__ == "__main__":
         uvicorn.run(create_app(), host="127.0.0.1", port=18081)
     elif selected == "provision":
         asyncio.run(provision())
+    elif selected == "personas":
+        asyncio.run(demo_personas())
     elif selected == "layout":
         asyncio.run(apply_demo_layout())
     else:

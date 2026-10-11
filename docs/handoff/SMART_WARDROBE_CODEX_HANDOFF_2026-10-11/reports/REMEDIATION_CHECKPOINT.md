@@ -52,3 +52,15 @@ shower cold read는 판정/재개 발췌문을 읽었으며 전체 보고서 검
 실제 브라우저: 로그인/가족52개, 가시33개 전부 파생(행거23/접힘10), 모든 SVG 실제 이미지 decode, page error0, 시연 로그인/로그아웃 PASS. web38 tests/TS·build PASS, scene 단위8 PASS, handoff 실DB7 PASS, Ruff PASS. 마지막 API session73277/18081. 재현: 루트 `python scripts/provision_wardrobe_sprites.py`, `python scripts/remediation_local.py layout`, web `node test/wardrobe-sprites-browser.mjs`. Python은 .venv 사용. 생성 파일/manifest가 없으면 자동으로 외부 이미지 API를 호출하지 않는다. 기존 파일을 새 생성으로 덮어쓰지 않는다.
 
 생성된 색/주름/로고 세부는 추정 파생이며 실제 상품 정확성을 인증하지 않았다. 현재 화면을 확인한 로컬 표시 후보, 사용자 시각 인수는 아직이다. 카드 Gate A/B는 이번 옷장 이미지 수정과 별개로 PARTIAL 유지. 외부 API/원격push/배포/운영 DB 변경 없음.
+
+## 현재 시연 계정 2개
+
+사용자 지정 페르소나: 김수진 42세(엄마), 최휘재 27세(아들). 격리 DB의 기존 mom/son member 이름만 변경하고 소유자 ID·역할·52개 의류·착용 이력은 유지했다. 나이는 시연 프로필 표시값이며 member 스키마를 확장하지 않았다.
+
+기존 가족 구성원은 4명이며 아빠·딸 데이터도 유지한다. 저장된 시연 로그인 버튼만 엄마·아들 두 개로 제공한다. 공개 환경 차단 테스트는 목록 items=[] 및 프로필 선택 로그인403을 실DB 테스트로 확인했다. 이번 계정 기능은 검증 통과했으며, 전체 PARTIAL은 앞서 기록한 카드 Gate A/B 등 별도 미완료 사항에 대한 판정이다.
+
+마이 → 내 계정에 두 프로필을 저장된 시연 계정으로 표시한다. 선택 시 실제 JWT 세션을 발급한다. 두 사람이 동시에 로그인된 것으로 꾸미거나 비밀번호·토큰을 카드에 저장하지 않는다. 로그아웃 후에도 프로필 두 개를 다시 선택할 수 있다. 전환은 로그아웃 → 다른 프로필 선택 순서다.
+
+GET /integration/demo-profiles 및 기존 POST /integration/demo-login의 선택적 profile=mother|son을 추가했다. 기존 빈 요청 로그인과 공개 demo 경로는 유지한다. 로컬 프로필 선택은 비공개 local/test DEMO에서만 허용하며 enabled credential·명시적 member ID·같은 가구의 기기 접근을 확인한다. 엄마 OWNER 역할은 명시적 로컬 엄마 ID에만 허용한다. 운영·공개 배포에서는 프로필 목록이 비어 있고 이 선택 경로는 차단된다.
+
+재현: 루트 `.venv/Scripts/python.exe scripts/remediation_local.py personas`(격리 DB 이름만 갱신), `serve`(API 18081; LOCAL_DEMO_MEMBER_ID 및 LOCAL_DEMO_MOTHER_MEMBER_ID 자동 설정). web에서 `npm run dev -- --host 127.0.0.1 --port 5193`, `node test/demo-personas-browser.mjs`. 브라우저 테스트는 두 계정 각각 로그인 → 가족 의류52/사진52/소유자4 → 로그아웃 → 프로필 재표시를 확인했다. 계정 ID 서로 다름, page error0, PASS. backend demo-login 실DB4 tests 및 web38 tests PASS, TypeScript/Vite build·Ruff PASS(기존 bundle 크기 경고). 증적: evidence/remediation/demo-personas.png 및 demo-personas-browser.json. API 재기동 후 최신 기능 제공, 원격push/배포/운영 DB 변경 없음. 전체 시정 PARTIAL 판정 유지.

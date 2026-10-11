@@ -38,6 +38,7 @@ class Settings(BaseModel):
     auth_mode: Literal["DEMO", "JWT"] = "DEMO"
     demo_auth_enabled: bool = True
     local_demo_member_id: UUID | None = None
+    local_demo_mother_member_id: UUID | None = None
     public_demo_login_enabled: bool = False
     public_demo_member_id: UUID | None = None
     jwt_secret: SecretStr

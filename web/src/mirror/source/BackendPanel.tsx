@@ -38,6 +38,14 @@ export function BackendPanel({
     [message, setMessage] = useState(""),
     [busy, setBusy] = useState(false);
   const connected = !!currentMember();
+  const [profiles, setProfiles] = useState<Awaited<ReturnType<HttpRemoteBackend["demoProfiles"]>>>([]);
+  useEffect(() => {
+    let active = true;
+    void new HttpRemoteBackend().demoProfiles().then(items => {
+      if (active) setProfiles(items);
+    }).catch(() => { if (active) setProfiles([]); });
+    return () => { active = false; };
+  }, []);
   const submit = async () => {
     setBusy(true);
     try {
@@ -54,12 +62,12 @@ export function BackendPanel({
       setBusy(false);
     }
   };
-  const demoLogin = async () => {
+  const demoLogin = async (profile?: "son" | "mother") => {
     setBusy(true);
     setMessage("");
     try {
       const client = new HttpRemoteBackend();
-      await client.demoLogin();
+      await client.demoLogin(profile);
       await app.configureRemote(client);
       setMessage("시연용 옷장을 불러왔습니다.");
     } catch (e) {
@@ -93,12 +101,19 @@ export function BackendPanel({
             내 옷장 다시 불러오기
           </button>
           <button
-            onClick={() =>
-              void new HttpRemoteBackend()
-                .logout()
-                .finally(() => app.configureRemote())
-                .catch((e: Error) => setMessage(e.message))
-            }
+            disabled={busy}
+            onClick={async () => {
+              setBusy(true);
+              setMessage("");
+              try {
+                await new HttpRemoteBackend().logout();
+              } catch (e) {
+                setMessage((e as Error).message);
+              } finally {
+                try { await app.configureRemote(); }
+                finally { setBusy(false); }
+              }
+            }}
           >
             로그아웃
           </button>
@@ -112,14 +127,27 @@ export function BackendPanel({
           }}
         >
           <p className="mirror-account-intro">내 계정으로 로그인해 연결된 옷장을 불러오세요.</p>
-          <button
+          {profiles.length > 0 ? <div className="mirror-demo-profiles">
+            <span className="mirror-account-caption">저장된 시연 계정</span>
+            {profiles.map(profile => <button
+              key={profile.profile}
+              className="mirror-account-demo mirror-demo-profile"
+              type="button"
+              disabled={busy}
+              onClick={() => void demoLogin(profile.profile)}
+            >
+              <strong>{profile.display_name}</strong>
+              <span>{profile.age}세 · {profile.relationship}</span>
+              <small>선택하여 시연용 로그인</small>
+            </button>)}
+          </div> : <button
             className="mirror-account-demo"
             type="button"
             disabled={busy}
             onClick={() => void demoLogin()}
           >
             시연용 로그인
-          </button>
+          </button>}
           <div className="mirror-account-divider"><span>계정 로그인</span></div>
           <label>
             계정

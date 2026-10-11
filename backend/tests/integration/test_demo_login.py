@@ -161,3 +161,69 @@ def test_local_demo_explicit_member_preserves_account_and_production_guard(
         assert (await client.post(path)).status_code == 503
 
     existing.run_case(real_dsn, settings_values, case)
+
+
+def test_two_demo_personas_are_allowlisted_and_disabled_on_public_deployment(
+    real_dsn, settings_values
+):
+    async def case(client, engine, settings, *unused):
+        local = settings.model_copy(
+            update={
+                "local_demo_member_id": UUID(existing.FAMILY),
+                "local_demo_mother_member_id": UUID(existing.OWNER),
+            }
+        )
+        client._transport.app.state.settings = local
+        async with engine.begin() as conn:
+            for member_id, login_name, name in (
+                (existing.FAMILY, "demo-son", "최휘재"),
+                (existing.OWNER, "demo-mother", "김수진"),
+            ):
+                await conn.execute(
+                    text(
+                        "INSERT INTO wardrobe.account_credential(member_id,login,password_hash) "
+                        "VALUES(:id,:login,'not-a-password-login') ON CONFLICT DO NOTHING"
+                    ),
+                    {"id": UUID(member_id), "login": login_name},
+                )
+                await conn.execute(
+                    text("UPDATE wardrobe.member SET display_name=:name WHERE id=:id"),
+                    {"name": name, "id": UUID(member_id)},
+                )
+        profiles = (await client.get("/api/v1/integration/demo-profiles")).json()["items"]
+        assert [(p["display_name"], p["age"]) for p in profiles] == [("김수진", 42), ("최휘재", 27)]
+        for profile, member_id in (("mother", existing.OWNER), ("son", existing.FAMILY)):
+            response = await client.post(
+                "/api/v1/integration/demo-login", json={"profile": profile}
+            )
+            assert response.status_code == 200, response.text
+            assert response.json()["member"]["id"] == member_id
+            client.headers["Authorization"] = "Bearer " + response.json()["access_token"]
+            rows = (await client.get("/api/v1/garments")).json()["items"]
+            assert rows and all(row["id"] != existing.OTHER_GARMENT for row in rows)
+            assert (await client.post("/api/v1/integration/logout")).status_code == 200
+            assert (await client.get("/api/v1/integration/devices")).status_code == 401
+        assert (
+            await client.post("/api/v1/integration/demo-login", json={"profile": "admin"})
+        ).status_code == 422
+        assert (
+            await client.post(
+                "/api/v1/integration/demo-login", json={"member_id": existing.OTHER_GARMENT}
+            )
+        ).status_code == 422
+        client._transport.app.state.settings = local.model_copy(update={"public_deployment": True})
+        assert (await client.get("/api/v1/integration/demo-profiles")).json() == {"items": []}
+        assert (
+            await client.post("/api/v1/integration/demo-login", json={"profile": "mother"})
+        ).status_code == 403
+        client._transport.app.state.settings = local
+        async with engine.begin() as conn:
+            await conn.execute(
+                text("UPDATE wardrobe.account_credential SET enabled=false WHERE member_id=:id"),
+                {"id": UUID(existing.OWNER)},
+            )
+        assert (
+            await client.post("/api/v1/integration/demo-login", json={"profile": "mother"})
+        ).status_code == 503
+
+    existing.run_case(real_dsn, settings_values, case)

@@ -3,7 +3,7 @@
 import asyncio
 import hashlib
 from datetime import timedelta
-from typing import Annotated
+from typing import Annotated, Literal
 from uuid import UUID
 
 from fastapi import APIRouter, Depends, Header, Request
@@ -79,23 +79,68 @@ async def login(request: Request, body: Login):
                     member={k: member[k] for k in ("id", "household_id", "display_name", "role")})
 
 
+class DemoLogin(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+    profile: Literal["son", "mother"] | None = None
+
+
+@router.get("/demo-profiles")
+async def demo_profiles(request: Request):
+    settings = request.app.state.settings
+    local = (settings.app_env in {"local", "test"} and not settings.public_deployment
+             and settings.demo_auth_enabled and settings.auth_mode == "DEMO"
+             and not settings.public_demo_login_enabled)
+    if not local:
+        return {"items": []}
+    items = []
+    async with request.app.state.resources.database.sessions.begin() as session:
+        repo = Sprint1Repository(session)
+        for profile, member_id, age, relationship in (
+            ("mother", settings.local_demo_mother_member_id, 42, "엄마"),
+            ("son", settings.local_demo_member_id, 27, "아들"),
+        ):
+            if member_id is None:
+                continue
+            member = await repo.one(
+                "SELECT m.display_name FROM wardrobe.member m "
+                "WHERE m.id=:id AND EXISTS (SELECT 1 FROM wardrobe.account_credential c "
+                "WHERE c.member_id=m.id AND c.enabled) AND EXISTS "
+                "(SELECT 1 FROM wardrobe.device_member dm WHERE dm.member_id=m.id "
+                "AND dm.household_id=m.household_id)", id=member_id,
+            )
+            if member:
+                items.append(dict(profile=profile, display_name=member["display_name"],
+                                  age=age, relationship=relationship))
+    return {"items": items}
+
+
 @router.post("/demo-login")
-async def demo_login(request: Request):
+async def demo_login(request: Request, body: DemoLogin | None = None):
+    body = body or DemoLogin()
     settings = request.app.state.settings
     public_demo = settings.public_demo_login_enabled
     local_demo = (settings.app_env in {"local", "test"} and not settings.public_deployment
                   and settings.demo_auth_enabled and settings.auth_mode == "DEMO")
     if not public_demo and not local_demo:
         raise ApiError(403, "FORBIDDEN", "Demo login is disabled")
+    if body.profile is not None and (not local_demo or public_demo):
+        raise ApiError(403, "FORBIDDEN", "Local demo profiles are disabled")
+    if body.profile == "mother" and settings.local_demo_mother_member_id is None:
+        raise ApiError(503, "DEPENDENCY_UNAVAILABLE", "Demo profile is not provisioned")
+    if body.profile == "son" and settings.local_demo_member_id is None:
+        raise ApiError(503, "DEPENDENCY_UNAVAILABLE", "Demo profile is not provisioned")
     configured_local = local_demo and not public_demo and settings.local_demo_member_id is not None
     member_id = (settings.public_demo_member_id if public_demo else settings.local_demo_member_id
                  if configured_local else UUID("20000000-0000-4000-8000-000000000001"))
+    if body.profile == "mother":
+        member_id = settings.local_demo_mother_member_id
+        configured_local = True
     async with request.app.state.resources.database.sessions.begin() as session:
         member = await Sprint1Repository(session).one(
             "SELECT m.* FROM wardrobe.member m JOIN wardrobe.account_credential c "
             "ON c.member_id=m.id WHERE m.id=:member "
             "AND (c.login=:login OR :configured_local) AND c.enabled "
-            "AND (NOT :configured_local OR (m.role='MEMBER' AND EXISTS "
+            "AND (NOT :configured_local OR ((m.role='MEMBER' OR :mother_profile) AND EXISTS "
             "(SELECT 1 FROM wardrobe.device_member dm WHERE dm.member_id=m.id "
             "AND dm.household_id=m.household_id))) "
             "AND (NOT :public_demo OR (m.role='MEMBER' AND EXISTS "
@@ -104,6 +149,7 @@ async def demo_login(request: Request):
             member=member_id, login="public-demo" if public_demo else "demo",
             public_demo=public_demo,
             configured_local=configured_local,
+            mother_profile=body.profile == "mother",
         )
         if member is None:
             raise ApiError(503, "DEPENDENCY_UNAVAILABLE", "Demo account is not provisioned")

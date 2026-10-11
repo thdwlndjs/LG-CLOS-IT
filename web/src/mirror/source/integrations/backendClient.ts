@@ -239,9 +239,13 @@ export class HttpRemoteBackend implements RemoteBackend {
     });
     return this.acceptLogin(r);
   }
-  async demoLogin() {
+  async demoProfiles(): Promise<{profile: "son" | "mother"; display_name: string; age: number; relationship: string}[]> {
+    const r: any = await api().send("GET", "/integration/demo-profiles", undefined);
+    return r.items;
+  }
+  async demoLogin(profile?: "son" | "mother") {
     bindStation("", "");
-    const r: any = await api().send("POST", "/integration/demo-login", {});
+    const r: any = await api().send("POST", "/integration/demo-login", profile ? {profile} : {});
     return this.acceptLogin(r);
   }
   private acceptLogin(r: any) {
