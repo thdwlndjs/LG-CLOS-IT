@@ -2,17 +2,25 @@ import { useEffect, useRef, useState } from "react";
 import { app } from "./appInstance";
 import { api, currentMember, rawApi } from "./integrations/backendClient";
 import { assetUrl, upload } from "../../api.js";
-import { pollJob } from "./serverActions";
-import { serverCommand } from "./secondHandoffActions";
+import {
+  bindGarmentImage,
+  invalidateImage,
+  loadCachedImage,
+} from "./imageBlobCache.js";
+import {
+  captureRequest,
+  PocVtonFlow,
+  VTON_SLOTS,
+  type VtonResult,
+} from "./pocVton";
 import type { OutfitDraft } from "./core/types";
-import { completeOutfit, hasExternalItems } from "./core/externalOutfits";
 
 export function ServerMockFitting({
   draft,
   onResult,
 }: {
   draft: OutfitDraft;
-  onResult: (url: string, label?: string) => void;
+  onResult: (result: VtonResult) => void;
 }) {
   const owner = draft.ownerId,
     repository = app.repository;
@@ -23,19 +31,23 @@ export function ServerMockFitting({
     [message, setMessage] = useState("");
   const mounted = useRef(true),
     pending = useRef(false),
-    intent = useRef(crypto.randomUUID());
+    flow = useRef<PocVtonFlow | null>(null),
+    resultAssets = useRef(new Set<string>());
+  const current = () =>
+    mounted.current &&
+    currentMember()?.id === owner &&
+    app.repository === repository;
   useEffect(() => {
     mounted.current = true;
     return () => {
       mounted.current = false;
+      flow.current?.close();
+      for (const id of resultAssets.current) {
+        invalidateImage(id);
+        bindGarmentImage(`vton:${id}`, null, undefined, null);
+      }
     };
   }, []);
-  const current = () =>
-    mounted.current &&
-    currentMember()?.id === owner &&
-    app.repository === repository &&
-    app.outfitDraft()?.draftId === draft.draftId &&
-    app.outfitDraft()?.revision === draft.revision;
   const run = async (fn: () => Promise<void>) => {
     if (pending.current) return;
     pending.current = true;
@@ -50,77 +62,83 @@ export function ServerMockFitting({
       if (current()) setBusy(false);
     }
   };
-  const execute = () =>
-    run(async () => {
-      if (!person || !completeOutfit(draft))
-        throw Error("동의된 인물 사진과 완성된 조합을 선택하세요.");
-      const external = Object.values(draft.externalItems || {});
-      if (
-        external.length &&
-        (external.length !== 1 ||
-          !app
-            .externalItems()
-            .some((item) => item.id === external[0].externalItemId))
-      )
-        throw Error("현재 LIKED 상품 한 개를 선택하세요.");
-      const result: any = await serverCommand(
-        `mock-fitting:${intent.current}`,
-        { person, draft },
-        async (step, check) => {
-          if (external.length) {
-            const job = await step(
-              "liked-job",
-              "POST",
-              "/integration/shopping/liked/vton-jobs",
-              {
-                external_item_id: external[0].externalItemId,
-                person_asset_id: person,
-              },
-            );
-            return pollJob(`/jobs/${job.job_id}`, api(), check);
+  const getFlow = () => {
+    if (!flow.current)
+      flow.current = new PocVtonFlow(
+        rawApi(),
+        owner,
+        current,
+        async (job, refresh) => {
+          const a = job.result_asset;
+          if (!a || !assetUrl(a.read_url))
+            throw Error("Mock 결과 이미지가 없습니다.");
+          const id = a.asset_id;
+          let renewals = 0;
+          resultAssets.current.add(id);
+          const asAsset = (asset: any) => ({
+            id: asset.asset_id,
+            version: 1,
+            url: assetUrl(asset.read_url),
+            expiresAt: asset.expires_at,
+          });
+          bindGarmentImage(
+            `vton:${id}`,
+            asAsset(a),
+            async () => {
+              if (renewals++ >= 1)
+                throw Error("결과 이미지 재발급 재시도 한도입니다.");
+              const next = await refresh();
+              if (next.status !== "SUCCEEDED")
+                throw Error("결과가 더 이상 제공되지 않습니다.");
+              return asAsset(next.result_asset);
+            },
+            null,
+          );
+          const load = async (asset: any) => {
+            const url = await loadCachedImage(asAsset(asset));
+            const image = new Image();
+            image.src = url;
+            await image.decode();
+            return url;
+          };
+          try {
+            return await load(a);
+          } catch (error) {
+            if (renewals >= 1) throw error;
+            renewals++;
+            invalidateImage(id);
+            const next = await refresh();
+            if (
+              next.status !== "SUCCEEDED" ||
+              next.result_asset?.asset_id !== id
+            )
+              throw Error("결과가 더 이상 제공되지 않습니다.");
+            return load(next.result_asset);
           }
-          const outfit = await step("outfit", "POST", "/outfits", {
-            title: draft.name,
-            status: "DRAFT",
-            items: Object.entries(draft.items).map(([slot, garment_id]) => ({
-              slot: slot.toUpperCase(),
-              garment_id,
-              position: 0,
-            })),
-          });
-          if (!outfit.try_on_ready)
-            throw Error(
-              "구성 의류의 상태와 동의된 이미지를 먼저 확인하세요. Mock도 검증을 우회하지 않습니다.",
-            );
-          const session = await step("session", "POST", "/vton-sessions", {
-            member_id: owner,
-            source_screen: "OUTFIT_EDITOR",
-            outfit_id: outfit.id,
-            person_asset_id: person,
-          });
-          const job = await step("job", "POST", "/vton-jobs", {
-            session_id: session.id,
-            expected_revision: session.revision,
-            person_asset_id: person,
-            outfit_id: session.outfit_id,
-            provider: "MOCK",
-          });
-          return pollJob(`/jobs/${job.job_id}`, api(), check);
         },
       );
-      if (!current()) return;
-      const url = assetUrl(result.result_asset?.read_url);
-      if (!url) throw Error("Mock 결과 이미지가 없습니다.");
-      const label = external.length
-        ? "LIKED 단품 Mock 결과 · 보유 옷 조합 전체를 반영한 실제 피팅 아님"
-        : "Mock VTON 결과 · 실제 피팅 아님";
-      onResult(url, label);
-      setOpen(false);
-      setMessage(label);
+    return flow.current;
+  };
+  const execute = () =>
+    run(async () => {
+      const controller = getFlow();
+      const request = captureRequest(
+        draft,
+        app.garments(),
+        app.externalItems(),
+        person,
+        controller.context,
+      );
+      const result = await controller.execute(request);
+      if (result && current()) {
+        onResult(result);
+        setOpen(false);
+        setMessage("Mock 처리 완료 · 실제 시착 이미지가 아닙니다.");
+      }
     });
   return (
     <div className="mc-server-fitting">
-      <button type="button" onClick={() => setOpen(!open)} disabled={busy}>
+      <button type="button" onClick={() => setOpen(!open)}>
         Mock 피팅
       </button>
       {open && (
@@ -144,27 +162,72 @@ export function ServerMockFitting({
                 const file = e.target.files?.[0];
                 if (!file) return;
                 void run(async () => {
-                  const settings: any = await api().get("/settings");
+                  const client: any = rawApi(),
+                    settings: any = await api().get("/settings");
                   if (!current()) return;
-                  await api().send("PUT", "/settings", {
-                    ...settings,
-                    image_upload_consent: true,
+                  await client.request("/settings", {
+                    method: "PUT",
+                    body: { ...settings, image_upload_consent: true },
                   });
                   if (!current()) return;
-                  const asset: any = await upload(
-                    rawApi(),
-                    file,
-                    "PERSON_VTON",
-                  );
+                  const asset: any = await upload(client, file, "PERSON_VTON");
                   if (current()) {
                     setPerson(asset.asset_id);
-                    intent.current = crypto.randomUUID();
                     setMessage("인물 사진 업로드 완료");
                   }
                 });
               }}
             />
           </label>
+          <div aria-label="시착 조합 선택">
+            {VTON_SLOTS.map((slot) => (
+              <label key={slot}>
+                {slot.toUpperCase()}
+                <select
+                  aria-label={`${slot.toUpperCase()} 시착 의류`}
+                  value={
+                    draft.externalItems?.[slot]
+                      ? `LIKED:${draft.externalItems[slot]!.externalItemId}`
+                      : draft.items[slot]
+                        ? `OWNED:${draft.items[slot]}`
+                        : ""
+                  }
+                  onChange={(e) => {
+                    try {
+                      const [kind, id] = e.target.value.split(":");
+                      if (!kind) app.removeOutfitItem(slot);
+                      else if (kind === "OWNED") app.setOutfitItem(slot, id);
+                      else app.setExternalOutfitItem(slot, id);
+                    } catch (e) {
+                      setMessage((e as Error).message);
+                    }
+                  }}
+                >
+                  <option value="">선택 안 함</option>
+                  <optgroup label="내 옷장">
+                    {app
+                      .garments()
+                      .filter((g) => g.category === slot)
+                      .map((g) => (
+                        <option key={`OWNED:${g.id}`} value={`OWNED:${g.id}`}>
+                          {g.name}
+                        </option>
+                      ))}
+                  </optgroup>
+                  <optgroup label="관심 의류">
+                    {app
+                      .externalItems()
+                      .filter((i) => i.category === slot)
+                      .map((i) => (
+                        <option key={`LIKED:${i.id}`} value={`LIKED:${i.id}`}>
+                          {i.name}
+                        </option>
+                      ))}
+                  </optgroup>
+                </select>
+              </label>
+            ))}
+          </div>
           <button
             type="button"
             disabled={busy || !person || !consent}
@@ -173,7 +236,8 @@ export function ServerMockFitting({
             {busy ? "작업 확인 중" : "Mock VTON 실행"}
           </button>
           <small>
-            선택·조회만으로 호출하지 않습니다. 유료 API는 사용하지 않습니다.
+            생성 중에도 조합을 바꿀 수 있습니다. 결과는 실행 순간의 조합에
+            연결됩니다. 유료 호출 없음.
           </small>
         </div>
       )}

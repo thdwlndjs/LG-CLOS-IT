@@ -9,6 +9,7 @@ import {
   careEvidencePresentation,
 } from "./careEvidence";
 import { lifeHistoryReadOptions } from "./lifeSnapshot";
+import { followup, type VtonResult } from "./pocVton";
 import { useEffect, useRef, useState, useSyncExternalStore } from "react";
 import { app } from "./appInstance";
 import {
@@ -106,13 +107,7 @@ export default function MirrorExperience() {
     garments = app.garments(),
     outfits = app.outfits(),
     today = useToday();
-  const [mockResult, setMockResult] = useState<{
-    url: string;
-    draftId: string;
-    revision: number;
-    owner: string;
-    label: string;
-  } | null>(null);
+  const [mockResult, setMockResult] = useState<VtonResult | null>(null);
   const ownerRef = useRef(owner);
   ownerRef.current = owner;
   const person = useMirrorPerson(owner);
@@ -275,11 +270,8 @@ export default function MirrorExperience() {
       ? streamBinding.stream
       : null;
   const sourceMode =
-    mockResult &&
-    mockResult.owner === owner &&
-    mockResult.draftId === draft?.draftId &&
-    mockResult.revision === draft?.revision
-      ? mockResult.label
+    mockResult && mockResult.request_snapshot.member_id === owner
+      ? "Mock 처리 완료 · 실제 시착 이미지가 아닙니다."
       : activeStream
         ? "실시간 수신 · 의류 표현 확인 필요"
         : exactDisplayed
@@ -467,7 +459,10 @@ export default function MirrorExperience() {
       if (previous?.isConnected) previous.focus({ preventScroll: true });
     };
   }, [authOpen, labelOpen]);
-  const endComparison = () => {
+  const endComparison = (clearDraft = false) => {
+    const temporary = app.outfitDraft();
+    if (clearDraft && comparisonActive.current && temporary)
+      app.clearTemporaryVtonDraft(temporary.ownerId, temporary.draftId);
     comparisonActive.current = false;
     compareVisibleRef.current = false;
     setStreamBinding(null);
@@ -479,7 +474,7 @@ export default function MirrorExperience() {
   };
   const navigate = (next: string) => {
     quickPicker.current = false;
-    endComparison();
+    endComparison(true);
     setCareRecordOpen(false);
     setRegistrationOpen(false);
     viewGeneration.current++;
@@ -499,7 +494,7 @@ export default function MirrorExperience() {
   const library = () => {
     quickPicker.current = false;
     compareUI.current = { quick: false, more: false, page: 0 };
-    endComparison();
+    endComparison(true);
     viewGeneration.current++;
     setOutfitView("library");
     setEditTarget(undefined);
@@ -596,7 +591,7 @@ export default function MirrorExperience() {
     setIllumination(null);
     setNotice("");
     viewGeneration.current++;
-    chooseMedia(current.name, true);
+    chooseMedia(current.name, false);
   };
   const openLook = (look: Outfit) => {
     try {
@@ -645,12 +640,7 @@ export default function MirrorExperience() {
     setEditTarget(undefined);
     viewGeneration.current++;
     const current = app.outfitDraft();
-    if (current)
-      chooseMedia(
-        current.name,
-        comparisonActive.current &&
-          comparisonDraftId.current === current.draftId,
-      );
+    if (current) chooseMedia(current.name, false);
   };
   const reuseLook = (look: Outfit) => {
     try {
@@ -689,10 +679,7 @@ export default function MirrorExperience() {
       setCommitStatus("idle");
       setNotice("");
       const next = app.outfitDraft()!;
-      chooseMedia(
-        next.name,
-        comparisonActive.current && comparisonDraftId.current === next.draftId,
-      );
+      chooseMedia(next.name, false);
     } catch (e) {
       setNotice((e as Error).message);
     }
@@ -701,6 +688,11 @@ export default function MirrorExperience() {
     templateId:
       "minimal-v1" | "T1-v1" | "T2-v1" | "T3-v1" | "T4-v1" = "minimal-v1",
   ) => {
+    if (compareVisible) {
+      const target = followup(mockResult);
+      setNotice(target.message);
+      return; // C handoff only; F must reload target.jobId and validate on the server.
+    }
     const current = app.outfitDraft();
     if (!current || cardSaveBusy.current) return;
     const captured = {
@@ -759,6 +751,11 @@ export default function MirrorExperience() {
   };
   const failedServerDraft = useRef<OutfitDraft | null>(null);
   const commit = async (retry = false) => {
+    if (compareVisible) {
+      const target = followup(mockResult);
+      setNotice(target.message);
+      return; // C handoff only; D owns wear records and LED.
+    }
     const captured = retry ? failedServerDraft.current : app.outfitDraft();
     if (commitBusy.current || !captured) return;
     if (app.connection.kind !== "supabase") {
@@ -838,21 +835,6 @@ export default function MirrorExperience() {
         data-selected-garment={selectedId ?? ""}
         data-look-revision={draft?.revision ?? 0}
       >
-        {compareVisible &&
-          mockResult?.owner === owner &&
-          mockResult.draftId === draft?.draftId &&
-          mockResult.revision === draft?.revision && (
-            <MirrorForeground
-              media={{
-                kind: "image",
-                url: mockResult.url,
-                label: mockResult.label,
-              }}
-              contextKey={JSON.stringify(mockResult)}
-              className="mx-person-result"
-            />
-          )}
-
         {compareVisible &&
           !activeStream &&
           displayed?.ownerId === owner &&
@@ -1233,18 +1215,16 @@ export default function MirrorExperience() {
               draft={draft}
               garments={garments}
               hasMedia={!!displayed || !!activeStream || !!mockResult}
-              onMockResult={(url, label) => {
-                const d = app.outfitDraft();
-                if (d) {
+              mockResult={
+                mockResult?.request_snapshot.member_id === owner
+                  ? mockResult
+                  : null
+              }
+              onMockResult={(result) => {
+                if (ownerRef.current === result.request_snapshot.member_id) {
                   setDisplayed(null);
                   setStreamBinding(null);
-                  setMockResult({
-                    url,
-                    draftId: d.draftId,
-                    revision: d.revision,
-                    owner,
-                    label: label || "Mock VTON 결과 · 실제 피팅 아님",
-                  });
+                  setMockResult(result);
                 }
               }}
               status={sourceMode}

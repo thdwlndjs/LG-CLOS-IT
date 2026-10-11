@@ -12,7 +12,6 @@ import type {
 } from "./core/types";
 import {
   completeOutfit,
-  OUTFIT_SLOT_KEYS,
   OUTFIT_SLOT_NAMES,
   slotIsLocked,
 } from "./core/externalOutfits";
@@ -21,6 +20,8 @@ import { Icon } from "./Icons";
 import { MirrorGarmentGrid, MirrorPhoto } from "./MirrorGarmentGrid";
 import { MirrorOutfitThumbnail } from "./MirrorPanelThumbnail";
 import "./mirror-outfit-workspace.css";
+import { VTON_SLOTS } from "./pocVton";
+const OUTFIT_SLOT_KEYS: readonly Slot[] = VTON_SLOTS;
 
 export type MirrorOutfitWorkspaceUI = {
   librarySection: "mine" | "styles";

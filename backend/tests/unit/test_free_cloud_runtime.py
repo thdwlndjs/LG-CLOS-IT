@@ -19,6 +19,7 @@ def test_public_database_requires_verified_tls(settings):
 
 def test_inline_readiness_tracks_cycle_failure_and_shutdown(monkeypatch, settings):
     import app.application.inline_worker as module
+    import app.application.poc_vton_worker as unified
     import app.workers.external_vton as external
 
     calls = []
@@ -32,6 +33,7 @@ def test_inline_readiness_tracks_cycle_failure_and_shutdown(monkeypatch, setting
     for name in ("process_jobs", "process_cards", "process_storage", "dispatch"):
         monkeypatch.setattr(module, name, succeed)
     monkeypatch.setattr(external, "process", succeed)
+    monkeypatch.setattr(unified, "process_jobs", succeed)
 
     async def run():
         worker = InlineWorker(settings, object())
@@ -48,7 +50,12 @@ def test_inline_readiness_tracks_cycle_failure_and_shutdown(monkeypatch, setting
         await worker.cycle()
         with pytest.raises(RuntimeError):
             await worker.probe()
-        assert len(calls) == 9
+        assert len(calls) == 11
+        monkeypatch.setattr(module, "process_cards", succeed)
+        monkeypatch.setattr(unified, "process_jobs", fail)
+        await worker.cycle()
+        with pytest.raises(RuntimeError):
+            await worker.probe()
         await worker.close()
         assert worker.task.done()
         with pytest.raises(RuntimeError):

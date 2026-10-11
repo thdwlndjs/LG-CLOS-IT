@@ -21,6 +21,7 @@ class InlineWorker:
         self.last_cleanup = 0
 
     async def cycle(self):
+        from app.application.poc_vton_worker import process_jobs as process_unified
         from app.workers.external_vton import process as process_external
 
         async def publish(message):
@@ -28,6 +29,7 @@ class InlineWorker:
 
         operations = (
             ("vton", lambda: process_jobs(self.settings, self.resources)),
+            ("poc-vton", lambda: process_unified(self.settings, self.resources)),
             ("liked", lambda: process_external(self.settings, self.resources)),
             ("cards", lambda: process_cards(self.settings, self.resources)),
             ("storage", lambda: process_storage(self.settings, self.resources)),

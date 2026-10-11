@@ -4449,6 +4449,136 @@ paths:
           description: Unprocessable Entity
       x-fsd-ids:
       - STYLE-001
+  /api/v1/integration/vton-jobs:
+    post:
+      tags:
+      - Integration VTON
+      summary: Create
+      operationId: create_api_v1_integration_vton_jobs_post
+      security:
+      - BearerAuth: []
+      parameters:
+      - name: Idempotency-Key
+        in: header
+        required: true
+        schema:
+          type: string
+          format: uuid
+          title: Idempotency-Key
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UnifiedVtonRequest'
+      responses:
+        '202':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnifiedAccepted'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      x-fsd-ids:
+      - VTON-001
+      - VTON-002
+      x-poc-ids:
+      - POC-V01
+      - POC-V02
+      - POC-V03
+      - POC-V04
+      - POC-V05
+      - POC-V06
+  /api/v1/integration/vton-jobs/{job_id}:
+    get:
+      tags:
+      - Integration VTON
+      summary: Detail
+      operationId: detail_api_v1_integration_vton_jobs__job_id__get
+      security:
+      - BearerAuth: []
+      parameters:
+      - name: job_id
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+          title: Job Id
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnifiedJob'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      x-fsd-ids:
+      - VTON-001
+      - VTON-002
+      x-poc-ids:
+      - POC-V01
+      - POC-V02
+      - POC-V03
+      - POC-V04
+      - POC-V05
+      - POC-V06
+  /api/v1/integration/vton-jobs/{job_id}/cancel:
+    post:
+      tags:
+      - Integration VTON
+      summary: Cancel
+      operationId: cancel_api_v1_integration_vton_jobs__job_id__cancel_post
+      security:
+      - BearerAuth: []
+      parameters:
+      - name: job_id
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+          title: Job Id
+      - name: Idempotency-Key
+        in: header
+        required: true
+        schema:
+          type: string
+          format: uuid
+          title: Idempotency-Key
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnifiedCancelled'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      x-fsd-ids:
+      - VTON-001
+      - VTON-002
+      x-poc-ids:
+      - POC-V01
+      - POC-V02
+      - POC-V03
+      - POC-V04
+      - POC-V05
+      - POC-V06
 components:
   securitySchemes:
     BearerAuth:
@@ -6874,3 +7004,364 @@ components:
       - login
       - password
       title: Login
+
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
+      type: object
+      title: HTTPValidationError
+    Item:
+      properties:
+        kind:
+          type: string
+          enum:
+          - OWNED
+          - LIKED
+          title: Kind
+        id:
+          type: string
+          format: uuid
+          title: Id
+        slot:
+          type: string
+          enum:
+          - TOP
+          - BOTTOM
+          - OUTER
+          - DRESS
+          - SHOES
+          - ACCESSORY
+          title: Slot
+        position:
+          type: integer
+          const: 0
+          title: Position
+          default: 0
+        expected_asset_id:
+          type: string
+          format: uuid
+          title: Expected Asset Id
+        expected_source_version:
+          anyOf:
+          - type: integer
+            minimum: 1.0
+          - type: 'null'
+          title: Expected Source Version
+      additionalProperties: false
+      type: object
+      required:
+      - kind
+      - id
+      - slot
+      - expected_asset_id
+      title: Item
+    PersonInput:
+      properties:
+        asset_id:
+          type: string
+          format: uuid
+          title: Asset Id
+        checksum_sha256:
+          type: string
+          pattern: ^[a-f0-9]{64}$
+          title: Checksum Sha256
+      type: object
+      required:
+      - asset_id
+      - checksum_sha256
+      title: PersonInput
+    RequestSnapshot:
+      properties:
+        schema_version:
+          type: string
+          const: poc-vton-c1
+          title: Schema Version
+        request_id:
+          type: string
+          format: uuid
+          title: Request Id
+        household_id:
+          type: string
+          format: uuid
+          title: Household Id
+        member_id:
+          type: string
+          format: uuid
+          title: Member Id
+        client_context_id:
+          type: string
+          format: uuid
+          title: Client Context Id
+        draft_id:
+          type: string
+          title: Draft Id
+        draft_revision:
+          type: integer
+          title: Draft Revision
+        submitted_at:
+          type: string
+          format: date-time
+          title: Submitted At
+        provider:
+          type: string
+          const: MOCK
+          title: Provider
+        person:
+          $ref: '#/components/schemas/PersonInput'
+        items:
+          items:
+            $ref: '#/components/schemas/SnapshotItem'
+          type: array
+          title: Items
+        contains_liked:
+          type: boolean
+          title: Contains Liked
+        input_fingerprint:
+          type: string
+          title: Input Fingerprint
+      type: object
+      required:
+      - schema_version
+      - request_id
+      - household_id
+      - member_id
+      - client_context_id
+      - draft_id
+      - draft_revision
+      - submitted_at
+      - provider
+      - person
+      - items
+      - contains_liked
+      - input_fingerprint
+      title: RequestSnapshot
+    SnapshotItem:
+      properties:
+        kind:
+          type: string
+          enum:
+          - OWNED
+          - LIKED
+          title: Kind
+        id:
+          type: string
+          format: uuid
+          title: Id
+        slot:
+          type: string
+          enum:
+          - TOP
+          - BOTTOM
+          - OUTER
+          - DRESS
+          - SHOES
+          - ACCESSORY
+          title: Slot
+        position:
+          type: integer
+          const: 0
+          title: Position
+        owner_id:
+          type: string
+          format: uuid
+          title: Owner Id
+        source_version:
+          anyOf:
+          - type: integer
+          - type: 'null'
+          title: Source Version
+        asset_id:
+          type: string
+          format: uuid
+          title: Asset Id
+        checksum_sha256:
+          type: string
+          pattern: ^[a-f0-9]{64}$
+          title: Checksum Sha256
+        source_fingerprint:
+          type: string
+          pattern: ^[a-f0-9]{64}$
+          title: Source Fingerprint
+      type: object
+      required:
+      - kind
+      - id
+      - slot
+      - position
+      - owner_id
+      - source_version
+      - asset_id
+      - checksum_sha256
+      - source_fingerprint
+      title: SnapshotItem
+    UnifiedAccepted:
+      properties:
+        job_id:
+          type: string
+          format: uuid
+          title: Job Id
+        status:
+          type: string
+          const: QUEUED
+          title: Status
+        request_snapshot:
+          $ref: '#/components/schemas/RequestSnapshot'
+        status_url:
+          type: string
+          title: Status Url
+        is_mock:
+          type: boolean
+          const: true
+          title: Is Mock
+        result_semantics:
+          type: string
+          const: MOCK_RECEIPT_NOT_REAL_TRY_ON
+          title: Result Semantics
+      type: object
+      required:
+      - job_id
+      - status
+      - request_snapshot
+      - status_url
+      - is_mock
+      - result_semantics
+      title: UnifiedAccepted
+    UnifiedCancelled:
+      properties:
+        job_id:
+          type: string
+          format: uuid
+          title: Job Id
+        status:
+          type: string
+          enum:
+          - QUEUED
+          - RUNNING
+          - SUCCEEDED
+          - FAILED
+          - TIMED_OUT
+          - CANCELLED
+          title: Status
+      type: object
+      required:
+      - job_id
+      - status
+      title: UnifiedCancelled
+    UnifiedJob:
+      properties:
+        job_id:
+          type: string
+          format: uuid
+          title: Job Id
+        status:
+          type: string
+          enum:
+          - QUEUED
+          - RUNNING
+          - SUCCEEDED
+          - FAILED
+          - TIMED_OUT
+          - CANCELLED
+          title: Status
+        request_snapshot:
+          $ref: '#/components/schemas/RequestSnapshot'
+        result_asset:
+          anyOf:
+          - additionalProperties: true
+            type: object
+          - type: 'null'
+          title: Result Asset
+        is_mock:
+          type: boolean
+          const: true
+          title: Is Mock
+        result_semantics:
+          type: string
+          const: MOCK_RECEIPT_NOT_REAL_TRY_ON
+          title: Result Semantics
+        error:
+          anyOf:
+          - additionalProperties: true
+            type: object
+          - type: 'null'
+          title: Error
+      type: object
+      required:
+      - job_id
+      - status
+      - request_snapshot
+      - result_asset
+      - is_mock
+      - result_semantics
+      - error
+      title: UnifiedJob
+    UnifiedVtonRequest:
+      properties:
+        client_context_id:
+          type: string
+          format: uuid
+          title: Client Context Id
+        draft_id:
+          type: string
+          maxLength: 200
+          minLength: 1
+          title: Draft Id
+        draft_revision:
+          type: integer
+          minimum: 0.0
+          title: Draft Revision
+        person_asset_id:
+          type: string
+          format: uuid
+          title: Person Asset Id
+        provider:
+          type: string
+          const: MOCK
+          title: Provider
+          default: MOCK
+        items:
+          items:
+            $ref: '#/components/schemas/Item'
+          type: array
+          maxItems: 6
+          minItems: 1
+          title: Items
+      additionalProperties: false
+      type: object
+      required:
+      - client_context_id
+      - draft_id
+      - draft_revision
+      - person_asset_id
+      - items
+      title: UnifiedVtonRequest
+    ValidationError:
+      properties:
+        loc:
+          items:
+            anyOf:
+            - type: string
+            - type: integer
+          type: array
+          title: Location
+        msg:
+          type: string
+          title: Message
+        type:
+          type: string
+          title: Error Type
+        input:
+          title: Input
+        ctx:
+          type: object
+          title: Context
+      type: object
+      required:
+      - loc
+      - msg
+      - type
+      title: ValidationError

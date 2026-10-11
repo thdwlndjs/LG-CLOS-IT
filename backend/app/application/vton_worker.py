@@ -46,6 +46,7 @@ async def process_jobs(settings, resources, provider_factory=provider_for):
             "UPDATE wardrobe.job SET status='TIMED_OUT',error_code='WORKER_LEASE_EXPIRED',"
             "error_message_safe='Worker lease expired',finished_at=now(),updated_at=now(),"
             "lease_owner=NULL,leased_until=NULL WHERE kind='VTON' AND status='RUNNING' "
+            "AND request_payload->>'contract_version' IS DISTINCT FROM 'poc-vton-c1' "
             "AND leased_until<=now() RETURNING *",
         )
         for row in expired:

@@ -1203,6 +1203,13 @@ export class DemoApp {
       };
     });
   }
+  /** C temporary selection only; persisted outfits/cards/events are untouched. */
+  clearTemporaryVtonDraft(ownerId: string, draftId: string) {
+    if (this.getState().outfitDrafts[ownerId]?.draftId !== draftId) return;
+    this.mutate((state) => {
+      delete state.outfitDrafts[ownerId];
+    });
+  }
   toggleSlotLock(slot: Slot) {
     const draft = this.ensureOutfitDraft();
     if (!draft.items[slot] && !draft.externalItems?.[slot]) return;

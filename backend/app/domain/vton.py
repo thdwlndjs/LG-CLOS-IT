@@ -9,10 +9,20 @@ class ProviderFailure(Exception):
 
 
 @dataclass(frozen=True)
+class InputItem:
+    kind: str
+    id: str
+    slot: str
+    asset_id: str
+    checksum_sha256: str
+
+
+@dataclass(frozen=True)
 class ProviderRequest:
     correlation_id: str
     person: bytes
     garments: tuple[bytes, ...]
+    input_manifest: tuple[InputItem, ...] = ()
 
 
 @dataclass(frozen=True)

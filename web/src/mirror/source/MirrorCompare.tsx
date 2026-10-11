@@ -1,4 +1,5 @@
 import { ServerMockFitting } from "./ServerMockFitting";
+import type { VtonResult } from "./pocVton";
 import { useRef, useState } from "react";
 import type { Garment, OutfitDraft } from "./core";
 import { app } from "./appInstance";
@@ -29,8 +30,10 @@ export function MirrorCompare({
   uiState,
   onUIStateChange,
   onMockResult,
+  mockResult,
 }: {
-  onMockResult?: (url: string, label?: string) => void;
+  mockResult?: VtonResult | null;
+  onMockResult?: (result: VtonResult) => void;
   uiState?: { quick: boolean; more: boolean; page: number };
   onUIStateChange?: (value: {
     quick: boolean;
@@ -135,10 +138,20 @@ export function MirrorCompare({
       </p>
       {app.connection.kind === "supabase" && draft && onMockResult && (
         <ServerMockFitting
-          key={`${draft.draftId}:${draft.revision}`}
+          key={`${draft.ownerId}:${draft.draftId}`}
           draft={draft}
           onResult={onMockResult}
         />
+      )}
+      {mockResult && (
+        <div className="mc-empty" data-mock-receipt={mockResult.job_id}>
+          <img
+            src={mockResult.url}
+            alt="Mock 요청 처리 확인 이미지 · 실제 시착 아님"
+            style={{ width: "100%", height: "auto", objectFit: "contain" }}
+          />
+          <small>Mock 처리 완료 · 실제 시착 이미지가 아닙니다.</small>
+        </div>
       )}
       {!hasMedia && (
         <div className="mc-empty">
@@ -164,10 +177,7 @@ export function MirrorCompare({
           >
             조합 편집
           </button>
-          <button
-            disabled={saving || !draft || !completeOutfit(draft)}
-            onClick={() => onSave(cardTemplate)}
-          >
+          <button disabled={saving} onClick={() => onSave(cardTemplate)}>
             {saving ? "카드 저장 중" : "코디카드로 저장"}
           </button>
           <label>
@@ -261,11 +271,7 @@ export function MirrorCompare({
         </section>
       )}
       <div className="mc-primary">
-        <button
-          className="mx-primary"
-          disabled={committing || !draft || !completeOutfit(draft)}
-          onClick={onCommit}
-        >
+        <button className="mx-primary" disabled={committing} onClick={onCommit}>
           {committing ? "기록하는 중" : "이 코디로 확정"}
         </button>
         <div className="mc-feedback">

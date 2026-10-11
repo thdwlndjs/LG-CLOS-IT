@@ -12,7 +12,10 @@ def process():
         settings = load_settings()
         resources = RuntimeResources(settings)
         try:
-            return await process_jobs(settings, resources)
+            from app.application.poc_vton_worker import process_jobs as process_unified
+
+            return (await process_jobs(settings, resources)
+                    + await process_unified(settings, resources))
         finally:
             await resources.close()
 
