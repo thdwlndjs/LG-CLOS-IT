@@ -1,5 +1,7 @@
 # Smart Wardrobe 기존 계약 충돌·결정 대기 리뷰 v0.2
 
+> **PoC A1 적용(2026-10-11):** [최신 기준 계약](handoff/SMART_WARDROBE_CODEX_HANDOFF_2026-10-11/POC_CONTRACT_A1.md)이 이 문서의 상충 조항보다 우선한다. 보유 코디 확정=착용1회, LED30초, 관심/혼합 VTON, 홈 미저장 PNG, 구매동기화 제외, 가이드 전용 케어 및 단계별 승인은 A1 기준이다. 아래 종전 정책/기술 경로는 상충 범위에서 이전 기준이며 현재 코드의 구현 완료를 뜻하지 않는다. A단계는 문서만 변경했고 B~G는 별도 승인 전 미착수다.
+
 - 날짜: 2026-10-09
 - 범위: 이번에 확정된 ADR-09~13에 직접 관련된 API/DB 계약 충돌 위주. 기타 모든 기능의 완전한 코드 감사가 아님.
 - 검토한 파일: `INTEGRATION_PREPARATION_REPORT.md`, `03_ARCHITECTURE_HLD_v1.1.md`, `04_FSD.md`, `06_OPENAPI.yaml`, `07_DATABASE_SCHEMA.sql`, `04_DB_IMPORT_AND_SHOPPING_INTEGRATION_DESIGN.md`, 11~13 이전 초안.

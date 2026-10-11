@@ -1,4 +1,9 @@
 openapi: 3.1.0
+x-poc-stage-a:
+  status: target-policy-not-implemented
+  contract: handoff/SMART_WARDROBE_CODEX_HANDOFF_2026-10-11/POC_CONTRACT_A1.md
+  compatibility: Existing paths and DTOs remain unchanged; new PoC orchestration awaits stage approval.
+  policies: [owned-confirm-records-wear-once, led-30s, liked-and-mixed-vton, home-unsaved-preview, no-shopping-sync]
 info:
   title: Smart Wardrobe Prototype API
   version: 1.7.0

@@ -1,0 +1,173 @@
+{
+  "scope": "document-only validation; no product commands, DB or generation API executed",
+  "yaml_parse": true,
+  "openapi_paths_unchanged": true,
+  "openapi_components_unchanged": true,
+  "revision_hashes": {
+    "03_ARCHITECTURE_HLD_v1.1.md": true,
+    "04_FSD.md": true,
+    "05_BACKEND_LLD.md": true,
+    "06_OPENAPI.yaml": true,
+    "07_DATABASE_SCHEMA.sql": true,
+    "07_DATABASE_SEED.sql": true,
+    "08_IMPLEMENTATION_PLAN.md": true
+  },
+  "canonical_links": [
+    {
+      "from": "docs/handoff/SMART_WARDROBE_CODEX_HANDOFF_2026-10-11/POC_CONTRACT_A1.md",
+      "target": "SMART_WARDROBE_STAGE_A_CONTRACT.md",
+      "exists": true
+    },
+    {
+      "from": "docs/handoff/SMART_WARDROBE_CODEX_HANDOFF_2026-10-11/POC_CONTRACT_A1.md",
+      "target": "reports/hanger-individual-v1/review.html",
+      "exists": true
+    },
+    {
+      "from": "docs/handoff/SMART_WARDROBE_CODEX_HANDOFF_2026-10-11/POC_CONTRACT_A1.md",
+      "target": "reports/wardrobe-visual-review/REVIEW.md",
+      "exists": true
+    },
+    {
+      "from": "docs/handoff/SMART_WARDROBE_CODEX_HANDOFF_2026-10-11/POC_CONTRACT_A1.md",
+      "target": "reports/wardrobe-visual-review/proposal.html",
+      "exists": true
+    },
+    {
+      "from": "docs/handoff/SMART_WARDROBE_CODEX_HANDOFF_2026-10-11/POC_CONTRACT_A1.md",
+      "target": "references/card/T1_reference.png",
+      "exists": true
+    },
+    {
+      "from": "docs/handoff/SMART_WARDROBE_CODEX_HANDOFF_2026-10-11/POC_CONTRACT_A1.md",
+      "target": "references/card/T2_reference.png",
+      "exists": true
+    },
+    {
+      "from": "docs/handoff/SMART_WARDROBE_CODEX_HANDOFF_2026-10-11/POC_CONTRACT_A1.md",
+      "target": "references/card/T3_reference.png",
+      "exists": true
+    },
+    {
+      "from": "docs/handoff/SMART_WARDROBE_CODEX_HANDOFF_2026-10-11/POC_CONTRACT_A1.md",
+      "target": "references/card/T4_reference.png",
+      "exists": true
+    },
+    {
+      "from": "docs/handoff/SMART_WARDROBE_CODEX_HANDOFF_2026-10-11/POC_CONTRACT_A1.md",
+      "target": "references/card/CARD_TEMPLATE_CONTRACT.md",
+      "exists": true
+    },
+    {
+      "from": "docs/handoff/SMART_WARDROBE_CODEX_HANDOFF_2026-10-11/POC_CONTRACT_A1.md",
+      "target": "reports/evidence/remediation/poc-status-db.json",
+      "exists": true
+    },
+    {
+      "from": "docs/handoff/SMART_WARDROBE_CODEX_HANDOFF_2026-10-11/POC_CONTRACT_A1.md",
+      "target": "reports/evidence/remediation/poc-status-browser.json",
+      "exists": true
+    },
+    {
+      "from": "docs/handoff/SMART_WARDROBE_CODEX_HANDOFF_2026-10-11/POC_CONTRACT_A1.md",
+      "target": "reports/evidence/remediation/live-data-mapping.csv",
+      "exists": true
+    },
+    {
+      "from": "docs/handoff/SMART_WARDROBE_CODEX_HANDOFF_2026-10-11/POC_CONTRACT_A1.md",
+      "target": "reports/evidence/remediation/browser.json",
+      "exists": true
+    },
+    {
+      "from": "docs/handoff/SMART_WARDROBE_CODEX_HANDOFF_2026-10-11/POC_CONTRACT_A1.md",
+      "target": "reports/evidence/remediation/verification-results.json",
+      "exists": true
+    },
+    {
+      "from": "docs/handoff/SMART_WARDROBE_CODEX_HANDOFF_2026-10-11/POC_CONTRACT_A1.md",
+      "target": "reports/POC_IMPLEMENTATION_STATUS_AUDIT.md",
+      "exists": true
+    },
+    {
+      "from": "docs/handoff/SMART_WARDROBE_CODEX_HANDOFF_2026-10-11/POC_CONTRACT_A1.md",
+      "target": "reports/STAGE_A_ALIGNMENT_REPORT.md",
+      "exists": true
+    },
+    {
+      "from": "docs/handoff/SMART_WARDROBE_CODEX_HANDOFF_2026-10-11/POC_CONTRACT_A1.md",
+      "target": "execution/STAGE_B_G_EXECUTION_DRAFT.md",
+      "exists": true
+    },
+    {
+      "from": "docs/handoff/SMART_WARDROBE_CODEX_HANDOFF_2026-10-11/execution/STAGE_B_G_EXECUTION_DRAFT.md",
+      "target": "../POC_CONTRACT_A1.md",
+      "exists": true
+    },
+    {
+      "from": "docs/handoff/SMART_WARDROBE_CODEX_HANDOFF_2026-10-11/reports/STAGE_A_ALIGNMENT_REPORT.md",
+      "target": "../SMART_WARDROBE_STAGE_A_CONTRACT.md",
+      "exists": true
+    },
+    {
+      "from": "docs/handoff/SMART_WARDROBE_CODEX_HANDOFF_2026-10-11/reports/STAGE_A_ALIGNMENT_REPORT.md",
+      "target": "../POC_CONTRACT_A1.md",
+      "exists": true
+    },
+    {
+      "from": "docs/handoff/SMART_WARDROBE_CODEX_HANDOFF_2026-10-11/reports/STAGE_A_ALIGNMENT_REPORT.md",
+      "target": "../execution/STAGE_B_G_EXECUTION_DRAFT.md",
+      "exists": true
+    },
+    {
+      "from": "docs/handoff/SMART_WARDROBE_CODEX_HANDOFF_2026-10-11/reports/STAGE_A_ALIGNMENT_REPORT.md",
+      "target": "STAGE_A_DOCUMENT_CHANGES.json",
+      "exists": true
+    },
+    {
+      "from": "docs/handoff/SMART_WARDROBE_CODEX_HANDOFF_2026-10-11/reports/STAGE_A_ALIGNMENT_REPORT.md",
+      "target": "STAGE_A_DOCUMENT_DIFF.md",
+      "exists": true
+    },
+    {
+      "from": "docs/handoff/SMART_WARDROBE_CODEX_HANDOFF_2026-10-11/reports/STAGE_A_ALIGNMENT_REPORT.md",
+      "target": "STAGE_A_DOCUMENT_VALIDATION.json",
+      "exists": true
+    }
+  ],
+  "changed_doc_hashes": {
+    "docs/handoff/SMART_WARDROBE_CODEX_HANDOFF_2026-10-11/contracts/00_MASTER_CONTRACT.md": true,
+    "docs/handoff/SMART_WARDROBE_CODEX_HANDOFF_2026-10-11/contracts/01_DATA_AND_PRODUCT.md": true,
+    "docs/handoff/SMART_WARDROBE_CODEX_HANDOFF_2026-10-11/contracts/02_ASSETS_WARDROBE.md": true,
+    "docs/handoff/SMART_WARDROBE_CODEX_HANDOFF_2026-10-11/contracts/03_EXPERIENCE_VTON_CARD.md": true,
+    "docs/handoff/SMART_WARDROBE_CODEX_HANDOFF_2026-10-11/contracts/04_STORAGE_AGENT.md": true,
+    "docs/03_ARCHITECTURE_HLD_v1.1.md": true,
+    "docs/04_FSD.md": true,
+    "docs/05_BACKEND_LLD.md": true,
+    "docs/08_IMPLEMENTATION_PLAN.md": true,
+    "docs/IMPLEMENTATION_TRACEABILITY.md": true,
+    "docs/11_INTEGRATION_DECISIONS_v1.2.md": true,
+    "docs/12_FRONTEND_FSD_DRAFT_v0.3.md": true,
+    "docs/13_BACKEND_CHANGE_SPEC_DRAFT_v0.3.md": true,
+    "docs/14_CONTRACT_CONFLICT_REVIEW_v0.2.md": true,
+    "docs/handoff/SMART_WARDROBE_CODEX_HANDOFF_2026-10-11/execution/02_AFTER_APPROVAL.md": true,
+    "docs/handoff/SMART_WARDROBE_CODEX_HANDOFF_2026-10-11/execution/03_QA_MATRIX.md": true,
+    "docs/handoff/SMART_WARDROBE_CODEX_HANDOFF_2026-10-11/execution/04_P3_P10_AUTONOMOUS_EXCUTION.md": true,
+    "docs/handoff/SMART_WARDROBE_CODEX_HANDOFF_2026-10-11/execution/05_P3_P10_REMEDIATION.md": true,
+    "docs/handoff/SMART_WARDROBE_CODEX_HANDOFF_2026-10-11/references/card/CARD_TEMPLATE_CONTRACT.md": true,
+    "docs/integration_sources/09_SHOPPING_INTEGRATION_CHANGE_REQUEST.md": true,
+    "docs/integration_sources/10_DB_IMPORT_AND_SHOPPING_INTEGRATION_DESIGN.md": true,
+    "docs/06_OPENAPI.yaml": true,
+    "docs/CONTRACT_REVISION_1_7.json": true
+  },
+  "required_assets": {
+    "web/public/assets/mirror-final/wardrobe-base-led-off.png": true,
+    "docs/handoff/SMART_WARDROBE_CODEX_HANDOFF_2026-10-11/reports/wardrobe-visual-review/reference-unchanged.png": true,
+    "docs/handoff/SMART_WARDROBE_CODEX_HANDOFF_2026-10-11/templates/approved_scene_manifest.json": true,
+    "docs/handoff/SMART_WARDROBE_CODEX_HANDOFF_2026-10-11/references/card/T1_reference.png": true,
+    "docs/handoff/SMART_WARDROBE_CODEX_HANDOFF_2026-10-11/references/card/T2_reference.png": true,
+    "docs/handoff/SMART_WARDROBE_CODEX_HANDOFF_2026-10-11/references/card/T3_reference.png": true,
+    "docs/handoff/SMART_WARDROBE_CODEX_HANDOFF_2026-10-11/references/card/T4_reference.png": true,
+    "assets/wardrobe-scene-sprites/approved-v1/B3.png": true
+  },
+  "pass": true
+}

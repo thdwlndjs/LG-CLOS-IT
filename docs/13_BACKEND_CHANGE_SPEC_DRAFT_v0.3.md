@@ -1,5 +1,7 @@
 # Smart Wardrobe Backend Change Spec — 통합 수정 초안 v0.3
 
+> **PoC A1 적용(2026-10-11):** [최신 기준 계약](handoff/SMART_WARDROBE_CODEX_HANDOFF_2026-10-11/POC_CONTRACT_A1.md)이 이 문서의 상충 조항보다 우선한다. 보유 코디 확정=착용1회, LED30초, 관심/혼합 VTON, 홈 미저장 PNG, 구매동기화 제외, 가이드 전용 케어 및 단계별 승인은 A1 기준이다. 아래 종전 정책/기술 경로는 상충 범위에서 이전 기준이며 현재 코드의 구현 완료를 뜻하지 않는다. A단계는 문서만 변경했고 B~G는 별도 승인 전 미착수다.
+
 - 상태: **변경 방향 명세, API/DDL/Migration 적용 미승인**
 - 제품 의사결정: `11_INTEGRATION_DECISIONS_v1.2.md` (ADR-01~13)
 - 기준: Sprint 7 FastAPI·PostgreSQL·MinIO, `06_OPENAPI.yaml` 및 `07_DATABASE_SCHEMA.sql` (실제 코드/마이그레이션 대조 전에는 최종 계약으로 승격하지 않음).

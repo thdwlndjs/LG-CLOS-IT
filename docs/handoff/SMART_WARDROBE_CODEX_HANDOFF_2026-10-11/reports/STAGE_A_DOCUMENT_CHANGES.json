@@ -1,0 +1,120 @@
+{
+  "base_head": "badf6f2",
+  "documents": [
+    {
+      "path": "docs/handoff/SMART_WARDROBE_CODEX_HANDOFF_2026-10-11/contracts/00_MASTER_CONTRACT.md",
+      "before_sha256": "86f1dbb1c610c03328158743a58df50e076fda2e32386f6158a3579802827e1b",
+      "after_sha256": "e01442a8a12945a4fe09578530b28adae2a41413547e5794a55fcfcfdc659740"
+    },
+    {
+      "path": "docs/handoff/SMART_WARDROBE_CODEX_HANDOFF_2026-10-11/contracts/01_DATA_AND_PRODUCT.md",
+      "before_sha256": "6e4b7731779f5cea8572c25943fe23b0f320043caf0cef15ecc99cca91c635b9",
+      "after_sha256": "31debc08824779ec93bd3f02d5e3f0ac655a5cb5511cf96636b088ab2b92b00a"
+    },
+    {
+      "path": "docs/handoff/SMART_WARDROBE_CODEX_HANDOFF_2026-10-11/contracts/02_ASSETS_WARDROBE.md",
+      "before_sha256": "4e31c03a0b9f08073155362a9534a8c89e09f58ae34b71fa418413e6acf79608",
+      "after_sha256": "c72aec5ab5fc9885890ba2cd4836cef34a8fc74246b9af2d7d27e3a4b3440891"
+    },
+    {
+      "path": "docs/handoff/SMART_WARDROBE_CODEX_HANDOFF_2026-10-11/contracts/03_EXPERIENCE_VTON_CARD.md",
+      "before_sha256": "f7366b1a02671f2e9ecce4f6a050ac9912c2ebc73d8e459f6f66d7813aacd07c",
+      "after_sha256": "55f1d81f76ae2d2fa56d02c773e37e19fdb62be23fbea78f2d74e10ab5a27323"
+    },
+    {
+      "path": "docs/handoff/SMART_WARDROBE_CODEX_HANDOFF_2026-10-11/contracts/04_STORAGE_AGENT.md",
+      "before_sha256": "a4f6eb1dc0a5d9db86279ca5c0ada6cb4501592f8b668fbdb532eb03e91a32dd",
+      "after_sha256": "605fa95f369e7c6571fe1ffcb9e95ac545faa059b85ddcf9ff0a33d0bc8bed86"
+    },
+    {
+      "path": "docs/03_ARCHITECTURE_HLD_v1.1.md",
+      "before_sha256": "07962f34ce1b7bea389ba85cf396c7aaf5c5fb0b637bb5b022694fb542f46f5b",
+      "after_sha256": "bc2da35a2ebdd29805798e9ee15c6ce64494d3475fd0304f64f26d5c31d5c1b4"
+    },
+    {
+      "path": "docs/04_FSD.md",
+      "before_sha256": "137fcd54862894119896d2c676db89b8abaf6fd736b5c0a8d8b3266a9ce35d43",
+      "after_sha256": "25f65541bbd5bd2e6ad671c403e37df35592455bd71a2184a8ca296ad7f810a1"
+    },
+    {
+      "path": "docs/05_BACKEND_LLD.md",
+      "before_sha256": "05cc1483a6dd54207f6d70fe82c5c40eed2f271571b964831885a047e24a2c2c",
+      "after_sha256": "e1788c759369c815e300717c2bacd42ff9f745dc3f2d589139e89193425f60fa"
+    },
+    {
+      "path": "docs/08_IMPLEMENTATION_PLAN.md",
+      "before_sha256": "48793ac8eb392cdc83ec2dcaa49b4aeeb9f7820c55317fcc1151beffffa0e5de",
+      "after_sha256": "c76e1e8a7be44f884bfbaaf1a6abf7bce6f383f17baae5afa408343cc5115b7e"
+    },
+    {
+      "path": "docs/IMPLEMENTATION_TRACEABILITY.md",
+      "before_sha256": "cb9f2641c47633fb928526029f73d01ca48b9e79e3c05416d6f370aeb68ea717",
+      "after_sha256": "56aa1bc6423f55eeef9dc95bbbb9a0b0439bb8966f00952625c87ceb0b02aed6"
+    },
+    {
+      "path": "docs/11_INTEGRATION_DECISIONS_v1.2.md",
+      "before_sha256": "220b9500a2d4233c6c2a064e30d531b8a7f7211c47f9ea56587bc498d1e433cf",
+      "after_sha256": "c32fd77246ab9cea167bbf6fc4c319722ff222ccbbd2a524e375ac9285f6ed37"
+    },
+    {
+      "path": "docs/12_FRONTEND_FSD_DRAFT_v0.3.md",
+      "before_sha256": "4b11c8f6e23e2d2110c1978206bbf353a4273fd6f9bb8173a57db4c294a662b5",
+      "after_sha256": "6ced2520120c8a9082248a99b1a40018ca8aecb21eb3fd8158c09950d1b5b0ee"
+    },
+    {
+      "path": "docs/13_BACKEND_CHANGE_SPEC_DRAFT_v0.3.md",
+      "before_sha256": "fe20a96bb257a53ab89060b803270bce2c9621c53b95b01bd24de76e4c43aced",
+      "after_sha256": "08f93bfbb4d0691a87fd4766c80f2d3723972923d4806f67ac05a60f3938eee0"
+    },
+    {
+      "path": "docs/14_CONTRACT_CONFLICT_REVIEW_v0.2.md",
+      "before_sha256": "eaf1baf107654a2f9c40aa44ab89beaa96204c44bb2f584092f2e0b06212c887",
+      "after_sha256": "ca03d99655dcb43f3740b710d1ea1c903e37412fb2bef384ef6c73c684a185bb"
+    },
+    {
+      "path": "docs/handoff/SMART_WARDROBE_CODEX_HANDOFF_2026-10-11/execution/02_AFTER_APPROVAL.md",
+      "before_sha256": "f08a134ceeeb35c3cb3fb1643ead5e7772b1ec8255498a8c39a0da305cbda5fd",
+      "after_sha256": "cda4fd2b4822fb90c4e5686d360d6528128acdc28671659094e18f477195a2da"
+    },
+    {
+      "path": "docs/handoff/SMART_WARDROBE_CODEX_HANDOFF_2026-10-11/execution/03_QA_MATRIX.md",
+      "before_sha256": "ff7203f8281687175b7ce5364958a3542cf840177ccb8c89c28d6fa2a138df68",
+      "after_sha256": "5a5471ee8ebb9a409de0e7e30033eb9cc2b5d92cb8fe64132dc90672759e6dd0"
+    },
+    {
+      "path": "docs/handoff/SMART_WARDROBE_CODEX_HANDOFF_2026-10-11/execution/04_P3_P10_AUTONOMOUS_EXCUTION.md",
+      "before_sha256": "41b3f0e2d61c781096a2861edf702f05eeb71e514bb7446efb1ff7c70196048a",
+      "after_sha256": "501d38c83f2af95ecdfcb2718669e53db84bd5ece704c302de027040d720c166"
+    },
+    {
+      "path": "docs/handoff/SMART_WARDROBE_CODEX_HANDOFF_2026-10-11/execution/05_P3_P10_REMEDIATION.md",
+      "before_sha256": "43ab6d1fd72be4d444c16bd334eb32f2a4290baa37ab40d5642c04bfd05abeb9",
+      "after_sha256": "ad2f74948a2026c8266d444e4f0f6ffa3da9a04abe9c89466ab987bc4417b74b"
+    },
+    {
+      "path": "docs/handoff/SMART_WARDROBE_CODEX_HANDOFF_2026-10-11/references/card/CARD_TEMPLATE_CONTRACT.md",
+      "before_sha256": "ad6541fcf3f7cb3206bd19f15f465eaf925f1bb6f0108f7ab61253bdec7a4269",
+      "after_sha256": "98e083b0b73e7d02dcbe0ed3cdfbd602ed5cfc6e932882e66773c8ceb776111f"
+    },
+    {
+      "path": "docs/integration_sources/09_SHOPPING_INTEGRATION_CHANGE_REQUEST.md",
+      "before_sha256": "3abc1f4c07de4f0b1632b0c93b71d5ebdc37c48edfb40f17f3887d10fdfd4c75",
+      "after_sha256": "8c5890c49c53d7f1bd2a07c97fe4614815e3115ce22e21de783de8144cb5237b"
+    },
+    {
+      "path": "docs/integration_sources/10_DB_IMPORT_AND_SHOPPING_INTEGRATION_DESIGN.md",
+      "before_sha256": "84d2243425a6b9e3d71429d64233db4d8a05ee0eb3f28d1f5edeb91264682b19",
+      "after_sha256": "902cba1838e4ce8c8fc6dab6437ac1f984c8cfa74401034904861f284a1f74a3"
+    },
+    {
+      "path": "docs/06_OPENAPI.yaml",
+      "before_sha256": "c21094d779c4ea7afdc033054533fc331c6a80910a9ac20ccea737f07b842dcc",
+      "after_sha256": "881a0ed01d5a1daa101a1f24dd796f428659371c48143666fe4e0d61180c1086"
+    },
+    {
+      "path": "docs/CONTRACT_REVISION_1_7.json",
+      "before_sha256": "1281bd84a0bb84675c3897061926611242c8dc893640bd523374469d939c0cbe",
+      "after_sha256": "994a59c3d4f930ee95f1d44ff4e805348620fc0641de3eff8dcc58b15ee6f427"
+    }
+  ]
+}
