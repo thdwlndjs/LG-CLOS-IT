@@ -94,3 +94,7 @@ Latest explicit user instruction resolved scope: regenerate existing B3 denim si
 
 ## B3 placed in hanger review
 review.html defaults to cleaned B3, checkbox toggles old asset. Browser PASS: old reassembly matches, corrected changes limited to B3 canvas, hide/move actions and no page errors. Actual screenshot exposes a bright wood-shaped background restoration patch around the cleaned shirt; visual integration is not complete. See B3_CLEANUP.md and B3-clean-in-wardrobe-detail.png.
+
+
+## B3 shirt structure candidate v5
+New user instruction: use other transparent PNGs for side pose and original denim product photo for shirt construction. New B3-shirt-v5 candidate has separately visible sleeve and torso, pocket/placket on torso. RGBA and browser comparison verified. Candidate only; original placement scale may need tuning. Existing wardrobe preview default, app, DB and production remain unchanged. See hanger-individual-v1/B3_SHIRT_V5.md.

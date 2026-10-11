@@ -1,0 +1,23 @@
+{
+  "status": "GENERATED_CLEANUP_VISUAL_REVIEW",
+  "raw_size": [
+    725,
+    2168
+  ],
+  "alpha_crop": [
+    184,
+    10,
+    393,
+    2039
+  ],
+  "placement": [
+    486,
+    121,
+    53,
+    310
+  ],
+  "generated_source": "B3-shirt-pose-v5.png",
+  "generator": "image_gen.imagegen",
+  "finishing": "Canvas alpha fringe removal, one-pixel matte erosion, aspect-preserving fit to original 53x310 canvas",
+  "limitation": "Generated texture is not pixel-identical to source. Existing pose approximated; final visual approval pending."
+}

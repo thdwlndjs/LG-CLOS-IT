@@ -4,7 +4,10 @@ import {fileURLToPath} from 'node:url';
 import {resolve} from 'node:path';
 const {chromium}=createRequire(new URL('../web/package.json',import.meta.url))('playwright');
 const dir=resolve(fileURLToPath(new URL('..',import.meta.url)),'docs/handoff/SMART_WARDROBE_CODEX_HANDOFF_2026-10-11/reports/hanger-individual-v1');
-const raw=await readFile(resolve(dir,'B3-clean-v4.png'));
+const input=process.argv[2]||'B3-clean-v4.png';
+const prefix=process.argv[3]||'B3-clean';
+if(!/^[A-Za-z0-9_-]+\.png$/.test(input)||!/^[A-Za-z0-9_-]+$/.test(prefix))throw Error('Use plain local asset names');
+const raw=await readFile(resolve(dir,input));
 const browser=await chromium.launch();
 try{
  const page=await browser.newPage();
@@ -36,8 +39,8 @@ try{
   t.drawImage(c,left,top,w,h,(53-dw)/2,1,dw,dh);
   return {raw_size:[im.width,im.height],alpha_crop:[left,top,w,h],placement:[486,121,53,310],png:target.toDataURL(),highres:c.toDataURL()};
  },'data:image/png;base64,'+raw.toString('base64'));
- for(const [name,key] of [['B3-clean-final.png','png'],['B3-clean-highres.png','highres']])await writeFile(resolve(dir,name),Buffer.from(result[key].split(',')[1],'base64'));
+ for(const [name,key] of [[prefix+'-final.png','png'],[prefix+'-highres.png','highres']])await writeFile(resolve(dir,name),Buffer.from(result[key].split(',')[1],'base64'));
  delete result.png;delete result.highres;
- await writeFile(resolve(dir,'B3-clean-placement.json'),JSON.stringify({status:'GENERATED_CLEANUP_VISUAL_REVIEW',...result,source:'B3.png',generator:'image_gen.imagegen',finishing:'Canvas alpha fringe removal, one-pixel matte erosion, aspect-preserving fit to original 53x310 canvas',limitation:'Generated texture is not pixel-identical to source. Existing pose approximated; final visual approval pending.'},null,2)+'\n');
+ await writeFile(resolve(dir,prefix+'-placement.json'),JSON.stringify({status:'GENERATED_CLEANUP_VISUAL_REVIEW',...result,generated_source:input,generator:'image_gen.imagegen',finishing:'Canvas alpha fringe removal, one-pixel matte erosion, aspect-preserving fit to original 53x310 canvas',limitation:'Generated texture is not pixel-identical to source. Existing pose approximated; final visual approval pending.'},null,2)+'\n');
  console.log(JSON.stringify(result));
 }finally{await browser.close()}
