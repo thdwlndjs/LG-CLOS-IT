@@ -1,34 +1,38 @@
 {
+  "captured_at": "2026-10-11T11:15:25.973507+00:00",
   "verified_at": "2026-10-11",
   "database": "wardrobe_test_remediation",
   "members": 4,
-  "garments": 52,
-  "ready_photos": 52,
-  "signed_download_hash_matches": 52,
+  "garments": 76,
+  "ready_photos": 76,
+  "signed_download_hash_matches": 76,
+  "existing_dataset": 52,
+  "approved_additions": 24,
+  "original_and_scene_assets_separate": true,
   "initial_groups": {
     "internal": 35,
     "external": 8,
     "accessory": 9
   },
   "current_status": {
-    "AVAILABLE": 44,
+    "AVAILABLE": 68,
     "STORED": 8
   },
   "current_locations": {
     "G 소품 서랍": 8,
-    "internal": 33,
-    "두번째 방 보관함": 10,
+    "internal": 56,
+    "두번째 방 보관함": 11,
     "G 신발 데모 보관함": 1
   },
-  "synthetic_observations": 53,
+  "synthetic_observations": 90,
   "wear_events": 0,
   "capacity_overflow": false,
-  "saved_cards": 44,
+  "saved_cards": 96,
   "saved_templates": {
-    "T4-v1": 11,
-    "T2-v1": 11,
-    "T3-v1": 11,
-    "T1-v1": 11
+    "T4-v1": 24,
+    "T2-v1": 24,
+    "T1-v1": 24,
+    "T3-v1": 24
   },
   "source_rasters_modified": false,
   "paid_provider_calls": false,
@@ -37,7 +41,7 @@
     {
       "name": "두번째 방 보관함",
       "capacity_units": 24,
-      "occupied": 10
+      "occupied": 11
     },
     {
       "name": "현관 보관함",
@@ -67,7 +71,7 @@
     {
       "name": "A-05",
       "capacity_units": 1,
-      "occupied": 1
+      "occupied": 0
     },
     {
       "name": "A-06",
@@ -81,6 +85,41 @@
     },
     {
       "name": "A-08",
+      "capacity_units": 1,
+      "occupied": 0
+    },
+    {
+      "name": "승인 A1",
+      "capacity_units": 1,
+      "occupied": 1
+    },
+    {
+      "name": "승인 A2",
+      "capacity_units": 1,
+      "occupied": 1
+    },
+    {
+      "name": "승인 A3",
+      "capacity_units": 1,
+      "occupied": 1
+    },
+    {
+      "name": "승인 A4",
+      "capacity_units": 1,
+      "occupied": 1
+    },
+    {
+      "name": "승인 A5",
+      "capacity_units": 1,
+      "occupied": 1
+    },
+    {
+      "name": "승인 A6",
+      "capacity_units": 1,
+      "occupied": 1
+    },
+    {
+      "name": "승인 A7",
       "capacity_units": 1,
       "occupied": 1
     },
@@ -102,7 +141,7 @@
     {
       "name": "B-04",
       "capacity_units": 1,
-      "occupied": 1
+      "occupied": 0
     },
     {
       "name": "B-05",
@@ -127,10 +166,40 @@
     {
       "name": "B-09",
       "capacity_units": 1,
+      "occupied": 0
+    },
+    {
+      "name": "승인 B1",
+      "capacity_units": 1,
       "occupied": 1
     },
     {
       "name": "B-10",
+      "capacity_units": 1,
+      "occupied": 1
+    },
+    {
+      "name": "승인 B2",
+      "capacity_units": 1,
+      "occupied": 1
+    },
+    {
+      "name": "승인 B3",
+      "capacity_units": 1,
+      "occupied": 1
+    },
+    {
+      "name": "승인 B4",
+      "capacity_units": 1,
+      "occupied": 1
+    },
+    {
+      "name": "승인 B5",
+      "capacity_units": 1,
+      "occupied": 1
+    },
+    {
+      "name": "승인 B6",
       "capacity_units": 1,
       "occupied": 1
     },
@@ -167,12 +236,12 @@
     {
       "name": "C-07",
       "capacity_units": 1,
-      "occupied": 0
+      "occupied": 1
     },
     {
       "name": "C-08",
       "capacity_units": 1,
-      "occupied": 1
+      "occupied": 0
     },
     {
       "name": "C-09",
@@ -180,7 +249,47 @@
       "occupied": 1
     },
     {
+      "name": "승인 C1",
+      "capacity_units": 1,
+      "occupied": 1
+    },
+    {
       "name": "C-10",
+      "capacity_units": 1,
+      "occupied": 1
+    },
+    {
+      "name": "승인 C2",
+      "capacity_units": 1,
+      "occupied": 1
+    },
+    {
+      "name": "승인 C3",
+      "capacity_units": 1,
+      "occupied": 1
+    },
+    {
+      "name": "승인 C4",
+      "capacity_units": 1,
+      "occupied": 1
+    },
+    {
+      "name": "승인 C5",
+      "capacity_units": 1,
+      "occupied": 1
+    },
+    {
+      "name": "승인 C6",
+      "capacity_units": 1,
+      "occupied": 1
+    },
+    {
+      "name": "승인 C7",
+      "capacity_units": 1,
+      "occupied": 1
+    },
+    {
+      "name": "승인 C8",
       "capacity_units": 1,
       "occupied": 1
     },
@@ -232,7 +341,7 @@
     {
       "name": "D-10",
       "capacity_units": 1,
-      "occupied": 0
+      "occupied": 1
     },
     {
       "name": "D-11",
@@ -337,7 +446,7 @@
     {
       "name": "F-07",
       "capacity_units": 1,
-      "occupied": 0
+      "occupied": 1
     },
     {
       "name": "F-08",
@@ -347,7 +456,7 @@
     {
       "name": "F-09",
       "capacity_units": 1,
-      "occupied": 0
+      "occupied": 1
     },
     {
       "name": "G 소품 서랍",
@@ -357,6 +466,21 @@
     {
       "name": "G 신발 데모 보관함",
       "capacity_units": 2,
+      "occupied": 1
+    },
+    {
+      "name": "승인 K1",
+      "capacity_units": 1,
+      "occupied": 1
+    },
+    {
+      "name": "승인 K2",
+      "capacity_units": 1,
+      "occupied": 1
+    },
+    {
+      "name": "승인 K3",
+      "capacity_units": 1,
       "occupied": 1
     }
   ]

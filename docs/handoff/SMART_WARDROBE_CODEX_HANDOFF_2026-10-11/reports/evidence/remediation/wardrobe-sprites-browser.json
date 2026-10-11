@@ -1,11 +1,47 @@
 {
   "stats": {
-    "total": 52,
-    "visible": 33,
+    "total": 76,
+    "visible": 24,
     "connection": "supabase",
-    "derivative": 33,
-    "hanging": 23,
-    "folded": 10
+    "derivative": 24,
+    "hanging": 21,
+    "folded": 3
+  },
+  "light": {
+    "selected": "brightness(1)",
+    "others": [
+      "brightness(0.4)",
+      "brightness(0.4)",
+      "brightness(0.4)",
+      "brightness(0.4)",
+      "brightness(0.4)",
+      "brightness(0.4)",
+      "brightness(0.4)",
+      "brightness(0.4)",
+      "brightness(0.4)",
+      "brightness(0.4)",
+      "brightness(0.4)",
+      "brightness(0.4)",
+      "brightness(0.4)",
+      "brightness(0.4)",
+      "brightness(0.4)",
+      "brightness(0.4)",
+      "brightness(0.4)",
+      "brightness(0.4)",
+      "brightness(0.4)",
+      "brightness(0.4)",
+      "brightness(0.4)",
+      "brightness(0.4)",
+      "brightness(0.4)"
+    ],
+    "frame": "none",
+    "rectangles": 0
+  },
+  "movement": {
+    "hidden": true,
+    "blocked": true,
+    "denied": true,
+    "restored": true
   },
   "errors": [],
   "result": "PASS",

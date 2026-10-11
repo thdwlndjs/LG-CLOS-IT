@@ -4,8 +4,8 @@
       "actor": "mom",
       "step": "login/family/verified image assets/internal scene/owned recommendations",
       "result": "PASS",
-      "dataset": 52,
-      "visible": 32,
+      "dataset": 76,
+      "visible": 24,
       "recommendations": 3
     },
     {
@@ -22,34 +22,50 @@
       "actor": "mom",
       "step": "T1-v1 UI select -> React/Playwright -> private MinIO -> saved DB -> requery/download",
       "result": "PASS",
-      "bytes": 2332724
+      "bytes": 1757805
     },
     {
       "actor": "mom",
       "step": "T2-v1 UI select -> React/Playwright -> private MinIO -> saved DB -> requery/download",
       "result": "PASS",
-      "bytes": 2357644
+      "bytes": 2079680
     },
     {
       "actor": "mom",
       "step": "T3-v1 UI select -> React/Playwright -> private MinIO -> saved DB -> requery/download",
       "result": "PASS",
-      "bytes": 2212099
+      "bytes": 1898450
     },
     {
       "actor": "mom",
       "step": "T4-v1 UI select -> React/Playwright -> private MinIO -> saved DB -> requery/download",
       "result": "PASS",
-      "bytes": 2219519
+      "bytes": 1624403
+    },
+    {
+      "actor": "mom",
+      "step": "actual recommended outfit confirmation -> garment locations LED -> no planned/actual wear creation",
+      "result": "PASS"
+    },
+    {
+      "actor": "mom",
+      "step": "approved coat seasonal store/return -> explicit approvals -> original DB slot -> scene disappearance/reappearance",
+      "result": "PASS",
+      "garment_id": "bc35f9b1-3a49-46d7-b0df-4631d2d3e3e9"
     },
     {
       "actor": "mom",
       "step": "winter proposal -> approve leaves DB intact -> explicit completion changes DB -> scene refresh",
       "result": "PASS",
-      "actionId": "700fd0f6-998c-4d7c-b8de-1c7de8063693"
+      "actionId": "326788c5-ecb0-42be-88b9-fe31102fd242"
     }
   ],
   "errors": [],
-  "failed": [],
-  "error": "AssertionError [ERR_ASSERTION]: winter retrieval remains feasible"
+  "failed": [
+    {
+      "url": "/api/v1/storage-actions/5363c093-f38f-4b61-b617-59fdf3925145/decision",
+      "status": 409
+    }
+  ],
+  "error": "TimeoutError: page.waitForFunction: Timeout 30000ms exceeded."
 }

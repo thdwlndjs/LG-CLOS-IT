@@ -1,5 +1,9 @@
 # P3~P10 최종 인계
 
+현재 정본은 [P3_P10_REMEDIATION_REPORT.md](P3_P10_REMEDIATION_REPORT.md)와 [REMEDIATION_CHECKPOINT.md](REMEDIATION_CHECKPOINT.md)다. 승인 에셋24개/총76개를 연결했고 계약 검사는 통과했지만 카드 Gate A/B와 기존 회수 의류의 화면 매핑은 미완료다. 아래는 최초 실행의 과거 증적이며 현재 수량·잔여 목록으로 사용하지 않는다.
+
+## 최초 실행 기록
+
 2026-10-11 · 브랜치 `feat/handoff-p3-p10` · 기준 `c17e5e6`, 조사 커밋 `6db17b4`.
 
 **전체 완료로 판정하지 않는다.** 독립적으로 가능한 서버·프론트 연결, 격리 DB 적재, 카드 렌더링과 로컬 검증을 수행했다. 실제 상품 이미지·승인된 clean plate·측정 슬롯·카드 복원 기준본·실제 Decart/하드웨어 검증이 남아 있다. 운영/클라우드 DB 변경, 원격 push/merge/deploy, 유료 호출은 하지 않았다. 팀원 원본과 기존 사용자 데이터는 보존했다.

@@ -1,0 +1,41 @@
+{
+    "captured_at":  "2026-10-11T11:18:39.2569454Z",
+    "implementation_commit":  "c9dd6ac",
+    "backend":  {
+                    "seconds":  144.88,
+                    "command":  ".venv/Scripts/python.exe scripts/handoff_checks.py",
+                    "warnings":  722,
+                    "failed":  0,
+                    "passed":  284
+                },
+    "post_guard_storage_unit":  {
+                                    "passed":  23,
+                                    "failed":  0
+                                },
+    "contract":  {
+                     "passed":  11,
+                     "failed":  0
+                 },
+    "web_unit":  {
+                     "passed":  39,
+                     "failed":  0
+                 },
+    "renderer_unit":  {
+                          "passed":  6,
+                          "failed":  0
+                      },
+    "typecheck_and_build":  "PASS",
+    "ruff":  "PASS",
+    "scene_browser":  "PASS",
+    "browser_overall":  "PARTIAL",
+    "browser_checks_pass":  20,
+    "browser_checks_partial":  1,
+    "production_db_changed":  false,
+    "paid_decart_calls":  false,
+    "hardware_control":  false,
+    "remote_push":  false,
+    "remaining":  [
+                      "P7 Gate A/B fold and occlusion fidelity",
+                      "legacy52 hidden-slot scene asset mappings"
+                  ]
+}

@@ -1,167 +1,108 @@
-# P3–P10 시정 작업 결과
+﻿# P3–P10 재개 결과
 
-2026-10-11 · 브랜치 `feat/handoff-p3-p10` · 시작 커밋 `1fffbeb`.
+2026-10-11 · `feat/handoff-p3-p10` · 재개 기준 `3bb02e6`.
 
-**전체 판정: PARTIAL.** 실제 상품 사진 52개, 격리 DB 기반 옷장, 엄마·아들 추천/VTON/PNG 저장, 겨울 보관·회수는 실행했다. T1–T4 사진 치환 결과의 접힘·가림·부피가 참조 원본에 충분히 대응하지 않아 시각 Gate A/B를 완료로 판정하지 않는다. 계약 검사에도 기존 문서 정합성 실패 2건이 남아 있다.
+**전체 판정: PARTIAL.** 승인 에셋24개를 실제 격리 DB·Scene API·앱에 연결했고, 두 시연 계정의 서버 추천·Mock VTON·코디 확정·LED·카드 저장을 검증했다. T1–T4 원본 접힘/가림 복원과 기존 데이터 회수 후 옷장 표시가 미완료다. 저장 성공으로 시각 품질을 완료 처리하지 않는다.
 
-## 적용 계약과 기존 결과의 차이
+이번 재개 지시, `05_P3_P10_REMEDIATION.md`, G1 및 이후 승인을 적용했다. B3는 승인된 v8 그대로 사용했다. 별도 옷장 시안·검수 페이지·파이프라인을 만들지 않았다. 로컬 브랜치와 `wardrobe_test_remediation`에서만 작업했다. 운영 DB, 원격 push/merge/배포, 유료 Decart, 실물 제어는 수행하지 않았다.
 
-최우선 기준은 `execution/05_P3_P10_REMEDIATION.md`다. 이전 G1/P10의 UNKNOWN-only 위치 처리와 최소 데이터 해석을 시정하여, 4인 가족의 합성 데모 위치·환경·계절 맥락을 명시적으로 구성했다. 실제 상품 원본 정보와 합성 소유/계절/위치/사용 맥락은 분리했다. 실측 슬롯·실제 가족 구매·실제 착용 기록이라고 주장하지 않는다. 기존 P10 보고서는 과거 증적으로 보존하며 현재 상태는 본 보고서와 `REMEDIATION_CHECKPOINT.md`를 따른다.
+## 계약별 현재 상태
 
-운영 DB, 원격 push/merge/배포, 유료 Decart 호출은 수행하지 않았다. 기존 팀원 원본·설계 문서를 덮어쓰지 않았다. 작업은 기존 기능 브랜치 및 별도 `wardrobe_test_remediation` DB에서만 수행했다.
-
-## 계약별 결과
-
-| 범위 | 결과 | 실제 근거 및 한계 |
+| 범위 | 판정 | 근거와 남은 조건 |
 |---|---|---|
-| 최소 51개 데이터 | PASS | 실제 사진 52개, 엄마18/아들25/아빠5/딸4. 초기 내부35/외부8/소품9 |
-| 원본 메타데이터/사진 | PASS, 재배포 권리 미확정 | 51개 Patagonia Worn Wear 공개 공식 카탈로그와 Dr. Martens 공식 PC11 1개. 원본 해시/모델/색상/출처 보존 |
-| 소유자·카테고리·계절·상태·위치 | PASS, 데모 맥락 | DB 4인·52개. 계절/소유/위치/환경은 합성. 착용 완료 기록은 0개 유지 |
-| clean plate/동적 scene | PASS, 데모 시각화 | 원본 옷장 기반 빈 배경, A–F 이미지 좌표와 G 닫힌 서랍/신발함. DB 위치와 실제 이미지 ID로 렌더링 |
-| 찾기/Mock LED | PASS | 화면 의류 클릭→해당 DB 슬롯만 강조/Mock LED→10초 자동 소등. 임의 슬롯 생성 없음 |
-| 보유 의류 추천/복귀 | PASS, Mock 맥락 | 접근 가능한 가족 옷장 중 AVAILABLE만 사용, 추천3개, carousel 선택→VTON→동일 선택 위치 복귀 |
-| LIKED VTON | PASS, Mock | 별도 쇼핑 Mock 항목으로 실행. 보유52개 및 착용0 유지 |
-| 계절 보관·회수 | PASS | 승인 시 위치 불변, 명시 완료 시 DB 위치 변경, 회수 품목 scene 신규 표시 |
-| T1–T4 원본 복원 Gate A | PARTIAL | 문구 제거 복원/빈 바닥/독립 레이아웃 확보. 가려진 부분은 생성 복원이며 개별 원본 접힘·레이어 완전 복원 아님 |
-| 실제 의류 치환 Gate B | PARTIAL | 실제 원본 픽셀을 SVG 마스크로 표시. 곡선 접힘·소매 방향·미세 occlusion/부피가 원본과 다름 |
-| 카드 저장 경로 Gate C | PASS, 로컬 | React→Playwright PNG→private MinIO→DB 저장→재조회/다운로드. 엄마·아들 각4개 신규 카드 검증 |
-| 실제 Decart/실물 LED | 미검증 | Mock 검증과 분리. 유료 호출 승인/하드웨어 별도 인수 게이트 |
+| P3 승인 에셋·DB 연결 | PASS, 승인된 범위 | 행거21/선반 K1–K3 3개, 원본/파생 asset 분리, SHA256, 동의·업로드·finalize·등록, 재실행 중복 없음. 미확정 선반 상품은 미등록 |
+| P4 동적 화면·찾기 | PASS, 승인된 범위 | Scene24개 실제 decode. 선택 밝기1/비선택.4, 배경 필터·사각 LED 없음, 자동 소등. 외부 이동→사라짐→복귀 검증 |
+| P4 코디 확정 | PASS, Mock | 서버 추천의 확인된 실제 슬롯 다중 점등. 불확실/미매핑 409 차단. OUTFIT_SELECTION만 추가, 실제 WEAR0. 실물 게이트는 별도 |
+| P7 Gate A | PARTIAL | 네 독립 레이아웃·원본/복원/바닥 비교 확보. 개별 원본 접힘·가림 레이어의 충실한 재구성 미완료 |
+| P7 Gate B | PARTIAL | 실제 DB 선택 사진·SVG 마스크·foreground crop. 흰 C6 바지 원단 손실 수정. 소매 접힘·부피·가림·광원 정합성 미완료 |
+| P7 Gate C | PASS, 로컬 | 두 계정 각각 네 종류, 총8개 신규 PNG→private MinIO→DB→재조회/다운로드. Gate A/B 통과를 뜻하지 않음 |
+| P5/P8/P9 통합 | PARTIAL | 두 프로필 전환/조회/찾기/추천/Mock VTON/복귀/확정/카드 저장 및 승인 외투 보관·회수 DB/화면 PASS. 기존 비승인 데이터 회수 화면 표시만 미완료 |
+| P10 계약 검사 | PASS | FSD 추적, 기존 통합 경로/DTO 문서화, 1.7 개정 provenance, 계약11 PASS. 이는 문서/스키마 계약 검사 통과이며 제품 전체 완료는 잔여 Gate 해결 후 가능 |
 
-## 데이터와 이미지 증적
+## 데이터·표시 범위
 
-정본 매핑은 `../templates/remediation_products.json`이다. 각 항목에 상품명/모델/색상/URL/소유자/카테고리/합성 계절·위치와 원본 SHA256, MIME, 크기, SVG 마스크를 기록했다. 기존 PC01–PC11 조사와 이전 검증 DB는 보존했다. PC11은 공식 1461 Smooth Black 제품 사진을 추가 확보했다. PC01–PC10과 PC12/13의 막힌 사진 또는 불명확한 변형은 임의로 생성하지 않고 실제 사진이 검증된 대체 제품을 사용했다. 이들은 동일 모델·색상 대체라고 주장하지 않는다.
+기존52 + 승인24 = **총76개**이며 최종 의류76개 각각에 상품 원본 사진이 연결되어 있다. 승인24개는 의류1개당 장면 PNG1개인 일대일 매핑(행거21/선반3)이다. 가족4인 모델을 유지한다. 현재 소유 수량은 김수진20/최휘재43/아빠9/딸4다. 소유·위치·상태는 G1 합성 시연 맥락이며 실제 구매/착용 기록이 아니다. 새 의류 UNKNOWN 상태는 위치 관측과 구분하여 합성 AVAILABLE로 한 번 초기화한다. 재실행은 이후 상태를 초기화하지 않는다.
 
-공식 [Worn Wear 카탈로그](https://wornwear.patagonia.com/products.json?limit=250)는 이번 수집 시 HTTP 200과 실제 제품 사진을 제공했다. [Worn Wear 사이트](https://wornwear.patagonia.com/)의 전환 안내와 별개로 공개 카탈로그 접근을 확인했으며 현재 구매 가능성을 보증하지 않는다. 사진은 중고 개별 매물이며 새 제품이나 실제 가족 구매의 증거가 아니다. [Dr. Martens PC11](https://www.drmartens.com/us/en/1461-smooth-leather-oxford-shoes-black/p/11838002)은 공식 CDN의 실제 768×768 PNG를 검증했다. 소재/케어가 확인되지 않은 항목은 null로 유지했다. PC12 공식 현재 변형은 PBSU이며 BLK로 추정하지 않았다. PC13 이전 URL의 제품/색상 변형도 확정하지 않았다.
+provisioning 전후 기존52의 의류 ID·소유자·원본 asset ID·위치·상태 snapshot은 동일했다. **이후 계절 QA는 기존 일부 의류를 API로 이동했다.** 전체 세션 동안 기존 상태가 불변이었다고 주장하지 않는다.
 
-원본 사진은 gitignore된 `test-results/remediation/source-images/`에 보관한다. `web/public/`에서 제거하여 향후 웹 빌드에 원본 사진이 자동 공개되지 않게 했다. 다운로드가 사용·재배포 허가를 뜻하지 않는다. 현재는 공개 배포 없는 로컬 검증이며 상업/외부 공유 권리는 미확정이다. 비교 캡처·생성 카드 역시 원본 사진을 포함하므로 원격 공개 전 권리 확인이 필요하다.
+이전 시안 슬롯의 `scene_visibility=hidden`은 **표시 변경**이다. 의류 삭제/조회 제외가 아니다. 최종 화면은 승인21행거/3선반24개다. 최종 집계 내부56=승인24+숨김 기존32이며, 나머지20=외부11+소품 서랍8+신발1이다. 총76 또는 내부56개가 모두 표시된 것은 아니다. CSV의 captured_at은 2026-10-11T11:15:25Z이며 이후 변동은 실제 DB 조회를 따른다. 이전 시안 숨김 슬롯은 `SLOT_UNAPPROVED` 표시 보류로 알리고 실제 외부 상자/닫힌 서랍과 구분한다. 미확정 선반 상품/위치를 임의 등록하지 않았다.
 
-동의→업로드 intent→private S3 PUT→SHA256 finalize 경로로 52개 READY 사진을 등록했다. `evidence/remediation/data-integrity.json`에서 원본/DB checksum 및 새 Signed GET의 다운로드 해시 **52/52 일치**를 확인했다. DB에는 Signed URL이 아니라 에셋 연결을 유지한다. SVG 마스크는 외부 연결 흰 배경의 벡터 경계를 계산하며 원본 래스터를 수정하지 않는다. 자동 경계의 흰 테두리/세부 누락은 수동 시각 검토 대상이다.
+정본 매핑: [approved_scene_manifest.json](../templates/approved_scene_manifest.json). 실제76개 현재 DB 위치/상태: [live-data-mapping.csv](evidence/remediation/live-data-mapping.csv). 수량·원본 해시·MinIO 다운로드: [data-integrity.json](evidence/remediation/data-integrity.json). manifest 위치는 승인 초기 배치이며 **현재 위치 정본은 PostgreSQL/Scene API**다. 보관·회수 테스트는 UI 승인에 따라 실제 로컬 DB 위치를 변경한 것이며 물리 의류 이동과 LED 출력은 시뮬레이션이다.
 
-반복 이동 QA 후 현재 내부33, 두번째 방10, 소품 서랍8, 신발함1이다. 초기35/8/9와 현재 위치를 혼동하지 않는다. AVAILABLE44/STORED8, 착용0, 용량 초과 없음. 저장 카드는 반복 QA 누적으로44개이며 최종 브라우저 실행은 각 계정4종의 **새 카드 ID**만 성공으로 인정했다.
+B3 및 승인 PNG 해시와 원본 상품 사진을 보존했다. K1–K3는 승인 샘플의 기존 좌표를 기존 native Canvas exporter에서 추출했다. 원본 사진과 별도 OTHER scene asset을 기존 JSON metadata로 연결했다. DB 컬럼/Migration은 추가하지 않았다. 신규 등록은 고정 Idempotency-Key와 원본 업로드 재사용을 적용했다. `product_reference.status/ownership_basis`는 최초 후보 문서의 출처 속성이며 현재 적재 여부는 manifest mapping과 DB 의류 ID로 판단한다.
 
-## 시각 증적
+## 수정한 결함
 
-![엄마 계정 동적 옷장과 추천](evidence/remediation/mom-home-51-images.png)
+- 로컬 데모 JWT에 HOME station이 없어 LED403이었다. 명시적 `LOCAL_DEMO_STATION_ID`를 비공개 로컬 시연에서만 회원의 연결된 HOME station으로 검증한다. STORE/public 거부 회귀도 확인했다. 공개 장치 인증을 우회하지 않았다.
+- 목록 갱신이 Scene 파생 캐시를 삭제하여 확정 후 옷이 사라졌다. Scene binding을 실제 의류 ID에 연결하고 frame을 의류 reconcile에서 제외했다. 의류 삭제·로그아웃 캐시/Object URL 정리는 유지한다. cache unit과 실제 확정 회귀로 확인했다.
+- 이전 브라우저 검증은 표시용 겨울 시연 추천을 사용했다. 이제 실제 기록→서버 추천을 호출하고 승인된 DB 의류 ID를 검사한다. HANDOFF scene 모드에서만 현재 승인 표시 의류를 추천 constraints로 전달한다.
+- 흰 C6의 자동 배경 제거가 원단을 손상했다. 원본450×600에서 확인한 외곽을 SVG scanline으로 지정했다. 원본 래스터는 수정하지 않았다.
+- renderer는 SVG 내부 사진 decode를 확인하고, 독립 레이아웃을 유지하며 외부 사진 여백만 제외한다.
+- `storage-greedy-v3`는 픽셀별 승인 에셋의 회수 목적지를 해당 `approved_instance_id`의 승인 슬롯으로 제한한다. 다른 승인 칸·이전 시안 칸에 끼워 넣지 않는다. 외부 상자는 허용하며 완료 시 기존 용량·관측·동시성 재검사는 유지한다. 슬롯 metadata만 보완했고 신규 DB 필수 필드는 없다. 승인 외투의 WINTER 태그는 명시적 G1 합성 시연 분류로 한 번 초기화하고 이후 편집을 덮어쓰지 않는다.
 
-캡처 파일명의 `51`은 초기 명명이며 실제 검증 수량은52다. 옷장과 중앙 미러의 원래 비율을 유지했다. 슬롯은 이미지 기반 데모 분할이며 실제 측정·물리 수용량의 증거가 아니다. D/E/F 높이는 선반 목재를 가로지르지 않도록 참조 픽셀 기준으로 조정했다. G 닫힌 서랍/외부 위치는 scene에 거짓 가시 품목으로 그리지 않는다.
+기존 imagegen 방식으로 [K2/T1 접힘 파생 후보](evidence/remediation/K2-T1-styled-candidate.png)를 한 번 제작했다. 접힘은 개선됐으나 원본 라벨·디테일 보존을 인증하지 못해 **증적 전용으로 보관하고 앱·DB에 연결하지 않았다.** Gate B 성공이 아니다.
 
-| 카드 | 원본→생성 복원→빈 바닥→등록 사진 PNG 비교 | 남은 차이 |
-|---|---|---|
-| T1 | [비교 캡처](evidence/remediation/T1-comparison.png) | 원본 가방/굽은 니트와 실제 선택 모자/펴진 상의의 형태·겹침 차이 |
-| T2 | [비교 캡처](evidence/remediation/T2-comparison.png) | 아우터 소매 접힘·상의 가림·바지 부피 재현 부족 |
-| T3 | [비교 캡처](evidence/remediation/T3-comparison.png) | 원본 햇빛 바닥은 복원했으나 의류 자체 접힘·광원 반응은 부족 |
-| T4 | [비교 캡처](evidence/remediation/T4-comparison.png) | 원본 스웨트/가방 occlusion과 실제 상품 외곽/주름 차이 |
+## 검증 결과
 
-`remediation_card_manifest.json`에 원본/복원/배경/실제 PNG 해시와 Gate별 판정을 기록했다. `remediation_generated_assets.json`에는 image_gen 출처·생성 영역·해시가 있다. 이전의 CSS multiply 방식은 천이 바닥에 비치는 오류가 있어 제거하고 불투명 원본 픽셀+SVG clip으로 수정했다. `evidence/remediation/T*-v1.png`는 이전 시도이며 최종 결과는 `mom-T*-v1.png`, `son-T*-v1.png`다. 과거 synthetic-test 증적은 시작 커밋의 원본으로 복원했다.
-
-## 실제 브라우저 12단계
-
-정본은 `evidence/remediation/browser.json`이다. 최종 17개 assertion 그룹 통과, page error0/HTTP 실패0. 외부 네트워크 요청은 브라우저 route guard로 차단했다.
-
-| 단계 | 증적 | 판정 |
-|---|---|---|
-| 1 엄마 로그인/가족 공유 | mom-home-51-images.png, browser.json | PASS, 4인52개 |
-| 2 실제 사진 scene | mom/son-home-51-images.png | PASS, 현재33개 가시 |
-| 3 UI 의류 찾기 | mom/son-find-led.png | PASS |
-| 4 슬롯/Mock LED/자동 소등 | browser.json | PASS, 10초 |
-| 5 겨울 제안 | mom-winter-proposal.png | PASS, 합성 맥락 |
-| 6 승인/완료 분리 | browser.json | PASS |
-| 7 DB 위치/scene 갱신 | mom-storage-completed-scene-refreshed.png, mom-winter-retrieved-scene.png | PASS |
-| 8 보유 추천 | mom/son-home-51-images.png | PASS, 각3개 |
-| 9 보유·LIKED VTON | mom/son-owned-mock-vton.png, mom-liked-mock-no-owned-or-wear.png | PASS, Mock |
-| 10 복귀/코디 선택 | browser.json | PASS, carousel 선택 위치 유지 |
-| 11 T1–T4 선택/생성 | mom-card-templates.png | 기능 PASS, 시각 PARTIAL |
-| 12 PNG 저장/재조회/다운로드 | mom/son-T1~T4-v1.png | PASS, 신규 DB 카드/실제 PNG |
-
-초기 실패는 `browser-failure.json`에 남겼다. 로그인 비동기 대기, scene hit pointer-events, 테스트 버튼 이름, 승인 후 item 상태를 실제 계약에 맞춰 수정했다. 회수 항목은 PENDING과 AWAITING_CONFIRMATION 둘 다 허용하고 현재 source 위치를 대조한다. 실패를 무시하는 우회나 기존 카드로 신규 생성 성공을 대체하는 검사는 사용하지 않는다.
-
-## 테스트 및 계약 정합성
-
-| 실행 | 결과 |
+| 검증 | 결과 |
 |---|---|
-| `python scripts/handoff_checks.py` | 실 PostgreSQL backend279 PASS, 718 deprecation warnings |
-| web `npm test` | 35 PASS |
-| renderer `npm test` | 5 PASS, 임의 외부 URL/unsafe SVG 거절 포함 |
-| web `npm run build` | TypeScript/Vite PASS, 기존 chunk>500KB 경고 |
-| Ruff backend/시정 스크립트 | PASS |
-| openapi-spec-validator, docs/06_OPENAPI.yaml | PASS |
-| contract suite | **8 PASS / 2 FAIL** |
-| 시작 커밋1fffbeb 별도 worktree contract suite | **7 PASS / 같은2 FAIL** |
+| backend unit/실DB integration/E2E | 최종284 PASS/실패0, 144.88초. 마지막 metadata 형태 방어 변경 후 보관 unit23 재실행 PASS (284에 포함된 같은23개이며 합산하지 않음) |
+| 계약·공식 OpenAPI validator·생성 API 대조 | 11 PASS |
+| web unit/cache/scene geometry | 39 PASS |
+| TypeScript/production build | PASS, 기존 큰 chunk 경고 |
+| renderer | 6 PASS |
+| 엄마→아들→엄마 시연 프로필 | PASS, 각각76개/원본사진76/소유자4인 |
+| 승인 scene·찾기·외부 이동/복귀 | PASS, visible24=derived24, 행거21/선반3, page error0 |
+| 양 계정 서버추천→Mock VTON→확정→카드4종 | PASS, 신규 PNG8개, 실제 WEAR0 |
+| 양 계정 승인 외투 보관/회수 | PASS, 합성 SUMMER 보관 컨텍스트→UI 승인·완료→겨울 회수 버튼→본래 DB 슬롯·화면 복원 |
+| 기존 겨울 회수 DB→scene | PARTIAL_LEGACY_ASSET_MAPPING_PENDING; browser 전체 exit1 |
 
-실패1: 문서 추가 operation에 `x-fsd-ids`가 없어 FSD inventory 추적 검사 실패. 실패2: 기존 CONTRACT_REVISION_1_7 기록 해시와 현 문서 해시 불일치. 둘 다 별도 baseline worktree에서 재현한 기존 문서 정합성 결함이다. 이번 작업의 optional `SceneItem.image_mask`는 별도 검사로 null 기본값/비필수/객체 타입을 확인하고 기존 필수 wire 계약을 계속 전수 대조한다. 계약 전체 성공으로 보고하지 않는다. 원본 문서 해시를 현 상태에 맞춰 자동 갱신하여 실패를 숨기지 않았다. 로그는 evidence/remediation의 backend-regression.log, contract-current.log, contract-baseline.log에 있다.
+[검증 집계](evidence/remediation/verification-results.json), [백엔드 로그](evidence/remediation/backend-regression.log), [최종 browser.json](evidence/remediation/browser.json)을 따른다. 브라우저21개 체크는20 PASS/1 PARTIAL이며 page error 및 실패 HTTP 응답은0이다. 기존 browser-failure.json/failure.png는 수정 전 실패 증적이다. 공유 renderer를 backend와 브라우저가 동시에 사용한 실행에서는 T2가 QUEUED여서282 PASS/1 FAIL이었다. 동시 실행에 따른 자원 경합을 원인으로 추정하여 직렬 재실행했으며 테스트를 제외하지 않았다. 캐시/마스크/station 코드 결함과 구분한다.
 
-DB 신규 컬럼/Migration은 없다. 기존 JSON metadata/attributes를 사용한다. API 변경은 scene의 비필수 `image_mask`뿐이며 legacy 클라이언트는 무시할 수 있다. 저장/추천/동의/업로드/LED/이동 API와 필수 필드는 유지한다. 대규모 SVG mask metadata의 응답 크기는 후속 최적화 대상이다.
+![실제 앱 승인 에셋](evidence/remediation/wardrobe-sprites-applied.png)
 
-## 주요 변경 파일
+![선택 의류 조명](evidence/remediation/wardrobe-selected-light.png)
 
-- `scripts/remediation_catalog.py`, `remediation_local.py`, `remediation_evidence.py`: 원본 frozen manifest/해시 검증, 격리 데모 seed·업로드·서버, 읽기 전용 증적.
-- backend `application/wardrobe_scene.py`, `card_worker.py`, `schemas/handoff.py`: 숨긴 위치 처리, 실제 이미지 마스크 전달. contract test에 optional 필드 호환 검사 추가.
-- web `WardrobeSceneLayers.tsx`, `PhotoWardrobeStage.tsx`, `MirrorExperience.tsx`: DB scene 실제 의류 클릭과 동일 슬롯 LED, SVG clip.
-- web `homeRecommendations.ts`, `MirrorHome.tsx`, core/types.ts, integrations/backendClient.ts: 실제 AVAILABLE 상태 및 가족 공유 범위 유지, 계정 전환 시 맥락 초기화.
-- web `StorageMovePanel.tsx`: 서버 목적지 이름과 이동 상태 갱신.
-- renderer `src/card-layouts.mjs`, `template.mjs`, `Dockerfile`, assets/: 4종 독립 배경/배치, 실제 source pixels, 입력 안전성.
-- web test/remediation-{browser,masks,comparisons}.mjs 및 추천/renderer 테스트: 실 UI·객체 저장 검증과 비교 캡처.
-- public/assets/remediation/, templates/remediation_*.json, reports/evidence/remediation/: 생성 배경, 매핑, 시각/DB/테스트 증적.
+기존 비교 증적 갱신: [T1](evidence/remediation/T1-comparison.png), [T2](evidence/remediation/T2-comparison.png), [T3](evidence/remediation/T3-comparison.png), [T4](evidence/remediation/T4-comparison.png). 실제 네 출력물을 시각 검사했으며 PNG 저장 성공과 접힘/가림 실패를 분리한다.
 
-## 로컬 실행과 재개
+## 계약·파일·재현
 
-현재 서버는 loopback 웹 `http://127.0.0.1:5193`, API18081, renderer3300다. MinIO19000/PostgreSQL56433/Redis16379의 별도 데모 서비스를 사용하며 기존 사용자 서비스는 보존했다. DB 컨테이너는 tmpfs이므로 삭제·재시작 시 데이터가 유지되지 않을 수 있다. 현재 이동 상태를 초기 상태로 덮어쓰지 않는다.
+기존 DB·필수 필드·API 동작은 유지한다. OpenAPI에 이미 구현된 통합 경로13개/요청 schema5개를 문서화하고 기존 FSD ID를 연결했다. `CONTRACT_REVISION_1_7.json` amendment는 이전 해시와 변경 FSD/OpenAPI 해시·근거 커밋·승인 이유를 기록한다. 1.1–1.6 아카이브/DB baseline 및 다른 설계 문서는 수정하지 않았다.
 
-루트 PowerShell에서 준비(신규 환경에는 Docker Desktop, 설치된 .venv/npm 및 인계 입력 에셋 필요):
+주요 변경은 기존 exporter/provision/local/evidence 스크립트, approved-v1 PNG24개/manifest, WardrobeSceneLayers/imageBlobCache/homeServerActions, backend integration/shopping/scene/config, renderer layouts/server, 관련 테스트/계약/보고서다. 구현 로컬 커밋은 `c9dd6ac`이며 재개 상태는 [REMEDIATION_CHECKPOINT.md](REMEDIATION_CHECKPOINT.md)에 기록했고 보고·증적 커밋은 로컬 Git log로 확인한다.
+
+현재 앱: http://127.0.0.1:5193 . 마이→‘누가 옷장을 사용하나요?’→김수진/최휘재. 홈→실제 기록→내 옷 추천 받기. 서비스별 별도 창에서 실행하며 이미 실행 중인 포트에 중복 기동하지 않는다.
 
 ```powershell
-.\.venv\Scripts\python.exe scripts/remediation_catalog.py
+# 루트, 기존 격리 컨테이너와 gitignore runtime 필요
+.\.venv\Scripts\python.exe scripts/remediation_local.py serve
+.\.venv\Scripts\python.exe scripts/provision_wardrobe_sprites.py --approved
+# renderer 창
+cd renderer
+$env:RENDERER_PORT='3300'; $env:RENDERER_BIND_HOST='127.0.0.1'
+npm start
+# web 창
 cd web
-node test/remediation-masks.mjs
-cd ..
-.\.venv\Scripts\python.exe scripts/remediation_local.py prepare
+$env:WEB_PORT='5193'; $env:WEB_API_TARGET='http://127.0.0.1:18081'
+$env:WEB_STORAGE_TARGET='http://127.0.0.1:19000'; $env:VITE_HANDOFF_SCENE='on'
+npm run dev
 ```
 
-현재 세 서버는 실행 중이며 이미 기동된 포트에 중복 실행하지 않는다. renderer 창에서 `cd renderer` 후 `$env:RENDERER_PORT='3300'`, `$env:RENDERER_BIND_HOST='127.0.0.1'`, `npm start`를 각각 실행한다. 루트의 별도 창에서 `.\.venv\Scripts\python.exe scripts/remediation_local.py serve`를 실행한다. API 실행 후 루트에서 `.\.venv\Scripts\python.exe scripts/remediation_local.py provision`, 이어서 `.\.venv\Scripts\python.exe scripts/remediation_local.py layout`을 실행한다.
+검증은 공유 renderer/LED 경합을 피하도록 **직렬** 실행한다. 루트 `python scripts/handoff_checks.py`, web `node test/demo-personas-browser.mjs`, `node test/wardrobe-sprites-browser.mjs`, `node test/remediation-browser.mjs`. 마지막은 현재 회수 표시 미완료로 exit1이다. 새 clone은 원본 인계 패키지의 `references/`, `contracts/`, `execution/` 및 `test-results/handoff/runtime.json`, `test-results/remediation/source-images/`를 별도로 준비해야 한다. 현재 실행 명령은 준비된 격리 DB 환경용이며 빈 clone의 자동 구축을 보장하지 않는다. 비밀번호/토큰/서명 URL은 Git/보고서에 넣지 않는다.
 
-web 창:
+## 실패 항목 분류
 
-```powershell
-$env:WEB_API_TARGET='http://127.0.0.1:18081'
-$env:WEB_STORAGE_TARGET='http://127.0.0.1:19000'
-$env:VITE_HANDOFF_SCENE='on'
-npm run dev -- --host 127.0.0.1 --port 5193
-node test/remediation-browser.mjs
-```
+| 분류 | 항목 | 처리 |
+|---|---|---|
+| 코드 결함, 수정 완료 | 로컬 station 누락403, Scene 캐시 삭제, C6 원단 마스크 손실, SVG decode 누락 | 최소 변경 및 해당 회귀 PASS |
+| 환경 제약, 원인 추정 | 공유 renderer 동시 부하 시 QUEUED/테스트 실패 | 직렬 재실행284 PASS. 원인을 확정한 것으로 주장하지 않음 |
+| 설계·승인 매핑 충돌, 미완료 | 기존52의 이전 시안 슬롯과 승인된 새 장면 간 매핑 | 비승인 슬롯은 명시적 보류; 임의 에셋/슬롯 대입 금지 |
+| 시각 구현 결함, 미완료 | T1–T4 접힘/가림·빛과 실제 사진 치환 | Gate A/B PARTIAL, PNG 저장 통과와 분리 |
 
-`npm run dev`는 별도 지속 실행 창을 사용한다. 브라우저 검증 후 루트 `python scripts/remediation_evidence.py`, `node web/test/remediation-comparisons.mjs`로 정합성/최종 비교를 갱신한다. frozen manifest가 있는 재수집은 원본 URL과 해시를 유지하며 변경 사진은 실패로 처리한다. 자동 마스크 생성은 한 번 실행한 뒤 수동 검토 결과를 기록한다.
+## 남은 작업과 완료 기준
 
-로그인 계정 `remediation-mom`, `remediation-son`. 비밀번호/접속 기기 ID/기기 인증은 gitignore된 `test-results/handoff/runtime.json`의 demo_password/remediation_station_id/remediation_station_credential을 사용한다. 파일 전체나 값을 Git/공개 로그에 복사하지 않는다. 새 Git clone에는 미추적 인계 원본/참조 에셋이 별도로 필요하다. 현재 런타임 파일 없는 기존 명명 컨테이너를 덮어쓰지 않고 준비 스크립트가 중단한다.
+1. **P4/P8/P9 내부 미완료:** 승인 의류의 양 계정 계절 왕복은 검증했다. 남은 것은 기존52 중 현재 내부 숨김32품목의 승인 시각 매핑이다. 외부·닫힌 서랍의 의도적 비표시는 별도다. 미승인 상품/위치를 만들거나 이전 비승인 에셋을 자동 복원하지 않는다.
+2. **P7 내부 미완료:** 원본별 개별 레이어·접힘·가림 복원 및 선택 품목 retargeting을 완성한다. 현재 affine/SVG/생성 후보로는 Gate A/B를 충족하지 못한다. 외부 장애로 위장하지 않는다.
+3. **별도 외부 게이트:** 실제 Decart 비용·인증 승인, 실물 LED/센서/실측, 사진 공개·상업 사용 권리. Mock으로 대체하지 않는다. 기존 로컬 MinIO의 운영 보안을 인증하지 않았다.
 
-## 남은 작업과 인수 게이트
-
-1. **P0 구현 미완료:** T1–T4의 개별 레이어 추출, 선택 품목별 접힘/소매/가림·광원 retargeting. 단순 affine/SVG 치환은 원본을 충실하게 복원하지 못한다. 위 비교 캡처를 기준으로 수정하고 Gate A/B를 다시 검증해야 한다. 외부 장애로 위장하지 않는다.
-2. **P1 문서 정합성:** 기존 FSD operation 추적과 1.7 문서 변경 이력의 정당한 revision을 정리해야 한다. 현재 원본 계약 문서는 보존했다.
-3. **별도 외부 인수:** 사진 공개/상업 사용 권리, 실제 Decart 비용·인증 승인, 실물 LED/센서·실측 슬롯. Mock 성공으로 대신하지 않는다.
-4. **보안/운영:** 기존 로컬 MinIO 바이너리는 운영 안전성을 인증하지 않았다. 임시 로컬 credentials, 테스트 JWT, synthetic consent/person image, tmpfs 저장소는 운영 설정으로 사용할 수 없다. 현재 서비스 외부 공개 없음.
-
-새 Git clone의 비교 캡처에는 사용자 제공 패키지의 `references/card/T1_reference.png`~`T4_reference.png`가 동일 패키지 경로에 필요하다. contracts/·execution/·references/는 기존 미추적 인계 입력이다. Gate A는 원본별 문구 제거·좌표·레이어/접힘·명시 복원 영역을 확인하고, Gate B는 실제 선택 품목의 색상/재질/브랜드 식별과 원본의 접힘·가림 구조를 함께 확인한다. 픽셀 동일성이나 PNG 저장 성공으로 통과 처리하지 않으며 기존 카드 계약의 수동 시각 인수가 필요하다.
-
-코드와 보고서는 로컬 Conventional Commit으로 보존한다. 커밋 해시는 `REMEDIATION_CHECKPOINT.md`에 기록한다. **전체 완료·배포 완료로 판정하지 않는다.**
-
-## 후속 사용자 QA: 시연 버튼
-
-카드 작업을 중단하고 시연용 로그인503을 재현·수정했다. 별도 시정 DB에는 기존 고정 demo 계정이 없어 발생했다. `scripts/remediation_local.py serve`는 LOCAL_DEMO_MEMBER_ID로 기존 아들 MEMBER를 명시하여 로그인한다. 로컬/test·비공개·DEMO 조건과 활성 credential/기기 연결을 검사하며 공개 배포 설정은 변경하지 않았다. 실제 버튼200→가족4인/의류52/사진52→scene→로그아웃을 브라우저에서 확인했다. demo-login/config 실DB20 tests와 Ruff PASS. web `node test/demo-login-remediation.mjs`로 재현 가능하다. 나머지 카드 시각 Gate/문서 정합성 미완료 판정은 유지한다.
-
-## 후속 사용자 QA: 옷장 보관 모습 파생 이미지
-
-사용자가 요구한 모습은 정면 상품 사진의 축소 배치가 아니라 행거에서 옷걸이에 옆으로 걸려 있는 모습, 서랍·선반에서는 개어진 모습이다. 앞선 격자 사진 배치는 이 요구에 맞지 않았다.
-
-imagegen으로 실제52개 원본 참조 기반의 걸림/접힘 후보를 7개 투명 PNG atlas로 생성했다. `templates/wardrobe_sprite_manifest.json`에 원본 SHA256, 생성 도구/파일/atlas SHA256, 품목 대응, private asset ID를 기록했다. 묶음6·7의 실제 생성 간격이 균일하지 않아 native SVG 영역을 실제 출력 기준으로 조정했다. alpha 경계 분석은 벡터 clip/crop만 생성하며 원본 및 파생 PNG 래스터를 수정하지 않는다.
-
-실제 원본 상품 사진52개와 기존 garment.image_asset_id는 그대로 유지한다. 별도 atlas는 assets/wardrobe-scene-sprites에 보존하고 동의→업로드 intent→private PUT→SHA256 finalize 후 OTHER asset으로 등록했다. 해당 연결은 기존 JSON metadata에 저장하며 DB 컬럼/Migration을 추가하지 않았다. scene만 위치의 hanging/shelf 정렬에 맞춰 파생 asset을 선택한다. 상세/추천/VTON/코디카드는 원본 이미지 입력을 계속 사용한다. source hash 변경·파생 asset 삭제·타 가구·미READY이면 기존 파생 이미지 사용을 거부한다.
-
-행거는 원래 봉 아래 한 줄로, 선반은 바닥 정렬로 배치했다. SVG viewBox로 이미지 여백을 제외하고 종횡비를 보존한다. 클릭/LED 표시와 의류의 앞뒤 순서를 맞췄다. 닫힌 G 서랍 내부를 밖에 떠 있는 의류로 그리지 않으며 새 서랍 펼침 UI는 추가하지 않았다. 개어진 후보 에셋은 해당 품목에도 확보했다. 실제 위치·용량·소유자·착용 기록을 변경하지 않았다.
-
-![걸림/접힘 파생 에셋 적용 화면](evidence/remediation/wardrobe-sprites-applied.png)
-
-실 브라우저 가시33개 전부 파생 에셋(행거23/접힘10), SVG 이미지 실제 decode, 가족52개/사진52개, page error0. 시연용 로그인/로그아웃도 재확인했다. web38 tests/TypeScript·build PASS, scene 단위8 PASS, handoff 실DB7 PASS, Ruff PASS. 브라우저 JSON은 evidence/remediation/wardrobe-sprites-browser.json. 이전 scene 캡처는 정면 사진 배치의 과거 증적이며 위 캡처가 현재 표시다.
-
-재현: API18081 실행 후 루트 `.\.venv\Scripts\python.exe scripts/provision_wardrobe_sprites.py`, `.\.venv\Scripts\python.exe scripts/remediation_local.py layout`; web에서 `node test/wardrobe-sprites-browser.mjs`. 이미 생성된 파일만 재사용하며 이 스크립트는 외부 이미지 API를 호출하지 않는다. 새 계획/새 파생 버전은 기존 manifest/파일을 덮어쓰지 않고 별도 관리해야 한다. atlas는 web/public에 넣지 않았다. 원격 공개·상업 이용 권리는 여전히 확인되지 않았다.
-
-이들은 AI 생성 시각화 파생이며 실제 촬영이나 관측이 아니다. 색상·주름·로고 미세 표현의 정확성은 인증하지 않았고 사용자 시각 인수도 아직이다. 옷장 표현 변경이 카드 원본 복원 Gate A/B의 성공을 뜻하지 않는다. 전체 PARTIAL 판정을 유지한다.
+잔여 Gate A/B와 기존 데이터의 시각 매핑을 해결하기 전에는 **전체 완료를 선언하지 않는다.**

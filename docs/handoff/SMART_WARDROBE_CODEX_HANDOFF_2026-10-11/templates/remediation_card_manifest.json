@@ -20,7 +20,7 @@
       {
         "role": "registered_photo_PNG",
         "path": "docs/handoff/SMART_WARDROBE_CODEX_HANDOFF_2026-10-11/reports/evidence/remediation/mom-T1-v1.png",
-        "sha256": "e79ffe229dba739cc0c2b0ea7278d56eaa3620f6d5a5ee842721882eaffcb5a5"
+        "sha256": "5b13aaffb4737644264bd8b5989dfca6dd51445a4c24fc222a7c8cfee241becc"
       }
     ],
     "reconstruction_basis": "imagegen editing of supplied reference; hidden text/gradient pixels inferred",
@@ -51,7 +51,7 @@
       {
         "role": "registered_photo_PNG",
         "path": "docs/handoff/SMART_WARDROBE_CODEX_HANDOFF_2026-10-11/reports/evidence/remediation/mom-T2-v1.png",
-        "sha256": "60ac9e40b778ac65dc00ec9f12e67f07ac988dc4c64811a9119a46f9eb2ed050"
+        "sha256": "634cd2d3f923832374bf72daedac0b4773b3cb4c40d2e5677c868951ad7fa47a"
       }
     ],
     "reconstruction_basis": "imagegen editing of supplied reference; hidden text/gradient pixels inferred",
@@ -82,7 +82,7 @@
       {
         "role": "registered_photo_PNG",
         "path": "docs/handoff/SMART_WARDROBE_CODEX_HANDOFF_2026-10-11/reports/evidence/remediation/mom-T3-v1.png",
-        "sha256": "ab4a768bb66abf5ba93a104f564f3c1cffc2ec40986b787028c7aefaf44cdc8a"
+        "sha256": "3ac1a420aed3971252422d45b9f60dc4060d35c6bbef9ed6fb2d3823b67378e2"
       }
     ],
     "reconstruction_basis": "imagegen editing of supplied reference; hidden text/gradient pixels inferred",
@@ -113,7 +113,7 @@
       {
         "role": "registered_photo_PNG",
         "path": "docs/handoff/SMART_WARDROBE_CODEX_HANDOFF_2026-10-11/reports/evidence/remediation/mom-T4-v1.png",
-        "sha256": "752817e33039fc16564da1f0ac32f023375533f130a713d3ecadf7b7168bd355"
+        "sha256": "d6622981cbb7bbf8e23a99c7029b33370da4e87b2de05e53bd14047d91b75c16"
       }
     ],
     "reconstruction_basis": "imagegen editing of supplied reference; hidden text/gradient pixels inferred",
