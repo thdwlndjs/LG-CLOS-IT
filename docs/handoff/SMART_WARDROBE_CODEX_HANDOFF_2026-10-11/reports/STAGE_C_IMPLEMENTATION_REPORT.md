@@ -1,6 +1,6 @@
 # C단계 구현 및 검증 결과
 
-기준 `a1e439b`, B-01 승인 `aed6b48`. C1~C6 사용자 승인에 따라 구현·검증했으며 **C단계 Mock 완료**로 판정한다. 실제 VTON 시착 품질은 미검증이다. A1과 B-01은 유지하고 B-02는 DEFERRED다. D~G는 수행하지 않았다.
+기준 `a1e439b`, B-01 승인 `aed6b48`. C1~C6 사용자 승인에 따른 **기존 Mock 흐름 구현·검증은 PASS**다. 다만 이후 최종 점검에서 **C4 추가 반응형 Scene 정합성은 FAIL**로 확인되어 해당 완료 게이트는 미충족이다. 아래 추가 감사 결과와 승인 대기 수정안을 참조한다. 실제 VTON 시착 품질은 미검증이다. A1과 B-01은 유지하고 B-02는 DEFERRED다. D~G는 수행하지 않았다.
 
 ## 구현 결과와 요구사항 추적
 
@@ -75,3 +75,32 @@ npm run build
 구현 커밋은 `c072136` (`feat(vton): implement C-stage snapshot-aware mock flow`)이며 브랜치는 `feat/handoff-p3-p10`다. 결과 문서·증적은 후속 `docs(vton)` 커밋으로 남긴다. [체크포인트](STAGE_C_CHECKPOINT.md)를 기준으로 재개할 수 있다. 코드·문서·증적을 로컬에 커밋하고 사용자 승인 대기 상태로 중단한다. main 병합·원격 push·배포는 하지 않았다.
 
 독립 cold read에서 실제 시착 게이트의 승인자·품질 PASS 기준·미지원 슬롯 처리·원본 변경 검사와 draft 편집의 차이를 확인했다. 승인자는 사용자로 명시하고, 미래 품질 판정 정책은 미확정으로 남겼으며, 원본 DB 변경 검사와 현재 선택 편집을 분리했다. 검증 독립성 검사에서는 모든 입력이 같은 이미지였던 초기 fixture를 서로 다른 이미지로 보완하고 저장소 원본과 worker bytes를 직접 비교했다. 실제 시착 품질을 Mock의 입력 통과로 대체하지 않았다. A1·실행 계약·API·최종 보고를 대조했으며 임의의 추가 제품 정책은 도입하지 않았다.
+
+## C4 추가 감사 — 반응형 스마트미러 Scene 정합성
+
+사용자 지시에 따라 제품·업무 데이터 변경 없이 실제 두 프로필의 화면 크기를 전환했다. 검사 세션의 로그인 인증만 수행했으며 제품 코드·CSS·의류/위치 등 업무 DB·에셋·기존 계약서는 수정하지 않았다. 보고서와 브라우저 증적만 추가한다. 기존 Mock 테스트 PASS를 반응형 Scene PASS로 확대하지 않는다.
+
+| 점검 항목 | 판정 | 실제 근거 및 증적 |
+|---|---|---|
+| 모바일 옷장 시각 컨테이너 및 모든 의류·투명 에셋·오버레이 숨김 | **FAIL** | 두 프로필 모두 390×844, 667×375, 767×844에서 배경은 `display:none`이나 `.photo-db-scene`은 표시됨. 의류 87개·클릭 영역 87개가 남음. SVG 투명 파생 에셋과 상태 오버레이가 함께 숨겨지지 않음 |
+| 숨겨진 레이어의 미러 가림·클릭 가로채기 차단 | **FAIL** | 모바일 미러 영역의 12×12 표본 중 41점에서 Scene이 최상위 hit target. 390×844에서는 홈·옷장·코디·마이의 중앙 hit-test 및 실제 Playwright 클릭 모두 실패. 667×375에서는 마이를 제외한 세 메뉴 실패. 767px에서는 메뉴 클릭은 통과했으나 41점의 Scene hit target은 남음 |
+| 데스크톱 B-01 승인 화면 및 복귀 보존 | **PASS** | 1672×941 전환 전/후 두 프로필의 87개 garment_id·표시 영역·클릭 영역·filter 완전 일치. B-01 커밋 `aed6b48` 이후 `PhotoWardrobeStage.tsx`, `WardrobeSceneLayers.tsx`, 원본 geometry 및 `web/public/assets` 변경 없음. 기존 B-01 승인과 C 보존 증적에 더해 실제 전환 후 캡처 확인 |
+| 두 프로필 실제 브라우저 크기 전환 | **수행 PASS / 기능 FAIL** | 각 desktop1672 → portrait390 → landscape667 → mobile767 → desktop768 → desktop1672. 프로필별 garment_id 중복/변경 없음, JS 오류 0. 두 프로필에서 동일 모바일 결함 재현 |
+
+### 증적과 재현
+
+- [실측 JSON](evidence/stage-c/responsive-scene-audit/results.json): 조상 포함 유효 표시 상태, 모든 Scene 자식, 의류·클릭 영역, 미러 rect, hit-test, 메뉴 클릭 결과, 전환 전후 ID/geometry를 기록했다. Signed URL·토큰은 기록하지 않았다.
+- [김수진 모바일](evidence/stage-c/responsive-scene-audit/김수진-mobile-portrait.png), [최휘재 모바일](evidence/stage-c/responsive-scene-audit/최휘재-mobile-portrait.png): 미러 위에 행거·선반 에셋이 남는 실제 캡처.
+- [김수진 데스크톱 복귀](evidence/stage-c/responsive-scene-audit/김수진-desktop-after.png), [최휘재 데스크톱 복귀](evidence/stage-c/responsive-scene-audit/최휘재-desktop-after.png). 같은 폴더에 각 프로필의 전환 전 및 667/767/768px 캡처도 제공한다.
+- 기존 `web/test/responsive-browser.mjs`와 `test-results/responsive-browser.json`은 구형 6벌 화면에서 `.photo-background`와 `.photo-led-layer`를 검사했다. DB Scene·SVG·투명 파생 에셋·hit button 검사가 없고 현재 87개 Scene에 대한 증적도 아니므로 이번 요구의 PASS 근거로 사용할 수 없다.
+- API mutation 기록은 프로필별 `/integration/demo-login` 1회뿐이다. Job·의류·착용·LED·카드·이동 API의 변경 요청은 없었다.
+
+재현은 프로젝트 루트에서 `node docs/handoff/SMART_WARDROBE_CODEX_HANDOFF_2026-10-11/reports/evidence/stage-c/responsive-scene-audit/audit.mjs`를 실행한다. 기존 로컬 API 18081과 웹 5193이 필요하다. 이 감사 스크립트는 실패를 JSON의 FAIL 상태로 기록하고 제품 파일이나 DB 시드를 수정하지 않는다.
+
+### 원인 및 승인 대기 최소 수정안
+
+`mirror-responsive.css`의 767px 이하 숨김 대상은 `.photo-background`, `.photo-led-layer` 두 개다. `PhotoWardrobeStage.tsx`에서 DB 기반 `WardrobeSceneLayers`가 별도 sibling으로 추가되었지만 숨김 규칙에 포함되지 않았다. `.photo-db-scene` 부모의 `pointer-events:none`도 자식 버튼의 명시적 `pointerEvents:auto`를 막지 못한다(`WardrobeSceneLayers.tsx`의 hit button). 87개 실제 에셋을 적재한 상태의 반응형 검사 및 클릭 hit-test가 기존 테스트에서 누락됐다.
+
+권장 제품 수정은 **`web/src/mirror/source/mirror-responsive.css` 한 파일의 기존 모바일 미디어 규칙에 `.photo-db-scene { display:none; }`를 포함**하는 것이다. 부모를 숨겨 그 하위 frame·SVG/image·투명 에셋·상태/조명 표현·hit button을 함께 제거하고, 중앙 `.photo-mirror`와 거울 배경 효과는 유지한다. 미러까지 포함하는 `.photo-wardrobe`/`.photo-stage` 전체를 숨기거나 개별 의류 opacity만 낮추는 방식은 사용하지 않는다. DB·에셋·geometry·데스크톱 규칙·B-02·LED 정책 변경은 필요하지 않다.
+
+승인 후 회귀 검증에는 두 프로필의 동일 크기 전환, **767px 이하** 모바일 Scene 유효 표시/클릭 영역 0, 미러 hit-test Scene 0, 실제 내비게이션 클릭 성공, desktop87개 ID·좌표·필터 복귀 일치, 거울 배경 효과 및 프로필/화면 상태 보존을 포함해야 한다. **768px은 데스크톱 Scene 표시를 유지하는 경계 검사**로 구분한다. **수정은 실행하지 않았으며 사용자 승인 대기**다. D~G는 시작하지 않았다.
