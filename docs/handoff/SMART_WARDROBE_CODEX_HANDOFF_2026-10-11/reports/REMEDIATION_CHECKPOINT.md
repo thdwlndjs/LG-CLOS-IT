@@ -98,3 +98,7 @@ review.html defaults to cleaned B3, checkbox toggles old asset. Browser PASS: ol
 
 ## B3 shirt structure candidate v5
 New user instruction: use other transparent PNGs for side pose and original denim product photo for shirt construction. New B3-shirt-v5 candidate has separately visible sleeve and torso, pocket/placket on torso. RGBA and browser comparison verified. Candidate only; original placement scale may need tuning. Existing wardrobe preview default, app, DB and production remain unchanged. See hanger-individual-v1/B3_SHIRT_V5.md.
+
+
+## B3 v5 in wardrobe review
+User requested placement. review.html now defaults to B3-shirt-v5-final.png, bottom thumbnail likewise; original checkbox comparison preserved. Placement remains 486,121,53,310. Browser verification passed and composite/detail screenshots refreshed. Background patch issue remains; preview-only, no app/DB/push/deploy.
