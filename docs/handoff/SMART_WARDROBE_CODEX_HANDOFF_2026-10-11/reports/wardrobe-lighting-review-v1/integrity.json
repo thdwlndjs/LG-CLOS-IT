@@ -5,10 +5,10 @@
     {
       "selected": "A",
       "cloth_mean_luminance_before": 22.379,
-      "cloth_mean_luminance_after": 29.8151,
+      "cloth_mean_luminance_after": 29.5127,
       "hanger_sector_check": {
         "same_rail_neighbor_luminance_before": 87.6843,
-        "same_rail_neighbor_luminance_after": 57.0538,
+        "same_rail_neighbor_luminance_after": 34.4313,
         "brightened_pixels_outside_selected_sector": 0,
         "mask_type": "cloth silhouette + wooden hanger + metal hook",
         "hanger_luminance_before": 202.8459,
@@ -35,10 +35,10 @@
     {
       "selected": "B",
       "cloth_mean_luminance_before": 160.3262,
-      "cloth_mean_luminance_after": 162.0967,
+      "cloth_mean_luminance_after": 161.4976,
       "hanger_sector_check": {
         "same_rail_neighbor_luminance_before": 205.9482,
-        "same_rail_neighbor_luminance_after": 134.6661,
+        "same_rail_neighbor_luminance_after": 81.59,
         "brightened_pixels_outside_selected_sector": 0,
         "mask_type": "cloth silhouette + wooden hanger + metal hook",
         "hanger_luminance_before": 178.9903,
