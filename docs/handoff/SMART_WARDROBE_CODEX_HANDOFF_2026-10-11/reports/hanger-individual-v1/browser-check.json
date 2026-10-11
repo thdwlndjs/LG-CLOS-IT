@@ -3,8 +3,8 @@
   "recomposition_changed_channels": 0,
   "clean_B3_default": true,
   "clean_B3_change": {
-    "changed_pixels": 12660,
-    "outside_B3_canvas": 0
+    "changed_pixels": 31328,
+    "outside_B_row": 0
   },
   "individual_hide_action_ids": [
     "A1",

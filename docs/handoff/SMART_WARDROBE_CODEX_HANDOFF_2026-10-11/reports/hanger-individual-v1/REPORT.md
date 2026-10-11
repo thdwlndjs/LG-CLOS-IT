@@ -1,3 +1,5 @@
+> ?? B3 ?? ?? ? ??: [B3_GEOMETRY_CONTRACT.md](B3_GEOMETRY_CONTRACT.md). ?? ??? ?? ??? ?? ?? ?????.
+
 # 행거 의류 개별 분리
 
 요구사항은 찾기 순간에만 누끼를 적용하는 것이 아니라, 평상시부터 각 의류를 별도 투명 에셋으로 배치하는 것이다. 원본 기준은 승인된 `../wardrobe-visual-samples-v1/wardrobe-composite.png`이며 새 이미지 생성 없이 원본 RGB 픽셀을 분리했다.

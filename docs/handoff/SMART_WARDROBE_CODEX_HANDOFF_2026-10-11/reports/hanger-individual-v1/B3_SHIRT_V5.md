@@ -1,3 +1,5 @@
+> ?? B3 ?? ?? ? ??: [B3_GEOMETRY_CONTRACT.md](B3_GEOMETRY_CONTRACT.md). ?? ??? ?? ??? ?? ?? ?????.
+
 # B3 셔츠 구조를 유지한 투명 시안
 
 사용자의 지시에 따라 B2 흰 셔츠와 B4 재킷의 투명 PNG를 옷걸이 각도·좁은 측면 카메라의 참고로, `candidate-photos/B3.jpg`를 원본 데님 셔츠의 소재·칼라·소매·몸판·포켓·단추선 기준으로 사용했다. 이전의 소매에 가슴 포켓이 붙은 단일 패널 형태를 이어서 수정하지 않고 built-in `image_gen.imagegen`으로 새 후보를 생성했다.

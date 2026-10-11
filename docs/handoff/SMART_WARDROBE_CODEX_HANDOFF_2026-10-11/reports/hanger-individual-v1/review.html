@@ -2,36 +2,61 @@
 <title>행거 개별 픽셀 분리 검수</title>
 <style>body{margin:20px;background:#eee9e1;color:#29251f;font:16px system-ui}button,select,input{margin:5px;padding:8px}canvas{width:100%;height:auto;display:block}#stage{max-width:1672px}#assets{display:grid;grid-template-columns:repeat(7,1fr);gap:12px}figure{margin:0;padding:12px;background:#333;color:white}figure img{height:250px;max-width:100%;object-fit:contain;background:repeating-conic-gradient(#444 0% 25%,#666 0% 50%) 0/16px 16px}#status{min-height:2em}</style>
 <h1>행거 의류 21벌 개별 에셋</h1>
-<p><a href="B3-shirt-v5-review.html">B3 소매·몸판 구분 시안 비교 보기</a> · 새 B3를 기본 배치했습니다. 체크를 해제하면 기존 분리본과 비교할 수 있습니다.</p>
+<p><a href="B3_GEOMETRY_CONTRACT.md">B3 기준점·합성 계약</a> · 고리·어깨·소매 끝·밑단 기준점에 맞춘 B3를 빈 배경 위에 배치했습니다. 체크를 해제하면 최초 분리본과 비교합니다.</p>
 <p>원본 픽셀 분리 · 조명 기능과 무관하게 개별 배치. 숨겨진 의류 뒷부분은 복원 전입니다. 가장자리/제거 화면은 추가 시각 검수가 필요합니다.</p>
 <button id="original">원본</button><button id="assembled">개별 에셋 재합성</button><button id="empty">행거 전체 숨기기</button>
 <label><input id="clean-b3" type="checkbox" checked>수정 B3 적용</label>
+<button id="geometry-reference">가공 전 원본 배치</button><label><input id="guides" type="checkbox">B3 기준점 표시</label>
 <label>개별 의류 <select id="item"></select></label><button id="remove">선택 의류 숨기기</button><button id="move">선택 의류 오른쪽 이동</button>
 <p id="status"></p><div id="stage"><canvas id="scene" width="1672" height="941"></canvas></div><h2>투명 PNG 개별 보기</h2><div id="assets"></div>
 <script type="module">
 const spec=await fetch('manifest.json').then(r=>r.json());
 const load=src=>new Promise((resolve,reject)=>{const im=new Image;im.onload=()=>resolve(im);im.onerror=reject;im.src=src});
 const original=await load(spec.source),base=await load(spec.background),clean=await load(spec.clean_underlay),images={};
-const b3Clean=await load('B3-shirt-v5-final.png');
+const contract=await fetch('B3_GEOMETRY_CONTRACT.json').then(r=>r.json());
+const b3Clean=await load(contract.output_asset),geometryReference=await load(contract.reference_file);
+const cleanNeighbors={},neighborMatteCounts={};
+function removeBorderWood(image,item){
+ const c=document.createElement('canvas');c.width=image.width;c.height=image.height;const g=c.getContext('2d');g.drawImage(image,0,0);
+ const before=g.getImageData(0,0,c.width,c.height).data;
+ const mask=document.createElement('canvas');mask.width=c.width;mask.height=c.height;const m=mask.getContext('2d');m.translate(-item.x,-item.y);
+ const shape=contract.neighbor_masks[item.id];m.fillStyle='white';m.fill(new Path2D(shape.cloth_path));m.fill(new Path2D(item.hanger_path));m.strokeStyle='white';m.lineWidth=1.8;m.lineCap='round';m.stroke(new Path2D(item.hook_path));
+ g.globalCompositeOperation='destination-in';g.drawImage(mask,0,0);
+ const after=g.getImageData(0,0,c.width,c.height).data;let removed=0;for(let i=3;i<after.length;i+=4)if(before[i]>0&&after[i]===0)removed++;
+ neighborMatteCounts[item.id]=removed;return c;
+}
 for(const item of spec.items){images[item.id]=await load(item.file);const option=document.createElement('option');option.value=item.id;option.textContent=item.id;document.querySelector('#item').append(option);
- const fig=document.createElement('figure'),caption=document.createElement('figcaption'),img=document.createElement('img');caption.textContent=item.id;img.src=item.id==='B3'?'B3-shirt-v5-final.png':item.file;if(item.id==='B3')img.id='b3-asset';fig.append(caption,img);document.querySelector('#assets').append(fig)}
+ if(contract.neighbor_masks?.[item.id])cleanNeighbors[item.id]=removeBorderWood(images[item.id],item);
+ const fig=document.createElement('figure'),caption=document.createElement('figcaption'),img=document.createElement('img');caption.textContent=item.id;img.src=item.id==='B3'?contract.output_asset:item.file;if(item.id==='B3')img.id='b3-asset';fig.append(caption,img);document.querySelector('#assets').append(fig)}
 const canvas=document.querySelector('#scene'),ctx=canvas.getContext('2d');
 let currentMode='assembled',currentId='';
 function draw(mode='assembled',id=''){
  currentMode=mode;currentId=id;
  const useClean=document.querySelector('#clean-b3').checked;
  ctx.clearRect(0,0,canvas.width,canvas.height);
- ctx.drawImage(mode==='original'?original:base,0,0);
+ ctx.drawImage(mode==='geometry-reference'?geometryReference:mode==='original'?original:base,0,0);
+ if(useClean&&!['original','geometry-reference','empty'].includes(mode)){
+  const [x,y,w,h]=contract.background.bounds;ctx.drawImage(clean,x,y,w,h,x,y,w,h);
+ }
  if(['empty','remove','move'].includes(mode))for(const row of spec.rows){
   if(mode!=='empty'&&row.id!==id[0])continue;
   const [x,y,w,h]=row.bounds;ctx.drawImage(clean,x,y,w,h,x,y,w,h);
  }
- if(!['original','empty'].includes(mode))for(const item of spec.items){if(mode==='remove'&&item.id===id)continue;ctx.drawImage(item.id==='B3'&&useClean?b3Clean:images[item.id],item.x+(mode==='move'&&item.id===id?80:0),item.y,item.width,item.height)}
- document.querySelector('#status').textContent=mode+' '+id+(mode==='assembled'?(useClean?' · 수정 B3 적용 (기존 좌표·53×310 캔버스)':' · 기존 분리본 재합성 / 원본과 픽셀 차이 '+spec.changed_pixels):'');
+ if(!['original','geometry-reference','empty'].includes(mode))for(const item of spec.items){
+  if(mode==='remove'&&item.id===id)continue;
+  const shift=mode==='move'&&item.id===id?80:0;
+  if(item.id==='B3'&&useClean)ctx.drawImage(b3Clean,contract.output_origin[0]+shift,contract.output_origin[1]);
+  else ctx.drawImage(useClean&&cleanNeighbors[item.id]?cleanNeighbors[item.id]:images[item.id],item.x+shift,item.y,item.width,item.height);
+ }
+ if(document.querySelector('#guides').checked)for(const landmark of contract.landmarks){ctx.strokeStyle='#e84632';ctx.lineWidth=.7;ctx.beginPath();ctx.arc(...landmark.target,2.5,0,Math.PI*2);ctx.stroke();ctx.font='8px system-ui';ctx.fillStyle='#e84632';ctx.fillText(landmark.id,landmark.target[0]+4,landmark.target[1])}
+ document.querySelector('#status').textContent=mode+' '+id+(mode==='assembled'?(useClean?' · 기준점으로 위치 보정한 B3 / 빈 B행거 배경':' · 기존 분리본 재합성 / 원본과 픽셀 차이 '+spec.changed_pixels):'');
  window.hangerState={mode,id};
- window.b3CleanApplied=useClean&&!['original','empty'].includes(mode);
+ window.b3CleanApplied=useClean&&!['original','geometry-reference','empty'].includes(mode);
+ window.b3NeighborMatteCounts=neighborMatteCounts;
 }
-document.querySelector('#clean-b3').onchange=()=>{document.querySelector('#b3-asset').src=document.querySelector('#clean-b3').checked?'B3-shirt-v5-final.png':'B3.png';draw(currentMode,currentId)};
+document.querySelector('#clean-b3').onchange=()=>{document.querySelector('#b3-asset').src=document.querySelector('#clean-b3').checked?contract.output_asset:'B3.png';draw(currentMode,currentId)};
+document.querySelector('#guides').onchange=()=>draw(currentMode,currentId);
+document.querySelector('#geometry-reference').onclick=()=>draw('geometry-reference');
 for(const mode of ['original','assembled','empty','remove','move'])document.querySelector('#'+mode).onclick=()=>draw(mode,document.querySelector('#item').value);
 draw();window.hangerReady=true;
 </script></html>

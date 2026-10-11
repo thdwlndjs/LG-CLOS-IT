@@ -1,0 +1,294 @@
+{
+  "status": "REVIEW_CANDIDATE_VISUAL_GAPS_REMAIN",
+  "understood_as": "Keep existing physical wardrobe pose, placement and neighbor layering; denim garment identity; normal scene uses individual alpha assets on clean background.",
+  "stage": {
+    "width": 1672,
+    "height": 941
+  },
+  "reference_file": "../wardrobe-visual-review/reference-unchanged.png",
+  "reference_sha256": "abc5cdf750a55f8054ddf1c8d77875d3c99d2006ebeffc2e211f169dbd521a26",
+  "material_reference": "../wardrobe-visual-review/candidate-photos/B3.jpg",
+  "source_asset": "B3-contract-v7-highres.png",
+  "source_size": [
+    1122,
+    1402
+  ],
+  "output_origin": [
+    480,
+    115
+  ],
+  "output_size": [
+    76,
+    318
+  ],
+  "landmark_basis": "Manual reading of unmodified wardrobe and generated garment. Image coordinates, not sensor or physical measurement.",
+  "landmarks": [
+    {
+      "id": "hook_top",
+      "source": [
+        545,
+        20
+      ],
+      "target": [
+        519,
+        123
+      ],
+      "tolerance_px": 1
+    },
+    {
+      "id": "hook_stem",
+      "source": [
+        561,
+        90
+      ],
+      "target": [
+        517,
+        143
+      ],
+      "tolerance_px": 1
+    },
+    {
+      "id": "hanger_neck",
+      "source": [
+        566,
+        170
+      ],
+      "target": [
+        517,
+        156
+      ],
+      "tolerance_px": 1
+    },
+    {
+      "id": "shoulder_left",
+      "source": [
+        451,
+        345
+      ],
+      "target": [
+        500,
+        191
+      ],
+      "tolerance_px": 2
+    },
+    {
+      "id": "collar_right",
+      "source": [
+        650,
+        260
+      ],
+      "target": [
+        529,
+        199
+      ],
+      "tolerance_px": 2
+    },
+    {
+      "id": "sleeve_left_mid",
+      "source": [
+        383,
+        850
+      ],
+      "target": [
+        488,
+        310
+      ],
+      "tolerance_px": 2
+    },
+    {
+      "id": "body_right_mid",
+      "source": [
+        720,
+        850
+      ],
+      "target": [
+        535,
+        310
+      ],
+      "tolerance_px": 2
+    },
+    {
+      "id": "cuff_top",
+      "source": [
+        428,
+        1190
+      ],
+      "target": [
+        499,
+        375
+      ],
+      "tolerance_px": 2
+    },
+    {
+      "id": "cuff_bottom",
+      "source": [
+        525,
+        1298
+      ],
+      "target": [
+        508,
+        405
+      ],
+      "tolerance_px": 2
+    },
+    {
+      "id": "body_hem",
+      "source": [
+        638,
+        1360
+      ],
+      "target": [
+        533,
+        419
+      ],
+      "tolerance_px": 2
+    },
+    {
+      "id": "cuff_left",
+      "source": [
+        450,
+        1310
+      ],
+      "target": [
+        499,
+        402
+      ],
+      "tolerance_px": 2
+    },
+    {
+      "id": "cuff_right",
+      "source": [
+        615,
+        1280
+      ],
+      "target": [
+        529,
+        401
+      ],
+      "tolerance_px": 2
+    },
+    {
+      "id": "hem_bottom",
+      "source": [
+        545,
+        1380
+      ],
+      "target": [
+        515,
+        421
+      ],
+      "tolerance_px": 2
+    },
+    {
+      "id": "collar_left",
+      "source": [
+        508,
+        170
+      ],
+      "target": [
+        509,
+        157
+      ],
+      "tolerance_px": 2
+    },
+    {
+      "id": "shoulder_contour",
+      "source": [
+        469,
+        300
+      ],
+      "target": [
+        502,
+        184
+      ],
+      "tolerance_px": 2
+    },
+    {
+      "id": "sleeve_upper_contour",
+      "source": [
+        423,
+        500
+      ],
+      "target": [
+        491,
+        230
+      ],
+      "tolerance_px": 2
+    },
+    {
+      "id": "sleeve_mid_contour",
+      "source": [
+        392,
+        750
+      ],
+      "target": [
+        488,
+        280
+      ],
+      "tolerance_px": 2
+    },
+    {
+      "id": "sleeve_lower_contour",
+      "source": [
+        376,
+        1000
+      ],
+      "target": [
+        489,
+        338
+      ],
+      "tolerance_px": 2
+    },
+    {
+      "id": "sleeve_cuff_join",
+      "source": [
+        406,
+        1160
+      ],
+      "target": [
+        494,
+        374
+      ],
+      "tolerance_px": 2
+    }
+  ],
+  "background": {
+    "file": "hanger-clean-underlay.png",
+    "row": "B",
+    "bounds": [
+      398,
+      121,
+      289,
+      316
+    ],
+    "rule": "Restore clean whole B row before drawing its garments. Never use a garment-shaped bright wood patch behind new B3."
+  },
+  "occlusion": {
+    "order": [
+      "B1",
+      "B2",
+      "B3",
+      "B4",
+      "B5",
+      "B6"
+    ],
+    "rule": "B4/B5/B6 retain original foreground order over B3; no silhouette clipping copied from lighting masks."
+  },
+  "checks": [
+    "Actual exported alpha exists at rendered anchor neighborhoods, not just transform math.",
+    "Hook/shoulder/cuff/hem compared against original reference overlay in browser.",
+    "No visible wood rectangle or garment-shaped background patch.",
+    "Sleeve distinct from torso, pocket and placket on torso.",
+    "Changes outside B row are zero; original comparison mode still pixel-exact.",
+    "Shape alignment is assessed separately from generated textile identity; numeric anchor fit alone cannot approve visual quality."
+  ],
+  "scope": "B3 review only; no app, API, DB, remote push or deployment changes",
+  "output_asset": "B3-aligned-v8.png",
+  "alpha_rule": "Subpixel metal hook >=64 alpha; cloth and wooden hanger >=200 within declared tolerance. This does not certify anatomy or visual quality.",
+  "neighbor_masks": {
+    "B4": {
+      "basis": "Manual visible contour read from unmodified original B row; remove surrounding wood only in corrected preview. Original comparison and PNG remain unchanged.",
+      "cloth_path": "M 553 155 L 565 155 Q 575 171 581 198 L 589 254 L 593 320 L 594 377 L 598 410 Q 598 419 591 425 Q 571 433 549 426 L 546 410 L 540 402 Q 534 379 533 352 L 533 299 L 535 253 L 538 216 L 542 191 L 546 173 Z"
+    }
+  }
+}

@@ -1,0 +1,199 @@
+{
+  "status": "PASS_ANCHOR_PRESENCE",
+  "landmarks": [
+    {
+      "id": "hook_top",
+      "target": [
+        519,
+        123
+      ],
+      "source_fit_error": 1.7316263224219958e-12,
+      "rendered_alpha_near_target": 138,
+      "minimum_alpha": 64
+    },
+    {
+      "id": "hook_stem",
+      "target": [
+        517,
+        143
+      ],
+      "source_fit_error": 1.3123322310792898e-12,
+      "rendered_alpha_near_target": 129,
+      "minimum_alpha": 64
+    },
+    {
+      "id": "hanger_neck",
+      "target": [
+        517,
+        156
+      ],
+      "source_fit_error": 8.601970165740087e-13,
+      "rendered_alpha_near_target": 255,
+      "minimum_alpha": 200
+    },
+    {
+      "id": "shoulder_left",
+      "target": [
+        500,
+        191
+      ],
+      "source_fit_error": 3.0388642709621444e-12,
+      "rendered_alpha_near_target": 255,
+      "minimum_alpha": 200
+    },
+    {
+      "id": "collar_right",
+      "target": [
+        529,
+        199
+      ],
+      "source_fit_error": 2.5924587705484053e-12,
+      "rendered_alpha_near_target": 255,
+      "minimum_alpha": 200
+    },
+    {
+      "id": "sleeve_left_mid",
+      "target": [
+        488,
+        310
+      ],
+      "source_fit_error": 6.980408867552229e-12,
+      "rendered_alpha_near_target": 255,
+      "minimum_alpha": 200
+    },
+    {
+      "id": "body_right_mid",
+      "target": [
+        535,
+        310
+      ],
+      "source_fit_error": 6.419029074774292e-12,
+      "rendered_alpha_near_target": 255,
+      "minimum_alpha": 200
+    },
+    {
+      "id": "cuff_top",
+      "target": [
+        499,
+        375
+      ],
+      "source_fit_error": 5.848245858760302e-12,
+      "rendered_alpha_near_target": 255,
+      "minimum_alpha": 200
+    },
+    {
+      "id": "cuff_bottom",
+      "target": [
+        508,
+        405
+      ],
+      "source_fit_error": 4.897778860262865e-12,
+      "rendered_alpha_near_target": 255,
+      "minimum_alpha": 200
+    },
+    {
+      "id": "body_hem",
+      "target": [
+        533,
+        419
+      ],
+      "source_fit_error": 3.811477339295427e-12,
+      "rendered_alpha_near_target": 255,
+      "minimum_alpha": 200
+    },
+    {
+      "id": "cuff_left",
+      "target": [
+        499,
+        402
+      ],
+      "source_fit_error": 4.582862941503293e-12,
+      "rendered_alpha_near_target": 255,
+      "minimum_alpha": 200
+    },
+    {
+      "id": "cuff_right",
+      "target": [
+        529,
+        401
+      ],
+      "source_fit_error": 4.7924092787884534e-12,
+      "rendered_alpha_near_target": 255,
+      "minimum_alpha": 200
+    },
+    {
+      "id": "hem_bottom",
+      "target": [
+        515,
+        421
+      ],
+      "source_fit_error": 4.2719635139419405e-12,
+      "rendered_alpha_near_target": 255,
+      "minimum_alpha": 200
+    },
+    {
+      "id": "collar_left",
+      "target": [
+        509,
+        157
+      ],
+      "source_fit_error": 1.3415528566390486e-12,
+      "rendered_alpha_near_target": 255,
+      "minimum_alpha": 200
+    },
+    {
+      "id": "shoulder_contour",
+      "target": [
+        502,
+        184
+      ],
+      "source_fit_error": 2.8698890585847808e-12,
+      "rendered_alpha_near_target": 255,
+      "minimum_alpha": 200
+    },
+    {
+      "id": "sleeve_upper_contour",
+      "target": [
+        491,
+        230
+      ],
+      "source_fit_error": 5.376137444796141e-12,
+      "rendered_alpha_near_target": 255,
+      "minimum_alpha": 200
+    },
+    {
+      "id": "sleeve_mid_contour",
+      "target": [
+        488,
+        280
+      ],
+      "source_fit_error": 6.406180170362105e-12,
+      "rendered_alpha_near_target": 255,
+      "minimum_alpha": 200
+    },
+    {
+      "id": "sleeve_lower_contour",
+      "target": [
+        489,
+        338
+      ],
+      "source_fit_error": 6.2538095059949524e-12,
+      "rendered_alpha_near_target": 255,
+      "minimum_alpha": 200
+    },
+    {
+      "id": "sleeve_cuff_join",
+      "target": [
+        494,
+        374
+      ],
+      "source_fit_error": 5.3914417100619975e-12,
+      "rendered_alpha_near_target": 255,
+      "minimum_alpha": 200
+    }
+  ],
+  "fold_samples": 0,
+  "opaque_samples": 11252,
+  "scope": "Anchor presence and local fold check only; no visual-quality approval",
+  "alpha_rule": "Subpixel metal hook: >=64 alpha, textile/wood: >=200 alpha within declared tolerance."
+}

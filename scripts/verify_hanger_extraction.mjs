@@ -13,9 +13,9 @@ try{
  await page.locator('#clean-b3').uncheck();
  const manifest=JSON.parse(await readFile(resolve(here,'manifest.json'),'utf8'));assert.equal(manifest.items.length,21);
  const save=async name=>writeFile(resolve(here,name),Buffer.from(await page.locator('#scene').evaluate(c=>c.toDataURL().split(',')[1]),'base64'));
- const assembled=await page.locator('#scene').evaluate(c=>c.getContext('2d').getImageData(0,0,c.width,c.height).data);
+ await page.locator('#scene').evaluate(c=>{window.referencePixels=c.getContext('2d').getImageData(0,0,c.width,c.height).data});
  await page.locator('#original').click();
- const equal=await page.locator('#scene').evaluate((c,assembled)=>{const a=c.getContext('2d').getImageData(0,0,c.width,c.height).data;let changed=0;for(let i=0;i<a.length;i++)if(a[i]!==assembled[i])changed++;return changed},assembled);
+ const equal=await page.locator('#scene').evaluate(c=>{const a=c.getContext('2d').getImageData(0,0,c.width,c.height).data,assembled=window.referencePixels;let changed=0;for(let i=0;i<a.length;i++)if(a[i]!==assembled[i])changed++;return changed});
  assert.equal(equal,0);
  await page.locator('#empty').click();await save('all-hidden.png');
  const cases=[];
@@ -24,21 +24,28 @@ try{
  await page.locator('#item').selectOption('B3');await page.locator('#remove').click();await save('B3-hidden.png');await page.locator('#move').click();await save('B3-moved.png');
  await page.locator('#assets').screenshot({path:resolve(here,'individual-assets-board.png')});
  await page.locator('#assembled').click();
- const before=await page.locator('#scene').evaluate(c=>Array.from(c.getContext('2d').getImageData(0,0,c.width,c.height).data));
+ await page.locator('#scene').evaluate(c=>{window.beforeB3=c.getContext('2d').getImageData(0,0,c.width,c.height).data});
  await page.locator('#clean-b3').check();
- const change=await page.locator('#scene').evaluate((c,before)=>{
-  const after=c.getContext('2d').getImageData(0,0,c.width,c.height).data;let changed=0,outside=0;
+ const contract=JSON.parse(await readFile(resolve(here,'B3_GEOMETRY_CONTRACT.json'),'utf8'));
+ const change=await page.locator('#scene').evaluate((c,bounds)=>{
+  const after=c.getContext('2d').getImageData(0,0,c.width,c.height).data,before=window.beforeB3;let changed=0,outside=0;
+  const [bx,by,bw,bh]=bounds;
   for(let i=0;i<after.length;i+=4)if(after[i]!==before[i]||after[i+1]!==before[i+1]||after[i+2]!==before[i+2]){
-   changed++;const pixel=i/4,x=pixel%c.width,y=Math.floor(pixel/c.width);if(x<486||x>=539||y<121||y>=431)outside++;
-  }return {changed_pixels:changed,outside_B3_canvas:outside};
- },before);
- assert.ok(change.changed_pixels>0);assert.equal(change.outside_B3_canvas,0);
+   changed++;const pixel=i/4,x=pixel%c.width,y=Math.floor(pixel/c.width);if(x<bx||x>=bx+bw||y<by||y>=by+bh)outside++;
+  }return {changed_pixels:changed,outside_B_row:outside};
+ },contract.background.bounds);
+ assert.ok(change.changed_pixels>0);assert.equal(change.outside_B_row,0);
  await save('B3-clean-in-wardrobe.png');
  await page.locator('#scene').evaluate(c=>{
   const zoom=document.createElement('canvas');zoom.id='b3-zoom';zoom.width=520;zoom.height=1340;
   zoom.getContext('2d').drawImage(c,460,112,130,335,0,0,520,1340);document.body.append(zoom);
  });
  await page.locator('#b3-zoom').screenshot({path:resolve(here,'B3-clean-in-wardrobe-detail.png')});
+ await page.locator('#guides').check();await save('B3-contract-guide-overlay.png');await page.locator('#guides').uncheck();
+ await page.locator('#geometry-reference').click();assert.equal(await page.evaluate(()=>window.hangerState.mode),'geometry-reference');await save('B3-contract-original-reference.png');
+ await page.locator('#scene').evaluate(c=>{const zoom=document.querySelector('#b3-zoom');zoom.getContext('2d').clearRect(0,0,520,1340);zoom.getContext('2d').drawImage(c,460,112,130,335,0,0,520,1340)});
+ await page.locator('#b3-zoom').screenshot({path:resolve(here,'B3-contract-original-detail.png')});
+ await page.locator('#assembled').click();
  await page.locator('#item').selectOption('B3');await page.locator('#remove').click();assert.equal(await page.evaluate(()=>window.hangerState.id),'B3');
  await page.locator('#move').click();assert.equal(await page.evaluate(()=>window.hangerState.mode),'move');
  assert.deepEqual(errors,[]);

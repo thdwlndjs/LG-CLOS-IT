@@ -102,3 +102,9 @@ New user instruction: use other transparent PNGs for side pose and original deni
 
 ## B3 v5 in wardrobe review
 User requested placement. review.html now defaults to B3-shirt-v5-final.png, bottom thumbnail likewise; original checkbox comparison preserved. Placement remains 486,121,53,310. Browser verification passed and composite/detail screenshots refreshed. Background patch issue remains; preview-only, no app/DB/push/deploy.
+
+
+## B3 geometry contract implementation
+Canonical B3 contract: hanger-individual-v1/B3_GEOMETRY_CONTRACT.md and JSON. Manual original geometry anchors + denim identity; new generation source v7, source/target landmark alignment output v8. Corrected preview uses clean B row underlay and original stacking, no garment-shaped wood patch. B4 border wood excluded by manual preview matte, original PNG preserved. 19 rendered anchor neighborhoods present, no local fold samples, original hash/alpha/readback and browser paths passed. Actual composite inspected; user final visual approval pending. No other asset rollout/app/DB/push/deploy.
+
+Matched original/candidate crops independently reviewed: sleeve/cuff/body relation and B4 overlap readable; irregular neighbor gap, shoulder/collar silhouette, curved hem, tilted hook and neighboring rectangular shadow remain. Visual completion withheld; next work must target these differences, not repeat unconstrained whole-image generation.
