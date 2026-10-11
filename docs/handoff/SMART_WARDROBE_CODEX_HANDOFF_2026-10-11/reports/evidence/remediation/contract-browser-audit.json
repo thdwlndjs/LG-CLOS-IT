@@ -1,0 +1,73 @@
+{
+  "url": "http://127.0.0.1:5193",
+  "initial": {
+    "source": "MOCK",
+    "cards": [
+      "composition",
+      "composition",
+      "composition"
+    ],
+    "usageVisible": true,
+    "sceneItems": 24
+  },
+  "server": {
+    "source": "SERVER",
+    "cards": [],
+    "usageVisible": true
+  },
+  "initialMutationPaths": [],
+  "shelf": [
+    {
+      "garment_id": "fd1ce769-aab6-4227-83e0-c550cd9ecb45",
+      "anchor_id": "APPROVED-K1",
+      "geometry": {
+        "x": 0.6010765550239234,
+        "y": 0.10201912858660998,
+        "width": 0.06698564593301436,
+        "height": 0.025504782146652496,
+        "z_index": 11
+      },
+      "image_mask": {
+        "width": 112,
+        "height": 24
+      }
+    },
+    {
+      "garment_id": "2568aead-2410-4bab-9208-6d4f54109927",
+      "anchor_id": "APPROVED-K2",
+      "geometry": {
+        "x": 0.6746411483253588,
+        "y": 0.1275239107332625,
+        "width": 0.06937799043062201,
+        "height": 0.018065887353878853,
+        "z_index": 12
+      },
+      "image_mask": {
+        "width": 116,
+        "height": 17
+      }
+    },
+    {
+      "garment_id": "a2f054f7-6967-4add-bf4a-b61af158f0e2",
+      "anchor_id": "APPROVED-K3",
+      "geometry": {
+        "x": 0.5998803827751196,
+        "y": 0.4675876726886291,
+        "width": 0.0687799043062201,
+        "height": 0.030818278427205102,
+        "z_index": 13
+      },
+      "image_mask": {
+        "width": 115,
+        "height": 29
+      }
+    }
+  ],
+  "selection": {
+    "ledAttempts": 1,
+    "dimmed": 0,
+    "note": "LED POST aborted deliberately; no controller execution claimed"
+  },
+  "errors": [],
+  "scope": "read-only product inspection; demo login session only; no recommendation/storage/card creation"
+}
