@@ -1,0 +1,1416 @@
+{
+  "version": "wardrobe-sprites-v1",
+  "basis": "AI-generated visualization derivatives from actual source photos, not official product photos",
+  "rights": "No public redistribution rights inferred",
+  "batches": [
+    {
+      "batch": "batch-01",
+      "items": [
+        {
+          "item_id": "REM-01",
+          "category": "TOP",
+          "source_sha256": "748894cd0fbfdc376ebdb2ad74afe589ec3b9b362e260b4a9b29c7542d1f23ca",
+          "reference_path": "C:\\Users\\aicam\\Desktop\\2\ucc28\ud504\ub85c\uc81d\ud2b8\\test-results\\remediation\\source-images\\REM-01.jpg",
+          "cells": {
+            "hanging": [
+              48,
+              99,
+              128,
+              556
+            ],
+            "folded": [
+              18,
+              769,
+              174,
+              171
+            ]
+          },
+          "mask_sha256": {
+            "hanging": "ebe96039bd63e7b124a94280b78de8ea4511bef72783866fa929e6f71086b034",
+            "folded": "384c5d23df9d5b2b47e22a6dd9e7ffb227fb98ac237c92497cf7574c8f564e00"
+          }
+        },
+        {
+          "item_id": "REM-02",
+          "category": "TOP",
+          "source_sha256": "68e895b35415d701e654ebc3f66b176c5fae2e68ac85f8f669875cc27800aa10",
+          "reference_path": "C:\\Users\\aicam\\Desktop\\2\ucc28\ud504\ub85c\uc81d\ud2b8\\test-results\\remediation\\source-images\\REM-02.jpg",
+          "cells": {
+            "hanging": [
+              237,
+              99,
+              109,
+              551
+            ],
+            "folded": [
+              192,
+              766,
+              192,
+              174
+            ]
+          },
+          "mask_sha256": {
+            "hanging": "6ede064e9099070f208f5b2fffda17665e67c4f078c844fcc8c4b244ad1dbece",
+            "folded": "4e9ce9926e82e9591b32e985250c93ba904267544e916f9089f44f7fc0761f96"
+          }
+        },
+        {
+          "item_id": "REM-03",
+          "category": "TOP",
+          "source_sha256": "8ba6ff3f1940cb5f10ebcb4232dfd8ea4539c80b513ec743750e9c98eb9645d2",
+          "reference_path": "C:\\Users\\aicam\\Desktop\\2\ucc28\ud504\ub85c\uc81d\ud2b8\\test-results\\remediation\\source-images\\REM-03.jpg",
+          "cells": {
+            "hanging": [
+              417,
+              99,
+              127,
+              554
+            ],
+            "folded": [
+              384,
+              769,
+              192,
+              172
+            ]
+          },
+          "mask_sha256": {
+            "hanging": "b2616e0f757a0cdf41aa5fb1a2947aa071e515ab5e0b7f464161153ccc713521",
+            "folded": "91afbc9ef7c3257f07f831a3de0de9ca6d421c98ee3fdd65129e0232a841636e"
+          }
+        },
+        {
+          "item_id": "REM-04",
+          "category": "TOP",
+          "source_sha256": "5ebd16f6c0440a2edddc5cab0b151c1b060fe1bce44cbb50afe053077699dfdb",
+          "reference_path": "C:\\Users\\aicam\\Desktop\\2\ucc28\ud504\ub85c\uc81d\ud2b8\\test-results\\remediation\\source-images\\REM-04.jpg",
+          "cells": {
+            "hanging": [
+              619,
+              99,
+              127,
+              544
+            ],
+            "folded": [
+              593,
+              768,
+              175,
+              172
+            ]
+          },
+          "mask_sha256": {
+            "hanging": "06c7a2bb7b775f9535a489cafb6949208b2bdc7c6398eb6735f84fa09e320123",
+            "folded": "c93b457146d673ca4eaea3847ad482cdda631181a8cd9b439e6495b421a0360d"
+          }
+        },
+        {
+          "item_id": "REM-05",
+          "category": "TOP",
+          "source_sha256": "4b8aa81d8aebdcdfd25e744a07ebda8d2213f17460a3ecbcf3de2409387e3258",
+          "reference_path": "C:\\Users\\aicam\\Desktop\\2\ucc28\ud504\ub85c\uc81d\ud2b8\\test-results\\remediation\\source-images\\REM-05.jpg",
+          "cells": {
+            "hanging": [
+              794,
+              99,
+              143,
+              557
+            ],
+            "folded": [
+              768,
+              767,
+              190,
+              174
+            ]
+          },
+          "mask_sha256": {
+            "hanging": "14a7c563c40b3f52087e335443169cc068328f8d90fa7f42dc82eafdf0da22a4",
+            "folded": "1f9dd38a68ffd3007716d91e9c48b45fc1f49997da3dfcf9914e84dafd3ec571"
+          }
+        },
+        {
+          "item_id": "REM-06",
+          "category": "TOP",
+          "source_sha256": "58b3ba19bc7e5d11002e82daf554656c816b407e1825efbaf392a0aac838da49",
+          "reference_path": "C:\\Users\\aicam\\Desktop\\2\ucc28\ud504\ub85c\uc81d\ud2b8\\test-results\\remediation\\source-images\\REM-06.jpg",
+          "cells": {
+            "hanging": [
+              991,
+              99,
+              119,
+              541
+            ],
+            "folded": [
+              973,
+              769,
+              175,
+              171
+            ]
+          },
+          "mask_sha256": {
+            "hanging": "63ed5b03b22330204e185b832a82709fed2a971c8b30e3bed710381da1e9a1b9",
+            "folded": "51bb18873eeae3323b1b83fc3b71c61bb94facee53aee67c7bdbe214e1754b60"
+          }
+        },
+        {
+          "item_id": "REM-07",
+          "category": "TOP",
+          "source_sha256": "dfba41f694ef9b77be039ffbf6b0d40deb1ab3c834e80054bf45030e2accef83",
+          "reference_path": "C:\\Users\\aicam\\Desktop\\2\ucc28\ud504\ub85c\uc81d\ud2b8\\test-results\\remediation\\source-images\\REM-07.jpg",
+          "cells": {
+            "hanging": [
+              1177,
+              99,
+              144,
+              551
+            ],
+            "folded": [
+              1163,
+              759,
+              179,
+              183
+            ]
+          },
+          "mask_sha256": {
+            "hanging": "4c292294651c7566bcbff9deb625e7323fea61a47d34f20617d192d90688d1c7",
+            "folded": "17e11b4ca65f7049ac28d85386f9737eff248f31de72f26cd649ece285cc1349"
+          }
+        },
+        {
+          "item_id": "REM-08",
+          "category": "TOP",
+          "source_sha256": "41836d5c0acc24d3c610116e2a33cd4357581fe06e34a07d66f6366524aa1d73",
+          "reference_path": "C:\\Users\\aicam\\Desktop\\2\ucc28\ud504\ub85c\uc81d\ud2b8\\test-results\\remediation\\source-images\\REM-08.jpg",
+          "cells": {
+            "hanging": [
+              1380,
+              99,
+              123,
+              542
+            ],
+            "folded": [
+              1358,
+              764,
+              165,
+              177
+            ]
+          },
+          "mask_sha256": {
+            "hanging": "5fc10b54d0b1e5eb8f0c4032191c1607c17427c2b378e3168513a198f1e6762a",
+            "folded": "4fceb5454a7ac0d033f1193f201b9c016f3d970da7e4548b117558f63186ab09"
+          }
+        }
+      ],
+      "status": "LOCAL_DISPLAY_CANDIDATE",
+      "atlas_dimensions": [
+        1536,
+        1024
+      ],
+      "cell_dimensions": [
+        192,
+        512
+      ],
+      "mode": "top row side-hanging; bottom row folded/resting; original photos unchanged",
+      "local_atlas": "assets/wardrobe-scene-sprites/batch-01-v1.png",
+      "atlas_sha256": "c3bab5bac329ba4d61ed728abf7ad1fad107faa9c2b30ea2ee2ebdcdadc61609",
+      "generation_tool": "built-in image_gen",
+      "generation_source": "C:\\Users\\aicam\\.codex\\generated_images\\01a11a04-161b-71c1-b091-cdb004c0a66c\\exec-cc5c8e20-fba8-4542-8d66-cc63db33abd2.png",
+      "source_rasters_modified": false,
+      "atlas_asset_id": "35251985-086d-4b35-9b99-ab7179cd0af8",
+      "generation_recipe": "source contact sheet + prior side/fold style; 8 logical columns, side-hanging clothing and folded/resting counterparts, transparent PNG; manually adjusted atlas cells",
+      "display_geometry_basis": "alpha silhouette bounds; see item.cells"
+    },
+    {
+      "batch": "batch-02",
+      "items": [
+        {
+          "item_id": "REM-09",
+          "category": "TOP",
+          "source_sha256": "d2b0a3204df257412e64d78bd3ffec31fc7e494ca192b9b0677c30eac8eda8f0",
+          "reference_path": "C:\\Users\\aicam\\Desktop\\2\ucc28\ud504\ub85c\uc81d\ud2b8\\test-results\\remediation\\source-images\\REM-09.jpg",
+          "cells": {
+            "hanging": [
+              39,
+              51,
+              128,
+              617
+            ],
+            "folded": [
+              17,
+              759,
+              175,
+              209
+            ]
+          },
+          "mask_sha256": {
+            "hanging": "41cd0029ea751394656f196569fe9443fdef1454dec96429837415c241eb5ab5",
+            "folded": "06f1b8098925db366668ba2df305b8867eb0fe58a6d2170907266169f594fb0a"
+          }
+        },
+        {
+          "item_id": "REM-10",
+          "category": "TOP",
+          "source_sha256": "bad7182853ed4890bb0f50f9a45ef344ae56b59971a9aa774e287ebbfd80c4ee",
+          "reference_path": "C:\\Users\\aicam\\Desktop\\2\ucc28\ud504\ub85c\uc81d\ud2b8\\test-results\\remediation\\source-images\\REM-10.jpg",
+          "cells": {
+            "hanging": [
+              223,
+              51,
+              143,
+              623
+            ],
+            "folded": [
+              192,
+              769,
+              192,
+              199
+            ]
+          },
+          "mask_sha256": {
+            "hanging": "052730afbdb9713f97156a8690dadfc00454a2772288fc781d981480aae12a82",
+            "folded": "c091b65ba8e8b44ffb37dfd35aa02bca42a1f86497069e74b993ec7bf933005e"
+          }
+        },
+        {
+          "item_id": "REM-11",
+          "category": "TOP",
+          "source_sha256": "249337a953cc383c595ca019d496c63c509ffda9982638ab2b00c89b89fe72f0",
+          "reference_path": "C:\\Users\\aicam\\Desktop\\2\ucc28\ud504\ub85c\uc81d\ud2b8\\test-results\\remediation\\source-images\\REM-11.jpg",
+          "cells": {
+            "hanging": [
+              419,
+              51,
+              150,
+              631
+            ],
+            "folded": [
+              384,
+              756,
+              192,
+              212
+            ]
+          },
+          "mask_sha256": {
+            "hanging": "ed9e72c4bf0264b87326c5c090e6d06431bfe02e67d483927dc76112fa1fc04b",
+            "folded": "e0b5b7a019770d3ec3095dc322c0ebf66cffb76f1c9cc6b8308fa15c814f2084"
+          }
+        },
+        {
+          "item_id": "REM-12",
+          "category": "TOP",
+          "source_sha256": "5cceebaf54f067878db468915123b85dc241f66099d16ebb69fd90aefefb6d9a",
+          "reference_path": "C:\\Users\\aicam\\Desktop\\2\ucc28\ud504\ub85c\uc81d\ud2b8\\test-results\\remediation\\source-images\\REM-12.jpg",
+          "cells": {
+            "hanging": [
+              611,
+              51,
+              133,
+              609
+            ],
+            "folded": [
+              576,
+              764,
+              192,
+              205
+            ]
+          },
+          "mask_sha256": {
+            "hanging": "45efdba17da8b186e4f5068d0ed07ba4089804fb33fb848815262cc0ed4a7b75",
+            "folded": "ff83d850d33bad96d834e1988bed918cf2256ee89cde916ecd19a23651aee6c4"
+          }
+        },
+        {
+          "item_id": "REM-13",
+          "category": "TOP",
+          "source_sha256": "28f5f96a975dbc2b7303c09d8ec8e2dd10c90a4a60ee05019974f51bee899515",
+          "reference_path": "C:\\Users\\aicam\\Desktop\\2\ucc28\ud504\ub85c\uc81d\ud2b8\\test-results\\remediation\\source-images\\REM-13.jpg",
+          "cells": {
+            "hanging": [
+              800,
+              51,
+              137,
+              619
+            ],
+            "folded": [
+              768,
+              764,
+              192,
+              204
+            ]
+          },
+          "mask_sha256": {
+            "hanging": "4f486044b762acd1facbc95059d67e1f78d76102582783ef882d9fea40cd922b",
+            "folded": "703c75a75dbba3101b533b16a1d755cfd11a72c384c43769a120a1eee1d026a1"
+          }
+        },
+        {
+          "item_id": "REM-14",
+          "category": "TOP",
+          "source_sha256": "e917a6c00c67c147c8d470da20207bfebfc8c9d729cd47a7506e7ab4cd2d6e59",
+          "reference_path": "C:\\Users\\aicam\\Desktop\\2\ucc28\ud504\ub85c\uc81d\ud2b8\\test-results\\remediation\\source-images\\REM-14.jpg",
+          "cells": {
+            "hanging": [
+              985,
+              51,
+              142,
+              626
+            ],
+            "folded": [
+              960,
+              768,
+              192,
+              200
+            ]
+          },
+          "mask_sha256": {
+            "hanging": "0219e23ea25ad4806ba33e92903b7652aa9d81320b7dc3430b20381958b446b2",
+            "folded": "4d0693e2c442d09df6603f6b1fac5a641781e4a0e31c91324ad887f7df08bcb6"
+          }
+        },
+        {
+          "item_id": "REM-15",
+          "category": "TOP",
+          "source_sha256": "095b1da966401372f1d81fb33a50e618aa09f66081643cb638d33a44c9b05eea",
+          "reference_path": "C:\\Users\\aicam\\Desktop\\2\ucc28\ud504\ub85c\uc81d\ud2b8\\test-results\\remediation\\source-images\\REM-15.jpg",
+          "cells": {
+            "hanging": [
+              1181,
+              51,
+              136,
+              628
+            ],
+            "folded": [
+              1158,
+              761,
+              183,
+              207
+            ]
+          },
+          "mask_sha256": {
+            "hanging": "cebc287d4e74050ec52136717d89eba6c4913ae8a7a78565ba345f1ef2daa88b",
+            "folded": "afb0ab8be2203fef901226cc92b62f32f94c024ba9acab92dec82276ead54b72"
+          }
+        },
+        {
+          "item_id": "REM-16",
+          "category": "TOP",
+          "source_sha256": "90aebf2c1df7cf11867b4d6be9cd7ffb43ff5edd8ccf331981e9b28c35c27e7a",
+          "reference_path": "C:\\Users\\aicam\\Desktop\\2\ucc28\ud504\ub85c\uc81d\ud2b8\\test-results\\remediation\\source-images\\REM-16.jpg",
+          "cells": {
+            "hanging": [
+              1363,
+              51,
+              153,
+              634
+            ],
+            "folded": [
+              1347,
+              771,
+              182,
+              197
+            ]
+          },
+          "mask_sha256": {
+            "hanging": "ad5dd9e503b0786907f4f900a354133a7197c11c70b231e4ccf6e7dd5c44497f",
+            "folded": "c5f9584002a2365f9468b47407a9e92a709692f1b288d4b867e63c05e3124e93"
+          }
+        }
+      ],
+      "status": "LOCAL_DISPLAY_CANDIDATE",
+      "atlas_dimensions": [
+        1536,
+        1024
+      ],
+      "cell_dimensions": [
+        192,
+        512
+      ],
+      "mode": "top row side-hanging; bottom row folded/resting; original photos unchanged",
+      "local_atlas": "assets/wardrobe-scene-sprites/batch-02-v1.png",
+      "atlas_sha256": "82e9b7ae270ec7072d326828c496682a74ff0df5988cf7aff20be68714958a61",
+      "generation_tool": "built-in image_gen",
+      "generation_source": "C:\\Users\\aicam\\.codex\\generated_images\\01a11a04-161b-71c1-b091-cdb004c0a66c\\exec-7ee0e41d-9a77-4c61-bd9f-08a46b54dcd7.png",
+      "source_rasters_modified": false,
+      "atlas_asset_id": "a71c4006-1989-467d-8831-07c5f9543639",
+      "generation_recipe": "source contact sheet + prior side/fold style; 8 logical columns, side-hanging clothing and folded/resting counterparts, transparent PNG; manually adjusted atlas cells",
+      "display_geometry_basis": "alpha silhouette bounds; see item.cells"
+    },
+    {
+      "batch": "batch-03",
+      "items": [
+        {
+          "item_id": "REM-17",
+          "category": "TOP",
+          "source_sha256": "0c6ea744fce2cceeb69dc84ada8291a4025f5a96bee37fccd9036195a216c6f8",
+          "reference_path": "C:\\Users\\aicam\\Desktop\\2\ucc28\ud504\ub85c\uc81d\ud2b8\\test-results\\remediation\\source-images\\REM-17.jpg",
+          "cells": {
+            "hanging": [
+              49,
+              67,
+              131,
+              572
+            ],
+            "folded": [
+              15,
+              749,
+              177,
+              207
+            ]
+          },
+          "mask_sha256": {
+            "hanging": "30251cac2deb017ba70878b856f6767e2d4b89654175579ec96e3864ec366ab9",
+            "folded": "235c556d750da0a460627fdb802cbdb63385e3b6c4d0df42b0f05783c5cd69bd"
+          }
+        },
+        {
+          "item_id": "REM-18",
+          "category": "TOP",
+          "source_sha256": "8013b2b8f8eb922596942b86d3ac06740d0d4ebb1f7c8b3e8a65d6ead65f804f",
+          "reference_path": "C:\\Users\\aicam\\Desktop\\2\ucc28\ud504\ub85c\uc81d\ud2b8\\test-results\\remediation\\source-images\\REM-18.jpg",
+          "cells": {
+            "hanging": [
+              247,
+              70,
+              98,
+              536
+            ],
+            "folded": [
+              192,
+              743,
+              188,
+              213
+            ]
+          },
+          "mask_sha256": {
+            "hanging": "46ab8a8a330c8e06cb490480ca6fb23e06b684fe2b07cf9a969d2c66a33264d1",
+            "folded": "ca2d3f48e09c22865b91a79fb42c3263e28b4149e1b5798892475ee60e69f53b"
+          }
+        },
+        {
+          "item_id": "REM-19",
+          "category": "BOTTOM",
+          "source_sha256": "67b385d12a3f7352b33548635ceff96c15edb97b03c16713eea23516ed48df02",
+          "reference_path": "C:\\Users\\aicam\\Desktop\\2\ucc28\ud504\ub85c\uc81d\ud2b8\\test-results\\remediation\\source-images\\REM-19.jpg",
+          "cells": {
+            "hanging": [
+              441,
+              72,
+              99,
+              570
+            ],
+            "folded": [
+              391,
+              748,
+              184,
+              208
+            ]
+          },
+          "mask_sha256": {
+            "hanging": "409c9ac1b09ea84b72049a13816cc8de46082f6c9640b6f2b8f2e27551b250b0",
+            "folded": "8fa87f3a1d72591d600c58cf2ab6dc879e84f40e4a9ad39bfd765f1f8e031c01"
+          }
+        },
+        {
+          "item_id": "REM-20",
+          "category": "BOTTOM",
+          "source_sha256": "274c8d2dc885dd46369cf42ca8f2dcd347df2554000729f4f4fe48dd61dec2f8",
+          "reference_path": "C:\\Users\\aicam\\Desktop\\2\ucc28\ud504\ub85c\uc81d\ud2b8\\test-results\\remediation\\source-images\\REM-20.jpg",
+          "cells": {
+            "hanging": [
+              612,
+              72,
+              142,
+              400
+            ],
+            "folded": [
+              584,
+              761,
+              182,
+              195
+            ]
+          },
+          "mask_sha256": {
+            "hanging": "11277502a92e4d0a89cabe857902eab5eaf0f8c0ff5a1e5422c7bc860038e909",
+            "folded": "8b110fc61d3c39f74dd8480a586188322684410ca8114f004f0de2636c8b6b74"
+          }
+        },
+        {
+          "item_id": "REM-21",
+          "category": "BOTTOM",
+          "source_sha256": "9322a974ada1d2b54197007a5679079de48b25a7fb67d30cfff2d9c6e431d93b",
+          "reference_path": "C:\\Users\\aicam\\Desktop\\2\ucc28\ud504\ub85c\uc81d\ud2b8\\test-results\\remediation\\source-images\\REM-21.jpg",
+          "cells": {
+            "hanging": [
+              795,
+              77,
+              150,
+              398
+            ],
+            "folded": [
+              775,
+              771,
+              185,
+              184
+            ]
+          },
+          "mask_sha256": {
+            "hanging": "8cc6263d27224eb336839ca35a247605a1cfb3afa2907f81d63beb96f4e7a880",
+            "folded": "ffceb3567d7361d87560cca02a6f17830c2e1e6bed1b0d4b7af848edd4909823"
+          }
+        },
+        {
+          "item_id": "REM-22",
+          "category": "BOTTOM",
+          "source_sha256": "11837c74b7ad8700b8d1a3beb19029ef5874a51573863211a86872e0e1355124",
+          "reference_path": "C:\\Users\\aicam\\Desktop\\2\ucc28\ud504\ub85c\uc81d\ud2b8\\test-results\\remediation\\source-images\\REM-22.jpg",
+          "cells": {
+            "hanging": [
+              1001,
+              72,
+              119,
+              576
+            ],
+            "folded": [
+              960,
+              744,
+              190,
+              213
+            ]
+          },
+          "mask_sha256": {
+            "hanging": "a5fc2dc082d0373faecb64c19ee3d80f5e4158b5a2952ab046978fc8c54a4bb9",
+            "folded": "1375502ac049d563c5c2c2bd024b11a96743355631b7a47c3423a885aae74e46"
+          }
+        },
+        {
+          "item_id": "REM-23",
+          "category": "BOTTOM",
+          "source_sha256": "bebeea70324182dab097c7710b4bb93261e94fe3e93dc7d63291ddf19611c598",
+          "reference_path": "C:\\Users\\aicam\\Desktop\\2\ucc28\ud504\ub85c\uc81d\ud2b8\\test-results\\remediation\\source-images\\REM-23.jpg",
+          "cells": {
+            "hanging": [
+              1171,
+              73,
+              152,
+              436
+            ],
+            "folded": [
+              1158,
+              756,
+              186,
+              201
+            ]
+          },
+          "mask_sha256": {
+            "hanging": "c34acfc002a4d968506653de3d409570ed845ff3a1c3fcd699cdb4ffe4f83678",
+            "folded": "956293c08c2178f97d67e2f967a04165e9d9e6ee0118b43830c3886960e2e350"
+          }
+        },
+        {
+          "item_id": "REM-24",
+          "category": "BOTTOM",
+          "source_sha256": "80ba31061906228aaf2da63a1f747d6301ed005498b2bc2957c9f6a4cc6f867a",
+          "reference_path": "C:\\Users\\aicam\\Desktop\\2\ucc28\ud504\ub85c\uc81d\ud2b8\\test-results\\remediation\\source-images\\REM-24.jpg",
+          "cells": {
+            "hanging": [
+              1373,
+              74,
+              140,
+              414
+            ],
+            "folded": [
+              1344,
+              764,
+              182,
+              192
+            ]
+          },
+          "mask_sha256": {
+            "hanging": "3eceb2cf584dee6c03d9d5e0dfab7f62699f26a62420039a80e29a5f0dc46aaa",
+            "folded": "529194205185fde2debff0f8c0a0b4e9683a463ab5b7d30670ff9d84a3bb5ebb"
+          }
+        }
+      ],
+      "status": "LOCAL_DISPLAY_CANDIDATE",
+      "atlas_dimensions": [
+        1536,
+        1024
+      ],
+      "cell_dimensions": [
+        192,
+        512
+      ],
+      "mode": "top row side-hanging; bottom row folded/resting; original photos unchanged",
+      "local_atlas": "assets/wardrobe-scene-sprites/batch-03-v1.png",
+      "atlas_sha256": "ded82c13a240b1b6363b0d30951878a8143eccc8b5f3ccc7aed80ce515092d7a",
+      "generation_tool": "built-in image_gen",
+      "generation_source": "C:\\Users\\aicam\\.codex\\generated_images\\01a11a04-161b-71c1-b091-cdb004c0a66c\\exec-2ed25705-7019-45eb-b6b0-3b3671cf7f5c.png",
+      "source_rasters_modified": false,
+      "atlas_asset_id": "63c638dc-94b3-46e6-bcae-791325928a17",
+      "generation_recipe": "source contact sheet + prior side/fold style; 8 logical columns, side-hanging clothing and folded/resting counterparts, transparent PNG; manually adjusted atlas cells",
+      "display_geometry_basis": "alpha silhouette bounds; see item.cells"
+    },
+    {
+      "batch": "batch-04",
+      "items": [
+        {
+          "item_id": "REM-25",
+          "category": "BOTTOM",
+          "source_sha256": "12a490be1062d78706694ec8ab98394636fc5e943fe625d245096e69f20e2a94",
+          "reference_path": "C:\\Users\\aicam\\Desktop\\2\ucc28\ud504\ub85c\uc81d\ud2b8\\test-results\\remediation\\source-images\\REM-25.jpg",
+          "cells": {
+            "hanging": [
+              28,
+              63,
+              125,
+              432
+            ],
+            "folded": [
+              11,
+              762,
+              175,
+              178
+            ]
+          },
+          "mask_sha256": {
+            "hanging": "bdd729639e7a7f6ecdde7536e8cf4d8097c9951c68fad0ae29a8f76e20c2b0bf",
+            "folded": "fb48d37097fe4faf4c13a4403c8e95bd26d7352c1e7be547b71abfb78e294607"
+          }
+        },
+        {
+          "item_id": "REM-26",
+          "category": "BOTTOM",
+          "source_sha256": "efc390db3745ed5b136ac88f9ec4780fa455e7998f56beea37f37cad172e751b",
+          "reference_path": "C:\\Users\\aicam\\Desktop\\2\ucc28\ud504\ub85c\uc81d\ud2b8\\test-results\\remediation\\source-images\\REM-26.jpg",
+          "cells": {
+            "hanging": [
+              202,
+              64,
+              134,
+              394
+            ],
+            "folded": [
+              196,
+              762,
+              179,
+              175
+            ]
+          },
+          "mask_sha256": {
+            "hanging": "1c20a735b4349b877a46b031813a7227038989b7d17d083654a50b0a2b4fd84f",
+            "folded": "e4793fabb711b49a3048ce86a361c8fb008ddaa6cd67480801a44a13353dd20d"
+          }
+        },
+        {
+          "item_id": "REM-27",
+          "category": "BOTTOM",
+          "source_sha256": "bdeeea56c4732ebfec394bd01c6043d35ff99b0db750b831046c56197444c6b0",
+          "reference_path": "C:\\Users\\aicam\\Desktop\\2\ucc28\ud504\ub85c\uc81d\ud2b8\\test-results\\remediation\\source-images\\REM-27.jpg",
+          "cells": {
+            "hanging": [
+              415,
+              50,
+              104,
+              576
+            ],
+            "folded": [
+              386,
+              740,
+              190,
+              198
+            ]
+          },
+          "mask_sha256": {
+            "hanging": "337e4efc7fa7167d8fcb1297b5013b6573773b5e44e0ea3c5a53b7e087e6b779",
+            "folded": "3ca40cfb546f026ff218a1cc08437b238fa5b97cc35cdf7d57cd7abba883d94a"
+          }
+        },
+        {
+          "item_id": "REM-28",
+          "category": "OUTER",
+          "source_sha256": "b4c59ce1c6ce3138c92216a68b87aa797d7f0b42d5512f57b302683c719b1fac",
+          "reference_path": "C:\\Users\\aicam\\Desktop\\2\ucc28\ud504\ub85c\uc81d\ud2b8\\test-results\\remediation\\source-images\\REM-28.jpg",
+          "cells": {
+            "hanging": [
+              587,
+              64,
+              137,
+              492
+            ],
+            "folded": [
+              576,
+              753,
+              184,
+              187
+            ]
+          },
+          "mask_sha256": {
+            "hanging": "95eb75a00a20fa774733d7ec7f9a482bcee9936da2d7ec5ba79418d5a82750d1",
+            "folded": "a83673f1aca46d5161744cbf803bf5bef2168e601495d4735adadb05f6066c30"
+          }
+        },
+        {
+          "item_id": "REM-29",
+          "category": "OUTER",
+          "source_sha256": "7d5a5822c6197ab605e0590a3e600eca271bc554f919f74a1677745c2e8c4298",
+          "reference_path": "C:\\Users\\aicam\\Desktop\\2\ucc28\ud504\ub85c\uc81d\ud2b8\\test-results\\remediation\\source-images\\REM-29.jpg",
+          "cells": {
+            "hanging": [
+              789,
+              65,
+              136,
+              526
+            ],
+            "folded": [
+              770,
+              739,
+              184,
+              202
+            ]
+          },
+          "mask_sha256": {
+            "hanging": "a9004270af23b5a1fb83e0fb50536c4a3c457ca2df02f2de91732b932083c4c8",
+            "folded": "c8abcb6b7e453ab8ab0a91ac60d96434f81aaf60dc81b052cb1d258b42900862"
+          }
+        },
+        {
+          "item_id": "REM-30",
+          "category": "OUTER",
+          "source_sha256": "85a344f8f4f0fbf1a158f72ff4521bbd6c81b8756fc250c9bd417edc8ecd960b",
+          "reference_path": "C:\\Users\\aicam\\Desktop\\2\ucc28\ud504\ub85c\uc81d\ud2b8\\test-results\\remediation\\source-images\\REM-30.jpg",
+          "cells": {
+            "hanging": [
+              992,
+              65,
+              118,
+              504
+            ],
+            "folded": [
+              965,
+              761,
+              187,
+              179
+            ]
+          },
+          "mask_sha256": {
+            "hanging": "edd5484dec1fbfaa6b2b775405cce6ebd6cbe36e86a0c2ca8b842ee816272f6e",
+            "folded": "d52aa9d31839a02a4bd753e60bfc2cf65127c339f22d78489d0b7f3cc15da496"
+          }
+        },
+        {
+          "item_id": "REM-31",
+          "category": "OUTER",
+          "source_sha256": "f4efa578ecc602f37fb6e5b6c1689759e9b6190b085e9a4bb8eb2a240b634776",
+          "reference_path": "C:\\Users\\aicam\\Desktop\\2\ucc28\ud504\ub85c\uc81d\ud2b8\\test-results\\remediation\\source-images\\REM-31.jpg",
+          "cells": {
+            "hanging": [
+              1171,
+              65,
+              156,
+              531
+            ],
+            "folded": [
+              1152,
+              738,
+              184,
+              202
+            ]
+          },
+          "mask_sha256": {
+            "hanging": "8fa853709f8c0c87a386ce2a29ce31a81804ce9e6c2bc7d693b0caa8407bc9ae",
+            "folded": "31e9956142fe7672133db89768af2b0f3706fd00d4c3e3b3bba9aa9a2f305995"
+          }
+        },
+        {
+          "item_id": "REM-32",
+          "category": "OUTER",
+          "source_sha256": "6a9561c395ffa810e8403f67bfdceb3250d7de6f924cee34a5f0a1110994aadb",
+          "reference_path": "C:\\Users\\aicam\\Desktop\\2\ucc28\ud504\ub85c\uc81d\ud2b8\\test-results\\remediation\\source-images\\REM-32.jpg",
+          "cells": {
+            "hanging": [
+              1368,
+              65,
+              139,
+              532
+            ],
+            "folded": [
+              1346,
+              760,
+              180,
+              179
+            ]
+          },
+          "mask_sha256": {
+            "hanging": "0c88bfda66f64e27b274404325da94d820827cc40699ef9cb4f56511892fe39d",
+            "folded": "76b83a13ba22918da5fce4c7b52dd8bf1cb0286ec046987eaaee95cb71943cff"
+          }
+        }
+      ],
+      "status": "LOCAL_DISPLAY_CANDIDATE",
+      "atlas_dimensions": [
+        1536,
+        1024
+      ],
+      "cell_dimensions": [
+        192,
+        512
+      ],
+      "mode": "top row side-hanging; bottom row folded/resting; original photos unchanged",
+      "local_atlas": "assets/wardrobe-scene-sprites/batch-04-v1.png",
+      "atlas_sha256": "14683560379ebb8e886093ea448a484269f351762df67d5dee7923c314d1a6b1",
+      "generation_tool": "built-in image_gen",
+      "generation_source": "C:\\Users\\aicam\\.codex\\generated_images\\01a11a04-161b-71c1-b091-cdb004c0a66c\\exec-4e5ff4fd-c09a-4a13-9519-ef017bfb8903.png",
+      "source_rasters_modified": false,
+      "atlas_asset_id": "59b5a049-cec1-405b-8939-7152461fc6e7",
+      "generation_recipe": "source contact sheet + prior side/fold style; 8 logical columns, side-hanging clothing and folded/resting counterparts, transparent PNG; manually adjusted atlas cells",
+      "display_geometry_basis": "alpha silhouette bounds; see item.cells"
+    },
+    {
+      "batch": "batch-05",
+      "items": [
+        {
+          "item_id": "REM-33",
+          "category": "OUTER",
+          "source_sha256": "077b2af4a71484e092264bf08ae43d01e336a705768940bde803e784f10f8901",
+          "reference_path": "C:\\Users\\aicam\\Desktop\\2\ucc28\ud504\ub85c\uc81d\ud2b8\\test-results\\remediation\\source-images\\REM-33.jpg",
+          "cells": {
+            "hanging": [
+              23,
+              81,
+              154,
+              566
+            ],
+            "folded": [
+              16,
+              753,
+              176,
+              185
+            ]
+          },
+          "mask_sha256": {
+            "hanging": "f346e3b417d14eb22f02a34af8d0840147a847b8edd91f9632654a98d69a6ecb",
+            "folded": "e084eda238b790d66147c42e0b6ab047bc1aff5f27e549d300f0347b5c468845"
+          }
+        },
+        {
+          "item_id": "REM-34",
+          "category": "OUTER",
+          "source_sha256": "94e8ab94cecaf6ebfb3b47e998fbd3139b8dd37a2146ec49e2d000156ee75cc8",
+          "reference_path": "C:\\Users\\aicam\\Desktop\\2\ucc28\ud504\ub85c\uc81d\ud2b8\\test-results\\remediation\\source-images\\REM-34.jpg",
+          "cells": {
+            "hanging": [
+              206,
+              81,
+              148,
+              557
+            ],
+            "folded": [
+              200,
+              751,
+              181,
+              186
+            ]
+          },
+          "mask_sha256": {
+            "hanging": "1d612beb5d4a0ff0665032c28db40349a9a8bdb9d4de42cd39500816a695bf52",
+            "folded": "f7bd7aca3ac41df765098c4396edf5766850176c65d2ee6874c4c08144bad938"
+          }
+        },
+        {
+          "item_id": "REM-35",
+          "category": "OUTER",
+          "source_sha256": "f057f784c6bcd6c7dbb2921b2d1ac788096bc8121fbf9ee38d24a3f7ee3cb986",
+          "reference_path": "C:\\Users\\aicam\\Desktop\\2\ucc28\ud504\ub85c\uc81d\ud2b8\\test-results\\remediation\\source-images\\REM-35.jpg",
+          "cells": {
+            "hanging": [
+              393,
+              81,
+              149,
+              550
+            ],
+            "folded": [
+              390,
+              752,
+              182,
+              185
+            ]
+          },
+          "mask_sha256": {
+            "hanging": "17ed0903bf695f05fece1b07e781ae510a54f8eec9909043de138ba3c8437474",
+            "folded": "11e5249c94cfec412f31f93ec604e51041d877e4fa5196cb1f07ada7a95df3fa"
+          }
+        },
+        {
+          "item_id": "REM-36",
+          "category": "OUTER",
+          "source_sha256": "268afb6b27c16bc65ef861376ec537ad9561847ac39aa86ae499c840a71c2b52",
+          "reference_path": "C:\\Users\\aicam\\Desktop\\2\ucc28\ud504\ub85c\uc81d\ud2b8\\test-results\\remediation\\source-images\\REM-36.jpg",
+          "cells": {
+            "hanging": [
+              583,
+              81,
+              185,
+              565
+            ],
+            "folded": [
+              585,
+              740,
+              183,
+              197
+            ]
+          },
+          "mask_sha256": {
+            "hanging": "b8a40ee5bd14e3061eeb79f1adfcbaf0791a22a4639a79c68d0b4a42f4867af8",
+            "folded": "83b17357ca2b2adf5979fd9fdcf4be14d377c288b5c89cd1f732b0ba72e02cd8"
+          }
+        },
+        {
+          "item_id": "REM-37",
+          "category": "OUTER",
+          "source_sha256": "ded681b85aa2a3d8fa82a1ff6d367b23e5ee02386a5ef468a29fcd02bba6c992",
+          "reference_path": "C:\\Users\\aicam\\Desktop\\2\ucc28\ud504\ub85c\uc81d\ud2b8\\test-results\\remediation\\source-images\\REM-37.jpg",
+          "cells": {
+            "hanging": [
+              768,
+              81,
+              185,
+              534
+            ],
+            "folded": [
+              768,
+              758,
+              192,
+              178
+            ]
+          },
+          "mask_sha256": {
+            "hanging": "53a34fc680ba5bd8f1450c3f36a28b0290d98b6546a913a48458f743fbdf09af",
+            "folded": "640375bd07609d77d5dd0870eead9e80ceca6122cfb3df9427c9e6de40f1114d"
+          }
+        },
+        {
+          "item_id": "REM-38",
+          "category": "OUTER",
+          "source_sha256": "e98bfc26d57a9616725457700b4a0700c1e3e2971024b6c000d14e54400be4c8",
+          "reference_path": "C:\\Users\\aicam\\Desktop\\2\ucc28\ud504\ub85c\uc81d\ud2b8\\test-results\\remediation\\source-images\\REM-38.jpg",
+          "cells": {
+            "hanging": [
+              985,
+              81,
+              161,
+              555
+            ],
+            "folded": [
+              960,
+              755,
+              192,
+              181
+            ]
+          },
+          "mask_sha256": {
+            "hanging": "028085dae7188a4f89576cc28e799f337cef484d81a61a2988e1ca9d001545ef",
+            "folded": "36b29ad6d0684dd01d863150bedca0a76740f3e3fca62e52de7186982a271934"
+          }
+        },
+        {
+          "item_id": "REM-39",
+          "category": "OUTER",
+          "source_sha256": "704fe99363039ac83716e3ec46b1734c9dd7ce93828c4f97f328428b1bb03b19",
+          "reference_path": "C:\\Users\\aicam\\Desktop\\2\ucc28\ud504\ub85c\uc81d\ud2b8\\test-results\\remediation\\source-images\\REM-39.jpg",
+          "cells": {
+            "hanging": [
+              1184,
+              81,
+              160,
+              563
+            ],
+            "folded": [
+              1152,
+              755,
+              192,
+              182
+            ]
+          },
+          "mask_sha256": {
+            "hanging": "1409afdb36b03dfffb9895a565e7f44176e733255fe27b1620aa784bf31e58ff",
+            "folded": "c606140c8c3c83a3e10b3e992db2df7078518299fe1983328f4381fca0d8595c"
+          }
+        },
+        {
+          "item_id": "REM-40",
+          "category": "OUTER",
+          "source_sha256": "b7bcc706431926870361d909736e8b9781196f6b824a7922aa15db7452dbb51a",
+          "reference_path": "C:\\Users\\aicam\\Desktop\\2\ucc28\ud504\ub85c\uc81d\ud2b8\\test-results\\remediation\\source-images\\REM-40.jpg",
+          "cells": {
+            "hanging": [
+              1344,
+              81,
+              167,
+              561
+            ],
+            "folded": [
+              1344,
+              777,
+              177,
+              160
+            ]
+          },
+          "mask_sha256": {
+            "hanging": "32c2367433cdb1380ce70ee32dce99681327aa3a41f36cb7b994a819e40f339b",
+            "folded": "3be43b53cf06542fe338bd3ceb4e65a170051cd518d373b23ea64bd2c3713e27"
+          }
+        }
+      ],
+      "status": "LOCAL_DISPLAY_CANDIDATE",
+      "atlas_dimensions": [
+        1536,
+        1024
+      ],
+      "cell_dimensions": [
+        192,
+        512
+      ],
+      "mode": "top row side-hanging; bottom row folded/resting; original photos unchanged",
+      "local_atlas": "assets/wardrobe-scene-sprites/batch-05-v1.png",
+      "atlas_sha256": "5c2a861024cd1ed5f4b421c24d9d35ffc0d32b3f72d8d056dee85d4af03cbc36",
+      "generation_tool": "built-in image_gen",
+      "generation_source": "C:\\Users\\aicam\\.codex\\generated_images\\01a11a04-161b-71c1-b091-cdb004c0a66c\\exec-47bfcfda-0af4-48d9-b474-1129ef9801ce.png",
+      "source_rasters_modified": false,
+      "atlas_asset_id": "a904490e-727c-4845-9940-7707627c7083",
+      "generation_recipe": "source contact sheet + prior side/fold style; 8 logical columns, side-hanging clothing and folded/resting counterparts, transparent PNG; manually adjusted atlas cells",
+      "display_geometry_basis": "alpha silhouette bounds; see item.cells"
+    },
+    {
+      "batch": "batch-06",
+      "items": [
+        {
+          "item_id": "REM-41",
+          "category": "OUTER",
+          "source_sha256": "5c2466b3c3da76ed094b097b69bac8db96762ab166876ca1d69a9360ef2c376d",
+          "reference_path": "C:\\Users\\aicam\\Desktop\\2\ucc28\ud504\ub85c\uc81d\ud2b8\\test-results\\remediation\\source-images\\REM-41.jpg",
+          "cells": {
+            "hanging": [
+              39,
+              61,
+              145,
+              596
+            ],
+            "folded": [
+              23,
+              754,
+              173,
+              185
+            ]
+          },
+          "mask_sha256": {
+            "hanging": "59182cbe2c2629b7084ee10b2383196863c49227508f7752ae8a7c5e7e92cca6",
+            "folded": "08078e0055bd127eb6200e83b09aba8676f19227982f05f78d296c713def7e9d"
+          }
+        },
+        {
+          "item_id": "REM-42",
+          "category": "OUTER",
+          "source_sha256": "223a83b7ad90bced3b49ec4212f166b3f667f2039dab0a85454e7538b394052b",
+          "reference_path": "C:\\Users\\aicam\\Desktop\\2\ucc28\ud504\ub85c\uc81d\ud2b8\\test-results\\remediation\\source-images\\REM-42.jpg",
+          "cells": {
+            "hanging": [
+              216,
+              62,
+              200,
+              558
+            ],
+            "folded": [
+              204,
+              745,
+              212,
+              195
+            ]
+          },
+          "mask_sha256": {
+            "hanging": "4439bad9f2735bf8927c0e7f5d9834499c4aa79fdeaca6e3f24a9ee2ade8176e",
+            "folded": "440454373df44cde16d951c8ccc49209bf0426694be7e608354f87ea7a447c9f"
+          }
+        },
+        {
+          "item_id": "REM-43",
+          "category": "OUTER",
+          "source_sha256": "9f44b8a23787dbae145525fa4fc8963f0a8bf729be27f06d7fdaa92a2713b9ec",
+          "reference_path": "C:\\Users\\aicam\\Desktop\\2\ucc28\ud504\ub85c\uc81d\ud2b8\\test-results\\remediation\\source-images\\REM-43.jpg",
+          "cells": {
+            "hanging": [
+              416,
+              62,
+              178,
+              601
+            ],
+            "folded": [
+              416,
+              764,
+              187,
+              175
+            ]
+          },
+          "mask_sha256": {
+            "hanging": "024a406eedf8d3ff261fc56a01cf3177d6b633c0150a5aaeefb60bb64fcca7a4",
+            "folded": "1d27a21bee16b3d0d5d7cf55833ef194f829b579f0bee185276fd07fa5a16f73"
+          }
+        },
+        {
+          "item_id": "REM-44",
+          "category": "ACCESSORY",
+          "source_sha256": "1830972989ff8521cba80229bc317085621fa0dbfe6c5f22d6656f3825ebf28b",
+          "reference_path": "C:\\Users\\aicam\\Desktop\\2\ucc28\ud504\ub85c\uc81d\ud2b8\\test-results\\remediation\\source-images\\REM-44.jpg",
+          "cells": {
+            "hanging": [
+              634,
+              269,
+              131,
+              362
+            ],
+            "folded": [
+              603,
+              812,
+              174,
+              125
+            ]
+          },
+          "mask_sha256": {
+            "hanging": "d59b23e526ecf1fef8e6c4c3e1fab376ad22dfa12396e8746ecbf2c0e909cde4",
+            "folded": "bf2b1429eef6d13fcd13caddd6f5028a12734ac6ad56500cacb09a4c85f2c0d9"
+          }
+        },
+        {
+          "item_id": "REM-45",
+          "category": "ACCESSORY",
+          "source_sha256": "0d9f867ca945d5570d606e13bea416e7f59220e9bb3b8361677cdcad81d0ac01",
+          "reference_path": "C:\\Users\\aicam\\Desktop\\2\ucc28\ud504\ub85c\uc81d\ud2b8\\test-results\\remediation\\source-images\\REM-45.jpg",
+          "cells": {
+            "hanging": [
+              785,
+              64,
+              174,
+              560
+            ],
+            "folded": [
+              777,
+              776,
+              200,
+              160
+            ]
+          },
+          "mask_sha256": {
+            "hanging": "3d23846d2309c00f1e7482c1bef1cea14c0d152ee610d5462c556662853bc9d8",
+            "folded": "652cb5c79547f88c201d2de9d7260b150911bb5b7c252364f81a061e0b0cc62b"
+          }
+        },
+        {
+          "item_id": "REM-46",
+          "category": "ACCESSORY",
+          "source_sha256": "8dc96cbaba1674c31e4838e34ccdc96e22d8193830c0fbbc9c2a8c41d41d16ca",
+          "reference_path": "C:\\Users\\aicam\\Desktop\\2\ucc28\ud504\ub85c\uc81d\ud2b8\\test-results\\remediation\\source-images\\REM-46.jpg",
+          "cells": {
+            "hanging": [
+              990,
+              61,
+              122,
+              555
+            ],
+            "folded": [
+              977,
+              831,
+              153,
+              97
+            ]
+          },
+          "mask_sha256": {
+            "hanging": "a241380fa49feef0ef1669e9f06286e7a53d77a4931c89652eb2811a9103bb9c",
+            "folded": "52189aab30e529b941b1113ec35f152797d5fbd29f4c908c804255a2b351cabd"
+          }
+        },
+        {
+          "item_id": "REM-47",
+          "category": "ACCESSORY",
+          "source_sha256": "e07102eb9ab19fc0124c8b4ace9b54f0e3251419c4739b57605247d2637d2bc0",
+          "reference_path": "C:\\Users\\aicam\\Desktop\\2\ucc28\ud504\ub85c\uc81d\ud2b8\\test-results\\remediation\\source-images\\REM-47.jpg",
+          "cells": {
+            "hanging": [
+              1136,
+              59,
+              174,
+              577
+            ],
+            "folded": [
+              1130,
+              771,
+              180,
+              166
+            ]
+          },
+          "mask_sha256": {
+            "hanging": "40576f82cbad3609c06708fa6a6114f24e54f2b0182f5578e6c2543c900b608f",
+            "folded": "b5a4b0a43f60b1ea4b4cbaee45e6f90a2544d8c14f12fbb441c7eecfa1be93f4"
+          }
+        },
+        {
+          "item_id": "REM-48",
+          "category": "ACCESSORY",
+          "source_sha256": "3c953e8e7497997a20b5f804215a1bd32214061118952227cd91f4df9f1d5e0a",
+          "reference_path": "C:\\Users\\aicam\\Desktop\\2\ucc28\ud504\ub85c\uc81d\ud2b8\\test-results\\remediation\\source-images\\REM-48.jpg",
+          "cells": {
+            "hanging": [
+              1310,
+              64,
+              191,
+              534
+            ],
+            "folded": [
+              1310,
+              797,
+              217,
+              140
+            ]
+          },
+          "mask_sha256": {
+            "hanging": "fdfd8aca101023b7daa2f7e07cff8efb124a9876a2c2ef178a5997e5235ef541",
+            "folded": "b587defa07b37976e83c7f08f7733b659a7354e0fe01b504642aa8398a8b844d"
+          }
+        }
+      ],
+      "status": "LOCAL_DISPLAY_CANDIDATE",
+      "atlas_dimensions": [
+        1536,
+        1024
+      ],
+      "cell_dimensions": [
+        192,
+        512
+      ],
+      "mode": "top row side-hanging; bottom row folded/resting; original photos unchanged",
+      "local_atlas": "assets/wardrobe-scene-sprites/batch-06-v1.png",
+      "atlas_sha256": "8a9a8cb3cca6ea68edb16102994d193388288749de4d6eeb5e9d62a0a096ccbb",
+      "generation_tool": "built-in image_gen",
+      "generation_source": "C:\\Users\\aicam\\.codex\\generated_images\\01a11a04-161b-71c1-b091-cdb004c0a66c\\exec-e6e5ff55-760e-4fa9-9060-ea8c9e42d783.png",
+      "source_rasters_modified": false,
+      "atlas_asset_id": "a8aa62da-1207-4e0e-8ecf-d614bf2e34c8",
+      "generation_recipe": "source contact sheet + prior side/fold style; 8 logical columns, side-hanging clothing and folded/resting counterparts, transparent PNG; manually adjusted atlas cells",
+      "display_geometry_basis": "alpha silhouette bounds; see item.cells"
+    },
+    {
+      "batch": "batch-07",
+      "items": [
+        {
+          "item_id": "REM-49",
+          "category": "ACCESSORY",
+          "source_sha256": "4eb8180fd5b54b6dba3bc3749db966df18dab61d8fcbb925d38573d16cf17501",
+          "reference_path": "C:\\Users\\aicam\\Desktop\\2\ucc28\ud504\ub85c\uc81d\ud2b8\\test-results\\remediation\\source-images\\REM-49.jpg",
+          "cells": {
+            "hanging": [
+              65,
+              91,
+              155,
+              589
+            ],
+            "folded": [
+              9,
+              822,
+              291,
+              122
+            ]
+          },
+          "mask_sha256": {
+            "hanging": "ef35240784b1f2d05ca4b1fec4b508528cab3d2fac8808e4fa93ab3a5a728fe2",
+            "folded": "3a00c2f70ca314e86c0e7b75cdfbaa79b98ba12435c3ee7b2735b09de71707f6"
+          }
+        },
+        {
+          "item_id": "REM-50",
+          "category": "ACCESSORY",
+          "source_sha256": "39682e2c0240b770e9a46aa44c8813eed082cb025989590e6847944322f7e6f7",
+          "reference_path": "C:\\Users\\aicam\\Desktop\\2\ucc28\ud504\ub85c\uc81d\ud2b8\\test-results\\remediation\\source-images\\REM-50.jpg",
+          "cells": {
+            "hanging": [
+              283,
+              91,
+              157,
+              543
+            ],
+            "folded": [
+              300,
+              801,
+              155,
+              141
+            ]
+          },
+          "mask_sha256": {
+            "hanging": "0e8ec35e07be9b9d3824ebb677bcae85c8e779b3e00fa205c06882c6fac7f7d8",
+            "folded": "cb56dd1cd5c6666971db00bd7705f045869e5abc03eca74addb3779a40f037f0"
+          }
+        },
+        {
+          "item_id": "REM-51",
+          "category": "ACCESSORY",
+          "source_sha256": "238dbe1abaea9ecbdbaf9604ede3338f80be55a150f5cce3c9979b2a6a23bf39",
+          "reference_path": "C:\\Users\\aicam\\Desktop\\2\ucc28\ud504\ub85c\uc81d\ud2b8\\test-results\\remediation\\source-images\\REM-51.jpg",
+          "cells": {
+            "hanging": [
+              440,
+              91,
+              225,
+              545
+            ],
+            "folded": [
+              455,
+              795,
+              190,
+              149
+            ]
+          },
+          "mask_sha256": {
+            "hanging": "008f4874b47dfba5d88c776093c78c83de7380346398377572da230153d5f6a5",
+            "folded": "6521017f38ed4bdd61b099f7f2f8252943903452d4ab4d6ebef8ce860b67dc7c"
+          }
+        },
+        {
+          "item_id": "REM-52",
+          "category": "SHOES",
+          "source_sha256": "9a96c4ec118f802a1d51319e11d2d2e35d56b31f0307192fb0358b7df4fdfd4d",
+          "reference_path": "C:\\Users\\aicam\\Desktop\\2\ucc28\ud504\ub85c\uc81d\ud2b8\\test-results\\remediation\\source-images\\REM-52.jpg",
+          "cells": {
+            "hanging": [
+              665,
+              242,
+              246,
+              440
+            ],
+            "folded": [
+              645,
+              808,
+              354,
+              135
+            ]
+          },
+          "mask_sha256": {
+            "hanging": "d1ccb23f40f7570ca1c1b306be7d4ade4ae876ecee5c13d40d31bfc22ff6c8a8",
+            "folded": "b7bd1025c8e84d639a968b0da625908b38150343d84357fca765121c1e595d7d"
+          }
+        }
+      ],
+      "status": "LOCAL_DISPLAY_CANDIDATE",
+      "atlas_dimensions": [
+        1536,
+        1024
+      ],
+      "cell_dimensions": [
+        192,
+        512
+      ],
+      "mode": "top row side-hanging; bottom row folded/resting; original photos unchanged",
+      "local_atlas": "assets/wardrobe-scene-sprites/batch-07-v1.png",
+      "atlas_sha256": "6fef540a1e00a6cd58be083feab645be7f17659a0510cb6e837dae0e84a19d8e",
+      "generation_tool": "built-in image_gen",
+      "generation_source": "C:\\Users\\aicam\\.codex\\generated_images\\01a11a04-161b-71c1-b091-cdb004c0a66c\\exec-150f54ce-baab-4b32-851d-53206203e5d0.png",
+      "source_rasters_modified": false,
+      "atlas_asset_id": "49fad4ad-9f4a-4400-8b43-81e256f69691",
+      "generation_recipe": "source contact sheet + prior side/fold style; 8 logical columns, side-hanging clothing and folded/resting counterparts, transparent PNG; manually adjusted atlas cells",
+      "display_geometry_basis": "alpha silhouette bounds; see item.cells"
+    }
+  ]
+}

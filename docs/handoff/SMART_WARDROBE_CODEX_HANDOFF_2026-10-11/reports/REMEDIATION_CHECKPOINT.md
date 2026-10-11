@@ -42,3 +42,13 @@ shower cold read는 판정/재개 발췌문을 읽었으며 전체 보고서 검
 선택적 LOCAL_DEMO_MEMBER_ID를 추가하고 격리 서버에서 아들 MEMBER를 지정했다. 해당 설정은 local/test, 비공개, DEMO auth 및 demo_auth_enabled일 때만 적용한다. enabled credential·MEMBER·기기 연결을 확인하며 기존 계정명/비밀번호·4인 DB 구조를 변경하지 않는다. 공개 demo 경로와 기본 고정 demo 동작은 보존한다. 운영에서는 이 로컬 설정만으로 로그인할 수 없다.
 
 실DB demo-login/config20 tests PASS, Ruff PASS. 실제 브라우저 시연 버튼200→가족4인/52개/사진52개→동적 scene→로그아웃200 및 버튼 재진입 PASS. 재현: web에서 `node test/demo-login-remediation.mjs`. 캡처 ignored test-results/remediation/demo-login-fixed.png. API18081 재기동, 운영 DB/원격push/배포 없음.
+
+## 사용자 시각 요구 재확인: 옆으로 걸린 옷 / 개어진 옷
+
+상품 정면 사진을 슬롯에 축소하는 방식은 요구와 다르다. 실제 원본을 보존하고 별도 생성 파생 이미지를 행거용 옆 모습/서랍·선반용 접힌 모습으로 만들어 위치에 연결했다. 원본 이미지 ID는 상세·추천·카드에서 유지한다. 생성 결과를 공식 제품 사진이나 실제 접힘 관측으로 표시하지 않는다. 52개 원본 해시에 묶인 7개 투명 PNG atlas와 두 모습의 후보 에셋을 생성했다. assets/wardrobe-scene-sprites에 로컬 보존, private MinIO에 업로드/finalize, 기존 asset metadata로 연결. 공개 static 파일 아님. geometry-only 보정으로 완료 처리하지 않았다. 용량/보관 위치·소유자/이력은 변경하지 않았다.
+
+행거 geometry는 해당 봉 아래 한 줄로 재배치, 선반은 바닥 정렬. SVG crop/alpha silhouette로 종횡비 유지, 앞옷/클릭 영역 z 순서 일치. 원본 checksum이 변경되거나 atlas가 삭제/타 가구/미READY이면 이전 파생 에셋을 사용하지 않는다. 닫힌 G 서랍은 기존처럼 offstage 유지. 개어진 후보는 확보했지만 닫힌 서랍의 펼침 UI를 새로 만들지는 않았다.
+
+실제 브라우저: 로그인/가족52개, 가시33개 전부 파생(행거23/접힘10), 모든 SVG 실제 이미지 decode, page error0, 시연 로그인/로그아웃 PASS. web38 tests/TS·build PASS, scene 단위8 PASS, handoff 실DB7 PASS, Ruff PASS. 마지막 API session73277/18081. 재현: 루트 `python scripts/provision_wardrobe_sprites.py`, `python scripts/remediation_local.py layout`, web `node test/wardrobe-sprites-browser.mjs`. Python은 .venv 사용. 생성 파일/manifest가 없으면 자동으로 외부 이미지 API를 호출하지 않는다. 기존 파일을 새 생성으로 덮어쓰지 않는다.
+
+생성된 색/주름/로고 세부는 추정 파생이며 실제 상품 정확성을 인증하지 않았다. 현재 화면을 확인한 로컬 표시 후보, 사용자 시각 인수는 아직이다. 카드 Gate A/B는 이번 옷장 이미지 수정과 별개로 PARTIAL 유지. 외부 API/원격push/배포/운영 DB 변경 없음.

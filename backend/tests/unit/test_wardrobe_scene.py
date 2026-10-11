@@ -1,6 +1,6 @@
 import pytest
 
-from app.application.wardrobe_scene import approved_slot
+from app.application.wardrobe_scene import approved_slot, scene_sprite
 
 
 @pytest.mark.parametrize(
@@ -40,3 +40,21 @@ def test_explicit_slot_only_no_inference():
         )["z_index"]
         == 0
     )
+
+
+def test_scene_sprite_requires_same_source_and_accessible_ready_derivative():
+    checksum = "a" * 64
+    variant = {
+        "source_sha256": checksum,
+        "asset_id": "atlas",
+        "mask": {"width": 1536, "height": 1024, "crop": [192, 0, 192, 700]},
+    }
+    metadata = {"checksum_sha256": checksum, "scene_sprites": {"hanging": variant}}
+    assert scene_sprite(metadata, "hanging", {"atlas": {}}) == variant
+    assert scene_sprite(metadata, "folded", {"atlas": {}}) is None
+    assert scene_sprite(metadata, "hanging", {}) is None
+    assert scene_sprite(dict(metadata, checksum_sha256="b" * 64), "hanging", {"atlas": {}}) is None
+    variant["mask"]["crop"] = [1500, 0, 192, 700]
+    assert scene_sprite(metadata, "hanging", {"atlas": {}}) is None
+    variant["mask"]["crop"] = [0, float("nan"), 192, 700]
+    assert scene_sprite(metadata, "hanging", {"atlas": {}}) is None

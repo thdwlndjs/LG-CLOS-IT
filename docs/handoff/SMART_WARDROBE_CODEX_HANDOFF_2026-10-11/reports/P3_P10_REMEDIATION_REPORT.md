@@ -147,3 +147,21 @@ node test/remediation-browser.mjs
 ## 후속 사용자 QA: 시연 버튼
 
 카드 작업을 중단하고 시연용 로그인503을 재현·수정했다. 별도 시정 DB에는 기존 고정 demo 계정이 없어 발생했다. `scripts/remediation_local.py serve`는 LOCAL_DEMO_MEMBER_ID로 기존 아들 MEMBER를 명시하여 로그인한다. 로컬/test·비공개·DEMO 조건과 활성 credential/기기 연결을 검사하며 공개 배포 설정은 변경하지 않았다. 실제 버튼200→가족4인/의류52/사진52→scene→로그아웃을 브라우저에서 확인했다. demo-login/config 실DB20 tests와 Ruff PASS. web `node test/demo-login-remediation.mjs`로 재현 가능하다. 나머지 카드 시각 Gate/문서 정합성 미완료 판정은 유지한다.
+
+## 후속 사용자 QA: 옷장 보관 모습 파생 이미지
+
+사용자가 요구한 모습은 정면 상품 사진의 축소 배치가 아니라 행거에서 옷걸이에 옆으로 걸려 있는 모습, 서랍·선반에서는 개어진 모습이다. 앞선 격자 사진 배치는 이 요구에 맞지 않았다.
+
+imagegen으로 실제52개 원본 참조 기반의 걸림/접힘 후보를 7개 투명 PNG atlas로 생성했다. `templates/wardrobe_sprite_manifest.json`에 원본 SHA256, 생성 도구/파일/atlas SHA256, 품목 대응, private asset ID를 기록했다. 묶음6·7의 실제 생성 간격이 균일하지 않아 native SVG 영역을 실제 출력 기준으로 조정했다. alpha 경계 분석은 벡터 clip/crop만 생성하며 원본 및 파생 PNG 래스터를 수정하지 않는다.
+
+실제 원본 상품 사진52개와 기존 garment.image_asset_id는 그대로 유지한다. 별도 atlas는 assets/wardrobe-scene-sprites에 보존하고 동의→업로드 intent→private PUT→SHA256 finalize 후 OTHER asset으로 등록했다. 해당 연결은 기존 JSON metadata에 저장하며 DB 컬럼/Migration을 추가하지 않았다. scene만 위치의 hanging/shelf 정렬에 맞춰 파생 asset을 선택한다. 상세/추천/VTON/코디카드는 원본 이미지 입력을 계속 사용한다. source hash 변경·파생 asset 삭제·타 가구·미READY이면 기존 파생 이미지 사용을 거부한다.
+
+행거는 원래 봉 아래 한 줄로, 선반은 바닥 정렬로 배치했다. SVG viewBox로 이미지 여백을 제외하고 종횡비를 보존한다. 클릭/LED 표시와 의류의 앞뒤 순서를 맞췄다. 닫힌 G 서랍 내부를 밖에 떠 있는 의류로 그리지 않으며 새 서랍 펼침 UI는 추가하지 않았다. 개어진 후보 에셋은 해당 품목에도 확보했다. 실제 위치·용량·소유자·착용 기록을 변경하지 않았다.
+
+![걸림/접힘 파생 에셋 적용 화면](evidence/remediation/wardrobe-sprites-applied.png)
+
+실 브라우저 가시33개 전부 파생 에셋(행거23/접힘10), SVG 이미지 실제 decode, 가족52개/사진52개, page error0. 시연용 로그인/로그아웃도 재확인했다. web38 tests/TypeScript·build PASS, scene 단위8 PASS, handoff 실DB7 PASS, Ruff PASS. 브라우저 JSON은 evidence/remediation/wardrobe-sprites-browser.json. 이전 scene 캡처는 정면 사진 배치의 과거 증적이며 위 캡처가 현재 표시다.
+
+재현: API18081 실행 후 루트 `.\.venv\Scripts\python.exe scripts/provision_wardrobe_sprites.py`, `.\.venv\Scripts\python.exe scripts/remediation_local.py layout`; web에서 `node test/wardrobe-sprites-browser.mjs`. 이미 생성된 파일만 재사용하며 이 스크립트는 외부 이미지 API를 호출하지 않는다. 새 계획/새 파생 버전은 기존 manifest/파일을 덮어쓰지 않고 별도 관리해야 한다. atlas는 web/public에 넣지 않았다. 원격 공개·상업 이용 권리는 여전히 확인되지 않았다.
+
+이들은 AI 생성 시각화 파생이며 실제 촬영이나 관측이 아니다. 색상·주름·로고 미세 표현의 정확성은 인증하지 않았고 사용자 시각 인수도 아직이다. 옷장 표현 변경이 카드 원본 복원 Gate A/B의 성공을 뜻하지 않는다. 전체 PARTIAL 판정을 유지한다.

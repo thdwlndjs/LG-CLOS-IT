@@ -65,15 +65,25 @@ def slots():
                 row_y, height = traced_rows[i // columns]
             else:
                 row_y = y + i // columns * height
+            if group in {"A", "B", "C"}:
+                # One physical rail per compartment, not floating thumbnail rows.
+                count = columns * rows
+                width = 130 if group == "A" else 110
+                height = 465 if group == "A" else 295 if group == "B" else 290
+                row_y = 121 if group == "A" else 121 if group == "B" else 441
+                item_x = x + 5 + i * (w - width - 10) / (count - 1)
+            else:
+                item_x = x + i % columns * width
             result.append(
                 {
                     "key": f"{group}-{i + 1:02}",
                     "group": group,
-                    "x": (x + i % columns * width + 3) / 1672,
+                    "x": (item_x + 3) / 1672,
                     "y": (row_y + 3) / 941,
                     "width": (width - 6) / 1672,
                     "height": (height - 6) / 941,
-                    "z_index": 10,
+                    "z_index": 10 + i,
+                    "alignment": "hanging" if group in {"A", "B", "C"} else "shelf",
                     "approved": True,
                     "basis": "image_traced_demo_subdivision",
                     "anchor": f"REM-{group}-{i + 1:02}",
@@ -87,7 +97,7 @@ async def apply_demo_layout():
     db = engine()
     frame = ROOT / "web/public/assets/remediation/wardrobe-clean-plate-v1.png"
     manifest = {
-        "version": "image-traced-demo-v2",
+        "version": "image-traced-demo-v3",
         "frame_width": 1672,
         "frame_height": 941,
         "clean_plate_sha256": hashlib.sha256(frame.read_bytes()).hexdigest(),

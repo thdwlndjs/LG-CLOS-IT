@@ -2,10 +2,41 @@
 
 import math
 from collections import Counter
+from uuid import UUID
 
 from app.application.assets import signed_asset
 from app.application.sprint1 import Sprint1
 from app.core.errors import ApiError
+
+
+def scene_sprite(metadata, mode, assets):
+    checksum = metadata.get("checksum_sha256")
+    variant = metadata.get("scene_sprites", {}).get(mode)
+    if not isinstance(checksum, str) or len(checksum) != 64 or not isinstance(variant, dict):
+        return None
+    mask = variant.get("mask")
+    if (
+        variant.get("source_sha256") != checksum
+        or variant.get("asset_id") not in assets
+        or not isinstance(mask, dict)
+    ):
+        return None
+    crop = mask.get("crop")
+    if not isinstance(crop, list) or len(crop) != 4:
+        return None
+    if not all(type(v) in (float, int) and math.isfinite(v) for v in crop):
+        return None
+    x, y, width, height = crop
+    if not (
+        x >= 0
+        and y >= 0
+        and width > 0
+        and height > 0
+        and x + width <= mask.get("width", 0)
+        and y + height <= mask.get("height", 0)
+    ):
+        return None
+    return variant
 
 
 def approved_slot(attributes):
@@ -54,9 +85,9 @@ async def scene(request, repo, actor, device_id):
     counts = Counter(g["location_id"] for g in garments if g["location_id"])
     items, blocked = [], []
     asset_ids = [g["image_asset_id"] for g in garments if g["image_asset_id"]]
-    masks = (
+    image_metadata = (
         {
-            str(r["id"]): r["metadata"].get("display_mask")
+            str(r["id"]): r["metadata"]
             for r in await repo.all(
                 "SELECT id,metadata FROM wardrobe.asset WHERE id=ANY(:ids) AND household_id=:h",
                 ids=asset_ids,
@@ -64,6 +95,27 @@ async def scene(request, repo, actor, device_id):
             )
         }
         if asset_ids
+        else {}
+    )
+    sprite_ids = set()
+    for metadata in image_metadata.values():
+        for variant in metadata.get("scene_sprites", {}).values():
+            try:
+                sprite_ids.add(UUID(variant["asset_id"]))
+            except (ValueError, KeyError, TypeError):
+                continue
+    sprite_assets = (
+        {
+            str(r["id"]): r
+            for r in await repo.all(
+                "SELECT *,id AS asset_id FROM wardrobe.asset WHERE id=ANY(:ids) "
+                "AND household_id=:h AND status='READY' AND kind='OTHER' "
+                "AND metadata->>'scene_role'='generated-wardrobe-sprites'",
+                ids=list(sprite_ids),
+                h=actor.household_id,
+            )
+        }
+        if sprite_ids
         else {}
     )
     service = Sprint1(request)
@@ -93,16 +145,29 @@ async def scene(request, repo, actor, device_id):
             blocked.append({"garment_id": str(garment["id"]), "reason": reason})
             continue
         location, geometry = bound
+        metadata = image_metadata.get(str(garment["image_asset_id"]), {})
+        image_mask = metadata.get("display_mask")
+        alignment = location["attributes"].get("display_slot", {}).get("alignment")
+        scene_image = dto.image.model_dump(mode="json")
+        mode = "hanging" if alignment == "hanging" else "folded"
+        variant = scene_sprite(metadata, mode, sprite_assets)
+        if variant:
+            scene_image = signed_asset(
+                request.app.state.settings, sprite_assets[variant["asset_id"]]
+            )
+            image_mask = variant["mask"]
+        if image_mask and alignment in {"hanging", "shelf"}:
+            image_mask = dict(image_mask, scene_alignment=alignment)
         items.append(
             {
                 "garment_id": str(garment["id"]),
                 "location_id": str(location["id"]),
                 "name": dto.name,
                 "version": dto.version,
-                "image": dto.image.model_dump(mode="json"),
+                "image": scene_image,
                 "geometry": geometry,
                 "anchor_id": location["anchor_id"],
-                "image_mask": masks.get(str(garment["image_asset_id"])),
+                "image_mask": image_mask,
             }
         )
     return {

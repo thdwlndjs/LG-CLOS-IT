@@ -1,0 +1,13 @@
+{
+  "stats": {
+    "total": 52,
+    "visible": 33,
+    "connection": "supabase",
+    "derivative": 33,
+    "hanging": 23,
+    "folded": 10
+  },
+  "errors": [],
+  "result": "PASS",
+  "product_photo_ids_preserved": true
+}
