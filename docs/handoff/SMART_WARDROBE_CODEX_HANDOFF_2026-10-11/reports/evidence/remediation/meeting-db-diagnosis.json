@@ -1,0 +1,199 @@
+{
+  "captured_at": "2026-10-11T11:38:29.927534+00:00",
+  "database": "wardrobe_test_remediation",
+  "readonly": true,
+  "garments": 76,
+  "wear_events": 0,
+  "care_events": 0,
+  "shopping_imports": 0,
+  "observations": 114,
+  "synthetic_environment_rows": 65,
+  "profiles": [
+    {
+      "profile": "mom",
+      "name": "김수진",
+      "role": "OWNER",
+      "storage": [
+        {
+          "season": "ALL",
+          "dry_run": true,
+          "garments_in_scope": 76,
+          "status": "NO_FEASIBLE_PLAN",
+          "proposed": 0,
+          "blocked": 76,
+          "reasons": {
+            "INSUFFICIENT_WEAR_HISTORY": 76
+          },
+          "wear_garment_count": 0,
+          "environment_locations": 65
+        },
+        {
+          "season": "WINTER",
+          "dry_run": true,
+          "garments_in_scope": 76,
+          "status": "FEASIBLE",
+          "proposed": 8,
+          "blocked": 0,
+          "reasons": {},
+          "wear_garment_count": 0,
+          "environment_locations": 65
+        },
+        {
+          "season": "WINTER",
+          "dry_run": false,
+          "garments_in_scope": 76,
+          "status": "FEASIBLE",
+          "proposed": 8,
+          "blocked": 0,
+          "reasons": {},
+          "wear_garment_count": 0,
+          "environment_locations": 65
+        }
+      ]
+    },
+    {
+      "profile": "son",
+      "name": "최휘재",
+      "role": "MEMBER",
+      "storage": [
+        {
+          "season": "ALL",
+          "dry_run": true,
+          "garments_in_scope": 76,
+          "status": "NO_FEASIBLE_PLAN",
+          "proposed": 0,
+          "blocked": 76,
+          "reasons": {
+            "INSUFFICIENT_WEAR_HISTORY": 76
+          },
+          "wear_garment_count": 0,
+          "environment_locations": 65
+        },
+        {
+          "season": "WINTER",
+          "dry_run": true,
+          "garments_in_scope": 76,
+          "status": "FEASIBLE",
+          "proposed": 8,
+          "blocked": 0,
+          "reasons": {},
+          "wear_garment_count": 0,
+          "environment_locations": 65
+        },
+        {
+          "season": "WINTER",
+          "dry_run": false,
+          "garments_in_scope": 43,
+          "status": "FEASIBLE",
+          "proposed": 4,
+          "blocked": 0,
+          "reasons": {},
+          "wear_garment_count": 0,
+          "environment_locations": 65
+        }
+      ]
+    }
+  ],
+  "garment_sources": [
+    {
+      "source": "A1",
+      "count": 1
+    },
+    {
+      "source": "A2",
+      "count": 1
+    },
+    {
+      "source": "A3",
+      "count": 1
+    },
+    {
+      "source": "A4",
+      "count": 1
+    },
+    {
+      "source": "A5",
+      "count": 1
+    },
+    {
+      "source": "A6",
+      "count": 1
+    },
+    {
+      "source": "A7",
+      "count": 1
+    },
+    {
+      "source": "B1",
+      "count": 1
+    },
+    {
+      "source": "B2",
+      "count": 1
+    },
+    {
+      "source": "B3",
+      "count": 1
+    },
+    {
+      "source": "B4",
+      "count": 1
+    },
+    {
+      "source": "B5",
+      "count": 1
+    },
+    {
+      "source": "B6",
+      "count": 1
+    },
+    {
+      "source": "C1",
+      "count": 1
+    },
+    {
+      "source": "C2",
+      "count": 1
+    },
+    {
+      "source": "C3",
+      "count": 1
+    },
+    {
+      "source": "C4",
+      "count": 1
+    },
+    {
+      "source": "C5",
+      "count": 1
+    },
+    {
+      "source": "C6",
+      "count": 1
+    },
+    {
+      "source": "C7",
+      "count": 1
+    },
+    {
+      "source": "C8",
+      "count": 1
+    },
+    {
+      "source": "K1",
+      "count": 1
+    },
+    {
+      "source": "K2",
+      "count": 1
+    },
+    {
+      "source": "K3",
+      "count": 1
+    },
+    {
+      "source": "legacy",
+      "count": 52
+    }
+  ]
+}

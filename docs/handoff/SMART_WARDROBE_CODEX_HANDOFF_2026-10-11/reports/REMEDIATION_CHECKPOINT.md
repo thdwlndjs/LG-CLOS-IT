@@ -136,3 +136,11 @@ Implementation commit: `c9dd6ac` (`feat(wardrobe): integrate approved scene asse
 - Current inventory snapshot: internal56 (approved24 + hidden legacy32), external11, accessory drawer8, shoe1; AVAILABLE68/STORED8; actual WEAR0. Current source of truth is DB/Scene, not initial placement manifest. CSV captures UTC11:15:25.
 - Resume remaining original tasks: P7 Gate A/B reference layer extraction/retargeting, and legacy52 hidden-slot visual mapping before full P4/P8/P9/P10 completion. Do not restore rejected old sprites or invent unconfirmed shelf registrations. Paid Decart/physical devices/rights remain separate external gates.
 - Canonical current report: `P3_P10_REMEDIATION_REPORT.md`; exact checks/screenshots/mappings in `evidence/remediation/`. API18081, app5193, renderer3300 remain local. Runtime credentials and original user input packages are not committed.
+
+## Meeting diagnosis — report-only user instruction, 2026-10-11
+
+See [HOME_DATA_SHELF_MEETING_REPORT.md](HOME_DATA_SHELF_MEETING_REPORT.md) and its four meeting evidence files. Product code/data/assets/contracts unchanged; browser demo authentication only. No new recommendation/storage/card jobs, production writes or remote operations.
+
+Confirmed next requirements: generated outfit-card images on today's home; remove home usage-history UI; link persisted synthetic usage/shopping to existing garments. Current DB has76 garments, zero wear/care/shopping imports,114 location observations,65 synthetic environment rows. Read-only planner reproduces ALL0/76blocked versus WINTER dry-run8/76; WINTER executable scope gives mom8/76, son4/43. Initial home is Mock composition3; server tab is empty until explicit request. Existing card API flows work but aren't automatically connected to home.
+
+Right original plan is66 folded places (plus left6); only3 single samples are bound and their bottoms don't meet shelf support. Full original density remains the approved default; item/owner/slot mapping and new versus reused products still need specification. New37 garments for full93visible is only a conditional calculation keeping20off-scene and reusing32hidden, not an approved import. Wait for meeting follow-up before implementing these report proposals.
