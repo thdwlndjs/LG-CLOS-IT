@@ -1,0 +1,137 @@
+{
+  "before": {
+    "garment": {
+      "count": 104,
+      "rows_hash": "9c25cd08af173271a591890edd021fb1"
+    },
+    "garment_state": {
+      "count": 104,
+      "rows_hash": "1d9272586a47e39c8ef88704693276c0"
+    },
+    "asset": {
+      "count": 271,
+      "rows_hash": "1108d61488cc16aac90d60c3d33c16e0"
+    },
+    "outfit": {
+      "count": 248,
+      "rows_hash": "ec6d342a9a342d99a4c0ae261c83f3d7"
+    },
+    "outfit_item": {
+      "count": 616,
+      "rows_hash": "0f0b33752bb19653244a674de9026030"
+    },
+    "outfit_card": {
+      "count": 97,
+      "rows_hash": "b3bf1d577fe8dae1f7b05ea626ecac73"
+    },
+    "vton_job": {
+      "count": 27,
+      "rows_hash": "f913909d9c3c06f47faa6a481b724c1a"
+    },
+    "context_snapshot": {
+      "count": 123,
+      "rows_hash": "42e1c638a5ba092aba395cd8a9ca6ea4"
+    },
+    "wear_event": {
+      "count": 108,
+      "rows_hash": "6c3ebd2ca77889862ce285b6ec4198cd"
+    },
+    "liked_item": {
+      "count": 6,
+      "rows_hash": "364076b52384f631d4e7f28ace2d021c"
+    },
+    "scene_placement": {
+      "count": 66,
+      "rows_hash": "ea67eb0f10810cd9fda0e5207db2c121"
+    },
+    "storage_location": {
+      "count": 100,
+      "rows_hash": "7438939707abc83ab3f9edd40e893a8a"
+    },
+    "lighting_zone": {
+      "count": 96,
+      "rows_hash": "739a302e8b6b4a67208708cf8853650e"
+    }
+  },
+  "after": {
+    "garment": {
+      "count": 104,
+      "rows_hash": "9c25cd08af173271a591890edd021fb1"
+    },
+    "garment_state": {
+      "count": 104,
+      "rows_hash": "1d9272586a47e39c8ef88704693276c0"
+    },
+    "asset": {
+      "count": 271,
+      "rows_hash": "1108d61488cc16aac90d60c3d33c16e0"
+    },
+    "outfit": {
+      "count": 248,
+      "rows_hash": "ec6d342a9a342d99a4c0ae261c83f3d7"
+    },
+    "outfit_item": {
+      "count": 616,
+      "rows_hash": "0f0b33752bb19653244a674de9026030"
+    },
+    "outfit_card": {
+      "count": 97,
+      "rows_hash": "b3bf1d577fe8dae1f7b05ea626ecac73"
+    },
+    "vton_job": {
+      "count": 27,
+      "rows_hash": "f913909d9c3c06f47faa6a481b724c1a"
+    },
+    "context_snapshot": {
+      "count": 123,
+      "rows_hash": "42e1c638a5ba092aba395cd8a9ca6ea4"
+    },
+    "wear_event": {
+      "count": 108,
+      "rows_hash": "6c3ebd2ca77889862ce285b6ec4198cd"
+    },
+    "liked_item": {
+      "count": 6,
+      "rows_hash": "364076b52384f631d4e7f28ace2d021c"
+    },
+    "scene_placement": {
+      "count": 66,
+      "rows_hash": "ea67eb0f10810cd9fda0e5207db2c121"
+    },
+    "storage_location": {
+      "count": 100,
+      "rows_hash": "7438939707abc83ab3f9edd40e893a8a"
+    },
+    "lighting_zone": {
+      "count": 96,
+      "rows_hash": "739a302e8b6b4a67208708cf8853650e"
+    }
+  },
+  "changed_tables": 0,
+  "approved_assets_current_sha256": {
+    "assets/wardrobe-scene-sprites/approved-v1/A1.png": "c8650198f7c63f6c477b141b1a5d838a4be7b28bf80142491dc41def42b533b5",
+    "assets/wardrobe-scene-sprites/approved-v1/A2.png": "0d2bb8168d251faa4726a0c6e899f9fd2678f13001a3a77eee8ba347c0e95ab5",
+    "assets/wardrobe-scene-sprites/approved-v1/A3.png": "0ccd53b60f7e50a8d2ebc8be54fbed635933b418f1ba116b0983d4c4a32d87e9",
+    "assets/wardrobe-scene-sprites/approved-v1/A4.png": "c4b8e43a5994aec4b5767103d9006bf4a583e06b575685bf83fd27e748e82679",
+    "assets/wardrobe-scene-sprites/approved-v1/A5.png": "718df63d7e8da7a115b549f637ea7fd4e613d12f9c33558311e76fc71d2e22cf",
+    "assets/wardrobe-scene-sprites/approved-v1/A6.png": "be2a637f649d925e613c457545601b56ceb36a8595c7308e0d5cd7efef24ce1c",
+    "assets/wardrobe-scene-sprites/approved-v1/A7.png": "d570fa5decd84e306691a916ebc4e95afddcb02c414cf108a677669ebeaef142",
+    "assets/wardrobe-scene-sprites/approved-v1/B1.png": "36be70baee867f7b9decedc86a51556c706b68b8fe99e7c84485913d71711807",
+    "assets/wardrobe-scene-sprites/approved-v1/B2.png": "538b0b89cb8bb5256109359c88e48b9ea12f05b44a2e60b342fdba15f0e03abe",
+    "assets/wardrobe-scene-sprites/approved-v1/B3.png": "69df1e4d26a02fa075f71d22c3ab89e523e2f60aa7f96e5ce59f454aa4fcef58",
+    "assets/wardrobe-scene-sprites/approved-v1/B4.png": "ffbebf9b2e5927d57a59b50522c22ec297d5f4997d092a8bb17ad4867da9eb29",
+    "assets/wardrobe-scene-sprites/approved-v1/B5.png": "2c64e4169f8d904b8c349de4a7e47dacb37e4cae4f1d9ef954e909f453662708",
+    "assets/wardrobe-scene-sprites/approved-v1/B6.png": "137a409a637b33cdb4dfd7bc31a6488822f6f47a3a6f9aebf16e12c1376abdce",
+    "assets/wardrobe-scene-sprites/approved-v1/C1.png": "e259fd6877773a68e30dc7002ad1c50274c67bfa67e2cff1dd4f3339f62eb45b",
+    "assets/wardrobe-scene-sprites/approved-v1/C2.png": "506bd7ce415d075116e7cb1904b917277233bfa4784b4214f7b319a7257a9a99",
+    "assets/wardrobe-scene-sprites/approved-v1/C3.png": "21e18a22ed9dacc430e4f5e3a15ed84d78ee269c207ce1970fb58533d9ebd837",
+    "assets/wardrobe-scene-sprites/approved-v1/C4.png": "fa5e6102f48796d8dbaaaa63f3cce31602698566386f56056b4fa181f17caceb",
+    "assets/wardrobe-scene-sprites/approved-v1/C5.png": "2a25edc995d32e3a87c872d28f7f37a7ef0ef1aac8ae9767222e13fc6efdd845",
+    "assets/wardrobe-scene-sprites/approved-v1/C6.png": "198105074586b6fc0f6e46c6d9ce8512036359396f6bd9184bdada7d3c996b2e",
+    "assets/wardrobe-scene-sprites/approved-v1/C7.png": "da3d9d95b48eaa6c7b9418410131a9d4df53968a0d10b0e264d468bd4951c6cb",
+    "assets/wardrobe-scene-sprites/approved-v1/C8.png": "0f81ba149aee56dc34f4113d1b37b50e5b8a455e06e8dba8cf7bc6ae97fc894b",
+    "assets/wardrobe-scene-sprites/approved-v1/K1.png": "ddcc430001ccc76fd2e4a11fea5108a0e864b52824df220c17942a3402447a80",
+    "assets/wardrobe-scene-sprites/approved-v1/K2.png": "8e9810660aa164675d5d62715fe154194d012e3ef0fe233e587a57d6d0474c0a",
+    "assets/wardrobe-scene-sprites/approved-v1/K3.png": "3e7b18e8dd9f4c02e08022c2d5dd0547cd3140362100705958e1b25ae8bd30ac"
+  }
+}

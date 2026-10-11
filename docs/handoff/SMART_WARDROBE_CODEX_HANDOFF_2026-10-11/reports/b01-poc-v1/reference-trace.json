@@ -1,0 +1,14 @@
+{
+  "version": "b01-manual-trace-v1",
+  "basis": "Manual visual tracing of wardrobe-reference.png before sample geometry generation; not derived from stage_b_seed.py placements",
+  "reference": "web/public/assets/mirror-final/wardrobe-reference.png",
+  "coordinate_space": [1672, 941],
+  "boundary": "Opaque garment envelope, excluding shadow; floor is supporting shelf top",
+  "uncertainty_px": 2,
+  "compartments": {
+    "E2": {"floor": 265, "left": [1007, 211, 1116, 264], "right": [1132, 215, 1244, 264]},
+    "E4": {"floor": 503, "left": [1007, 443, 1118, 501], "right": [1132, 445, 1245, 502]},
+    "F2": {"floor": 267, "left": [1311, 215, 1423, 265], "right": [1450, 214, 1563, 266]}
+  },
+  "status": "PoC measurement reference; user visual review still required"
+}

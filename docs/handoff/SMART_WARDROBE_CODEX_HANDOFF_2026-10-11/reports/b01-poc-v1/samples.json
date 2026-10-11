@@ -1,0 +1,145 @@
+{
+  "version": "b01-local-surface-model-v1",
+  "method": "Code-native curved side/top profiles with photo-sampled textile only; no AI calls or full garment photo deformation",
+  "reference_trace_sha256": "17a66d81c55351ed4968552c3579fd0321c6d146eeb5211b0ed1eb83ecaf976e",
+  "samples": [
+    {
+      "id": "REM-03",
+      "garment": "fa6caeb1-0966-58c2-a81e-2754d7643c2c",
+      "compartment": "F2",
+      "side": "right",
+      "layer": 2,
+      "kind": "fine-knit",
+      "patch": [
+        0.43,
+        0.44,
+        0.16,
+        0.14
+      ],
+      "base": "#a3aaa0",
+      "height": 91,
+      "source_sha256": "8ba6ff3f1940cb5f10ebcb4232dfd8ea4539c80b513ec743750e9c98eb9645d2",
+      "svg_sha256": "8e77b5a9661b23f022a1919558b97eb66d4241cacf898bf68255d1053464796d",
+      "png_sha256": "f9485f55d326f733eaa2bad427df9663066d5b0efd9a0cca50202f0feaf51c48",
+      "raster": {
+        "opaque_bbox": [
+          26,
+          35,
+          602,
+          126
+        ],
+        "transparent_pixels": 59889,
+        "opaque_pixels": 50415
+      },
+      "scale": 0.19618055555555555,
+      "placement": {
+        "x": 1444.8993055555557,
+        "y": 205.57638888888889,
+        "width": 125.55555555555556,
+        "height": 35.3125,
+        "z_index": 22
+      },
+      "trial_stack": {
+        "opaque_width": 113,
+        "opaque_height": 53.55729166666666,
+        "width_error_pct": 0,
+        "height_error_pct": 2.994791666666652,
+        "stack_gap_px": 0,
+        "floor_gap_px": 1
+      },
+      "material_status": "photo-sampled visible surface; fiber composition unknown; unobserved folds are modeled"
+    },
+    {
+      "id": "REM-11",
+      "garment": "883a6a25-4c2c-510b-bbe5-0ca8e5a44e32",
+      "compartment": "E4",
+      "side": "right",
+      "layer": 0,
+      "kind": "fleece",
+      "patch": [
+        0.35,
+        0.43,
+        0.13,
+        0.14
+      ],
+      "base": "#bcb0c2",
+      "height": 96,
+      "source_sha256": "249337a953cc383c595ca019d496c63c509ffda9982638ab2b00c89b89fe72f0",
+      "svg_sha256": "9348ef80f84deed3364e014126f8b9747f76486b910d3a3cd5bb2926ae7e7f26",
+      "png_sha256": "1e6bf31bfa6c24e9399481ac2502eae20dffd141a87d777e9f9aa2a11e9ba208",
+      "raster": {
+        "opaque_bbox": [
+          26,
+          35,
+          602,
+          131
+        ],
+        "transparent_pixels": 56999,
+        "opaque_pixels": 53298
+      },
+      "scale": 0.19618055555555555,
+      "placement": {
+        "x": 1126.8993055555557,
+        "y": 476.30034722222223,
+        "width": 125.55555555555556,
+        "height": 35.3125,
+        "z_index": 20
+      },
+      "trial_stack": {
+        "opaque_width": 113,
+        "opaque_height": 56.5,
+        "width_error_pct": 0,
+        "height_error_pct": -0.8771929824561431,
+        "stack_gap_px": 0,
+        "floor_gap_px": 1
+      },
+      "material_status": "photo-sampled visible surface; fiber composition unknown; unobserved folds are modeled"
+    },
+    {
+      "id": "REM-23",
+      "garment": "2904fd43-cb31-530d-b4bd-2d9783d3c762",
+      "compartment": "E2",
+      "side": "left",
+      "layer": 1,
+      "kind": "woven-camouflage",
+      "patch": [
+        0.53,
+        0.43,
+        0.25,
+        0.21
+      ],
+      "base": "#aaa28c",
+      "height": 91,
+      "source_sha256": "bebeea70324182dab097c7710b4bb93261e94fe3e93dc7d63291ddf19611c598",
+      "svg_sha256": "411b95e87d9bdd9b427d92439e3e015ff269af7a9490e0a4a78afb626be3c325",
+      "png_sha256": "7b9db26c9a68487d46ca23c6ef9ed5579d2122fd474a5c687b398fd4af8711a0",
+      "raster": {
+        "opaque_bbox": [
+          26,
+          35,
+          602,
+          126
+        ],
+        "transparent_pixels": 59889,
+        "opaque_pixels": 50415
+      },
+      "scale": 0.1892361111111111,
+      "placement": {
+        "x": 1002.0798611111111,
+        "y": 222.93576388888889,
+        "width": 121.11111111111111,
+        "height": 34.0625,
+        "z_index": 21
+      },
+      "trial_stack": {
+        "opaque_width": 109,
+        "opaque_height": 51.66145833333333,
+        "width_error_pct": 0,
+        "height_error_pct": -2.525550314465419,
+        "stack_gap_px": 0,
+        "floor_gap_px": 1
+      },
+      "material_status": "photo-sampled visible surface; fiber composition unknown; unobserved folds are modeled"
+    }
+  ]
+}

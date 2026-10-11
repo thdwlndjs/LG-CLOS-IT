@@ -1,0 +1,408 @@
+{
+  "measurements": [
+    {
+      "id": "REM-03",
+      "stacks": [
+        {
+          "side": "left",
+          "bbox": [
+            1312,
+            213,
+            1422,
+            265
+          ],
+          "center_inter_layer_gap_px": 1,
+          "floor_gap_px": 2,
+          "layers": [
+            {
+              "bbox": [
+                1312,
+                249,
+                1422,
+                265
+              ],
+              "center_column": [
+                249,
+                265
+              ]
+            },
+            {
+              "bbox": [
+                1312,
+                231,
+                1422,
+                248
+              ],
+              "center_column": [
+                231,
+                248
+              ]
+            },
+            {
+              "bbox": [
+                1312,
+                213,
+                1422,
+                230
+              ],
+              "center_column": [
+                213,
+                230
+              ]
+            }
+          ],
+          "width_px": 110,
+          "height_px": 52,
+          "width_deviation_pct": -1.7857142857142905,
+          "height_deviation_pct": 4.0000000000000036
+        },
+        {
+          "side": "right",
+          "bbox": [
+            1451,
+            213,
+            1562,
+            265
+          ],
+          "center_inter_layer_gap_px": 1,
+          "floor_gap_px": 2,
+          "layers": [
+            {
+              "bbox": [
+                1451,
+                249,
+                1562,
+                265
+              ],
+              "center_column": [
+                249,
+                265
+              ]
+            },
+            {
+              "bbox": [
+                1451,
+                231,
+                1562,
+                248
+              ],
+              "center_column": [
+                231,
+                248
+              ]
+            },
+            {
+              "bbox": [
+                1451,
+                213,
+                1562,
+                230
+              ],
+              "center_column": [
+                213,
+                230
+              ]
+            }
+          ],
+          "width_px": 111,
+          "height_px": 52,
+          "width_deviation_pct": -1.7699115044247815,
+          "height_deviation_pct": 0
+        }
+      ],
+      "size_pass": true,
+      "inter_stack_gap_px": 29,
+      "inter_stack_gap_deviation_px": 2,
+      "inter_layer_gap_px": 1,
+      "floor_gap_px": 2,
+      "transparent_background": true,
+      "opaque_surface": true,
+      "mode": "isolated repeated-sample trial, not completed app shelf; actual Canvas alpha>=240 pixels, central-column contact"
+    },
+    {
+      "id": "REM-11",
+      "stacks": [
+        {
+          "side": "left",
+          "bbox": [
+            1008,
+            447,
+            1117,
+            501
+          ],
+          "center_inter_layer_gap_px": 2,
+          "floor_gap_px": 2,
+          "layers": [
+            {
+              "bbox": [
+                1008,
+                484,
+                1117,
+                501
+              ],
+              "center_column": [
+                484,
+                501
+              ]
+            },
+            {
+              "bbox": [
+                1008,
+                466,
+                1117,
+                483
+              ],
+              "center_column": [
+                466,
+                483
+              ]
+            },
+            {
+              "bbox": [
+                1008,
+                447,
+                1117,
+                464
+              ],
+              "center_column": [
+                447,
+                464
+              ]
+            }
+          ],
+          "width_px": 109,
+          "height_px": 54,
+          "width_deviation_pct": -1.8018018018018056,
+          "height_deviation_pct": -6.896551724137934
+        },
+        {
+          "side": "right",
+          "bbox": [
+            1133,
+            446,
+            1244,
+            501
+          ],
+          "center_inter_layer_gap_px": 2,
+          "floor_gap_px": 2,
+          "layers": [
+            {
+              "bbox": [
+                1133,
+                484,
+                1244,
+                501
+              ],
+              "center_column": [
+                484,
+                501
+              ]
+            },
+            {
+              "bbox": [
+                1133,
+                465,
+                1244,
+                482
+              ],
+              "center_column": [
+                465,
+                482
+              ]
+            },
+            {
+              "bbox": [
+                1133,
+                446,
+                1244,
+                464
+              ],
+              "center_column": [
+                446,
+                464
+              ]
+            }
+          ],
+          "width_px": 111,
+          "height_px": 55,
+          "width_deviation_pct": -1.7699115044247815,
+          "height_deviation_pct": -3.508771929824561
+        }
+      ],
+      "size_pass": true,
+      "inter_stack_gap_px": 16,
+      "inter_stack_gap_deviation_px": 2,
+      "inter_layer_gap_px": 2,
+      "floor_gap_px": 2,
+      "transparent_background": true,
+      "opaque_surface": true,
+      "mode": "isolated repeated-sample trial, not completed app shelf; actual Canvas alpha>=240 pixels, central-column contact"
+    },
+    {
+      "id": "REM-23",
+      "stacks": [
+        {
+          "side": "left",
+          "bbox": [
+            1008,
+            213,
+            1115,
+            263
+          ],
+          "center_inter_layer_gap_px": 1,
+          "floor_gap_px": 2,
+          "layers": [
+            {
+              "bbox": [
+                1008,
+                247,
+                1115,
+                263
+              ],
+              "center_column": [
+                247,
+                263
+              ]
+            },
+            {
+              "bbox": [
+                1008,
+                230,
+                1115,
+                246
+              ],
+              "center_column": [
+                230,
+                246
+              ]
+            },
+            {
+              "bbox": [
+                1008,
+                213,
+                1115,
+                229
+              ],
+              "center_column": [
+                213,
+                229
+              ]
+            }
+          ],
+          "width_px": 107,
+          "height_px": 50,
+          "width_deviation_pct": -1.834862385321101,
+          "height_deviation_pct": -5.660377358490565
+        },
+        {
+          "side": "right",
+          "bbox": [
+            1133,
+            211,
+            1243,
+            263
+          ],
+          "center_inter_layer_gap_px": 1,
+          "floor_gap_px": 2,
+          "layers": [
+            {
+              "bbox": [
+                1133,
+                247,
+                1243,
+                263
+              ],
+              "center_column": [
+                247,
+                263
+              ]
+            },
+            {
+              "bbox": [
+                1133,
+                229,
+                1243,
+                246
+              ],
+              "center_column": [
+                229,
+                246
+              ]
+            },
+            {
+              "bbox": [
+                1133,
+                211,
+                1243,
+                228
+              ],
+              "center_column": [
+                211,
+                228
+              ]
+            }
+          ],
+          "width_px": 110,
+          "height_px": 52,
+          "width_deviation_pct": -1.7857142857142905,
+          "height_deviation_pct": 6.1224489795918435
+        }
+      ],
+      "size_pass": true,
+      "inter_stack_gap_px": 18,
+      "inter_stack_gap_deviation_px": 2,
+      "inter_layer_gap_px": 1,
+      "floor_gap_px": 2,
+      "transparent_background": true,
+      "opaque_surface": true,
+      "mode": "isolated repeated-sample trial, not completed app shelf; actual Canvas alpha>=240 pixels, central-column contact"
+    }
+  ],
+  "app": {
+    "preview_only": true,
+    "replaced_items": [
+      {
+        "id": "REM-03",
+        "garment_id": "fa6caeb1-0966-58c2-a81e-2754d7643c2c",
+        "compartment_id": "bf572cae-2306-5b60-a6a6-7ee1d2c2fc3b",
+        "display": {
+          "x": 1444.890625,
+          "y": 205.5625,
+          "width": 125.546875,
+          "height": 35.3125
+        }
+      },
+      {
+        "id": "REM-11",
+        "garment_id": "883a6a25-4c2c-510b-bbe5-0ca8e5a44e32",
+        "compartment_id": "3fa03e54-0119-5507-b99b-6cd14098c8c2",
+        "display": {
+          "x": 1126.890625,
+          "y": 476.296875,
+          "width": 125.546875,
+          "height": 35.3125
+        }
+      },
+      {
+        "id": "REM-23",
+        "garment_id": "2904fd43-cb31-530d-b4bd-2d9783d3c762",
+        "compartment_id": "40b480ba-14dd-5796-af79-b257bcdaadff",
+        "display": {
+          "x": 1002.078125,
+          "y": 222.921875,
+          "width": 121.109375,
+          "height": 34.0625
+        }
+      }
+    ],
+    "other_items_preserved": 84,
+    "errors": [],
+    "unexpected_mutations": []
+  },
+  "limits": [
+    "No real Scene/DB mapping changes",
+    "Other35 legacy cells except3 remain frontal",
+    "Isolated stack repetition is not new garment inventory",
+    "Visual and material fidelity requires separate review"
+  ]
+}
