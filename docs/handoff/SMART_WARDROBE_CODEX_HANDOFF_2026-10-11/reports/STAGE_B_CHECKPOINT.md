@@ -1,4 +1,16 @@
-# ?? ????? ? B-01 ?? ?? ??
+# 최신 체크포인트 — B-01 승인 완료 / B-02 DEFERRED
+
+2026-10-12 · 기준 구현 커밋 `aed6b48` · 브랜치 `feat/handoff-p3-p10`.
+
+사용자가 B-01 화면·에셋·배치 최종 시각 승인을 완료했다. B-02는 핵심 사용자 경험과 에이전트 시연 우선에 따라 **DEFERRED**로 조정했다. 외부 보관10벌의 내부 Scene 중복 및 상세·찾기·LED·수용량 정합성은 미해결이며 기능 검증 PASS가 아니다. B 전체는 PARTIAL이다.
+
+기존 코드·DB·에셋·매핑은 그대로 유지한다. E단계의 보관·회수 Mock 데이터·시나리오는 활용 방안 검토 대상이며 적용 승인 또는 구현 완료가 아니다. C~G는 별도 승인 전까지 시작하지 않는다. 향후 이동 완료 이력과 물리 위치를 단일 기준으로 연결하는 과제를 유지한다.
+
+재개 기준: [POC_CONTRACT_A1](../POC_CONTRACT_A1.md)의 B-02 절 → [실행 계획](../execution/STAGE_B_G_EXECUTION_DRAFT.md) → [B 보고서](STAGE_B_IMPLEMENTATION_REPORT.md) 및 [추적표](STAGE_B_REQUIREMENTS.csv). 현재 다음 동작은 사용자 단계 승인 대기이며 실행 명령은 없다. 원격 push·배포는 실행하지 않았다.
+
+아래는 이전 체크포인트 이력이다. 이전 머리말 일부에 문자 손실이 있어 현재 상태는 위의 정상 UTF-8 문구와 연결 계약을 기준으로 한다.
+
+## 이전 B-01 적용 체크포인트
 
 2026-10-12: ??? ?? ???? 35 ?? ?? ? 66 placement ??. K31???21???76 ??. ? ??? ?? ???? 22??/11?? PASS, DB ???13??? ??, ??14 PASS. ?? ?? ?? ??, B ?? PARTIAL(?? ?? ?? API ?? ?? ??). C~G????push??? ???. ??? ??/??/??? [B01_COMMON_FORM_IMPLEMENTATION_REPORT.md](B01_COMMON_FORM_IMPLEMENTATION_REPORT.md). ?? ?? bc2fd93; ?? ??? Git log? `feat(poc): apply shared folded shelf assets and stacking` ??.
 

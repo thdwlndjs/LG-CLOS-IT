@@ -2,7 +2,15 @@
 
 2026-10-12 · 기준 커밋 `6895603` · 브랜치 `feat/handoff-p3-p10`
 
-**판정: PARTIAL. B단계 완료로 판정하지 않는다.** 데이터 보존·적재·권한·멱등성 검사는 통과했다. 오른쪽의 기존 의류 파생 에셋 35개가 원본의 측면 접힘 형태와 다르고, 위치 조회의 기존 슬롯과 Scene의 물리 칸 사이에 호환 바인딩이 남아 있다. C~G는 시작하지 않았다.
+**최신 판정: B PARTIAL / B-01 사용자 시각 승인 완료 / B-02 DEFERRED.** `aed6b48`의 승인 화면·에셋·배치를 유지한다. 사용자 결정으로 위치 정합성 구현은 후순위로 조정했으며 기능 검증 PASS로 처리하지 않는다. C~G는 별도 승인 전까지 시작하지 않는다.
+
+## B-02 우선순위 조정 및 잔여 과제
+
+이번 PoC는 핵심 사용자 경험·에이전트 시연 완성도를 우선한다. 외부 이동 완료 기록이 있는 의류10벌의 내부 Scene 중복 표시 및 상세·찾기·LED·수용량 조회 불일치는 **미해결 DEFERRED**다. 외부 위치를 과거 별칭으로 재해석해 내부 표시를 정당화하지 않는다. 기존 데이터·이력·Scene 매핑·B-01 승인 화면은 이번 결정으로 변경하지 않았다.
+
+E단계에서는 관리 에이전트의 보관·회수 추천에 Mock 데이터·시나리오 활용 방안을 검토한다. 적용 방식 확정이나 구현 승인이 아니다. Mock 시연 결과는 실제 위치·이동·LED·수용량 정합성 검증 PASS와 분리한다. 후속 과제는 이동 완료 이력과 물리 보관 위치를 단일 기준으로 연결하고 모든 조회 경로를 정합화하는 것이다. 기준은 [A1의 B-02 계약](../POC_CONTRACT_A1.md), 재개 게이트는 [실행 계획](../execution/STAGE_B_G_EXECUTION_DRAFT.md)이다.
+
+아래 수행 내역은 최초 B 구현의 증적이며, B-01 시정 결과는 [공통 형태 적용 보고서](B01_COMMON_FORM_IMPLEMENTATION_REPORT.md)를 함께 참조한다. 이번 문서 변경으로 과거 FAIL/PARTIAL 증적을 소급 변경하지 않았다.
 
 ## 계약과 수행 범위
 
@@ -16,8 +24,8 @@
 |---|---|---|
 | POC-D01 / T-D01 | PASS | 원본 76개 ID와 전체 garment 행·기존 위치/상태 일치. 기존 asset 전체 행 해시 일치. 왼쪽 21벌의 승인 bounds와 실제 Scene 응답 일치, 관련 PNG·렌더링 컴포넌트 Git diff 없음 |
 | POC-D02 / 개별 ID·물리 칸·수량 | 부분 PASS | 오른쪽 66개 고유 garment_id, 11칸 × 칸별 6벌, LED anchor 11개. Scene/DOM 87개(왼쪽21+오른쪽66), 중복0. 동일 칸 2벌 Mock 요청은 anchor1개로 귀결 |
-| POC-D02 / 원본 시각 비교 | FAIL | 원본은 2묶음×3벌의 넓은 측면 접힘. 기존 35개 파생 이미지가 정면 접힘이며 세로 비율·여백 때문에 작게 표시됨. 승인 K1~K3 기반 31개도 원본의 밀도·묶음 간격을 완전히 재현하지 못함. 수량 검사로 시각 합격을 대체하지 않음 |
-| POC-D02 / 위치 연결 | PARTIAL | DB scene_placement의 물리 칸 FK와 LED·Scene는 연결됨. 원본 state 보존을 위해 source_location_id 호환 바인딩을 사용. 일반 의류 상세/위치 안내는 기존 위치 이름을 유지하므로 모든 화면이 단일 물리 칸을 사용하는 상태는 아님 |
+| POC-D02 / 원본 시각 비교 | B-01 승인 완료 | 최초 FAIL 이후 aed6b48의 공통 측면35벌·기존 K31·66벌 적층을 실제 브라우저 검증하고 사용자 최종 시각 승인 완료. 기존 실패 증적은 보존 |
+| POC-D02 / 위치 연결 | B-02 DEFERRED | 외부 이동 완료10벌이 내부 Scene에도 표시됨. 상세·찾기·LED·수용량 정합성 미해결. 사용자 승인에 따른 우선순위 조정이며 기능 PASS 아님 |
 | POC-D03 / T-D03 | PASS | 김수진·최휘재 각각 관심3건, TOP/BOTTOM/OUTER. 상품 식별자·원본 사진·색상·카테고리 연결. 보유 garment와 별도 테이블·별도 UUID. 두 프로필 목록과 상대 항목 상세404를 실제 API에서 확인. 이미지 다운로드 확인 |
 | POC-D04 / T-D04 | B 범위 PASS | PoC 통합 도구에서 구매 조회·일괄 등록 버튼 제거. 기존 Sprint API는 호환성 때문에 유지. B 브라우저 경로에서 구매·동기화·결제 호출0. 전체 G 시나리오 검증은 미실행 |
 | POC-H02 / B 데이터 기반 | PASS | 각54건, 최근90일, 각 wear→outfit/items→Context 연결. 과거 weather/schedule/purpose/season 저장. 현재 합성 Context 각1개와 미래 일정 각2개. Context 조회 API에서도 과거/현재 합성 출처가 구분됨. 실제 추천·관리 판단 검증은 E 범위로 남음 |
@@ -114,4 +122,4 @@ node test/stage-b-browser.mjs
 
 ## Local commit checkpoint
 
-Implementation and evidence: `6f108ba` (`feat(poc): add stage B demo data and compartment bindings`). Base contract commit: `6895603`. Status remains **PARTIAL**. No remote push. Test log encoding and trailing whitespace were normalized without changing recorded outcomes.
+Original implementation and evidence: `6f108ba` (`feat(poc): add stage B demo data and compartment bindings`). Base contract commit: `6895603`. Approved B-01 implementation: `aed6b48`. Current status: **B PARTIAL; B-01 visually approved; B-02 DEFERRED, not functional PASS**. No remote push. Original test outcomes remain unchanged.
