@@ -1,0 +1,4 @@
+Tool: image_gen.imagegen, transparent_background=true
+Edit target: B3.png (existing narrow denim asset)
+Final generated source: B3-clean-v4.png
+Background removal and small lighting repair of this exact image. Preserve its existing denim shirt side pose and silhouette. Keep the wooden hanger and hook. Remove the black neighboring garment strip on the right and the brown strip below. Fix the sharp rectangular lighting boundary in the denim. The shirt remains a narrow side-on hanging sleeve with one visible pocket, identical angle and proportions. Plain realistic light washed-blue denim, NOT patterned or embossed fabric. Do not add any detail, widen or change garment pose. Deliver the same 53:310 tall narrow framing as a clean isolated transparent PNG. Clean anti-aliased alpha edges with no white, blue, cyan, red or yellow fringe. No floor shadow. Do not place any background pixels around the subject.

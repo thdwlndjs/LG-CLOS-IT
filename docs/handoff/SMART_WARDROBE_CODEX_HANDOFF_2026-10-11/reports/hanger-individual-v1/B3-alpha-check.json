@@ -1,0 +1,14 @@
+{
+  "status": "PASS",
+  "size": [
+    53,
+    310
+  ],
+  "mode": "RGBA",
+  "alpha_extrema": [
+    0,
+    255
+  ],
+  "transparent_corners": true,
+  "scope": "Alpha and comparison rendering only, not exact source shape or final visual approval"
+}

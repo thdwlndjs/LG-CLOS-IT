@@ -86,3 +86,7 @@ Latest instruction replaces the 60% overlay implementation: generated wardrobe-l
 ## Individual hanger extraction checkpoint
 Understood as: permanent individual garment layers in the normal scene, not find-only masks; preserve the current approved visual composition.
 21 transparent source-pixel PNGs and original coordinates exported to hanger-individual-v1. Reassembly matches original pixels exactly; independent PNG readback passed. Browser hide actions for all21 and move previews passed. Edge quality and occluded backs remain incomplete; app/DB/light variants not applied. See hanger-individual-v1/REPORT.md for current scope and resume steps.
+
+
+## B3 denim cleanup
+Latest explicit user instruction resolved scope: regenerate existing B3 denim side pose, remove lighting rectangle/background, transparent PNG. Final B3-clean-final.png is 53x310; B3-clean-highres.png and generated source retained. B3-clean-review.html compares old/new. Other garments and existing reassembly unchanged. Generated texture differs; final visual approval pending. No app/DB/push/deployment.
