@@ -1,0 +1,55 @@
+{
+  "checks": [
+    {
+      "actor": "mom",
+      "step": "login/family/verified image assets/internal scene/owned recommendations",
+      "result": "PASS",
+      "dataset": 52,
+      "visible": 32,
+      "recommendations": 3
+    },
+    {
+      "actor": "mom",
+      "step": "click actual garment -> same slot Mock LED -> automatic off",
+      "result": "PASS"
+    },
+    {
+      "actor": "mom",
+      "step": "owned recommendation -> consent/upload -> Mock VTON -> same home recommendations",
+      "result": "PASS"
+    },
+    {
+      "actor": "mom",
+      "step": "T1-v1 UI select -> React/Playwright -> private MinIO -> saved DB -> requery/download",
+      "result": "PASS",
+      "bytes": 2332724
+    },
+    {
+      "actor": "mom",
+      "step": "T2-v1 UI select -> React/Playwright -> private MinIO -> saved DB -> requery/download",
+      "result": "PASS",
+      "bytes": 2357644
+    },
+    {
+      "actor": "mom",
+      "step": "T3-v1 UI select -> React/Playwright -> private MinIO -> saved DB -> requery/download",
+      "result": "PASS",
+      "bytes": 2212099
+    },
+    {
+      "actor": "mom",
+      "step": "T4-v1 UI select -> React/Playwright -> private MinIO -> saved DB -> requery/download",
+      "result": "PASS",
+      "bytes": 2219519
+    },
+    {
+      "actor": "mom",
+      "step": "winter proposal -> approve leaves DB intact -> explicit completion changes DB -> scene refresh",
+      "result": "PASS",
+      "actionId": "700fd0f6-998c-4d7c-b8de-1c7de8063693"
+    }
+  ],
+  "errors": [],
+  "failed": [],
+  "error": "AssertionError [ERR_ASSERTION]: winter retrieval remains feasible"
+}

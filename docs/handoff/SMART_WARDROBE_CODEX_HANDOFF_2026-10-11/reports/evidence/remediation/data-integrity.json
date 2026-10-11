@@ -1,0 +1,363 @@
+{
+  "verified_at": "2026-10-11",
+  "database": "wardrobe_test_remediation",
+  "members": 4,
+  "garments": 52,
+  "ready_photos": 52,
+  "signed_download_hash_matches": 52,
+  "initial_groups": {
+    "internal": 35,
+    "external": 8,
+    "accessory": 9
+  },
+  "current_status": {
+    "AVAILABLE": 44,
+    "STORED": 8
+  },
+  "current_locations": {
+    "G 소품 서랍": 8,
+    "internal": 33,
+    "두번째 방 보관함": 10,
+    "G 신발 데모 보관함": 1
+  },
+  "synthetic_observations": 53,
+  "wear_events": 0,
+  "capacity_overflow": false,
+  "saved_cards": 44,
+  "saved_templates": {
+    "T4-v1": 11,
+    "T2-v1": 11,
+    "T3-v1": 11,
+    "T1-v1": 11
+  },
+  "source_rasters_modified": false,
+  "paid_provider_calls": false,
+  "hardware_verified": false,
+  "locations": [
+    {
+      "name": "두번째 방 보관함",
+      "capacity_units": 24,
+      "occupied": 10
+    },
+    {
+      "name": "현관 보관함",
+      "capacity_units": 8,
+      "occupied": 0
+    },
+    {
+      "name": "A-01",
+      "capacity_units": 1,
+      "occupied": 1
+    },
+    {
+      "name": "A-02",
+      "capacity_units": 1,
+      "occupied": 1
+    },
+    {
+      "name": "A-03",
+      "capacity_units": 1,
+      "occupied": 1
+    },
+    {
+      "name": "A-04",
+      "capacity_units": 1,
+      "occupied": 0
+    },
+    {
+      "name": "A-05",
+      "capacity_units": 1,
+      "occupied": 1
+    },
+    {
+      "name": "A-06",
+      "capacity_units": 1,
+      "occupied": 1
+    },
+    {
+      "name": "A-07",
+      "capacity_units": 1,
+      "occupied": 0
+    },
+    {
+      "name": "A-08",
+      "capacity_units": 1,
+      "occupied": 1
+    },
+    {
+      "name": "B-01",
+      "capacity_units": 1,
+      "occupied": 0
+    },
+    {
+      "name": "B-02",
+      "capacity_units": 1,
+      "occupied": 1
+    },
+    {
+      "name": "B-03",
+      "capacity_units": 1,
+      "occupied": 1
+    },
+    {
+      "name": "B-04",
+      "capacity_units": 1,
+      "occupied": 1
+    },
+    {
+      "name": "B-05",
+      "capacity_units": 1,
+      "occupied": 1
+    },
+    {
+      "name": "B-06",
+      "capacity_units": 1,
+      "occupied": 1
+    },
+    {
+      "name": "B-07",
+      "capacity_units": 1,
+      "occupied": 1
+    },
+    {
+      "name": "B-08",
+      "capacity_units": 1,
+      "occupied": 1
+    },
+    {
+      "name": "B-09",
+      "capacity_units": 1,
+      "occupied": 1
+    },
+    {
+      "name": "B-10",
+      "capacity_units": 1,
+      "occupied": 1
+    },
+    {
+      "name": "C-01",
+      "capacity_units": 1,
+      "occupied": 1
+    },
+    {
+      "name": "C-02",
+      "capacity_units": 1,
+      "occupied": 1
+    },
+    {
+      "name": "C-03",
+      "capacity_units": 1,
+      "occupied": 1
+    },
+    {
+      "name": "C-04",
+      "capacity_units": 1,
+      "occupied": 1
+    },
+    {
+      "name": "C-05",
+      "capacity_units": 1,
+      "occupied": 0
+    },
+    {
+      "name": "C-06",
+      "capacity_units": 1,
+      "occupied": 1
+    },
+    {
+      "name": "C-07",
+      "capacity_units": 1,
+      "occupied": 0
+    },
+    {
+      "name": "C-08",
+      "capacity_units": 1,
+      "occupied": 1
+    },
+    {
+      "name": "C-09",
+      "capacity_units": 1,
+      "occupied": 1
+    },
+    {
+      "name": "C-10",
+      "capacity_units": 1,
+      "occupied": 1
+    },
+    {
+      "name": "D-01",
+      "capacity_units": 1,
+      "occupied": 1
+    },
+    {
+      "name": "D-02",
+      "capacity_units": 1,
+      "occupied": 1
+    },
+    {
+      "name": "D-03",
+      "capacity_units": 1,
+      "occupied": 1
+    },
+    {
+      "name": "D-04",
+      "capacity_units": 1,
+      "occupied": 1
+    },
+    {
+      "name": "D-05",
+      "capacity_units": 1,
+      "occupied": 1
+    },
+    {
+      "name": "D-06",
+      "capacity_units": 1,
+      "occupied": 1
+    },
+    {
+      "name": "D-07",
+      "capacity_units": 1,
+      "occupied": 1
+    },
+    {
+      "name": "D-08",
+      "capacity_units": 1,
+      "occupied": 0
+    },
+    {
+      "name": "D-09",
+      "capacity_units": 1,
+      "occupied": 1
+    },
+    {
+      "name": "D-10",
+      "capacity_units": 1,
+      "occupied": 0
+    },
+    {
+      "name": "D-11",
+      "capacity_units": 1,
+      "occupied": 0
+    },
+    {
+      "name": "D-12",
+      "capacity_units": 1,
+      "occupied": 0
+    },
+    {
+      "name": "E-01",
+      "capacity_units": 1,
+      "occupied": 1
+    },
+    {
+      "name": "E-02",
+      "capacity_units": 1,
+      "occupied": 0
+    },
+    {
+      "name": "E-03",
+      "capacity_units": 1,
+      "occupied": 0
+    },
+    {
+      "name": "E-04",
+      "capacity_units": 1,
+      "occupied": 0
+    },
+    {
+      "name": "E-05",
+      "capacity_units": 1,
+      "occupied": 1
+    },
+    {
+      "name": "E-06",
+      "capacity_units": 1,
+      "occupied": 0
+    },
+    {
+      "name": "E-07",
+      "capacity_units": 1,
+      "occupied": 0
+    },
+    {
+      "name": "E-08",
+      "capacity_units": 1,
+      "occupied": 0
+    },
+    {
+      "name": "E-09",
+      "capacity_units": 1,
+      "occupied": 0
+    },
+    {
+      "name": "E-10",
+      "capacity_units": 1,
+      "occupied": 0
+    },
+    {
+      "name": "E-11",
+      "capacity_units": 1,
+      "occupied": 0
+    },
+    {
+      "name": "E-12",
+      "capacity_units": 1,
+      "occupied": 0
+    },
+    {
+      "name": "F-01",
+      "capacity_units": 1,
+      "occupied": 0
+    },
+    {
+      "name": "F-02",
+      "capacity_units": 1,
+      "occupied": 0
+    },
+    {
+      "name": "F-03",
+      "capacity_units": 1,
+      "occupied": 0
+    },
+    {
+      "name": "F-04",
+      "capacity_units": 1,
+      "occupied": 0
+    },
+    {
+      "name": "F-05",
+      "capacity_units": 1,
+      "occupied": 0
+    },
+    {
+      "name": "F-06",
+      "capacity_units": 1,
+      "occupied": 0
+    },
+    {
+      "name": "F-07",
+      "capacity_units": 1,
+      "occupied": 0
+    },
+    {
+      "name": "F-08",
+      "capacity_units": 1,
+      "occupied": 0
+    },
+    {
+      "name": "F-09",
+      "capacity_units": 1,
+      "occupied": 0
+    },
+    {
+      "name": "G 소품 서랍",
+      "capacity_units": 8,
+      "occupied": 8
+    },
+    {
+      "name": "G 신발 데모 보관함",
+      "capacity_units": 2,
+      "occupied": 1
+    }
+  ]
+}

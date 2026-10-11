@@ -1,0 +1,109 @@
+{
+  "checks": [
+    {
+      "actor": "mom",
+      "step": "login/family/verified image assets/internal scene/owned recommendations",
+      "result": "PASS",
+      "dataset": 52,
+      "visible": 33,
+      "recommendations": 3
+    },
+    {
+      "actor": "mom",
+      "step": "click actual garment -> same slot Mock LED -> automatic off",
+      "result": "PASS"
+    },
+    {
+      "actor": "mom",
+      "step": "owned recommendation -> consent/upload -> Mock VTON -> same home recommendations",
+      "result": "PASS"
+    },
+    {
+      "actor": "mom",
+      "step": "T1-v1 UI select -> React/Playwright -> private MinIO -> saved DB -> requery/download",
+      "result": "PASS",
+      "bytes": 2332724
+    },
+    {
+      "actor": "mom",
+      "step": "T2-v1 UI select -> React/Playwright -> private MinIO -> saved DB -> requery/download",
+      "result": "PASS",
+      "bytes": 2357644
+    },
+    {
+      "actor": "mom",
+      "step": "T3-v1 UI select -> React/Playwright -> private MinIO -> saved DB -> requery/download",
+      "result": "PASS",
+      "bytes": 2212099
+    },
+    {
+      "actor": "mom",
+      "step": "T4-v1 UI select -> React/Playwright -> private MinIO -> saved DB -> requery/download",
+      "result": "PASS",
+      "bytes": 2219519
+    },
+    {
+      "actor": "mom",
+      "step": "winter proposal -> approve leaves DB intact -> explicit completion changes DB -> scene refresh",
+      "result": "PASS",
+      "actionId": "40c682ff-a74f-47a6-8b5d-96d9dbc08a63"
+    },
+    {
+      "actor": "mom",
+      "step": "explicit winter retrieval -> destination DB -> newly visible scene item",
+      "result": "PASS",
+      "garment_id": "51d97dc2-1125-5f5b-849e-d646d4c73f78"
+    },
+    {
+      "actor": "mom",
+      "step": "LIKED browser Mock VTON -> same inventory -> no automatic wear history",
+      "result": "PASS"
+    },
+    {
+      "actor": "son",
+      "step": "login/family/verified image assets/internal scene/owned recommendations",
+      "result": "PASS",
+      "dataset": 52,
+      "visible": 33,
+      "recommendations": 3
+    },
+    {
+      "actor": "son",
+      "step": "click actual garment -> same slot Mock LED -> automatic off",
+      "result": "PASS"
+    },
+    {
+      "actor": "son",
+      "step": "owned recommendation -> consent/upload -> Mock VTON -> same home recommendations",
+      "result": "PASS"
+    },
+    {
+      "actor": "son",
+      "step": "T1-v1 UI select -> React/Playwright -> private MinIO -> saved DB -> requery/download",
+      "result": "PASS",
+      "bytes": 2332724
+    },
+    {
+      "actor": "son",
+      "step": "T2-v1 UI select -> React/Playwright -> private MinIO -> saved DB -> requery/download",
+      "result": "PASS",
+      "bytes": 2357644
+    },
+    {
+      "actor": "son",
+      "step": "T3-v1 UI select -> React/Playwright -> private MinIO -> saved DB -> requery/download",
+      "result": "PASS",
+      "bytes": 2212099
+    },
+    {
+      "actor": "son",
+      "step": "T4-v1 UI select -> React/Playwright -> private MinIO -> saved DB -> requery/download",
+      "result": "PASS",
+      "bytes": 2219519
+    }
+  ],
+  "errors": [],
+  "failed": [],
+  "paid_calls": false,
+  "hardware": false
+}

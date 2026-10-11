@@ -1,0 +1,30 @@
+{
+  "backend_regression": {
+    "passed": 279,
+    "warnings": 718,
+    "seconds": 131.65
+  },
+  "web_unit": {
+    "passed": 35,
+    "failed": 0
+  },
+  "renderer": {
+    "passed": 5,
+    "failed": 0
+  },
+  "contracts_current": {
+    "passed": 8,
+    "failed": 2
+  },
+  "contracts_baseline_1fffbeb": {
+    "passed": 7,
+    "failed": 2
+  },
+  "openapi_spec_validator": "PASS",
+  "ruff": "PASS",
+  "typescript_vite_build": "PASS; existing chunk-size warning",
+  "visual_gate_a": "PARTIAL",
+  "visual_gate_b": "PARTIAL",
+  "functional_gate_c_local": "PASS",
+  "overall": "PARTIAL"
+}
