@@ -3996,6 +3996,7 @@ paths:
       - Integration
       summary: Wardrobe Scene
       operationId: wardrobe_scene_api_v1_integration_devices__device_id__scene_get
+      x-fsd-ids: [GAR-001, GAR-002, STO-001]
       security:
       - BearerAuth: []
       parameters:
@@ -4025,6 +4026,7 @@ paths:
       - Integration
       summary: Vton Capabilities
       operationId: vton_capabilities_api_v1_integration_vton_capabilities_get
+      x-fsd-ids: [VTON-001, VTON-002]
       responses:
         '200':
           description: Successful Response
@@ -4039,6 +4041,379 @@ paths:
                 $ref: '#/components/schemas/ErrorEnvelope'
       security:
       - BearerAuth: []
+  /api/v1/integration/login:
+    post:
+      tags:
+      - Integration
+      summary: Login
+      operationId: login_api_v1_integration_login_post
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Login'
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Unprocessable Entity
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+      x-fsd-ids:
+      - COM-001
+      security: []
+  /api/v1/integration/demo-profiles:
+    get:
+      tags:
+      - Integration
+      summary: Demo Profiles
+      operationId: demo_profiles_api_v1_integration_demo_profiles_get
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Unprocessable Entity
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+      x-fsd-ids:
+      - COM-001
+      security: []
+  /api/v1/integration/demo-login:
+    post:
+      tags:
+      - Integration
+      summary: Demo Login
+      operationId: demo_login_api_v1_integration_demo_login_post
+      requestBody:
+        content:
+          application/json:
+            schema:
+              anyOf:
+              - $ref: '#/components/schemas/DemoLogin'
+              - type: 'null'
+              title: Body
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Unprocessable Entity
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+      x-fsd-ids:
+      - COM-001
+      security: []
+  /api/v1/integration/logout:
+    post:
+      tags:
+      - Integration
+      summary: Logout
+      operationId: logout_api_v1_integration_logout_post
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Unprocessable Entity
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+      security:
+      - BearerAuth: []
+      x-fsd-ids:
+      - COM-001
+      - SET-001
+  /api/v1/integration/devices:
+    get:
+      tags:
+      - Integration
+      summary: Devices
+      operationId: devices_api_v1_integration_devices_get
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Unprocessable Entity
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+      security:
+      - BearerAuth: []
+      x-fsd-ids:
+      - COM-001
+      - GAR-001
+  /api/v1/integration/devices/{device_id}/locations:
+    get:
+      tags:
+      - Integration
+      summary: Locations
+      operationId: locations_api_v1_integration_devices__device_id__locations_get
+      security:
+      - BearerAuth: []
+      parameters:
+      - name: device_id
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+          title: Device Id
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+          description: Unprocessable Entity
+      x-fsd-ids:
+      - GAR-002
+      - STO-001
+  /api/v1/integration/led-commands:
+    post:
+      tags:
+      - Integration
+      summary: Illuminate
+      operationId: illuminate_api_v1_integration_led_commands_post
+      security:
+      - BearerAuth: []
+      parameters:
+      - name: Idempotency-Key
+        in: header
+        required: true
+        schema:
+          type: string
+          format: uuid
+          title: Idempotency-Key
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Illuminate'
+      responses:
+        '201':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+          description: Unprocessable Entity
+      x-fsd-ids:
+      - GAR-002
+      - STO-001
+      - VTON-004
+  /api/v1/integration/devices/{device_id}/led-state:
+    get:
+      tags:
+      - Integration
+      summary: Led State
+      operationId: led_state_api_v1_integration_devices__device_id__led_state_get
+      security:
+      - BearerAuth: []
+      parameters:
+      - name: device_id
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+          title: Device Id
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+          description: Unprocessable Entity
+      x-fsd-ids:
+      - GAR-002
+      - STO-001
+  /api/v1/integration/shopping/purchases:
+    get:
+      tags:
+      - Integration
+      summary: Purchases
+      operationId: purchases_api_v1_integration_shopping_purchases_get
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Unprocessable Entity
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+      security:
+      - BearerAuth: []
+      x-fsd-ids:
+      - GAR-003
+      - SET-001
+  /api/v1/integration/shopping/liked:
+    get:
+      tags:
+      - Integration
+      summary: Liked
+      operationId: liked_api_v1_integration_shopping_liked_get
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Unprocessable Entity
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+      security:
+      - BearerAuth: []
+      x-fsd-ids:
+      - STYLE-001
+      - SET-001
+  /api/v1/integration/shopping/purchases/bulk-import:
+    post:
+      tags:
+      - Integration
+      summary: Bulk Import
+      operationId: bulk_import_api_v1_integration_shopping_purchases_bulk_import_post
+      security:
+      - BearerAuth: []
+      parameters:
+      - name: Idempotency-Key
+        in: header
+        required: true
+        schema:
+          type: string
+          format: uuid
+          title: Idempotency-Key
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BulkImport'
+      responses:
+        '201':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+          description: Unprocessable Entity
+      x-fsd-ids:
+      - GAR-003
+  /api/v1/integration/shopping/liked/vton-jobs:
+    post:
+      tags:
+      - Integration
+      summary: Liked Vton
+      operationId: liked_vton_api_v1_integration_shopping_liked_vton_jobs_post
+      security:
+      - BearerAuth: []
+      parameters:
+      - name: Idempotency-Key
+        in: header
+        required: true
+        schema:
+          type: string
+          format: uuid
+          title: Idempotency-Key
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LikedVton'
+      responses:
+        '202':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+          description: Unprocessable Entity
+      x-fsd-ids:
+      - STYLE-001
+      - VTON-002
+  /api/v1/integration/shopping/liked/vton-jobs/{job_id}:
+    get:
+      tags:
+      - Integration
+      summary: Liked Job
+      operationId: liked_job_api_v1_integration_shopping_liked_vton_jobs__job_id__get
+      security:
+      - BearerAuth: []
+      parameters:
+      - name: job_id
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+          title: Job Id
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+          description: Unprocessable Entity
+      x-fsd-ids:
+      - STYLE-001
+      - VTON-002
 components:
   securitySchemes:
     BearerAuth:
@@ -6374,3 +6749,93 @@ components:
       - quality_status
       - total
       title: WardrobeScene
+    BulkImport:
+      properties:
+        device_id:
+          type: string
+          format: uuid
+          title: Device Id
+      additionalProperties: false
+      type: object
+      required:
+      - device_id
+      title: BulkImport
+    DemoLogin:
+      properties:
+        profile:
+          anyOf:
+          - type: string
+            enum:
+            - son
+            - mother
+          - type: 'null'
+          title: Profile
+      additionalProperties: false
+      type: object
+      title: DemoLogin
+    Illuminate:
+      properties:
+        device_id:
+          type: string
+          format: uuid
+          title: Device Id
+        garment_ids:
+          items:
+            type: string
+            format: uuid
+          type: array
+          maxItems: 20
+          minItems: 1
+          title: Garment Ids
+      additionalProperties: false
+      type: object
+      required:
+      - device_id
+      - garment_ids
+      title: Illuminate
+    LikedVton:
+      properties:
+        external_item_id:
+          type: string
+          title: External Item Id
+        person_asset_id:
+          type: string
+          format: uuid
+          title: Person Asset Id
+      additionalProperties: false
+      type: object
+      required:
+      - external_item_id
+      - person_asset_id
+      title: LikedVton
+    Login:
+      properties:
+        login:
+          type: string
+          maxLength: 200
+          minLength: 1
+          title: Login
+        password:
+          type: string
+          format: password
+          title: Password
+          writeOnly: true
+        station_id:
+          anyOf:
+          - type: string
+            format: uuid
+          - type: 'null'
+          title: Station Id
+        station_credential:
+          anyOf:
+          - type: string
+            format: password
+            writeOnly: true
+          - type: 'null'
+          title: Station Credential
+      additionalProperties: false
+      type: object
+      required:
+      - login
+      - password
+      title: Login

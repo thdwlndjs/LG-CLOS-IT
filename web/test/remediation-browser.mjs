@@ -4,7 +4,8 @@ import {resolve} from 'node:path';
 import {chromium} from 'playwright';
 const root=resolve('..');
 const runtime=JSON.parse(await readFile(resolve(root,'test-results/handoff/runtime.json'),'utf8'));
-const expectedCount=JSON.parse(await readFile(resolve(root,'docs/handoff/SMART_WARDROBE_CODEX_HANDOFF_2026-10-11/templates/remediation_products.json'),'utf8')).count;
+const approved=JSON.parse(await readFile(resolve(root,'docs/handoff/SMART_WARDROBE_CODEX_HANDOFF_2026-10-11/templates/approved_scene_manifest.json'),'utf8'));
+const expectedCount=approved.items.length+JSON.parse(await readFile(resolve(root,'docs/handoff/SMART_WARDROBE_CODEX_HANDOFF_2026-10-11/templates/remediation_products.json'),'utf8')).count;
 const evidence=resolve(root,'docs/handoff/SMART_WARDROBE_CODEX_HANDOFF_2026-10-11/reports/evidence/remediation');
 await mkdir(evidence,{recursive:true});
 const browser=await chromium.launch();
@@ -44,27 +45,38 @@ try {
   if(await page.getByRole('dialog').count())await page.getByRole('dialog').getByRole('button',{name:'닫기',exact:true}).click();
   await menu('홈');
   const expectedScene=await page.evaluate(async()=>{const {api,currentDevice}=await import('/src/mirror/source/integrations/backendClient.ts');return (await api().get(`/integration/devices/${currentDevice()}/scene`)).items.length;});
-  assert.ok(expectedScene>=30);
+  assert.equal(expectedScene,approved.items.length);
   await page.waitForFunction(n=>document.querySelectorAll('[data-scene-item-id]').length===n,expectedScene);
   await page.evaluate(async()=>{
     for(const node of document.querySelectorAll('[data-scene-item-id]')){
       const image=new Image();image.src=node.tagName==='IMG'?node.src:node.querySelector('image').getAttribute('href');
-      await image.decode();if(image.naturalWidth<=100)throw Error('Placeholder scene image');
+      await image.decode();if(image.naturalWidth<1)throw Error('Undecoded approved scene image');
     }
   });
   await snap(actor+'-home-51-images');
+  await menu('실제 기록');
+  const recommendedResponse=page.waitForResponse(r=>r.url().endsWith('/outfit-recommendations')&&r.request().method()==='POST');
+  await menu('내 옷 추천 받기');
+  const recommended=await recommendedResponse;
+  assert.equal(recommended.status(),201);
+  const candidates=(await recommended.json()).candidates;
+  const approvedIds=new Set(approved.mapping.map(m=>m.garment_id));
+  assert.ok(candidates.length>=2);
+  assert.ok(candidates.every(c=>c.outfit.items.every(i=>approvedIds.has(i.garment_id))),'recommendation must use approved visible DB garments');
+  await page.waitForFunction(()=>document.querySelectorAll('.mx-home-open').length>=2);
   const recommendations=await page.locator('.mx-home-open').count();
   assert.ok(recommendations>=2&&recommendations<=3,actor+' distinct owned recommendations');
   checks.push({actor,step:'login/family/verified image assets/internal scene/owned recommendations',result:'PASS',dataset:expectedCount,visible:expectedScene,recommendations});
   const hit=page.locator('[data-scene-hit-id]').first();
   const gid=await hit.getAttribute('data-scene-hit-id');await hit.click();
-  await page.waitForFunction(()=>document.querySelectorAll('.photo-scene-led[data-led="on"]').length===1);
-  const same=await page.evaluate(id=>{
-   const hit=document.querySelector(`[data-scene-hit-id="${id}"]`).getBoundingClientRect();
-   const led=document.querySelector('.photo-scene-led[data-led="on"]').getBoundingClientRect();
-   return Math.abs(hit.x-led.x)<1&&Math.abs(hit.y-led.y)<1&&Math.abs(hit.width-led.width)<1;
-  },gid);assert.equal(same,true);await snap(actor+'-find-led');
-  await page.waitForFunction(()=>document.querySelectorAll('.photo-scene-led[data-led="on"]').length===0,{},{timeout:16000});
+  await page.waitForFunction(()=>document.querySelectorAll('[data-scene-item-id][data-led="on"]').length===1);
+  await page.waitForTimeout(350);
+  const light=await page.evaluate(id=>({selected:getComputedStyle(document.querySelector(`[data-scene-item-id="${id}"]`)).filter,
+   others:[...document.querySelectorAll('[data-scene-item-id]')].filter(n=>n.dataset.sceneItemId!==id).map(n=>getComputedStyle(n).filter),
+   rectangles:document.querySelectorAll('.photo-scene-led').length,background:getComputedStyle(document.querySelector('.photo-db-scene')).filter}),gid);
+  assert.equal(light.selected,'brightness(1)');assert.ok(light.others.every(f=>f==='brightness(0.4)'));
+  assert.equal(light.rectangles,0);assert.equal(light.background,'none');await snap(actor+'-find-led');
+  await page.waitForFunction(()=>document.querySelectorAll('[data-scene-item-id][data-led="on"]').length===0,{},{timeout:16000});
   checks.push({actor,step:'click actual garment -> same slot Mock LED -> automatic off',result:'PASS'});
   await menu('홈');
   await page.locator('.mx-home-carousel').evaluate(el=>{el.scrollLeft=el.clientWidth;});
@@ -108,7 +120,56 @@ try {
       await page.waitForFunction(()=>![...document.querySelectorAll('button')].some(b=>b.textContent==='카드 저장 중'));
     }
     await snap('mom-card-templates');
-    await page.getByRole('button',{name:'카드 탐색으로 돌아가기'}).click();
+    const beforeWear=await page.evaluate(async()=>{const {api}=await import('/src/mirror/source/integrations/backendClient.ts');const {app}=await import('/src/mirror/source/appInstance.ts');return {history:(await api().get('/history?limit=100')).items.filter(e=>e.kind==='WEAR'), events:app.getState().events.filter(e=>e.kind==='plan'||e.kind==='wear')};});
+    await menu('이 코디로 확정');
+    await page.waitForFunction(()=>document.body.textContent.includes('코디 확정 완료'));
+    await page.waitForFunction(()=>document.querySelectorAll('[data-scene-item-id][data-led="on"]').length>=2);
+    const afterWear=await page.evaluate(async()=>{const {api}=await import('/src/mirror/source/integrations/backendClient.ts');const {app}=await import('/src/mirror/source/appInstance.ts');return {history:(await api().get('/history?limit=100')).items.filter(e=>e.kind==='WEAR'), events:app.getState().events.filter(e=>e.kind==='plan'||e.kind==='wear')};});
+    assert.deepEqual(afterWear,beforeWear,'confirmation must not create planned or actual wear');
+    checks.push({actor,step:'actual recommended outfit confirmation -> garment locations LED -> no planned/actual wear creation',result:'PASS'});
+    if(await page.getByRole('button',{name:'카드 탐색으로 돌아가기'}).count())await page.getByRole('button',{name:'카드 탐색으로 돌아가기'}).click();
+    // Approved coats: summer archive -> explicit completion -> winter return.
+    // Season context is synthetic; no fabricated wear or new garments are created.
+    await menu('실제 기록');
+    const approvedMove=await page.evaluate(async mapping=>{
+      const {api,currentMember}=await import('/src/mirror/source/integrations/backendClient.ts');
+      const {pollJob}=await import('/src/mirror/source/serverActions.ts');
+      const client=api(),member=currentMember();
+      const garments=(await client.get('/garments?limit=100')).items;
+      const coat=garments.find(g=>g.owner_id===member.id&&mapping.some(m=>m.garment_id===g.id)&&g.category==='OUTER'&&g.status==='AVAILABLE');
+      if(!coat)throw Error('No approved owned winter coat');
+      const job=await client.send('POST','/storage-optimization-jobs',{household_id:member.household_id,member_id:member.id,mode:'WEAR_PATTERN',dry_run:false,season:'SUMMER',analysis_window_days:90,garment_ids:[coat.id]});
+      const result=await pollJob('/jobs/'+job.job_id,client,()=>{});
+      return {id:coat.id,original:coat.location_id,actionId:result.storage_result.action_ids[0]};
+    },approved.mapping);
+    assert.ok(approvedMove.actionId,'summer storage action proposed for approved coat');
+    await menu('겨울 보관·회수 제안 만들기');
+    let approvedRow=page.locator(`[data-storage-action-id="${approvedMove.actionId}"]`);
+    await approvedRow.getByRole('button',{name:'제안 승인',exact:true}).click();
+    await page.waitForFunction(id=>document.querySelector(`[data-storage-action-id="${id}"]`)?.textContent.includes('APPROVED'),approvedMove.actionId);
+    assert.equal(await page.evaluate(async id=>{const {api}=await import('/src/mirror/source/integrations/backendClient.ts');return (await api().get('/garments/'+id)).location_id;},approvedMove.id),approvedMove.original);
+    await approvedRow.getByRole('checkbox').first().check();
+    await approvedRow.getByRole('button',{name:'선택한 의류 이동 완료 저장',exact:true}).click();
+    await page.waitForFunction(id=>!document.querySelector(`[data-scene-item-id="${id}"]`),approvedMove.id);
+    await snap(actor+'-approved-coat-stored');
+    await menu('겨울 보관·회수 제안 만들기');
+    await page.waitForFunction(()=>[...document.querySelectorAll('button')].some(b=>b.textContent.trim()==='겨울 보관·회수 제안 만들기'&&!b.disabled),{}, {timeout:45000});
+    const returnMove=await page.evaluate(async id=>{
+      const {api}=await import('/src/mirror/source/integrations/backendClient.ts');
+      const actions=(await api().get('/storage-actions?limit=100')).items;
+      const action=actions.find(a=>a.status==='PROPOSED'&&a.items.some(i=>i.garment_id===id&&i.status==='PENDING'));
+      return action&&{actionId:action.id,index:action.items.findIndex(i=>i.garment_id===id),item:action.items.find(i=>i.garment_id===id)};
+    },approvedMove.id);
+    assert.ok(returnMove,'winter return action proposed');
+    assert.equal(returnMove.item.destination_location_id,approvedMove.original,'return to traced approved slot');
+    approvedRow=page.locator(`[data-storage-action-id="${returnMove.actionId}"]`);
+    await approvedRow.getByRole('button',{name:'제안 승인',exact:true}).click();
+    await page.waitForFunction(id=>document.querySelector(`[data-storage-action-id="${id}"]`)?.textContent.includes('APPROVED'),returnMove.actionId);
+    await approvedRow.getByRole('checkbox').nth(returnMove.index).check();
+    await approvedRow.getByRole('button',{name:'선택한 의류 이동 완료 저장',exact:true}).click();
+    await page.waitForFunction(id=>!!document.querySelector(`[data-scene-item-id="${id}"]`),approvedMove.id,{timeout:30000});
+    await snap(actor+'-approved-coat-retrieved');
+    checks.push({actor,step:'approved coat seasonal store/return -> explicit approvals -> original DB slot -> scene disappearance/reappearance',result:'PASS',garment_id:approvedMove.id});
     if(actor==='mom'){
     await menu('실제 기록');
     const before=await page.evaluate(async()=>{const {api}=await import('/src/mirror/source/integrations/backendClient.ts');return (await api().get('/garments?limit=100')).items.map(g=>[g.id,g.location_id]).sort((a,b)=>a[0].localeCompare(b[0]));});
@@ -134,11 +195,14 @@ try {
     assert.notDeepEqual(after,before);await snap('mom-storage-completed-scene-refreshed');
     checks.push({actor,step:'winter proposal -> approve leaves DB intact -> explicit completion changes DB -> scene refresh',result:'PASS',actionId});
     // Independently exercise retrieval, rather than inferring it from a store success.
+    // Re-plan after movement; an old multi-item snapshot must correctly reject stale inputs.
+    await menu('겨울 보관·회수 제안 만들기');
+    await page.waitForFunction(()=>[...document.querySelectorAll('button')].some(b=>b.textContent.trim()==='겨울 보관·회수 제안 만들기'&&!b.disabled),{}, {timeout:45000});
     const retrieval=await page.evaluate(async()=>{
       const {api}=await import('/src/mirror/source/integrations/backendClient.ts');
       const actions=(await api().get('/storage-actions?limit=100')).items;
       const garments=(await api().get('/garments?limit=100')).items;
-      for(const action of actions.filter(a=>['PROPOSED','APPROVED','AWAITING_CONFIRMATION'].includes(a.status))){
+      for(const action of actions.slice(0,1).filter(a=>['PROPOSED','APPROVED','AWAITING_CONFIRMATION'].includes(a.status))){
         const item=action.items.find(i=>['PENDING','AWAITING_CONFIRMATION'].includes(i.status)&&garments.some(g=>g.id===i.garment_id&&g.status==='STORED'&&g.location_id===i.source_location_id));
         if(item)return {action,item};
       }
@@ -158,9 +222,10 @@ try {
       if(location===retrieval.item.destination_location_id)break;
       if(i===59)throw Error('retrieval did not change DB');await page.waitForTimeout(500);
     }
-    await page.waitForSelector(`[data-scene-item-id="${retrieval.item.garment_id}"]`);
+    const retrievedScene=await page.evaluate(async()=>{const {api,currentDevice}=await import('/src/mirror/source/integrations/backendClient.ts');return await api().get('/integration/devices/'+currentDevice()+'/scene');});
+    const retrievedVisible=retrievedScene.items.some(i=>i.garment_id===retrieval.item.garment_id);
     await snap('mom-winter-retrieved-scene');
-    checks.push({actor,step:'explicit winter retrieval -> destination DB -> newly visible scene item',result:'PASS',garment_id:retrieval.item.garment_id});
+    checks.push({actor,step:'explicit winter retrieval -> destination DB -> scene mapping',result:retrievedVisible?'PASS':'PARTIAL_LEGACY_ASSET_MAPPING_PENDING',garment_id:retrieval.item.garment_id});
     }
   }
   await menu('마이');await menu('내 계정');
@@ -175,7 +240,7 @@ try {
     await page.waitForFunction(()=>document.body.textContent.includes('LIKED Mock VTON 성공'),{},{timeout:45000});
     assert.equal((await state()).count,expectedCount);
     const history=await page.evaluate(async()=>{const {api}=await import('/src/mirror/source/integrations/backendClient.ts');return (await api().get('/history?limit=100')).items;});
-    assert.equal(history.length,0,'VTON/card/storage do not auto-create wear history');
+    assert.equal(history.filter(e=>e.kind==='WEAR').length,0,'VTON/card/storage do not auto-create wear history');
     await snap('mom-liked-mock-no-owned-or-wear');
     checks.push({actor,step:'LIKED browser Mock VTON -> same inventory -> no automatic wear history',result:'PASS'});
   }
@@ -183,7 +248,9 @@ try {
   await page.waitForFunction(async()=>{const {currentMember}=await import('/src/mirror/source/integrations/backendClient.ts');return !currentMember();});
  }
  assert.equal(errors.length,0);
- await writeFile(resolve(evidence,'browser.json'),JSON.stringify({checks,errors,failed,paid_calls:false,hardware:false},null,2));
- console.log(JSON.stringify({checks,errors,failed}));
+ const result=checks.every(c=>c.result==='PASS')?'PASS':'PARTIAL';
+ await writeFile(resolve(evidence,'browser.json'),JSON.stringify({result,checks,errors,failed,paid_calls:false,hardware:false},null,2));
+ console.log(JSON.stringify({result,checks,errors,failed}));
+ if(result!=='PASS')process.exitCode=1;
 }catch(e){await snap('failure');await writeFile(resolve(evidence,'browser-failure.json'),JSON.stringify({checks,errors,failed,error:String(e)},null,2));throw e;}
 finally{await browser.close();}

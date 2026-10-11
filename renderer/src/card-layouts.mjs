@@ -15,6 +15,15 @@ export const layouts = {
 const backgrounds = Object.fromEntries(cardTemplates.map((id) => [id,
   'data:image/png;base64,' + readFileSync(new URL(`../assets/${id.slice(0,2)}-background.png`, import.meta.url)).toString('base64')]));
 
+export function foregroundViewBox(mask) {
+  // The existing photo masks are scanlines. Crop whitespace without distorting pixels.
+  const rows=[...mask.path.matchAll(/M(\d+) (\d+)h(\d+)v1h-(\d+)z/g)];
+  if(!rows.length || rows.map(r=>r[0]).join('')!==mask.path) return `0 0 ${mask.width} ${mask.height}`;
+  let left=mask.width,top=mask.height,right=0,bottom=0;
+  for(const row of rows){const x=Number(row[1]),y=Number(row[2]),w=Number(row[3]);left=Math.min(left,x);top=Math.min(top,y);right=Math.max(right,x+w);bottom=Math.max(bottom,y+1)}
+  return right>left && bottom>top ? `${left} ${top} ${right-left} ${bottom-top}` : `0 0 ${mask.width} ${mask.height}`;
+}
+
 export function collageMarkup(payload) {
   const layout = layouts[payload.template];
   if (!layout) throw Error('unknown template');
@@ -39,7 +48,7 @@ export function collageMarkup(payload) {
         const [left,top,width,height,rotation,zIndex] = layout.poses[rank<0 ? index : rank];
         return h('div', {key:index,className:'layer','data-slot':item.slot,
           style:{left,top,width,height,zIndex,transform:`rotate(${rotation}deg)`}},
-          item.image ? (item.display_mask ? h('svg',{viewBox:`0 0 ${item.display_mask.width} ${item.display_mask.height}`},
+          item.image ? (item.display_mask ? h('svg',{viewBox:foregroundViewBox(item.display_mask),preserveAspectRatio:'xMidYMid meet'},
             h('defs',null,h('clipPath',{id:`clip-${index}`},h('path',{d:item.display_mask.path}))),
             h('image',{href:item.image,width:item.display_mask.width,height:item.display_mask.height,clipPath:`url(#clip-${index})`})) :
             h('img',{src:item.image,alt:item.slot})) : h('div',{className:'missing'},`${item.slot}: Image unavailable`));

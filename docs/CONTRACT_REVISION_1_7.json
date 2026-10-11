@@ -13,11 +13,46 @@
   },
   "current_sha256": {
     "03_ARCHITECTURE_HLD_v1.1.md": "07962f34ce1b7bea389ba85cf396c7aaf5c5fb0b637bb5b022694fb542f46f5b",
-    "04_FSD.md": "2c0ae09b5e4b269859f72377a680ddfc14546776cf22a937c84b82535afbf893",
+    "04_FSD.md": "137fcd54862894119896d2c676db89b8abaf6fd736b5c0a8d8b3266a9ce35d43",
     "05_BACKEND_LLD.md": "05cc1483a6dd54207f6d70fe82c5c40eed2f271571b964831885a047e24a2c2c",
-    "06_OPENAPI.yaml": "d5858500c56888c44edbc57bf515256ed467533563069e8d46ceac46fbd1c3a5",
+    "06_OPENAPI.yaml": "c21094d779c4ea7afdc033054533fc331c6a80910a9ac20ccea737f07b842dcc",
     "07_DATABASE_SCHEMA.sql": "79f5facd4c42b322b19cca244209cb95336a557234c2bd2a19c30156e9f26935",
     "07_DATABASE_SEED.sql": "a0cbd33d2461fe616ed4cfe0e2a81587ba571c7df9858bdf06612718bd1a6418",
     "08_IMPLEMENTATION_PLAN.md": "48793ac8eb392cdc83ec2dcaa49b4aeeb9f7820c55317fcc1151beffffa0e5de"
-  }
+  },
+  "amendments": [
+    {
+      "id": "2026-10-11-P10-resume",
+      "authorized_by": "User P3-P10 resume instruction section 5, preserving G1 and 05 remediation",
+      "base_head": "3bb02e6",
+      "previous_current_sha256": {
+        "03_ARCHITECTURE_HLD_v1.1.md": "07962f34ce1b7bea389ba85cf396c7aaf5c5fb0b637bb5b022694fb542f46f5b",
+        "04_FSD.md": "2c0ae09b5e4b269859f72377a680ddfc14546776cf22a937c84b82535afbf893",
+        "05_BACKEND_LLD.md": "05cc1483a6dd54207f6d70fe82c5c40eed2f271571b964831885a047e24a2c2c",
+        "06_OPENAPI.yaml": "d5858500c56888c44edbc57bf515256ed467533563069e8d46ceac46fbd1c3a5",
+        "07_DATABASE_SCHEMA.sql": "79f5facd4c42b322b19cca244209cb95336a557234c2bd2a19c30156e9f26935",
+        "07_DATABASE_SEED.sql": "a0cbd33d2461fe616ed4cfe0e2a81587ba571c7df9858bdf06612718bd1a6418",
+        "08_IMPLEMENTATION_PLAN.md": "48793ac8eb392cdc83ec2dcaa49b4aeeb9f7820c55317fcc1151beffffa0e5de"
+      },
+      "document_changes": {
+        "04_FSD.md": {
+          "previous_declared": "2c0ae09b5e4b269859f72377a680ddfc14546776cf22a937c84b82535afbf893",
+          "current": "137fcd54862894119896d2c676db89b8abaf6fd736b5c0a8d8b3266a9ce35d43",
+          "source_commits": [
+            "0f4f5af3a04d4532a04d1fe9e096fabcc8d0054f",
+            "1dec0684d44b8c4d7aa2039cdb552279987dac37"
+          ]
+        },
+        "06_OPENAPI.yaml": {
+          "previous_declared": "d5858500c56888c44edbc57bf515256ed467533563069e8d46ceac46fbd1c3a5",
+          "current": "c21094d779c4ea7afdc033054533fc331c6a80910a9ac20ccea737f07b842dcc",
+          "source_commits": [
+            "0f4f5af3a04d4532a04d1fe9e096fabcc8d0054f",
+            "1dec0684d44b8c4d7aa2039cdb552279987dac37"
+          ]
+        }
+      },
+      "rationale": "Existing G1 FSD and additive integration API implementation documented, including demo personas, sessions, devices, LED and Mock shopping. Missing FSD mappings and integration request schemas restored. No endpoint behavior, legacy payload, DB schema or frozen baseline changed."
+    }
+  ]
 }

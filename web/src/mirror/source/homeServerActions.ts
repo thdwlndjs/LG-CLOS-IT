@@ -1,4 +1,4 @@
-import { api, currentMember } from "./integrations/backendClient";
+import { api, currentMember, currentDevice } from "./integrations/backendClient";
 import { pollJob } from "./serverActions";
 import type { Garment, Outfit, OutfitItems } from "./core/types";
 
@@ -16,10 +16,19 @@ export async function todayServerRecommendation(
     mode: "MOCK",
   });
   check();
+  let constraints = {};
+  if (import.meta.env.VITE_HANDOFF_SCENE === "on" && currentDevice()) {
+    const scene: any = await client.get(`/integration/devices/${currentDevice()}/scene`);
+    check();
+    if (scene.quality_status === "approved" && scene.items.length) {
+      const visible = new Set(scene.items.map((item: any) => item.garment_id));
+      constraints = { excluded_garment_ids: garments.filter(g => !visible.has(g.id)).map(g => g.id) };
+    }
+  }
   const result: any = await client.send("POST", "/outfit-recommendations", {
     member_id: member.id,
     context_snapshot_id: context.id,
-    constraints: {},
+    constraints,
     limit: 3,
   });
   check();

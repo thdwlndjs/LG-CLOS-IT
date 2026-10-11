@@ -8,6 +8,56 @@ from tests.integration import test_sprint1_api as existing
 pytestmark = pytest.mark.integration
 
 
+def test_local_demo_home_station_is_explicit_and_device_scoped(real_dsn, settings_values):
+    async def case(client, engine, settings, *unused):
+        station = UUID("99000000-0000-4000-8000-000000000001")
+        local = settings.model_copy(update={"local_demo_member_id": UUID(existing.FAMILY)})
+        async with engine.begin() as conn:
+            await conn.execute(
+                text(
+                    "INSERT INTO wardrobe.account_credential(member_id,login,password_hash) "
+                    "VALUES(:m,'local-demo-station','unused')"
+                ),
+                {"m": UUID(existing.FAMILY)},
+            )
+            device = await conn.scalar(
+                text("SELECT device_id FROM wardrobe.device_member WHERE member_id=:m LIMIT 1"),
+                {"m": UUID(existing.FAMILY)},
+            )
+            await conn.execute(
+                text(
+                    "INSERT INTO wardrobe.access_station(id,name,kind,device_id,credential_hash) "
+                    "VALUES(:s,'Local test mirror','HOME',:d,'unused')"
+                ),
+                {"s": station, "d": device},
+            )
+        client._transport.app.state.settings = local
+        response = await client.post("/api/v1/integration/demo-login")
+        assert response.status_code == 200
+        client.headers["Authorization"] = "Bearer " + response.json()["access_token"]
+        assert (await client.get("/api/v1/integration/devices")).json()["access_station_id"] is None
+        client._transport.app.state.settings = local.model_copy(
+            update={"local_demo_station_id": station}
+        )
+        response = await client.post("/api/v1/integration/demo-login")
+        assert response.status_code == 200
+        client.headers["Authorization"] = "Bearer " + response.json()["access_token"]
+        assert (await client.get("/api/v1/integration/devices")).json()["access_station_id"] == str(
+            station
+        )
+        async with engine.begin() as conn:
+            await conn.execute(
+                text("UPDATE wardrobe.access_station SET kind='STORE' WHERE id=:s"), {"s": station}
+            )
+        assert (await client.post("/api/v1/integration/demo-login")).status_code == 503
+        client._transport.app.state.settings = local.model_copy(
+            update={"local_demo_station_id": station, "public_deployment": True}
+        )
+        assert (await client.post("/api/v1/integration/demo-login")).status_code == 403
+
+    existing.run_case(real_dsn, settings_values, case)
+
+
 @pytest.fixture
 def real_dsn():
     yield from existing.real_dsn.__wrapped__()

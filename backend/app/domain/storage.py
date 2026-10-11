@@ -3,7 +3,7 @@
 import math
 from datetime import timedelta
 
-RULES_VERSION = "storage-greedy-v2"
+RULES_VERSION = "storage-greedy-v3"
 MIN_CONFIDENCE = 0.8
 STATE_MAX_AGE = timedelta(days=7)
 ENV_MAX_AGE = timedelta(hours=24)
@@ -75,6 +75,21 @@ def location_tier(location):
 
 def placement_errors(garment, location, occupied, environment, now, mode, extra_units=0):
     errors = []
+    # Approved pixel-specific scene assets must return to their traced slot.
+    # External boxes remain eligible; this does not guess a visual position.
+    slot = location["attributes"].get("display_slot", {})
+    slot = slot if isinstance(slot, dict) else {}
+    garment_attributes = garment["attributes"]
+    approved = (
+        garment_attributes.get("approved_instance_id")
+        if isinstance(garment_attributes, dict)
+        else None
+    )
+    slot_instance = slot.get("approved_instance_id")
+    if slot_instance and slot_instance != approved:
+        errors.append("SCENE_MAPPING_MISMATCH")
+    elif approved and location_tier(location) == "ACCESSIBLE" and slot_instance != approved:
+        errors.append("SCENE_MAPPING_MISMATCH")
     capacity = location["capacity_units"]
     if location_tier(location) is None:
         errors.append("SPACE_UNAVAILABLE")
@@ -166,7 +181,10 @@ def plan(garments, locations, occupancy, environments, wear, body, now):
         # Explicit garment classification, never inferred from a product name.
         # Transitional layers remain accessible during seasonal optimization.
         transitional = garment["attributes"].get("seasonal_role") in {
-            "trench", "denim_jacket", "cardigan", "long_sleeve_shirt"
+            "trench",
+            "denim_jacket",
+            "cardigan",
+            "long_sleeve_shirt",
         }
         if transitional and body.mode == "WEAR_PATTERN":
             desired = "ACCESSIBLE"

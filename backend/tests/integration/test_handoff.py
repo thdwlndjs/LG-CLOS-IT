@@ -99,6 +99,17 @@ def test_scene_positive_synthetic_approved_slot(real_dsn, settings_values):
             assert item["image"]["asset_id"] is not None
             assert item["geometry"]["width"] == 0.2
             assert len(data["blocked"]) == 2
+            async with engine.begin() as c:
+                await c.execute(text(
+                    "UPDATE wardrobe.storage_location SET attributes=attributes || "
+                    "jsonb_build_object('scene_visibility','hidden','display_slot',"
+                    "jsonb_build_object('basis','image_traced_demo_subdivision'))"
+                ))
+            hidden = (await client.get(f"/api/v1/integration/devices/{device}/scene")).json()
+            assert hidden["items"] == []
+            assert {
+                "garment_id": existing.GARMENT, "reason": "SLOT_UNAPPROVED"
+            } in hidden["blocked"]
 
     run_case(real_dsn, settings_values, case)
 

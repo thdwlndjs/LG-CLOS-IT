@@ -40,7 +40,7 @@ class Illuminate(BaseModel):
     garment_ids: list[UUID] = Field(min_length=1, max_length=20)
 
 
-@router.post("/login")
+@router.post("/login", openapi_extra={"x-fsd-ids": ["COM-001"]})
 async def login(request: Request, body: Login):
     runtime = request.app.state.resources
     async with runtime.database.sessions.begin() as session:
@@ -84,7 +84,7 @@ class DemoLogin(BaseModel):
     profile: Literal["son", "mother"] | None = None
 
 
-@router.get("/demo-profiles")
+@router.get("/demo-profiles", openapi_extra={"x-fsd-ids": ["COM-001"]})
 async def demo_profiles(request: Request):
     settings = request.app.state.settings
     local = (settings.app_env in {"local", "test"} and not settings.public_deployment
@@ -114,7 +114,7 @@ async def demo_profiles(request: Request):
     return {"items": items}
 
 
-@router.post("/demo-login")
+@router.post("/demo-login", openapi_extra={"x-fsd-ids": ["COM-001"]})
 async def demo_login(request: Request, body: DemoLogin | None = None):
     body = body or DemoLogin()
     settings = request.app.state.settings
@@ -153,15 +153,30 @@ async def demo_login(request: Request, body: DemoLogin | None = None):
         )
         if member is None:
             raise ApiError(503, "DEPENDENCY_UNAVAILABLE", "Demo account is not provisioned")
+        station_id = None
+        if configured_local and not public_demo and settings.local_demo_station_id:
+            # Explicit local fixture only. Never grant home-station claims in public deployment.
+            station = await Sprint1Repository(session).one(
+                "SELECT s.id FROM wardrobe.access_station s JOIN wardrobe.device_member dm "
+                "ON dm.device_id=s.device_id WHERE s.id=:station AND s.enabled AND s.kind='HOME' "
+                "AND dm.member_id=:member AND dm.household_id=:household",
+                station=settings.local_demo_station_id,
+                member=member["id"], household=member["household_id"],
+            )
+            if station is None:
+                raise ApiError(
+                    503, "DEPENDENCY_UNAVAILABLE", "Local demo home station is not provisioned"
+                )
+            station_id = station["id"]
         sid, token, expires = issue_token(
             settings, member["id"], member["household_id"], member["role"],
-            personal_account=True,
+            personal_account=True, station_id=station_id,
         )
         return dict(session_id=sid, access_token=token, token_type="Bearer", expires_at=expires,
                     member={k: member[k] for k in ("id", "household_id", "display_name", "role")})
 
 
-@router.post("/logout")
+@router.post("/logout", openapi_extra={"x-fsd-ids": ["COM-001", "SET-001"]})
 async def logout(request: Request, actor: Actor):
     if not actor.personal_account:
         raise ApiError(403, "FORBIDDEN", "Personal account session required")
@@ -170,7 +185,7 @@ async def logout(request: Request, actor: Actor):
     return dict(authenticated=False, revocation="confirmed")
 
 
-@router.get("/devices")
+@router.get("/devices", openapi_extra={"x-fsd-ids": ["COM-001", "GAR-001"]})
 async def devices(request: Request, actor: Actor):
     async with request.app.state.resources.database.sessions.begin() as session:
         return {"items": await Sprint1Repository(session).all(
@@ -180,7 +195,7 @@ async def devices(request: Request, actor: Actor):
         ), "access_station_id": actor.station_id}
 
 
-@router.get("/vton-capabilities")
+@router.get("/vton-capabilities", openapi_extra={"x-fsd-ids": ["VTON-001", "VTON-002"]})
 async def vton_capabilities(actor: Actor):
     # Public vendor documentation is capability evidence, not a live-call result.
     return {
@@ -205,7 +220,7 @@ async def accessible(repo, actor, device_id):
         raise ApiError(404, "NOT_FOUND", "Device not found")
 
 
-@router.get("/devices/{device_id}/locations")
+@router.get("/devices/{device_id}/locations", openapi_extra={"x-fsd-ids": ["GAR-002", "STO-001"]})
 async def locations(request: Request, actor: Actor, device_id: UUID):
     async with request.app.state.resources.database.sessions.begin() as session:
         repo = Sprint1Repository(session)
@@ -219,7 +234,8 @@ async def locations(request: Request, actor: Actor, device_id: UUID):
         return dict(items=[dict(row) for row in rows])
 
 
-@router.get("/devices/{device_id}/scene", response_model=WardrobeScene)
+@router.get("/devices/{device_id}/scene", response_model=WardrobeScene,
+            openapi_extra={"x-fsd-ids": ["GAR-001", "GAR-002", "STO-001"]})
 async def wardrobe_scene(request: Request, actor: Actor, device_id: UUID):
     from app.application.wardrobe_scene import scene
     async with request.app.state.resources.database.sessions.begin() as session:
@@ -228,7 +244,8 @@ async def wardrobe_scene(request: Request, actor: Actor, device_id: UUID):
         return await scene(request, repo, actor, device_id)
 
 
-@router.post("/led-commands", status_code=201)
+@router.post("/led-commands", status_code=201,
+             openapi_extra={"x-fsd-ids": ["GAR-002", "STO-001", "VTON-004"]})
 async def illuminate(request: Request, actor: Actor, body: Illuminate, key: Key):
     settings = request.app.state.settings
     if settings.led_off_seconds is None:
@@ -294,7 +311,7 @@ def command_dto(row):
                 expires_at=row["expires_at"])
 
 
-@router.get("/devices/{device_id}/led-state")
+@router.get("/devices/{device_id}/led-state", openapi_extra={"x-fsd-ids": ["GAR-002", "STO-001"]})
 async def led_state(request: Request, actor: Actor, device_id: UUID):
     async with request.app.state.resources.database.sessions.begin() as session:
         repo = Sprint1Repository(session)

@@ -1,6 +1,8 @@
 import assert from 'node:assert/strict';
 import {chromium} from 'playwright';
-import {mkdir,writeFile} from 'node:fs/promises';
+import {mkdir,writeFile,readFile} from 'node:fs/promises';
+const approved=JSON.parse(await readFile('../docs/handoff/SMART_WARDROBE_CODEX_HANDOFF_2026-10-11/templates/approved_scene_manifest.json','utf8'));
+const expectedCount=52+approved.items.length;
 const output='../test-results/remediation/';
 await mkdir(output,{recursive:true});
 const browser=await chromium.launch();
@@ -33,10 +35,10 @@ try {
       owners:new Set(app.garments().map(g=>g.ownerId)).size,
       member:state.profiles.find(p=>p.id===state.activeProfileId)?.name};
    });
-   if(state.count===52&&state.member===name)break;
+   if(state.count===expectedCount&&state.member===name)break;
    await page.waitForTimeout(500);
   }
-  assert.deepEqual(state,{count:52,photos:52,owners:4,member:name});
+  assert.deepEqual(state,{count:expectedCount,photos:expectedCount,owners:4,member:name});
   await showProfiles();
   assert.equal(await page.getByRole('button',{name:`${name} 프로필 선택`,exact:true}).getAttribute('aria-pressed'),'true');
   results.push({profile,name,member_id:member.id,...state,result:'PASS'});

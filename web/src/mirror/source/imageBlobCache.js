@@ -28,16 +28,16 @@ export function clearImageCache() {
     invalidateImage(id);
   bindings.clear();
 }
-export function bindGarmentImage(garmentId, asset, refresh) {
+export function bindGarmentImage(garmentId, asset, refresh, ownerGarmentId = garmentId) {
   const previous = bindings.get(garmentId);
   if (previous && previous.assetId !== asset?.id)
     invalidateImage(previous.assetId);
-  if (asset) bindings.set(garmentId, { assetId: asset.id, refresh });
+  if (asset) bindings.set(garmentId, { assetId: asset.id, refresh, ownerGarmentId });
   else bindings.delete(garmentId);
 }
 export function reconcileGarmentImages(ids) {
   for (const [id, binding] of bindings)
-    if (!ids.has(id)) {
+    if (binding.ownerGarmentId !== null && !ids.has(binding.ownerGarmentId)) {
       invalidateImage(binding.assetId);
       bindings.delete(id);
     }

@@ -1,9 +1,11 @@
 """Read-only local DB/object-store evidence and offline visual comparisons."""
 
 import asyncio
+import csv
 import hashlib
 import json
 from collections import Counter
+from datetime import UTC, datetime
 
 import httpx
 from sqlalchemy import text
@@ -70,7 +72,10 @@ async def verify():
                 .mappings()
                 .all()
             )
-        assert len(garments) == len(products()) == 52
+        approved_file = PACKAGE / "templates/approved_scene_manifest.json"
+        approved = json.loads(approved_file.read_text(encoding="utf-8"))
+        expected = len(products()) + len(approved["items"])
+        assert len(products()) == 52 and len(garments) == expected
         assert members == 4 and wear == 0
         assert all(r["asset_status"] == "READY" for r in garments)
         assert all(r["occupied"] <= r["capacity_units"] for r in locations)
@@ -81,6 +86,24 @@ async def verify():
             row = by_id[identity(p["item_id"])]
             assert row["metadata"]["checksum_sha256"] == p["image_sha256"]
             assert row["metadata"]["display_mask"] == p["display_mask"]
+        mappings = {m["approved_id"]: m for m in approved["mapping"]}
+        for item in approved["items"]:
+            mapping = mappings[item["id"]]
+            original = (
+                PACKAGE
+                / "reports/wardrobe-visual-review"
+                / item["product"]["local_photo"]
+            )
+            assert (
+                hashlib.sha256(original.read_bytes()).hexdigest()
+                == item["product"]["photo_sha256"]
+            )
+            derivative = ROOT / item["local_file"]
+            assert hashlib.sha256(derivative.read_bytes()).hexdigest() == item["sha256"]
+            row = next(r for r in garments if str(r["id"]) == mapping["garment_id"])
+            assert str(row["image_asset_id"]) == mapping["original_asset_id"]
+            assert row["metadata"]["checksum_sha256"] == item["product"]["photo_sha256"]
+            assert row["metadata"]["display_mask"] == item["display_mask"]
         # Independently fetch every registered photo through a fresh signed backend read URL.
         auth = login("mom")
         with httpx.Client(
@@ -105,12 +128,16 @@ async def verify():
                     == row["metadata"]["checksum_sha256"]
                 )
         stats = {
+            "captured_at": datetime.now(UTC).isoformat(),
             "verified_at": "2026-10-11",
             "database": "wardrobe_test_remediation",
             "members": members,
             "garments": len(garments),
-            "ready_photos": 52,
-            "signed_download_hash_matches": 52,
+            "ready_photos": expected,
+            "signed_download_hash_matches": expected,
+            "existing_dataset": 52,
+            "approved_additions": len(approved["items"]),
+            "original_and_scene_assets_separate": True,
             "initial_groups": dict(Counter(p["initial_storage"] for p in products())),
             "current_status": dict(Counter(str(g["status"]) for g in garments)),
             "current_locations": dict(
@@ -134,6 +161,28 @@ async def verify():
         (OUT / "data-integrity.json").write_text(
             json.dumps(stats, ensure_ascii=False, indent=2), encoding="utf-8"
         )
+        mapping_file = OUT / "live-data-mapping.csv"
+        if mapping_file.exists():
+            with mapping_file.open(encoding="utf-8", newline="") as source:
+                reader = csv.DictReader(source)
+                fields = list(reader.fieldnames)
+                rows = list(reader)
+            current = {str(g["id"]): g for g in garments}
+            if set(current) != {r["garment_id"] for r in rows}:
+                raise RuntimeError("Mapping inventory differs from live isolated DB")
+            if "captured_at" not in fields:
+                fields.append("captured_at")
+            for row in rows:
+                garment = current[row["garment_id"]]
+                row.update(
+                    actual_location_id=str(garment["location_id"]),
+                    status=garment["status"],
+                    captured_at=stats["captured_at"],
+                )
+            with mapping_file.open("w", encoding="utf-8", newline="") as output:
+                writer = csv.DictWriter(output, fieldnames=fields)
+                writer.writeheader()
+                writer.writerows(rows)
         print(
             json.dumps(
                 {k: v for k, v in stats.items() if k != "locations"}, ensure_ascii=True

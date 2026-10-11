@@ -20,6 +20,19 @@ const asset = {
   expiresAt: new Date(Date.now() + 60000).toISOString(),
 };
 const ok = () => new Response(new Blob(["photo"], { type: "image/png" }));
+test("inventory refresh retains scene derivatives and frame, deletion releases the garment derivative", async () => {
+  globalThis.fetch = async () => ok();
+  const sprite={...asset,id:'sprite'},frame={...asset,id:'frame'};
+  bindGarmentImage('scene-item:device:g',sprite,async()=>sprite,'g');
+  bindGarmentImage('scene-frame:device',frame,async()=>frame,null);
+  await loadCachedImage(sprite);await loadCachedImage(frame);
+  const spriteUrl=cachedImage(sprite),frameUrl=cachedImage(frame);
+  reconcileGarmentImages(new Set(['g']));
+  assert.equal(cachedImage(sprite),spriteUrl);assert.equal(cachedImage(frame),frameUrl);
+  reconcileGarmentImages(new Set());
+  assert.equal(cachedImage(sprite),null);assert.equal(cachedImage(frame),frameUrl);
+  clearImageCache();assert.equal(cachedImage(frame),null);
+});
 test("cache hit and concurrent consumers download once without URL reissue", async () => {
   let downloads = 0,
     refreshes = 0;

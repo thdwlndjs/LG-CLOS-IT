@@ -45,6 +45,9 @@ export const server = http.createServer(async (req, res) => {
     for (const img of await page.locator('img').all()) {
       if (!(await img.evaluate(el => el.complete && el.naturalWidth > 0))) throw Error('image');
     }
+    for (const img of await page.locator('svg image').all()) {
+      if (!(await img.evaluate(async el => {const image=new Image();image.src=el.getAttribute('href');await image.decode();return image.naturalWidth>0;}))) throw Error('svg image');
+    }
     const image = await page.screenshot({type:'png',timeout:20_000});
     lastReady = Date.now();
     res.writeHead(200, {'Content-Type':'image/png','Cache-Control':'no-store'});res.end(image);

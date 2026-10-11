@@ -88,6 +88,20 @@ def test_additive_garment_fields_preserve_required_contract(settings):
         assert "brand" not in schema["properties"] and "size" not in schema["properties"]
 
 
+def test_additive_integration_routes_have_matching_fsd_trace_and_request_contract(settings):
+    generated = create_app(settings).openapi()
+    source = source_contract()
+    for path, methods in generated["paths"].items():
+        if not path.startswith("/api/v1/integration/"):
+            continue
+        for method, actual in methods.items():
+            expected = source["paths"][path][method]
+            assert actual["operationId"] == expected["operationId"]
+            assert actual["x-fsd-ids"] == expected["x-fsd-ids"]
+            assert normalized(actual.get("requestBody")) == normalized(expected.get("requestBody"))
+            assert set(actual["responses"]) == set(expected["responses"])
+
+
 def test_scene_mask_is_an_optional_additive_render_hint(settings):
     schema = create_app(settings).openapi()["components"]["schemas"]["SceneItem"]
     assert "image_mask" not in schema["required"]

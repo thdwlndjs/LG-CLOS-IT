@@ -4,10 +4,31 @@ from uuid import UUID
 
 import pytest
 
-from app.domain.storage import constraints, plan, target_errors, units
+from app.domain.storage import constraints, placement_errors, plan, target_errors, units
 
 NOW = datetime(2026, 10, 8, tzinfo=UTC)
 SOURCE, DESTINATION = UUID(int=10), UUID(int=11)
+
+
+def test_approved_scene_return_is_bound_to_its_own_slot_and_capacity():
+    garment, locations, _ = fixture()
+    garment["attributes"] = {"approved_instance_id": "A1"}
+    slot = locations[0]
+    assert "SCENE_MAPPING_MISMATCH" in placement_errors(
+        garment, slot, 0, None, NOW, "WEAR_PATTERN", 1
+    )
+    slot["attributes"] = {"display_slot": {"approved_instance_id": "A2"}}
+    assert "SCENE_MAPPING_MISMATCH" in placement_errors(
+        garment, slot, 0, None, NOW, "WEAR_PATTERN", 1
+    )
+    slot["attributes"]["display_slot"]["approved_instance_id"] = "A1"
+    assert placement_errors(garment, slot, 0, None, NOW, "WEAR_PATTERN", 1) == []
+    assert "CAPACITY_EXCEEDED" in placement_errors(garment, slot, 5, None, NOW, "WEAR_PATTERN", 1)
+    assert placement_errors(garment, locations[1], 0, None, NOW, "WEAR_PATTERN", 1) == []
+    garment["attributes"] = {}
+    assert "SCENE_MAPPING_MISMATCH" in placement_errors(
+        garment, slot, 0, None, NOW, "WEAR_PATTERN", 1
+    )
 
 
 def fixture(**patch):

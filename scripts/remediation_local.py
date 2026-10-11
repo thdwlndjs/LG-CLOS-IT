@@ -393,7 +393,7 @@ async def seed():
 def call(client, method, path, **kwargs):
     headers = kwargs.pop("headers", {})
     if method != "GET":
-        headers["Idempotency-Key"] = str(uuid4())
+        headers.setdefault("Idempotency-Key", str(uuid4()))
     r = client.request(method, API + path, headers=headers, **kwargs)
     if r.is_error:
         raise RuntimeError(f"{method} {path}: {r.status_code} {r.text[:350]}")
@@ -628,6 +628,7 @@ if __name__ == "__main__":
             PUBLIC_DEMO_LOGIN_ENABLED="false",
             LOCAL_DEMO_MEMBER_ID=str(identity("son")),
             LOCAL_DEMO_MOTHER_MEMBER_ID=str(identity("mom")),
+            LOCAL_DEMO_STATION_ID=str(identity("station")),
             STORAGE_PUBLIC_BASE_URL="http://localhost:9000",
             N8N_ENABLED="false",
             LED_OFF_SECONDS="10",

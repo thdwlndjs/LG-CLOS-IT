@@ -124,6 +124,10 @@ async def scene(request, repo, actor, device_id):
         # External boxes and closed drawers are intentional non-visible storage,
         # not missing or guessed positions. They remain available in garment UI.
         if bound and bound[0]["attributes"].get("scene_visibility") in {"hidden", "external"}:
+            if (bound[0]["attributes"].get("scene_visibility") == "hidden"
+                    and bound[0]["attributes"].get("display_slot", {}).get("basis")
+                    == "image_traced_demo_subdivision"):
+                blocked.append({"garment_id": str(garment["id"]), "reason": "SLOT_UNAPPROVED"})
             continue
         reason = (
             "CLEAN_PLATE_UNAPPROVED"

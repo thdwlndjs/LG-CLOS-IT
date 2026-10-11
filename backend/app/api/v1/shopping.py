@@ -22,17 +22,18 @@ class LikedVton(BaseModel):
     person_asset_id: UUID
 
 
-@router.get("/shopping/purchases")
+@router.get("/shopping/purchases", openapi_extra={"x-fsd-ids": ["GAR-003", "SET-001"]})
 async def purchases(actor: Actor):
     return dict(items=list_items("PURCHASED"), provider="MOCK", is_mock=True)
 
 
-@router.get("/shopping/liked")
+@router.get("/shopping/liked", openapi_extra={"x-fsd-ids": ["STYLE-001", "SET-001"]})
 async def liked(actor: Actor):
     return dict(items=list_items("LIKED"), provider="MOCK", is_mock=True)
 
 
-@router.post("/shopping/purchases/bulk-import", status_code=201)
+@router.post("/shopping/purchases/bulk-import", status_code=201,
+             openapi_extra={"x-fsd-ids": ["GAR-003"]})
 async def bulk_import(request: Request, actor: Actor, body: BulkImport, key: Key):
     async with request.app.state.resources.database.sessions.begin() as session:
         repo = Sprint1Repository(session)
@@ -87,7 +88,8 @@ async def bulk_import(request: Request, actor: Actor, body: BulkImport, key: Key
                                 body.model_dump(mode="json"), 201, action)
 
 
-@router.post("/shopping/liked/vton-jobs", status_code=202)
+@router.post("/shopping/liked/vton-jobs", status_code=202,
+             openapi_extra={"x-fsd-ids": ["STYLE-001", "VTON-002"]})
 async def liked_vton(request: Request, actor: Actor, body: LikedVton, key: Key):
     if body.external_item_id not in {i["id"] for i in LIKED}:
         raise ApiError(404, "NOT_FOUND", "Liked product not found")
@@ -113,7 +115,8 @@ async def liked_vton(request: Request, actor: Actor, body: LikedVton, key: Key):
                                 body.model_dump(mode="json"), 202, action)
 
 
-@router.get("/shopping/liked/vton-jobs/{job_id}")
+@router.get("/shopping/liked/vton-jobs/{job_id}",
+            openapi_extra={"x-fsd-ids": ["STYLE-001", "VTON-002"]})
 async def liked_job(request: Request, actor: Actor, job_id: UUID):
     from app.application.assets import signed_asset
 

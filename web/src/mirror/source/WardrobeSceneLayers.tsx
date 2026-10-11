@@ -20,16 +20,18 @@ function SceneImage({
   style,
   itemId,
   mask,
+  highlighted = false,
 }: {
   raw: any;
   style?: React.CSSProperties;
   itemId?: string;
   mask?: { width: number; height: number; path: string; crop?: number[]; scene_alignment?: "hanging" | "shelf" };
+  highlighted?: boolean;
 }) {
   const clipId = useId().replace(/:/g, "");
   const image = useCachedImage(asset(raw));
   if (image.url && mask) return (
-    <svg style={style} data-scene-item-id={itemId} viewBox={maskViewBox(mask)}
+    <svg style={style} data-scene-item-id={itemId} data-led={highlighted ? "on" : "off"} viewBox={maskViewBox(mask)}
       preserveAspectRatio={mask.scene_alignment === "shelf" ? "xMidYMax meet" : "xMidYMin meet"}>
       <defs><clipPath id={clipId}><path d={mask.path}/></clipPath></defs>
       <image href={image.url} width={mask.width} height={mask.height} clipPath={`url(#${clipId})`}/>
@@ -38,6 +40,7 @@ function SceneImage({
   return image.url ? (
     <img
       data-scene-item-id={itemId}
+      data-led={highlighted ? "on" : "off"}
       src={image.url}
       alt=""
       style={style}
@@ -60,7 +63,7 @@ export function WardrobeSceneLayers({
   const [error, setError] = useState("");
   const device = currentDevice();
   const revision = garments
-    .map((g) => `${g.id}:${g.revision}:${g.location}`)
+    .map((g) => `${g.id}:${g.revision}:${g.location}:${g.ownerId}:${g.serverStatus}`)
     .sort()
     .join("|");
   useEffect(() => {
@@ -73,6 +76,16 @@ export function WardrobeSceneLayers({
       .get(path)
       .then((value: any) => {
         if (!active || currentDevice() !== device) return;
+        for (const item of value.items ?? []) {
+          bindGarmentImage(`scene-item:${device}:${item.garment_id}`, { id: item.image.asset_id }, async () => {
+            if (!active || currentDevice() !== device) throw Error("Scene session changed");
+            const fresh: any = await api().get(path);
+            const next = fresh.items.find((candidate: any) => candidate.garment_id === item.garment_id);
+            if (!active || currentDevice() !== device || next?.image.asset_id !== item.image.asset_id)
+              throw Error("Scene item changed");
+            return asset(next.image);
+          }, item.garment_id);
+        }
         if (value.frame)
           bindGarmentImage(
             `scene-frame:${device}`,
@@ -88,7 +101,7 @@ export function WardrobeSceneLayers({
               )
                 throw Error("Scene image changed");
               return asset(fresh.frame);
-            },
+            }, null,
           );
         setScene(value);
       })
@@ -121,6 +134,7 @@ export function WardrobeSceneLayers({
           itemId={item.garment_id}
           raw={item.image}
           mask={item.image_mask}
+          highlighted={Boolean(item.anchor_id && anchorIds.includes(item.anchor_id))}
           style={{
             position: "absolute",
             left: `${item.geometry.x * 100}%`,
@@ -129,7 +143,9 @@ export function WardrobeSceneLayers({
             height: `${item.geometry.height * 100}%`,
             zIndex: item.geometry.z_index,
             objectFit: "contain",
-            filter: "drop-shadow(2px 3px 2px #0004)",
+            filter: scene.items.some((candidate: any) => candidate.anchor_id && anchorIds.includes(candidate.anchor_id)) && !anchorIds.includes(item.anchor_id)
+              ? "brightness(0.4)" : "brightness(1)",
+            transition: "filter 320ms ease",
           }}
         />
       ))}
@@ -141,13 +157,6 @@ export function WardrobeSceneLayers({
           }} style={{position:"absolute",left:`${item.geometry.x*100}%`,top:`${item.geometry.y*100}%`,
             width:`${item.geometry.width*100}%`,height:`${item.geometry.height*100}%`,
             zIndex:200+item.geometry.z_index,background:"transparent",border:0,cursor:"pointer",pointerEvents:"auto"}} />
-      ))}
-      {scene?.items.filter((item: any) => item.anchor_id && anchorIds.includes(item.anchor_id)).map((item: any) => (
-        <div key={`led:${item.garment_id}`} data-anchor-id={item.anchor_id} data-led="on"
-          className="photo-scene-led" aria-label={`${item.name} 보관 슬롯`}
-          style={{position:"absolute",left:`${item.geometry.x*100}%`,top:`${item.geometry.y*100}%`,
-            width:`${item.geometry.width*100}%`,height:`${item.geometry.height*100}%`,
-            zIndex:400, border:"2px solid #ffd97a",boxShadow:"0 0 12px #ffe096",borderRadius:4,pointerEvents:"none"}} />
       ))}
       {!scene?.frame && (
         <span className="photo-scene-status">

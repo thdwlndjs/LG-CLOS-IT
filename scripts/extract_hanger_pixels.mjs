@@ -7,6 +7,34 @@ import {fileURLToPath} from 'node:url';
 const {chromium}=createRequire(new URL('../web/package.json',import.meta.url))('playwright');
 const root=fileURLToPath(new URL('..',import.meta.url));
 const reports=resolve(root,'docs/handoff/SMART_WARDROBE_CODEX_HANDOFF_2026-10-11/reports');
+if(process.argv.includes('--approved')){
+ const spec=JSON.parse(await readFile(resolve(reports,'hanger-individual-v1/manifest.json'),'utf8'));
+ const contract=JSON.parse(await readFile(resolve(reports,'hanger-individual-v1/B3_GEOMETRY_CONTRACT.json'),'utf8'));
+ const proposal=JSON.parse(await readFile(resolve(reports,'wardrobe-visual-review/proposal.json'),'utf8'));
+ const samples=JSON.parse(await readFile(resolve(reports,'wardrobe-visual-samples-v1/samples.json'),'utf8'));
+ const dest=resolve(root,'assets/wardrobe-scene-sprites/approved-v1');await mkdir(dest,{recursive:true});
+ const browser=await chromium.launch();
+ try{
+  const page=await browser.newPage();await page.goto('http://127.0.0.1:5194/hanger-individual-v1/review.html');
+  const items=[];
+  for(const item of [...spec.items,...samples.samples.filter(s=>s.id.startsWith('K'))]){
+   const shelf=item.id.startsWith('K'),b3=item.id==='B3';
+   const bounds=shelf?item.bounds:b3?[...contract.output_origin,...contract.output_size]:[item.x,item.y,item.width,item.height];
+   const src=shelf?'../wardrobe-visual-samples-v1/'+item.file:b3?contract.output_asset:item.file;
+   const data=await page.evaluate(async({src,bounds,shelf,mask,item})=>{
+    const im=new Image;im.src=src;await im.decode();const c=document.createElement('canvas');c.width=bounds[2];c.height=bounds[3];const g=c.getContext('2d');
+    if(shelf){g.beginPath();g.roundRect(1,1,c.width-2,c.height-2,Math.min(5,c.height/3));g.clip();g.drawImage(im,...bounds,0,0,c.width,c.height)}else{g.drawImage(im,0,0);
+     if(mask){const m=document.createElement('canvas');m.width=c.width;m.height=c.height;const mg=m.getContext('2d');mg.translate(-bounds[0],-bounds[1]);mg.fillStyle='white';mg.fill(new Path2D(mask.cloth_path));mg.fill(new Path2D(item.hanger_path));mg.lineWidth=1.8;mg.strokeStyle='white';mg.lineCap='round';mg.stroke(new Path2D(item.hook_path));g.globalCompositeOperation='destination-in';g.drawImage(m,0,0)}}
+    return c.toDataURL().split(',')[1];
+   },{src,bounds,shelf,mask:contract.neighbor_masks?.[item.id],item});
+   const bytes=Buffer.from(data,'base64'),file=resolve(dest,item.id+'.png');await writeFile(file,bytes);
+   items.push({id:item.id,product:proposal.candidates.find(p=>p.id===item.id),bounds,local_file:'assets/wardrobe-scene-sprites/approved-v1/'+item.id+'.png',sha256:createHash('sha256').update(bytes).digest('hex'),alignment:shelf?'shelf':'hanging',basis:shelf?'approved folded context clipped at existing bounds':'approved individual hanger, visible surface only'});
+  }
+  await writeFile(resolve(root,'docs/handoff/SMART_WARDROBE_CODEX_HANDOFF_2026-10-11/templates/approved_scene_manifest.json'),JSON.stringify({version:'approved-v1',visual_approval:'user-approved',source:'hanger-individual-v1/review.html and approved K1-K3 samples',unassigned_shelf_products:'not registered',items},null,2)+'\n');
+  console.log('Approved existing assets exported: '+items.length);
+ }finally{await browser.close()}
+ process.exit(0);
+}
 const out=resolve(reports,'hanger-individual-v1');
 await mkdir(out,{recursive:true});
 const source=await readFile(resolve(reports,'wardrobe-visual-samples-v1/wardrobe-composite.png'));
