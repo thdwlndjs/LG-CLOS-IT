@@ -115,6 +115,13 @@ async def scene(request, repo, actor, device_id):
                 sprite_ids.add(UUID(variant["asset_id"]))
             except (ValueError, KeyError, TypeError):
                 continue
+    for placement in placements.values():
+        override = placement["geometry"].get("sprite_override")
+        if isinstance(override, dict):
+            try:
+                sprite_ids.add(UUID(override["asset_id"]))
+            except (ValueError, KeyError, TypeError):
+                continue
     sprite_assets = (
         {
             str(r["id"]): r
@@ -180,6 +187,24 @@ async def scene(request, repo, actor, device_id):
         scene_image = dto.image.model_dump(mode="json")
         mode = "hanging" if alignment == "hanging" else "folded"
         variant = scene_sprite(metadata, mode, sprite_assets)
+        override = placement["geometry"].get("sprite_override") if placement else None
+        if override is not None:
+            variant = (
+                scene_sprite(
+                    {
+                        "checksum_sha256": metadata.get("checksum_sha256"),
+                        "scene_sprites": {mode: override},
+                    },
+                    mode,
+                    sprite_assets,
+                )
+                if isinstance(override, dict)
+                and override.get("source_asset_id") == str(garment["image_asset_id"])
+                else None
+            )
+            if variant is None:
+                blocked.append({"garment_id": str(garment["id"]), "reason": "IMAGE_UNAVAILABLE"})
+                continue
         if variant:
             scene_image = signed_asset(
                 request.app.state.settings, sprite_assets[variant["asset_id"]]

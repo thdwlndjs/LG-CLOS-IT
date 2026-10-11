@@ -92,25 +92,7 @@
   },
   "shelf": [
     {
-      "garment_id": "ff39dfae-abdd-5ca3-8986-d1ba2cf0eccd",
-      "compartment_id": "0b86a817-11f1-5f5f-9ab9-ddc46885d09c",
-      "name": "F3 shelf compartment",
-      "quantity": 6
-    },
-    {
-      "garment_id": "8901515e-6ad7-51fc-8273-01284e04991d",
-      "compartment_id": "0b86a817-11f1-5f5f-9ab9-ddc46885d09c",
-      "name": "F3 shelf compartment",
-      "quantity": 6
-    },
-    {
-      "garment_id": "826b60ea-d5e8-5d82-920e-d61a4009898e",
-      "compartment_id": "0b86a817-11f1-5f5f-9ab9-ddc46885d09c",
-      "name": "F3 shelf compartment",
-      "quantity": 6
-    },
-    {
-      "garment_id": "fdc6ebaa-33d3-5edc-9477-18fd44a7b360",
+      "garment_id": "fd1ce769-aab6-4227-83e0-c550cd9ecb45",
       "compartment_id": "0b86a817-11f1-5f5f-9ab9-ddc46885d09c",
       "name": "F3 shelf compartment",
       "quantity": 6
@@ -122,13 +104,43 @@
       "quantity": 6
     },
     {
-      "garment_id": "fd1ce769-aab6-4227-83e0-c550cd9ecb45",
+      "garment_id": "fdc6ebaa-33d3-5edc-9477-18fd44a7b360",
       "compartment_id": "0b86a817-11f1-5f5f-9ab9-ddc46885d09c",
       "name": "F3 shelf compartment",
       "quantity": 6
     },
     {
-      "garment_id": "900b7fa4-0e9c-5dd1-afd2-1c89ac2eaade",
+      "garment_id": "826b60ea-d5e8-5d82-920e-d61a4009898e",
+      "compartment_id": "0b86a817-11f1-5f5f-9ab9-ddc46885d09c",
+      "name": "F3 shelf compartment",
+      "quantity": 6
+    },
+    {
+      "garment_id": "8901515e-6ad7-51fc-8273-01284e04991d",
+      "compartment_id": "0b86a817-11f1-5f5f-9ab9-ddc46885d09c",
+      "name": "F3 shelf compartment",
+      "quantity": 6
+    },
+    {
+      "garment_id": "ff39dfae-abdd-5ca3-8986-d1ba2cf0eccd",
+      "compartment_id": "0b86a817-11f1-5f5f-9ab9-ddc46885d09c",
+      "name": "F3 shelf compartment",
+      "quantity": 6
+    },
+    {
+      "garment_id": "825237a9-8853-59de-bd73-4ec198b7e033",
+      "compartment_id": "3fa03e54-0119-5507-b99b-6cd14098c8c2",
+      "name": "E4 shelf compartment",
+      "quantity": 6
+    },
+    {
+      "garment_id": "883a6a25-4c2c-510b-bbe5-0ca8e5a44e32",
+      "compartment_id": "3fa03e54-0119-5507-b99b-6cd14098c8c2",
+      "name": "E4 shelf compartment",
+      "quantity": 6
+    },
+    {
+      "garment_id": "821ae500-52f4-5879-b275-9a23bc327a3a",
       "compartment_id": "3fa03e54-0119-5507-b99b-6cd14098c8c2",
       "name": "E4 shelf compartment",
       "quantity": 6
@@ -146,49 +158,13 @@
       "quantity": 6
     },
     {
-      "garment_id": "821ae500-52f4-5879-b275-9a23bc327a3a",
+      "garment_id": "900b7fa4-0e9c-5dd1-afd2-1c89ac2eaade",
       "compartment_id": "3fa03e54-0119-5507-b99b-6cd14098c8c2",
       "name": "E4 shelf compartment",
-      "quantity": 6
-    },
-    {
-      "garment_id": "825237a9-8853-59de-bd73-4ec198b7e033",
-      "compartment_id": "3fa03e54-0119-5507-b99b-6cd14098c8c2",
-      "name": "E4 shelf compartment",
-      "quantity": 6
-    },
-    {
-      "garment_id": "883a6a25-4c2c-510b-bbe5-0ca8e5a44e32",
-      "compartment_id": "3fa03e54-0119-5507-b99b-6cd14098c8c2",
-      "name": "E4 shelf compartment",
-      "quantity": 6
-    },
-    {
-      "garment_id": "59f470a8-c063-5bef-b7d2-f7350c9039cb",
-      "compartment_id": "4076e3a0-b5f8-51a1-ba35-8df56a371757",
-      "name": "F7 shelf compartment",
-      "quantity": 6
-    },
-    {
-      "garment_id": "01d7378b-ec70-5035-bd0a-88b420767a48",
-      "compartment_id": "4076e3a0-b5f8-51a1-ba35-8df56a371757",
-      "name": "F7 shelf compartment",
-      "quantity": 6
-    },
-    {
-      "garment_id": "d65f4291-ba26-5e0a-9547-9d4dddc2bf54",
-      "compartment_id": "4076e3a0-b5f8-51a1-ba35-8df56a371757",
-      "name": "F7 shelf compartment",
       "quantity": 6
     },
     {
       "garment_id": "6a0331fb-9e5b-5153-91df-5f34afdaf691",
-      "compartment_id": "4076e3a0-b5f8-51a1-ba35-8df56a371757",
-      "name": "F7 shelf compartment",
-      "quantity": 6
-    },
-    {
-      "garment_id": "11251df3-4107-575c-b871-47e5d6efeed3",
       "compartment_id": "4076e3a0-b5f8-51a1-ba35-8df56a371757",
       "name": "F7 shelf compartment",
       "quantity": 6
@@ -200,13 +176,31 @@
       "quantity": 6
     },
     {
-      "garment_id": "33d87c69-53a3-5062-9428-fdf2d12a2bce",
-      "compartment_id": "40b480ba-14dd-5796-af79-b257bcdaadff",
-      "name": "E2 shelf compartment",
+      "garment_id": "11251df3-4107-575c-b871-47e5d6efeed3",
+      "compartment_id": "4076e3a0-b5f8-51a1-ba35-8df56a371757",
+      "name": "F7 shelf compartment",
       "quantity": 6
     },
     {
-      "garment_id": "3e2e7757-e7fe-5096-b955-5978f9551311",
+      "garment_id": "59f470a8-c063-5bef-b7d2-f7350c9039cb",
+      "compartment_id": "4076e3a0-b5f8-51a1-ba35-8df56a371757",
+      "name": "F7 shelf compartment",
+      "quantity": 6
+    },
+    {
+      "garment_id": "d65f4291-ba26-5e0a-9547-9d4dddc2bf54",
+      "compartment_id": "4076e3a0-b5f8-51a1-ba35-8df56a371757",
+      "name": "F7 shelf compartment",
+      "quantity": 6
+    },
+    {
+      "garment_id": "01d7378b-ec70-5035-bd0a-88b420767a48",
+      "compartment_id": "4076e3a0-b5f8-51a1-ba35-8df56a371757",
+      "name": "F7 shelf compartment",
+      "quantity": 6
+    },
+    {
+      "garment_id": "33d87c69-53a3-5062-9428-fdf2d12a2bce",
       "compartment_id": "40b480ba-14dd-5796-af79-b257bcdaadff",
       "name": "E2 shelf compartment",
       "quantity": 6
@@ -230,15 +224,15 @@
       "quantity": 6
     },
     {
-      "garment_id": "2f2a46af-3507-5f7d-a53f-5b2bab1e7af5",
+      "garment_id": "3e2e7757-e7fe-5096-b955-5978f9551311",
       "compartment_id": "40b480ba-14dd-5796-af79-b257bcdaadff",
       "name": "E2 shelf compartment",
       "quantity": 6
     },
     {
-      "garment_id": "a0232e79-b5d9-5525-a298-3054de415599",
-      "compartment_id": "5d7fe4ad-732c-5ea9-8970-f04c84a37f8a",
-      "name": "F1 shelf compartment",
+      "garment_id": "2f2a46af-3507-5f7d-a53f-5b2bab1e7af5",
+      "compartment_id": "40b480ba-14dd-5796-af79-b257bcdaadff",
+      "name": "E2 shelf compartment",
       "quantity": 6
     },
     {
@@ -248,13 +242,13 @@
       "quantity": 6
     },
     {
-      "garment_id": "b8c03e66-e150-52b2-8d25-41fcba2d4720",
+      "garment_id": "a0232e79-b5d9-5525-a298-3054de415599",
       "compartment_id": "5d7fe4ad-732c-5ea9-8970-f04c84a37f8a",
       "name": "F1 shelf compartment",
       "quantity": 6
     },
     {
-      "garment_id": "a72e0c37-5f7f-5acf-bd50-7f8c65b8f23d",
+      "garment_id": "a18baaab-a984-5245-a7a3-28bbd27e20ab",
       "compartment_id": "5d7fe4ad-732c-5ea9-8970-f04c84a37f8a",
       "name": "F1 shelf compartment",
       "quantity": 6
@@ -266,7 +260,13 @@
       "quantity": 6
     },
     {
-      "garment_id": "a18baaab-a984-5245-a7a3-28bbd27e20ab",
+      "garment_id": "a72e0c37-5f7f-5acf-bd50-7f8c65b8f23d",
+      "compartment_id": "5d7fe4ad-732c-5ea9-8970-f04c84a37f8a",
+      "name": "F1 shelf compartment",
+      "quantity": 6
+    },
+    {
+      "garment_id": "b8c03e66-e150-52b2-8d25-41fcba2d4720",
       "compartment_id": "5d7fe4ad-732c-5ea9-8970-f04c84a37f8a",
       "name": "F1 shelf compartment",
       "quantity": 6
@@ -284,6 +284,18 @@
       "quantity": 6
     },
     {
+      "garment_id": "d0ef9f43-50c9-5fee-8980-f501b8128baa",
+      "compartment_id": "997745af-7ec6-50be-ae80-1ce03f5ba710",
+      "name": "F6 shelf compartment",
+      "quantity": 6
+    },
+    {
+      "garment_id": "f21f98ef-184e-5e45-80aa-4552b848d8a4",
+      "compartment_id": "997745af-7ec6-50be-ae80-1ce03f5ba710",
+      "name": "F6 shelf compartment",
+      "quantity": 6
+    },
+    {
       "garment_id": "9a592908-46aa-5cb5-ae6e-4588e80195d0",
       "compartment_id": "997745af-7ec6-50be-ae80-1ce03f5ba710",
       "name": "F6 shelf compartment",
@@ -296,19 +308,7 @@
       "quantity": 6
     },
     {
-      "garment_id": "f21f98ef-184e-5e45-80aa-4552b848d8a4",
-      "compartment_id": "997745af-7ec6-50be-ae80-1ce03f5ba710",
-      "name": "F6 shelf compartment",
-      "quantity": 6
-    },
-    {
-      "garment_id": "d0ef9f43-50c9-5fee-8980-f501b8128baa",
-      "compartment_id": "997745af-7ec6-50be-ae80-1ce03f5ba710",
-      "name": "F6 shelf compartment",
-      "quantity": 6
-    },
-    {
-      "garment_id": "cdf93107-16da-5dfd-821f-be69d76be007",
+      "garment_id": "869734e9-a720-5471-bb80-91bf4b6cdd8c",
       "compartment_id": "a723370e-5066-54f8-b012-7ab3cc44bf60",
       "name": "F4 shelf compartment",
       "quantity": 6
@@ -332,33 +332,15 @@
       "quantity": 6
     },
     {
+      "garment_id": "cdf93107-16da-5dfd-821f-be69d76be007",
+      "compartment_id": "a723370e-5066-54f8-b012-7ab3cc44bf60",
+      "name": "F4 shelf compartment",
+      "quantity": 6
+    },
+    {
       "garment_id": "053eb5bd-f212-5c7a-8757-69d511d5dabe",
       "compartment_id": "a723370e-5066-54f8-b012-7ab3cc44bf60",
       "name": "F4 shelf compartment",
-      "quantity": 6
-    },
-    {
-      "garment_id": "869734e9-a720-5471-bb80-91bf4b6cdd8c",
-      "compartment_id": "a723370e-5066-54f8-b012-7ab3cc44bf60",
-      "name": "F4 shelf compartment",
-      "quantity": 6
-    },
-    {
-      "garment_id": "454faefc-acf0-593d-a5b1-15a1b45b097e",
-      "compartment_id": "b0bc76f0-1708-5dcb-8235-cac2a748a849",
-      "name": "E3 shelf compartment",
-      "quantity": 6
-    },
-    {
-      "garment_id": "7893136d-24c1-5af3-8986-05089c8f2f18",
-      "compartment_id": "b0bc76f0-1708-5dcb-8235-cac2a748a849",
-      "name": "E3 shelf compartment",
-      "quantity": 6
-    },
-    {
-      "garment_id": "715489be-2fd6-5576-b58c-bd991c9c2c32",
-      "compartment_id": "b0bc76f0-1708-5dcb-8235-cac2a748a849",
-      "name": "E3 shelf compartment",
       "quantity": 6
     },
     {
@@ -380,9 +362,21 @@
       "quantity": 6
     },
     {
-      "garment_id": "e29bc367-5d11-5bbf-8fcb-9813c24c6f17",
-      "compartment_id": "bf572cae-2306-5b60-a6a6-7ee1d2c2fc3b",
-      "name": "F2 shelf compartment",
+      "garment_id": "454faefc-acf0-593d-a5b1-15a1b45b097e",
+      "compartment_id": "b0bc76f0-1708-5dcb-8235-cac2a748a849",
+      "name": "E3 shelf compartment",
+      "quantity": 6
+    },
+    {
+      "garment_id": "7893136d-24c1-5af3-8986-05089c8f2f18",
+      "compartment_id": "b0bc76f0-1708-5dcb-8235-cac2a748a849",
+      "name": "E3 shelf compartment",
+      "quantity": 6
+    },
+    {
+      "garment_id": "715489be-2fd6-5576-b58c-bd991c9c2c32",
+      "compartment_id": "b0bc76f0-1708-5dcb-8235-cac2a748a849",
+      "name": "E3 shelf compartment",
       "quantity": 6
     },
     {
@@ -392,13 +386,19 @@
       "quantity": 6
     },
     {
-      "garment_id": "df91ef4a-594c-570d-b32d-2b109efe8bab",
+      "garment_id": "f84f09ec-6c6f-59fc-8438-3b80c620c3d9",
       "compartment_id": "bf572cae-2306-5b60-a6a6-7ee1d2c2fc3b",
       "name": "F2 shelf compartment",
       "quantity": 6
     },
     {
-      "garment_id": "f84f09ec-6c6f-59fc-8438-3b80c620c3d9",
+      "garment_id": "e29bc367-5d11-5bbf-8fcb-9813c24c6f17",
+      "compartment_id": "bf572cae-2306-5b60-a6a6-7ee1d2c2fc3b",
+      "name": "F2 shelf compartment",
+      "quantity": 6
+    },
+    {
+      "garment_id": "df91ef4a-594c-570d-b32d-2b109efe8bab",
       "compartment_id": "bf572cae-2306-5b60-a6a6-7ee1d2c2fc3b",
       "name": "F2 shelf compartment",
       "quantity": 6
@@ -452,19 +452,7 @@
       "quantity": 6
     },
     {
-      "garment_id": "1f8dcda3-eb5c-5744-bbd7-98e2b7adef98",
-      "compartment_id": "eb128a88-7443-5ea6-9dfb-975270cadf4f",
-      "name": "E1 shelf compartment",
-      "quantity": 6
-    },
-    {
-      "garment_id": "2568aead-2410-4bab-9208-6d4f54109927",
-      "compartment_id": "eb128a88-7443-5ea6-9dfb-975270cadf4f",
-      "name": "E1 shelf compartment",
-      "quantity": 6
-    },
-    {
-      "garment_id": "21901819-11cb-56f0-9492-026b6b6166fe",
+      "garment_id": "1adf7dde-eaed-53f9-ac0e-8497078fa703",
       "compartment_id": "eb128a88-7443-5ea6-9dfb-975270cadf4f",
       "name": "E1 shelf compartment",
       "quantity": 6
@@ -476,13 +464,25 @@
       "quantity": 6
     },
     {
-      "garment_id": "1adf7dde-eaed-53f9-ac0e-8497078fa703",
+      "garment_id": "21901819-11cb-56f0-9492-026b6b6166fe",
+      "compartment_id": "eb128a88-7443-5ea6-9dfb-975270cadf4f",
+      "name": "E1 shelf compartment",
+      "quantity": 6
+    },
+    {
+      "garment_id": "1f8dcda3-eb5c-5744-bbd7-98e2b7adef98",
       "compartment_id": "eb128a88-7443-5ea6-9dfb-975270cadf4f",
       "name": "E1 shelf compartment",
       "quantity": 6
     },
     {
       "garment_id": "1b92cf0a-82ad-567a-b1b5-7022111fccaf",
+      "compartment_id": "eb128a88-7443-5ea6-9dfb-975270cadf4f",
+      "name": "E1 shelf compartment",
+      "quantity": 6
+    },
+    {
+      "garment_id": "2568aead-2410-4bab-9208-6d4f54109927",
       "compartment_id": "eb128a88-7443-5ea6-9dfb-975270cadf4f",
       "name": "E1 shelf compartment",
       "quantity": 6

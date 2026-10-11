@@ -75,6 +75,15 @@ async def seed():
             for i, y in enumerate([151, 269, 386, 503, 614, 724, 849])
         ]
         placements = []
+        shelf_path = PACKAGE / "templates/b01_common_shelf_manifest.json"
+        shelf_overrides = (
+            {
+                i["garment_id"]: i
+                for i in json.loads(shelf_path.read_text(encoding="utf-8"))["items"]
+            }
+            if shelf_path.exists()
+            else {}
+        )
         for n in range(66):
             name, left, right, floor = bins[n // 6]
             bin_id = uid("bin:" + name)
@@ -153,6 +162,11 @@ async def seed():
                 "approved": True,
                 "alignment": "shelf",
             }
+            if str(g["id"]) in shelf_overrides:
+                override = shelf_overrides[str(g["id"])]
+                assert override["source_asset_id"] == str(g["image_asset_id"])
+                assert override["compartment_id"] == str(bin_id)
+                geo = override["geometry"]
             await c.execute(
                 text(
                     "INSERT INTO wardrobe.scene_placement(garment_id,source_location_id,compartment_id,geometry,namespace) VALUES(:g,:l,:bin,CAST(:geo AS jsonb),:ns) ON CONFLICT(garment_id) DO UPDATE SET source_location_id=excluded.source_location_id,compartment_id=excluded.compartment_id,geometry=excluded.geometry WHERE scene_placement.namespace=excluded.namespace"

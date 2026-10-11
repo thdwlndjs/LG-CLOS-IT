@@ -1,0 +1,4140 @@
+[
+  {
+    "profile": "김수진",
+    "scene_ids": [
+      "1adf7dde-eaed-53f9-ac0e-8497078fa703",
+      "1b92cf0a-82ad-567a-b1b5-7022111fccaf",
+      "1f8dcda3-eb5c-5744-bbd7-98e2b7adef98",
+      "20cb6b2b-1f68-542e-9150-d9e1e0a189c5",
+      "21901819-11cb-56f0-9492-026b6b6166fe",
+      "26b4405e-901e-5e94-94c0-6135105b0b8c",
+      "2904fd43-cb31-530d-b4bd-2d9783d3c762",
+      "2d5ec79d-bdcf-582b-a78d-a6734b287c65",
+      "2f2a46af-3507-5f7d-a53f-5b2bab1e7af5",
+      "33d87c69-53a3-5062-9428-fdf2d12a2bce",
+      "3e2e7757-e7fe-5096-b955-5978f9551311",
+      "454faefc-acf0-593d-a5b1-15a1b45b097e",
+      "4d1f6a17-44b8-5c0b-8248-eb009565da12",
+      "59e7a4ca-3acb-5250-a2d6-8f7703984934",
+      "6318748a-24b8-5a50-bf13-c925293f0ea1",
+      "715489be-2fd6-5576-b58c-bd991c9c2c32",
+      "7893136d-24c1-5af3-8986-05089c8f2f18",
+      "80cd394e-6f5b-5ef5-95d4-a1dae823a1ed",
+      "821ae500-52f4-5879-b275-9a23bc327a3a",
+      "825237a9-8853-59de-bd73-4ec198b7e033",
+      "883a6a25-4c2c-510b-bbe5-0ca8e5a44e32",
+      "900b7fa4-0e9c-5dd1-afd2-1c89ac2eaade",
+      "94513db1-6b4c-5b06-a088-1abf46df8712",
+      "a0232e79-b5d9-5525-a298-3054de415599",
+      "a18baaab-a984-5245-a7a3-28bbd27e20ab",
+      "a72e0c37-5f7f-5acf-bd50-7f8c65b8f23d",
+      "b8c03e66-e150-52b2-8d25-41fcba2d4720",
+      "c349dc83-4312-5479-bb8e-094931f8a30b",
+      "df4082b6-d86e-53e7-a427-924c641a5145",
+      "df91ef4a-594c-570d-b32d-2b109efe8bab",
+      "e29bc367-5d11-5bbf-8fcb-9813c24c6f17",
+      "f35667ff-7520-5184-abf0-d35865244624",
+      "f84f09ec-6c6f-59fc-8438-3b80c620c3d9",
+      "fa6caeb1-0966-58c2-a81e-2754d7643c2c",
+      "ff39dfae-abdd-5ca3-8986-d1ba2cf0eccd",
+      "bc35f9b1-3a49-46d7-b0df-4631d2d3e3e9",
+      "dbfcdf61-e6c8-42ae-82e3-6c0ef39f8806",
+      "a4ac8980-d9fb-4442-aa6f-158cc9270277",
+      "a418bd50-1612-4f95-a030-e54b6a820fe5",
+      "6ba02802-d475-44f0-935a-e1050b50cf84",
+      "59e18c18-7553-41d9-bc88-014dd65e7b21",
+      "9f37a700-3578-4af2-9f8e-f36b869b5961",
+      "449c07e3-04b7-42af-b7b0-79ae8bdbf400",
+      "3049ddf0-d7cb-43c5-b9d8-87936db3e346",
+      "901a7b5c-d23c-4ec1-b434-5d8b41e6dd85",
+      "6df03b25-1edd-4a0b-b003-609ea9d25781",
+      "24c575ab-9dff-4bab-8d72-5dcc61d712b7",
+      "393354b9-bf4d-4c62-9456-8a810288e870",
+      "b5b5600d-3a67-48f6-8a63-7d8164bb9030",
+      "3518be70-15ef-462f-a130-7205a663205c",
+      "e2f39099-1da1-42a6-abed-827c494f53b9",
+      "59aaa9b2-d32c-4634-8324-e229cf91ce7b",
+      "0e707336-0417-42f8-8b6f-f655ee0e94a0",
+      "0d1ef3df-bbbe-4a2a-9fd7-56bf8dd945f9",
+      "49dd09f9-430c-4705-bbbf-6a77d8131677",
+      "0d5afe1b-7832-4885-8eb5-341bb57cb90e",
+      "fd1ce769-aab6-4227-83e0-c550cd9ecb45",
+      "2568aead-2410-4bab-9208-6d4f54109927",
+      "a2f054f7-6967-4add-bf4a-b61af158f0e2",
+      "00caadf4-b6bc-5d77-ad83-5087a2579b65",
+      "01d7378b-ec70-5035-bd0a-88b420767a48",
+      "053eb5bd-f212-5c7a-8757-69d511d5dabe",
+      "0d7ee270-4445-5529-9fda-46e0ca87cd8a",
+      "11251df3-4107-575c-b871-47e5d6efeed3",
+      "3aa71ad7-4b8e-5e40-a5ab-4ccef829b457",
+      "59f470a8-c063-5bef-b7d2-f7350c9039cb",
+      "5ac6ea1d-c00f-5aa4-ae85-82081fa3444f",
+      "622a268d-dda1-56a2-944d-6c12df3f4458",
+      "652c91d0-df18-5066-9600-852a9e1d9e8e",
+      "6a0331fb-9e5b-5153-91df-5f34afdaf691",
+      "6a39ca49-8a8c-52c6-b999-5797f7d2f188",
+      "826b60ea-d5e8-5d82-920e-d61a4009898e",
+      "869734e9-a720-5471-bb80-91bf4b6cdd8c",
+      "8901515e-6ad7-51fc-8273-01284e04991d",
+      "89cca9bf-12cf-5fb2-b7ea-9cb38793fbb1",
+      "8afda102-37de-54fa-8c14-d473096205a6",
+      "934d1ed2-2217-5875-ae29-b702b92c7a4b",
+      "9813c705-e718-53ae-b1ab-9e7bafd4565e",
+      "9a592908-46aa-5cb5-ae6e-4588e80195d0",
+      "9a8c11b4-4213-555f-aee6-70dd26494a30",
+      "b4c04595-b1cc-5380-abb5-a4a89324087f",
+      "cdf93107-16da-5dfd-821f-be69d76be007",
+      "d0ef9f43-50c9-5fee-8980-f501b8128baa",
+      "d65f4291-ba26-5e0a-9547-9d4dddc2bf54",
+      "dda8dc76-975b-5283-8e66-c23dc6883b40",
+      "f21f98ef-184e-5e45-80aa-4552b848d8a4",
+      "fdc6ebaa-33d3-5edc-9477-18fd44a7b360"
+    ],
+    "measurements": [
+      {
+        "bbox": [
+          1009,
+          135,
+          1112,
+          151
+        ],
+        "center_column": [
+          135,
+          151
+        ],
+        "display": {
+          "x": 1008,
+          "y": 134,
+          "width": 105,
+          "height": 16.984375
+        },
+        "garment_id": "1adf7dde-eaed-53f9-ac0e-8497078fa703",
+        "bin": "E1",
+        "side": "left",
+        "layer": 0,
+        "kind": "common",
+        "asset_id": "0ffce058-96fc-4707-915b-3022e7f0d104"
+      },
+      {
+        "bbox": [
+          1009,
+          118,
+          1112,
+          134
+        ],
+        "center_column": [
+          118,
+          134
+        ],
+        "display": {
+          "x": 1008,
+          "y": 117,
+          "width": 105,
+          "height": 16.984375
+        },
+        "garment_id": "1b92cf0a-82ad-567a-b1b5-7022111fccaf",
+        "bin": "E1",
+        "side": "left",
+        "layer": 1,
+        "kind": "common",
+        "asset_id": "74b430f1-2f40-440e-bd38-8714528ca9d5"
+      },
+      {
+        "bbox": [
+          1009,
+          101,
+          1112,
+          117
+        ],
+        "center_column": [
+          101,
+          117
+        ],
+        "display": {
+          "x": 1008,
+          "y": 100,
+          "width": 105,
+          "height": 16.984375
+        },
+        "garment_id": "1f8dcda3-eb5c-5744-bbd7-98e2b7adef98",
+        "bin": "E1",
+        "side": "left",
+        "layer": 2,
+        "kind": "common",
+        "asset_id": "feb7a4ef-8973-46de-a22b-2e50064c86bd"
+      },
+      {
+        "bbox": [
+          1132,
+          133.25,
+          1243,
+          150.25
+        ],
+        "center_column": [
+          133.25,
+          150.25
+        ],
+        "display": {
+          "x": 1131,
+          "y": 132.25,
+          "width": 113,
+          "height": 18.734375
+        },
+        "garment_id": "20cb6b2b-1f68-542e-9150-d9e1e0a189c5",
+        "bin": "E1",
+        "side": "right",
+        "layer": 0,
+        "kind": "common",
+        "asset_id": "b25bf90c-4f8b-4dea-a106-4e869a97ba29"
+      },
+      {
+        "bbox": [
+          1132,
+          114.515625,
+          1243,
+          131.515625
+        ],
+        "center_column": [
+          114.515625,
+          131.515625
+        ],
+        "display": {
+          "x": 1131,
+          "y": 113.515625,
+          "width": 113,
+          "height": 18.734375
+        },
+        "garment_id": "21901819-11cb-56f0-9492-026b6b6166fe",
+        "bin": "E1",
+        "side": "right",
+        "layer": 1,
+        "kind": "common",
+        "asset_id": "951972cf-7636-4042-9165-06b573c76dd3"
+      },
+      {
+        "bbox": [
+          1132,
+          100,
+          1233,
+          113
+        ],
+        "center_column": [
+          100,
+          113
+        ],
+        "display": {
+          "x": 1131,
+          "y": 100,
+          "width": 102.828125,
+          "height": 13.515625
+        },
+        "garment_id": "2568aead-2410-4bab-9208-6d4f54109927",
+        "bin": "E1",
+        "side": "right",
+        "layer": 2,
+        "kind": "approved",
+        "asset_id": "626da61d-d317-4209-a293-92a23563f94f"
+      },
+      {
+        "bbox": [
+          1008,
+          247.328125,
+          1115,
+          263.328125
+        ],
+        "center_column": [
+          247.328125,
+          263.328125
+        ],
+        "display": {
+          "x": 1007,
+          "y": 246.328125,
+          "width": 109,
+          "height": 17.65625
+        },
+        "garment_id": "26b4405e-901e-5e94-94c0-6135105b0b8c",
+        "bin": "E2",
+        "side": "left",
+        "layer": 0,
+        "kind": "common",
+        "asset_id": "a61edc38-0613-467e-a7be-c972a3f2e6e1"
+      },
+      {
+        "bbox": [
+          1008,
+          229.65625,
+          1115,
+          245.65625
+        ],
+        "center_column": [
+          229.65625,
+          245.65625
+        ],
+        "display": {
+          "x": 1007,
+          "y": 228.65625,
+          "width": 109,
+          "height": 17.65625
+        },
+        "garment_id": "2904fd43-cb31-530d-b4bd-2d9783d3c762",
+        "bin": "E2",
+        "side": "left",
+        "layer": 1,
+        "kind": "common",
+        "asset_id": "3a9c6e07-a1b6-481c-83cf-e4728180735d"
+      },
+      {
+        "bbox": [
+          1008,
+          212,
+          1115,
+          228
+        ],
+        "center_column": [
+          212,
+          228
+        ],
+        "display": {
+          "x": 1007,
+          "y": 211,
+          "width": 109,
+          "height": 17.65625
+        },
+        "garment_id": "2d5ec79d-bdcf-582b-a78d-a6734b287c65",
+        "bin": "E2",
+        "side": "left",
+        "layer": 2,
+        "kind": "common",
+        "asset_id": "2a36b3cf-e111-4a74-857e-09da342cf350"
+      },
+      {
+        "bbox": [
+          1132.984375,
+          248.65625,
+          1242.984375,
+          263.65625
+        ],
+        "center_column": [
+          248.65625,
+          263.65625
+        ],
+        "display": {
+          "x": 1131.984375,
+          "y": 247.65625,
+          "width": 112,
+          "height": 16.328125
+        },
+        "garment_id": "2f2a46af-3507-5f7d-a53f-5b2bab1e7af5",
+        "bin": "E2",
+        "side": "right",
+        "layer": 0,
+        "kind": "common",
+        "asset_id": "0033e851-b432-4098-8085-bb49db387d6a"
+      },
+      {
+        "bbox": [
+          1132.984375,
+          232.328125,
+          1242.984375,
+          247.328125
+        ],
+        "center_column": [
+          232.328125,
+          247.328125
+        ],
+        "display": {
+          "x": 1131.984375,
+          "y": 231.328125,
+          "width": 112,
+          "height": 16.328125
+        },
+        "garment_id": "33d87c69-53a3-5062-9428-fdf2d12a2bce",
+        "bin": "E2",
+        "side": "right",
+        "layer": 1,
+        "kind": "common",
+        "asset_id": "f8c7280f-0609-4347-9a7c-f3710edba798"
+      },
+      {
+        "bbox": [
+          1132.984375,
+          216,
+          1242.984375,
+          231
+        ],
+        "center_column": [
+          216,
+          231
+        ],
+        "display": {
+          "x": 1131.984375,
+          "y": 215,
+          "width": 112,
+          "height": 16.328125
+        },
+        "garment_id": "3e2e7757-e7fe-5096-b955-5978f9551311",
+        "bin": "E2",
+        "side": "right",
+        "layer": 2,
+        "kind": "common",
+        "asset_id": "d9354470-e356-4fbb-baef-ec0e96c0abca"
+      },
+      {
+        "bbox": [
+          1009,
+          370,
+          1114,
+          388
+        ],
+        "center_column": [
+          370,
+          388
+        ],
+        "display": {
+          "x": 1008,
+          "y": 369,
+          "width": 107,
+          "height": 19
+        },
+        "garment_id": "454faefc-acf0-593d-a5b1-15a1b45b097e",
+        "bin": "E3",
+        "side": "left",
+        "layer": 0,
+        "kind": "common",
+        "asset_id": "ec9e14ff-6b93-46ba-81e8-e758db065f66"
+      },
+      {
+        "bbox": [
+          1009,
+          351,
+          1114,
+          369
+        ],
+        "center_column": [
+          351,
+          369
+        ],
+        "display": {
+          "x": 1008,
+          "y": 350,
+          "width": 107,
+          "height": 19
+        },
+        "garment_id": "4d1f6a17-44b8-5c0b-8248-eb009565da12",
+        "bin": "E3",
+        "side": "left",
+        "layer": 1,
+        "kind": "common",
+        "asset_id": "68b0ef74-f336-4fb6-abae-b130e0a2b9c8"
+      },
+      {
+        "bbox": [
+          1009,
+          332,
+          1114,
+          350
+        ],
+        "center_column": [
+          332,
+          350
+        ],
+        "display": {
+          "x": 1008,
+          "y": 331,
+          "width": 107,
+          "height": 19
+        },
+        "garment_id": "59e7a4ca-3acb-5250-a2d6-8f7703984934",
+        "bin": "E3",
+        "side": "left",
+        "layer": 2,
+        "kind": "common",
+        "asset_id": "f46238b7-c24c-454a-85aa-97514376203c"
+      },
+      {
+        "bbox": [
+          1132,
+          369.65625,
+          1243,
+          387.65625
+        ],
+        "center_column": [
+          369.65625,
+          387.65625
+        ],
+        "display": {
+          "x": 1131,
+          "y": 368.65625,
+          "width": 113,
+          "height": 19.328125
+        },
+        "garment_id": "6318748a-24b8-5a50-bf13-c925293f0ea1",
+        "bin": "E3",
+        "side": "right",
+        "layer": 0,
+        "kind": "common",
+        "asset_id": "dee5ae3d-fbc3-4dcd-af0a-33ea61ca839c"
+      },
+      {
+        "bbox": [
+          1132,
+          350.328125,
+          1243,
+          368.328125
+        ],
+        "center_column": [
+          350.328125,
+          368.328125
+        ],
+        "display": {
+          "x": 1131,
+          "y": 349.328125,
+          "width": 113,
+          "height": 19.328125
+        },
+        "garment_id": "715489be-2fd6-5576-b58c-bd991c9c2c32",
+        "bin": "E3",
+        "side": "right",
+        "layer": 1,
+        "kind": "common",
+        "asset_id": "de5db9dc-c2c6-48cd-a8fd-932293f6d864"
+      },
+      {
+        "bbox": [
+          1132,
+          331,
+          1243,
+          349
+        ],
+        "center_column": [
+          331,
+          349
+        ],
+        "display": {
+          "x": 1131,
+          "y": 330,
+          "width": 113,
+          "height": 19.328125
+        },
+        "garment_id": "7893136d-24c1-5af3-8986-05089c8f2f18",
+        "bin": "E3",
+        "side": "right",
+        "layer": 2,
+        "kind": "common",
+        "asset_id": "2914e7d6-b30f-421a-9d54-b48b62a30ca6"
+      },
+      {
+        "bbox": [
+          1008,
+          483.65625,
+          1117,
+          501.65625
+        ],
+        "center_column": [
+          483.65625,
+          501.65625
+        ],
+        "display": {
+          "x": 1007,
+          "y": 482.65625,
+          "width": 111,
+          "height": 19.328125
+        },
+        "garment_id": "80cd394e-6f5b-5ef5-95d4-a1dae823a1ed",
+        "bin": "E4",
+        "side": "left",
+        "layer": 0,
+        "kind": "common",
+        "asset_id": "2ee322ee-8255-494f-b440-3b3d12d3e2cb"
+      },
+      {
+        "bbox": [
+          1008,
+          464.328125,
+          1117,
+          482.328125
+        ],
+        "center_column": [
+          464.328125,
+          482.328125
+        ],
+        "display": {
+          "x": 1007,
+          "y": 463.328125,
+          "width": 111,
+          "height": 19.328125
+        },
+        "garment_id": "821ae500-52f4-5879-b275-9a23bc327a3a",
+        "bin": "E4",
+        "side": "left",
+        "layer": 1,
+        "kind": "common",
+        "asset_id": "5ef5fac6-4aa9-4f50-8c27-4962d05e71cd"
+      },
+      {
+        "bbox": [
+          1008,
+          445,
+          1117,
+          463
+        ],
+        "center_column": [
+          445,
+          463
+        ],
+        "display": {
+          "x": 1007,
+          "y": 444,
+          "width": 111,
+          "height": 19.328125
+        },
+        "garment_id": "825237a9-8853-59de-bd73-4ec198b7e033",
+        "bin": "E4",
+        "side": "left",
+        "layer": 2,
+        "kind": "common",
+        "asset_id": "18756d9e-dc4e-4dbb-8b24-8f13a5b77c2b"
+      },
+      {
+        "bbox": [
+          1132.984375,
+          484,
+          1243.984375,
+          502
+        ],
+        "center_column": [
+          484,
+          502
+        ],
+        "display": {
+          "x": 1131.984375,
+          "y": 483,
+          "width": 113,
+          "height": 19
+        },
+        "garment_id": "883a6a25-4c2c-510b-bbe5-0ca8e5a44e32",
+        "bin": "E4",
+        "side": "right",
+        "layer": 0,
+        "kind": "common",
+        "asset_id": "b5956fc8-d0cb-4d7f-a580-d679aec410a8"
+      },
+      {
+        "bbox": [
+          1132.984375,
+          465,
+          1243.984375,
+          483
+        ],
+        "center_column": [
+          465,
+          483
+        ],
+        "display": {
+          "x": 1131.984375,
+          "y": 464,
+          "width": 113,
+          "height": 19
+        },
+        "garment_id": "900b7fa4-0e9c-5dd1-afd2-1c89ac2eaade",
+        "bin": "E4",
+        "side": "right",
+        "layer": 1,
+        "kind": "common",
+        "asset_id": "a47e86e1-9b80-40bf-85c2-297f82a95534"
+      },
+      {
+        "bbox": [
+          1132.984375,
+          446,
+          1243.984375,
+          464
+        ],
+        "center_column": [
+          446,
+          464
+        ],
+        "display": {
+          "x": 1131.984375,
+          "y": 445,
+          "width": 113,
+          "height": 19
+        },
+        "garment_id": "94513db1-6b4c-5b06-a088-1abf46df8712",
+        "bin": "E4",
+        "side": "right",
+        "layer": 2,
+        "kind": "common",
+        "asset_id": "90826ed2-7d83-452a-ab33-aa4b5de01f55"
+      },
+      {
+        "bbox": [
+          1311,
+          139,
+          1424,
+          151
+        ],
+        "center_column": [
+          139,
+          151
+        ],
+        "display": {
+          "x": 1310,
+          "y": 138,
+          "width": 115,
+          "height": 12.984375
+        },
+        "garment_id": "a0232e79-b5d9-5525-a298-3054de415599",
+        "bin": "F1",
+        "side": "left",
+        "layer": 0,
+        "kind": "common",
+        "asset_id": "0cc1ab68-b9b9-4ae8-a6c7-63d25856c358"
+      },
+      {
+        "bbox": [
+          1311,
+          126,
+          1424,
+          138
+        ],
+        "center_column": [
+          126,
+          138
+        ],
+        "display": {
+          "x": 1310,
+          "y": 125,
+          "width": 115,
+          "height": 12.984375
+        },
+        "garment_id": "a18baaab-a984-5245-a7a3-28bbd27e20ab",
+        "bin": "F1",
+        "side": "left",
+        "layer": 1,
+        "kind": "common",
+        "asset_id": "0ee7c6a0-c989-4c9d-b9c9-5ca0a780ef7c"
+      },
+      {
+        "bbox": [
+          1320.34375,
+          100,
+          1424.34375,
+          125
+        ],
+        "center_column": [
+          100,
+          125
+        ],
+        "display": {
+          "x": 1320.34375,
+          "y": 100,
+          "width": 104.640625,
+          "height": 25
+        },
+        "garment_id": "a2f054f7-6967-4add-bf4a-b61af158f0e2",
+        "bin": "F1",
+        "side": "left",
+        "layer": 2,
+        "kind": "approved",
+        "asset_id": "0970a195-ee98-4be8-b671-52edc1cf2093"
+      },
+      {
+        "bbox": [
+          1450,
+          135.328125,
+          1559,
+          150.328125
+        ],
+        "center_column": [
+          135.328125,
+          150.328125
+        ],
+        "display": {
+          "x": 1449,
+          "y": 134.328125,
+          "width": 111,
+          "height": 16.65625
+        },
+        "garment_id": "a72e0c37-5f7f-5acf-bd50-7f8c65b8f23d",
+        "bin": "F1",
+        "side": "right",
+        "layer": 0,
+        "kind": "common",
+        "asset_id": "984d1ee3-536b-4a7f-8370-5937e887a8b1"
+      },
+      {
+        "bbox": [
+          1450,
+          118.65625,
+          1559,
+          133.65625
+        ],
+        "center_column": [
+          118.65625,
+          133.65625
+        ],
+        "display": {
+          "x": 1449,
+          "y": 117.65625,
+          "width": 111,
+          "height": 16.65625
+        },
+        "garment_id": "b8c03e66-e150-52b2-8d25-41fcba2d4720",
+        "bin": "F1",
+        "side": "right",
+        "layer": 1,
+        "kind": "common",
+        "asset_id": "3c5cc9ff-afea-4537-a7b1-0e6e0e054349"
+      },
+      {
+        "bbox": [
+          1450,
+          102,
+          1559,
+          117
+        ],
+        "center_column": [
+          102,
+          117
+        ],
+        "display": {
+          "x": 1449,
+          "y": 101,
+          "width": 111,
+          "height": 16.65625
+        },
+        "garment_id": "c349dc83-4312-5479-bb8e-094931f8a30b",
+        "bin": "F1",
+        "side": "right",
+        "layer": 2,
+        "kind": "common",
+        "asset_id": "4fbb8eb6-aa20-47e8-9a7e-fc2658c47bee"
+      },
+      {
+        "bbox": [
+          1312,
+          250.328125,
+          1422,
+          265.328125
+        ],
+        "center_column": [
+          250.328125,
+          265.328125
+        ],
+        "display": {
+          "x": 1311,
+          "y": 249.328125,
+          "width": 112,
+          "height": 16.65625
+        },
+        "garment_id": "df4082b6-d86e-53e7-a427-924c641a5145",
+        "bin": "F2",
+        "side": "left",
+        "layer": 0,
+        "kind": "common",
+        "asset_id": "69cc84fb-73d5-4a4e-8f79-c1275fe0830c"
+      },
+      {
+        "bbox": [
+          1312,
+          233.65625,
+          1422,
+          248.65625
+        ],
+        "center_column": [
+          233.65625,
+          248.65625
+        ],
+        "display": {
+          "x": 1311,
+          "y": 232.65625,
+          "width": 112,
+          "height": 16.65625
+        },
+        "garment_id": "df91ef4a-594c-570d-b32d-2b109efe8bab",
+        "bin": "F2",
+        "side": "left",
+        "layer": 1,
+        "kind": "common",
+        "asset_id": "a5353a22-785f-4a5e-9e6d-6a6b1c5e1a23"
+      },
+      {
+        "bbox": [
+          1312,
+          217,
+          1422,
+          232
+        ],
+        "center_column": [
+          217,
+          232
+        ],
+        "display": {
+          "x": 1311,
+          "y": 216,
+          "width": 112,
+          "height": 16.65625
+        },
+        "garment_id": "e29bc367-5d11-5bbf-8fcb-9813c24c6f17",
+        "bin": "F2",
+        "side": "left",
+        "layer": 2,
+        "kind": "common",
+        "asset_id": "b4807db2-9fa8-4249-8eef-a25b9ad59667"
+      },
+      {
+        "bbox": [
+          1451,
+          249.65625,
+          1562,
+          265.65625
+        ],
+        "center_column": [
+          249.65625,
+          265.65625
+        ],
+        "display": {
+          "x": 1450,
+          "y": 248.65625,
+          "width": 113,
+          "height": 17.328125
+        },
+        "garment_id": "f35667ff-7520-5184-abf0-d35865244624",
+        "bin": "F2",
+        "side": "right",
+        "layer": 0,
+        "kind": "common",
+        "asset_id": "7e0f6cff-a872-458c-b763-305dad216643"
+      },
+      {
+        "bbox": [
+          1451,
+          232.328125,
+          1562,
+          248.328125
+        ],
+        "center_column": [
+          232.328125,
+          248.328125
+        ],
+        "display": {
+          "x": 1450,
+          "y": 231.328125,
+          "width": 113,
+          "height": 17.328125
+        },
+        "garment_id": "f84f09ec-6c6f-59fc-8438-3b80c620c3d9",
+        "bin": "F2",
+        "side": "right",
+        "layer": 1,
+        "kind": "common",
+        "asset_id": "749d7f68-f55f-4b57-be03-95112fe37885"
+      },
+      {
+        "bbox": [
+          1451,
+          215,
+          1562,
+          231
+        ],
+        "center_column": [
+          215,
+          231
+        ],
+        "display": {
+          "x": 1450,
+          "y": 214,
+          "width": 113,
+          "height": 17.328125
+        },
+        "garment_id": "fa6caeb1-0966-58c2-a81e-2754d7643c2c",
+        "bin": "F2",
+        "side": "right",
+        "layer": 2,
+        "kind": "common",
+        "asset_id": "745fc9a8-1dd1-4219-a96e-47ac0652a96e"
+      },
+      {
+        "bbox": [
+          1320.4375,
+          367.875,
+          1425.4375,
+          388.875
+        ],
+        "center_column": [
+          367.875,
+          388.875
+        ],
+        "display": {
+          "x": 1320.4375,
+          "y": 367.875,
+          "width": 105.546875,
+          "height": 21.109375
+        },
+        "garment_id": "fd1ce769-aab6-4227-83e0-c550cd9ecb45",
+        "bin": "F3",
+        "side": "left",
+        "layer": 0,
+        "kind": "approved",
+        "asset_id": "d90477db-08d7-4ecf-b618-0313d94ad5b3"
+      },
+      {
+        "bbox": [
+          1311,
+          356.109375,
+          1425,
+          367.109375
+        ],
+        "center_column": [
+          356.109375,
+          367.109375
+        ],
+        "display": {
+          "x": 1310,
+          "y": 355.109375,
+          "width": 116,
+          "height": 12.765625
+        },
+        "garment_id": "ff39dfae-abdd-5ca3-8986-d1ba2cf0eccd",
+        "bin": "F3",
+        "side": "left",
+        "layer": 1,
+        "kind": "common",
+        "asset_id": "8b06c79c-ac5c-4ab4-93ad-638db5f9d6ef"
+      },
+      {
+        "bbox": [
+          1320.4375,
+          334,
+          1425.4375,
+          355
+        ],
+        "center_column": [
+          334,
+          355
+        ],
+        "display": {
+          "x": 1320.4375,
+          "y": 334,
+          "width": 105.546875,
+          "height": 21.109375
+        },
+        "garment_id": "8901515e-6ad7-51fc-8273-01284e04991d",
+        "bin": "F3",
+        "side": "left",
+        "layer": 2,
+        "kind": "approved",
+        "asset_id": "d90477db-08d7-4ecf-b618-0313d94ad5b3"
+      },
+      {
+        "bbox": [
+          1450,
+          375.21875,
+          1554,
+          388.21875
+        ],
+        "center_column": [
+          375.21875,
+          388.21875
+        ],
+        "display": {
+          "x": 1450,
+          "y": 375.21875,
+          "width": 104.640625,
+          "height": 13.765625
+        },
+        "garment_id": "826b60ea-d5e8-5d82-920e-d61a4009898e",
+        "bin": "F3",
+        "side": "right",
+        "layer": 0,
+        "kind": "approved",
+        "asset_id": "626da61d-d317-4209-a293-92a23563f94f"
+      },
+      {
+        "bbox": [
+          1450,
+          350.21875,
+          1554,
+          375.21875
+        ],
+        "center_column": [
+          350.21875,
+          375.21875
+        ],
+        "display": {
+          "x": 1450,
+          "y": 350.21875,
+          "width": 104.640625,
+          "height": 25
+        },
+        "garment_id": "fdc6ebaa-33d3-5edc-9477-18fd44a7b360",
+        "bin": "F3",
+        "side": "right",
+        "layer": 1,
+        "kind": "approved",
+        "asset_id": "0970a195-ee98-4be8-b671-52edc1cf2093"
+      },
+      {
+        "bbox": [
+          1450,
+          329.28125,
+          1554,
+          350.28125
+        ],
+        "center_column": [
+          329.28125,
+          350.28125
+        ],
+        "display": {
+          "x": 1450,
+          "y": 329.28125,
+          "width": 104.640625,
+          "height": 20.921875
+        },
+        "garment_id": "3aa71ad7-4b8e-5e40-a5ab-4ccef829b457",
+        "bin": "F3",
+        "side": "right",
+        "layer": 2,
+        "kind": "approved",
+        "asset_id": "d90477db-08d7-4ecf-b618-0313d94ad5b3"
+      },
+      {
+        "bbox": [
+          1320.609375,
+          491.859375,
+          1427.609375,
+          505.859375
+        ],
+        "center_column": [
+          491.859375,
+          505.859375
+        ],
+        "display": {
+          "x": 1320.609375,
+          "y": 491.859375,
+          "width": 107.375,
+          "height": 14.125
+        },
+        "garment_id": "0d7ee270-4445-5529-9fda-46e0ca87cd8a",
+        "bin": "F4",
+        "side": "left",
+        "layer": 0,
+        "kind": "approved",
+        "asset_id": "626da61d-d317-4209-a293-92a23563f94f"
+      },
+      {
+        "bbox": [
+          1320.609375,
+          466.203125,
+          1427.609375,
+          491.203125
+        ],
+        "center_column": [
+          466.203125,
+          491.203125
+        ],
+        "display": {
+          "x": 1320.609375,
+          "y": 466.203125,
+          "width": 107.375,
+          "height": 25.65625
+        },
+        "garment_id": "dda8dc76-975b-5283-8e66-c23dc6883b40",
+        "bin": "F4",
+        "side": "left",
+        "layer": 1,
+        "kind": "approved",
+        "asset_id": "0970a195-ee98-4be8-b671-52edc1cf2093"
+      },
+      {
+        "bbox": [
+          1321.609375,
+          444.734375,
+          1427.609375,
+          465.734375
+        ],
+        "center_column": [
+          444.734375,
+          465.734375
+        ],
+        "display": {
+          "x": 1320.609375,
+          "y": 444.734375,
+          "width": 107.375,
+          "height": 21.46875
+        },
+        "garment_id": "8afda102-37de-54fa-8c14-d473096205a6",
+        "bin": "F4",
+        "side": "left",
+        "layer": 2,
+        "kind": "approved",
+        "asset_id": "d90477db-08d7-4ecf-b618-0313d94ad5b3"
+      },
+      {
+        "bbox": [
+          1450,
+          492.109375,
+          1554,
+          505.109375
+        ],
+        "center_column": [
+          492.109375,
+          505.109375
+        ],
+        "display": {
+          "x": 1449,
+          "y": 492.109375,
+          "width": 105.546875,
+          "height": 13.875
+        },
+        "garment_id": "cdf93107-16da-5dfd-821f-be69d76be007",
+        "bin": "F4",
+        "side": "right",
+        "layer": 0,
+        "kind": "approved",
+        "asset_id": "626da61d-d317-4209-a293-92a23563f94f"
+      },
+      {
+        "bbox": [
+          1449,
+          466.875,
+          1554,
+          491.875
+        ],
+        "center_column": [
+          466.875,
+          491.875
+        ],
+        "display": {
+          "x": 1449,
+          "y": 466.875,
+          "width": 105.546875,
+          "height": 25.21875
+        },
+        "garment_id": "869734e9-a720-5471-bb80-91bf4b6cdd8c",
+        "bin": "F4",
+        "side": "right",
+        "layer": 1,
+        "kind": "approved",
+        "asset_id": "0970a195-ee98-4be8-b671-52edc1cf2093"
+      },
+      {
+        "bbox": [
+          1449,
+          445.765625,
+          1554,
+          466.765625
+        ],
+        "center_column": [
+          445.765625,
+          466.765625
+        ],
+        "display": {
+          "x": 1449,
+          "y": 445.765625,
+          "width": 105.546875,
+          "height": 21.109375
+        },
+        "garment_id": "053eb5bd-f212-5c7a-8757-69d511d5dabe",
+        "bin": "F4",
+        "side": "right",
+        "layer": 2,
+        "kind": "approved",
+        "asset_id": "d90477db-08d7-4ecf-b618-0313d94ad5b3"
+      },
+      {
+        "bbox": [
+          1311.8125,
+          600.234375,
+          1422.8125,
+          614.234375
+        ],
+        "center_column": [
+          600.234375,
+          614.234375
+        ],
+        "display": {
+          "x": 1310.8125,
+          "y": 600.234375,
+          "width": 112.171875,
+          "height": 14.75
+        },
+        "garment_id": "622a268d-dda1-56a2-944d-6c12df3f4458",
+        "bin": "F5",
+        "side": "left",
+        "layer": 0,
+        "kind": "approved",
+        "asset_id": "626da61d-d317-4209-a293-92a23563f94f"
+      },
+      {
+        "bbox": [
+          1311.8125,
+          573.421875,
+          1422.8125,
+          599.421875
+        ],
+        "center_column": [
+          573.421875,
+          599.421875
+        ],
+        "display": {
+          "x": 1310.8125,
+          "y": 573.421875,
+          "width": 112.171875,
+          "height": 26.796875
+        },
+        "garment_id": "89cca9bf-12cf-5fb2-b7ea-9cb38793fbb1",
+        "bin": "F5",
+        "side": "left",
+        "layer": 1,
+        "kind": "approved",
+        "asset_id": "0970a195-ee98-4be8-b671-52edc1cf2093"
+      },
+      {
+        "bbox": [
+          1311.8125,
+          552,
+          1422.8125,
+          573
+        ],
+        "center_column": [
+          552,
+          573
+        ],
+        "display": {
+          "x": 1310.8125,
+          "y": 551,
+          "width": 112.171875,
+          "height": 22.421875
+        },
+        "garment_id": "652c91d0-df18-5066-9600-852a9e1d9e8e",
+        "bin": "F5",
+        "side": "left",
+        "layer": 2,
+        "kind": "approved",
+        "asset_id": "d90477db-08d7-4ecf-b618-0313d94ad5b3"
+      },
+      {
+        "bbox": [
+          1449,
+          601.34375,
+          1552,
+          614.34375
+        ],
+        "center_column": [
+          601.34375,
+          614.34375
+        ],
+        "display": {
+          "x": 1449,
+          "y": 601.34375,
+          "width": 103.734375,
+          "height": 13.640625
+        },
+        "garment_id": "934d1ed2-2217-5875-ae29-b702b92c7a4b",
+        "bin": "F5",
+        "side": "right",
+        "layer": 0,
+        "kind": "approved",
+        "asset_id": "626da61d-d317-4209-a293-92a23563f94f"
+      },
+      {
+        "bbox": [
+          1449,
+          576.5625,
+          1552,
+          600.5625
+        ],
+        "center_column": [
+          576.5625,
+          600.5625
+        ],
+        "display": {
+          "x": 1449,
+          "y": 576.5625,
+          "width": 103.734375,
+          "height": 24.78125
+        },
+        "garment_id": "9813c705-e718-53ae-b1ab-9e7bafd4565e",
+        "bin": "F5",
+        "side": "right",
+        "layer": 1,
+        "kind": "approved",
+        "asset_id": "0970a195-ee98-4be8-b671-52edc1cf2093"
+      },
+      {
+        "bbox": [
+          1450,
+          555.8125,
+          1552,
+          575.8125
+        ],
+        "center_column": [
+          555.8125,
+          575.8125
+        ],
+        "display": {
+          "x": 1449,
+          "y": 555.8125,
+          "width": 103.734375,
+          "height": 20.734375
+        },
+        "garment_id": "9a8c11b4-4213-555f-aee6-70dd26494a30",
+        "bin": "F5",
+        "side": "right",
+        "layer": 2,
+        "kind": "approved",
+        "asset_id": "d90477db-08d7-4ecf-b618-0313d94ad5b3"
+      },
+      {
+        "bbox": [
+          1306.5625,
+          709.546875,
+          1422.5625,
+          723.546875
+        ],
+        "center_column": [
+          709.546875,
+          723.546875
+        ],
+        "display": {
+          "x": 1305.5625,
+          "y": 708.546875,
+          "width": 117.421875,
+          "height": 15.4375
+        },
+        "garment_id": "00caadf4-b6bc-5d77-ad83-5087a2579b65",
+        "bin": "F6",
+        "side": "left",
+        "layer": 0,
+        "kind": "approved",
+        "asset_id": "626da61d-d317-4209-a293-92a23563f94f"
+      },
+      {
+        "bbox": [
+          1306.5625,
+          681.484375,
+          1422.5625,
+          708.484375
+        ],
+        "center_column": [
+          681.484375,
+          708.484375
+        ],
+        "display": {
+          "x": 1305.5625,
+          "y": 680.484375,
+          "width": 117.421875,
+          "height": 28.046875
+        },
+        "garment_id": "9a592908-46aa-5cb5-ae6e-4588e80195d0",
+        "bin": "F6",
+        "side": "left",
+        "layer": 1,
+        "kind": "approved",
+        "asset_id": "0970a195-ee98-4be8-b671-52edc1cf2093"
+      },
+      {
+        "bbox": [
+          1306.5625,
+          658,
+          1422.5625,
+          680
+        ],
+        "center_column": [
+          658,
+          680
+        ],
+        "display": {
+          "x": 1305.5625,
+          "y": 657,
+          "width": 117.421875,
+          "height": 23.484375
+        },
+        "garment_id": "5ac6ea1d-c00f-5aa4-ae85-82081fa3444f",
+        "bin": "F6",
+        "side": "left",
+        "layer": 2,
+        "kind": "approved",
+        "asset_id": "d90477db-08d7-4ecf-b618-0313d94ad5b3"
+      },
+      {
+        "bbox": [
+          1450,
+          709.234375,
+          1561,
+          723.234375
+        ],
+        "center_column": [
+          709.234375,
+          723.234375
+        ],
+        "display": {
+          "x": 1449,
+          "y": 709.234375,
+          "width": 112.171875,
+          "height": 14.75
+        },
+        "garment_id": "b4c04595-b1cc-5380-abb5-a4a89324087f",
+        "bin": "F6",
+        "side": "right",
+        "layer": 0,
+        "kind": "approved",
+        "asset_id": "626da61d-d317-4209-a293-92a23563f94f"
+      },
+      {
+        "bbox": [
+          1450,
+          682.421875,
+          1561,
+          708.421875
+        ],
+        "center_column": [
+          682.421875,
+          708.421875
+        ],
+        "display": {
+          "x": 1449,
+          "y": 682.421875,
+          "width": 112.171875,
+          "height": 26.796875
+        },
+        "garment_id": "f21f98ef-184e-5e45-80aa-4552b848d8a4",
+        "bin": "F6",
+        "side": "right",
+        "layer": 1,
+        "kind": "approved",
+        "asset_id": "0970a195-ee98-4be8-b671-52edc1cf2093"
+      },
+      {
+        "bbox": [
+          1450,
+          661,
+          1561,
+          682
+        ],
+        "center_column": [
+          661,
+          682
+        ],
+        "display": {
+          "x": 1449,
+          "y": 660,
+          "width": 112.171875,
+          "height": 22.421875
+        },
+        "garment_id": "d0ef9f43-50c9-5fee-8980-f501b8128baa",
+        "bin": "F6",
+        "side": "right",
+        "layer": 2,
+        "kind": "approved",
+        "asset_id": "d90477db-08d7-4ecf-b618-0313d94ad5b3"
+      },
+      {
+        "bbox": [
+          1298.109375,
+          827.171875,
+          1424.109375,
+          842.171875
+        ],
+        "center_column": [
+          827.171875,
+          842.171875
+        ],
+        "display": {
+          "x": 1297.109375,
+          "y": 826.171875,
+          "width": 127.875,
+          "height": 16.8125
+        },
+        "garment_id": "11251df3-4107-575c-b871-47e5d6efeed3",
+        "bin": "F7",
+        "side": "left",
+        "layer": 0,
+        "kind": "approved",
+        "asset_id": "626da61d-d317-4209-a293-92a23563f94f"
+      },
+      {
+        "bbox": [
+          1298.109375,
+          796.609375,
+          1424.109375,
+          825.609375
+        ],
+        "center_column": [
+          796.609375,
+          825.609375
+        ],
+        "display": {
+          "x": 1297.109375,
+          "y": 795.609375,
+          "width": 127.875,
+          "height": 30.546875
+        },
+        "garment_id": "6a0331fb-9e5b-5153-91df-5f34afdaf691",
+        "bin": "F7",
+        "side": "left",
+        "layer": 1,
+        "kind": "approved",
+        "asset_id": "0970a195-ee98-4be8-b671-52edc1cf2093"
+      },
+      {
+        "bbox": [
+          1298.109375,
+          771.03125,
+          1424.109375,
+          795.03125
+        ],
+        "center_column": [
+          771.03125,
+          795.03125
+        ],
+        "display": {
+          "x": 1297.109375,
+          "y": 770.03125,
+          "width": 127.875,
+          "height": 25.5625
+        },
+        "garment_id": "d65f4291-ba26-5e0a-9547-9d4dddc2bf54",
+        "bin": "F7",
+        "side": "left",
+        "layer": 2,
+        "kind": "approved",
+        "asset_id": "d90477db-08d7-4ecf-b618-0313d94ad5b3"
+      },
+      {
+        "bbox": [
+          1450,
+          827.15625,
+          1576,
+          842.15625
+        ],
+        "center_column": [
+          827.15625,
+          842.15625
+        ],
+        "display": {
+          "x": 1449,
+          "y": 826.15625,
+          "width": 127.953125,
+          "height": 16.828125
+        },
+        "garment_id": "01d7378b-ec70-5035-bd0a-88b420767a48",
+        "bin": "F7",
+        "side": "right",
+        "layer": 0,
+        "kind": "approved",
+        "asset_id": "626da61d-d317-4209-a293-92a23563f94f"
+      },
+      {
+        "bbox": [
+          1450,
+          796.578125,
+          1576,
+          825.578125
+        ],
+        "center_column": [
+          796.578125,
+          825.578125
+        ],
+        "display": {
+          "x": 1449,
+          "y": 795.578125,
+          "width": 127.953125,
+          "height": 30.5625
+        },
+        "garment_id": "6a39ca49-8a8c-52c6-b999-5797f7d2f188",
+        "bin": "F7",
+        "side": "right",
+        "layer": 1,
+        "kind": "approved",
+        "asset_id": "0970a195-ee98-4be8-b671-52edc1cf2093"
+      },
+      {
+        "bbox": [
+          1450,
+          771,
+          1576,
+          795
+        ],
+        "center_column": [
+          771,
+          795
+        ],
+        "display": {
+          "x": 1449,
+          "y": 770,
+          "width": 127.953125,
+          "height": 25.578125
+        },
+        "garment_id": "59f470a8-c063-5bef-b7d2-f7350c9039cb",
+        "bin": "F7",
+        "side": "right",
+        "layer": 2,
+        "kind": "approved",
+        "asset_id": "d90477db-08d7-4ecf-b618-0313d94ad5b3"
+      }
+    ],
+    "stacks": [
+      {
+        "bin": "E1",
+        "side": "left",
+        "bbox": [
+          1009,
+          101,
+          1112,
+          151
+        ],
+        "width_error_pct": -1.904761904761909,
+        "height_error_pct": -1.9607843137254943,
+        "gap_px": 1,
+        "floor_gap_px": 1,
+        "pass": true
+      },
+      {
+        "bin": "E1",
+        "side": "right",
+        "bbox": [
+          1132,
+          100,
+          1243,
+          150.25
+        ],
+        "width_error_pct": -1.7699115044247815,
+        "height_error_pct": -1.4705882352941124,
+        "gap_px": 1.734375,
+        "floor_gap_px": 1.75,
+        "pass": true
+      },
+      {
+        "bin": "E2",
+        "side": "left",
+        "bbox": [
+          1008,
+          212,
+          1115,
+          263.328125
+        ],
+        "width_error_pct": -1.834862385321101,
+        "height_error_pct": -3.1544811320754707,
+        "gap_px": 1.671875,
+        "floor_gap_px": 1.671875,
+        "pass": true
+      },
+      {
+        "bin": "E2",
+        "side": "right",
+        "bbox": [
+          1132.984375,
+          216,
+          1242.984375,
+          263.65625
+        ],
+        "width_error_pct": -1.7857142857142905,
+        "height_error_pct": -2.7423469387755084,
+        "gap_px": 1.328125,
+        "floor_gap_px": 1.34375,
+        "pass": true
+      },
+      {
+        "bin": "E3",
+        "side": "left",
+        "bbox": [
+          1009,
+          332,
+          1114,
+          388
+        ],
+        "width_error_pct": -1.869158878504673,
+        "height_error_pct": -1.7543859649122862,
+        "gap_px": 1,
+        "floor_gap_px": 1,
+        "pass": true
+      },
+      {
+        "bin": "E3",
+        "side": "right",
+        "bbox": [
+          1132,
+          331,
+          1243,
+          387.65625
+        ],
+        "width_error_pct": -1.7699115044247815,
+        "height_error_pct": -2.316810344827591,
+        "gap_px": 1.328125,
+        "floor_gap_px": 1.34375,
+        "pass": true
+      },
+      {
+        "bin": "E4",
+        "side": "left",
+        "bbox": [
+          1008,
+          445,
+          1117,
+          501.65625
+        ],
+        "width_error_pct": -1.8018018018018056,
+        "height_error_pct": -2.316810344827591,
+        "gap_px": 1.328125,
+        "floor_gap_px": 1.34375,
+        "pass": true
+      },
+      {
+        "bin": "E4",
+        "side": "right",
+        "bbox": [
+          1132.984375,
+          446,
+          1243.984375,
+          502
+        ],
+        "width_error_pct": -1.7699115044247815,
+        "height_error_pct": -1.7543859649122862,
+        "gap_px": 1,
+        "floor_gap_px": 1,
+        "pass": true
+      },
+      {
+        "bin": "F1",
+        "side": "left",
+        "bbox": [
+          1311,
+          100,
+          1424.34375,
+          151
+        ],
+        "width_error_pct": -1.4402173913043437,
+        "height_error_pct": 0,
+        "gap_px": 1,
+        "floor_gap_px": 1,
+        "pass": true
+      },
+      {
+        "bin": "F1",
+        "side": "right",
+        "bbox": [
+          1450,
+          102,
+          1559,
+          150.328125
+        ],
+        "width_error_pct": -1.8018018018018056,
+        "height_error_pct": -3.343750000000001,
+        "gap_px": 1.671875,
+        "floor_gap_px": 1.671875,
+        "pass": true
+      },
+      {
+        "bin": "F2",
+        "side": "left",
+        "bbox": [
+          1312,
+          217,
+          1422,
+          265.328125
+        ],
+        "width_error_pct": -1.7857142857142905,
+        "height_error_pct": -3.343750000000001,
+        "gap_px": 1.671875,
+        "floor_gap_px": 1.671875,
+        "pass": true
+      },
+      {
+        "bin": "F2",
+        "side": "right",
+        "bbox": [
+          1451,
+          215,
+          1562,
+          265.65625
+        ],
+        "width_error_pct": -1.7699115044247815,
+        "height_error_pct": -2.5841346153846145,
+        "gap_px": 1.328125,
+        "floor_gap_px": 1.34375,
+        "pass": true
+      },
+      {
+        "bin": "F3",
+        "side": "left",
+        "bbox": [
+          1311,
+          334,
+          1425.4375,
+          388.875
+        ],
+        "width_error_pct": -1.346982758620685,
+        "height_error_pct": -0.2272727272727315,
+        "gap_px": 1.109375,
+        "floor_gap_px": 1.125,
+        "pass": true
+      },
+      {
+        "bin": "F3",
+        "side": "right",
+        "bbox": [
+          1450,
+          329.28125,
+          1554,
+          388.21875
+        ],
+        "width_error_pct": -9.565217391304348,
+        "height_error_pct": 5.245535714285721,
+        "gap_px": 0,
+        "floor_gap_px": 1.78125,
+        "pass": true
+      },
+      {
+        "bin": "F4",
+        "side": "left",
+        "bbox": [
+          1320.609375,
+          444.734375,
+          1427.609375,
+          505.859375
+        ],
+        "width_error_pct": -9.322033898305083,
+        "height_error_pct": 1.8750000000000044,
+        "gap_px": 0.65625,
+        "floor_gap_px": 1.140625,
+        "pass": true
+      },
+      {
+        "bin": "F4",
+        "side": "right",
+        "bbox": [
+          1449,
+          445.765625,
+          1554,
+          505.109375
+        ],
+        "width_error_pct": -9.482758620689658,
+        "height_error_pct": -1.0937500000000044,
+        "gap_px": 0.234375,
+        "floor_gap_px": 1.890625,
+        "pass": true
+      },
+      {
+        "bin": "F5",
+        "side": "left",
+        "bbox": [
+          1311.8125,
+          552,
+          1422.8125,
+          614.234375
+        ],
+        "width_error_pct": -1.7699115044247815,
+        "height_error_pct": -2.7587890625,
+        "gap_px": 0.8125,
+        "floor_gap_px": 1.765625,
+        "pass": true
+      },
+      {
+        "bin": "F5",
+        "side": "right",
+        "bbox": [
+          1449,
+          555.8125,
+          1552,
+          614.34375
+        ],
+        "width_error_pct": -9.649122807017541,
+        "height_error_pct": 4.520089285714279,
+        "gap_px": 0.78125,
+        "floor_gap_px": 1.65625,
+        "pass": true
+      },
+      {
+        "bin": "F6",
+        "side": "left",
+        "bbox": [
+          1306.5625,
+          658,
+          1422.5625,
+          723.546875
+        ],
+        "width_error_pct": 2.6548672566371723,
+        "height_error_pct": -2.168843283582089,
+        "gap_px": 1.484375,
+        "floor_gap_px": 1.453125,
+        "pass": true
+      },
+      {
+        "bin": "F6",
+        "side": "right",
+        "bbox": [
+          1450,
+          661,
+          1561,
+          723.234375
+        ],
+        "width_error_pct": -2.631578947368418,
+        "height_error_pct": -2.7587890625,
+        "gap_px": 0.8125,
+        "floor_gap_px": 1.765625,
+        "pass": true
+      },
+      {
+        "bin": "F7",
+        "side": "left",
+        "bbox": [
+          1298.109375,
+          771.03125,
+          1424.109375,
+          842.171875
+        ],
+        "width_error_pct": 9.565217391304337,
+        "height_error_pct": -9.94857594936709,
+        "gap_px": 1.578125,
+        "floor_gap_px": 1.828125,
+        "pass": true
+      },
+      {
+        "bin": "F7",
+        "side": "right",
+        "bbox": [
+          1450,
+          771,
+          1576,
+          842.15625
+        ],
+        "width_error_pct": 5.882352941176472,
+        "height_error_pct": -2.525684931506844,
+        "gap_px": 1.578125,
+        "floor_gap_px": 1.84375,
+        "pass": true
+      }
+    ],
+    "groups": [
+      {
+        "bin": "E1",
+        "inter_stack_gap_error_px": 2,
+        "pass": true
+      },
+      {
+        "bin": "E2",
+        "inter_stack_gap_error_px": 1.984375,
+        "pass": true
+      },
+      {
+        "bin": "E3",
+        "inter_stack_gap_error_px": 2,
+        "pass": true
+      },
+      {
+        "bin": "E4",
+        "inter_stack_gap_error_px": 1.984375,
+        "pass": true
+      },
+      {
+        "bin": "F1",
+        "inter_stack_gap_error_px": 1.65625,
+        "pass": true
+      },
+      {
+        "bin": "F2",
+        "inter_stack_gap_error_px": 2,
+        "pass": true
+      },
+      {
+        "bin": "F3",
+        "inter_stack_gap_error_px": 0.5625,
+        "pass": true
+      },
+      {
+        "bin": "F4",
+        "inter_stack_gap_error_px": 0.390625,
+        "pass": true
+      },
+      {
+        "bin": "F5",
+        "inter_stack_gap_error_px": 0.1875,
+        "pass": true
+      },
+      {
+        "bin": "F6",
+        "inter_stack_gap_error_px": 1.4375,
+        "pass": true
+      },
+      {
+        "bin": "F7",
+        "inter_stack_gap_error_px": 1.890625,
+        "pass": true
+      }
+    ],
+    "errors": [],
+    "failed_stacks": []
+  },
+  {
+    "profile": "최휘재",
+    "scene_ids": [
+      "1adf7dde-eaed-53f9-ac0e-8497078fa703",
+      "1b92cf0a-82ad-567a-b1b5-7022111fccaf",
+      "1f8dcda3-eb5c-5744-bbd7-98e2b7adef98",
+      "20cb6b2b-1f68-542e-9150-d9e1e0a189c5",
+      "21901819-11cb-56f0-9492-026b6b6166fe",
+      "26b4405e-901e-5e94-94c0-6135105b0b8c",
+      "2904fd43-cb31-530d-b4bd-2d9783d3c762",
+      "2d5ec79d-bdcf-582b-a78d-a6734b287c65",
+      "2f2a46af-3507-5f7d-a53f-5b2bab1e7af5",
+      "33d87c69-53a3-5062-9428-fdf2d12a2bce",
+      "3e2e7757-e7fe-5096-b955-5978f9551311",
+      "454faefc-acf0-593d-a5b1-15a1b45b097e",
+      "4d1f6a17-44b8-5c0b-8248-eb009565da12",
+      "59e7a4ca-3acb-5250-a2d6-8f7703984934",
+      "6318748a-24b8-5a50-bf13-c925293f0ea1",
+      "715489be-2fd6-5576-b58c-bd991c9c2c32",
+      "7893136d-24c1-5af3-8986-05089c8f2f18",
+      "80cd394e-6f5b-5ef5-95d4-a1dae823a1ed",
+      "821ae500-52f4-5879-b275-9a23bc327a3a",
+      "825237a9-8853-59de-bd73-4ec198b7e033",
+      "883a6a25-4c2c-510b-bbe5-0ca8e5a44e32",
+      "900b7fa4-0e9c-5dd1-afd2-1c89ac2eaade",
+      "94513db1-6b4c-5b06-a088-1abf46df8712",
+      "a0232e79-b5d9-5525-a298-3054de415599",
+      "a18baaab-a984-5245-a7a3-28bbd27e20ab",
+      "a72e0c37-5f7f-5acf-bd50-7f8c65b8f23d",
+      "b8c03e66-e150-52b2-8d25-41fcba2d4720",
+      "c349dc83-4312-5479-bb8e-094931f8a30b",
+      "df4082b6-d86e-53e7-a427-924c641a5145",
+      "df91ef4a-594c-570d-b32d-2b109efe8bab",
+      "e29bc367-5d11-5bbf-8fcb-9813c24c6f17",
+      "f35667ff-7520-5184-abf0-d35865244624",
+      "f84f09ec-6c6f-59fc-8438-3b80c620c3d9",
+      "fa6caeb1-0966-58c2-a81e-2754d7643c2c",
+      "ff39dfae-abdd-5ca3-8986-d1ba2cf0eccd",
+      "bc35f9b1-3a49-46d7-b0df-4631d2d3e3e9",
+      "dbfcdf61-e6c8-42ae-82e3-6c0ef39f8806",
+      "a4ac8980-d9fb-4442-aa6f-158cc9270277",
+      "a418bd50-1612-4f95-a030-e54b6a820fe5",
+      "6ba02802-d475-44f0-935a-e1050b50cf84",
+      "59e18c18-7553-41d9-bc88-014dd65e7b21",
+      "9f37a700-3578-4af2-9f8e-f36b869b5961",
+      "449c07e3-04b7-42af-b7b0-79ae8bdbf400",
+      "3049ddf0-d7cb-43c5-b9d8-87936db3e346",
+      "901a7b5c-d23c-4ec1-b434-5d8b41e6dd85",
+      "6df03b25-1edd-4a0b-b003-609ea9d25781",
+      "24c575ab-9dff-4bab-8d72-5dcc61d712b7",
+      "393354b9-bf4d-4c62-9456-8a810288e870",
+      "b5b5600d-3a67-48f6-8a63-7d8164bb9030",
+      "3518be70-15ef-462f-a130-7205a663205c",
+      "e2f39099-1da1-42a6-abed-827c494f53b9",
+      "59aaa9b2-d32c-4634-8324-e229cf91ce7b",
+      "0e707336-0417-42f8-8b6f-f655ee0e94a0",
+      "0d1ef3df-bbbe-4a2a-9fd7-56bf8dd945f9",
+      "49dd09f9-430c-4705-bbbf-6a77d8131677",
+      "0d5afe1b-7832-4885-8eb5-341bb57cb90e",
+      "fd1ce769-aab6-4227-83e0-c550cd9ecb45",
+      "2568aead-2410-4bab-9208-6d4f54109927",
+      "a2f054f7-6967-4add-bf4a-b61af158f0e2",
+      "00caadf4-b6bc-5d77-ad83-5087a2579b65",
+      "01d7378b-ec70-5035-bd0a-88b420767a48",
+      "053eb5bd-f212-5c7a-8757-69d511d5dabe",
+      "0d7ee270-4445-5529-9fda-46e0ca87cd8a",
+      "11251df3-4107-575c-b871-47e5d6efeed3",
+      "3aa71ad7-4b8e-5e40-a5ab-4ccef829b457",
+      "59f470a8-c063-5bef-b7d2-f7350c9039cb",
+      "5ac6ea1d-c00f-5aa4-ae85-82081fa3444f",
+      "622a268d-dda1-56a2-944d-6c12df3f4458",
+      "652c91d0-df18-5066-9600-852a9e1d9e8e",
+      "6a0331fb-9e5b-5153-91df-5f34afdaf691",
+      "6a39ca49-8a8c-52c6-b999-5797f7d2f188",
+      "826b60ea-d5e8-5d82-920e-d61a4009898e",
+      "869734e9-a720-5471-bb80-91bf4b6cdd8c",
+      "8901515e-6ad7-51fc-8273-01284e04991d",
+      "89cca9bf-12cf-5fb2-b7ea-9cb38793fbb1",
+      "8afda102-37de-54fa-8c14-d473096205a6",
+      "934d1ed2-2217-5875-ae29-b702b92c7a4b",
+      "9813c705-e718-53ae-b1ab-9e7bafd4565e",
+      "9a592908-46aa-5cb5-ae6e-4588e80195d0",
+      "9a8c11b4-4213-555f-aee6-70dd26494a30",
+      "b4c04595-b1cc-5380-abb5-a4a89324087f",
+      "cdf93107-16da-5dfd-821f-be69d76be007",
+      "d0ef9f43-50c9-5fee-8980-f501b8128baa",
+      "d65f4291-ba26-5e0a-9547-9d4dddc2bf54",
+      "dda8dc76-975b-5283-8e66-c23dc6883b40",
+      "f21f98ef-184e-5e45-80aa-4552b848d8a4",
+      "fdc6ebaa-33d3-5edc-9477-18fd44a7b360"
+    ],
+    "measurements": [
+      {
+        "bbox": [
+          1009,
+          135,
+          1112,
+          151
+        ],
+        "center_column": [
+          135,
+          151
+        ],
+        "display": {
+          "x": 1008,
+          "y": 134,
+          "width": 105,
+          "height": 16.984375
+        },
+        "garment_id": "1adf7dde-eaed-53f9-ac0e-8497078fa703",
+        "bin": "E1",
+        "side": "left",
+        "layer": 0,
+        "kind": "common",
+        "asset_id": "0ffce058-96fc-4707-915b-3022e7f0d104"
+      },
+      {
+        "bbox": [
+          1009,
+          118,
+          1112,
+          134
+        ],
+        "center_column": [
+          118,
+          134
+        ],
+        "display": {
+          "x": 1008,
+          "y": 117,
+          "width": 105,
+          "height": 16.984375
+        },
+        "garment_id": "1b92cf0a-82ad-567a-b1b5-7022111fccaf",
+        "bin": "E1",
+        "side": "left",
+        "layer": 1,
+        "kind": "common",
+        "asset_id": "74b430f1-2f40-440e-bd38-8714528ca9d5"
+      },
+      {
+        "bbox": [
+          1009,
+          101,
+          1112,
+          117
+        ],
+        "center_column": [
+          101,
+          117
+        ],
+        "display": {
+          "x": 1008,
+          "y": 100,
+          "width": 105,
+          "height": 16.984375
+        },
+        "garment_id": "1f8dcda3-eb5c-5744-bbd7-98e2b7adef98",
+        "bin": "E1",
+        "side": "left",
+        "layer": 2,
+        "kind": "common",
+        "asset_id": "feb7a4ef-8973-46de-a22b-2e50064c86bd"
+      },
+      {
+        "bbox": [
+          1132,
+          133.25,
+          1243,
+          150.25
+        ],
+        "center_column": [
+          133.25,
+          150.25
+        ],
+        "display": {
+          "x": 1131,
+          "y": 132.25,
+          "width": 113,
+          "height": 18.734375
+        },
+        "garment_id": "20cb6b2b-1f68-542e-9150-d9e1e0a189c5",
+        "bin": "E1",
+        "side": "right",
+        "layer": 0,
+        "kind": "common",
+        "asset_id": "b25bf90c-4f8b-4dea-a106-4e869a97ba29"
+      },
+      {
+        "bbox": [
+          1132,
+          114.515625,
+          1243,
+          131.515625
+        ],
+        "center_column": [
+          114.515625,
+          131.515625
+        ],
+        "display": {
+          "x": 1131,
+          "y": 113.515625,
+          "width": 113,
+          "height": 18.734375
+        },
+        "garment_id": "21901819-11cb-56f0-9492-026b6b6166fe",
+        "bin": "E1",
+        "side": "right",
+        "layer": 1,
+        "kind": "common",
+        "asset_id": "951972cf-7636-4042-9165-06b573c76dd3"
+      },
+      {
+        "bbox": [
+          1132,
+          100,
+          1233,
+          113
+        ],
+        "center_column": [
+          100,
+          113
+        ],
+        "display": {
+          "x": 1131,
+          "y": 100,
+          "width": 102.828125,
+          "height": 13.515625
+        },
+        "garment_id": "2568aead-2410-4bab-9208-6d4f54109927",
+        "bin": "E1",
+        "side": "right",
+        "layer": 2,
+        "kind": "approved",
+        "asset_id": "626da61d-d317-4209-a293-92a23563f94f"
+      },
+      {
+        "bbox": [
+          1008,
+          247.328125,
+          1115,
+          263.328125
+        ],
+        "center_column": [
+          247.328125,
+          263.328125
+        ],
+        "display": {
+          "x": 1007,
+          "y": 246.328125,
+          "width": 109,
+          "height": 17.65625
+        },
+        "garment_id": "26b4405e-901e-5e94-94c0-6135105b0b8c",
+        "bin": "E2",
+        "side": "left",
+        "layer": 0,
+        "kind": "common",
+        "asset_id": "a61edc38-0613-467e-a7be-c972a3f2e6e1"
+      },
+      {
+        "bbox": [
+          1008,
+          229.65625,
+          1115,
+          245.65625
+        ],
+        "center_column": [
+          229.65625,
+          245.65625
+        ],
+        "display": {
+          "x": 1007,
+          "y": 228.65625,
+          "width": 109,
+          "height": 17.65625
+        },
+        "garment_id": "2904fd43-cb31-530d-b4bd-2d9783d3c762",
+        "bin": "E2",
+        "side": "left",
+        "layer": 1,
+        "kind": "common",
+        "asset_id": "3a9c6e07-a1b6-481c-83cf-e4728180735d"
+      },
+      {
+        "bbox": [
+          1008,
+          212,
+          1115,
+          228
+        ],
+        "center_column": [
+          212,
+          228
+        ],
+        "display": {
+          "x": 1007,
+          "y": 211,
+          "width": 109,
+          "height": 17.65625
+        },
+        "garment_id": "2d5ec79d-bdcf-582b-a78d-a6734b287c65",
+        "bin": "E2",
+        "side": "left",
+        "layer": 2,
+        "kind": "common",
+        "asset_id": "2a36b3cf-e111-4a74-857e-09da342cf350"
+      },
+      {
+        "bbox": [
+          1132.984375,
+          248.65625,
+          1242.984375,
+          263.65625
+        ],
+        "center_column": [
+          248.65625,
+          263.65625
+        ],
+        "display": {
+          "x": 1131.984375,
+          "y": 247.65625,
+          "width": 112,
+          "height": 16.328125
+        },
+        "garment_id": "2f2a46af-3507-5f7d-a53f-5b2bab1e7af5",
+        "bin": "E2",
+        "side": "right",
+        "layer": 0,
+        "kind": "common",
+        "asset_id": "0033e851-b432-4098-8085-bb49db387d6a"
+      },
+      {
+        "bbox": [
+          1132.984375,
+          232.328125,
+          1242.984375,
+          247.328125
+        ],
+        "center_column": [
+          232.328125,
+          247.328125
+        ],
+        "display": {
+          "x": 1131.984375,
+          "y": 231.328125,
+          "width": 112,
+          "height": 16.328125
+        },
+        "garment_id": "33d87c69-53a3-5062-9428-fdf2d12a2bce",
+        "bin": "E2",
+        "side": "right",
+        "layer": 1,
+        "kind": "common",
+        "asset_id": "f8c7280f-0609-4347-9a7c-f3710edba798"
+      },
+      {
+        "bbox": [
+          1132.984375,
+          216,
+          1242.984375,
+          231
+        ],
+        "center_column": [
+          216,
+          231
+        ],
+        "display": {
+          "x": 1131.984375,
+          "y": 215,
+          "width": 112,
+          "height": 16.328125
+        },
+        "garment_id": "3e2e7757-e7fe-5096-b955-5978f9551311",
+        "bin": "E2",
+        "side": "right",
+        "layer": 2,
+        "kind": "common",
+        "asset_id": "d9354470-e356-4fbb-baef-ec0e96c0abca"
+      },
+      {
+        "bbox": [
+          1009,
+          370,
+          1114,
+          388
+        ],
+        "center_column": [
+          370,
+          388
+        ],
+        "display": {
+          "x": 1008,
+          "y": 369,
+          "width": 107,
+          "height": 19
+        },
+        "garment_id": "454faefc-acf0-593d-a5b1-15a1b45b097e",
+        "bin": "E3",
+        "side": "left",
+        "layer": 0,
+        "kind": "common",
+        "asset_id": "ec9e14ff-6b93-46ba-81e8-e758db065f66"
+      },
+      {
+        "bbox": [
+          1009,
+          351,
+          1114,
+          369
+        ],
+        "center_column": [
+          351,
+          369
+        ],
+        "display": {
+          "x": 1008,
+          "y": 350,
+          "width": 107,
+          "height": 19
+        },
+        "garment_id": "4d1f6a17-44b8-5c0b-8248-eb009565da12",
+        "bin": "E3",
+        "side": "left",
+        "layer": 1,
+        "kind": "common",
+        "asset_id": "68b0ef74-f336-4fb6-abae-b130e0a2b9c8"
+      },
+      {
+        "bbox": [
+          1009,
+          332,
+          1114,
+          350
+        ],
+        "center_column": [
+          332,
+          350
+        ],
+        "display": {
+          "x": 1008,
+          "y": 331,
+          "width": 107,
+          "height": 19
+        },
+        "garment_id": "59e7a4ca-3acb-5250-a2d6-8f7703984934",
+        "bin": "E3",
+        "side": "left",
+        "layer": 2,
+        "kind": "common",
+        "asset_id": "f46238b7-c24c-454a-85aa-97514376203c"
+      },
+      {
+        "bbox": [
+          1132,
+          369.65625,
+          1243,
+          387.65625
+        ],
+        "center_column": [
+          369.65625,
+          387.65625
+        ],
+        "display": {
+          "x": 1131,
+          "y": 368.65625,
+          "width": 113,
+          "height": 19.328125
+        },
+        "garment_id": "6318748a-24b8-5a50-bf13-c925293f0ea1",
+        "bin": "E3",
+        "side": "right",
+        "layer": 0,
+        "kind": "common",
+        "asset_id": "dee5ae3d-fbc3-4dcd-af0a-33ea61ca839c"
+      },
+      {
+        "bbox": [
+          1132,
+          350.328125,
+          1243,
+          368.328125
+        ],
+        "center_column": [
+          350.328125,
+          368.328125
+        ],
+        "display": {
+          "x": 1131,
+          "y": 349.328125,
+          "width": 113,
+          "height": 19.328125
+        },
+        "garment_id": "715489be-2fd6-5576-b58c-bd991c9c2c32",
+        "bin": "E3",
+        "side": "right",
+        "layer": 1,
+        "kind": "common",
+        "asset_id": "de5db9dc-c2c6-48cd-a8fd-932293f6d864"
+      },
+      {
+        "bbox": [
+          1132,
+          331,
+          1243,
+          349
+        ],
+        "center_column": [
+          331,
+          349
+        ],
+        "display": {
+          "x": 1131,
+          "y": 330,
+          "width": 113,
+          "height": 19.328125
+        },
+        "garment_id": "7893136d-24c1-5af3-8986-05089c8f2f18",
+        "bin": "E3",
+        "side": "right",
+        "layer": 2,
+        "kind": "common",
+        "asset_id": "2914e7d6-b30f-421a-9d54-b48b62a30ca6"
+      },
+      {
+        "bbox": [
+          1008,
+          483.65625,
+          1117,
+          501.65625
+        ],
+        "center_column": [
+          483.65625,
+          501.65625
+        ],
+        "display": {
+          "x": 1007,
+          "y": 482.65625,
+          "width": 111,
+          "height": 19.328125
+        },
+        "garment_id": "80cd394e-6f5b-5ef5-95d4-a1dae823a1ed",
+        "bin": "E4",
+        "side": "left",
+        "layer": 0,
+        "kind": "common",
+        "asset_id": "2ee322ee-8255-494f-b440-3b3d12d3e2cb"
+      },
+      {
+        "bbox": [
+          1008,
+          464.328125,
+          1117,
+          482.328125
+        ],
+        "center_column": [
+          464.328125,
+          482.328125
+        ],
+        "display": {
+          "x": 1007,
+          "y": 463.328125,
+          "width": 111,
+          "height": 19.328125
+        },
+        "garment_id": "821ae500-52f4-5879-b275-9a23bc327a3a",
+        "bin": "E4",
+        "side": "left",
+        "layer": 1,
+        "kind": "common",
+        "asset_id": "5ef5fac6-4aa9-4f50-8c27-4962d05e71cd"
+      },
+      {
+        "bbox": [
+          1008,
+          445,
+          1117,
+          463
+        ],
+        "center_column": [
+          445,
+          463
+        ],
+        "display": {
+          "x": 1007,
+          "y": 444,
+          "width": 111,
+          "height": 19.328125
+        },
+        "garment_id": "825237a9-8853-59de-bd73-4ec198b7e033",
+        "bin": "E4",
+        "side": "left",
+        "layer": 2,
+        "kind": "common",
+        "asset_id": "18756d9e-dc4e-4dbb-8b24-8f13a5b77c2b"
+      },
+      {
+        "bbox": [
+          1132.984375,
+          484,
+          1243.984375,
+          502
+        ],
+        "center_column": [
+          484,
+          502
+        ],
+        "display": {
+          "x": 1131.984375,
+          "y": 483,
+          "width": 113,
+          "height": 19
+        },
+        "garment_id": "883a6a25-4c2c-510b-bbe5-0ca8e5a44e32",
+        "bin": "E4",
+        "side": "right",
+        "layer": 0,
+        "kind": "common",
+        "asset_id": "b5956fc8-d0cb-4d7f-a580-d679aec410a8"
+      },
+      {
+        "bbox": [
+          1132.984375,
+          465,
+          1243.984375,
+          483
+        ],
+        "center_column": [
+          465,
+          483
+        ],
+        "display": {
+          "x": 1131.984375,
+          "y": 464,
+          "width": 113,
+          "height": 19
+        },
+        "garment_id": "900b7fa4-0e9c-5dd1-afd2-1c89ac2eaade",
+        "bin": "E4",
+        "side": "right",
+        "layer": 1,
+        "kind": "common",
+        "asset_id": "a47e86e1-9b80-40bf-85c2-297f82a95534"
+      },
+      {
+        "bbox": [
+          1132.984375,
+          446,
+          1243.984375,
+          464
+        ],
+        "center_column": [
+          446,
+          464
+        ],
+        "display": {
+          "x": 1131.984375,
+          "y": 445,
+          "width": 113,
+          "height": 19
+        },
+        "garment_id": "94513db1-6b4c-5b06-a088-1abf46df8712",
+        "bin": "E4",
+        "side": "right",
+        "layer": 2,
+        "kind": "common",
+        "asset_id": "90826ed2-7d83-452a-ab33-aa4b5de01f55"
+      },
+      {
+        "bbox": [
+          1311,
+          139,
+          1424,
+          151
+        ],
+        "center_column": [
+          139,
+          151
+        ],
+        "display": {
+          "x": 1310,
+          "y": 138,
+          "width": 115,
+          "height": 12.984375
+        },
+        "garment_id": "a0232e79-b5d9-5525-a298-3054de415599",
+        "bin": "F1",
+        "side": "left",
+        "layer": 0,
+        "kind": "common",
+        "asset_id": "0cc1ab68-b9b9-4ae8-a6c7-63d25856c358"
+      },
+      {
+        "bbox": [
+          1311,
+          126,
+          1424,
+          138
+        ],
+        "center_column": [
+          126,
+          138
+        ],
+        "display": {
+          "x": 1310,
+          "y": 125,
+          "width": 115,
+          "height": 12.984375
+        },
+        "garment_id": "a18baaab-a984-5245-a7a3-28bbd27e20ab",
+        "bin": "F1",
+        "side": "left",
+        "layer": 1,
+        "kind": "common",
+        "asset_id": "0ee7c6a0-c989-4c9d-b9c9-5ca0a780ef7c"
+      },
+      {
+        "bbox": [
+          1320.34375,
+          100,
+          1424.34375,
+          125
+        ],
+        "center_column": [
+          100,
+          125
+        ],
+        "display": {
+          "x": 1320.34375,
+          "y": 100,
+          "width": 104.640625,
+          "height": 25
+        },
+        "garment_id": "a2f054f7-6967-4add-bf4a-b61af158f0e2",
+        "bin": "F1",
+        "side": "left",
+        "layer": 2,
+        "kind": "approved",
+        "asset_id": "0970a195-ee98-4be8-b671-52edc1cf2093"
+      },
+      {
+        "bbox": [
+          1450,
+          135.328125,
+          1559,
+          150.328125
+        ],
+        "center_column": [
+          135.328125,
+          150.328125
+        ],
+        "display": {
+          "x": 1449,
+          "y": 134.328125,
+          "width": 111,
+          "height": 16.65625
+        },
+        "garment_id": "a72e0c37-5f7f-5acf-bd50-7f8c65b8f23d",
+        "bin": "F1",
+        "side": "right",
+        "layer": 0,
+        "kind": "common",
+        "asset_id": "984d1ee3-536b-4a7f-8370-5937e887a8b1"
+      },
+      {
+        "bbox": [
+          1450,
+          118.65625,
+          1559,
+          133.65625
+        ],
+        "center_column": [
+          118.65625,
+          133.65625
+        ],
+        "display": {
+          "x": 1449,
+          "y": 117.65625,
+          "width": 111,
+          "height": 16.65625
+        },
+        "garment_id": "b8c03e66-e150-52b2-8d25-41fcba2d4720",
+        "bin": "F1",
+        "side": "right",
+        "layer": 1,
+        "kind": "common",
+        "asset_id": "3c5cc9ff-afea-4537-a7b1-0e6e0e054349"
+      },
+      {
+        "bbox": [
+          1450,
+          102,
+          1559,
+          117
+        ],
+        "center_column": [
+          102,
+          117
+        ],
+        "display": {
+          "x": 1449,
+          "y": 101,
+          "width": 111,
+          "height": 16.65625
+        },
+        "garment_id": "c349dc83-4312-5479-bb8e-094931f8a30b",
+        "bin": "F1",
+        "side": "right",
+        "layer": 2,
+        "kind": "common",
+        "asset_id": "4fbb8eb6-aa20-47e8-9a7e-fc2658c47bee"
+      },
+      {
+        "bbox": [
+          1312,
+          250.328125,
+          1422,
+          265.328125
+        ],
+        "center_column": [
+          250.328125,
+          265.328125
+        ],
+        "display": {
+          "x": 1311,
+          "y": 249.328125,
+          "width": 112,
+          "height": 16.65625
+        },
+        "garment_id": "df4082b6-d86e-53e7-a427-924c641a5145",
+        "bin": "F2",
+        "side": "left",
+        "layer": 0,
+        "kind": "common",
+        "asset_id": "69cc84fb-73d5-4a4e-8f79-c1275fe0830c"
+      },
+      {
+        "bbox": [
+          1312,
+          233.65625,
+          1422,
+          248.65625
+        ],
+        "center_column": [
+          233.65625,
+          248.65625
+        ],
+        "display": {
+          "x": 1311,
+          "y": 232.65625,
+          "width": 112,
+          "height": 16.65625
+        },
+        "garment_id": "df91ef4a-594c-570d-b32d-2b109efe8bab",
+        "bin": "F2",
+        "side": "left",
+        "layer": 1,
+        "kind": "common",
+        "asset_id": "a5353a22-785f-4a5e-9e6d-6a6b1c5e1a23"
+      },
+      {
+        "bbox": [
+          1312,
+          217,
+          1422,
+          232
+        ],
+        "center_column": [
+          217,
+          232
+        ],
+        "display": {
+          "x": 1311,
+          "y": 216,
+          "width": 112,
+          "height": 16.65625
+        },
+        "garment_id": "e29bc367-5d11-5bbf-8fcb-9813c24c6f17",
+        "bin": "F2",
+        "side": "left",
+        "layer": 2,
+        "kind": "common",
+        "asset_id": "b4807db2-9fa8-4249-8eef-a25b9ad59667"
+      },
+      {
+        "bbox": [
+          1451,
+          249.65625,
+          1562,
+          265.65625
+        ],
+        "center_column": [
+          249.65625,
+          265.65625
+        ],
+        "display": {
+          "x": 1450,
+          "y": 248.65625,
+          "width": 113,
+          "height": 17.328125
+        },
+        "garment_id": "f35667ff-7520-5184-abf0-d35865244624",
+        "bin": "F2",
+        "side": "right",
+        "layer": 0,
+        "kind": "common",
+        "asset_id": "7e0f6cff-a872-458c-b763-305dad216643"
+      },
+      {
+        "bbox": [
+          1451,
+          232.328125,
+          1562,
+          248.328125
+        ],
+        "center_column": [
+          232.328125,
+          248.328125
+        ],
+        "display": {
+          "x": 1450,
+          "y": 231.328125,
+          "width": 113,
+          "height": 17.328125
+        },
+        "garment_id": "f84f09ec-6c6f-59fc-8438-3b80c620c3d9",
+        "bin": "F2",
+        "side": "right",
+        "layer": 1,
+        "kind": "common",
+        "asset_id": "749d7f68-f55f-4b57-be03-95112fe37885"
+      },
+      {
+        "bbox": [
+          1451,
+          215,
+          1562,
+          231
+        ],
+        "center_column": [
+          215,
+          231
+        ],
+        "display": {
+          "x": 1450,
+          "y": 214,
+          "width": 113,
+          "height": 17.328125
+        },
+        "garment_id": "fa6caeb1-0966-58c2-a81e-2754d7643c2c",
+        "bin": "F2",
+        "side": "right",
+        "layer": 2,
+        "kind": "common",
+        "asset_id": "745fc9a8-1dd1-4219-a96e-47ac0652a96e"
+      },
+      {
+        "bbox": [
+          1320.4375,
+          367.875,
+          1425.4375,
+          388.875
+        ],
+        "center_column": [
+          367.875,
+          388.875
+        ],
+        "display": {
+          "x": 1320.4375,
+          "y": 367.875,
+          "width": 105.546875,
+          "height": 21.109375
+        },
+        "garment_id": "fd1ce769-aab6-4227-83e0-c550cd9ecb45",
+        "bin": "F3",
+        "side": "left",
+        "layer": 0,
+        "kind": "approved",
+        "asset_id": "d90477db-08d7-4ecf-b618-0313d94ad5b3"
+      },
+      {
+        "bbox": [
+          1311,
+          356.109375,
+          1425,
+          367.109375
+        ],
+        "center_column": [
+          356.109375,
+          367.109375
+        ],
+        "display": {
+          "x": 1310,
+          "y": 355.109375,
+          "width": 116,
+          "height": 12.765625
+        },
+        "garment_id": "ff39dfae-abdd-5ca3-8986-d1ba2cf0eccd",
+        "bin": "F3",
+        "side": "left",
+        "layer": 1,
+        "kind": "common",
+        "asset_id": "8b06c79c-ac5c-4ab4-93ad-638db5f9d6ef"
+      },
+      {
+        "bbox": [
+          1320.4375,
+          334,
+          1425.4375,
+          355
+        ],
+        "center_column": [
+          334,
+          355
+        ],
+        "display": {
+          "x": 1320.4375,
+          "y": 334,
+          "width": 105.546875,
+          "height": 21.109375
+        },
+        "garment_id": "8901515e-6ad7-51fc-8273-01284e04991d",
+        "bin": "F3",
+        "side": "left",
+        "layer": 2,
+        "kind": "approved",
+        "asset_id": "d90477db-08d7-4ecf-b618-0313d94ad5b3"
+      },
+      {
+        "bbox": [
+          1450,
+          375.21875,
+          1554,
+          388.21875
+        ],
+        "center_column": [
+          375.21875,
+          388.21875
+        ],
+        "display": {
+          "x": 1450,
+          "y": 375.21875,
+          "width": 104.640625,
+          "height": 13.765625
+        },
+        "garment_id": "826b60ea-d5e8-5d82-920e-d61a4009898e",
+        "bin": "F3",
+        "side": "right",
+        "layer": 0,
+        "kind": "approved",
+        "asset_id": "626da61d-d317-4209-a293-92a23563f94f"
+      },
+      {
+        "bbox": [
+          1450,
+          350.21875,
+          1554,
+          375.21875
+        ],
+        "center_column": [
+          350.21875,
+          375.21875
+        ],
+        "display": {
+          "x": 1450,
+          "y": 350.21875,
+          "width": 104.640625,
+          "height": 25
+        },
+        "garment_id": "fdc6ebaa-33d3-5edc-9477-18fd44a7b360",
+        "bin": "F3",
+        "side": "right",
+        "layer": 1,
+        "kind": "approved",
+        "asset_id": "0970a195-ee98-4be8-b671-52edc1cf2093"
+      },
+      {
+        "bbox": [
+          1450,
+          329.28125,
+          1554,
+          350.28125
+        ],
+        "center_column": [
+          329.28125,
+          350.28125
+        ],
+        "display": {
+          "x": 1450,
+          "y": 329.28125,
+          "width": 104.640625,
+          "height": 20.921875
+        },
+        "garment_id": "3aa71ad7-4b8e-5e40-a5ab-4ccef829b457",
+        "bin": "F3",
+        "side": "right",
+        "layer": 2,
+        "kind": "approved",
+        "asset_id": "d90477db-08d7-4ecf-b618-0313d94ad5b3"
+      },
+      {
+        "bbox": [
+          1320.609375,
+          491.859375,
+          1427.609375,
+          505.859375
+        ],
+        "center_column": [
+          491.859375,
+          505.859375
+        ],
+        "display": {
+          "x": 1320.609375,
+          "y": 491.859375,
+          "width": 107.375,
+          "height": 14.125
+        },
+        "garment_id": "0d7ee270-4445-5529-9fda-46e0ca87cd8a",
+        "bin": "F4",
+        "side": "left",
+        "layer": 0,
+        "kind": "approved",
+        "asset_id": "626da61d-d317-4209-a293-92a23563f94f"
+      },
+      {
+        "bbox": [
+          1320.609375,
+          466.203125,
+          1427.609375,
+          491.203125
+        ],
+        "center_column": [
+          466.203125,
+          491.203125
+        ],
+        "display": {
+          "x": 1320.609375,
+          "y": 466.203125,
+          "width": 107.375,
+          "height": 25.65625
+        },
+        "garment_id": "dda8dc76-975b-5283-8e66-c23dc6883b40",
+        "bin": "F4",
+        "side": "left",
+        "layer": 1,
+        "kind": "approved",
+        "asset_id": "0970a195-ee98-4be8-b671-52edc1cf2093"
+      },
+      {
+        "bbox": [
+          1321.609375,
+          444.734375,
+          1427.609375,
+          465.734375
+        ],
+        "center_column": [
+          444.734375,
+          465.734375
+        ],
+        "display": {
+          "x": 1320.609375,
+          "y": 444.734375,
+          "width": 107.375,
+          "height": 21.46875
+        },
+        "garment_id": "8afda102-37de-54fa-8c14-d473096205a6",
+        "bin": "F4",
+        "side": "left",
+        "layer": 2,
+        "kind": "approved",
+        "asset_id": "d90477db-08d7-4ecf-b618-0313d94ad5b3"
+      },
+      {
+        "bbox": [
+          1450,
+          492.109375,
+          1554,
+          505.109375
+        ],
+        "center_column": [
+          492.109375,
+          505.109375
+        ],
+        "display": {
+          "x": 1449,
+          "y": 492.109375,
+          "width": 105.546875,
+          "height": 13.875
+        },
+        "garment_id": "cdf93107-16da-5dfd-821f-be69d76be007",
+        "bin": "F4",
+        "side": "right",
+        "layer": 0,
+        "kind": "approved",
+        "asset_id": "626da61d-d317-4209-a293-92a23563f94f"
+      },
+      {
+        "bbox": [
+          1449,
+          466.875,
+          1554,
+          491.875
+        ],
+        "center_column": [
+          466.875,
+          491.875
+        ],
+        "display": {
+          "x": 1449,
+          "y": 466.875,
+          "width": 105.546875,
+          "height": 25.21875
+        },
+        "garment_id": "869734e9-a720-5471-bb80-91bf4b6cdd8c",
+        "bin": "F4",
+        "side": "right",
+        "layer": 1,
+        "kind": "approved",
+        "asset_id": "0970a195-ee98-4be8-b671-52edc1cf2093"
+      },
+      {
+        "bbox": [
+          1449,
+          445.765625,
+          1554,
+          466.765625
+        ],
+        "center_column": [
+          445.765625,
+          466.765625
+        ],
+        "display": {
+          "x": 1449,
+          "y": 445.765625,
+          "width": 105.546875,
+          "height": 21.109375
+        },
+        "garment_id": "053eb5bd-f212-5c7a-8757-69d511d5dabe",
+        "bin": "F4",
+        "side": "right",
+        "layer": 2,
+        "kind": "approved",
+        "asset_id": "d90477db-08d7-4ecf-b618-0313d94ad5b3"
+      },
+      {
+        "bbox": [
+          1311.8125,
+          600.234375,
+          1422.8125,
+          614.234375
+        ],
+        "center_column": [
+          600.234375,
+          614.234375
+        ],
+        "display": {
+          "x": 1310.8125,
+          "y": 600.234375,
+          "width": 112.171875,
+          "height": 14.75
+        },
+        "garment_id": "622a268d-dda1-56a2-944d-6c12df3f4458",
+        "bin": "F5",
+        "side": "left",
+        "layer": 0,
+        "kind": "approved",
+        "asset_id": "626da61d-d317-4209-a293-92a23563f94f"
+      },
+      {
+        "bbox": [
+          1311.8125,
+          573.421875,
+          1422.8125,
+          599.421875
+        ],
+        "center_column": [
+          573.421875,
+          599.421875
+        ],
+        "display": {
+          "x": 1310.8125,
+          "y": 573.421875,
+          "width": 112.171875,
+          "height": 26.796875
+        },
+        "garment_id": "89cca9bf-12cf-5fb2-b7ea-9cb38793fbb1",
+        "bin": "F5",
+        "side": "left",
+        "layer": 1,
+        "kind": "approved",
+        "asset_id": "0970a195-ee98-4be8-b671-52edc1cf2093"
+      },
+      {
+        "bbox": [
+          1311.8125,
+          552,
+          1422.8125,
+          573
+        ],
+        "center_column": [
+          552,
+          573
+        ],
+        "display": {
+          "x": 1310.8125,
+          "y": 551,
+          "width": 112.171875,
+          "height": 22.421875
+        },
+        "garment_id": "652c91d0-df18-5066-9600-852a9e1d9e8e",
+        "bin": "F5",
+        "side": "left",
+        "layer": 2,
+        "kind": "approved",
+        "asset_id": "d90477db-08d7-4ecf-b618-0313d94ad5b3"
+      },
+      {
+        "bbox": [
+          1449,
+          601.34375,
+          1552,
+          614.34375
+        ],
+        "center_column": [
+          601.34375,
+          614.34375
+        ],
+        "display": {
+          "x": 1449,
+          "y": 601.34375,
+          "width": 103.734375,
+          "height": 13.640625
+        },
+        "garment_id": "934d1ed2-2217-5875-ae29-b702b92c7a4b",
+        "bin": "F5",
+        "side": "right",
+        "layer": 0,
+        "kind": "approved",
+        "asset_id": "626da61d-d317-4209-a293-92a23563f94f"
+      },
+      {
+        "bbox": [
+          1449,
+          576.5625,
+          1552,
+          600.5625
+        ],
+        "center_column": [
+          576.5625,
+          600.5625
+        ],
+        "display": {
+          "x": 1449,
+          "y": 576.5625,
+          "width": 103.734375,
+          "height": 24.78125
+        },
+        "garment_id": "9813c705-e718-53ae-b1ab-9e7bafd4565e",
+        "bin": "F5",
+        "side": "right",
+        "layer": 1,
+        "kind": "approved",
+        "asset_id": "0970a195-ee98-4be8-b671-52edc1cf2093"
+      },
+      {
+        "bbox": [
+          1450,
+          555.8125,
+          1552,
+          575.8125
+        ],
+        "center_column": [
+          555.8125,
+          575.8125
+        ],
+        "display": {
+          "x": 1449,
+          "y": 555.8125,
+          "width": 103.734375,
+          "height": 20.734375
+        },
+        "garment_id": "9a8c11b4-4213-555f-aee6-70dd26494a30",
+        "bin": "F5",
+        "side": "right",
+        "layer": 2,
+        "kind": "approved",
+        "asset_id": "d90477db-08d7-4ecf-b618-0313d94ad5b3"
+      },
+      {
+        "bbox": [
+          1306.5625,
+          709.546875,
+          1422.5625,
+          723.546875
+        ],
+        "center_column": [
+          709.546875,
+          723.546875
+        ],
+        "display": {
+          "x": 1305.5625,
+          "y": 708.546875,
+          "width": 117.421875,
+          "height": 15.4375
+        },
+        "garment_id": "00caadf4-b6bc-5d77-ad83-5087a2579b65",
+        "bin": "F6",
+        "side": "left",
+        "layer": 0,
+        "kind": "approved",
+        "asset_id": "626da61d-d317-4209-a293-92a23563f94f"
+      },
+      {
+        "bbox": [
+          1306.5625,
+          681.484375,
+          1422.5625,
+          708.484375
+        ],
+        "center_column": [
+          681.484375,
+          708.484375
+        ],
+        "display": {
+          "x": 1305.5625,
+          "y": 680.484375,
+          "width": 117.421875,
+          "height": 28.046875
+        },
+        "garment_id": "9a592908-46aa-5cb5-ae6e-4588e80195d0",
+        "bin": "F6",
+        "side": "left",
+        "layer": 1,
+        "kind": "approved",
+        "asset_id": "0970a195-ee98-4be8-b671-52edc1cf2093"
+      },
+      {
+        "bbox": [
+          1306.5625,
+          658,
+          1422.5625,
+          680
+        ],
+        "center_column": [
+          658,
+          680
+        ],
+        "display": {
+          "x": 1305.5625,
+          "y": 657,
+          "width": 117.421875,
+          "height": 23.484375
+        },
+        "garment_id": "5ac6ea1d-c00f-5aa4-ae85-82081fa3444f",
+        "bin": "F6",
+        "side": "left",
+        "layer": 2,
+        "kind": "approved",
+        "asset_id": "d90477db-08d7-4ecf-b618-0313d94ad5b3"
+      },
+      {
+        "bbox": [
+          1450,
+          709.234375,
+          1561,
+          723.234375
+        ],
+        "center_column": [
+          709.234375,
+          723.234375
+        ],
+        "display": {
+          "x": 1449,
+          "y": 709.234375,
+          "width": 112.171875,
+          "height": 14.75
+        },
+        "garment_id": "b4c04595-b1cc-5380-abb5-a4a89324087f",
+        "bin": "F6",
+        "side": "right",
+        "layer": 0,
+        "kind": "approved",
+        "asset_id": "626da61d-d317-4209-a293-92a23563f94f"
+      },
+      {
+        "bbox": [
+          1450,
+          682.421875,
+          1561,
+          708.421875
+        ],
+        "center_column": [
+          682.421875,
+          708.421875
+        ],
+        "display": {
+          "x": 1449,
+          "y": 682.421875,
+          "width": 112.171875,
+          "height": 26.796875
+        },
+        "garment_id": "f21f98ef-184e-5e45-80aa-4552b848d8a4",
+        "bin": "F6",
+        "side": "right",
+        "layer": 1,
+        "kind": "approved",
+        "asset_id": "0970a195-ee98-4be8-b671-52edc1cf2093"
+      },
+      {
+        "bbox": [
+          1450,
+          661,
+          1561,
+          682
+        ],
+        "center_column": [
+          661,
+          682
+        ],
+        "display": {
+          "x": 1449,
+          "y": 660,
+          "width": 112.171875,
+          "height": 22.421875
+        },
+        "garment_id": "d0ef9f43-50c9-5fee-8980-f501b8128baa",
+        "bin": "F6",
+        "side": "right",
+        "layer": 2,
+        "kind": "approved",
+        "asset_id": "d90477db-08d7-4ecf-b618-0313d94ad5b3"
+      },
+      {
+        "bbox": [
+          1298.109375,
+          827.171875,
+          1424.109375,
+          842.171875
+        ],
+        "center_column": [
+          827.171875,
+          842.171875
+        ],
+        "display": {
+          "x": 1297.109375,
+          "y": 826.171875,
+          "width": 127.875,
+          "height": 16.8125
+        },
+        "garment_id": "11251df3-4107-575c-b871-47e5d6efeed3",
+        "bin": "F7",
+        "side": "left",
+        "layer": 0,
+        "kind": "approved",
+        "asset_id": "626da61d-d317-4209-a293-92a23563f94f"
+      },
+      {
+        "bbox": [
+          1298.109375,
+          796.609375,
+          1424.109375,
+          825.609375
+        ],
+        "center_column": [
+          796.609375,
+          825.609375
+        ],
+        "display": {
+          "x": 1297.109375,
+          "y": 795.609375,
+          "width": 127.875,
+          "height": 30.546875
+        },
+        "garment_id": "6a0331fb-9e5b-5153-91df-5f34afdaf691",
+        "bin": "F7",
+        "side": "left",
+        "layer": 1,
+        "kind": "approved",
+        "asset_id": "0970a195-ee98-4be8-b671-52edc1cf2093"
+      },
+      {
+        "bbox": [
+          1298.109375,
+          771.03125,
+          1424.109375,
+          795.03125
+        ],
+        "center_column": [
+          771.03125,
+          795.03125
+        ],
+        "display": {
+          "x": 1297.109375,
+          "y": 770.03125,
+          "width": 127.875,
+          "height": 25.5625
+        },
+        "garment_id": "d65f4291-ba26-5e0a-9547-9d4dddc2bf54",
+        "bin": "F7",
+        "side": "left",
+        "layer": 2,
+        "kind": "approved",
+        "asset_id": "d90477db-08d7-4ecf-b618-0313d94ad5b3"
+      },
+      {
+        "bbox": [
+          1450,
+          827.15625,
+          1576,
+          842.15625
+        ],
+        "center_column": [
+          827.15625,
+          842.15625
+        ],
+        "display": {
+          "x": 1449,
+          "y": 826.15625,
+          "width": 127.953125,
+          "height": 16.828125
+        },
+        "garment_id": "01d7378b-ec70-5035-bd0a-88b420767a48",
+        "bin": "F7",
+        "side": "right",
+        "layer": 0,
+        "kind": "approved",
+        "asset_id": "626da61d-d317-4209-a293-92a23563f94f"
+      },
+      {
+        "bbox": [
+          1450,
+          796.578125,
+          1576,
+          825.578125
+        ],
+        "center_column": [
+          796.578125,
+          825.578125
+        ],
+        "display": {
+          "x": 1449,
+          "y": 795.578125,
+          "width": 127.953125,
+          "height": 30.5625
+        },
+        "garment_id": "6a39ca49-8a8c-52c6-b999-5797f7d2f188",
+        "bin": "F7",
+        "side": "right",
+        "layer": 1,
+        "kind": "approved",
+        "asset_id": "0970a195-ee98-4be8-b671-52edc1cf2093"
+      },
+      {
+        "bbox": [
+          1450,
+          771,
+          1576,
+          795
+        ],
+        "center_column": [
+          771,
+          795
+        ],
+        "display": {
+          "x": 1449,
+          "y": 770,
+          "width": 127.953125,
+          "height": 25.578125
+        },
+        "garment_id": "59f470a8-c063-5bef-b7d2-f7350c9039cb",
+        "bin": "F7",
+        "side": "right",
+        "layer": 2,
+        "kind": "approved",
+        "asset_id": "d90477db-08d7-4ecf-b618-0313d94ad5b3"
+      }
+    ],
+    "stacks": [
+      {
+        "bin": "E1",
+        "side": "left",
+        "bbox": [
+          1009,
+          101,
+          1112,
+          151
+        ],
+        "width_error_pct": -1.904761904761909,
+        "height_error_pct": -1.9607843137254943,
+        "gap_px": 1,
+        "floor_gap_px": 1,
+        "pass": true
+      },
+      {
+        "bin": "E1",
+        "side": "right",
+        "bbox": [
+          1132,
+          100,
+          1243,
+          150.25
+        ],
+        "width_error_pct": -1.7699115044247815,
+        "height_error_pct": -1.4705882352941124,
+        "gap_px": 1.734375,
+        "floor_gap_px": 1.75,
+        "pass": true
+      },
+      {
+        "bin": "E2",
+        "side": "left",
+        "bbox": [
+          1008,
+          212,
+          1115,
+          263.328125
+        ],
+        "width_error_pct": -1.834862385321101,
+        "height_error_pct": -3.1544811320754707,
+        "gap_px": 1.671875,
+        "floor_gap_px": 1.671875,
+        "pass": true
+      },
+      {
+        "bin": "E2",
+        "side": "right",
+        "bbox": [
+          1132.984375,
+          216,
+          1242.984375,
+          263.65625
+        ],
+        "width_error_pct": -1.7857142857142905,
+        "height_error_pct": -2.7423469387755084,
+        "gap_px": 1.328125,
+        "floor_gap_px": 1.34375,
+        "pass": true
+      },
+      {
+        "bin": "E3",
+        "side": "left",
+        "bbox": [
+          1009,
+          332,
+          1114,
+          388
+        ],
+        "width_error_pct": -1.869158878504673,
+        "height_error_pct": -1.7543859649122862,
+        "gap_px": 1,
+        "floor_gap_px": 1,
+        "pass": true
+      },
+      {
+        "bin": "E3",
+        "side": "right",
+        "bbox": [
+          1132,
+          331,
+          1243,
+          387.65625
+        ],
+        "width_error_pct": -1.7699115044247815,
+        "height_error_pct": -2.316810344827591,
+        "gap_px": 1.328125,
+        "floor_gap_px": 1.34375,
+        "pass": true
+      },
+      {
+        "bin": "E4",
+        "side": "left",
+        "bbox": [
+          1008,
+          445,
+          1117,
+          501.65625
+        ],
+        "width_error_pct": -1.8018018018018056,
+        "height_error_pct": -2.316810344827591,
+        "gap_px": 1.328125,
+        "floor_gap_px": 1.34375,
+        "pass": true
+      },
+      {
+        "bin": "E4",
+        "side": "right",
+        "bbox": [
+          1132.984375,
+          446,
+          1243.984375,
+          502
+        ],
+        "width_error_pct": -1.7699115044247815,
+        "height_error_pct": -1.7543859649122862,
+        "gap_px": 1,
+        "floor_gap_px": 1,
+        "pass": true
+      },
+      {
+        "bin": "F1",
+        "side": "left",
+        "bbox": [
+          1311,
+          100,
+          1424.34375,
+          151
+        ],
+        "width_error_pct": -1.4402173913043437,
+        "height_error_pct": 0,
+        "gap_px": 1,
+        "floor_gap_px": 1,
+        "pass": true
+      },
+      {
+        "bin": "F1",
+        "side": "right",
+        "bbox": [
+          1450,
+          102,
+          1559,
+          150.328125
+        ],
+        "width_error_pct": -1.8018018018018056,
+        "height_error_pct": -3.343750000000001,
+        "gap_px": 1.671875,
+        "floor_gap_px": 1.671875,
+        "pass": true
+      },
+      {
+        "bin": "F2",
+        "side": "left",
+        "bbox": [
+          1312,
+          217,
+          1422,
+          265.328125
+        ],
+        "width_error_pct": -1.7857142857142905,
+        "height_error_pct": -3.343750000000001,
+        "gap_px": 1.671875,
+        "floor_gap_px": 1.671875,
+        "pass": true
+      },
+      {
+        "bin": "F2",
+        "side": "right",
+        "bbox": [
+          1451,
+          215,
+          1562,
+          265.65625
+        ],
+        "width_error_pct": -1.7699115044247815,
+        "height_error_pct": -2.5841346153846145,
+        "gap_px": 1.328125,
+        "floor_gap_px": 1.34375,
+        "pass": true
+      },
+      {
+        "bin": "F3",
+        "side": "left",
+        "bbox": [
+          1311,
+          334,
+          1425.4375,
+          388.875
+        ],
+        "width_error_pct": -1.346982758620685,
+        "height_error_pct": -0.2272727272727315,
+        "gap_px": 1.109375,
+        "floor_gap_px": 1.125,
+        "pass": true
+      },
+      {
+        "bin": "F3",
+        "side": "right",
+        "bbox": [
+          1450,
+          329.28125,
+          1554,
+          388.21875
+        ],
+        "width_error_pct": -9.565217391304348,
+        "height_error_pct": 5.245535714285721,
+        "gap_px": 0,
+        "floor_gap_px": 1.78125,
+        "pass": true
+      },
+      {
+        "bin": "F4",
+        "side": "left",
+        "bbox": [
+          1320.609375,
+          444.734375,
+          1427.609375,
+          505.859375
+        ],
+        "width_error_pct": -9.322033898305083,
+        "height_error_pct": 1.8750000000000044,
+        "gap_px": 0.65625,
+        "floor_gap_px": 1.140625,
+        "pass": true
+      },
+      {
+        "bin": "F4",
+        "side": "right",
+        "bbox": [
+          1449,
+          445.765625,
+          1554,
+          505.109375
+        ],
+        "width_error_pct": -9.482758620689658,
+        "height_error_pct": -1.0937500000000044,
+        "gap_px": 0.234375,
+        "floor_gap_px": 1.890625,
+        "pass": true
+      },
+      {
+        "bin": "F5",
+        "side": "left",
+        "bbox": [
+          1311.8125,
+          552,
+          1422.8125,
+          614.234375
+        ],
+        "width_error_pct": -1.7699115044247815,
+        "height_error_pct": -2.7587890625,
+        "gap_px": 0.8125,
+        "floor_gap_px": 1.765625,
+        "pass": true
+      },
+      {
+        "bin": "F5",
+        "side": "right",
+        "bbox": [
+          1449,
+          555.8125,
+          1552,
+          614.34375
+        ],
+        "width_error_pct": -9.649122807017541,
+        "height_error_pct": 4.520089285714279,
+        "gap_px": 0.78125,
+        "floor_gap_px": 1.65625,
+        "pass": true
+      },
+      {
+        "bin": "F6",
+        "side": "left",
+        "bbox": [
+          1306.5625,
+          658,
+          1422.5625,
+          723.546875
+        ],
+        "width_error_pct": 2.6548672566371723,
+        "height_error_pct": -2.168843283582089,
+        "gap_px": 1.484375,
+        "floor_gap_px": 1.453125,
+        "pass": true
+      },
+      {
+        "bin": "F6",
+        "side": "right",
+        "bbox": [
+          1450,
+          661,
+          1561,
+          723.234375
+        ],
+        "width_error_pct": -2.631578947368418,
+        "height_error_pct": -2.7587890625,
+        "gap_px": 0.8125,
+        "floor_gap_px": 1.765625,
+        "pass": true
+      },
+      {
+        "bin": "F7",
+        "side": "left",
+        "bbox": [
+          1298.109375,
+          771.03125,
+          1424.109375,
+          842.171875
+        ],
+        "width_error_pct": 9.565217391304337,
+        "height_error_pct": -9.94857594936709,
+        "gap_px": 1.578125,
+        "floor_gap_px": 1.828125,
+        "pass": true
+      },
+      {
+        "bin": "F7",
+        "side": "right",
+        "bbox": [
+          1450,
+          771,
+          1576,
+          842.15625
+        ],
+        "width_error_pct": 5.882352941176472,
+        "height_error_pct": -2.525684931506844,
+        "gap_px": 1.578125,
+        "floor_gap_px": 1.84375,
+        "pass": true
+      }
+    ],
+    "groups": [
+      {
+        "bin": "E1",
+        "inter_stack_gap_error_px": 2,
+        "pass": true
+      },
+      {
+        "bin": "E2",
+        "inter_stack_gap_error_px": 1.984375,
+        "pass": true
+      },
+      {
+        "bin": "E3",
+        "inter_stack_gap_error_px": 2,
+        "pass": true
+      },
+      {
+        "bin": "E4",
+        "inter_stack_gap_error_px": 1.984375,
+        "pass": true
+      },
+      {
+        "bin": "F1",
+        "inter_stack_gap_error_px": 1.65625,
+        "pass": true
+      },
+      {
+        "bin": "F2",
+        "inter_stack_gap_error_px": 2,
+        "pass": true
+      },
+      {
+        "bin": "F3",
+        "inter_stack_gap_error_px": 0.5625,
+        "pass": true
+      },
+      {
+        "bin": "F4",
+        "inter_stack_gap_error_px": 0.390625,
+        "pass": true
+      },
+      {
+        "bin": "F5",
+        "inter_stack_gap_error_px": 0.1875,
+        "pass": true
+      },
+      {
+        "bin": "F6",
+        "inter_stack_gap_error_px": 1.4375,
+        "pass": true
+      },
+      {
+        "bin": "F7",
+        "inter_stack_gap_error_px": 1.890625,
+        "pass": true
+      }
+    ],
+    "errors": [],
+    "failed_stacks": []
+  }
+]

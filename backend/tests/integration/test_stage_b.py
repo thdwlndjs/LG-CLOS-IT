@@ -1,5 +1,6 @@
 """Independent disposable PostgreSQL tests for Stage B access and compartment bindings."""
 
+import json
 from uuid import UUID, uuid4
 
 import pytest
@@ -99,6 +100,97 @@ def test_compartment_multiple_items_and_invalid_geometry_fail_closed(real_dsn, s
             assert response.status_code == 200, response.text
             assert len(response.json()["items"]) == 3
             assert len({i["location_id"] for i in response.json()["items"]}) == 1
+            derivative = uuid4()
+            async with engine.begin() as c:
+                source = (
+                    (
+                        await c.execute(
+                            text(
+                                "SELECT a.* FROM wardrobe.asset a JOIN wardrobe.garment g "
+                                "ON g.image_asset_id=a.id WHERE g.id=:g"
+                            ),
+                            {"g": UUID(existing.GARMENT)},
+                        )
+                    )
+                    .mappings()
+                    .one()
+                )
+                await c.execute(
+                    text(
+                        "INSERT INTO wardrobe.asset(id,household_id,asset_key,content_type,"
+                        "kind,status,metadata) "
+                        "VALUES(:id,:h,:key,'image/png','OTHER','READY',CAST(:meta AS jsonb))"
+                    ),
+                    {
+                        "id": derivative,
+                        "h": UUID(existing.HOUSEHOLD),
+                        "key": "test-common-derivative",
+                        "meta": json.dumps({"scene_role": "generated-wardrobe-sprites"}),
+                    },
+                )
+                variant = {
+                    "asset_id": str(derivative),
+                    "source_asset_id": str(source["id"]),
+                    "source_sha256": source["metadata"]["checksum_sha256"],
+                    "mask": {
+                        "width": 640,
+                        "height": 180,
+                        "crop": [26, 35, 576, 96],
+                        "path": "M0 0h640v180h-640z",
+                    },
+                }
+                await c.execute(
+                    text(
+                        "UPDATE wardrobe.scene_placement SET "
+                        "geometry=jsonb_set(geometry,'{sprite_override}',"
+                        "CAST(:v AS jsonb)) WHERE garment_id=:g"
+                    ),
+                    {"v": json.dumps(variant), "g": UUID(existing.GARMENT)},
+                )
+            replaced = (await client.get("/api/v1/integration/devices/" + device + "/scene")).json()
+            selected = next(i for i in replaced["items"] if i["garment_id"] == existing.GARMENT)
+            assert selected["image"]["asset_id"] == str(derivative)
+            async with engine.begin() as c:
+                assert (
+                    await c.scalar(
+                        text("SELECT metadata FROM wardrobe.asset WHERE id=:a"), {"a": source["id"]}
+                    )
+                    == source["metadata"]
+                )
+                variant["source_sha256"] = "0" * 64
+                await c.execute(
+                    text(
+                        "UPDATE wardrobe.scene_placement SET "
+                        "geometry=jsonb_set(geometry,'{sprite_override}',"
+                        "CAST(:v AS jsonb)) WHERE garment_id=:g"
+                    ),
+                    {"v": json.dumps(variant), "g": UUID(existing.GARMENT)},
+                )
+            invalid = (await client.get("/api/v1/integration/devices/" + device + "/scene")).json()
+            assert existing.GARMENT not in {i["garment_id"] for i in invalid["items"]}
+            assert {"garment_id": existing.GARMENT, "reason": "IMAGE_UNAVAILABLE"} in invalid[
+                "blocked"
+            ]
+            async with engine.begin() as c:
+                variant["source_sha256"] = source["metadata"]["checksum_sha256"]
+                await c.execute(
+                    text(
+                        "UPDATE wardrobe.scene_placement SET "
+                        "geometry=jsonb_set(geometry,'{sprite_override}',"
+                        "CAST(:v AS jsonb)) WHERE garment_id=:g"
+                    ),
+                    {"v": json.dumps(variant), "g": UUID(existing.GARMENT)},
+                )
+                await c.execute(
+                    text("UPDATE wardrobe.asset SET household_id=:h WHERE id=:a"),
+                    {"h": UUID(existing.OTHER_HOUSEHOLD), "a": derivative},
+                )
+            inaccessible = (
+                await client.get("/api/v1/integration/devices/" + device + "/scene")
+            ).json()
+            assert {"garment_id": existing.GARMENT, "reason": "IMAGE_UNAVAILABLE"} in inaccessible[
+                "blocked"
+            ]
             async with engine.begin() as c:
                 await c.execute(
                     text(

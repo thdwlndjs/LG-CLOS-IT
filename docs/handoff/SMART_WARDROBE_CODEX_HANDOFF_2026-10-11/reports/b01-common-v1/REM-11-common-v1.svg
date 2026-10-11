@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="180" viewBox="0 0 640 180"><g transform="translate(0 35) scale(1 1.0088495575221241) translate(0 -35)">
+  <defs><clipPath id="body"><path d="M52 42 Q105 33 213 35 L554 38 Q591 39 602 62 L602 119 Q600 131 573 131 L55 131 Q26 129 26 111 L27 66 Q29 48 52 42Z"/></clipPath>
+  <pattern id="textile" width="640" height="180" patternUnits="userSpaceOnUse"><rect width="640" height="180" fill="#c6b6c5"/></pattern>
+  <linearGradient id="light" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#fff" stop-opacity=".21"/><stop offset=".38" stop-color="#fff" stop-opacity=".03"/><stop offset=".75" stop-color="#000" stop-opacity=".19"/><stop offset="1" stop-color="#000" stop-opacity=".38"/></linearGradient>
+  <linearGradient id="fold"><stop stop-color="#000" stop-opacity=".64"/><stop offset=".08" stop-color="#000" stop-opacity=".30"/><stop offset=".35" stop-color="#fff" stop-opacity=".12"/><stop offset="1" stop-color="#000" stop-opacity="0"/></linearGradient>
+  <filter id="pile"><feTurbulence type="fractalNoise" baseFrequency=".72" numOctaves="2" seed="11"/><feColorMatrix type="saturate" values="0"/><feComposite in2="SourceGraphic" operator="in"/></filter>
+  <filter id="shadow" x="-20%" y="-120%" width="140%" height="340%"><feGaussianBlur stdDeviation="2.2"/></filter></defs>
+  <ellipse cx="314" cy="132" rx="280" ry="3" fill="#171512" opacity=".28" filter="url(#shadow)"/>
+  <g clip-path="url(#body)"><path d="M52 42 Q105 33 213 35 L554 38 Q591 39 602 62 L602 119 Q600 131 573 131 L55 131 Q26 129 26 111 L27 66 Q29 48 52 42Z" fill="#c6b6c5"/><path d="M52 42 Q105 33 213 35 L554 38 Q591 39 602 62 L602 119 Q600 131 573 131 L55 131 Q26 129 26 111 L27 66 Q29 48 52 42Z" fill="url(#textile)"/>
+  <path d="M52 42 Q105 33 213 35 L554 38 Q591 39 602 62 L602 119 Q600 131 573 131 L55 131 Q26 129 26 111 L27 66 Q29 48 52 42Z" fill="url(#light)"/>
+  <path d="M37 65 Q94 49 213 50 L579 50 Q594 53 597 64 Q358 56 104 65 Q45 69 41 86 Q42 107 66 110 L580 110" fill="none" stroke="#000" stroke-opacity=".20" stroke-width="3.2"/>
+  <path d="M31 86 Q28 50 71 48 L572 47" fill="none" stroke="#fff" stroke-opacity=".14" stroke-width="2.5"/>
+  <path d="M32 100 Q32 114 62 117 L580 117" fill="none" stroke="#000" stroke-opacity=".18" stroke-width="2.6"/>
+  <path d="M35 69 Q28 90 41 111 L80 117 L79 58Z" fill="url(#fold)"/>
+  <path d="M48 76 Q67 69 78 73 Q65 82 53 81 Q47 86 55 91 L83 90" fill="none" stroke="#161812" stroke-opacity=".45" stroke-width="4" stroke-linecap="round"/>
+  <path d="M87 119 Q220 122 373 119 T582 117" fill="none" stroke="#eee" stroke-opacity=".26" stroke-width="1" stroke-dasharray="2 2"/>
+  <rect x="24" y="32" width="583" height="109" filter="url(#pile)" opacity=".22"/></g></g></svg>

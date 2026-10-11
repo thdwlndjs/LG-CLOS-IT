@@ -1,0 +1,4261 @@
+{
+  "namespace": "b01-common-v1",
+  "source": "user decision: common side-fold form and color/pattern",
+  "items": [
+    {
+      "garment_id": "1adf7dde-eaed-53f9-ac0e-8497078fa703",
+      "source_asset_id": "23fc96e0-1eb3-47a7-9339-4175559654d0",
+      "source_sha256": "e917a6c00c67c147c8d470da20207bfebfc8c9d729cd47a7506e7ab4cd2d6e59",
+      "source_location_id": "4cd85554-876c-54de-b361-5f85e351ba59",
+      "compartment_id": "eb128a88-7443-5ea6-9dfb-975270cadf4f",
+      "compartment": "E1",
+      "side": "left",
+      "layer": 0,
+      "kind": "common",
+      "name": "W's Cap MW Crew",
+      "display_width": 105,
+      "display_height": 17,
+      "file": "docs/handoff/SMART_WARDROBE_CODEX_HANDOFF_2026-10-11/reports/b01-common-v1/REM-14-common-v1.png",
+      "sha256": "ab91e93f4e934dde8d221e9e89cea3a58dde2df01747002f9c86a97acf8fa842",
+      "item_id": "REM-14",
+      "color_rgb": [
+        90,
+        36,
+        24
+      ],
+      "pattern_basis": "dominant source color; shared surface texture",
+      "mask": {
+        "width": 640,
+        "height": 180,
+        "crop": [
+          26,
+          35,
+          576,
+          93
+        ],
+        "path": "M0 0h640v180h-640z",
+        "scene_alignment": "shelf"
+      },
+      "derivative_asset_id": "0ffce058-96fc-4707-915b-3022e7f0d104",
+      "geometry": {
+        "x": 0.6028708133971292,
+        "y": 0.14240170031880978,
+        "width": 0.06279904306220095,
+        "height": 0.018065887353878853,
+        "z_index": 20,
+        "approved": true,
+        "alignment": "shelf",
+        "basis": "B-01 common-form contract; independent reference trace",
+        "sprite_override": {
+          "asset_id": "0ffce058-96fc-4707-915b-3022e7f0d104",
+          "source_asset_id": "23fc96e0-1eb3-47a7-9339-4175559654d0",
+          "source_sha256": "e917a6c00c67c147c8d470da20207bfebfc8c9d729cd47a7506e7ab4cd2d6e59",
+          "mask": {
+            "width": 640,
+            "height": 180,
+            "crop": [
+              26,
+              35,
+              576,
+              93
+            ],
+            "path": "M0 0h640v180h-640z",
+            "scene_alignment": "shelf"
+          }
+        }
+      }
+    },
+    {
+      "garment_id": "1b92cf0a-82ad-567a-b1b5-7022111fccaf",
+      "source_asset_id": "c4a34783-d297-4bba-a6df-2b0ce1237268",
+      "source_sha256": "f4efa578ecc602f37fb6e5b6c1689759e9b6190b085e9a4bb8eb2a240b634776",
+      "source_location_id": "9f15a5bc-c45b-5a9a-b8b9-ec890cac940a",
+      "compartment_id": "eb128a88-7443-5ea6-9dfb-975270cadf4f",
+      "compartment": "E1",
+      "side": "left",
+      "layer": 1,
+      "kind": "common",
+      "name": "M's LW Stormshadow Jkt",
+      "display_width": 105,
+      "display_height": 17,
+      "file": "docs/handoff/SMART_WARDROBE_CODEX_HANDOFF_2026-10-11/reports/b01-common-v1/REM-31-common-v1.png",
+      "sha256": "e92378918eb663f655cddd9430fb810c70fb5101230e3848c1e01bf90d63162d",
+      "item_id": "REM-31",
+      "color_rgb": [
+        51,
+        59,
+        44
+      ],
+      "pattern_basis": "dominant source color; shared surface texture",
+      "mask": {
+        "width": 640,
+        "height": 180,
+        "crop": [
+          26,
+          35,
+          576,
+          93
+        ],
+        "path": "M0 0h640v180h-640z",
+        "scene_alignment": "shelf"
+      },
+      "derivative_asset_id": "74b430f1-2f40-440e-bd38-8714528ca9d5",
+      "geometry": {
+        "x": 0.6028708133971292,
+        "y": 0.12433581296493093,
+        "width": 0.06279904306220095,
+        "height": 0.018065887353878853,
+        "z_index": 21,
+        "approved": true,
+        "alignment": "shelf",
+        "basis": "B-01 common-form contract; independent reference trace",
+        "sprite_override": {
+          "asset_id": "74b430f1-2f40-440e-bd38-8714528ca9d5",
+          "source_asset_id": "c4a34783-d297-4bba-a6df-2b0ce1237268",
+          "source_sha256": "f4efa578ecc602f37fb6e5b6c1689759e9b6190b085e9a4bb8eb2a240b634776",
+          "mask": {
+            "width": 640,
+            "height": 180,
+            "crop": [
+              26,
+              35,
+              576,
+              93
+            ],
+            "path": "M0 0h640v180h-640z",
+            "scene_alignment": "shelf"
+          }
+        }
+      }
+    },
+    {
+      "garment_id": "1f8dcda3-eb5c-5744-bbd7-98e2b7adef98",
+      "source_asset_id": "7cc1653f-383c-4a84-b9ab-b1983b8a34ce",
+      "source_sha256": "94e8ab94cecaf6ebfb3b47e998fbd3139b8dd37a2146ec49e2d000156ee75cc8",
+      "source_location_id": "b663629f-130d-57e7-b9fb-498330bd871a",
+      "compartment_id": "eb128a88-7443-5ea6-9dfb-975270cadf4f",
+      "compartment": "E1",
+      "side": "left",
+      "layer": 2,
+      "kind": "common",
+      "name": "W's Houdini Jkt",
+      "display_width": 105,
+      "display_height": 17,
+      "file": "docs/handoff/SMART_WARDROBE_CODEX_HANDOFF_2026-10-11/reports/b01-common-v1/REM-34-common-v1.png",
+      "sha256": "622c29b60aebe63bd61c80af4195f88c993c4a44260d69de34e02074cbedd262",
+      "item_id": "REM-34",
+      "color_rgb": [
+        170,
+        116,
+        132
+      ],
+      "pattern_basis": "dominant source color; shared surface texture",
+      "mask": {
+        "width": 640,
+        "height": 180,
+        "crop": [
+          26,
+          35,
+          576,
+          93
+        ],
+        "path": "M0 0h640v180h-640z",
+        "scene_alignment": "shelf"
+      },
+      "derivative_asset_id": "feb7a4ef-8973-46de-a22b-2e50064c86bd",
+      "geometry": {
+        "x": 0.6028708133971292,
+        "y": 0.10626992561105207,
+        "width": 0.06279904306220095,
+        "height": 0.018065887353878853,
+        "z_index": 22,
+        "approved": true,
+        "alignment": "shelf",
+        "basis": "B-01 common-form contract; independent reference trace",
+        "sprite_override": {
+          "asset_id": "feb7a4ef-8973-46de-a22b-2e50064c86bd",
+          "source_asset_id": "7cc1653f-383c-4a84-b9ab-b1983b8a34ce",
+          "source_sha256": "94e8ab94cecaf6ebfb3b47e998fbd3139b8dd37a2146ec49e2d000156ee75cc8",
+          "mask": {
+            "width": 640,
+            "height": 180,
+            "crop": [
+              26,
+              35,
+              576,
+              93
+            ],
+            "path": "M0 0h640v180h-640z",
+            "scene_alignment": "shelf"
+          }
+        }
+      }
+    },
+    {
+      "garment_id": "20cb6b2b-1f68-542e-9150-d9e1e0a189c5",
+      "source_asset_id": "486b6bb4-c1ed-45c3-b9ee-2f74ce928c22",
+      "source_sha256": "b4c59ce1c6ce3138c92216a68b87aa797d7f0b42d5512f57b302683c719b1fac",
+      "source_location_id": "02bdbc59-940c-5982-952d-dda56bab81df",
+      "compartment_id": "eb128a88-7443-5ea6-9dfb-975270cadf4f",
+      "compartment": "E1",
+      "side": "right",
+      "layer": 0,
+      "kind": "common",
+      "name": "Women's Los Gatos Vest",
+      "display_width": 113,
+      "display_height": 18.73486842105263,
+      "file": "docs/handoff/SMART_WARDROBE_CODEX_HANDOFF_2026-10-11/reports/b01-common-v1/REM-28-common-v1.png",
+      "sha256": "6aa2785c5da58ea8c70ddbc76bba6f6b0544a1102dacef7de8dceb0b194833b0",
+      "item_id": "REM-28",
+      "color_rgb": [
+        180,
+        186,
+        187
+      ],
+      "pattern_basis": "dominant source color; shared surface texture",
+      "mask": {
+        "width": 640,
+        "height": 180,
+        "crop": [
+          26,
+          35,
+          576,
+          95
+        ],
+        "path": "M0 0h640v180h-640z",
+        "scene_alignment": "shelf"
+      },
+      "derivative_asset_id": "b25bf90c-4f8b-4dea-a106-4e869a97ba29",
+      "geometry": {
+        "x": 0.6764354066985646,
+        "y": 0.14055805693830753,
+        "width": 0.06758373205741627,
+        "height": 0.019909530734381117,
+        "z_index": 20,
+        "approved": true,
+        "alignment": "shelf",
+        "basis": "B-01 common-form contract; independent reference trace",
+        "sprite_override": {
+          "asset_id": "b25bf90c-4f8b-4dea-a106-4e869a97ba29",
+          "source_asset_id": "486b6bb4-c1ed-45c3-b9ee-2f74ce928c22",
+          "source_sha256": "b4c59ce1c6ce3138c92216a68b87aa797d7f0b42d5512f57b302683c719b1fac",
+          "mask": {
+            "width": 640,
+            "height": 180,
+            "crop": [
+              26,
+              35,
+              576,
+              95
+            ],
+            "path": "M0 0h640v180h-640z",
+            "scene_alignment": "shelf"
+          }
+        }
+      }
+    },
+    {
+      "garment_id": "21901819-11cb-56f0-9492-026b6b6166fe",
+      "source_asset_id": "e35d61e9-8e95-4a0c-a09f-d59143e73bf7",
+      "source_sha256": "5ebd16f6c0440a2edddc5cab0b151c1b060fe1bce44cbb50afe053077699dfdb",
+      "source_location_id": "ee7f5af1-6b7b-5160-b8f6-02bc9b2cc346",
+      "compartment_id": "eb128a88-7443-5ea6-9dfb-975270cadf4f",
+      "compartment": "E1",
+      "side": "right",
+      "layer": 1,
+      "kind": "common",
+      "name": "Men's Home Water Trout Organic T-Shirt",
+      "display_width": 113,
+      "display_height": 18.73486842105263,
+      "file": "docs/handoff/SMART_WARDROBE_CODEX_HANDOFF_2026-10-11/reports/b01-common-v1/REM-04-common-v1.png",
+      "sha256": "0b77f8bc8efa6c9c47df3bed7b3aff29152827e33a9424fd7e3cd3e18d6ef851",
+      "item_id": "REM-04",
+      "color_rgb": [
+        214,
+        214,
+        212
+      ],
+      "pattern_basis": "dominant source color; shared surface texture",
+      "mask": {
+        "width": 640,
+        "height": 180,
+        "crop": [
+          26,
+          35,
+          576,
+          95
+        ],
+        "path": "M0 0h640v180h-640z",
+        "scene_alignment": "shelf"
+      },
+      "derivative_asset_id": "951972cf-7636-4042-9165-06b573c76dd3",
+      "geometry": {
+        "x": 0.6764354066985646,
+        "y": 0.12064852620392641,
+        "width": 0.06758373205741627,
+        "height": 0.019909530734381117,
+        "z_index": 21,
+        "approved": true,
+        "alignment": "shelf",
+        "basis": "B-01 common-form contract; independent reference trace",
+        "sprite_override": {
+          "asset_id": "951972cf-7636-4042-9165-06b573c76dd3",
+          "source_asset_id": "e35d61e9-8e95-4a0c-a09f-d59143e73bf7",
+          "source_sha256": "5ebd16f6c0440a2edddc5cab0b151c1b060fe1bce44cbb50afe053077699dfdb",
+          "mask": {
+            "width": 640,
+            "height": 180,
+            "crop": [
+              26,
+              35,
+              576,
+              95
+            ],
+            "path": "M0 0h640v180h-640z",
+            "scene_alignment": "shelf"
+          }
+        }
+      }
+    },
+    {
+      "garment_id": "2568aead-2410-4bab-9208-6d4f54109927",
+      "source_asset_id": "447c9eb6-7e50-45f2-8417-e196c1ead271",
+      "source_sha256": "277a47e41c906fd22ddc40e8413ebfb501496f43d8438b32afc142e7165dbe0e",
+      "source_location_id": "1fcbf6ae-e4e7-5913-b22d-818bbae9a377",
+      "compartment_id": "eb128a88-7443-5ea6-9dfb-975270cadf4f",
+      "compartment": "E1",
+      "side": "right",
+      "layer": 2,
+      "kind": "approved",
+      "name": "MERINO WOOL HALF-ZIP JUMPER_ NAVY",
+      "display_width": 102.83,
+      "display_height": 13.530263157894735,
+      "derivative_asset_id": "626da61d-d317-4209-a293-92a23563f94f",
+      "mask": {
+        "crop": [
+          1,
+          1,
+          114,
+          15
+        ],
+        "path": "M0 0h116v17H0Z",
+        "width": 116,
+        "height": 17,
+        "scene_alignment": "shelf"
+      },
+      "geometry": {
+        "x": 0.6764354066985646,
+        "y": 0.10626992561105209,
+        "width": 0.0615011961722488,
+        "height": 0.014378600592874321,
+        "z_index": 22,
+        "approved": true,
+        "alignment": "shelf",
+        "basis": "B-01 common-form contract; independent reference trace",
+        "sprite_override": {
+          "asset_id": "626da61d-d317-4209-a293-92a23563f94f",
+          "source_asset_id": "447c9eb6-7e50-45f2-8417-e196c1ead271",
+          "source_sha256": "277a47e41c906fd22ddc40e8413ebfb501496f43d8438b32afc142e7165dbe0e",
+          "mask": {
+            "crop": [
+              1,
+              1,
+              114,
+              15
+            ],
+            "path": "M0 0h116v17H0Z",
+            "width": 116,
+            "height": 17,
+            "scene_alignment": "shelf"
+          }
+        }
+      }
+    },
+    {
+      "garment_id": "26b4405e-901e-5e94-94c0-6135105b0b8c",
+      "source_asset_id": "688fdfe0-002a-42e9-a508-7ecce83211c9",
+      "source_sha256": "d2b0a3204df257412e64d78bd3ffec31fc7e494ca192b9b0677c30eac8eda8f0",
+      "source_location_id": "ee7f5af1-6b7b-5160-b8f6-02bc9b2cc346",
+      "compartment_id": "40b480ba-14dd-5796-af79-b257bcdaadff",
+      "compartment": "E2",
+      "side": "left",
+      "layer": 0,
+      "kind": "common",
+      "name": "M's Tidal Threads Camp Shirt",
+      "display_width": 109,
+      "display_height": 17.666666666666668,
+      "file": "docs/handoff/SMART_WARDROBE_CODEX_HANDOFF_2026-10-11/reports/b01-common-v1/REM-09-common-v1.png",
+      "sha256": "d6b8dc1626c9ed8e02170a68879eaf8e0eb7b8a223639cc405e50e2fe0b0306a",
+      "item_id": "REM-09",
+      "color_rgb": [
+        99,
+        155,
+        182
+      ],
+      "pattern_basis": "dominant source color; shared surface texture",
+      "mask": {
+        "width": 640,
+        "height": 180,
+        "crop": [
+          26,
+          35,
+          576,
+          93
+        ],
+        "path": "M0 0h640v180h-640z",
+        "scene_alignment": "shelf"
+      },
+      "derivative_asset_id": "a61edc38-0613-467e-a7be-c972a3f2e6e1",
+      "geometry": {
+        "x": 0.6022727272727273,
+        "y": 0.26177825008855826,
+        "width": 0.0651913875598086,
+        "height": 0.0187743535246192,
+        "z_index": 20,
+        "approved": true,
+        "alignment": "shelf",
+        "basis": "B-01 common-form contract; independent reference trace",
+        "sprite_override": {
+          "asset_id": "a61edc38-0613-467e-a7be-c972a3f2e6e1",
+          "source_asset_id": "688fdfe0-002a-42e9-a508-7ecce83211c9",
+          "source_sha256": "d2b0a3204df257412e64d78bd3ffec31fc7e494ca192b9b0677c30eac8eda8f0",
+          "mask": {
+            "width": 640,
+            "height": 180,
+            "crop": [
+              26,
+              35,
+              576,
+              93
+            ],
+            "path": "M0 0h640v180h-640z",
+            "scene_alignment": "shelf"
+          }
+        }
+      }
+    },
+    {
+      "garment_id": "2904fd43-cb31-530d-b4bd-2d9783d3c762",
+      "source_asset_id": "0b2c69c5-4e20-4b9d-ab9e-2d4bf9db81f3",
+      "source_sha256": "bebeea70324182dab097c7710b4bb93261e94fe3e93dc7d63291ddf19611c598",
+      "source_location_id": "ee7f5af1-6b7b-5160-b8f6-02bc9b2cc346",
+      "compartment_id": "40b480ba-14dd-5796-af79-b257bcdaadff",
+      "compartment": "E2",
+      "side": "left",
+      "layer": 1,
+      "kind": "common",
+      "name": "Men’s Minimalist Wavefarer® Board Shorts - 19\"",
+      "display_width": 109,
+      "display_height": 17.666666666666668,
+      "file": "docs/handoff/SMART_WARDROBE_CODEX_HANDOFF_2026-10-11/reports/b01-common-v1/REM-23-common-v1.png",
+      "sha256": "5f23d216f308bb56fcd327c74c7e6250ea97decb64727d93a0a36b678eb44c67",
+      "item_id": "REM-23",
+      "color_rgb": [
+        185,
+        168,
+        149
+      ],
+      "pattern_basis": "source camouflage patch; simplified repeat",
+      "mask": {
+        "width": 640,
+        "height": 180,
+        "crop": [
+          26,
+          35,
+          576,
+          93
+        ],
+        "path": "M0 0h640v180h-640z",
+        "scene_alignment": "shelf"
+      },
+      "derivative_asset_id": "3a9c6e07-a1b6-481c-83cf-e4728180735d",
+      "geometry": {
+        "x": 0.6022727272727273,
+        "y": 0.2430038965639391,
+        "width": 0.0651913875598086,
+        "height": 0.0187743535246192,
+        "z_index": 21,
+        "approved": true,
+        "alignment": "shelf",
+        "basis": "B-01 common-form contract; independent reference trace",
+        "sprite_override": {
+          "asset_id": "3a9c6e07-a1b6-481c-83cf-e4728180735d",
+          "source_asset_id": "0b2c69c5-4e20-4b9d-ab9e-2d4bf9db81f3",
+          "source_sha256": "bebeea70324182dab097c7710b4bb93261e94fe3e93dc7d63291ddf19611c598",
+          "mask": {
+            "width": 640,
+            "height": 180,
+            "crop": [
+              26,
+              35,
+              576,
+              93
+            ],
+            "path": "M0 0h640v180h-640z",
+            "scene_alignment": "shelf"
+          }
+        }
+      }
+    },
+    {
+      "garment_id": "2d5ec79d-bdcf-582b-a78d-a6734b287c65",
+      "source_asset_id": "9e989bfa-57bf-4399-9eb8-fb403f8e750a",
+      "source_sha256": "12a490be1062d78706694ec8ab98394636fc5e943fe625d245096e69f20e2a94",
+      "source_location_id": "ee7f5af1-6b7b-5160-b8f6-02bc9b2cc346",
+      "compartment_id": "40b480ba-14dd-5796-af79-b257bcdaadff",
+      "compartment": "E2",
+      "side": "left",
+      "layer": 2,
+      "kind": "common",
+      "name": "M's Hydropeak Boardshorts - 21 in.",
+      "display_width": 109,
+      "display_height": 17.666666666666668,
+      "file": "docs/handoff/SMART_WARDROBE_CODEX_HANDOFF_2026-10-11/reports/b01-common-v1/REM-25-common-v1.png",
+      "sha256": "ada33414bd9fce468af8b44eafb1bbfa27aa8630d019e2bafe548421fe8bd6ce",
+      "item_id": "REM-25",
+      "color_rgb": [
+        103,
+        90,
+        72
+      ],
+      "pattern_basis": "source camouflage patch; simplified repeat",
+      "mask": {
+        "width": 640,
+        "height": 180,
+        "crop": [
+          26,
+          35,
+          576,
+          93
+        ],
+        "path": "M0 0h640v180h-640z",
+        "scene_alignment": "shelf"
+      },
+      "derivative_asset_id": "2a36b3cf-e111-4a74-857e-09da342cf350",
+      "geometry": {
+        "x": 0.6022727272727273,
+        "y": 0.2242295430393199,
+        "width": 0.0651913875598086,
+        "height": 0.0187743535246192,
+        "z_index": 22,
+        "approved": true,
+        "alignment": "shelf",
+        "basis": "B-01 common-form contract; independent reference trace",
+        "sprite_override": {
+          "asset_id": "2a36b3cf-e111-4a74-857e-09da342cf350",
+          "source_asset_id": "9e989bfa-57bf-4399-9eb8-fb403f8e750a",
+          "source_sha256": "12a490be1062d78706694ec8ab98394636fc5e943fe625d245096e69f20e2a94",
+          "mask": {
+            "width": 640,
+            "height": 180,
+            "crop": [
+              26,
+              35,
+              576,
+              93
+            ],
+            "path": "M0 0h640v180h-640z",
+            "scene_alignment": "shelf"
+          }
+        }
+      }
+    },
+    {
+      "garment_id": "2f2a46af-3507-5f7d-a53f-5b2bab1e7af5",
+      "source_asset_id": "7d364ee8-3166-4def-9093-b41bbb4472b0",
+      "source_sha256": "f057f784c6bcd6c7dbb2921b2d1ac788096bc8121fbf9ee38d24a3f7ee3cb986",
+      "source_location_id": "5d3a84c3-1b01-5638-910b-8a3302f2a808",
+      "compartment_id": "40b480ba-14dd-5796-af79-b257bcdaadff",
+      "compartment": "E2",
+      "side": "right",
+      "layer": 0,
+      "kind": "common",
+      "name": "Women's Super Free Alpine Jacket",
+      "display_width": 112,
+      "display_height": 16.333333333333332,
+      "file": "docs/handoff/SMART_WARDROBE_CODEX_HANDOFF_2026-10-11/reports/b01-common-v1/REM-35-common-v1.png",
+      "sha256": "f0bcef9e172008e613f942ed774c8fc8b6fa17a06f69957ba1e56108510c5ab6",
+      "item_id": "REM-35",
+      "color_rgb": [
+        19,
+        73,
+        119
+      ],
+      "pattern_basis": "dominant source color; shared surface texture",
+      "mask": {
+        "width": 640,
+        "height": 180,
+        "crop": [
+          26,
+          35,
+          576,
+          84
+        ],
+        "path": "M0 0h640v180h-640z",
+        "scene_alignment": "shelf"
+      },
+      "derivative_asset_id": "0033e851-b432-4098-8085-bb49db387d6a",
+      "geometry": {
+        "x": 0.6770334928229665,
+        "y": 0.263195182430039,
+        "width": 0.06698564593301436,
+        "height": 0.017357421183138502,
+        "z_index": 20,
+        "approved": true,
+        "alignment": "shelf",
+        "basis": "B-01 common-form contract; independent reference trace",
+        "sprite_override": {
+          "asset_id": "0033e851-b432-4098-8085-bb49db387d6a",
+          "source_asset_id": "7d364ee8-3166-4def-9093-b41bbb4472b0",
+          "source_sha256": "f057f784c6bcd6c7dbb2921b2d1ac788096bc8121fbf9ee38d24a3f7ee3cb986",
+          "mask": {
+            "width": 640,
+            "height": 180,
+            "crop": [
+              26,
+              35,
+              576,
+              84
+            ],
+            "path": "M0 0h640v180h-640z",
+            "scene_alignment": "shelf"
+          }
+        }
+      }
+    },
+    {
+      "garment_id": "33d87c69-53a3-5062-9428-fdf2d12a2bce",
+      "source_asset_id": "679143c0-f3ad-4c57-9b11-70c55458f3bf",
+      "source_sha256": "dfba41f694ef9b77be039ffbf6b0d40deb1ab3c834e80054bf45030e2accef83",
+      "source_location_id": "ee7f5af1-6b7b-5160-b8f6-02bc9b2cc346",
+      "compartment_id": "40b480ba-14dd-5796-af79-b257bcdaadff",
+      "compartment": "E2",
+      "side": "right",
+      "layer": 1,
+      "kind": "common",
+      "name": "W's Necessity Top",
+      "display_width": 112,
+      "display_height": 16.333333333333332,
+      "file": "docs/handoff/SMART_WARDROBE_CODEX_HANDOFF_2026-10-11/reports/b01-common-v1/REM-07-common-v1.png",
+      "sha256": "5bd04982cfe6731d9a74f348fa049799c3f7a94fef98e212f8499594e5077b1c",
+      "item_id": "REM-07",
+      "color_rgb": [
+        103,
+        70,
+        119
+      ],
+      "pattern_basis": "dominant source color; shared surface texture",
+      "mask": {
+        "width": 640,
+        "height": 180,
+        "crop": [
+          26,
+          35,
+          576,
+          84
+        ],
+        "path": "M0 0h640v180h-640z",
+        "scene_alignment": "shelf"
+      },
+      "derivative_asset_id": "f8c7280f-0609-4347-9a7c-f3710edba798",
+      "geometry": {
+        "x": 0.6770334928229665,
+        "y": 0.24583776124690043,
+        "width": 0.06698564593301436,
+        "height": 0.017357421183138502,
+        "z_index": 21,
+        "approved": true,
+        "alignment": "shelf",
+        "basis": "B-01 common-form contract; independent reference trace",
+        "sprite_override": {
+          "asset_id": "f8c7280f-0609-4347-9a7c-f3710edba798",
+          "source_asset_id": "679143c0-f3ad-4c57-9b11-70c55458f3bf",
+          "source_sha256": "dfba41f694ef9b77be039ffbf6b0d40deb1ab3c834e80054bf45030e2accef83",
+          "mask": {
+            "width": 640,
+            "height": 180,
+            "crop": [
+              26,
+              35,
+              576,
+              84
+            ],
+            "path": "M0 0h640v180h-640z",
+            "scene_alignment": "shelf"
+          }
+        }
+      }
+    },
+    {
+      "garment_id": "3e2e7757-e7fe-5096-b955-5978f9551311",
+      "source_asset_id": "7481b876-3091-4461-b748-c558a8e67d61",
+      "source_sha256": "efc390db3745ed5b136ac88f9ec4780fa455e7998f56beea37f37cad172e751b",
+      "source_location_id": "ee7f5af1-6b7b-5160-b8f6-02bc9b2cc346",
+      "compartment_id": "40b480ba-14dd-5796-af79-b257bcdaadff",
+      "compartment": "E2",
+      "side": "right",
+      "layer": 2,
+      "kind": "common",
+      "name": "M's Multi Trails Shorts - 6 in.",
+      "display_width": 112,
+      "display_height": 16.333333333333332,
+      "file": "docs/handoff/SMART_WARDROBE_CODEX_HANDOFF_2026-10-11/reports/b01-common-v1/REM-26-common-v1.png",
+      "sha256": "5803a0abca2456e5dae3b8fdaff213485f9cbe04889e54f2ae8d729ddefb1034",
+      "item_id": "REM-26",
+      "color_rgb": [
+        86,
+        72,
+        59
+      ],
+      "pattern_basis": "dominant source color; shared surface texture",
+      "mask": {
+        "width": 640,
+        "height": 180,
+        "crop": [
+          26,
+          35,
+          576,
+          84
+        ],
+        "path": "M0 0h640v180h-640z",
+        "scene_alignment": "shelf"
+      },
+      "derivative_asset_id": "d9354470-e356-4fbb-baef-ec0e96c0abca",
+      "geometry": {
+        "x": 0.6770334928229665,
+        "y": 0.22848034006376192,
+        "width": 0.06698564593301436,
+        "height": 0.017357421183138502,
+        "z_index": 22,
+        "approved": true,
+        "alignment": "shelf",
+        "basis": "B-01 common-form contract; independent reference trace",
+        "sprite_override": {
+          "asset_id": "d9354470-e356-4fbb-baef-ec0e96c0abca",
+          "source_asset_id": "7481b876-3091-4461-b748-c558a8e67d61",
+          "source_sha256": "efc390db3745ed5b136ac88f9ec4780fa455e7998f56beea37f37cad172e751b",
+          "mask": {
+            "width": 640,
+            "height": 180,
+            "crop": [
+              26,
+              35,
+              576,
+              84
+            ],
+            "path": "M0 0h640v180h-640z",
+            "scene_alignment": "shelf"
+          }
+        }
+      }
+    },
+    {
+      "garment_id": "454faefc-acf0-593d-a5b1-15a1b45b097e",
+      "source_asset_id": "263bfc03-a023-4f4c-8061-c6b10021c8a5",
+      "source_sha256": "0c6ea744fce2cceeb69dc84ada8291a4025f5a96bee37fccd9036195a216c6f8",
+      "source_location_id": "ee7f5af1-6b7b-5160-b8f6-02bc9b2cc346",
+      "compartment_id": "b0bc76f0-1708-5dcb-8235-cac2a748a849",
+      "compartment": "E3",
+      "side": "left",
+      "layer": 0,
+      "kind": "common",
+      "name": "W's L/S Regenerative Organic Certified Cotton Tee",
+      "display_width": 107,
+      "display_height": 19,
+      "file": "docs/handoff/SMART_WARDROBE_CODEX_HANDOFF_2026-10-11/reports/b01-common-v1/REM-17-common-v1.png",
+      "sha256": "f90f2a9d00cf2066bc748f45ab26e3d089cdc563b071685d1b8eba2ac9da01d4",
+      "item_id": "REM-17",
+      "color_rgb": [
+        122,
+        141,
+        162
+      ],
+      "pattern_basis": "dominant source color; shared surface texture",
+      "mask": {
+        "width": 640,
+        "height": 180,
+        "crop": [
+          26,
+          35,
+          576,
+          102
+        ],
+        "path": "M0 0h640v180h-640z",
+        "scene_alignment": "shelf"
+      },
+      "derivative_asset_id": "ec9e14ff-6b93-46ba-81e8-e758db065f66",
+      "geometry": {
+        "x": 0.6028708133971292,
+        "y": 0.39213602550478216,
+        "width": 0.06399521531100479,
+        "height": 0.020191285866099893,
+        "z_index": 20,
+        "approved": true,
+        "alignment": "shelf",
+        "basis": "B-01 common-form contract; independent reference trace",
+        "sprite_override": {
+          "asset_id": "ec9e14ff-6b93-46ba-81e8-e758db065f66",
+          "source_asset_id": "263bfc03-a023-4f4c-8061-c6b10021c8a5",
+          "source_sha256": "0c6ea744fce2cceeb69dc84ada8291a4025f5a96bee37fccd9036195a216c6f8",
+          "mask": {
+            "width": 640,
+            "height": 180,
+            "crop": [
+              26,
+              35,
+              576,
+              102
+            ],
+            "path": "M0 0h640v180h-640z",
+            "scene_alignment": "shelf"
+          }
+        }
+      }
+    },
+    {
+      "garment_id": "4d1f6a17-44b8-5c0b-8248-eb009565da12",
+      "source_asset_id": "08e03294-f0bc-4940-bf76-83e953c97f1d",
+      "source_sha256": "5cceebaf54f067878db468915123b85dc241f66099d16ebb69fd90aefefb6d9a",
+      "source_location_id": "ee7f5af1-6b7b-5160-b8f6-02bc9b2cc346",
+      "compartment_id": "b0bc76f0-1708-5dcb-8235-cac2a748a849",
+      "compartment": "E3",
+      "side": "left",
+      "layer": 1,
+      "kind": "common",
+      "name": "M's Stretch Polo",
+      "display_width": 107,
+      "display_height": 19,
+      "file": "docs/handoff/SMART_WARDROBE_CODEX_HANDOFF_2026-10-11/reports/b01-common-v1/REM-12-common-v1.png",
+      "sha256": "a7e07701a35c9fe840d0344bbcfd7c3660ebf9be4cb635c162e6bbcc4aa1b266",
+      "item_id": "REM-12",
+      "color_rgb": [
+        203,
+        195,
+        187
+      ],
+      "pattern_basis": "dominant source color; shared surface texture",
+      "mask": {
+        "width": 640,
+        "height": 180,
+        "crop": [
+          26,
+          35,
+          576,
+          102
+        ],
+        "path": "M0 0h640v180h-640z",
+        "scene_alignment": "shelf"
+      },
+      "derivative_asset_id": "68b0ef74-f336-4fb6-abae-b130e0a2b9c8",
+      "geometry": {
+        "x": 0.6028708133971292,
+        "y": 0.37194473963868224,
+        "width": 0.06399521531100479,
+        "height": 0.020191285866099893,
+        "z_index": 21,
+        "approved": true,
+        "alignment": "shelf",
+        "basis": "B-01 common-form contract; independent reference trace",
+        "sprite_override": {
+          "asset_id": "68b0ef74-f336-4fb6-abae-b130e0a2b9c8",
+          "source_asset_id": "08e03294-f0bc-4940-bf76-83e953c97f1d",
+          "source_sha256": "5cceebaf54f067878db468915123b85dc241f66099d16ebb69fd90aefefb6d9a",
+          "mask": {
+            "width": 640,
+            "height": 180,
+            "crop": [
+              26,
+              35,
+              576,
+              102
+            ],
+            "path": "M0 0h640v180h-640z",
+            "scene_alignment": "shelf"
+          }
+        }
+      }
+    },
+    {
+      "garment_id": "59e7a4ca-3acb-5250-a2d6-8f7703984934",
+      "source_asset_id": "23cd3452-cfa7-4fc4-84c2-2e7939fc2b13",
+      "source_sha256": "077b2af4a71484e092264bf08ae43d01e336a705768940bde803e784f10f8901",
+      "source_location_id": "f1eae36f-ab28-532c-b9d4-bb26b6fb0414",
+      "compartment_id": "b0bc76f0-1708-5dcb-8235-cac2a748a849",
+      "compartment": "E3",
+      "side": "left",
+      "layer": 2,
+      "kind": "common",
+      "name": "W's Down Sweater Hoody Pullover",
+      "display_width": 107,
+      "display_height": 19,
+      "file": "docs/handoff/SMART_WARDROBE_CODEX_HANDOFF_2026-10-11/reports/b01-common-v1/REM-33-common-v1.png",
+      "sha256": "028d3be5c8458f6d498c0662f26a175e4cce8559885888a098328315d743cec1",
+      "item_id": "REM-33",
+      "color_rgb": [
+        106,
+        56,
+        68
+      ],
+      "pattern_basis": "dominant source color; shared surface texture",
+      "mask": {
+        "width": 640,
+        "height": 180,
+        "crop": [
+          26,
+          35,
+          576,
+          102
+        ],
+        "path": "M0 0h640v180h-640z",
+        "scene_alignment": "shelf"
+      },
+      "derivative_asset_id": "f46238b7-c24c-454a-85aa-97514376203c",
+      "geometry": {
+        "x": 0.6028708133971292,
+        "y": 0.3517534537725824,
+        "width": 0.06399521531100479,
+        "height": 0.020191285866099893,
+        "z_index": 22,
+        "approved": true,
+        "alignment": "shelf",
+        "basis": "B-01 common-form contract; independent reference trace",
+        "sprite_override": {
+          "asset_id": "f46238b7-c24c-454a-85aa-97514376203c",
+          "source_asset_id": "23cd3452-cfa7-4fc4-84c2-2e7939fc2b13",
+          "source_sha256": "077b2af4a71484e092264bf08ae43d01e336a705768940bde803e784f10f8901",
+          "mask": {
+            "width": 640,
+            "height": 180,
+            "crop": [
+              26,
+              35,
+              576,
+              102
+            ],
+            "path": "M0 0h640v180h-640z",
+            "scene_alignment": "shelf"
+          }
+        }
+      }
+    },
+    {
+      "garment_id": "6318748a-24b8-5a50-bf13-c925293f0ea1",
+      "source_asset_id": "7a0d8a2e-ac38-4a97-860e-4f8bffa78123",
+      "source_sha256": "bdeeea56c4732ebfec394bd01c6043d35ff99b0db750b831046c56197444c6b0",
+      "source_location_id": "b54194a3-1fed-5067-8882-bdaa96661e3b",
+      "compartment_id": "b0bc76f0-1708-5dcb-8235-cac2a748a849",
+      "compartment": "E3",
+      "side": "right",
+      "layer": 0,
+      "kind": "common",
+      "name": "Women's Hampi Rock Pants - Regular",
+      "display_width": 113,
+      "display_height": 19.333333333333332,
+      "file": "docs/handoff/SMART_WARDROBE_CODEX_HANDOFF_2026-10-11/reports/b01-common-v1/REM-27-common-v1.png",
+      "sha256": "3b77fa9d914e195963b695c9427fa897324e6986bdfc9e3c105c37ec43a71bc5",
+      "item_id": "REM-27",
+      "color_rgb": [
+        164,
+        147,
+        75
+      ],
+      "pattern_basis": "dominant source color; shared surface texture",
+      "mask": {
+        "width": 640,
+        "height": 180,
+        "crop": [
+          26,
+          35,
+          576,
+          98
+        ],
+        "path": "M0 0h640v180h-640z",
+        "scene_alignment": "shelf"
+      },
+      "derivative_asset_id": "dee5ae3d-fbc3-4dcd-af0a-33ea61ca839c",
+      "geometry": {
+        "x": 0.6764354066985646,
+        "y": 0.39178179241941197,
+        "width": 0.06758373205741627,
+        "height": 0.020545518951470065,
+        "z_index": 20,
+        "approved": true,
+        "alignment": "shelf",
+        "basis": "B-01 common-form contract; independent reference trace",
+        "sprite_override": {
+          "asset_id": "dee5ae3d-fbc3-4dcd-af0a-33ea61ca839c",
+          "source_asset_id": "7a0d8a2e-ac38-4a97-860e-4f8bffa78123",
+          "source_sha256": "bdeeea56c4732ebfec394bd01c6043d35ff99b0db750b831046c56197444c6b0",
+          "mask": {
+            "width": 640,
+            "height": 180,
+            "crop": [
+              26,
+              35,
+              576,
+              98
+            ],
+            "path": "M0 0h640v180h-640z",
+            "scene_alignment": "shelf"
+          }
+        }
+      }
+    },
+    {
+      "garment_id": "715489be-2fd6-5576-b58c-bd991c9c2c32",
+      "source_asset_id": "9242e7ed-a537-4422-a4e1-d91c90a161b8",
+      "source_sha256": "11837c74b7ad8700b8d1a3beb19029ef5874a51573863211a86872e0e1355124",
+      "source_location_id": "be6e19be-be75-5a7d-bc4e-90769552bb60",
+      "compartment_id": "b0bc76f0-1708-5dcb-8235-cac2a748a849",
+      "compartment": "E3",
+      "side": "right",
+      "layer": 1,
+      "kind": "common",
+      "name": "M's Triolet Pants",
+      "display_width": 113,
+      "display_height": 19.333333333333332,
+      "file": "docs/handoff/SMART_WARDROBE_CODEX_HANDOFF_2026-10-11/reports/b01-common-v1/REM-22-common-v1.png",
+      "sha256": "25b56a1dd230ae7edba0c647f4a5a12b20f9c4293e3c2dc3d359523b92399d92",
+      "item_id": "REM-22",
+      "color_rgb": [
+        27,
+        57,
+        52
+      ],
+      "pattern_basis": "dominant source color; shared surface texture",
+      "mask": {
+        "width": 640,
+        "height": 180,
+        "crop": [
+          26,
+          35,
+          576,
+          98
+        ],
+        "path": "M0 0h640v180h-640z",
+        "scene_alignment": "shelf"
+      },
+      "derivative_asset_id": "de5db9dc-c2c6-48cd-a8fd-932293f6d864",
+      "geometry": {
+        "x": 0.6764354066985646,
+        "y": 0.37123627346794197,
+        "width": 0.06758373205741627,
+        "height": 0.020545518951470065,
+        "z_index": 21,
+        "approved": true,
+        "alignment": "shelf",
+        "basis": "B-01 common-form contract; independent reference trace",
+        "sprite_override": {
+          "asset_id": "de5db9dc-c2c6-48cd-a8fd-932293f6d864",
+          "source_asset_id": "9242e7ed-a537-4422-a4e1-d91c90a161b8",
+          "source_sha256": "11837c74b7ad8700b8d1a3beb19029ef5874a51573863211a86872e0e1355124",
+          "mask": {
+            "width": 640,
+            "height": 180,
+            "crop": [
+              26,
+              35,
+              576,
+              98
+            ],
+            "path": "M0 0h640v180h-640z",
+            "scene_alignment": "shelf"
+          }
+        }
+      }
+    },
+    {
+      "garment_id": "7893136d-24c1-5af3-8986-05089c8f2f18",
+      "source_asset_id": "3bc0c888-480b-4fd4-aa6b-aecd591a3c7b",
+      "source_sha256": "68e895b35415d701e654ebc3f66b176c5fae2e68ac85f8f669875cc27800aa10",
+      "source_location_id": "fbbbe0f0-b5b4-55b9-8a96-d63bad0d1862",
+      "compartment_id": "b0bc76f0-1708-5dcb-8235-cac2a748a849",
+      "compartment": "E3",
+      "side": "right",
+      "layer": 2,
+      "kind": "common",
+      "name": "M's Cap Cool Sun Hoody - Water People Banner",
+      "display_width": 113,
+      "display_height": 19.333333333333332,
+      "file": "docs/handoff/SMART_WARDROBE_CODEX_HANDOFF_2026-10-11/reports/b01-common-v1/REM-02-common-v1.png",
+      "sha256": "03d68ea78d888c002ad834b2beaa299514c919e5450685884bd29e297f9da057",
+      "item_id": "REM-02",
+      "color_rgb": [
+        186,
+        186,
+        181
+      ],
+      "pattern_basis": "dominant source color; shared surface texture",
+      "mask": {
+        "width": 640,
+        "height": 180,
+        "crop": [
+          26,
+          35,
+          576,
+          98
+        ],
+        "path": "M0 0h640v180h-640z",
+        "scene_alignment": "shelf"
+      },
+      "derivative_asset_id": "2914e7d6-b30f-421a-9d54-b48b62a30ca6",
+      "geometry": {
+        "x": 0.6764354066985646,
+        "y": 0.3506907545164719,
+        "width": 0.06758373205741627,
+        "height": 0.020545518951470065,
+        "z_index": 22,
+        "approved": true,
+        "alignment": "shelf",
+        "basis": "B-01 common-form contract; independent reference trace",
+        "sprite_override": {
+          "asset_id": "2914e7d6-b30f-421a-9d54-b48b62a30ca6",
+          "source_asset_id": "3bc0c888-480b-4fd4-aa6b-aecd591a3c7b",
+          "source_sha256": "68e895b35415d701e654ebc3f66b176c5fae2e68ac85f8f669875cc27800aa10",
+          "mask": {
+            "width": 640,
+            "height": 180,
+            "crop": [
+              26,
+              35,
+              576,
+              98
+            ],
+            "path": "M0 0h640v180h-640z",
+            "scene_alignment": "shelf"
+          }
+        }
+      }
+    },
+    {
+      "garment_id": "80cd394e-6f5b-5ef5-95d4-a1dae823a1ed",
+      "source_asset_id": "0bf25832-b89c-4ea5-87ca-a2e62de3f2ae",
+      "source_sha256": "41836d5c0acc24d3c610116e2a33cd4357581fe06e34a07d66f6366524aa1d73",
+      "source_location_id": "ee7f5af1-6b7b-5160-b8f6-02bc9b2cc346",
+      "compartment_id": "3fa03e54-0119-5507-b99b-6cd14098c8c2",
+      "compartment": "E4",
+      "side": "left",
+      "layer": 0,
+      "kind": "common",
+      "name": "M's Strataspire Responsibili-Tee",
+      "display_width": 111,
+      "display_height": 19.333333333333332,
+      "file": "docs/handoff/SMART_WARDROBE_CODEX_HANDOFF_2026-10-11/reports/b01-common-v1/REM-08-common-v1.png",
+      "sha256": "ca9f07f343826cb5893cfb5ff1779c9cc453fd769851f93a0762810ab8640a3e",
+      "item_id": "REM-08",
+      "color_rgb": [
+        211,
+        216,
+        220
+      ],
+      "pattern_basis": "dominant source color; shared surface texture",
+      "mask": {
+        "width": 640,
+        "height": 180,
+        "crop": [
+          26,
+          35,
+          576,
+          100
+        ],
+        "path": "M0 0h640v180h-640z",
+        "scene_alignment": "shelf"
+      },
+      "derivative_asset_id": "2ee322ee-8255-494f-b440-3b3d12d3e2cb",
+      "geometry": {
+        "x": 0.6022727272727273,
+        "y": 0.5129295076160113,
+        "width": 0.06638755980861244,
+        "height": 0.020545518951470065,
+        "z_index": 20,
+        "approved": true,
+        "alignment": "shelf",
+        "basis": "B-01 common-form contract; independent reference trace",
+        "sprite_override": {
+          "asset_id": "2ee322ee-8255-494f-b440-3b3d12d3e2cb",
+          "source_asset_id": "0bf25832-b89c-4ea5-87ca-a2e62de3f2ae",
+          "source_sha256": "41836d5c0acc24d3c610116e2a33cd4357581fe06e34a07d66f6366524aa1d73",
+          "mask": {
+            "width": 640,
+            "height": 180,
+            "crop": [
+              26,
+              35,
+              576,
+              100
+            ],
+            "path": "M0 0h640v180h-640z",
+            "scene_alignment": "shelf"
+          }
+        }
+      }
+    },
+    {
+      "garment_id": "821ae500-52f4-5879-b275-9a23bc327a3a",
+      "source_asset_id": "cecc5e2c-0ded-493a-8d8b-eb06e2382cea",
+      "source_sha256": "85a344f8f4f0fbf1a158f72ff4521bbd6c81b8756fc250c9bd417edc8ecd960b",
+      "source_location_id": "407426b0-3182-5e67-89f0-6b66a330f702",
+      "compartment_id": "3fa03e54-0119-5507-b99b-6cd14098c8c2",
+      "compartment": "E4",
+      "side": "left",
+      "layer": 1,
+      "kind": "common",
+      "name": "M's Micro Puff Zip Vest",
+      "display_width": 111,
+      "display_height": 19.333333333333332,
+      "file": "docs/handoff/SMART_WARDROBE_CODEX_HANDOFF_2026-10-11/reports/b01-common-v1/REM-30-common-v1.png",
+      "sha256": "1600b1abb9ba44efc95351fd3b2b8d28c3e45cb5a1fbfb75db789975da95258a",
+      "item_id": "REM-30",
+      "color_rgb": [
+        4,
+        72,
+        154
+      ],
+      "pattern_basis": "dominant source color; shared surface texture",
+      "mask": {
+        "width": 640,
+        "height": 180,
+        "crop": [
+          26,
+          35,
+          576,
+          100
+        ],
+        "path": "M0 0h640v180h-640z",
+        "scene_alignment": "shelf"
+      },
+      "derivative_asset_id": "5ef5fac6-4aa9-4f50-8c27-4962d05e71cd",
+      "geometry": {
+        "x": 0.6022727272727273,
+        "y": 0.4923839886645413,
+        "width": 0.06638755980861244,
+        "height": 0.020545518951470065,
+        "z_index": 21,
+        "approved": true,
+        "alignment": "shelf",
+        "basis": "B-01 common-form contract; independent reference trace",
+        "sprite_override": {
+          "asset_id": "5ef5fac6-4aa9-4f50-8c27-4962d05e71cd",
+          "source_asset_id": "cecc5e2c-0ded-493a-8d8b-eb06e2382cea",
+          "source_sha256": "85a344f8f4f0fbf1a158f72ff4521bbd6c81b8756fc250c9bd417edc8ecd960b",
+          "mask": {
+            "width": 640,
+            "height": 180,
+            "crop": [
+              26,
+              35,
+              576,
+              100
+            ],
+            "path": "M0 0h640v180h-640z",
+            "scene_alignment": "shelf"
+          }
+        }
+      }
+    },
+    {
+      "garment_id": "825237a9-8853-59de-bd73-4ec198b7e033",
+      "source_asset_id": "f90968f2-74a1-48c6-b16d-e095e4e20d37",
+      "source_sha256": "4b8aa81d8aebdcdfd25e744a07ebda8d2213f17460a3ecbcf3de2409387e3258",
+      "source_location_id": "ee7f5af1-6b7b-5160-b8f6-02bc9b2cc346",
+      "compartment_id": "3fa03e54-0119-5507-b99b-6cd14098c8c2",
+      "compartment": "E4",
+      "side": "left",
+      "layer": 2,
+      "kind": "common",
+      "name": "W's Capilene® 2 V-Neck",
+      "display_width": 111,
+      "display_height": 19.333333333333332,
+      "file": "docs/handoff/SMART_WARDROBE_CODEX_HANDOFF_2026-10-11/reports/b01-common-v1/REM-05-common-v1.png",
+      "sha256": "7eac248316b071c2f69398b7a017775b749355cc8a8cf1a0c52c096e64db8b8d",
+      "item_id": "REM-05",
+      "color_rgb": [
+        154,
+        132,
+        152
+      ],
+      "pattern_basis": "dominant source color; shared surface texture",
+      "mask": {
+        "width": 640,
+        "height": 180,
+        "crop": [
+          26,
+          35,
+          576,
+          100
+        ],
+        "path": "M0 0h640v180h-640z",
+        "scene_alignment": "shelf"
+      },
+      "derivative_asset_id": "18756d9e-dc4e-4dbb-8b24-8f13a5b77c2b",
+      "geometry": {
+        "x": 0.6022727272727273,
+        "y": 0.47183846971307125,
+        "width": 0.06638755980861244,
+        "height": 0.020545518951470065,
+        "z_index": 22,
+        "approved": true,
+        "alignment": "shelf",
+        "basis": "B-01 common-form contract; independent reference trace",
+        "sprite_override": {
+          "asset_id": "18756d9e-dc4e-4dbb-8b24-8f13a5b77c2b",
+          "source_asset_id": "f90968f2-74a1-48c6-b16d-e095e4e20d37",
+          "source_sha256": "4b8aa81d8aebdcdfd25e744a07ebda8d2213f17460a3ecbcf3de2409387e3258",
+          "mask": {
+            "width": 640,
+            "height": 180,
+            "crop": [
+              26,
+              35,
+              576,
+              100
+            ],
+            "path": "M0 0h640v180h-640z",
+            "scene_alignment": "shelf"
+          }
+        }
+      }
+    },
+    {
+      "garment_id": "883a6a25-4c2c-510b-bbe5-0ca8e5a44e32",
+      "source_asset_id": "4c96e88c-9941-467d-867f-c81318a9bea8",
+      "source_sha256": "249337a953cc383c595ca019d496c63c509ffda9982638ab2b00c89b89fe72f0",
+      "source_location_id": "cd5f5c33-ebe9-5ed0-bdda-e85fbef1fa45",
+      "compartment_id": "3fa03e54-0119-5507-b99b-6cd14098c8c2",
+      "compartment": "E4",
+      "side": "right",
+      "layer": 0,
+      "kind": "common",
+      "name": "W's Micro D®-Luxe 1/4 Zip",
+      "display_width": 113,
+      "display_height": 19,
+      "file": "docs/handoff/SMART_WARDROBE_CODEX_HANDOFF_2026-10-11/reports/b01-common-v1/REM-11-common-v1.png",
+      "sha256": "2604444bd1644fa9ea6fcf00aef36ddfca0f7d897129c99ecb323e094ed1e56d",
+      "item_id": "REM-11",
+      "color_rgb": [
+        198,
+        182,
+        197
+      ],
+      "pattern_basis": "dominant source color; shared surface texture",
+      "mask": {
+        "width": 640,
+        "height": 180,
+        "crop": [
+          26,
+          35,
+          576,
+          96
+        ],
+        "path": "M0 0h640v180h-640z",
+        "scene_alignment": "shelf"
+      },
+      "derivative_asset_id": "b5956fc8-d0cb-4d7f-a580-d679aec410a8",
+      "geometry": {
+        "x": 0.6770334928229665,
+        "y": 0.5132837407013815,
+        "width": 0.06758373205741627,
+        "height": 0.020191285866099893,
+        "z_index": 20,
+        "approved": true,
+        "alignment": "shelf",
+        "basis": "B-01 common-form contract; independent reference trace",
+        "sprite_override": {
+          "asset_id": "b5956fc8-d0cb-4d7f-a580-d679aec410a8",
+          "source_asset_id": "4c96e88c-9941-467d-867f-c81318a9bea8",
+          "source_sha256": "249337a953cc383c595ca019d496c63c509ffda9982638ab2b00c89b89fe72f0",
+          "mask": {
+            "width": 640,
+            "height": 180,
+            "crop": [
+              26,
+              35,
+              576,
+              96
+            ],
+            "path": "M0 0h640v180h-640z",
+            "scene_alignment": "shelf"
+          }
+        }
+      }
+    },
+    {
+      "garment_id": "900b7fa4-0e9c-5dd1-afd2-1c89ac2eaade",
+      "source_asset_id": "bcc555ef-7890-4613-9673-8193793648a4",
+      "source_sha256": "67b385d12a3f7352b33548635ceff96c15edb97b03c16713eea23516ed48df02",
+      "source_location_id": "92bf8b7c-cfc8-5e30-94ef-8991ae04b917",
+      "compartment_id": "3fa03e54-0119-5507-b99b-6cd14098c8c2",
+      "compartment": "E4",
+      "side": "right",
+      "layer": 1,
+      "kind": "common",
+      "name": "W's Everyday Cord Straight Pants",
+      "display_width": 113,
+      "display_height": 19,
+      "file": "docs/handoff/SMART_WARDROBE_CODEX_HANDOFF_2026-10-11/reports/b01-common-v1/REM-19-common-v1.png",
+      "sha256": "28d5fff412a926af783002e0650d0a49265ce7dc1c7823911e89b0955f0d74c3",
+      "item_id": "REM-19",
+      "color_rgb": [
+        38,
+        36,
+        44
+      ],
+      "pattern_basis": "dominant source color; shared surface texture",
+      "mask": {
+        "width": 640,
+        "height": 180,
+        "crop": [
+          26,
+          35,
+          576,
+          96
+        ],
+        "path": "M0 0h640v180h-640z",
+        "scene_alignment": "shelf"
+      },
+      "derivative_asset_id": "a47e86e1-9b80-40bf-85c2-297f82a95534",
+      "geometry": {
+        "x": 0.6770334928229665,
+        "y": 0.49309245483528164,
+        "width": 0.06758373205741627,
+        "height": 0.020191285866099893,
+        "z_index": 21,
+        "approved": true,
+        "alignment": "shelf",
+        "basis": "B-01 common-form contract; independent reference trace",
+        "sprite_override": {
+          "asset_id": "a47e86e1-9b80-40bf-85c2-297f82a95534",
+          "source_asset_id": "bcc555ef-7890-4613-9673-8193793648a4",
+          "source_sha256": "67b385d12a3f7352b33548635ceff96c15edb97b03c16713eea23516ed48df02",
+          "mask": {
+            "width": 640,
+            "height": 180,
+            "crop": [
+              26,
+              35,
+              576,
+              96
+            ],
+            "path": "M0 0h640v180h-640z",
+            "scene_alignment": "shelf"
+          }
+        }
+      }
+    },
+    {
+      "garment_id": "94513db1-6b4c-5b06-a088-1abf46df8712",
+      "source_asset_id": "f7a100fe-df47-4d1e-9229-235719c66e2a",
+      "source_sha256": "58b3ba19bc7e5d11002e82daf554656c816b407e1825efbaf392a0aac838da49",
+      "source_location_id": "16ae382e-250d-574c-a359-ebcf3715018e",
+      "compartment_id": "3fa03e54-0119-5507-b99b-6cd14098c8c2",
+      "compartment": "E4",
+      "side": "right",
+      "layer": 2,
+      "kind": "common",
+      "name": "W's Cap Cool Daily Shirt - Fitz Roy Nimbus",
+      "display_width": 113,
+      "display_height": 19,
+      "file": "docs/handoff/SMART_WARDROBE_CODEX_HANDOFF_2026-10-11/reports/b01-common-v1/REM-06-common-v1.png",
+      "sha256": "4c578c48a7098c5bef5413573fbe025477d4e163cdeaa3485d6012c44e3a441c",
+      "item_id": "REM-06",
+      "color_rgb": [
+        68,
+        140,
+        181
+      ],
+      "pattern_basis": "dominant source color; shared surface texture",
+      "mask": {
+        "width": 640,
+        "height": 180,
+        "crop": [
+          26,
+          35,
+          576,
+          96
+        ],
+        "path": "M0 0h640v180h-640z",
+        "scene_alignment": "shelf"
+      },
+      "derivative_asset_id": "90826ed2-7d83-452a-ab33-aa4b5de01f55",
+      "geometry": {
+        "x": 0.6770334928229665,
+        "y": 0.4729011689691817,
+        "width": 0.06758373205741627,
+        "height": 0.020191285866099893,
+        "z_index": 22,
+        "approved": true,
+        "alignment": "shelf",
+        "basis": "B-01 common-form contract; independent reference trace",
+        "sprite_override": {
+          "asset_id": "90826ed2-7d83-452a-ab33-aa4b5de01f55",
+          "source_asset_id": "f7a100fe-df47-4d1e-9229-235719c66e2a",
+          "source_sha256": "58b3ba19bc7e5d11002e82daf554656c816b407e1825efbaf392a0aac838da49",
+          "mask": {
+            "width": 640,
+            "height": 180,
+            "crop": [
+              26,
+              35,
+              576,
+              96
+            ],
+            "path": "M0 0h640v180h-640z",
+            "scene_alignment": "shelf"
+          }
+        }
+      }
+    },
+    {
+      "garment_id": "a0232e79-b5d9-5525-a298-3054de415599",
+      "source_asset_id": "e36c71ff-4112-4dd3-87a7-e2b3f926d588",
+      "source_sha256": "6a9561c395ffa810e8403f67bfdceb3250d7de6f924cee34a5f0a1110994aadb",
+      "source_location_id": "40aaa2f7-7028-5fd2-982c-a6a2017e65e0",
+      "compartment_id": "5d7fe4ad-732c-5ea9-8970-f04c84a37f8a",
+      "compartment": "F1",
+      "side": "left",
+      "layer": 0,
+      "kind": "common",
+      "name": "Men's Stretch Velocity Full-Zip",
+      "display_width": 115,
+      "display_height": 12.997566371681415,
+      "file": "docs/handoff/SMART_WARDROBE_CODEX_HANDOFF_2026-10-11/reports/b01-common-v1/REM-32-common-v1.png",
+      "sha256": "2838fe88548324ccc86969108414cc80a8657cc2472963b2a183d4ceed338662",
+      "item_id": "REM-32",
+      "color_rgb": [
+        196,
+        68,
+        28
+      ],
+      "pattern_basis": "dominant source color; shared surface texture",
+      "mask": {
+        "width": 640,
+        "height": 180,
+        "crop": [
+          26,
+          35,
+          576,
+          65
+        ],
+        "path": "M0 0h640v180h-640z",
+        "scene_alignment": "shelf"
+      },
+      "derivative_asset_id": "0cc1ab68-b9b9-4ae8-a6c7-63d25856c358",
+      "geometry": {
+        "x": 0.7834928229665071,
+        "y": 0.14665508355825566,
+        "width": 0.0687799043062201,
+        "height": 0.01381250411443296,
+        "z_index": 20,
+        "approved": true,
+        "alignment": "shelf",
+        "basis": "B-01 common-form contract; independent reference trace",
+        "sprite_override": {
+          "asset_id": "0cc1ab68-b9b9-4ae8-a6c7-63d25856c358",
+          "source_asset_id": "e36c71ff-4112-4dd3-87a7-e2b3f926d588",
+          "source_sha256": "6a9561c395ffa810e8403f67bfdceb3250d7de6f924cee34a5f0a1110994aadb",
+          "mask": {
+            "width": 640,
+            "height": 180,
+            "crop": [
+              26,
+              35,
+              576,
+              65
+            ],
+            "path": "M0 0h640v180h-640z",
+            "scene_alignment": "shelf"
+          }
+        }
+      }
+    },
+    {
+      "garment_id": "a18baaab-a984-5245-a7a3-28bbd27e20ab",
+      "source_asset_id": "2da7cec2-d142-4ec7-955a-ce653668bc70",
+      "source_sha256": "274c8d2dc885dd46369cf42ca8f2dcd347df2554000729f4f4fe48dd61dec2f8",
+      "source_location_id": "d62f44e2-953b-5a4c-abc6-74be531af399",
+      "compartment_id": "5d7fe4ad-732c-5ea9-8970-f04c84a37f8a",
+      "compartment": "F1",
+      "side": "left",
+      "layer": 1,
+      "kind": "common",
+      "name": "Women's Tech Skort",
+      "display_width": 115,
+      "display_height": 12.997566371681415,
+      "file": "docs/handoff/SMART_WARDROBE_CODEX_HANDOFF_2026-10-11/reports/b01-common-v1/REM-20-common-v1.png",
+      "sha256": "c89ae13cb32d35d95c83b8f9a3729a1b5d2fb123b9f035a43c1d425f094181e8",
+      "item_id": "REM-20",
+      "color_rgb": [
+        70,
+        73,
+        118
+      ],
+      "pattern_basis": "dominant source color; shared surface texture",
+      "mask": {
+        "width": 640,
+        "height": 180,
+        "crop": [
+          26,
+          35,
+          576,
+          65
+        ],
+        "path": "M0 0h640v180h-640z",
+        "scene_alignment": "shelf"
+      },
+      "derivative_asset_id": "0ee7c6a0-c989-4c9d-b9c9-5ca0a780ef7c",
+      "geometry": {
+        "x": 0.7834928229665071,
+        "y": 0.13284257944382272,
+        "width": 0.0687799043062201,
+        "height": 0.01381250411443296,
+        "z_index": 21,
+        "approved": true,
+        "alignment": "shelf",
+        "basis": "B-01 common-form contract; independent reference trace",
+        "sprite_override": {
+          "asset_id": "0ee7c6a0-c989-4c9d-b9c9-5ca0a780ef7c",
+          "source_asset_id": "2da7cec2-d142-4ec7-955a-ce653668bc70",
+          "source_sha256": "274c8d2dc885dd46369cf42ca8f2dcd347df2554000729f4f4fe48dd61dec2f8",
+          "mask": {
+            "width": 640,
+            "height": 180,
+            "crop": [
+              26,
+              35,
+              576,
+              65
+            ],
+            "path": "M0 0h640v180h-640z",
+            "scene_alignment": "shelf"
+          }
+        }
+      }
+    },
+    {
+      "garment_id": "a2f054f7-6967-4add-bf4a-b61af158f0e2",
+      "source_asset_id": "7f0634e3-a860-4df8-b19f-2597d9c85aec",
+      "source_sha256": "2266c920aea2146a8bba33221bc247240f086cafaf1f890b9dba59ddc49f7c00",
+      "source_location_id": "3f57ff3f-841a-5820-b86b-701d9d00ec91",
+      "compartment_id": "5d7fe4ad-732c-5ea9-8970-f04c84a37f8a",
+      "compartment": "F1",
+      "side": "left",
+      "layer": 2,
+      "kind": "approved",
+      "name": "SUPER FINE MERINO WOOL CREW-NECK KNIT_ CHARCOAL",
+      "display_width": 104.65,
+      "display_height": 25.00486725663717,
+      "derivative_asset_id": "0970a195-ee98-4be8-b671-52edc1cf2093",
+      "mask": {
+        "crop": [
+          1,
+          1,
+          113,
+          27
+        ],
+        "path": "M0 0h115v29H0Z",
+        "width": 115,
+        "height": 29,
+        "scene_alignment": "shelf"
+      },
+      "geometry": {
+        "x": 0.789683014354067,
+        "y": 0.10626992561105207,
+        "width": 0.06258971291866029,
+        "height": 0.026572653832770635,
+        "z_index": 22,
+        "approved": true,
+        "alignment": "shelf",
+        "basis": "B-01 common-form contract; independent reference trace",
+        "sprite_override": {
+          "asset_id": "0970a195-ee98-4be8-b671-52edc1cf2093",
+          "source_asset_id": "7f0634e3-a860-4df8-b19f-2597d9c85aec",
+          "source_sha256": "2266c920aea2146a8bba33221bc247240f086cafaf1f890b9dba59ddc49f7c00",
+          "mask": {
+            "crop": [
+              1,
+              1,
+              113,
+              27
+            ],
+            "path": "M0 0h115v29H0Z",
+            "width": 115,
+            "height": 29,
+            "scene_alignment": "shelf"
+          }
+        }
+      }
+    },
+    {
+      "garment_id": "a72e0c37-5f7f-5acf-bd50-7f8c65b8f23d",
+      "source_asset_id": "7fc9ef97-d243-4ecf-a24b-e9096b24b0cf",
+      "source_sha256": "9322a974ada1d2b54197007a5679079de48b25a7fb67d30cfff2d9c6e431d93b",
+      "source_location_id": "7ce80c2f-dd94-50f2-bb64-9eee2ebf9f23",
+      "compartment_id": "5d7fe4ad-732c-5ea9-8970-f04c84a37f8a",
+      "compartment": "F1",
+      "side": "right",
+      "layer": 0,
+      "kind": "common",
+      "name": "Men's Baggies™ Shorts - 5\"",
+      "display_width": 111,
+      "display_height": 16.666666666666668,
+      "file": "docs/handoff/SMART_WARDROBE_CODEX_HANDOFF_2026-10-11/reports/b01-common-v1/REM-21-common-v1.png",
+      "sha256": "5dd15ee0a17b183e5505a6146aeb6f3b61c14fbbb6333d7067ff07dc74f1cfa1",
+      "item_id": "REM-21",
+      "color_rgb": [
+        14,
+        90,
+        53
+      ],
+      "pattern_basis": "dominant source color; shared surface texture",
+      "mask": {
+        "width": 640,
+        "height": 180,
+        "crop": [
+          26,
+          35,
+          576,
+          86
+        ],
+        "path": "M0 0h640v180h-640z",
+        "scene_alignment": "shelf"
+      },
+      "derivative_asset_id": "984d1ee3-536b-4a7f-8370-5937e887a8b1",
+      "geometry": {
+        "x": 0.8666267942583732,
+        "y": 0.14275593340417997,
+        "width": 0.06638755980861244,
+        "height": 0.01771165426850868,
+        "z_index": 20,
+        "approved": true,
+        "alignment": "shelf",
+        "basis": "B-01 common-form contract; independent reference trace",
+        "sprite_override": {
+          "asset_id": "984d1ee3-536b-4a7f-8370-5937e887a8b1",
+          "source_asset_id": "7fc9ef97-d243-4ecf-a24b-e9096b24b0cf",
+          "source_sha256": "9322a974ada1d2b54197007a5679079de48b25a7fb67d30cfff2d9c6e431d93b",
+          "mask": {
+            "width": 640,
+            "height": 180,
+            "crop": [
+              26,
+              35,
+              576,
+              86
+            ],
+            "path": "M0 0h640v180h-640z",
+            "scene_alignment": "shelf"
+          }
+        }
+      }
+    },
+    {
+      "garment_id": "b8c03e66-e150-52b2-8d25-41fcba2d4720",
+      "source_asset_id": "5f82f7ce-e16e-4987-b158-a008202757cf",
+      "source_sha256": "80ba31061906228aaf2da63a1f747d6301ed005498b2bc2957c9f6a4cc6f867a",
+      "source_location_id": "d311fbbe-3d7c-5672-9d67-6ee1c6439f03",
+      "compartment_id": "5d7fe4ad-732c-5ea9-8970-f04c84a37f8a",
+      "compartment": "F1",
+      "side": "right",
+      "layer": 1,
+      "kind": "common",
+      "name": "M's Hydropeak Side Shore Boardshorts - 18 in.",
+      "display_width": 111,
+      "display_height": 16.666666666666668,
+      "file": "docs/handoff/SMART_WARDROBE_CODEX_HANDOFF_2026-10-11/reports/b01-common-v1/REM-24-common-v1.png",
+      "sha256": "53ba7929341ad62c27657e62848b36ea71cd5a253393c18eb13cb993ab384033",
+      "item_id": "REM-24",
+      "color_rgb": [
+        50,
+        45,
+        42
+      ],
+      "pattern_basis": "dominant source color; shared surface texture",
+      "mask": {
+        "width": 640,
+        "height": 180,
+        "crop": [
+          26,
+          35,
+          576,
+          86
+        ],
+        "path": "M0 0h640v180h-640z",
+        "scene_alignment": "shelf"
+      },
+      "derivative_asset_id": "3c5cc9ff-afea-4537-a7b1-0e6e0e054349",
+      "geometry": {
+        "x": 0.8666267942583732,
+        "y": 0.1250442791356713,
+        "width": 0.06638755980861244,
+        "height": 0.01771165426850868,
+        "z_index": 21,
+        "approved": true,
+        "alignment": "shelf",
+        "basis": "B-01 common-form contract; independent reference trace",
+        "sprite_override": {
+          "asset_id": "3c5cc9ff-afea-4537-a7b1-0e6e0e054349",
+          "source_asset_id": "5f82f7ce-e16e-4987-b158-a008202757cf",
+          "source_sha256": "80ba31061906228aaf2da63a1f747d6301ed005498b2bc2957c9f6a4cc6f867a",
+          "mask": {
+            "width": 640,
+            "height": 180,
+            "crop": [
+              26,
+              35,
+              576,
+              86
+            ],
+            "path": "M0 0h640v180h-640z",
+            "scene_alignment": "shelf"
+          }
+        }
+      }
+    },
+    {
+      "garment_id": "c349dc83-4312-5479-bb8e-094931f8a30b",
+      "source_asset_id": "2dff4e5d-f7e1-40ed-a15b-2e8e0e666521",
+      "source_sha256": "748894cd0fbfdc376ebdb2ad74afe589ec3b9b362e260b4a9b29c7542d1f23ca",
+      "source_location_id": "359e25d3-a880-539a-9f80-40985dcd1ee0",
+      "compartment_id": "5d7fe4ad-732c-5ea9-8970-f04c84a37f8a",
+      "compartment": "F1",
+      "side": "right",
+      "layer": 2,
+      "kind": "common",
+      "name": "Men's Capilene® Cool Daily Hoody",
+      "display_width": 111,
+      "display_height": 16.666666666666668,
+      "file": "docs/handoff/SMART_WARDROBE_CODEX_HANDOFF_2026-10-11/reports/b01-common-v1/REM-01-common-v1.png",
+      "sha256": "e6dd675ccaf0b2c51cc17ad3ee7b2dc8eb38b414cc7f1834cfe5d7eec893d231",
+      "item_id": "REM-01",
+      "color_rgb": [
+        215,
+        195,
+        134
+      ],
+      "pattern_basis": "dominant source color; shared surface texture",
+      "mask": {
+        "width": 640,
+        "height": 180,
+        "crop": [
+          26,
+          35,
+          576,
+          86
+        ],
+        "path": "M0 0h640v180h-640z",
+        "scene_alignment": "shelf"
+      },
+      "derivative_asset_id": "4fbb8eb6-aa20-47e8-9a7e-fc2658c47bee",
+      "geometry": {
+        "x": 0.8666267942583732,
+        "y": 0.1073326248671626,
+        "width": 0.06638755980861244,
+        "height": 0.01771165426850868,
+        "z_index": 22,
+        "approved": true,
+        "alignment": "shelf",
+        "basis": "B-01 common-form contract; independent reference trace",
+        "sprite_override": {
+          "asset_id": "4fbb8eb6-aa20-47e8-9a7e-fc2658c47bee",
+          "source_asset_id": "2dff4e5d-f7e1-40ed-a15b-2e8e0e666521",
+          "source_sha256": "748894cd0fbfdc376ebdb2ad74afe589ec3b9b362e260b4a9b29c7542d1f23ca",
+          "mask": {
+            "width": 640,
+            "height": 180,
+            "crop": [
+              26,
+              35,
+              576,
+              86
+            ],
+            "path": "M0 0h640v180h-640z",
+            "scene_alignment": "shelf"
+          }
+        }
+      }
+    },
+    {
+      "garment_id": "df4082b6-d86e-53e7-a427-924c641a5145",
+      "source_asset_id": "be33341f-c206-4723-9c0b-31c5f2e7469b",
+      "source_sha256": "28f5f96a975dbc2b7303c09d8ec8e2dd10c90a4a60ee05019974f51bee899515",
+      "source_location_id": "facd9267-74a6-568c-a74f-57895a85c7a3",
+      "compartment_id": "bf572cae-2306-5b60-a6a6-7ee1d2c2fc3b",
+      "compartment": "F2",
+      "side": "left",
+      "layer": 0,
+      "kind": "common",
+      "name": "Fitz Roy Icon Responsibili-Tee®",
+      "display_width": 112,
+      "display_height": 16.666666666666668,
+      "file": "docs/handoff/SMART_WARDROBE_CODEX_HANDOFF_2026-10-11/reports/b01-common-v1/REM-13-common-v1.png",
+      "sha256": "998e0114a529f020f5894f96fb781b5eb675eca07c4ac1c242d4fc56c77f84f9",
+      "item_id": "REM-13",
+      "color_rgb": [
+        39,
+        54,
+        84
+      ],
+      "pattern_basis": "dominant source color; shared surface texture",
+      "mask": {
+        "width": 640,
+        "height": 180,
+        "crop": [
+          26,
+          35,
+          576,
+          85
+        ],
+        "path": "M0 0h640v180h-640z",
+        "scene_alignment": "shelf"
+      },
+      "derivative_asset_id": "69cc84fb-73d5-4a4e-8f79-c1275fe0830c",
+      "geometry": {
+        "x": 0.7840909090909091,
+        "y": 0.26496634785688983,
+        "width": 0.06698564593301436,
+        "height": 0.01771165426850868,
+        "z_index": 20,
+        "approved": true,
+        "alignment": "shelf",
+        "basis": "B-01 common-form contract; independent reference trace",
+        "sprite_override": {
+          "asset_id": "69cc84fb-73d5-4a4e-8f79-c1275fe0830c",
+          "source_asset_id": "be33341f-c206-4723-9c0b-31c5f2e7469b",
+          "source_sha256": "28f5f96a975dbc2b7303c09d8ec8e2dd10c90a4a60ee05019974f51bee899515",
+          "mask": {
+            "width": 640,
+            "height": 180,
+            "crop": [
+              26,
+              35,
+              576,
+              85
+            ],
+            "path": "M0 0h640v180h-640z",
+            "scene_alignment": "shelf"
+          }
+        }
+      }
+    },
+    {
+      "garment_id": "df91ef4a-594c-570d-b32d-2b109efe8bab",
+      "source_asset_id": "eb70b59f-ac08-490e-a05f-6d46abab9f29",
+      "source_sha256": "bad7182853ed4890bb0f50f9a45ef344ae56b59971a9aa774e287ebbfd80c4ee",
+      "source_location_id": "a9279581-3990-54d6-af98-c86d77db798e",
+      "compartment_id": "bf572cae-2306-5b60-a6a6-7ee1d2c2fc3b",
+      "compartment": "F2",
+      "side": "left",
+      "layer": 1,
+      "kind": "common",
+      "name": "Women's Long-Sleeved '73 Text Logo Responsibili-Tee®",
+      "display_width": 112,
+      "display_height": 16.666666666666668,
+      "file": "docs/handoff/SMART_WARDROBE_CODEX_HANDOFF_2026-10-11/reports/b01-common-v1/REM-10-common-v1.png",
+      "sha256": "e7f0be8619a5bf6b729ef91e37b83f4fa1bda1a0db7bddca5b3b4161bb59ab8d",
+      "item_id": "REM-10",
+      "color_rgb": [
+        220,
+        213,
+        195
+      ],
+      "pattern_basis": "dominant source color; shared surface texture",
+      "mask": {
+        "width": 640,
+        "height": 180,
+        "crop": [
+          26,
+          35,
+          576,
+          85
+        ],
+        "path": "M0 0h640v180h-640z",
+        "scene_alignment": "shelf"
+      },
+      "derivative_asset_id": "a5353a22-785f-4a5e-9e6d-6a6b1c5e1a23",
+      "geometry": {
+        "x": 0.7840909090909091,
+        "y": 0.24725469358838117,
+        "width": 0.06698564593301436,
+        "height": 0.01771165426850868,
+        "z_index": 21,
+        "approved": true,
+        "alignment": "shelf",
+        "basis": "B-01 common-form contract; independent reference trace",
+        "sprite_override": {
+          "asset_id": "a5353a22-785f-4a5e-9e6d-6a6b1c5e1a23",
+          "source_asset_id": "eb70b59f-ac08-490e-a05f-6d46abab9f29",
+          "source_sha256": "bad7182853ed4890bb0f50f9a45ef344ae56b59971a9aa774e287ebbfd80c4ee",
+          "mask": {
+            "width": 640,
+            "height": 180,
+            "crop": [
+              26,
+              35,
+              576,
+              85
+            ],
+            "path": "M0 0h640v180h-640z",
+            "scene_alignment": "shelf"
+          }
+        }
+      }
+    },
+    {
+      "garment_id": "e29bc367-5d11-5bbf-8fcb-9813c24c6f17",
+      "source_asset_id": "516934c3-2011-42c6-b806-ae54c7ab009d",
+      "source_sha256": "7d5a5822c6197ab605e0590a3e600eca271bc554f919f74a1677745c2e8c4298",
+      "source_location_id": "271ae14f-a891-5370-b054-ce6e150fd62d",
+      "compartment_id": "bf572cae-2306-5b60-a6a6-7ee1d2c2fc3b",
+      "compartment": "F2",
+      "side": "left",
+      "layer": 2,
+      "kind": "common",
+      "name": "M's Upstride Jkt",
+      "display_width": 112,
+      "display_height": 16.666666666666668,
+      "file": "docs/handoff/SMART_WARDROBE_CODEX_HANDOFF_2026-10-11/reports/b01-common-v1/REM-29-common-v1.png",
+      "sha256": "888cdb2a2ca1bfa3c5ed97ea86af304c46736fa9612a45cf77f3fc8d06d67dd7",
+      "item_id": "REM-29",
+      "color_rgb": [
+        4,
+        53,
+        54
+      ],
+      "pattern_basis": "dominant source color; shared surface texture",
+      "mask": {
+        "width": 640,
+        "height": 180,
+        "crop": [
+          26,
+          35,
+          576,
+          85
+        ],
+        "path": "M0 0h640v180h-640z",
+        "scene_alignment": "shelf"
+      },
+      "derivative_asset_id": "b4807db2-9fa8-4249-8eef-a25b9ad59667",
+      "geometry": {
+        "x": 0.7840909090909091,
+        "y": 0.2295430393198725,
+        "width": 0.06698564593301436,
+        "height": 0.01771165426850868,
+        "z_index": 22,
+        "approved": true,
+        "alignment": "shelf",
+        "basis": "B-01 common-form contract; independent reference trace",
+        "sprite_override": {
+          "asset_id": "b4807db2-9fa8-4249-8eef-a25b9ad59667",
+          "source_asset_id": "516934c3-2011-42c6-b806-ae54c7ab009d",
+          "source_sha256": "7d5a5822c6197ab605e0590a3e600eca271bc554f919f74a1677745c2e8c4298",
+          "mask": {
+            "width": 640,
+            "height": 180,
+            "crop": [
+              26,
+              35,
+              576,
+              85
+            ],
+            "path": "M0 0h640v180h-640z",
+            "scene_alignment": "shelf"
+          }
+        }
+      }
+    },
+    {
+      "garment_id": "f35667ff-7520-5184-abf0-d35865244624",
+      "source_asset_id": "57efebd7-632b-4f19-a881-50e79efeadef",
+      "source_sha256": "095b1da966401372f1d81fb33a50e618aa09f66081643cb638d33a44c9b05eea",
+      "source_location_id": "25ea338c-ef9b-527f-9c23-9d45955c89c6",
+      "compartment_id": "bf572cae-2306-5b60-a6a6-7ee1d2c2fc3b",
+      "compartment": "F2",
+      "side": "right",
+      "layer": 0,
+      "kind": "common",
+      "name": "M's Daily Polo",
+      "display_width": 113,
+      "display_height": 17.333333333333332,
+      "file": "docs/handoff/SMART_WARDROBE_CODEX_HANDOFF_2026-10-11/reports/b01-common-v1/REM-15-common-v1.png",
+      "sha256": "4b33e678d8168ffbf69128f71768b6b9e590a22e67b0240d6885480f4317b09d",
+      "item_id": "REM-15",
+      "color_rgb": [
+        195,
+        183,
+        155
+      ],
+      "pattern_basis": "dominant source color; shared surface texture",
+      "mask": {
+        "width": 640,
+        "height": 180,
+        "crop": [
+          26,
+          35,
+          576,
+          88
+        ],
+        "path": "M0 0h640v180h-640z",
+        "scene_alignment": "shelf"
+      },
+      "derivative_asset_id": "7e0f6cff-a872-458c-b763-305dad216643",
+      "geometry": {
+        "x": 0.8672248803827751,
+        "y": 0.2642578816861495,
+        "width": 0.06758373205741627,
+        "height": 0.018420120439249024,
+        "z_index": 20,
+        "approved": true,
+        "alignment": "shelf",
+        "basis": "B-01 common-form contract; independent reference trace",
+        "sprite_override": {
+          "asset_id": "7e0f6cff-a872-458c-b763-305dad216643",
+          "source_asset_id": "57efebd7-632b-4f19-a881-50e79efeadef",
+          "source_sha256": "095b1da966401372f1d81fb33a50e618aa09f66081643cb638d33a44c9b05eea",
+          "mask": {
+            "width": 640,
+            "height": 180,
+            "crop": [
+              26,
+              35,
+              576,
+              88
+            ],
+            "path": "M0 0h640v180h-640z",
+            "scene_alignment": "shelf"
+          }
+        }
+      }
+    },
+    {
+      "garment_id": "f84f09ec-6c6f-59fc-8438-3b80c620c3d9",
+      "source_asset_id": "74974bfa-9438-4ab4-b0b2-a746a60cefa5",
+      "source_sha256": "90aebf2c1df7cf11867b4d6be9cd7ffb43ff5edd8ccf331981e9b28c35c27e7a",
+      "source_location_id": "f32aba62-576f-54ff-9fb0-a246eb7fa206",
+      "compartment_id": "bf572cae-2306-5b60-a6a6-7ee1d2c2fc3b",
+      "compartment": "F2",
+      "side": "right",
+      "layer": 1,
+      "kind": "common",
+      "name": "W's Daily Crew",
+      "display_width": 113,
+      "display_height": 17.333333333333332,
+      "file": "docs/handoff/SMART_WARDROBE_CODEX_HANDOFF_2026-10-11/reports/b01-common-v1/REM-16-common-v1.png",
+      "sha256": "4f91415c73bc93c236dd95d9cd825d4bae754a21c8217fd2f8af47a275e0d849",
+      "item_id": "REM-16",
+      "color_rgb": [
+        152,
+        153,
+        151
+      ],
+      "pattern_basis": "dominant source color; shared surface texture",
+      "mask": {
+        "width": 640,
+        "height": 180,
+        "crop": [
+          26,
+          35,
+          576,
+          88
+        ],
+        "path": "M0 0h640v180h-640z",
+        "scene_alignment": "shelf"
+      },
+      "derivative_asset_id": "749d7f68-f55f-4b57-be03-95112fe37885",
+      "geometry": {
+        "x": 0.8672248803827751,
+        "y": 0.24583776124690043,
+        "width": 0.06758373205741627,
+        "height": 0.018420120439249024,
+        "z_index": 21,
+        "approved": true,
+        "alignment": "shelf",
+        "basis": "B-01 common-form contract; independent reference trace",
+        "sprite_override": {
+          "asset_id": "749d7f68-f55f-4b57-be03-95112fe37885",
+          "source_asset_id": "74974bfa-9438-4ab4-b0b2-a746a60cefa5",
+          "source_sha256": "90aebf2c1df7cf11867b4d6be9cd7ffb43ff5edd8ccf331981e9b28c35c27e7a",
+          "mask": {
+            "width": 640,
+            "height": 180,
+            "crop": [
+              26,
+              35,
+              576,
+              88
+            ],
+            "path": "M0 0h640v180h-640z",
+            "scene_alignment": "shelf"
+          }
+        }
+      }
+    },
+    {
+      "garment_id": "fa6caeb1-0966-58c2-a81e-2754d7643c2c",
+      "source_asset_id": "bd2dedd5-151b-4631-8f11-040168dff8dc",
+      "source_sha256": "8ba6ff3f1940cb5f10ebcb4232dfd8ea4539c80b513ec743750e9c98eb9645d2",
+      "source_location_id": "545de583-7a7f-5cb3-8e5e-da663728dbca",
+      "compartment_id": "bf572cae-2306-5b60-a6a6-7ee1d2c2fc3b",
+      "compartment": "F2",
+      "side": "right",
+      "layer": 2,
+      "kind": "common",
+      "name": "W's Cashmere Tunic",
+      "display_width": 113,
+      "display_height": 17.333333333333332,
+      "file": "docs/handoff/SMART_WARDROBE_CODEX_HANDOFF_2026-10-11/reports/b01-common-v1/REM-03-common-v1.png",
+      "sha256": "5c399f71ff2cb3eb8a16abf34632bfa981df412f8e092d931c73ada1e8aac008",
+      "item_id": "REM-03",
+      "color_rgb": [
+        155,
+        163,
+        155
+      ],
+      "pattern_basis": "dominant source color; shared surface texture",
+      "mask": {
+        "width": 640,
+        "height": 180,
+        "crop": [
+          26,
+          35,
+          576,
+          88
+        ],
+        "path": "M0 0h640v180h-640z",
+        "scene_alignment": "shelf"
+      },
+      "derivative_asset_id": "745fc9a8-1dd1-4219-a96e-47ac0652a96e",
+      "geometry": {
+        "x": 0.8672248803827751,
+        "y": 0.2274176408076514,
+        "width": 0.06758373205741627,
+        "height": 0.018420120439249024,
+        "z_index": 22,
+        "approved": true,
+        "alignment": "shelf",
+        "basis": "B-01 common-form contract; independent reference trace",
+        "sprite_override": {
+          "asset_id": "745fc9a8-1dd1-4219-a96e-47ac0652a96e",
+          "source_asset_id": "bd2dedd5-151b-4631-8f11-040168dff8dc",
+          "source_sha256": "8ba6ff3f1940cb5f10ebcb4232dfd8ea4539c80b513ec743750e9c98eb9645d2",
+          "mask": {
+            "width": 640,
+            "height": 180,
+            "crop": [
+              26,
+              35,
+              576,
+              88
+            ],
+            "path": "M0 0h640v180h-640z",
+            "scene_alignment": "shelf"
+          }
+        }
+      }
+    },
+    {
+      "garment_id": "fd1ce769-aab6-4227-83e0-c550cd9ecb45",
+      "source_asset_id": "6dbe9b19-2355-42bf-9d35-f79bb34f9131",
+      "source_sha256": "230ad33d2a45a6d6f005a0ce2baa158c0a2ac2865e62c103719e155b64bae06d",
+      "source_location_id": "fb07ee5e-a04c-5a8e-9ff1-4c5c2761370b",
+      "compartment_id": "0b86a817-11f1-5f5f-9ab9-ddc46885d09c",
+      "compartment": "F3",
+      "side": "left",
+      "layer": 0,
+      "kind": "approved",
+      "name": "MERINO WOOL HALF-ZIP JUMPER_ SAND",
+      "display_width": 105.56,
+      "display_height": 21.112000000000002,
+      "derivative_asset_id": "d90477db-08d7-4ecf-b618-0313d94ad5b3",
+      "mask": {
+        "crop": [
+          1,
+          1,
+          110,
+          22
+        ],
+        "path": "M0 0h112v24H0Z",
+        "width": 112,
+        "height": 24,
+        "scene_alignment": "shelf"
+      },
+      "geometry": {
+        "x": 0.7897368421052632,
+        "y": 0.3909543039319872,
+        "width": 0.06313397129186603,
+        "height": 0.022435706695005317,
+        "z_index": 20,
+        "approved": true,
+        "alignment": "shelf",
+        "basis": "B-01 common-form contract; independent reference trace",
+        "sprite_override": {
+          "asset_id": "d90477db-08d7-4ecf-b618-0313d94ad5b3",
+          "source_asset_id": "6dbe9b19-2355-42bf-9d35-f79bb34f9131",
+          "source_sha256": "230ad33d2a45a6d6f005a0ce2baa158c0a2ac2865e62c103719e155b64bae06d",
+          "mask": {
+            "crop": [
+              1,
+              1,
+              110,
+              22
+            ],
+            "path": "M0 0h112v24H0Z",
+            "width": 112,
+            "height": 24,
+            "scene_alignment": "shelf"
+          }
+        }
+      }
+    },
+    {
+      "garment_id": "ff39dfae-abdd-5ca3-8986-d1ba2cf0eccd",
+      "source_asset_id": "73a85222-8283-410a-bb5b-4026e15d407b",
+      "source_sha256": "8013b2b8f8eb922596942b86d3ac06740d0d4ebb1f7c8b3e8a65d6ead65f804f",
+      "source_location_id": "099040c6-42f2-53e5-9543-b37385d5badc",
+      "compartment_id": "0b86a817-11f1-5f5f-9ab9-ddc46885d09c",
+      "compartment": "F3",
+      "side": "left",
+      "layer": 1,
+      "kind": "common",
+      "name": "Women's Glorya Tank",
+      "display_width": 116,
+      "display_height": 12.775999999999996,
+      "file": "docs/handoff/SMART_WARDROBE_CODEX_HANDOFF_2026-10-11/reports/b01-common-v1/REM-18-common-v1.png",
+      "sha256": "b97442783399b4bb7f9cb72b7b97d3292686037981d927f7591e2b24ed553550",
+      "item_id": "REM-18",
+      "color_rgb": [
+        167,
+        184,
+        199
+      ],
+      "pattern_basis": "dominant source color; shared surface texture",
+      "mask": {
+        "width": 640,
+        "height": 180,
+        "crop": [
+          26,
+          35,
+          576,
+          63
+        ],
+        "path": "M0 0h640v180h-640z",
+        "scene_alignment": "shelf"
+      },
+      "derivative_asset_id": "8b06c79c-ac5c-4ab4-93ad-638db5f9d6ef",
+      "geometry": {
+        "x": 0.7834928229665071,
+        "y": 0.3773772582359192,
+        "width": 0.06937799043062201,
+        "height": 0.013577045696068008,
+        "z_index": 21,
+        "approved": true,
+        "alignment": "shelf",
+        "basis": "B-01 common-form contract; independent reference trace",
+        "sprite_override": {
+          "asset_id": "8b06c79c-ac5c-4ab4-93ad-638db5f9d6ef",
+          "source_asset_id": "73a85222-8283-410a-bb5b-4026e15d407b",
+          "source_sha256": "8013b2b8f8eb922596942b86d3ac06740d0d4ebb1f7c8b3e8a65d6ead65f804f",
+          "mask": {
+            "width": 640,
+            "height": 180,
+            "crop": [
+              26,
+              35,
+              576,
+              63
+            ],
+            "path": "M0 0h640v180h-640z",
+            "scene_alignment": "shelf"
+          }
+        }
+      }
+    },
+    {
+      "garment_id": "8901515e-6ad7-51fc-8273-01284e04991d",
+      "source_asset_id": "6dbe9b19-2355-42bf-9d35-f79bb34f9131",
+      "source_sha256": "230ad33d2a45a6d6f005a0ce2baa158c0a2ac2865e62c103719e155b64bae06d",
+      "source_location_id": "0b86a817-11f1-5f5f-9ab9-ddc46885d09c",
+      "compartment_id": "0b86a817-11f1-5f5f-9ab9-ddc46885d09c",
+      "compartment": "F3",
+      "side": "left",
+      "layer": 2,
+      "kind": "approved",
+      "name": "MERINO WOOL HALF-ZIP JUMPER_ SAND",
+      "display_width": 105.56,
+      "display_height": 21.112000000000002,
+      "derivative_asset_id": "d90477db-08d7-4ecf-b618-0313d94ad5b3",
+      "mask": {
+        "crop": [
+          1,
+          1,
+          110,
+          22
+        ],
+        "path": "M0 0h112v24H0Z",
+        "width": 112,
+        "height": 24,
+        "scene_alignment": "shelf"
+      },
+      "geometry": {
+        "x": 0.7897368421052632,
+        "y": 0.35494155154091384,
+        "width": 0.06313397129186603,
+        "height": 0.022435706695005317,
+        "z_index": 22,
+        "approved": true,
+        "alignment": "shelf",
+        "basis": "B-01 common-form contract; independent reference trace",
+        "sprite_override": {
+          "asset_id": "d90477db-08d7-4ecf-b618-0313d94ad5b3",
+          "source_asset_id": "6dbe9b19-2355-42bf-9d35-f79bb34f9131",
+          "source_sha256": "230ad33d2a45a6d6f005a0ce2baa158c0a2ac2865e62c103719e155b64bae06d",
+          "mask": {
+            "crop": [
+              1,
+              1,
+              110,
+              22
+            ],
+            "path": "M0 0h112v24H0Z",
+            "width": 112,
+            "height": 24,
+            "scene_alignment": "shelf"
+          }
+        }
+      }
+    },
+    {
+      "garment_id": "826b60ea-d5e8-5d82-920e-d61a4009898e",
+      "source_asset_id": "447c9eb6-7e50-45f2-8417-e196c1ead271",
+      "source_sha256": "277a47e41c906fd22ddc40e8413ebfb501496f43d8438b32afc142e7165dbe0e",
+      "source_location_id": "0b86a817-11f1-5f5f-9ab9-ddc46885d09c",
+      "compartment_id": "0b86a817-11f1-5f5f-9ab9-ddc46885d09c",
+      "compartment": "F3",
+      "side": "right",
+      "layer": 0,
+      "kind": "approved",
+      "name": "MERINO WOOL HALF-ZIP JUMPER_ NAVY",
+      "display_width": 104.65,
+      "display_height": 13.769736842105264,
+      "derivative_asset_id": "626da61d-d317-4209-a293-92a23563f94f",
+      "mask": {
+        "crop": [
+          1,
+          1,
+          114,
+          15
+        ],
+        "path": "M0 0h116v17H0Z",
+        "width": 116,
+        "height": 17,
+        "scene_alignment": "shelf"
+      },
+      "geometry": {
+        "x": 0.8672248803827751,
+        "y": 0.39875692152804965,
+        "width": 0.06258971291866029,
+        "height": 0.014633089098942894,
+        "z_index": 20,
+        "approved": true,
+        "alignment": "shelf",
+        "basis": "B-01 common-form contract; independent reference trace",
+        "sprite_override": {
+          "asset_id": "626da61d-d317-4209-a293-92a23563f94f",
+          "source_asset_id": "447c9eb6-7e50-45f2-8417-e196c1ead271",
+          "source_sha256": "277a47e41c906fd22ddc40e8413ebfb501496f43d8438b32afc142e7165dbe0e",
+          "mask": {
+            "crop": [
+              1,
+              1,
+              114,
+              15
+            ],
+            "path": "M0 0h116v17H0Z",
+            "width": 116,
+            "height": 17,
+            "scene_alignment": "shelf"
+          }
+        }
+      }
+    },
+    {
+      "garment_id": "fdc6ebaa-33d3-5edc-9477-18fd44a7b360",
+      "source_asset_id": "7f0634e3-a860-4df8-b19f-2597d9c85aec",
+      "source_sha256": "2266c920aea2146a8bba33221bc247240f086cafaf1f890b9dba59ddc49f7c00",
+      "source_location_id": "0b86a817-11f1-5f5f-9ab9-ddc46885d09c",
+      "compartment_id": "0b86a817-11f1-5f5f-9ab9-ddc46885d09c",
+      "compartment": "F3",
+      "side": "right",
+      "layer": 1,
+      "kind": "approved",
+      "name": "SUPER FINE MERINO WOOL CREW-NECK KNIT_ CHARCOAL",
+      "display_width": 104.65,
+      "display_height": 25.00486725663717,
+      "derivative_asset_id": "0970a195-ee98-4be8-b671-52edc1cf2093",
+      "mask": {
+        "crop": [
+          1,
+          1,
+          113,
+          27
+        ],
+        "path": "M0 0h115v29H0Z",
+        "width": 115,
+        "height": 29,
+        "scene_alignment": "shelf"
+      },
+      "geometry": {
+        "x": 0.8672248803827751,
+        "y": 0.372184267695279,
+        "width": 0.06258971291866029,
+        "height": 0.026572653832770635,
+        "z_index": 21,
+        "approved": true,
+        "alignment": "shelf",
+        "basis": "B-01 common-form contract; independent reference trace",
+        "sprite_override": {
+          "asset_id": "0970a195-ee98-4be8-b671-52edc1cf2093",
+          "source_asset_id": "7f0634e3-a860-4df8-b19f-2597d9c85aec",
+          "source_sha256": "2266c920aea2146a8bba33221bc247240f086cafaf1f890b9dba59ddc49f7c00",
+          "mask": {
+            "crop": [
+              1,
+              1,
+              113,
+              27
+            ],
+            "path": "M0 0h115v29H0Z",
+            "width": 115,
+            "height": 29,
+            "scene_alignment": "shelf"
+          }
+        }
+      }
+    },
+    {
+      "garment_id": "3aa71ad7-4b8e-5e40-a5ab-4ccef829b457",
+      "source_asset_id": "6dbe9b19-2355-42bf-9d35-f79bb34f9131",
+      "source_sha256": "230ad33d2a45a6d6f005a0ce2baa158c0a2ac2865e62c103719e155b64bae06d",
+      "source_location_id": "0b86a817-11f1-5f5f-9ab9-ddc46885d09c",
+      "compartment_id": "0b86a817-11f1-5f5f-9ab9-ddc46885d09c",
+      "compartment": "F3",
+      "side": "right",
+      "layer": 2,
+      "kind": "approved",
+      "name": "MERINO WOOL HALF-ZIP JUMPER_ SAND",
+      "display_width": 104.65,
+      "display_height": 20.930000000000003,
+      "derivative_asset_id": "d90477db-08d7-4ecf-b618-0313d94ad5b3",
+      "mask": {
+        "crop": [
+          1,
+          1,
+          110,
+          22
+        ],
+        "path": "M0 0h112v24H0Z",
+        "width": 112,
+        "height": 24,
+        "scene_alignment": "shelf"
+      },
+      "geometry": {
+        "x": 0.8672248803827751,
+        "y": 0.3499419722648858,
+        "width": 0.06258971291866029,
+        "height": 0.022242295430393202,
+        "z_index": 22,
+        "approved": true,
+        "alignment": "shelf",
+        "basis": "B-01 common-form contract; independent reference trace",
+        "sprite_override": {
+          "asset_id": "d90477db-08d7-4ecf-b618-0313d94ad5b3",
+          "source_asset_id": "6dbe9b19-2355-42bf-9d35-f79bb34f9131",
+          "source_sha256": "230ad33d2a45a6d6f005a0ce2baa158c0a2ac2865e62c103719e155b64bae06d",
+          "mask": {
+            "crop": [
+              1,
+              1,
+              110,
+              22
+            ],
+            "path": "M0 0h112v24H0Z",
+            "width": 112,
+            "height": 24,
+            "scene_alignment": "shelf"
+          }
+        }
+      }
+    },
+    {
+      "garment_id": "0d7ee270-4445-5529-9fda-46e0ca87cd8a",
+      "source_asset_id": "447c9eb6-7e50-45f2-8417-e196c1ead271",
+      "source_sha256": "277a47e41c906fd22ddc40e8413ebfb501496f43d8438b32afc142e7165dbe0e",
+      "source_location_id": "a723370e-5066-54f8-b012-7ab3cc44bf60",
+      "compartment_id": "a723370e-5066-54f8-b012-7ab3cc44bf60",
+      "compartment": "F4",
+      "side": "left",
+      "layer": 0,
+      "kind": "approved",
+      "name": "MERINO WOOL HALF-ZIP JUMPER_ NAVY",
+      "display_width": 107.38000000000001,
+      "display_height": 14.128947368421054,
+      "derivative_asset_id": "626da61d-d317-4209-a293-92a23563f94f",
+      "mask": {
+        "crop": [
+          1,
+          1,
+          114,
+          15
+        ],
+        "path": "M0 0h116v17H0Z",
+        "width": 116,
+        "height": 17,
+        "scene_alignment": "shelf"
+      },
+      "geometry": {
+        "x": 0.7898444976076554,
+        "y": 0.5227110017338777,
+        "width": 0.06422248803827751,
+        "height": 0.015014821858045754,
+        "z_index": 20,
+        "approved": true,
+        "alignment": "shelf",
+        "basis": "B-01 common-form contract; independent reference trace",
+        "sprite_override": {
+          "asset_id": "626da61d-d317-4209-a293-92a23563f94f",
+          "source_asset_id": "447c9eb6-7e50-45f2-8417-e196c1ead271",
+          "source_sha256": "277a47e41c906fd22ddc40e8413ebfb501496f43d8438b32afc142e7165dbe0e",
+          "mask": {
+            "crop": [
+              1,
+              1,
+              114,
+              15
+            ],
+            "path": "M0 0h116v17H0Z",
+            "width": 116,
+            "height": 17,
+            "scene_alignment": "shelf"
+          }
+        }
+      }
+    },
+    {
+      "garment_id": "dda8dc76-975b-5283-8e66-c23dc6883b40",
+      "source_asset_id": "7f0634e3-a860-4df8-b19f-2597d9c85aec",
+      "source_sha256": "2266c920aea2146a8bba33221bc247240f086cafaf1f890b9dba59ddc49f7c00",
+      "source_location_id": "a723370e-5066-54f8-b012-7ab3cc44bf60",
+      "compartment_id": "a723370e-5066-54f8-b012-7ab3cc44bf60",
+      "compartment": "F4",
+      "side": "left",
+      "layer": 1,
+      "kind": "approved",
+      "name": "SUPER FINE MERINO WOOL CREW-NECK KNIT_ CHARCOAL",
+      "display_width": 107.38000000000001,
+      "display_height": 25.657168141592923,
+      "derivative_asset_id": "0970a195-ee98-4be8-b671-52edc1cf2093",
+      "mask": {
+        "crop": [
+          1,
+          1,
+          113,
+          27
+        ],
+        "path": "M0 0h115v29H0Z",
+        "width": 115,
+        "height": 29,
+        "scene_alignment": "shelf"
+      },
+      "geometry": {
+        "x": 0.7898444976076554,
+        "y": 0.49544514823590435,
+        "width": 0.06422248803827751,
+        "height": 0.02726585349797335,
+        "z_index": 21,
+        "approved": true,
+        "alignment": "shelf",
+        "basis": "B-01 common-form contract; independent reference trace",
+        "sprite_override": {
+          "asset_id": "0970a195-ee98-4be8-b671-52edc1cf2093",
+          "source_asset_id": "7f0634e3-a860-4df8-b19f-2597d9c85aec",
+          "source_sha256": "2266c920aea2146a8bba33221bc247240f086cafaf1f890b9dba59ddc49f7c00",
+          "mask": {
+            "crop": [
+              1,
+              1,
+              113,
+              27
+            ],
+            "path": "M0 0h115v29H0Z",
+            "width": 115,
+            "height": 29,
+            "scene_alignment": "shelf"
+          }
+        }
+      }
+    },
+    {
+      "garment_id": "8afda102-37de-54fa-8c14-d473096205a6",
+      "source_asset_id": "6dbe9b19-2355-42bf-9d35-f79bb34f9131",
+      "source_sha256": "230ad33d2a45a6d6f005a0ce2baa158c0a2ac2865e62c103719e155b64bae06d",
+      "source_location_id": "a723370e-5066-54f8-b012-7ab3cc44bf60",
+      "compartment_id": "a723370e-5066-54f8-b012-7ab3cc44bf60",
+      "compartment": "F4",
+      "side": "left",
+      "layer": 2,
+      "kind": "approved",
+      "name": "MERINO WOOL HALF-ZIP JUMPER_ SAND",
+      "display_width": 107.38000000000001,
+      "display_height": 21.476000000000003,
+      "derivative_asset_id": "d90477db-08d7-4ecf-b618-0313d94ad5b3",
+      "mask": {
+        "crop": [
+          1,
+          1,
+          110,
+          22
+        ],
+        "path": "M0 0h112v24H0Z",
+        "width": 112,
+        "height": 24,
+        "scene_alignment": "shelf"
+      },
+      "geometry": {
+        "x": 0.7898444976076554,
+        "y": 0.47262261901167485,
+        "width": 0.06422248803827751,
+        "height": 0.022822529224229546,
+        "z_index": 22,
+        "approved": true,
+        "alignment": "shelf",
+        "basis": "B-01 common-form contract; independent reference trace",
+        "sprite_override": {
+          "asset_id": "d90477db-08d7-4ecf-b618-0313d94ad5b3",
+          "source_asset_id": "6dbe9b19-2355-42bf-9d35-f79bb34f9131",
+          "source_sha256": "230ad33d2a45a6d6f005a0ce2baa158c0a2ac2865e62c103719e155b64bae06d",
+          "mask": {
+            "crop": [
+              1,
+              1,
+              110,
+              22
+            ],
+            "path": "M0 0h112v24H0Z",
+            "width": 112,
+            "height": 24,
+            "scene_alignment": "shelf"
+          }
+        }
+      }
+    },
+    {
+      "garment_id": "cdf93107-16da-5dfd-821f-be69d76be007",
+      "source_asset_id": "447c9eb6-7e50-45f2-8417-e196c1ead271",
+      "source_sha256": "277a47e41c906fd22ddc40e8413ebfb501496f43d8438b32afc142e7165dbe0e",
+      "source_location_id": "a723370e-5066-54f8-b012-7ab3cc44bf60",
+      "compartment_id": "a723370e-5066-54f8-b012-7ab3cc44bf60",
+      "compartment": "F4",
+      "side": "right",
+      "layer": 0,
+      "kind": "approved",
+      "name": "MERINO WOOL HALF-ZIP JUMPER_ NAVY",
+      "display_width": 105.56,
+      "display_height": 13.889473684210525,
+      "derivative_asset_id": "626da61d-d317-4209-a293-92a23563f94f",
+      "mask": {
+        "crop": [
+          1,
+          1,
+          114,
+          15
+        ],
+        "path": "M0 0h116v17H0Z",
+        "width": 116,
+        "height": 17,
+        "scene_alignment": "shelf"
+      },
+      "geometry": {
+        "x": 0.8666267942583732,
+        "y": 0.5229654902399463,
+        "width": 0.06313397129186603,
+        "height": 0.014760333351977179,
+        "z_index": 20,
+        "approved": true,
+        "alignment": "shelf",
+        "basis": "B-01 common-form contract; independent reference trace",
+        "sprite_override": {
+          "asset_id": "626da61d-d317-4209-a293-92a23563f94f",
+          "source_asset_id": "447c9eb6-7e50-45f2-8417-e196c1ead271",
+          "source_sha256": "277a47e41c906fd22ddc40e8413ebfb501496f43d8438b32afc142e7165dbe0e",
+          "mask": {
+            "crop": [
+              1,
+              1,
+              114,
+              15
+            ],
+            "path": "M0 0h116v17H0Z",
+            "width": 116,
+            "height": 17,
+            "scene_alignment": "shelf"
+          }
+        }
+      }
+    },
+    {
+      "garment_id": "869734e9-a720-5471-bb80-91bf4b6cdd8c",
+      "source_asset_id": "7f0634e3-a860-4df8-b19f-2597d9c85aec",
+      "source_sha256": "2266c920aea2146a8bba33221bc247240f086cafaf1f890b9dba59ddc49f7c00",
+      "source_location_id": "a723370e-5066-54f8-b012-7ab3cc44bf60",
+      "compartment_id": "a723370e-5066-54f8-b012-7ab3cc44bf60",
+      "compartment": "F4",
+      "side": "right",
+      "layer": 1,
+      "kind": "approved",
+      "name": "SUPER FINE MERINO WOOL CREW-NECK KNIT_ CHARCOAL",
+      "display_width": 105.56,
+      "display_height": 25.222300884955754,
+      "derivative_asset_id": "0970a195-ee98-4be8-b671-52edc1cf2093",
+      "mask": {
+        "crop": [
+          1,
+          1,
+          113,
+          27
+        ],
+        "path": "M0 0h115v29H0Z",
+        "width": 115,
+        "height": 29,
+        "scene_alignment": "shelf"
+      },
+      "geometry": {
+        "x": 0.8666267942583732,
+        "y": 0.4961617698521081,
+        "width": 0.06313397129186603,
+        "height": 0.02680372038783821,
+        "z_index": 21,
+        "approved": true,
+        "alignment": "shelf",
+        "basis": "B-01 common-form contract; independent reference trace",
+        "sprite_override": {
+          "asset_id": "0970a195-ee98-4be8-b671-52edc1cf2093",
+          "source_asset_id": "7f0634e3-a860-4df8-b19f-2597d9c85aec",
+          "source_sha256": "2266c920aea2146a8bba33221bc247240f086cafaf1f890b9dba59ddc49f7c00",
+          "mask": {
+            "crop": [
+              1,
+              1,
+              113,
+              27
+            ],
+            "path": "M0 0h115v29H0Z",
+            "width": 115,
+            "height": 29,
+            "scene_alignment": "shelf"
+          }
+        }
+      }
+    },
+    {
+      "garment_id": "053eb5bd-f212-5c7a-8757-69d511d5dabe",
+      "source_asset_id": "6dbe9b19-2355-42bf-9d35-f79bb34f9131",
+      "source_sha256": "230ad33d2a45a6d6f005a0ce2baa158c0a2ac2865e62c103719e155b64bae06d",
+      "source_location_id": "a723370e-5066-54f8-b012-7ab3cc44bf60",
+      "compartment_id": "a723370e-5066-54f8-b012-7ab3cc44bf60",
+      "compartment": "F4",
+      "side": "right",
+      "layer": 2,
+      "kind": "approved",
+      "name": "MERINO WOOL HALF-ZIP JUMPER_ SAND",
+      "display_width": 105.56,
+      "display_height": 21.112000000000002,
+      "derivative_asset_id": "d90477db-08d7-4ecf-b618-0313d94ad5b3",
+      "mask": {
+        "crop": [
+          1,
+          1,
+          110,
+          22
+        ],
+        "path": "M0 0h112v24H0Z",
+        "width": 112,
+        "height": 24,
+        "scene_alignment": "shelf"
+      },
+      "geometry": {
+        "x": 0.8666267942583732,
+        "y": 0.47372606315710275,
+        "width": 0.06313397129186603,
+        "height": 0.022435706695005317,
+        "z_index": 22,
+        "approved": true,
+        "alignment": "shelf",
+        "basis": "B-01 common-form contract; independent reference trace",
+        "sprite_override": {
+          "asset_id": "d90477db-08d7-4ecf-b618-0313d94ad5b3",
+          "source_asset_id": "6dbe9b19-2355-42bf-9d35-f79bb34f9131",
+          "source_sha256": "230ad33d2a45a6d6f005a0ce2baa158c0a2ac2865e62c103719e155b64bae06d",
+          "mask": {
+            "crop": [
+              1,
+              1,
+              110,
+              22
+            ],
+            "path": "M0 0h112v24H0Z",
+            "width": 112,
+            "height": 24,
+            "scene_alignment": "shelf"
+          }
+        }
+      }
+    },
+    {
+      "garment_id": "622a268d-dda1-56a2-944d-6c12df3f4458",
+      "source_asset_id": "447c9eb6-7e50-45f2-8417-e196c1ead271",
+      "source_sha256": "277a47e41c906fd22ddc40e8413ebfb501496f43d8438b32afc142e7165dbe0e",
+      "source_location_id": "cecb917e-03b5-50b7-8e33-f0ef4dc1d313",
+      "compartment_id": "cecb917e-03b5-50b7-8e33-f0ef4dc1d313",
+      "compartment": "F5",
+      "side": "left",
+      "layer": 0,
+      "kind": "approved",
+      "name": "MERINO WOOL HALF-ZIP JUMPER_ NAVY",
+      "display_width": 112.1789533839497,
+      "display_height": 14.760388603151275,
+      "derivative_asset_id": "626da61d-d317-4209-a293-92a23563f94f",
+      "mask": {
+        "crop": [
+          1,
+          1,
+          114,
+          15
+        ],
+        "path": "M0 0h116v17H0Z",
+        "width": 116,
+        "height": 17,
+        "scene_alignment": "shelf"
+      },
+      "geometry": {
+        "x": 0.783983879555054,
+        "y": 0.6378741885194992,
+        "width": 0.06709267546886943,
+        "height": 0.01568585398847107,
+        "z_index": 20,
+        "approved": true,
+        "alignment": "shelf",
+        "basis": "B-01 common-form contract; independent reference trace",
+        "sprite_override": {
+          "asset_id": "626da61d-d317-4209-a293-92a23563f94f",
+          "source_asset_id": "447c9eb6-7e50-45f2-8417-e196c1ead271",
+          "source_sha256": "277a47e41c906fd22ddc40e8413ebfb501496f43d8438b32afc142e7165dbe0e",
+          "mask": {
+            "crop": [
+              1,
+              1,
+              114,
+              15
+            ],
+            "path": "M0 0h116v17H0Z",
+            "width": 116,
+            "height": 17,
+            "scene_alignment": "shelf"
+          }
+        }
+      }
+    },
+    {
+      "garment_id": "89cca9bf-12cf-5fb2-b7ea-9cb38793fbb1",
+      "source_asset_id": "7f0634e3-a860-4df8-b19f-2597d9c85aec",
+      "source_sha256": "2266c920aea2146a8bba33221bc247240f086cafaf1f890b9dba59ddc49f7c00",
+      "source_location_id": "cecb917e-03b5-50b7-8e33-f0ef4dc1d313",
+      "compartment_id": "cecb917e-03b5-50b7-8e33-f0ef4dc1d313",
+      "compartment": "F5",
+      "side": "left",
+      "layer": 1,
+      "kind": "approved",
+      "name": "SUPER FINE MERINO WOOL CREW-NECK KNIT_ CHARCOAL",
+      "display_width": 112.1789533839497,
+      "display_height": 26.80382072005878,
+      "derivative_asset_id": "0970a195-ee98-4be8-b671-52edc1cf2093",
+      "mask": {
+        "crop": [
+          1,
+          1,
+          113,
+          27
+        ],
+        "path": "M0 0h115v29H0Z",
+        "width": 115,
+        "height": 29,
+        "scene_alignment": "shelf"
+      },
+      "geometry": {
+        "x": 0.783983879555054,
+        "y": 0.6093897881793731,
+        "width": 0.06709267546886943,
+        "height": 0.02848440034012623,
+        "z_index": 21,
+        "approved": true,
+        "alignment": "shelf",
+        "basis": "B-01 common-form contract; independent reference trace",
+        "sprite_override": {
+          "asset_id": "0970a195-ee98-4be8-b671-52edc1cf2093",
+          "source_asset_id": "7f0634e3-a860-4df8-b19f-2597d9c85aec",
+          "source_sha256": "2266c920aea2146a8bba33221bc247240f086cafaf1f890b9dba59ddc49f7c00",
+          "mask": {
+            "crop": [
+              1,
+              1,
+              113,
+              27
+            ],
+            "path": "M0 0h115v29H0Z",
+            "width": 115,
+            "height": 29,
+            "scene_alignment": "shelf"
+          }
+        }
+      }
+    },
+    {
+      "garment_id": "652c91d0-df18-5066-9600-852a9e1d9e8e",
+      "source_asset_id": "6dbe9b19-2355-42bf-9d35-f79bb34f9131",
+      "source_sha256": "230ad33d2a45a6d6f005a0ce2baa158c0a2ac2865e62c103719e155b64bae06d",
+      "source_location_id": "cecb917e-03b5-50b7-8e33-f0ef4dc1d313",
+      "compartment_id": "cecb917e-03b5-50b7-8e33-f0ef4dc1d313",
+      "compartment": "F5",
+      "side": "left",
+      "layer": 2,
+      "kind": "approved",
+      "name": "MERINO WOOL HALF-ZIP JUMPER_ SAND",
+      "display_width": 112.1789533839497,
+      "display_height": 22.435790676789942,
+      "derivative_asset_id": "d90477db-08d7-4ecf-b618-0313d94ad5b3",
+      "mask": {
+        "crop": [
+          1,
+          1,
+          110,
+          22
+        ],
+        "path": "M0 0h112v24H0Z",
+        "width": 112,
+        "height": 24,
+        "scene_alignment": "shelf"
+      },
+      "geometry": {
+        "x": 0.783983879555054,
+        "y": 0.585547290116897,
+        "width": 0.06709267546886943,
+        "height": 0.023842498062476028,
+        "z_index": 22,
+        "approved": true,
+        "alignment": "shelf",
+        "basis": "B-01 common-form contract; independent reference trace",
+        "sprite_override": {
+          "asset_id": "d90477db-08d7-4ecf-b618-0313d94ad5b3",
+          "source_asset_id": "6dbe9b19-2355-42bf-9d35-f79bb34f9131",
+          "source_sha256": "230ad33d2a45a6d6f005a0ce2baa158c0a2ac2865e62c103719e155b64bae06d",
+          "mask": {
+            "crop": [
+              1,
+              1,
+              110,
+              22
+            ],
+            "path": "M0 0h112v24H0Z",
+            "width": 112,
+            "height": 24,
+            "scene_alignment": "shelf"
+          }
+        }
+      }
+    },
+    {
+      "garment_id": "934d1ed2-2217-5875-ae29-b702b92c7a4b",
+      "source_asset_id": "447c9eb6-7e50-45f2-8417-e196c1ead271",
+      "source_sha256": "277a47e41c906fd22ddc40e8413ebfb501496f43d8438b32afc142e7165dbe0e",
+      "source_location_id": "cecb917e-03b5-50b7-8e33-f0ef4dc1d313",
+      "compartment_id": "cecb917e-03b5-50b7-8e33-f0ef4dc1d313",
+      "compartment": "F5",
+      "side": "right",
+      "layer": 0,
+      "kind": "approved",
+      "name": "MERINO WOOL HALF-ZIP JUMPER_ NAVY",
+      "display_width": 103.74000000000001,
+      "display_height": 13.65,
+      "derivative_asset_id": "626da61d-d317-4209-a293-92a23563f94f",
+      "mask": {
+        "crop": [
+          1,
+          1,
+          114,
+          15
+        ],
+        "path": "M0 0h116v17H0Z",
+        "width": 116,
+        "height": 17,
+        "scene_alignment": "shelf"
+      },
+      "geometry": {
+        "x": 0.8666267942583732,
+        "y": 0.6390541976620616,
+        "width": 0.06204545454545455,
+        "height": 0.014505844845908607,
+        "z_index": 20,
+        "approved": true,
+        "alignment": "shelf",
+        "basis": "B-01 common-form contract; independent reference trace",
+        "sprite_override": {
+          "asset_id": "626da61d-d317-4209-a293-92a23563f94f",
+          "source_asset_id": "447c9eb6-7e50-45f2-8417-e196c1ead271",
+          "source_sha256": "277a47e41c906fd22ddc40e8413ebfb501496f43d8438b32afc142e7165dbe0e",
+          "mask": {
+            "crop": [
+              1,
+              1,
+              114,
+              15
+            ],
+            "path": "M0 0h116v17H0Z",
+            "width": 116,
+            "height": 17,
+            "scene_alignment": "shelf"
+          }
+        }
+      }
+    },
+    {
+      "garment_id": "9813c705-e718-53ae-b1ab-9e7bafd4565e",
+      "source_asset_id": "7f0634e3-a860-4df8-b19f-2597d9c85aec",
+      "source_sha256": "2266c920aea2146a8bba33221bc247240f086cafaf1f890b9dba59ddc49f7c00",
+      "source_location_id": "cecb917e-03b5-50b7-8e33-f0ef4dc1d313",
+      "compartment_id": "cecb917e-03b5-50b7-8e33-f0ef4dc1d313",
+      "compartment": "F5",
+      "side": "right",
+      "layer": 1,
+      "kind": "approved",
+      "name": "SUPER FINE MERINO WOOL CREW-NECK KNIT_ CHARCOAL",
+      "display_width": 103.74000000000001,
+      "display_height": 24.78743362831859,
+      "derivative_asset_id": "0970a195-ee98-4be8-b671-52edc1cf2093",
+      "mask": {
+        "crop": [
+          1,
+          1,
+          113,
+          27
+        ],
+        "path": "M0 0h115v29H0Z",
+        "width": 115,
+        "height": 29,
+        "scene_alignment": "shelf"
+      },
+      "geometry": {
+        "x": 0.8666267942583732,
+        "y": 0.6127126103843586,
+        "width": 0.06204545454545455,
+        "height": 0.02634158727770307,
+        "z_index": 21,
+        "approved": true,
+        "alignment": "shelf",
+        "basis": "B-01 common-form contract; independent reference trace",
+        "sprite_override": {
+          "asset_id": "0970a195-ee98-4be8-b671-52edc1cf2093",
+          "source_asset_id": "7f0634e3-a860-4df8-b19f-2597d9c85aec",
+          "source_sha256": "2266c920aea2146a8bba33221bc247240f086cafaf1f890b9dba59ddc49f7c00",
+          "mask": {
+            "crop": [
+              1,
+              1,
+              113,
+              27
+            ],
+            "path": "M0 0h115v29H0Z",
+            "width": 115,
+            "height": 29,
+            "scene_alignment": "shelf"
+          }
+        }
+      }
+    },
+    {
+      "garment_id": "9a8c11b4-4213-555f-aee6-70dd26494a30",
+      "source_asset_id": "6dbe9b19-2355-42bf-9d35-f79bb34f9131",
+      "source_sha256": "230ad33d2a45a6d6f005a0ce2baa158c0a2ac2865e62c103719e155b64bae06d",
+      "source_location_id": "cecb917e-03b5-50b7-8e33-f0ef4dc1d313",
+      "compartment_id": "cecb917e-03b5-50b7-8e33-f0ef4dc1d313",
+      "compartment": "F5",
+      "side": "right",
+      "layer": 2,
+      "kind": "approved",
+      "name": "MERINO WOOL HALF-ZIP JUMPER_ SAND",
+      "display_width": 103.74000000000001,
+      "display_height": 20.748000000000005,
+      "derivative_asset_id": "d90477db-08d7-4ecf-b618-0313d94ad5b3",
+      "mask": {
+        "crop": [
+          1,
+          1,
+          110,
+          22
+        ],
+        "path": "M0 0h112v24H0Z",
+        "width": 112,
+        "height": 24,
+        "scene_alignment": "shelf"
+      },
+      "geometry": {
+        "x": 0.8666267942583732,
+        "y": 0.5906637262185774,
+        "width": 0.06204545454545455,
+        "height": 0.022048884165781088,
+        "z_index": 22,
+        "approved": true,
+        "alignment": "shelf",
+        "basis": "B-01 common-form contract; independent reference trace",
+        "sprite_override": {
+          "asset_id": "d90477db-08d7-4ecf-b618-0313d94ad5b3",
+          "source_asset_id": "6dbe9b19-2355-42bf-9d35-f79bb34f9131",
+          "source_sha256": "230ad33d2a45a6d6f005a0ce2baa158c0a2ac2865e62c103719e155b64bae06d",
+          "mask": {
+            "crop": [
+              1,
+              1,
+              110,
+              22
+            ],
+            "path": "M0 0h112v24H0Z",
+            "width": 112,
+            "height": 24,
+            "scene_alignment": "shelf"
+          }
+        }
+      }
+    },
+    {
+      "garment_id": "00caadf4-b6bc-5d77-ad83-5087a2579b65",
+      "source_asset_id": "447c9eb6-7e50-45f2-8417-e196c1ead271",
+      "source_sha256": "277a47e41c906fd22ddc40e8413ebfb501496f43d8438b32afc142e7165dbe0e",
+      "source_location_id": "997745af-7ec6-50be-ae80-1ce03f5ba710",
+      "compartment_id": "997745af-7ec6-50be-ae80-1ce03f5ba710",
+      "compartment": "F6",
+      "side": "left",
+      "layer": 0,
+      "kind": "approved",
+      "name": "MERINO WOOL HALF-ZIP JUMPER_ NAVY",
+      "display_width": 117.43734182382235,
+      "display_height": 15.452281818923993,
+      "derivative_asset_id": "626da61d-d317-4209-a293-92a23563f94f",
+      "mask": {
+        "crop": [
+          1,
+          1,
+          114,
+          15
+        ],
+        "path": "M0 0h116v17H0Z",
+        "width": 116,
+        "height": 17,
+        "scene_alignment": "shelf"
+      },
+      "geometry": {
+        "x": 0.7808389103924507,
+        "y": 0.7529731330298364,
+        "width": 0.0702376446314727,
+        "height": 0.01642112839418065,
+        "z_index": 20,
+        "approved": true,
+        "alignment": "shelf",
+        "basis": "B-01 common-form contract; independent reference trace",
+        "sprite_override": {
+          "asset_id": "626da61d-d317-4209-a293-92a23563f94f",
+          "source_asset_id": "447c9eb6-7e50-45f2-8417-e196c1ead271",
+          "source_sha256": "277a47e41c906fd22ddc40e8413ebfb501496f43d8438b32afc142e7165dbe0e",
+          "mask": {
+            "crop": [
+              1,
+              1,
+              114,
+              15
+            ],
+            "path": "M0 0h116v17H0Z",
+            "width": 116,
+            "height": 17,
+            "scene_alignment": "shelf"
+          }
+        }
+      }
+    },
+    {
+      "garment_id": "9a592908-46aa-5cb5-ae6e-4588e80195d0",
+      "source_asset_id": "7f0634e3-a860-4df8-b19f-2597d9c85aec",
+      "source_sha256": "2266c920aea2146a8bba33221bc247240f086cafaf1f890b9dba59ddc49f7c00",
+      "source_location_id": "997745af-7ec6-50be-ae80-1ce03f5ba710",
+      "compartment_id": "997745af-7ec6-50be-ae80-1ce03f5ba710",
+      "compartment": "F6",
+      "side": "left",
+      "layer": 1,
+      "kind": "approved",
+      "name": "SUPER FINE MERINO WOOL CREW-NECK KNIT_ CHARCOAL",
+      "display_width": 117.43734182382235,
+      "display_height": 28.060249816311536,
+      "derivative_asset_id": "0970a195-ee98-4be8-b671-52edc1cf2093",
+      "mask": {
+        "crop": [
+          1,
+          1,
+          113,
+          27
+        ],
+        "path": "M0 0h115v29H0Z",
+        "width": 115,
+        "height": 29,
+        "scene_alignment": "shelf"
+      },
+      "geometry": {
+        "x": 0.7808389103924507,
+        "y": 0.7231535264237667,
+        "width": 0.0702376446314727,
+        "height": 0.029819606606069644,
+        "z_index": 21,
+        "approved": true,
+        "alignment": "shelf",
+        "basis": "B-01 common-form contract; independent reference trace",
+        "sprite_override": {
+          "asset_id": "0970a195-ee98-4be8-b671-52edc1cf2093",
+          "source_asset_id": "7f0634e3-a860-4df8-b19f-2597d9c85aec",
+          "source_sha256": "2266c920aea2146a8bba33221bc247240f086cafaf1f890b9dba59ddc49f7c00",
+          "mask": {
+            "crop": [
+              1,
+              1,
+              113,
+              27
+            ],
+            "path": "M0 0h115v29H0Z",
+            "width": 115,
+            "height": 29,
+            "scene_alignment": "shelf"
+          }
+        }
+      }
+    },
+    {
+      "garment_id": "5ac6ea1d-c00f-5aa4-ae85-82081fa3444f",
+      "source_asset_id": "6dbe9b19-2355-42bf-9d35-f79bb34f9131",
+      "source_sha256": "230ad33d2a45a6d6f005a0ce2baa158c0a2ac2865e62c103719e155b64bae06d",
+      "source_location_id": "997745af-7ec6-50be-ae80-1ce03f5ba710",
+      "compartment_id": "997745af-7ec6-50be-ae80-1ce03f5ba710",
+      "compartment": "F6",
+      "side": "left",
+      "layer": 2,
+      "kind": "approved",
+      "name": "MERINO WOOL HALF-ZIP JUMPER_ SAND",
+      "display_width": 117.43734182382235,
+      "display_height": 23.48746836476447,
+      "derivative_asset_id": "d90477db-08d7-4ecf-b618-0313d94ad5b3",
+      "mask": {
+        "crop": [
+          1,
+          1,
+          110,
+          22
+        ],
+        "path": "M0 0h112v24H0Z",
+        "width": 112,
+        "height": 24,
+        "scene_alignment": "shelf"
+      },
+      "geometry": {
+        "x": 0.7808389103924507,
+        "y": 0.6981934112646121,
+        "width": 0.0702376446314727,
+        "height": 0.02496011515915459,
+        "z_index": 22,
+        "approved": true,
+        "alignment": "shelf",
+        "basis": "B-01 common-form contract; independent reference trace",
+        "sprite_override": {
+          "asset_id": "d90477db-08d7-4ecf-b618-0313d94ad5b3",
+          "source_asset_id": "6dbe9b19-2355-42bf-9d35-f79bb34f9131",
+          "source_sha256": "230ad33d2a45a6d6f005a0ce2baa158c0a2ac2865e62c103719e155b64bae06d",
+          "mask": {
+            "crop": [
+              1,
+              1,
+              110,
+              22
+            ],
+            "path": "M0 0h112v24H0Z",
+            "width": 112,
+            "height": 24,
+            "scene_alignment": "shelf"
+          }
+        }
+      }
+    },
+    {
+      "garment_id": "b4c04595-b1cc-5380-abb5-a4a89324087f",
+      "source_asset_id": "447c9eb6-7e50-45f2-8417-e196c1ead271",
+      "source_sha256": "277a47e41c906fd22ddc40e8413ebfb501496f43d8438b32afc142e7165dbe0e",
+      "source_location_id": "997745af-7ec6-50be-ae80-1ce03f5ba710",
+      "compartment_id": "997745af-7ec6-50be-ae80-1ce03f5ba710",
+      "compartment": "F6",
+      "side": "right",
+      "layer": 0,
+      "kind": "approved",
+      "name": "MERINO WOOL HALF-ZIP JUMPER_ NAVY",
+      "display_width": 112.1789533839497,
+      "display_height": 14.760388603151275,
+      "derivative_asset_id": "626da61d-d317-4209-a293-92a23563f94f",
+      "mask": {
+        "crop": [
+          1,
+          1,
+          114,
+          15
+        ],
+        "path": "M0 0h116v17H0Z",
+        "width": 116,
+        "height": 17,
+        "scene_alignment": "shelf"
+      },
+      "geometry": {
+        "x": 0.8666267942583732,
+        "y": 0.753708407435546,
+        "width": 0.06709267546886943,
+        "height": 0.01568585398847107,
+        "z_index": 20,
+        "approved": true,
+        "alignment": "shelf",
+        "basis": "B-01 common-form contract; independent reference trace",
+        "sprite_override": {
+          "asset_id": "626da61d-d317-4209-a293-92a23563f94f",
+          "source_asset_id": "447c9eb6-7e50-45f2-8417-e196c1ead271",
+          "source_sha256": "277a47e41c906fd22ddc40e8413ebfb501496f43d8438b32afc142e7165dbe0e",
+          "mask": {
+            "crop": [
+              1,
+              1,
+              114,
+              15
+            ],
+            "path": "M0 0h116v17H0Z",
+            "width": 116,
+            "height": 17,
+            "scene_alignment": "shelf"
+          }
+        }
+      }
+    },
+    {
+      "garment_id": "f21f98ef-184e-5e45-80aa-4552b848d8a4",
+      "source_asset_id": "7f0634e3-a860-4df8-b19f-2597d9c85aec",
+      "source_sha256": "2266c920aea2146a8bba33221bc247240f086cafaf1f890b9dba59ddc49f7c00",
+      "source_location_id": "997745af-7ec6-50be-ae80-1ce03f5ba710",
+      "compartment_id": "997745af-7ec6-50be-ae80-1ce03f5ba710",
+      "compartment": "F6",
+      "side": "right",
+      "layer": 1,
+      "kind": "approved",
+      "name": "SUPER FINE MERINO WOOL CREW-NECK KNIT_ CHARCOAL",
+      "display_width": 112.1789533839497,
+      "display_height": 26.80382072005878,
+      "derivative_asset_id": "0970a195-ee98-4be8-b671-52edc1cf2093",
+      "mask": {
+        "crop": [
+          1,
+          1,
+          113,
+          27
+        ],
+        "path": "M0 0h115v29H0Z",
+        "width": 115,
+        "height": 29,
+        "scene_alignment": "shelf"
+      },
+      "geometry": {
+        "x": 0.8666267942583732,
+        "y": 0.7252240070954198,
+        "width": 0.06709267546886943,
+        "height": 0.02848440034012623,
+        "z_index": 21,
+        "approved": true,
+        "alignment": "shelf",
+        "basis": "B-01 common-form contract; independent reference trace",
+        "sprite_override": {
+          "asset_id": "0970a195-ee98-4be8-b671-52edc1cf2093",
+          "source_asset_id": "7f0634e3-a860-4df8-b19f-2597d9c85aec",
+          "source_sha256": "2266c920aea2146a8bba33221bc247240f086cafaf1f890b9dba59ddc49f7c00",
+          "mask": {
+            "crop": [
+              1,
+              1,
+              113,
+              27
+            ],
+            "path": "M0 0h115v29H0Z",
+            "width": 115,
+            "height": 29,
+            "scene_alignment": "shelf"
+          }
+        }
+      }
+    },
+    {
+      "garment_id": "d0ef9f43-50c9-5fee-8980-f501b8128baa",
+      "source_asset_id": "6dbe9b19-2355-42bf-9d35-f79bb34f9131",
+      "source_sha256": "230ad33d2a45a6d6f005a0ce2baa158c0a2ac2865e62c103719e155b64bae06d",
+      "source_location_id": "997745af-7ec6-50be-ae80-1ce03f5ba710",
+      "compartment_id": "997745af-7ec6-50be-ae80-1ce03f5ba710",
+      "compartment": "F6",
+      "side": "right",
+      "layer": 2,
+      "kind": "approved",
+      "name": "MERINO WOOL HALF-ZIP JUMPER_ SAND",
+      "display_width": 112.1789533839497,
+      "display_height": 22.435790676789942,
+      "derivative_asset_id": "d90477db-08d7-4ecf-b618-0313d94ad5b3",
+      "mask": {
+        "crop": [
+          1,
+          1,
+          110,
+          22
+        ],
+        "path": "M0 0h112v24H0Z",
+        "width": 112,
+        "height": 24,
+        "scene_alignment": "shelf"
+      },
+      "geometry": {
+        "x": 0.8666267942583732,
+        "y": 0.7013815090329438,
+        "width": 0.06709267546886943,
+        "height": 0.023842498062476028,
+        "z_index": 22,
+        "approved": true,
+        "alignment": "shelf",
+        "basis": "B-01 common-form contract; independent reference trace",
+        "sprite_override": {
+          "asset_id": "d90477db-08d7-4ecf-b618-0313d94ad5b3",
+          "source_asset_id": "6dbe9b19-2355-42bf-9d35-f79bb34f9131",
+          "source_sha256": "230ad33d2a45a6d6f005a0ce2baa158c0a2ac2865e62c103719e155b64bae06d",
+          "mask": {
+            "crop": [
+              1,
+              1,
+              110,
+              22
+            ],
+            "path": "M0 0h112v24H0Z",
+            "width": 112,
+            "height": 24,
+            "scene_alignment": "shelf"
+          }
+        }
+      }
+    },
+    {
+      "garment_id": "11251df3-4107-575c-b871-47e5d6efeed3",
+      "source_asset_id": "447c9eb6-7e50-45f2-8417-e196c1ead271",
+      "source_sha256": "277a47e41c906fd22ddc40e8413ebfb501496f43d8438b32afc142e7165dbe0e",
+      "source_location_id": "4076e3a0-b5f8-51a1-ba35-8df56a371757",
+      "compartment_id": "4076e3a0-b5f8-51a1-ba35-8df56a371757",
+      "compartment": "F7",
+      "side": "left",
+      "layer": 0,
+      "kind": "approved",
+      "name": "MERINO WOOL HALF-ZIP JUMPER_ NAVY",
+      "display_width": 127.88000000000001,
+      "display_height": 16.826315789473686,
+      "derivative_asset_id": "626da61d-d317-4209-a293-92a23563f94f",
+      "mask": {
+        "crop": [
+          1,
+          1,
+          114,
+          15
+        ],
+        "path": "M0 0h116v17H0Z",
+        "width": 116,
+        "height": 17,
+        "scene_alignment": "shelf"
+      },
+      "geometry": {
+        "x": 0.7757894736842105,
+        "y": 0.8779741596286146,
+        "width": 0.07648325358851675,
+        "height": 0.017881313272554395,
+        "z_index": 20,
+        "approved": true,
+        "alignment": "shelf",
+        "basis": "B-01 common-form contract; independent reference trace",
+        "sprite_override": {
+          "asset_id": "626da61d-d317-4209-a293-92a23563f94f",
+          "source_asset_id": "447c9eb6-7e50-45f2-8417-e196c1ead271",
+          "source_sha256": "277a47e41c906fd22ddc40e8413ebfb501496f43d8438b32afc142e7165dbe0e",
+          "mask": {
+            "crop": [
+              1,
+              1,
+              114,
+              15
+            ],
+            "path": "M0 0h116v17H0Z",
+            "width": 116,
+            "height": 17,
+            "scene_alignment": "shelf"
+          }
+        }
+      }
+    },
+    {
+      "garment_id": "6a0331fb-9e5b-5153-91df-5f34afdaf691",
+      "source_asset_id": "7f0634e3-a860-4df8-b19f-2597d9c85aec",
+      "source_sha256": "2266c920aea2146a8bba33221bc247240f086cafaf1f890b9dba59ddc49f7c00",
+      "source_location_id": "4076e3a0-b5f8-51a1-ba35-8df56a371757",
+      "compartment_id": "4076e3a0-b5f8-51a1-ba35-8df56a371757",
+      "compartment": "F7",
+      "side": "left",
+      "layer": 1,
+      "kind": "approved",
+      "name": "SUPER FINE MERINO WOOL CREW-NECK KNIT_ CHARCOAL",
+      "display_width": 127.88000000000001,
+      "display_height": 30.5553982300885,
+      "derivative_asset_id": "0970a195-ee98-4be8-b671-52edc1cf2093",
+      "mask": {
+        "crop": [
+          1,
+          1,
+          113,
+          27
+        ],
+        "path": "M0 0h115v29H0Z",
+        "width": 115,
+        "height": 29,
+        "scene_alignment": "shelf"
+      },
+      "geometry": {
+        "x": 0.7757894736842105,
+        "y": 0.8455029606593388,
+        "width": 0.07648325358851675,
+        "height": 0.03247119896927577,
+        "z_index": 21,
+        "approved": true,
+        "alignment": "shelf",
+        "basis": "B-01 common-form contract; independent reference trace",
+        "sprite_override": {
+          "asset_id": "0970a195-ee98-4be8-b671-52edc1cf2093",
+          "source_asset_id": "7f0634e3-a860-4df8-b19f-2597d9c85aec",
+          "source_sha256": "2266c920aea2146a8bba33221bc247240f086cafaf1f890b9dba59ddc49f7c00",
+          "mask": {
+            "crop": [
+              1,
+              1,
+              113,
+              27
+            ],
+            "path": "M0 0h115v29H0Z",
+            "width": 115,
+            "height": 29,
+            "scene_alignment": "shelf"
+          }
+        }
+      }
+    },
+    {
+      "garment_id": "d65f4291-ba26-5e0a-9547-9d4dddc2bf54",
+      "source_asset_id": "6dbe9b19-2355-42bf-9d35-f79bb34f9131",
+      "source_sha256": "230ad33d2a45a6d6f005a0ce2baa158c0a2ac2865e62c103719e155b64bae06d",
+      "source_location_id": "4076e3a0-b5f8-51a1-ba35-8df56a371757",
+      "compartment_id": "4076e3a0-b5f8-51a1-ba35-8df56a371757",
+      "compartment": "F7",
+      "side": "left",
+      "layer": 2,
+      "kind": "approved",
+      "name": "MERINO WOOL HALF-ZIP JUMPER_ SAND",
+      "display_width": 127.88000000000001,
+      "display_height": 25.576000000000004,
+      "derivative_asset_id": "d90477db-08d7-4ecf-b618-0313d94ad5b3",
+      "mask": {
+        "crop": [
+          1,
+          1,
+          110,
+          22
+        ],
+        "path": "M0 0h112v24H0Z",
+        "width": 112,
+        "height": 24,
+        "scene_alignment": "shelf"
+      },
+      "geometry": {
+        "x": 0.7757894736842105,
+        "y": 0.818323364485056,
+        "width": 0.07648325358851675,
+        "height": 0.027179596174282682,
+        "z_index": 22,
+        "approved": true,
+        "alignment": "shelf",
+        "basis": "B-01 common-form contract; independent reference trace",
+        "sprite_override": {
+          "asset_id": "d90477db-08d7-4ecf-b618-0313d94ad5b3",
+          "source_asset_id": "6dbe9b19-2355-42bf-9d35-f79bb34f9131",
+          "source_sha256": "230ad33d2a45a6d6f005a0ce2baa158c0a2ac2865e62c103719e155b64bae06d",
+          "mask": {
+            "crop": [
+              1,
+              1,
+              110,
+              22
+            ],
+            "path": "M0 0h112v24H0Z",
+            "width": 112,
+            "height": 24,
+            "scene_alignment": "shelf"
+          }
+        }
+      }
+    },
+    {
+      "garment_id": "01d7378b-ec70-5035-bd0a-88b420767a48",
+      "source_asset_id": "447c9eb6-7e50-45f2-8417-e196c1ead271",
+      "source_sha256": "277a47e41c906fd22ddc40e8413ebfb501496f43d8438b32afc142e7165dbe0e",
+      "source_location_id": "4076e3a0-b5f8-51a1-ba35-8df56a371757",
+      "compartment_id": "4076e3a0-b5f8-51a1-ba35-8df56a371757",
+      "compartment": "F7",
+      "side": "right",
+      "layer": 0,
+      "kind": "approved",
+      "name": "MERINO WOOL HALF-ZIP JUMPER_ NAVY",
+      "display_width": 127.9541187035676,
+      "display_height": 16.83606825046942,
+      "derivative_asset_id": "626da61d-d317-4209-a293-92a23563f94f",
+      "mask": {
+        "crop": [
+          1,
+          1,
+          114,
+          15
+        ],
+        "path": "M0 0h116v17H0Z",
+        "width": 116,
+        "height": 17,
+        "scene_alignment": "shelf"
+      },
+      "geometry": {
+        "x": 0.8666267942583732,
+        "y": 0.8779637956955691,
+        "width": 0.07652758295667919,
+        "height": 0.01789167720559981,
+        "z_index": 20,
+        "approved": true,
+        "alignment": "shelf",
+        "basis": "B-01 common-form contract; independent reference trace",
+        "sprite_override": {
+          "asset_id": "626da61d-d317-4209-a293-92a23563f94f",
+          "source_asset_id": "447c9eb6-7e50-45f2-8417-e196c1ead271",
+          "source_sha256": "277a47e41c906fd22ddc40e8413ebfb501496f43d8438b32afc142e7165dbe0e",
+          "mask": {
+            "crop": [
+              1,
+              1,
+              114,
+              15
+            ],
+            "path": "M0 0h116v17H0Z",
+            "width": 116,
+            "height": 17,
+            "scene_alignment": "shelf"
+          }
+        }
+      }
+    },
+    {
+      "garment_id": "6a39ca49-8a8c-52c6-b999-5797f7d2f188",
+      "source_asset_id": "7f0634e3-a860-4df8-b19f-2597d9c85aec",
+      "source_sha256": "2266c920aea2146a8bba33221bc247240f086cafaf1f890b9dba59ddc49f7c00",
+      "source_location_id": "4076e3a0-b5f8-51a1-ba35-8df56a371757",
+      "compartment_id": "4076e3a0-b5f8-51a1-ba35-8df56a371757",
+      "compartment": "F7",
+      "side": "right",
+      "layer": 1,
+      "kind": "approved",
+      "name": "SUPER FINE MERINO WOOL CREW-NECK KNIT_ CHARCOAL",
+      "display_width": 127.9541187035676,
+      "display_height": 30.573108008817037,
+      "derivative_asset_id": "0970a195-ee98-4be8-b671-52edc1cf2093",
+      "mask": {
+        "crop": [
+          1,
+          1,
+          113,
+          27
+        ],
+        "path": "M0 0h115v29H0Z",
+        "width": 115,
+        "height": 29,
+        "scene_alignment": "shelf"
+      },
+      "geometry": {
+        "x": 0.8666267942583732,
+        "y": 0.8454737765576127,
+        "width": 0.07652758295667919,
+        "height": 0.03249001913795647,
+        "z_index": 21,
+        "approved": true,
+        "alignment": "shelf",
+        "basis": "B-01 common-form contract; independent reference trace",
+        "sprite_override": {
+          "asset_id": "0970a195-ee98-4be8-b671-52edc1cf2093",
+          "source_asset_id": "7f0634e3-a860-4df8-b19f-2597d9c85aec",
+          "source_sha256": "2266c920aea2146a8bba33221bc247240f086cafaf1f890b9dba59ddc49f7c00",
+          "mask": {
+            "crop": [
+              1,
+              1,
+              113,
+              27
+            ],
+            "path": "M0 0h115v29H0Z",
+            "width": 115,
+            "height": 29,
+            "scene_alignment": "shelf"
+          }
+        }
+      }
+    },
+    {
+      "garment_id": "59f470a8-c063-5bef-b7d2-f7350c9039cb",
+      "source_asset_id": "6dbe9b19-2355-42bf-9d35-f79bb34f9131",
+      "source_sha256": "230ad33d2a45a6d6f005a0ce2baa158c0a2ac2865e62c103719e155b64bae06d",
+      "source_location_id": "4076e3a0-b5f8-51a1-ba35-8df56a371757",
+      "compartment_id": "4076e3a0-b5f8-51a1-ba35-8df56a371757",
+      "compartment": "F7",
+      "side": "right",
+      "layer": 2,
+      "kind": "approved",
+      "name": "MERINO WOOL HALF-ZIP JUMPER_ SAND",
+      "display_width": 127.9541187035676,
+      "display_height": 25.59082374071352,
+      "derivative_asset_id": "d90477db-08d7-4ecf-b618-0313d94ad5b3",
+      "mask": {
+        "crop": [
+          1,
+          1,
+          110,
+          22
+        ],
+        "path": "M0 0h112v24H0Z",
+        "width": 112,
+        "height": 24,
+        "scene_alignment": "shelf"
+      },
+      "geometry": {
+        "x": 0.8666267942583732,
+        "y": 0.8182784272051009,
+        "width": 0.07652758295667919,
+        "height": 0.02719534935251171,
+        "z_index": 22,
+        "approved": true,
+        "alignment": "shelf",
+        "basis": "B-01 common-form contract; independent reference trace",
+        "sprite_override": {
+          "asset_id": "d90477db-08d7-4ecf-b618-0313d94ad5b3",
+          "source_asset_id": "6dbe9b19-2355-42bf-9d35-f79bb34f9131",
+          "source_sha256": "230ad33d2a45a6d6f005a0ce2baa158c0a2ac2865e62c103719e155b64bae06d",
+          "mask": {
+            "crop": [
+              1,
+              1,
+              110,
+              22
+            ],
+            "path": "M0 0h112v24H0Z",
+            "width": 112,
+            "height": 24,
+            "scene_alignment": "shelf"
+          }
+        }
+      }
+    }
+  ],
+  "stacks": [
+    {
+      "bin": "E1",
+      "side": "left",
+      "reference": [
+        1008,
+        100,
+        1113,
+        151
+      ],
+      "display_width": 105,
+      "display_height": 51,
+      "width_error_pct": 0,
+      "height_error_pct": 0,
+      "gap_px": 0,
+      "floor_gap_px": 1,
+      "pass": true
+    },
+    {
+      "bin": "E1",
+      "side": "right",
+      "reference": [
+        1131,
+        100,
+        1244,
+        151
+      ],
+      "display_width": 113,
+      "display_height": 50.999999999999986,
+      "width_error_pct": 0,
+      "height_error_pct": -3.3306690738754696e-14,
+      "gap_px": 0,
+      "floor_gap_px": 1,
+      "pass": true
+    },
+    {
+      "bin": "E2",
+      "side": "left",
+      "reference": [
+        1007,
+        211,
+        1116,
+        264
+      ],
+      "display_width": 109,
+      "display_height": 52.99999999999997,
+      "width_error_pct": 0,
+      "height_error_pct": -5.551115123125783e-14,
+      "gap_px": 0,
+      "floor_gap_px": 1,
+      "pass": true
+    },
+    {
+      "bin": "E2",
+      "side": "right",
+      "reference": [
+        1132,
+        215,
+        1244,
+        264
+      ],
+      "display_width": 112,
+      "display_height": 49.00000000000003,
+      "width_error_pct": 0,
+      "height_error_pct": 6.661338147750939e-14,
+      "gap_px": 0,
+      "floor_gap_px": 1,
+      "pass": true
+    },
+    {
+      "bin": "E3",
+      "side": "left",
+      "reference": [
+        1008,
+        331,
+        1115,
+        388
+      ],
+      "display_width": 107,
+      "display_height": 57,
+      "width_error_pct": 0,
+      "height_error_pct": 0,
+      "gap_px": 0,
+      "floor_gap_px": 1,
+      "pass": true
+    },
+    {
+      "bin": "E3",
+      "side": "right",
+      "reference": [
+        1131,
+        330,
+        1244,
+        388
+      ],
+      "display_width": 113,
+      "display_height": 57.99999999999994,
+      "width_error_pct": 0,
+      "height_error_pct": -9.992007221626409e-14,
+      "gap_px": 0,
+      "floor_gap_px": 1,
+      "pass": true
+    },
+    {
+      "bin": "E4",
+      "side": "left",
+      "reference": [
+        1007,
+        443,
+        1118,
+        501
+      ],
+      "display_width": 111,
+      "display_height": 57.99999999999994,
+      "width_error_pct": 0,
+      "height_error_pct": -9.992007221626409e-14,
+      "gap_px": 0,
+      "floor_gap_px": 1,
+      "pass": true
+    },
+    {
+      "bin": "E4",
+      "side": "right",
+      "reference": [
+        1132,
+        445,
+        1245,
+        502
+      ],
+      "display_width": 113,
+      "display_height": 57,
+      "width_error_pct": 0,
+      "height_error_pct": 0,
+      "gap_px": 0,
+      "floor_gap_px": 1,
+      "pass": true
+    },
+    {
+      "bin": "F1",
+      "side": "left",
+      "reference": [
+        1310,
+        100,
+        1425,
+        151
+      ],
+      "display_width": 115,
+      "display_height": 51,
+      "width_error_pct": 0,
+      "height_error_pct": 0,
+      "gap_px": 0,
+      "floor_gap_px": 1,
+      "pass": true
+    },
+    {
+      "bin": "F1",
+      "side": "right",
+      "reference": [
+        1449,
+        101,
+        1560,
+        151
+      ],
+      "display_width": 111,
+      "display_height": 50,
+      "width_error_pct": 0,
+      "height_error_pct": 0,
+      "gap_px": 0,
+      "floor_gap_px": 1,
+      "pass": true
+    },
+    {
+      "bin": "F2",
+      "side": "left",
+      "reference": [
+        1311,
+        215,
+        1423,
+        265
+      ],
+      "display_width": 112,
+      "display_height": 49.99999999999997,
+      "width_error_pct": 0,
+      "height_error_pct": -5.551115123125783e-14,
+      "gap_px": 0,
+      "floor_gap_px": 1,
+      "pass": true
+    },
+    {
+      "bin": "F2",
+      "side": "right",
+      "reference": [
+        1450,
+        214,
+        1563,
+        266
+      ],
+      "display_width": 113,
+      "display_height": 52.00000000000003,
+      "width_error_pct": 0,
+      "height_error_pct": 4.440892098500626e-14,
+      "gap_px": 0,
+      "floor_gap_px": 1,
+      "pass": true
+    },
+    {
+      "bin": "F3",
+      "side": "left",
+      "reference": [
+        1310,
+        334,
+        1426,
+        389
+      ],
+      "display_width": 116,
+      "display_height": 55.00000000000006,
+      "width_error_pct": 0,
+      "height_error_pct": 1.1102230246251565e-13,
+      "gap_px": 0,
+      "floor_gap_px": 1,
+      "pass": true
+    },
+    {
+      "bin": "F3",
+      "side": "right",
+      "reference": [
+        1450,
+        333,
+        1565,
+        389
+      ],
+      "display_width": 104.65,
+      "display_height": 59.704604098742436,
+      "width_error_pct": -8.999999999999996,
+      "height_error_pct": 6.615364462040074,
+      "gap_px": 0,
+      "floor_gap_px": 1,
+      "pass": true
+    },
+    {
+      "bin": "F4",
+      "side": "left",
+      "reference": [
+        1310,
+        445,
+        1428,
+        505
+      ],
+      "display_width": 107.38000000000001,
+      "display_height": 61.262115510013984,
+      "width_error_pct": -8.999999999999996,
+      "height_error_pct": 2.1035258500233134,
+      "gap_px": 0,
+      "floor_gap_px": 1,
+      "pass": true
+    },
+    {
+      "bin": "F4",
+      "side": "right",
+      "reference": [
+        1449,
+        445,
+        1565,
+        505
+      ],
+      "display_width": 105.56,
+      "display_height": 60.22377456916632,
+      "width_error_pct": -8.999999999999996,
+      "height_error_pct": 0.37295761527720295,
+      "gap_px": 0,
+      "floor_gap_px": 1,
+      "pass": true
+    },
+    {
+      "bin": "F5",
+      "side": "left",
+      "reference": [
+        1310,
+        550,
+        1423,
+        614
+      ],
+      "display_width": 112.1789533839497,
+      "display_height": 63.999999999999886,
+      "width_error_pct": -0.726589925708232,
+      "height_error_pct": -1.7763568394002505e-13,
+      "gap_px": 0,
+      "floor_gap_px": 1,
+      "pass": true
+    },
+    {
+      "bin": "F5",
+      "side": "right",
+      "reference": [
+        1449,
+        558,
+        1563,
+        614
+      ],
+      "display_width": 103.74000000000001,
+      "display_height": 59.185433628318606,
+      "width_error_pct": -8.999999999999996,
+      "height_error_pct": 5.688274336283228,
+      "gap_px": 0,
+      "floor_gap_px": 1,
+      "pass": true
+    },
+    {
+      "bin": "F6",
+      "side": "left",
+      "reference": [
+        1310,
+        657,
+        1423,
+        724
+      ],
+      "display_width": 117.43734182382235,
+      "display_height": 67,
+      "width_error_pct": 3.926851171524204,
+      "height_error_pct": 0,
+      "gap_px": 0,
+      "floor_gap_px": 1,
+      "pass": true
+    },
+    {
+      "bin": "F6",
+      "side": "right",
+      "reference": [
+        1449,
+        660,
+        1563,
+        724
+      ],
+      "display_width": 112.1789533839497,
+      "display_height": 63.999999999999886,
+      "width_error_pct": -1.5974093123248156,
+      "height_error_pct": -1.7763568394002505e-13,
+      "gap_px": 0,
+      "floor_gap_px": 1,
+      "pass": true
+    },
+    {
+      "bin": "F7",
+      "side": "left",
+      "reference": [
+        1310,
+        763,
+        1425,
+        842
+      ],
+      "display_width": 127.88000000000001,
+      "display_height": 72.95771401956222,
+      "width_error_pct": 11.20000000000001,
+      "height_error_pct": -7.648463266376937,
+      "gap_px": 0,
+      "floor_gap_px": 1,
+      "pass": false
+    },
+    {
+      "bin": "F7",
+      "side": "right",
+      "reference": [
+        1449,
+        769,
+        1568,
+        842
+      ],
+      "display_width": 127.9541187035676,
+      "display_height": 73,
+      "width_error_pct": 7.524469498796305,
+      "height_error_pct": 0,
+      "gap_px": 0,
+      "floor_gap_px": 1,
+      "pass": true
+    }
+  ]
+}
