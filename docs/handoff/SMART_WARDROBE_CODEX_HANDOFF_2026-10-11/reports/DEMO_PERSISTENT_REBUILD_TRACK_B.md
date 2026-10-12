@@ -110,3 +110,13 @@ Reconstruction dependencies, in order:
 6. Review pending jobs/grants/audit histories, disable live provider, compare all referenced S3 keys, then independently test idempotency and113 global/104 demo household counts. Profile wiring and actual app connection switch remain approval gates.
 
 Open execution gates: independent service-capable Engine/host; enough memory for native tools; explicit API/image registration target and credentials; authorized synthetic-demo consent treatment; approval for container recreation and app connection switch. Native PG on57444 and MinIO19110 are temporary Track-A validators, not the configured future persistent services. No rebuilt-service claim until Redis/limiter and two-profile actual browser E2E pass.
+
+## User-authorized restored Desktop route (supersedes independent-only launch)
+
+The latest user authorized restarting existing Desktop and abandoned the independent Engine requirement. This worker did not restart or call Docker. `recovery_compose_plan.py` now additionally accepts the exact Windows named-pipe Engine ONLY with `--restored-desktop-approved`; it still prints argv and never executes. Original-source PG/MinIO volumes are not mounted. New PG16 uses actual `/var/lib/postgresql/data`, MinIO `/data`, both persistent project volumes. No PG17/18 directory convention is substituted.
+
+Redis retains the existing handoff anonymous persistent volume `bf37edf0792e66b808e31f7c38640463b189b66717c2925f92ff01ff822db506` via an explicit external-volume reference. This is different from the older global Compose `smart-wardrobe_redis-data`; never substitute one silently. Do not start this Redis if the original handoff Redis is writing the same volume. Starting Redis with AOF may create/modify files in the reused volume and is incompatible with an absolute "original Redis volume unchanged" condition: obtain that specific exception or mount a separately approved working copy instead. Backup the RDB and retain originals before any new writer.
+
+Legacy `handoff_local.prepare()` and `prepare_test_services()` now fail before Docker or object-store calls; their obsolete tmpfs provisioning/start/initialization blocks were removed. `remediation_local.py prepare` invokes that guard before its DB creation, so accidental legacy preparation cannot recreate containers or initialize data. Seed functions/IDs unchanged, but they remain disabled from use as recovery entry points. Explicit new-target seed requires approved inventory and root's target-aware path.
+
+Storage tests11 PASS including local-route explicit approval and the no-subprocess legacy-startup guard; unapproved named-pipe target still rejected. Ruff PASS. No runtime mount/Redis writer/recreation verification claimed.

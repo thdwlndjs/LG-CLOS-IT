@@ -1,4 +1,4 @@
-# Explicitly target an independently verified Engine; never use the default context.
+# Explicitly target an approved Engine; restored Desktop requires explicit approval.
 # No API, init, migration, seed, or worker runs during storage recovery.
 name: wardrobe-recovery-demo
 services:
@@ -51,3 +51,5 @@ volumes:
   recovery-postgres:
   recovery-minio:
   recovery-redis:
+    external: true
+    name: bf37edf0792e66b808e31f7c38640463b189b66717c2925f92ff01ff822db506

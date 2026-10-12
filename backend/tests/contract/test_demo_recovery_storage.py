@@ -24,7 +24,13 @@ def test_demo_services_have_persistent_storage_and_no_implicit_writers():
         assert all(port.startswith("127.0.0.1:") for port in service["ports"])
         volume = service["volumes"][0].split(":")[0]
         assert volume in config["volumes"]
-        assert not config["volumes"][volume]  # No old/external volume names.
+        if service is config["services"]["redis"]:
+            assert config["volumes"][volume]["external"] is True
+            assert config["volumes"][volume]["name"] == (
+                "bf37edf0792e66b808e31f7c38640463b189b66717c2925f92ff01ff822db506"
+            )
+        else:
+            assert not config["volumes"][volume]  # Fresh PG/MinIO only.
 
 
 @pytest.mark.parametrize("engine", [
@@ -47,6 +53,9 @@ def test_plan_requires_independence_attestation_and_is_storage_only(tmp_path):
     assert command[:3] == ["docker", "--host", "ssh://operator@independent.example"]
     assert command[-3:] == ["postgres", "minio", "redis"]
     assert "PRIVATE=fixture" not in " ".join(command)
+    assert module.plan("npipe:////./pipe/docker_engine", str(env), False, True)[2] == (
+        "npipe:////./pipe/docker_engine"
+    )
 
 
 def test_gap_plan_requires_actual_target_audit_and_preserves_recovered_ids():
@@ -94,3 +103,19 @@ def test_reconstruction_inventory_preserves_approved104_ids_and_stage_source_own
         if row["group"] == "stage28":
             assert row["owner_id"] == indexed[row["source_garment_id"]]["owner_id"]
     assert inventory["writes_allowed"] is False
+
+
+def test_legacy_prepare_cannot_execute_docker_or_initialize_storage(monkeypatch):
+    legacy_spec = importlib.util.spec_from_file_location(
+        "legacy_handoff", ROOT / "scripts/handoff_local.py"
+    )
+    legacy = importlib.util.module_from_spec(legacy_spec)
+    legacy_spec.loader.exec_module(legacy)
+
+    def forbidden(*args, **kwargs):
+        raise AssertionError("Legacy startup must not reach subprocess execution")
+
+    monkeypatch.setattr(legacy.subprocess, "run", forbidden)
+    for startup in [legacy.prepare, legacy.prepare_test_services]:
+        with pytest.raises(RuntimeError, match="disabled"):
+            startup()

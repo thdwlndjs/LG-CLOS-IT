@@ -217,7 +217,7 @@ def probe_pg(backup_restore=False, upgrade_target=False):
                 process.wait(timeout=10)
 
 
-def probe_minio():
+def probe_minio(export_objects=False):
     import boto3
     import httpx
     from botocore.config import Config
@@ -263,6 +263,13 @@ def probe_minio():
                             with Image.open(BytesIO(b"".join(chunks))) as image:
                                 decoded = {"format": image.format, "size": image.size}
                                 image.verify()
+                        if export_objects:
+                            destination = WORK / "object-backup" / bucket["Name"] / item["Key"]
+                            if not destination.resolve().is_relative_to((WORK / "object-backup").resolve()):
+                                raise RuntimeError("Unsafe object key")
+                            destination.parent.mkdir(parents=True, exist_ok=True)
+                            with destination.open("xb") as stream:
+                                stream.write(b"".join(chunks))
                         objects.append({"bucket": bucket["Name"], "key": item["Key"],
                                         "bytes": size, "sha256": digest.hexdigest(),
                                         "size_match": size == item["Size"], "image_decode": decoded})
@@ -279,6 +286,7 @@ def main():
     parser.add_argument("service", choices=("postgres", "minio"))
     parser.add_argument("--backup-restore-drill", action="store_true")
     parser.add_argument("--upgrade-working-target", action="store_true")
+    parser.add_argument("--export-objects", action="store_true")
     args = parser.parse_args()
     if available_memory() < 256 * 1024 * 1024:
         raise RuntimeError("Host memory gate: 256MiB minimum, no service started")
@@ -290,7 +298,7 @@ def main():
     if args.service == "postgres":
         probe_pg(args.backup_restore_drill, args.upgrade_working_target)
     else:
-        probe_minio()
+        probe_minio(args.export_objects)
 
 
 if __name__ == "__main__":

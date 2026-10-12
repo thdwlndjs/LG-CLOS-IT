@@ -11,7 +11,6 @@ import json
 import secrets
 import subprocess
 import sys
-import time
 from pathlib import Path
 from uuid import NAMESPACE_URL, uuid5
 
@@ -39,138 +38,19 @@ def docker(*args, **kwargs):
 
 
 def prepare():
-    RUNTIME.parent.mkdir(parents=True, exist_ok=True)
-    if not RUNTIME.exists():
-        existing = subprocess.run(["docker", "inspect", CONTAINER], capture_output=True)
-        if existing.returncode == 0:
-            raise RuntimeError(
-                "Existing container without our credential manifest; do not overwrite"
-            )
-        import os
-
-        password = secrets.token_urlsafe(32)
-        env = {**os.environ, "POSTGRES_PASSWORD": password}
-        docker(
-            "run",
-            "-d",
-            "--name",
-            CONTAINER,
-            "--label",
-            "wardrobe.handoff=2026-10-11",
-            "-p",
-            f"127.0.0.1:{PORT}:5432",
-            "--tmpfs",
-            "/var/lib/postgresql/data",
-            "-e",
-            "POSTGRES_PASSWORD",
-            "-e",
-            "POSTGRES_DB=" + DATABASE,
-            "postgres:16.8-bookworm",
-            env=env,
-        )
-        RUNTIME.write_text(json.dumps({"password": password}), encoding="utf-8")
-    info = json.loads(docker("inspect", CONTAINER).stdout)[0]
-    if info["Config"]["Labels"].get("wardrobe.handoff") != "2026-10-11":
-        raise RuntimeError("Container identity mismatch")
-    if not info["State"]["Running"]:
-        raise RuntimeError(
-            "Disposable container stopped; start explicitly without recreating"
-        )
-    for _ in range(30):
-        if (
-            subprocess.run(
-                ["docker", "exec", CONTAINER, "pg_isready", "-U", "postgres"],
-                capture_output=True,
-            ).returncode
-            == 0
-        ):
-            prepare_test_services()
-            return
-        time.sleep(1)
-    raise RuntimeError("Disposable PostgreSQL not ready")
+    """Prevent legacy tmpfs provisioning or automatic container recreation."""
+    raise RuntimeError(
+        "Legacy provisioning disabled: use approved persistent recovery Compose; "
+        "never recreate or start the old demo containers automatically."
+    )
 
 
 def prepare_test_services():
-    """Dedicated object store/Redis; never use cloud storage credentials."""
-    import os
-    import boto3
-
-    runtime = json.loads(RUNTIME.read_text(encoding="utf-8"))
-    if "demo_password" not in runtime:
-        runtime["demo_password"] = secrets.token_urlsafe(24)
-        RUNTIME.write_text(json.dumps(runtime), encoding="utf-8")
-    if "storage_secret" not in runtime:
-        runtime["storage_secret"] = secrets.token_urlsafe(32)
-        RUNTIME.write_text(json.dumps(runtime), encoding="utf-8")
-    services = (
-        (
-            "wardrobe-handoff-minio",
-            [
-                "-p",
-                "127.0.0.1:19000:9000",
-                "-e",
-                "MINIO_ROOT_USER",
-                "-e",
-                "MINIO_ROOT_PASSWORD",
-                "--tmpfs",
-                "/data:uid=10001,gid=10001,mode=0700",
-                "smart-wardrobe-minio:RELEASE.2025-04-22T22-12-26Z-local",
-                "server",
-                "/data",
-            ],
-            {
-                **os.environ,
-                "MINIO_ROOT_USER": "handoff-local",
-                "MINIO_ROOT_PASSWORD": runtime["storage_secret"],
-            },
-        ),
-        (
-            "wardrobe-handoff-redis",
-            ["-p", "127.0.0.1:16379:6379", "redis:7.4.2-alpine"],
-            os.environ.copy(),
-        ),
+    """No automatic startup, bucket initialization or Redis replacement."""
+    raise RuntimeError(
+        "Legacy service startup disabled: explicitly start approved recovery services "
+        "and check the existing Redis volume has no concurrent writer."
     )
-    for name, args, env in services:
-        found = subprocess.run(
-            ["docker", "inspect", name], capture_output=True, text=True
-        )
-        if found.returncode:
-            docker(
-                "run",
-                "-d",
-                "--name",
-                name,
-                "--label",
-                "wardrobe.handoff=2026-10-11",
-                *args,
-                env=env,
-            )
-        else:
-            info = json.loads(found.stdout)[0]
-            if info["Config"]["Labels"].get("wardrobe.handoff") != "2026-10-11":
-                raise RuntimeError("Test service identity mismatch")
-            if not info["State"]["Running"]:
-                docker("start", name)
-    client = boto3.client(
-        "s3",
-        endpoint_url="http://127.0.0.1:19000",
-        region_name="us-east-1",
-        aws_access_key_id="handoff-local",
-        aws_secret_access_key=runtime["storage_secret"],
-    )
-    for attempt in range(30):
-        try:
-            client.list_buckets()
-            break
-        except Exception:
-            if attempt == 29:
-                raise RuntimeError("Dedicated storage unavailable") from None
-            time.sleep(1)
-    if not any(
-        b["Name"] == "wardrobe-assets" for b in client.list_buckets()["Buckets"]
-    ):
-        client.create_bucket(Bucket="wardrobe-assets")
-    client.close()
 
 
 def test_environment():

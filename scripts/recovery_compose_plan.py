@@ -1,4 +1,4 @@
-"""Print a storage-only command for an independent Engine. Never execute Docker."""
+"""Print approved storage command; never execute Docker or restart Desktop."""
 
 import argparse
 import json
@@ -8,9 +8,13 @@ from urllib.parse import urlparse
 ROOT = Path(__file__).resolve().parents[1]
 
 
-def plan(engine: str, env_file: str, independent: bool) -> list[str]:
+def plan(
+    engine: str, env_file: str, independent: bool, restored_desktop_approved: bool = False
+) -> list[str]:
     parsed = urlparse(engine)
+    desktop = engine == "npipe:////./pipe/docker_engine" and restored_desktop_approved
     if (
+        not desktop and (
         not independent
         or parsed.scheme != "ssh"
         or not parsed.hostname
@@ -21,6 +25,7 @@ def plan(engine: str, env_file: str, independent: bool) -> list[str]:
         or parsed.path not in {"", "/"}
         or parsed.query
         or parsed.fragment
+        )
     ):
         raise ValueError("An independently verified remote SSH Engine is required")
     env = Path(env_file).resolve()
@@ -39,8 +44,11 @@ def main() -> None:
     parser.add_argument("--engine", required=True)
     parser.add_argument("--env-file", required=True)
     parser.add_argument("--independent-host-verified", action="store_true")
+    parser.add_argument("--restored-desktop-approved", action="store_true")
     args = parser.parse_args()
-    print(json.dumps(plan(args.engine, args.env_file, args.independent_host_verified)))
+    print(json.dumps(plan(
+        args.engine, args.env_file, args.independent_host_verified, args.restored_desktop_approved
+    )))
 
 
 if __name__ == "__main__":

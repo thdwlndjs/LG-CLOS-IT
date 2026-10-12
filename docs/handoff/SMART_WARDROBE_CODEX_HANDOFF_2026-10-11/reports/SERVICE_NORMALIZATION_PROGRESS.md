@@ -68,3 +68,17 @@
 native검증재실행은고정된작업본과도구가존재할때 `scripts/recovery_validate.py postgres|minio`로가능하나메모리게이트를유지한다. `--backup-restore-drill`/`--upgrade-working-target`은이미생성한대상덮어쓰기를거부하므로무작정재실행하지않는다.
 
 제품코드·B01에셋·geometry·실제유료API변경없음. 기존VM/원본/보존본·실서비스연결변경없음. 원시자료와secret포함가능한dump는Git제외하고외부업로드하지않았다.
+# 2026-10-12 최신 실행 체크포인트
+
+이 절은 아래 과거 계획보다 우선한다. 별도 Engine 구축을 중단하고 사용자 승인으로 기존 Docker Desktop을 재시작했다.
+
+- Engine 정상 응답: Docker 29.6.1. 보호 대상 기존 컨테이너 11개는 모두 정지 상태이며 삭제하지 않았다. 재시작 정책은 사전에 모두 `no`로 확인했다.
+- 신규 프로젝트 `wardrobe-recovery-demo`의 PostgreSQL 16.8 및 MinIO가 healthy이다. 실제 PostgreSQL PGDATA `/var/lib/postgresql/data`와 MinIO `/data`는 각각 신규 named volume에 연결되며 tmpfs가 없다.
+- 회수 DB의 의류 9벌 및 기존 이력을 새 DB `wardrobe_demo_recovered`에 복원하고 revision `0006_fitroom_budget`까지 적용했다. 회수 MinIO 객체 9개를 새 저장소에 복원하고 전체 GET SHA256을 검증했다.
+- 신규 PostgreSQL·MinIO 컨테이너만 재생성했다. DB 행 해시와 객체 9개의 해시가 전후 일치한다.
+- 새 PostgreSQL 백업 169,946 bytes를 생성하고 별도 `normalization_restore_drill` DB에 실제 복원했다. 45개 테이블의 전체 행 해시가 일치한다. 개인정보 포함 백업은 보호된 ignored 폴더에만 저장했다.
+- 증적: `test-results/recovery-normalization/`의 `actual-storage-mounts.json`, `restored-object-checks.json`, `recreate-persistence.json`, `normalized-backup-restore.json`.
+- Redis는 미기동이다. 기존 Redis 볼륨 유지와 원본 볼륨 변경 금지를 동시에 적용하면 정상 RDB/AOF 쓰기가 충돌한다. 기존 Redis 볼륨 정상 쓰기 허용 또는 복사한 신규 볼륨 사용에 대한 사용자 결정을 요청했으며 답변 전 기동하지 않는다.
+- 승인 시연 104벌의 안전한 재구성 도구는 준비됐으나 아직 실행하지 않았다. 두 프로필·Scene 66+21·착용 54건씩·LIKED 3건씩과 전체 앱 E2E는 미완료이다. 회수 9벌과 별도 시연 104벌을 보존하면 전체 DB 의류 수는 113벌이다.
+- 기존 원본 PostgreSQL·MinIO 볼륨 및 최초 보존본을 복원 대상으로 사용하지 않았다. 원격 push·배포·FitRoom 호출은 없다. 서비스 전체 정상화 판정은 PARTIAL이다.
+
