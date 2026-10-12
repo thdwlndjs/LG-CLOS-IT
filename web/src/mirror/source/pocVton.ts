@@ -39,8 +39,11 @@ export type VtonResult = {
   job_id: string;
   request_snapshot: VtonSnapshot;
   result_asset: any;
-  is_mock: true;
-  result_semantics: "MOCK_RECEIPT_NOT_REAL_TRY_ON";
+  is_mock: boolean;
+  result_semantics:
+    | "MOCK_RECEIPT_NOT_REAL_TRY_ON"
+    | "FIXTURE_NOT_REAL_TRY_ON"
+    | "PROVIDER_GENERATED_UNREVIEWED";
   url: string;
 };
 const freeze = <T>(value: T): T => {

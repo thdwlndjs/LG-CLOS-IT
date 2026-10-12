@@ -147,10 +147,18 @@ export function MirrorCompare({
         <div className="mc-empty" data-mock-receipt={mockResult.job_id}>
           <img
             src={mockResult.url}
-            alt="Mock 요청 처리 확인 이미지 · 실제 시착 아님"
+            alt={
+              mockResult.is_mock
+                ? "무과금 처리 확인 이미지 · 실제 시착 아님"
+                : "공급자 시착 결과 · 품질 검수 전"
+            }
             style={{ width: "100%", height: "auto", objectFit: "contain" }}
           />
-          <small>Mock 처리 완료 · 실제 시착 이미지가 아닙니다.</small>
+          <small>
+            {mockResult.is_mock
+              ? "무과금 처리 완료 · 실제 시착 이미지가 아닙니다."
+              : "실제 공급자 결과 · 품질 검수 전"}
+          </small>
         </div>
       )}
       {!hasMedia && (

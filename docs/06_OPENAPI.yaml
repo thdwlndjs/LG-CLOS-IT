@@ -4579,6 +4579,146 @@ paths:
       - POC-V04
       - POC-V05
       - POC-V06
+  /api/v1/integration/fitroom/reviews:
+    post:
+      tags:
+      - C-2 FitRoom
+      summary: Preview
+      operationId: preview_api_v1_integration_fitroom_reviews_post
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FitroomPreview'
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+      - BearerAuth: []
+      x-fsd-ids:
+      - VTON-001
+      - VTON-002
+      x-poc-ids:
+      - POC-V01
+      - POC-V04
+  /api/v1/integration/fitroom/reviews/{job_id}:
+    get:
+      tags:
+      - C-2 FitRoom
+      summary: Detail
+      operationId: detail_api_v1_integration_fitroom_reviews__job_id__get
+      security:
+      - BearerAuth: []
+      parameters:
+      - name: job_id
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+          title: Job Id
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      x-fsd-ids:
+      - VTON-001
+      - VTON-002
+      x-poc-ids:
+      - POC-V01
+      - POC-V04
+  /api/v1/integration/fitroom/reviews/{job_id}/execute:
+    post:
+      tags:
+      - C-2 FitRoom
+      summary: Execute
+      operationId: execute_api_v1_integration_fitroom_reviews__job_id__execute_post
+      security:
+      - BearerAuth: []
+      parameters:
+      - name: job_id
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+          title: Job Id
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FitroomExecute'
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      x-fsd-ids:
+      - VTON-001
+      - VTON-002
+      x-poc-ids:
+      - POC-V01
+      - POC-V04
+  /api/v1/integration/fitroom/reviews/{job_id}/status:
+    post:
+      tags:
+      - C-2 FitRoom
+      summary: Status
+      operationId: status_api_v1_integration_fitroom_reviews__job_id__status_post
+      security:
+      - BearerAuth: []
+      parameters:
+      - name: job_id
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+          title: Job Id
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      x-fsd-ids:
+      - VTON-001
+      - VTON-002
+      x-poc-ids:
+      - POC-V01
+      - POC-V04
 components:
   securitySchemes:
     BearerAuth:
@@ -7365,3 +7505,44 @@ components:
       - msg
       - type
       title: ValidationError
+
+    FitroomExecute:
+      properties:
+        fingerprint:
+          type: string
+          title: Fingerprint
+        confirmed:
+          type: boolean
+          const: true
+          title: Confirmed
+        person_asset_id:
+          type: string
+          format: uuid
+          title: Person Asset Id
+      additionalProperties: false
+      type: object
+      required:
+      - fingerprint
+      - confirmed
+      - person_asset_id
+      title: FitroomExecute
+    FitroomPreview:
+      properties:
+        request:
+          $ref: '#/components/schemas/UnifiedVtonRequest'
+        mode:
+          type: string
+          enum:
+          - FIXTURE
+          - LIVE
+          title: Mode
+          default: FIXTURE
+        hd_mode:
+          type: boolean
+          title: Hd Mode
+          default: false
+      additionalProperties: false
+      type: object
+      required:
+      - request
+      title: FitroomPreview

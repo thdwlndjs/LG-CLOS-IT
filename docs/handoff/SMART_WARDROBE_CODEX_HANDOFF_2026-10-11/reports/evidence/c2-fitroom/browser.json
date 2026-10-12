@@ -1,0 +1,140 @@
+[
+  {
+    "profile": "김수진",
+    "fixture_job_id": "45ee0d47-3912-4e59-93fa-b3d6d9c96e91",
+    "fixture_snapshot": {
+      "items": [
+        {
+          "id": "1adf7dde-eaed-53f9-ac0e-8497078fa703",
+          "kind": "OWNED",
+          "slot": "TOP",
+          "asset_id": "23fc96e0-1eb3-47a7-9339-4175559654d0",
+          "owner_id": "0b43d34d-0ae6-53cd-8f37-f95b32a01451",
+          "position": 0,
+          "source_version": 2,
+          "checksum_sha256": "e917a6c00c67c147c8d470da20207bfebfc8c9d729cd47a7506e7ab4cd2d6e59",
+          "source_fingerprint": "374ab6bbc391163e45230c55c66f7fc33b48d3dad99cf3a2e8e6fb72febf586f"
+        },
+        {
+          "id": "2904fd43-cb31-530d-b4bd-2d9783d3c762",
+          "kind": "OWNED",
+          "slot": "BOTTOM",
+          "asset_id": "0b2c69c5-4e20-4b9d-ab9e-2d4bf9db81f3",
+          "owner_id": "55328e5c-6a05-5ac7-af55-77ece0a86dd8",
+          "position": 0,
+          "source_version": 3,
+          "checksum_sha256": "bebeea70324182dab097c7710b4bb93261e94fe3e93dc7d63291ddf19611c598",
+          "source_fingerprint": "5652809b5c6b0e75ee941a5b8894b2a6ef85eb141057311075615cfb11d0552a"
+        }
+      ],
+      "person": {
+        "asset_id": "3608869d-eb81-4b1d-8513-10040bb1b2ae",
+        "checksum_sha256": "90484eb6779f4d9ece3ec8b7c0fbe88fe1c833b77dba4fcef866b096727ff9d1"
+      },
+      "hd_mode": false,
+      "draft_id": "c3c720d2-95be-40b4-843f-a3c0d1f040b3",
+      "provider": "FITROOM",
+      "member_id": "0b43d34d-0ae6-53cd-8f37-f95b32a01451",
+      "request_id": "45ee0d47-3912-4e59-93fa-b3d6d9c96e91",
+      "composition": "combo",
+      "household_id": "843fa374-b366-5ed4-a3ab-d2b980713e1a",
+      "submitted_at": "2026-10-12T00:18:48.746305+00:00",
+      "preprocessing": "alpha-white-exif-thumbnail-v1",
+      "contains_liked": false,
+      "draft_revision": 6,
+      "schema_version": "fitroom-c2-v1",
+      "prepared_inputs": [
+        {
+          "asset_id": "3608869d-eb81-4b1d-8513-10040bb1b2ae",
+          "checksum_sha256": "e62d2e5373ec1b010b88a80e5932f244a1d194fd1257380631a363204ee2caf3"
+        },
+        {
+          "asset_id": "23fc96e0-1eb3-47a7-9339-4175559654d0",
+          "checksum_sha256": "2d2b4dc8db3264f19309812d52bb269e8778fa970fa0b6c49ad7d7c78e29b912"
+        },
+        {
+          "asset_id": "0b2c69c5-4e20-4b9d-ab9e-2d4bf9db81f3",
+          "checksum_sha256": "95b1e6045c9eee51638fd24c6d0864aff619e629814d239da8914f56e9466b36"
+        }
+      ],
+      "client_context_id": "8ae84ff3-d780-4960-b2ac-dd7b1797da6a",
+      "estimated_credits": 1,
+      "input_fingerprint": "5503fa41432c739f2e161c5dbca4402447181c7f39e36e986757fe0d38d19e98"
+    },
+    "scene_unique_item_count": 87,
+    "duplicate_submit_count": 1,
+    "live_button_blocked": true,
+    "browser_provider_request_attempts": 0,
+    "blocked_non_loopback_hosts": [],
+    "errors": []
+  },
+  {
+    "profile": "최휘재",
+    "fixture_job_id": "1af7c982-61c0-48eb-a9ac-f7bfa02e65b0",
+    "fixture_snapshot": {
+      "items": [
+        {
+          "id": "1adf7dde-eaed-53f9-ac0e-8497078fa703",
+          "kind": "OWNED",
+          "slot": "TOP",
+          "asset_id": "23fc96e0-1eb3-47a7-9339-4175559654d0",
+          "owner_id": "0b43d34d-0ae6-53cd-8f37-f95b32a01451",
+          "position": 0,
+          "source_version": 2,
+          "checksum_sha256": "e917a6c00c67c147c8d470da20207bfebfc8c9d729cd47a7506e7ab4cd2d6e59",
+          "source_fingerprint": "374ab6bbc391163e45230c55c66f7fc33b48d3dad99cf3a2e8e6fb72febf586f"
+        },
+        {
+          "id": "2904fd43-cb31-530d-b4bd-2d9783d3c762",
+          "kind": "OWNED",
+          "slot": "BOTTOM",
+          "asset_id": "0b2c69c5-4e20-4b9d-ab9e-2d4bf9db81f3",
+          "owner_id": "55328e5c-6a05-5ac7-af55-77ece0a86dd8",
+          "position": 0,
+          "source_version": 3,
+          "checksum_sha256": "bebeea70324182dab097c7710b4bb93261e94fe3e93dc7d63291ddf19611c598",
+          "source_fingerprint": "5652809b5c6b0e75ee941a5b8894b2a6ef85eb141057311075615cfb11d0552a"
+        }
+      ],
+      "person": {
+        "asset_id": "570f1740-1e5f-415b-ad75-9140d133abc9",
+        "checksum_sha256": "90484eb6779f4d9ece3ec8b7c0fbe88fe1c833b77dba4fcef866b096727ff9d1"
+      },
+      "hd_mode": false,
+      "draft_id": "01c0f6c9-ee47-4075-ae10-441bafaef22d",
+      "provider": "FITROOM",
+      "member_id": "55328e5c-6a05-5ac7-af55-77ece0a86dd8",
+      "request_id": "1af7c982-61c0-48eb-a9ac-f7bfa02e65b0",
+      "composition": "combo",
+      "household_id": "843fa374-b366-5ed4-a3ab-d2b980713e1a",
+      "submitted_at": "2026-10-12T00:19:09.839026+00:00",
+      "preprocessing": "alpha-white-exif-thumbnail-v1",
+      "contains_liked": false,
+      "draft_revision": 6,
+      "schema_version": "fitroom-c2-v1",
+      "prepared_inputs": [
+        {
+          "asset_id": "570f1740-1e5f-415b-ad75-9140d133abc9",
+          "checksum_sha256": "e62d2e5373ec1b010b88a80e5932f244a1d194fd1257380631a363204ee2caf3"
+        },
+        {
+          "asset_id": "23fc96e0-1eb3-47a7-9339-4175559654d0",
+          "checksum_sha256": "2d2b4dc8db3264f19309812d52bb269e8778fa970fa0b6c49ad7d7c78e29b912"
+        },
+        {
+          "asset_id": "0b2c69c5-4e20-4b9d-ab9e-2d4bf9db81f3",
+          "checksum_sha256": "95b1e6045c9eee51638fd24c6d0864aff619e629814d239da8914f56e9466b36"
+        }
+      ],
+      "client_context_id": "0f8a6761-ecb6-479b-a63e-464bba4ca4df",
+      "estimated_credits": 1,
+      "input_fingerprint": "bd63784ea1c2e4226b2c9a96d02dec73ceea7b1760cace719b444a64f7929b14"
+    },
+    "scene_unique_item_count": 87,
+    "duplicate_submit_count": 1,
+    "live_button_blocked": true,
+    "browser_provider_request_attempts": 0,
+    "blocked_non_loopback_hosts": [],
+    "errors": []
+  }
+]

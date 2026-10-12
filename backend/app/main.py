@@ -80,6 +80,9 @@ def create_app(settings: Settings | None = None, resources=None) -> FastAPI:
     from app.api.v1 import poc_vton
 
     app.include_router(poc_vton.router)
+    from app.api.v1 import fitroom
+
+    app.include_router(fitroom.router)
     from app.api.storage_relay import router as storage_relay_router
 
     app.include_router(storage_relay_router)

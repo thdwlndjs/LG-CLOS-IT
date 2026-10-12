@@ -379,7 +379,7 @@ def test_c_auth_family_device_liked_and_person_separation(real_dsn, settings_val
     existing.run_case(real_dsn, settings_values, case)
 
 
-def test_existing_stage_b_revision_is_ready_for_c_without_migration(real_dsn, settings_values):
+def test_current_additive_revision_is_ready_for_c(real_dsn, settings_values):
     async def case(client, engine, settings, *unused):
         from app.infrastructure.resources import RuntimeResources
 

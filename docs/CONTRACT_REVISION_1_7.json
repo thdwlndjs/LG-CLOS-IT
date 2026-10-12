@@ -15,7 +15,7 @@
     "03_ARCHITECTURE_HLD_v1.1.md": "bc2da35a2ebdd29805798e9ee15c6ce64494d3475fd0304f64f26d5c31d5c1b4",
     "04_FSD.md": "25f65541bbd5bd2e6ad671c403e37df35592455bd71a2184a8ca296ad7f810a1",
     "05_BACKEND_LLD.md": "e1788c759369c815e300717c2bacd42ff9f745dc3f2d589139e89193425f60fa",
-    "06_OPENAPI.yaml": "62b1cef1efdb4ad28d830c4aaf1d169210958156f9a467b8263fb6ddec2b3deb",
+    "06_OPENAPI.yaml": "7690c692fa46644f61e396e66aebd46327877b0ffa1b18657e0a72fb1ad54fd1",
     "07_DATABASE_SCHEMA.sql": "79f5facd4c42b322b19cca244209cb95336a557234c2bd2a19c30156e9f26935",
     "07_DATABASE_SEED.sql": "a0cbd33d2461fe616ed4cfe0e2a81587ba571c7df9858bdf06612718bd1a6418",
     "08_IMPLEMENTATION_PLAN.md": "c76e1e8a7be44f884bfbaaf1a6abf7bce6f383f17baae5afa408343cc5115b7e"
@@ -98,6 +98,18 @@
         "06_OPENAPI.yaml": "62b1cef1efdb4ad28d830c4aaf1d169210958156f9a467b8263fb6ddec2b3deb"
       },
       "scope": "Additive provenance-aware integration VTON routes and DTOs; no DB migration or D-G"
+    },
+    {
+      "id": "2026-10-12-C2-FITROOM-BUDGET",
+      "authorized_by": "User C-2 implementation approval; actual provider budget zero",
+      "base_head": "d128e0b",
+      "previous_current_sha256": {
+        "06_OPENAPI.yaml": "62b1cef1efdb4ad28d830c4aaf1d169210958156f9a467b8263fb6ddec2b3deb"
+      },
+      "current_sha256": {
+        "06_OPENAPI.yaml": "7690c692fa46644f61e396e66aebd46327877b0ffa1b18657e0a72fb1ad54fd1"
+      },
+      "scope": "Additive reviews and one-attempt controls; no paid call or D-G"
     }
   ]
 }

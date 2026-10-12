@@ -271,7 +271,9 @@ export default function MirrorExperience() {
       : null;
   const sourceMode =
     mockResult && mockResult.request_snapshot.member_id === owner
-      ? "Mock 처리 완료 · 실제 시착 이미지가 아닙니다."
+      ? mockResult.is_mock
+        ? "Mock 처리 완료 · 실제 시착 이미지가 아닙니다."
+        : "실제 공급자 결과 · 품질 검수 전"
       : activeStream
         ? "실시간 수신 · 의류 표현 확인 필요"
         : exactDisplayed

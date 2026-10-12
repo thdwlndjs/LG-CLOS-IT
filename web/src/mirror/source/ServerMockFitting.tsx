@@ -14,6 +14,7 @@ import {
   type VtonResult,
 } from "./pocVton";
 import type { OutfitDraft } from "./core/types";
+import { FitroomReview } from "./FitroomReview";
 
 export function ServerMockFitting({
   draft,
@@ -239,6 +240,12 @@ export function ServerMockFitting({
             생성 중에도 조합을 바꿀 수 있습니다. 결과는 실행 순간의 조합에
             연결됩니다. 유료 호출 없음.
           </small>
+          <FitroomReview
+            draft={draft}
+            person={person}
+            consent={consent}
+            onResult={onResult}
+          />
         </div>
       )}
       {message && <p role="status">{message}</p>}

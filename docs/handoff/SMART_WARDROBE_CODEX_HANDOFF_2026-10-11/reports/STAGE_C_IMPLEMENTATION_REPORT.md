@@ -129,3 +129,8 @@ npm run build
 - [재현 스크립트](evidence/stage-c/responsive-scene-fix/verify.mjs): 프로젝트 루트에서 `node docs/handoff/SMART_WARDROBE_CODEX_HANDOFF_2026-10-11/reports/evidence/stage-c/responsive-scene-fix/verify.mjs`. 로컬 API 18081·웹 5193 필요.
 
 **C4 반응형 추가 완료 게이트를 PASS로 변경한다. C단계 최종 Mock 검증은 완료이며 실제 시착 품질 게이트는 계속 별도다.** 기존 백엔드 215 PASS는 이전 C 검증 기록이고 이번 CSS 수정에서 백엔드 테스트를 재실행했다고 주장하지 않는다. 수정 파일과 문서·증적을 함께 로컬 커밋에 남기고 이번 작업을 종료한다. 원격 push·배포는 하지 않으며 D~G 착수는 별도 사용자 승인 대기다.
+
+
+## C-2 FitRoom: 2026-10-12
+
+See [C-2 implementation and zero-cost evidence](C2_FITROOM_IMPLEMENTATION_REPORT.md). Existing C Mock completion remains valid. Actual supplier calls: 0. Real fitting quality remains unverified. B-02 remains DEFERRED; D-G, remote push and deployment were not performed.

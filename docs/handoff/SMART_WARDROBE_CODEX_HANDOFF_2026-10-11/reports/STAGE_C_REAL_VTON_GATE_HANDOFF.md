@@ -34,3 +34,8 @@ C1~C6의 Mock PASS는 실제 시착 품질 PASS가 아니다. 최종 PoC에서 �
 승인자는 사용자이며 다음 게이트의 실행 계약과 명시적인 사용자 지시를 증적으로 남긴다. 공급자 선택, 품질 검수자·PASS 기준·미지원 슬롯 처리 정책은 아직 확정하지 않았다. 6개 슬롯 지원 정책은 목표이고, 현재 유효 최대 5개 조합은 선택 제약에서 나온 상한이지 공급자가 이미 수용했다는 의미가 아니다. 실착 품질과 지원 범위가 부족하면 결과를 PASS로 바꾸지 않고 사용자에게 제한 및 후속 결정을 보고한다.
 
 구현 진입점은 `backend/app/application/poc_vton.py`, `poc_vton_worker.py`, `domain/vton.py`, `web/src/mirror/source/pocVton.ts`다. 검증 증적과 로컬 재현은 [C 완료 보고](STAGE_C_IMPLEMENTATION_REPORT.md) 및 [stage-c 증적](evidence/stage-c/)을 참조한다. 이 문서는 남은 게이트를 인계하며 실제 공급자 연동을 승인하거나 비용을 확정하지 않는다.
+
+
+## C-2 FitRoom: 2026-10-12
+
+See [C-2 implementation and zero-cost evidence](C2_FITROOM_IMPLEMENTATION_REPORT.md). Existing C Mock completion remains valid. Actual supplier calls: 0. Real fitting quality remains unverified. B-02 remains DEFERRED; D-G, remote push and deployment were not performed.

@@ -48,6 +48,10 @@ class Settings(BaseModel):
     jwt_ttl_seconds: int = Field(default=3600, ge=60, le=86400)
     led_off_seconds: int | None = Field(default=None, ge=1, le=3600)
     vton_provider: Literal["MOCK", "DECART"] = "MOCK"
+    fitroom_live_enabled: bool = False
+    fitroom_status_read_unbilled_verified: bool = False
+    fitroom_api_key: SecretStr = SecretStr("")
+    fitroom_timeout_seconds: int = Field(default=45, ge=1, le=120)
     decart_api_key: SecretStr = SecretStr("")
     decart_base_url: str = ""
     decart_model_id: str = ""

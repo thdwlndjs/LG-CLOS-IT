@@ -1,0 +1,23 @@
+{
+  "profiles": [
+    {
+      "profile": "김수진",
+      "job_id": "45ee0d47-3912-4e59-93fa-b3d6d9c96e91",
+      "consumed_survives_restart": true,
+      "replay_status": 409,
+      "same_result_asset": true
+    },
+    {
+      "profile": "최휘재",
+      "job_id": "1af7c982-61c0-48eb-a9ac-f7bfa02e65b0",
+      "consumed_survives_restart": true,
+      "replay_status": 409,
+      "same_result_asset": true
+    }
+  ],
+  "live": {
+    "approved": 0,
+    "consumed": 0,
+    "provider_jobs": 0
+  }
+}

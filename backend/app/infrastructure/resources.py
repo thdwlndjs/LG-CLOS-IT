@@ -5,7 +5,7 @@ from sqlalchemy import text
 
 from app.core.config import Settings
 
-BASELINE_REVISION = "0005_stage_b_data"
+BASELINE_REVISION = "0006_fitroom_budget"
 
 
 class RuntimeResources:
