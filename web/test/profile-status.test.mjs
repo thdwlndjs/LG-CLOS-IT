@@ -6,8 +6,9 @@ import { createServer } from "vite";
 test("profile lookup distinguishes failure, retry, retained data, empty and timeout", async () => {
   const server = await createServer({ configFile: false, server: { host: "127.0.0.1", port: 0 } });
   await server.listen();
-  const browser = await chromium.launch({ headless: true });
+  let browser;
   try {
+    browser = await chromium.launch({ headless: true });
     const page = await browser.newPage();
     let mode = "error";
     let delayed;
@@ -72,5 +73,5 @@ test("profile lookup distinguishes failure, retry, retained data, empty and time
     await page.waitForTimeout(100);
     assert.equal(await page.locator(".mx-profile-panel").count(), 0);
     assert.deepEqual(errors, []);
-  } finally { await browser.close(); await server.close(); }
+  } finally { await browser?.close(); await server.close(); }
 });

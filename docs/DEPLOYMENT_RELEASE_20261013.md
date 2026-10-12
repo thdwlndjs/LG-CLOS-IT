@@ -46,3 +46,11 @@
 2. 검증한 release commit을 main에 fast-forward 반영하고 일반 push.
 3. Render 기존 환경변수 갱신 권한 확보 후 지정 commit 배포, Vercel Scene build 설정 적용.
 4. 실제 production URL에서 두 프로필 로그인·옷장104·Scene87·사진·Mock 코디 흐름 검사. 이 게이트는 현재 미완료이며 로컬 PASS로 대체하지 않는다.
+
+## 후속 체크포인트
+
+- `8f4f160` main push 완료. 새 CI에서 backend 전체 실제 통합과 free-cloud-image 성공을 확인했다. 무료 이미지의 실제 renderer 테스트6 PASS이며 별도 PG17/MinIO/최신 renderer에서 T1~T4 PNG 저장·재조회·save4 PASS를 확인했다.
+- frontend CI는 새 profile-state 테스트가 Playwright를 사용하지만 browser 설치 단계가 없었다. executable 없는 경로로 독립 재현했으며 launch 실패 시 Vite 서버가 정리되지 않는 결함도 확인했다. CI에 잠긴 Playwright 버전의 Chromium 설치를 추가하고 테스트의 launch도 finally 정리 범위로 옮겼다. 없는 browser는 오류 종료, 정상 browser는 profile-state 테스트 PASS이다. 테스트를 생략하거나 보안 옵션을 해제하지 않았다.
+- 실제 `https://lg-clos-it.vercel.app`의 browser admission 검사에서 두 시연 프로필은 표시되지 않았다. Render demo-profiles 요청이 45초 내 완료되지 않아 검사 FAIL이다. 이 실패는 필요한 Render 설정 권한 미확보와 별도 관측 사항이며 API timeout의 직접 원인을 아직 단정하지 않는다. 증적: private `browser/production-profile-gate.json` 및 PNG.
+- 운영 DB 최종 독립 조회: 총110벌, scene66, wear108, LIKED6. 김수진·최휘재 각각 wear54/LIKED3. 원래 운영6벌 및 사용자 데이터 불변을 추가 적재 트랜잭션에서 확인했다. source job/idempotency/audit/유료 요청 권한은 복제하지 않았다.
+- Render API 키는 아직 입력되지 않았다. 배포 hook은 보존되어 있으나 환경변수를 수정할 수는 없다. 키 입력 후 기존 무료 서비스의 비밀값을 유지하면서 `desired-render-env.json`의 공개 프로필/Mock 설정만 갱신해야 한다. Vercel Scene flag도 이 시점에 활성화하고 production 핵심 E2E를 재실행한다.
