@@ -19,13 +19,25 @@ export function MirrorProfiles({
     local = app.connection.kind === "local";
   const [demoProfiles, setDemoProfiles] = useState<Awaited<ReturnType<HttpRemoteBackend["demoProfiles"]>>>([]);
   const [busy, setBusy] = useState(false), [error, setError] = useState("");
+  const [profileStatus, setProfileStatus] = useState<"loading" | "success" | "empty" | "error">("loading");
+  const [profileRequest, setProfileRequest] = useState(0);
   useEffect(() => {
     let active = true;
-    void new HttpRemoteBackend().demoProfiles().then(items => {
-      if (active) setDemoProfiles(items);
-    }).catch(() => { if (active) setDemoProfiles([]); });
-    return () => { active = false; };
-  }, []);
+    let timeout: ReturnType<typeof setTimeout>;
+    setProfileStatus("loading");
+    const deadline = new Promise<never>((_, reject) => {
+      timeout = setTimeout(() => reject(new Error("Profile request timed out")), 10000);
+    });
+    void Promise.race([new HttpRemoteBackend().demoProfiles(), deadline])
+      .then(items => {
+        if (!active) return;
+        setDemoProfiles(items);
+        setProfileStatus(items.length ? "success" : "empty");
+      })
+      .catch(() => { if (active) setProfileStatus("error"); })
+      .finally(() => clearTimeout(timeout));
+    return () => { active = false; clearTimeout(timeout); };
+  }, [profileRequest]);
   const profiles = [
     ...demoProfiles.map(profile => ({id: `saved-demo-${profile.profile}`, name: profile.display_name,
       details: `${profile.age}세 · ${profile.relationship}`, demo: profile.profile,
@@ -40,7 +52,7 @@ export function MirrorProfiles({
       profiles.slice(index * 4, index * 4 + 4),
     );
   return (
-    <section className="mx-work mx-profile-panel" aria-label="프로필 선택">
+    <section className="mx-work mx-profile-panel" aria-label="프로필 선택" data-profile-status={profileStatus}>
       <h1>
         누가 옷장을
         <br />
@@ -49,6 +61,13 @@ export function MirrorProfiles({
       <p className="mx-panel-note">
         {demoProfiles.length ? "저장된 시연 프로필" : local ? "이 브라우저의 시연 프로필" : "현재 로그인에 허용된 프로필"}
       </p>
+      {profileStatus === "loading" && <p className="mx-panel-note" role="status">프로필 조회 중</p>}
+      {profileStatus === "empty" && <p className="mx-panel-note" role="status">등록된 시연 프로필이 없습니다.</p>}
+      {profileStatus === "error" && <p className="mx-panel-note" role="alert">프로필을 불러오지 못했습니다</p>}
+      <button type="button" className="mx-profile-account" disabled={profileStatus === "loading"}
+        onClick={() => setProfileRequest(value => value + 1)}>
+        {profileStatus === "error" ? "재시도" : "프로필 다시 조회"}
+      </button>
       <HorizontalPager
         index={Math.min(page, Math.max(0, pages.length - 1))}
         onIndexChange={setPage}
