@@ -18,6 +18,7 @@ COPY backend /workspace/backend
 COPY docs /workspace/docs
 COPY scripts /workspace/scripts
 COPY renderer/src /workspace/renderer/src
+COPY renderer/assets /workspace/renderer/assets
 COPY infra/compose.yaml infra/env.example /workspace/infra/
 COPY infra/cloud/supabase-ca.crt /workspace/infra/cloud/supabase-ca.crt
 RUN groupadd --gid 10001 wardrobe && useradd --uid 10001 --gid wardrobe --create-home wardrobe

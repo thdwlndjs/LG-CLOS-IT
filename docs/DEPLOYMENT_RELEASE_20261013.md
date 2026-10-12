@@ -31,6 +31,15 @@
 
 공식 동작 근거: [Supabase S3 compatibility](https://supabase.com/docs/guides/storage/s3/compatibility), [Render deploy hooks](https://render.com/docs/deploy-hooks), [Render environment variables](https://render.com/docs/configure-environment-variables).
 
+## 실제 반영 및 CI 시정
+
+- `a3117c2`를 원격 main에 일반 push 완료. Vercel production 새 deployment `dpl_9P2bDyE5iG92zoM5jDZwRDHdAJBm` READY 확인.
+- 운영 DB 시연104 추가 적재 commit 완료. 기존6 포함 총110벌, 기존 행 불변, 사용자별 합성 착용54/LIKED3 및 선반66 연결. READY 에셋155개를 Supabase private bucket에 추가하고 GET SHA256 일치 확인(42,074,632 bytes). source/target PK 및 파일 키 유지. 실제 local job/감사/권한 이력을 시연 이력으로 생성하지 않았다.
+- 첫 CI의 free-cloud-image는 renderer/assets 복사 누락으로 ENOENT 발생. Dockerfile에 승인 배경파일 디렉터리만 추가한 이미지 build 및 무료 환경 512MiB/0.5CPU renderer 테스트6 PASS.
+- backend 실제 통합 CI는 134 PASS/5 FAIL. 카드4건은 정상 PNG 생성 후 root-owned 소스 문서에 증적 쓰기를 시도해 PermissionError 발생했으므로 tmp_path 증적으로 변경했다. 나머지1건은 baseline 검사에 추가된 FitRoom 두 테이블 및 revision0006 반영이 누락되어 명시 목록을 갱신했다. 실패 자체를 숨기거나 검사/권한을 비활성화하지 않았다.
+- 독립 PG17/MinIO/Redis 시험 환경에서 수정 baseline 포함4건 PASS, 최신 renderer 이미지에 카드4건 실DB·PNG 저장/재조회/save PASS. 로컬 기존 renderer3301은 오래된 이미지여서 카드 요청 retry가 발생했으며 최신 3302 시험 이미지에서는 PASS다.
+- Render 환경변수 설정 권한은 아직 사용자 입력 대기이다. CI 시정 후 일반 push와 자동 배포 결과를 확인한다. production 핵심 E2E는 여전히 미완료다.
+
 ## 이어서 실행할 작업
 
 1. 진행 중 객체/DB 추가 적재 완료와 기존 6벌 불변 확인.

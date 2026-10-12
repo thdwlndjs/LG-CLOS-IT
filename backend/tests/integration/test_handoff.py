@@ -1,5 +1,4 @@
 import hashlib
-from pathlib import Path
 from uuid import UUID, uuid4
 
 import pytest
@@ -154,7 +153,7 @@ def test_family_manager_moves_accessible_son_item_without_changing_owner(real_ds
 
 
 @pytest.mark.parametrize("template", ["T1-v1", "T2-v1", "T3-v1", "T4-v1"])
-def test_independent_template_real_png_storage_save(real_dsn, settings_values, template):
+def test_independent_template_real_png_storage_save(real_dsn, settings_values, template, tmp_path):
     async def case(client, engine, settings, *unused):
         async with prepared(client, engine, settings) as (_, person, resources):
             card = await draft(client, template_id=template)
@@ -172,10 +171,7 @@ def test_independent_template_real_png_storage_save(real_dsn, settings_values, t
             content = stored["Body"].read()
             stored["Body"].close()
             assert content.startswith(b"\x89PNG\r\n\x1a\n")
-            evidence = (
-                Path(__file__).resolve().parents[3]
-                / "docs/handoff/SMART_WARDROBE_CODEX_HANDOFF_2026-10-11/reports/evidence"
-            )
+            evidence = tmp_path / "card-evidence"
             evidence.mkdir(parents=True, exist_ok=True)
             (evidence / (template + "-synthetic-test.png")).write_bytes(content)
             saved = await client.post(
