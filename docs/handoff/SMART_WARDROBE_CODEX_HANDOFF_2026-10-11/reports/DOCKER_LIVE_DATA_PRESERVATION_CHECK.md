@@ -58,3 +58,17 @@ Redis영속RDB는과거자료상존재했으므로디스크메타데이터확인
 `evidence-hashes.json`: 각증거의SHA256.
 
 Windows명령은host에만파일을썼으며VM/tmpfs/볼륨은변경하지않았다. L2·L3·유료API·push·배포는실행하지않았다.
+
+## 후속 승인 L2: Redis RDB 메타데이터 조회
+
+사용자의 조건부 승인 후 정확한 대상에 읽기 전용 `debugfs stat`을 1회 실행했다. 실제 백업·복원·재시작은 승인 범위에서 제외했다.
+
+- 실행 직전 docker-desktop Running 확인.
+- `/sys/class/block/sdd/dev`는 `8:48`, size는2,147,483,648 sectors. 커널 mountinfo는 동일 장치가 `/mnt/docker-desktop-disk`에 ext4로 마운트됨을 확인. 기존 기록과 일치한다.
+- 보조 `/usr/sbin/blkid -p /dev/sdd`는 바이너리가 없어 exit127. 재시도·설치하지 않았다. 파일시스템 확인 근거는 커널 mountinfo다.
+- 기존 Redis 볼륨의 정확한 `_data/dump.rdb` 경로에 `debugfs -R stat ... /dev/sdd` 실행. `-w` 없음, 10초 상한, 재시도0, 정상종료.
+- 파일 존재: regular file. inode235737, size4247B, mode0600, UID999/GID1000, links1, blockcount16. extents8857497~8857498.
+- mtime은2026-10-12 03:15:59 UTC / 12:15:59 KST. ctime/atime/crtime도 같은 초로 표시됐다. 이는 파일 생성·수정 메타데이터이며 RDB 내용 완전성 검증이 아니다.
+- 파일 내용 다운로드·해시·redis-check-rdb는 실행하지 않았다. 따라서 Redis RDB는 메타데이터 존재 확인이며 ALIVE-READABLE 서비스 판정으로 바꾸지 않는다.
+- 이번 자식 wsl.exe 잔류 없음. 확인된 기존11956/21184만 유지.
+- 증거: `redis-l2-running.json`, `redis-l2-device.json`, `redis-l2-rdb-stat.json`. 원본 디스크·볼륨에 출력 파일을 쓰지 않았다.
