@@ -1,6 +1,6 @@
 ﻿import { chromium } from "../node_modules/playwright/index.mjs";
 import { mkdir, writeFile } from "node:fs/promises";
-const out =
+const out = process.env.RECOVERY_EVIDENCE ||
   "../docs/handoff/SMART_WARDROBE_CODEX_HANDOFF_2026-10-11/reports/evidence/stage-b";
 await mkdir(out, { recursive: true });
 const browser = await chromium.launch();
@@ -27,7 +27,7 @@ try {
       if (r.url().includes("/api/v1/"))
         requests.push({ method: r.method(), path: new URL(r.url()).pathname });
     });
-    await page.goto("http://127.0.0.1:5193");
+    await page.goto(process.env.RECOVERY_ORIGIN || "http://127.0.0.1:5193");
     await page.getByRole("button", { name: "마이", exact: true }).click();
     const login = page.waitForResponse((r) =>
       r.url().endsWith("/integration/demo-login"),

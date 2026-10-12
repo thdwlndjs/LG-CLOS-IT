@@ -2,6 +2,17 @@
 # No API, init, migration, seed, or worker runs during storage recovery.
 name: wardrobe-recovery-demo
 services:
+  renderer:
+    image: smart-wardrobe-renderer:latest
+    init: true
+    shm_size: 256mb
+    ports: ["127.0.0.1:3301:3000"]
+    restart: "no"
+    healthcheck:
+      test: ["CMD", "node", "-e", "fetch('http://localhost:3000/health/ready').then(r=>{if(!r.ok)process.exit(1)}).catch(()=>process.exit(1))"]
+      interval: 10s
+      timeout: 3s
+      retries: 12
   postgres:
     image: postgres:16.8-bookworm
     environment:
@@ -52,4 +63,4 @@ volumes:
   recovery-minio:
   recovery-redis:
     external: true
-    name: bf37edf0792e66b808e31f7c38640463b189b66717c2925f92ff01ff822db506
+    name: wardrobe-recovery-demo_redis-restored-v3

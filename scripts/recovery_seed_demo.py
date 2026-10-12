@@ -332,19 +332,24 @@ async def complete_seed(database_url, api, runtime, work):
             },
         )
         parsed = urlsplit(intent["upload_url"])
-        if parsed.hostname not in {"localhost", "127.0.0.1"} or parsed.port != 19100:
+        if parsed.hostname not in {"localhost", "127.0.0.1"} or parsed.port not in {9000, 19100}:
             raise ValueError("Upload must target new persistent MinIO19100")
+        target = intent["upload_url"].replace(parsed.netloc, "127.0.0.1:19100", 1)
+        headers = {**intent["required_headers"], "Host": parsed.netloc}
         with httpx.Client(timeout=60) as transport:
             response = transport.put(
-                intent["upload_url"], content=data, headers=intent["required_headers"]
+                target, content=data, headers=headers
             )
             response.raise_for_status()
-        return source.call(
+        result = source.call(
             client,
             "POST",
             f"/assets/{intent['asset_id']}/finalize",
             json={"checksum_sha256": hashlib.sha256(data).hexdigest()},
         )
+        import time
+        time.sleep(12)
+        return result
 
     source.upload = upload
     await source.provision()

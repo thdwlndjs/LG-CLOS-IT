@@ -68,7 +68,11 @@
 native검증재실행은고정된작업본과도구가존재할때 `scripts/recovery_validate.py postgres|minio`로가능하나메모리게이트를유지한다. `--backup-restore-drill`/`--upgrade-working-target`은이미생성한대상덮어쓰기를거부하므로무작정재실행하지않는다.
 
 제품코드·B01에셋·geometry·실제유료API변경없음. 기존VM/원본/보존본·실서비스연결변경없음. 원시자료와secret포함가능한dump는Git제외하고외부업로드하지않았다.
-# 2026-10-12 최신 실행 체크포인트
+# 2026-10-12 최종 체크포인트
+
+Redis 옵션 2 승인 후 신규 볼륨 복사·RDB/AOF 기동 완료. 승인 시연 104벌 적재, 회수 9벌 보존, 이미지·Scene·두 프로필 전체 화면 및 C단계 Mock E2E 완료. 전체 컨테이너 재생성·백업·실제 복원 검증 PASS. 서비스 정상화 최종 결과와 실행 방법은 [SERVICE_NORMALIZATION_RESULT.md](SERVICE_NORMALIZATION_RESULT.md)를 따른다. 접속은 `http://127.0.0.1:5196/`이다. 아래는 이전 중간 체크포인트의 기록이며 현재 미완료 상태를 뜻하지 않는다.
+
+## 이전 실행 체크포인트
 
 이 절은 아래 과거 계획보다 우선한다. 별도 Engine 구축을 중단하고 사용자 승인으로 기존 Docker Desktop을 재시작했다.
 

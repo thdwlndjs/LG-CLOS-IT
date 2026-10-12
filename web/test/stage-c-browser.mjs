@@ -3,7 +3,7 @@ import assert from "node:assert/strict";
 import { mkdir, writeFile } from "node:fs/promises";
 import { resolve } from "node:path";
 import { chromium } from "playwright";
-const out =
+const out = process.env.RECOVERY_EVIDENCE ||
   "../docs/handoff/SMART_WARDROBE_CODEX_HANDOFF_2026-10-11/reports/evidence/stage-c";
 await mkdir(out, { recursive: true });
 const browser = await chromium.launch();
@@ -30,7 +30,7 @@ try {
       )
         jobs.push(await r.json().catch(() => null));
     });
-    await page.goto("http://127.0.0.1:5193");
+    await page.goto(process.env.RECOVERY_ORIGIN || "http://127.0.0.1:5193");
     await page.getByRole("button", { name: "마이", exact: true }).click();
     const loginResponse = page.waitForResponse(
       (r) =>
@@ -66,11 +66,16 @@ try {
     await page.screenshot({
       path: out + "/" + name + "-wardrobe-preserved.png",
     });
-    await page.getByRole("button", { name: "코디", exact: true }).click();
-    await page.locator("button[data-outfit-id]").first().click();
+    if (process.env.RECOVERY_ORIGIN) {
+      // Recovered demo has no fabricated saved outfits: use its actual owned selection.
+      await page.getByRole("button", { name: "AI 입어보기", exact: true }).first().click();
+    } else {
+      await page.getByRole("button", { name: "코디", exact: true }).click();
+      await page.locator("button[data-outfit-id]").first().click();
+    }
     await page.getByRole("button", { name: "Mock 피팅", exact: true }).click();
     const group = page.getByRole("group", { name: "Mock 피팅 입력" });
-    await group.getByRole("checkbox").check();
+    await group.getByRole("checkbox", { name: /인물 사진 비공개 업로드/ }).check();
     await group
       .locator("input[type=file]")
       .setInputFiles(

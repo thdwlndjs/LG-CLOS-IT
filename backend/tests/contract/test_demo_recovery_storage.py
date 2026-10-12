@@ -16,18 +16,21 @@ spec.loader.exec_module(module)
 
 def test_demo_services_have_persistent_storage_and_no_implicit_writers():
     config = yaml.safe_load((ROOT / "infra/compose.demo-recovery.yaml").read_text())
-    assert set(config["services"]) == {"postgres", "minio", "redis"}
+    assert set(config["services"]) == {"postgres", "minio", "redis", "renderer"}
     for service in config["services"].values():
         assert "tmpfs" not in service
         assert "container_name" not in service
         assert service["restart"] == "no"
         assert all(port.startswith("127.0.0.1:") for port in service["ports"])
+        if service is config["services"]["renderer"]:
+            assert "volumes" not in service
+            continue
         volume = service["volumes"][0].split(":")[0]
         assert volume in config["volumes"]
         if service is config["services"]["redis"]:
             assert config["volumes"][volume]["external"] is True
             assert config["volumes"][volume]["name"] == (
-                "bf37edf0792e66b808e31f7c38640463b189b66717c2925f92ff01ff822db506"
+                "wardrobe-recovery-demo_redis-restored-v3"
             )
         else:
             assert not config["volumes"][volume]  # Fresh PG/MinIO only.
@@ -119,3 +122,25 @@ def test_legacy_prepare_cannot_execute_docker_or_initialize_storage(monkeypatch)
     for startup in [legacy.prepare, legacy.prepare_test_services]:
         with pytest.raises(RuntimeError, match="disabled"):
             startup()
+
+
+def test_backup_aborts_when_preserved_candidate_hash_differs(tmp_path):
+    import json
+
+    backup_spec = importlib.util.spec_from_file_location(
+        "recovery_backup", ROOT / "scripts/recovery_backup.py"
+    )
+    backup_module = importlib.util.module_from_spec(backup_spec)
+    backup_spec.loader.exec_module(backup_module)
+    backup_module.PRESERVED = tmp_path
+    for name in ["postgres", "minio"]:
+        path = tmp_path / name / "_data/file"
+        path.parent.mkdir(parents=True)
+        path.write_bytes(b"preserved")
+        inventory = {"files": [{"path": "_data/file", "bytes": 9,
+                                 "sha256": backup_module.digest(path)}]}
+        (tmp_path / f"{name}-files-sha256.json").write_text(json.dumps(inventory))
+    assert backup_module.verify_preserved() == 2
+    (tmp_path / "minio/_data/file").write_bytes(b"changed!!")
+    with pytest.raises(ValueError, match="changed"):
+        backup_module.verify_preserved()
