@@ -23,13 +23,15 @@ def claims_to_actor(claims: dict, correlation_id: str) -> ActorContext:
             session_id=UUID(claims["sid"]), role=role, correlation_id=correlation_id,
             station_id=UUID(claims["station_id"]) if claims.get("station_id") else None,
             personal_account=claims.get("personal_account") is True,
+            public_demo=claims.get("public_demo") is True,
         )
     except (KeyError, ValueError, TypeError, AttributeError) as exc:
         raise ApiError(401, "UNAUTHENTICATED", "Invalid session token") from exc
 
 
 def issue_token(settings: Settings, member_id: UUID, household_id: UUID, role: str,
-                station_id: UUID | None = None, personal_account: bool = False):
+                station_id: UUID | None = None, personal_account: bool = False,
+                public_demo: bool = False):
     import jwt
 
     now = utc_now()
@@ -44,6 +46,8 @@ def issue_token(settings: Settings, member_id: UUID, household_id: UUID, role: s
         claims["station_id"] = str(station_id)
     if personal_account:
         claims["personal_account"] = True
+    if public_demo:
+        claims["public_demo"] = True
     # Reject unsupported roles before signing, including the unresolved API-only DEMO role.
     claims_to_actor(claims, "issuance")
     token = jwt.encode(claims, settings.jwt_secret.get_secret_value(), algorithm="HS256")
@@ -81,7 +85,17 @@ async def current_actor(
         member = await session.scalar(select(Member).where(
             Member.id == actor.member_id, Member.household_id == actor.household_id
         ))
-        if member is None or member.role != actor.role:
+        settings = request.app.state.settings
+        public_member = (actor.public_demo
+                         and settings.public_demo_login_enabled and actor.personal_account
+                         and actor.station_id is None and actor.role == "MEMBER"
+                         and actor.member_id in {
+                             settings.public_demo_member_id, settings.public_demo_mother_member_id
+                         })
+        narrowed_mother = (public_member and member is not None and member.role == "OWNER"
+                           and actor.member_id == settings.public_demo_mother_member_id)
+        if (member is None or (member.role != actor.role and not narrowed_mother)
+                or (actor.public_demo and not public_member)):
             raise ApiError(401, "UNAUTHENTICATED", "Session principal is no longer valid")
         if actor.personal_account:
             from sqlalchemy import text

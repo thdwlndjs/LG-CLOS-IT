@@ -182,7 +182,7 @@ async def demo_login(request: Request, body: DemoLogin | None = None):
         sid, token, expires = issue_token(
             settings, member["id"], member["household_id"],
             "MEMBER" if public_demo else member["role"],
-            personal_account=True, station_id=station_id,
+            personal_account=True, station_id=station_id, public_demo=public_demo,
         )
         return dict(session_id=sid, access_token=token, token_type="Bearer", expires_at=expires,
                     member={**{k: member[k]

@@ -98,6 +98,42 @@ def test_scene_positive_synthetic_approved_slot(real_dsn, settings_values):
             assert item["image"]["asset_id"] is not None
             assert item["geometry"]["width"] == 0.2
             assert len(data["blocked"]) == 2
+            # Curated demo rendering must not fabricate a fresh physical observation.
+            async with engine.begin() as c:
+                await c.execute(text(
+                    "UPDATE wardrobe.garment SET attributes=attributes || "
+                    "jsonb_build_object('is_demo',true) WHERE id=:g"
+                ), {"g": UUID(existing.GARMENT)})
+                await c.execute(text(
+                    "UPDATE wardrobe.asset SET metadata=metadata || "
+                    "jsonb_build_object('basis',"
+                    "'imagegen_reconstructed_demo_not_measured_hardware') "
+                    "WHERE id=:a"
+                ), {"a": UUID(person)})
+                await c.execute(text(
+                    "UPDATE wardrobe.garment_state SET last_seen_at=now()-interval '2 days' "
+                    "WHERE garment_id=:g"
+                ), {"g": UUID(existing.GARMENT)})
+            snapshot = (await client.get(f"/api/v1/integration/devices/{device}/scene")).json()
+            assert len(snapshot["items"]) == 1
+            detail = await client.get("/api/v1/garments/" + existing.GARMENT)
+            assert detail.json()["stale"] is True
+            station = uuid4()
+            async with engine.begin() as c:
+                await c.execute(text(
+                    "INSERT INTO wardrobe.access_station(id,device_id,kind,name,credential_hash) "
+                    "VALUES(:station,:device,'HOME','Synthetic test station','not-a-login')"
+                ), {"station": station, "device": UUID(device)})
+            client._transport.app.state.settings = settings.model_copy(
+                update={"led_off_seconds": 2}
+            )
+            _, token, _ = issue_token(settings, UUID(OWNER), UUID(HOUSEHOLD), "OWNER",
+                                      station_id=station, personal_account=True)
+            client.headers["Authorization"] = "Bearer " + token
+            led = await client.post("/api/v1/integration/led-commands", headers=key(),
+                                    json={"device_id": device,
+                                          "garment_ids": [existing.GARMENT]})
+            assert led.status_code == 409
             async with engine.begin() as c:
                 await c.execute(text(
                     "UPDATE wardrobe.storage_location SET attributes=attributes || "

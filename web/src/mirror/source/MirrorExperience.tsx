@@ -155,11 +155,14 @@ export default function MirrorExperience() {
   const [serverAnchors, setServerAnchors] = useState<string[]>([]);
   useEffect(() => {
     let active = true;
+    let reading = false;
     const read = async () => {
+      if (!active || reading) return;
       if (!currentMember() || !currentDevice()) {
         if (active) setServerAnchors([]);
         return;
       }
+      reading = true;
       try {
         const row: any = await api().get(
           `/integration/devices/${currentDevice()}/led-state`,
@@ -167,6 +170,8 @@ export default function MirrorExperience() {
         if (active) setServerAnchors(row.anchor_ids);
       } catch {
         if (active) setServerAnchors([]);
+      } finally {
+        reading = false;
       }
     };
     void read();

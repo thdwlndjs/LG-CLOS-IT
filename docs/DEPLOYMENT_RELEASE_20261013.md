@@ -54,3 +54,14 @@
 - 실제 `https://lg-clos-it.vercel.app`의 browser admission 검사에서 두 시연 프로필은 표시되지 않았다. Render demo-profiles 요청이 45초 내 완료되지 않아 검사 FAIL이다. 이 실패는 필요한 Render 설정 권한 미확보와 별도 관측 사항이며 API timeout의 직접 원인을 아직 단정하지 않는다. 증적: private `browser/production-profile-gate.json` 및 PNG.
 - 운영 DB 최종 독립 조회: 총110벌, scene66, wear108, LIKED6. 김수진·최휘재 각각 wear54/LIKED3. 원래 운영6벌 및 사용자 데이터 불변을 추가 적재 트랜잭션에서 확인했다. source job/idempotency/audit/유료 요청 권한은 복제하지 않았다.
 - Render API 키는 아직 입력되지 않았다. 배포 hook은 보존되어 있으나 환경변수를 수정할 수는 없다. 키 입력 후 기존 무료 서비스의 비밀값을 유지하면서 `desired-render-env.json`의 공개 프로필/Mock 설정만 갱신해야 한다. Vercel Scene flag도 이 시점에 활성화하고 production 핵심 E2E를 재실행한다.
+
+## 실제 클라우드 데이터 검증 중 추가 시정
+
+- `cfccdd8` CI의 frontend/backend/free-cloud-image/deploy 모두 성공. Render `/health/version`에 해당 SHA, `/health/ready`에 DB·Redis·storage·renderer·worker 모두 ok를 확인했다.
+- Vercel production에 `VITE_HANDOFF_SCENE=on` 설정을 추가했다. linked project의 rootDirectory=web인데 cwd=web에서 source upload를 시도해 web 폴더가 없는 실패 deployment가 생성됐다. 기존 READY alias는 유지됐다. 이후 Git 원본 루트 구조의 자동 배포 또는 이전 정상 Git deployment redeploy를 사용한다.
+- 공개 어머니의 역할 축소를 기존 current_actor 검사가 거부하는 401를 실제 클라우드 DB 접속에서 발견했다. 서명된 public_demo 세션 표시, 명시적 mother/son allowlist, MEMBER 역할·HOME station 없음 검증을 추가했다. 지정 어머니의 OWNER→MEMBER 축소만 허용하며 다른 역할 불일치·일반 세션은 기존대로 거부한다. DB의 기존 OWNER는 수정하지 않았다.
+- 별도 검증 API와 Render가 동시에 Supabase session pool에 접근하면 기본 pool 5+overflow10 및 LED polling 중첩으로 EMAXCONNSESSION 한도15를 초과했다. public deployment의 pool은 2/overflow0으로 제한하고 프론트 LED polling에 in-flight guard를 추가했다. 서비스·DB 플랜을 올리지 않았다.
+- 시연 신규28벌은 고정 합성 시각이 24시간 지나면서 LOCATION_UNKNOWN_OR_STALE로 Scene에서 빠졌다(59/87). 승인된 합성 garment+승인된 명시적 geometry+`imagegen_reconstructed_demo_not_measured_hardware` 승인 frame의 **시각적 snapshot만** 나이로 지우지 않도록 유지했다. 실제 위치 상세는 stale 그대로이며 LED의 24시간 stale 차단은 변경하지 않았다. real garment/미승인 frame/geometry/낮은 confidence에는 이 예외가 적용되지 않는다. B-02 위치 단일화나 물리 이동 이력은 수정하지 않았다.
+- unit16 PASS 및 실DB에서 stale 상세 유지·curated snapshot 표시·LED409 차단을 확인했다. 공개 세션 보호 경계7 PASS, 기존 공개/로컬 로그인 실DB5 PASS. frontend49/build/Ruff PASS.
+- 실제 관리형 DB·Supabase 이미지를 사용하는 검증 API를 localhost에만 띄워 두 프로필 Scene87·전체 이미지·모바일6개 메뉴·데스크톱 복원 PASS를 확인했다(`cloud-data-preview/results.json`). 이것은 **실제 Render/Vercel production E2E PASS가 아니다**. 검증 API의 worker를 비활성화하고 유료 key를 비웠으며 기존 운영6벌에 쓰기를 하지 않았다.
+- 현재 필요한 사용자 입력은 Render 환경변수 수정 권한/API키이다. production 공개 프로필 설정과 최종 E2E는 아직 미완료다.

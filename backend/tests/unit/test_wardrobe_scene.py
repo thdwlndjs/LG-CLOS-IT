@@ -1,6 +1,18 @@
 import pytest
 
-from app.application.wardrobe_scene import approved_slot, scene_sprite
+from app.application.wardrobe_scene import approved_demo_snapshot, approved_slot, scene_sprite
+
+
+def test_curated_display_requires_demo_frame_item_and_valid_explicit_geometry():
+    garment = {"attributes": {"is_demo": True}}
+    frame = {"metadata": {"visual_approval": "approved",
+                          "basis": "imagegen_reconstructed_demo_not_measured_hardware"}}
+    bound = ({}, {"x": 0.1})
+    assert approved_demo_snapshot(garment, frame, bound)
+    assert not approved_demo_snapshot({"attributes": {}}, frame, bound)
+    assert not approved_demo_snapshot(garment, {"metadata": {}}, bound)
+    assert not approved_demo_snapshot(garment, None, bound)
+    assert not approved_demo_snapshot(garment, frame, ({}, None))
 
 
 @pytest.mark.parametrize(

@@ -24,6 +24,7 @@ class Database:
         self.engine = create_async_engine(
             settings.database_url.get_secret_value(), pool_pre_ping=True,
             connect_args=database_connect_args(settings),
+            **({"pool_size": 2, "max_overflow": 0} if settings.public_deployment else {}),
         )
         self.sessions = async_sessionmaker(self.engine, expire_on_commit=False)
 

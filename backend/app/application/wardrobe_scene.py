@@ -62,6 +62,18 @@ def approved_slot(attributes):
     return dict(x=x, y=y, width=width, height=height, z_index=z)
 
 
+def approved_demo_snapshot(garment, frame, bound):
+    """A curated demo display is not a fresh physical observation or LED authority."""
+    return bool(
+        garment.get("attributes", {}).get("is_demo") is True
+        and frame is not None
+        and frame.get("metadata", {}).get("visual_approval") == "approved"
+        and frame.get("metadata", {}).get("basis")
+        == "imagegen_reconstructed_demo_not_measured_hardware"
+        and bound is not None and bound[1] is not None
+    )
+
+
 async def scene(request, repo, actor, device_id):
     locations = await repo.all(
         "SELECT l.id,l.attributes,z.anchor_id FROM wardrobe.storage_location l "
@@ -165,7 +177,7 @@ async def scene(request, repo, actor, device_id):
             "CLEAN_PLATE_UNAPPROVED"
             if frame is None
             else "LOCATION_UNKNOWN_OR_STALE"
-            if service.stale(garment)
+            if (service.stale(garment) and not approved_demo_snapshot(garment, frame, bound))
             or garment["location_confidence"] is None
             or garment["location_confidence"] < 0.9
             else "SLOT_UNAPPROVED"
