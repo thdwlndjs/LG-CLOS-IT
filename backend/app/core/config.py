@@ -42,6 +42,7 @@ class Settings(BaseModel):
     local_demo_station_id: UUID | None = None
     public_demo_login_enabled: bool = False
     public_demo_member_id: UUID | None = None
+    public_demo_mother_member_id: UUID | None = None
     jwt_secret: SecretStr
     jwt_issuer: str = "smart-wardrobe"
     jwt_audience: str = "smart-wardrobe-api"

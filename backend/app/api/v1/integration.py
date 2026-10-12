@@ -90,14 +90,18 @@ async def demo_profiles(request: Request):
     local = (settings.app_env in {"local", "test"} and not settings.public_deployment
              and settings.demo_auth_enabled and settings.auth_mode == "DEMO"
              and not settings.public_demo_login_enabled)
-    if not local:
+    public_profiles = (settings.public_demo_login_enabled
+                       and settings.public_demo_mother_member_id is not None)
+    if not local and not public_profiles:
         return {"items": []}
     items = []
     async with request.app.state.resources.database.sessions.begin() as session:
         repo = Sprint1Repository(session)
         for profile, member_id, age, relationship in (
-            ("mother", settings.local_demo_mother_member_id, 42, "엄마"),
-            ("son", settings.local_demo_member_id, 27, "아들"),
+            ("mother", settings.public_demo_mother_member_id if public_profiles
+             else settings.local_demo_mother_member_id, 42, "엄마"),
+            ("son", settings.public_demo_member_id if public_profiles
+             else settings.local_demo_member_id, 27, "아들"),
         ):
             if member_id is None:
                 continue
@@ -119,35 +123,42 @@ async def demo_login(request: Request, body: DemoLogin | None = None):
     body = body or DemoLogin()
     settings = request.app.state.settings
     public_demo = settings.public_demo_login_enabled
+    public_profiles = public_demo and settings.public_demo_mother_member_id is not None
     local_demo = (settings.app_env in {"local", "test"} and not settings.public_deployment
                   and settings.demo_auth_enabled and settings.auth_mode == "DEMO")
     if not public_demo and not local_demo:
         raise ApiError(403, "FORBIDDEN", "Demo login is disabled")
-    if body.profile is not None and (not local_demo or public_demo):
+    if body.profile is not None and not public_profiles and (not local_demo or public_demo):
         raise ApiError(403, "FORBIDDEN", "Local demo profiles are disabled")
-    if body.profile == "mother" and settings.local_demo_mother_member_id is None:
+    if (body.profile == "mother" and not public_profiles
+            and settings.local_demo_mother_member_id is None):
         raise ApiError(503, "DEPENDENCY_UNAVAILABLE", "Demo profile is not provisioned")
-    if body.profile == "son" and settings.local_demo_member_id is None:
+    if body.profile == "son" and not public_profiles and settings.local_demo_member_id is None:
         raise ApiError(503, "DEPENDENCY_UNAVAILABLE", "Demo profile is not provisioned")
     configured_local = local_demo and not public_demo and settings.local_demo_member_id is not None
     member_id = (settings.public_demo_member_id if public_demo else settings.local_demo_member_id
                  if configured_local else UUID("20000000-0000-4000-8000-000000000001"))
     if body.profile == "mother":
-        member_id = settings.local_demo_mother_member_id
-        configured_local = True
+        member_id = (settings.public_demo_mother_member_id if public_profiles
+                     else settings.local_demo_mother_member_id)
+        configured_local = not public_demo
     async with request.app.state.resources.database.sessions.begin() as session:
         member = await Sprint1Repository(session).one(
             "SELECT m.* FROM wardrobe.member m JOIN wardrobe.account_credential c "
             "ON c.member_id=m.id WHERE m.id=:member "
-            "AND (c.login=:login OR :configured_local) AND c.enabled "
+            "AND (c.login=:login OR :configured_local OR (:public_profiles AND EXISTS "
+            "(SELECT 1 FROM wardrobe.household h WHERE h.id=m.household_id "
+            "AND h.name='smart-wardrobe-remediation-2026-10-11'))) AND c.enabled "
             "AND (NOT :configured_local OR ((m.role='MEMBER' OR :mother_profile) AND EXISTS "
             "(SELECT 1 FROM wardrobe.device_member dm WHERE dm.member_id=m.id "
             "AND dm.household_id=m.household_id))) "
-            "AND (NOT :public_demo OR (m.role='MEMBER' AND EXISTS "
+            "AND (NOT :public_demo OR ((m.role='MEMBER' OR (:public_profiles AND :mother_profile)) "
+            "AND EXISTS "
             "(SELECT 1 FROM wardrobe.device_member dm WHERE dm.member_id=m.id "
             "AND dm.household_id=m.household_id)))",
             member=member_id, login="public-demo" if public_demo else "demo",
             public_demo=public_demo,
+            public_profiles=public_profiles,
             configured_local=configured_local,
             mother_profile=body.profile == "mother",
         )
@@ -169,11 +180,14 @@ async def demo_login(request: Request, body: DemoLogin | None = None):
                 )
             station_id = station["id"]
         sid, token, expires = issue_token(
-            settings, member["id"], member["household_id"], member["role"],
+            settings, member["id"], member["household_id"],
+            "MEMBER" if public_demo else member["role"],
             personal_account=True, station_id=station_id,
         )
         return dict(session_id=sid, access_token=token, token_type="Bearer", expires_at=expires,
-                    member={k: member[k] for k in ("id", "household_id", "display_name", "role")})
+                    member={**{k: member[k]
+                               for k in ("id", "household_id", "display_name", "role")},
+                            "role": "MEMBER" if public_demo else member["role"]})
 
 
 @router.post("/logout", openapi_extra={"x-fsd-ids": ["COM-001", "SET-001"]})
