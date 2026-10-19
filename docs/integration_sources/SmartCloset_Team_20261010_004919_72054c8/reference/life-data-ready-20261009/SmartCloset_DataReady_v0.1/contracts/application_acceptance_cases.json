@@ -1,0 +1,194 @@
+[
+  {
+    "id": "A01",
+    "case": "김수진 정상 관리",
+    "context_ref": "CTX-SU-CARE",
+    "target": "S01",
+    "expected": "최근세탁10/4, 이후3회/3일, 마지막착용10/8, 공식상품안내 출처; 라벨 촬영 완료라고 하지 않음",
+    "status": "NOT_RUN_IN_APP"
+  },
+  {
+    "id": "A02",
+    "case": "같은 상품 다른 사람",
+    "context_ref": "CTX-SU-CARE",
+    "target": "S02 / H01",
+    "expected": "둘은 P01 동일상품이지만 소유·사건·요약 분리",
+    "status": "NOT_RUN_IN_APP"
+  },
+  {
+    "id": "A03",
+    "case": "라벨·성분 미확인",
+    "context_ref": "CTX-SU-CARE",
+    "target": "S06",
+    "expected": "기록 없음은 0일 실착아님; 추정 관리법 생성하지 않음",
+    "status": "NOT_RUN_IN_APP"
+  },
+  {
+    "id": "A04",
+    "case": "성분 충돌",
+    "context_ref": "CTX-SU-CARE",
+    "target": "X03/P10",
+    "expected": "97/3 과95/5 원문 충돌 보존; resolved=null",
+    "status": "NOT_RUN_IN_APP"
+  },
+  {
+    "id": "A05",
+    "case": "다림질 이후 이력",
+    "context_ref": "CTX-SU-CARE",
+    "target": "S01",
+    "expected": "10/8다림질 후에도10/4세탁 기준 유지",
+    "status": "NOT_RUN_IN_APP"
+  },
+  {
+    "id": "B01",
+    "case": "비 예보 홈",
+    "context_ref": "CTX-HW-RAIN",
+    "target": "PHW",
+    "expected": "비 예보+명시 취향 출처 사용; 실제 현장 비 관측·방수 주장은 금지",
+    "status": "NOT_RUN_IN_APP"
+  },
+  {
+    "id": "B02",
+    "case": "날씨 반례",
+    "context_ref": "CTX-HW-DRY",
+    "target": "PHW",
+    "expected": "비 문구를 재사용하지 않음; 다른코디 선택을 반드시 정답으로 강제하지는 않음",
+    "status": "NOT_RUN_IN_APP"
+  },
+  {
+    "id": "B03",
+    "case": "날씨 없음",
+    "context_ref": "CTX-HW-UNKNOWN",
+    "target": "PHW",
+    "expected": "현재 날씨 주장 없음. 조건을 확인하지 못해도 직접조합·저장 가능",
+    "status": "NOT_RUN_IN_APP"
+  },
+  {
+    "id": "B04",
+    "case": "상의 고정 추천",
+    "context_ref": "CTX-HW-RAIN",
+    "target": "H01",
+    "expected": "하의 후보 조회; 다른프로필/없는ID/고정상의변경 불가",
+    "status": "NOT_RUN_IN_APP"
+  },
+  {
+    "id": "B05",
+    "case": "세탁 대기",
+    "context_ref": "CTX-HW-RAIN",
+    "target": "H03",
+    "expected": "사용자 관찰에 따라 오늘 즉시입기 추천 제외/고지; 목록/카드편집 삭제 아님",
+    "status": "NOT_RUN_IN_APP"
+  },
+  {
+    "id": "B06",
+    "case": "세탁완료 건조미확인",
+    "context_ref": "CTX-HW-RAIN",
+    "target": "H05",
+    "expected": "깨끗하고 즉시착용가능으로 자동승격 금지",
+    "status": "NOT_RUN_IN_APP"
+  },
+  {
+    "id": "C01",
+    "case": "상의 비교",
+    "context_ref": "CTX-HW-RAIN",
+    "target": "LH01 -> H02",
+    "expected": "하의H08·신발H15 유지; 새전신결과 이전에는 완료표시 안함",
+    "status": "NOT_RUN_IN_APP"
+  },
+  {
+    "id": "C02",
+    "case": "외부 혼합",
+    "context_ref": "CTX-HW-RAIN",
+    "target": "LH09/X01",
+    "expected": "구매후보 유지; 외부LED 금지; 혼합 카드 저장·조회 가능",
+    "status": "NOT_RUN_IN_APP"
+  },
+  {
+    "id": "C03",
+    "case": "카드 저장/오늘 선택",
+    "context_ref": "CTX-HW-RAIN",
+    "target": "LH02",
+    "expected": "카드저장과plan은 서로 다른 action; 정상 두번째 동작 막지않음",
+    "status": "NOT_RUN_IN_APP"
+  },
+  {
+    "id": "C04",
+    "case": "날짜별 재사용",
+    "context_ref": "CTX-HW-RAIN",
+    "target": "HW-PLAN-09",
+    "expected": "계획일10/9; 생성일10/8과 구분; 다시써도 원본 실착 안늘림",
+    "status": "NOT_RUN_IN_APP"
+  },
+  {
+    "id": "D01",
+    "case": "재적재",
+    "context_ref": "all",
+    "target": "dataset namespace",
+    "expected": "같은 버전 재적재 새사건0; 바뀐 payload는 충돌/검토",
+    "status": "NOT_RUN_IN_APP"
+  },
+  {
+    "id": "D02",
+    "case": "프로필 왕복",
+    "context_ref": "all",
+    "target": "PSU PHW",
+    "expected": "다른주인추천·옷·영상·mask 혼입없음",
+    "status": "NOT_RUN_IN_APP"
+  },
+  {
+    "id": "D03",
+    "case": "저장 응답 유실",
+    "context_ref": "all",
+    "target": "same action/intent",
+    "expected": "receipt 원결과조회; 재생성으로 중복하지 않음",
+    "status": "NOT_RUN_IN_APP"
+  },
+  {
+    "id": "D04",
+    "case": "파일 자산교체",
+    "context_ref": "all",
+    "target": "new asset version",
+    "expected": "기존피팅캐시 원본과 매칭검사; 옛분석이 수동값덮지 않음",
+    "status": "NOT_RUN_IN_APP"
+  },
+  {
+    "id": "D05",
+    "case": "API 제출불명",
+    "context_ref": "all",
+    "target": "existing operation",
+    "expected": "생성재전송과 status조회 분리; 비용원장복구",
+    "status": "NOT_RUN_IN_APP"
+  },
+  {
+    "id": "D06",
+    "case": "상태변경 재추천",
+    "context_ref": "CTX-HW-RAIN",
+    "target": "wardrobe revision",
+    "expected": "캐시 무효화 필요부분 확인; 매시계tick 생성금지",
+    "status": "NOT_RUN_IN_APP"
+  },
+  {
+    "id": "D07",
+    "case": "정지/실시간 분리",
+    "context_ref": "all",
+    "target": "tryon",
+    "expected": "정지foreground성공과 live매팅성공 별도",
+    "status": "NOT_RUN_IN_APP"
+  },
+  {
+    "id": "D08",
+    "case": "사용 근거 출처",
+    "context_ref": "all",
+    "target": "product and events",
+    "expected": "실제상품자료/시연생활/AI출력을 별도축으로 표시",
+    "status": "NOT_RUN_IN_APP"
+  },
+  {
+    "id": "D09",
+    "case": "실계정 재시작",
+    "context_ref": "all",
+    "target": "runtime target",
+    "expected": "원격저장 및 재시작후 동일ID 조회를 앱에서 실제 검증",
+    "status": "NOT_RUN_IN_APP"
+  }
+]

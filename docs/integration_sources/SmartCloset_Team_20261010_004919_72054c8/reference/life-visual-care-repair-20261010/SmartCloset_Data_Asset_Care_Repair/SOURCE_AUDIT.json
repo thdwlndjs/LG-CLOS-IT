@@ -1,0 +1,804 @@
+{
+  "inspection_scope": "mounted input archives and attached screenshots/video; not current Codex source, localStorage, DB or live API",
+  "video": "녹음 2026-10-09 233839.mp4",
+  "video_duration_seconds": 73.471979,
+  "old_archive_sha256": "7fbc89be844c4822b0c52e1b3935e90291ab830c5ebdb8c40584e7676f08f2a4",
+  "old_catalog_entries": 48,
+  "old_catalog_decode_pass": 48,
+  "old_catalog_hash_match": 48,
+  "old_catalog_alpha_pass": 48,
+  "old_image_checks": [
+    {
+      "id": "T01",
+      "image_ref": "assets/catalog/T01.png",
+      "decoded": true,
+      "size": [
+        1254,
+        1254
+      ],
+      "hash_matches_catalog": true,
+      "alpha_present": true,
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "id": "T02",
+      "image_ref": "assets/catalog/T02.png",
+      "decoded": true,
+      "size": [
+        1254,
+        1254
+      ],
+      "hash_matches_catalog": true,
+      "alpha_present": true,
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "id": "T03",
+      "image_ref": "assets/catalog/T03.png",
+      "decoded": true,
+      "size": [
+        1254,
+        1254
+      ],
+      "hash_matches_catalog": true,
+      "alpha_present": true,
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "id": "T04",
+      "image_ref": "assets/catalog/T04.png",
+      "decoded": true,
+      "size": [
+        1254,
+        1254
+      ],
+      "hash_matches_catalog": true,
+      "alpha_present": true,
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "id": "B01",
+      "image_ref": "assets/catalog/B01.png",
+      "decoded": true,
+      "size": [
+        1254,
+        1254
+      ],
+      "hash_matches_catalog": true,
+      "alpha_present": true,
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "id": "B02",
+      "image_ref": "assets/catalog/B02.png",
+      "decoded": true,
+      "size": [
+        1254,
+        1254
+      ],
+      "hash_matches_catalog": true,
+      "alpha_present": true,
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "id": "O01",
+      "image_ref": "assets/catalog/O01.png",
+      "decoded": true,
+      "size": [
+        1254,
+        1254
+      ],
+      "hash_matches_catalog": true,
+      "alpha_present": true,
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "id": "O02",
+      "image_ref": "assets/catalog/O02.png",
+      "decoded": true,
+      "size": [
+        1254,
+        1254
+      ],
+      "hash_matches_catalog": true,
+      "alpha_present": true,
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "id": "O03",
+      "image_ref": "assets/catalog/O03.png",
+      "decoded": true,
+      "size": [
+        1254,
+        1254
+      ],
+      "hash_matches_catalog": true,
+      "alpha_present": true,
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "id": "O04",
+      "image_ref": "assets/catalog/O04.png",
+      "decoded": true,
+      "size": [
+        1254,
+        1254
+      ],
+      "hash_matches_catalog": true,
+      "alpha_present": true,
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "id": "O05",
+      "image_ref": "assets/catalog/O05.png",
+      "decoded": true,
+      "size": [
+        1254,
+        1254
+      ],
+      "hash_matches_catalog": true,
+      "alpha_present": true,
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "id": "O06",
+      "image_ref": "assets/catalog/O06.png",
+      "decoded": true,
+      "size": [
+        1254,
+        1254
+      ],
+      "hash_matches_catalog": true,
+      "alpha_present": true,
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "id": "T05",
+      "image_ref": "assets/catalog/T05.png",
+      "decoded": true,
+      "size": [
+        1254,
+        1254
+      ],
+      "hash_matches_catalog": true,
+      "alpha_present": true,
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "id": "T06",
+      "image_ref": "assets/catalog/T06.png",
+      "decoded": true,
+      "size": [
+        1254,
+        1254
+      ],
+      "hash_matches_catalog": true,
+      "alpha_present": true,
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "id": "T07",
+      "image_ref": "assets/catalog/T07.png",
+      "decoded": true,
+      "size": [
+        1254,
+        1254
+      ],
+      "hash_matches_catalog": true,
+      "alpha_present": true,
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "id": "T08",
+      "image_ref": "assets/catalog/T08.png",
+      "decoded": true,
+      "size": [
+        1254,
+        1254
+      ],
+      "hash_matches_catalog": true,
+      "alpha_present": true,
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "id": "T09",
+      "image_ref": "assets/catalog/T09.png",
+      "decoded": true,
+      "size": [
+        1254,
+        1254
+      ],
+      "hash_matches_catalog": true,
+      "alpha_present": true,
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "id": "T10",
+      "image_ref": "assets/catalog/T10.png",
+      "decoded": true,
+      "size": [
+        1254,
+        1254
+      ],
+      "hash_matches_catalog": true,
+      "alpha_present": true,
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "id": "T11",
+      "image_ref": "assets/catalog/T11.png",
+      "decoded": true,
+      "size": [
+        1254,
+        1254
+      ],
+      "hash_matches_catalog": true,
+      "alpha_present": true,
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "id": "T12",
+      "image_ref": "assets/catalog/T12.png",
+      "decoded": true,
+      "size": [
+        1254,
+        1254
+      ],
+      "hash_matches_catalog": true,
+      "alpha_present": true,
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "id": "B03",
+      "image_ref": "assets/catalog/B03.png",
+      "decoded": true,
+      "size": [
+        1254,
+        1254
+      ],
+      "hash_matches_catalog": true,
+      "alpha_present": true,
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "id": "B04",
+      "image_ref": "assets/catalog/B04.png",
+      "decoded": true,
+      "size": [
+        1254,
+        1254
+      ],
+      "hash_matches_catalog": true,
+      "alpha_present": true,
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "id": "B05",
+      "image_ref": "assets/catalog/B05.png",
+      "decoded": true,
+      "size": [
+        1254,
+        1254
+      ],
+      "hash_matches_catalog": true,
+      "alpha_present": true,
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "id": "B06",
+      "image_ref": "assets/catalog/B06.png",
+      "decoded": true,
+      "size": [
+        1254,
+        1254
+      ],
+      "hash_matches_catalog": true,
+      "alpha_present": true,
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "id": "B07",
+      "image_ref": "assets/catalog/B07.png",
+      "decoded": true,
+      "size": [
+        1254,
+        1254
+      ],
+      "hash_matches_catalog": true,
+      "alpha_present": true,
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "id": "B08",
+      "image_ref": "assets/catalog/B08.png",
+      "decoded": true,
+      "size": [
+        1254,
+        1254
+      ],
+      "hash_matches_catalog": true,
+      "alpha_present": true,
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "id": "B09",
+      "image_ref": "assets/catalog/B09.png",
+      "decoded": true,
+      "size": [
+        1254,
+        1254
+      ],
+      "hash_matches_catalog": true,
+      "alpha_present": true,
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "id": "D01",
+      "image_ref": "assets/catalog/D01.png",
+      "decoded": true,
+      "size": [
+        1254,
+        1254
+      ],
+      "hash_matches_catalog": true,
+      "alpha_present": true,
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "id": "H01",
+      "image_ref": "assets/catalog/H01.png",
+      "decoded": true,
+      "size": [
+        1254,
+        1254
+      ],
+      "hash_matches_catalog": true,
+      "alpha_present": true,
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "id": "H02",
+      "image_ref": "assets/catalog/H02.png",
+      "decoded": true,
+      "size": [
+        1254,
+        1254
+      ],
+      "hash_matches_catalog": true,
+      "alpha_present": true,
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "id": "H03",
+      "image_ref": "assets/catalog/H03.png",
+      "decoded": true,
+      "size": [
+        1254,
+        1254
+      ],
+      "hash_matches_catalog": true,
+      "alpha_present": true,
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "id": "H04",
+      "image_ref": "assets/catalog/H04.png",
+      "decoded": true,
+      "size": [
+        1254,
+        1254
+      ],
+      "hash_matches_catalog": true,
+      "alpha_present": true,
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "id": "H05",
+      "image_ref": "assets/catalog/H05.png",
+      "decoded": true,
+      "size": [
+        1254,
+        1254
+      ],
+      "hash_matches_catalog": true,
+      "alpha_present": true,
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "id": "S01",
+      "image_ref": "assets/catalog/S01.png",
+      "decoded": true,
+      "size": [
+        1254,
+        1254
+      ],
+      "hash_matches_catalog": true,
+      "alpha_present": true,
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "id": "S02",
+      "image_ref": "assets/catalog/S02.png",
+      "decoded": true,
+      "size": [
+        1254,
+        1254
+      ],
+      "hash_matches_catalog": true,
+      "alpha_present": true,
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "id": "S03",
+      "image_ref": "assets/catalog/S03.png",
+      "decoded": true,
+      "size": [
+        1254,
+        1254
+      ],
+      "hash_matches_catalog": true,
+      "alpha_present": true,
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "id": "S04",
+      "image_ref": "assets/catalog/S04.png",
+      "decoded": true,
+      "size": [
+        1254,
+        1254
+      ],
+      "hash_matches_catalog": true,
+      "alpha_present": true,
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "id": "S05",
+      "image_ref": "assets/catalog/S05.png",
+      "decoded": true,
+      "size": [
+        1254,
+        1254
+      ],
+      "hash_matches_catalog": true,
+      "alpha_present": true,
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "id": "S06",
+      "image_ref": "assets/catalog/S06.png",
+      "decoded": true,
+      "size": [
+        1254,
+        1254
+      ],
+      "hash_matches_catalog": true,
+      "alpha_present": true,
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "id": "S07",
+      "image_ref": "assets/catalog/S07.png",
+      "decoded": true,
+      "size": [
+        1254,
+        1254
+      ],
+      "hash_matches_catalog": true,
+      "alpha_present": true,
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "id": "A01",
+      "image_ref": "assets/catalog/A01.png",
+      "decoded": true,
+      "size": [
+        1254,
+        1254
+      ],
+      "hash_matches_catalog": true,
+      "alpha_present": true,
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "id": "A02",
+      "image_ref": "assets/catalog/A02.png",
+      "decoded": true,
+      "size": [
+        1254,
+        1254
+      ],
+      "hash_matches_catalog": true,
+      "alpha_present": true,
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "id": "A03",
+      "image_ref": "assets/catalog/A03.png",
+      "decoded": true,
+      "size": [
+        1254,
+        1254
+      ],
+      "hash_matches_catalog": true,
+      "alpha_present": true,
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "id": "A04",
+      "image_ref": "assets/catalog/A04.png",
+      "decoded": true,
+      "size": [
+        1254,
+        1254
+      ],
+      "hash_matches_catalog": true,
+      "alpha_present": true,
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "id": "A05",
+      "image_ref": "assets/catalog/A05.png",
+      "decoded": true,
+      "size": [
+        1254,
+        1254
+      ],
+      "hash_matches_catalog": true,
+      "alpha_present": true,
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "id": "A06",
+      "image_ref": "assets/catalog/A06.png",
+      "decoded": true,
+      "size": [
+        1254,
+        1254
+      ],
+      "hash_matches_catalog": true,
+      "alpha_present": true,
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "id": "O07",
+      "image_ref": "assets/catalog/O07.png",
+      "decoded": true,
+      "size": [
+        1254,
+        1254
+      ],
+      "hash_matches_catalog": true,
+      "alpha_present": true,
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "id": "O08",
+      "image_ref": "assets/catalog/O08.png",
+      "decoded": true,
+      "size": [
+        1254,
+        1254
+      ],
+      "hash_matches_catalog": true,
+      "alpha_present": true,
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    }
+  ],
+  "life_garments": 32,
+  "life_null_counts": {
+    "catalog_asset_ref": 32,
+    "tryon_asset_ref": 32,
+    "physical_label_asset_ref": 32,
+    "physical_location": 32,
+    "led_anchor_ref": 32
+  },
+  "raw_id_collisions": [
+    {
+      "raw_ref": "S01",
+      "new_name": "베이지 포플린 셔츠",
+      "old_name": "화이트 스니커즈"
+    },
+    {
+      "raw_ref": "S02",
+      "new_name": "화이트 옥스퍼드 셔츠",
+      "old_name": "블랙 로퍼"
+    },
+    {
+      "raw_ref": "S03",
+      "new_name": "크림 크롭 카디건",
+      "old_name": "그레이 러닝화"
+    },
+    {
+      "raw_ref": "S04",
+      "new_name": "그레이 맨투맨",
+      "old_name": "브라운 앵클부츠"
+    },
+    {
+      "raw_ref": "S05",
+      "new_name": "블랙 반소매 티셔츠",
+      "old_name": "블랙 더비 슈즈"
+    },
+    {
+      "raw_ref": "S06",
+      "new_name": "네이비 니트",
+      "old_name": "베이지 스트랩 샌들"
+    },
+    {
+      "raw_ref": "S07",
+      "new_name": "블루 스트라이프 블라우스",
+      "old_name": "브라운 스웨이드 클로그"
+    },
+    {
+      "raw_ref": "H01",
+      "new_name": "화이트 옥스퍼드 셔츠",
+      "old_name": "네이비 볼캡"
+    },
+    {
+      "raw_ref": "H02",
+      "new_name": "라이트블루 옥스퍼드 셔츠",
+      "old_name": "오트밀 비니"
+    },
+    {
+      "raw_ref": "H03",
+      "new_name": "다크그레이 맨투맨",
+      "old_name": "베이지 버킷햇"
+    },
+    {
+      "raw_ref": "H04",
+      "new_name": "올리브 오버셔츠",
+      "old_name": "블랙 베레모"
+    },
+    {
+      "raw_ref": "H05",
+      "new_name": "화이트 반소매 티셔츠",
+      "old_name": "카키 캠프캡"
+    }
+  ],
+  "P04_memo_found_in_source_notes": "공식 검색 스냅샷 내용. 직접 open은 실패했다. 성분 비율은 파싱되지 않아 비워 둠. 실물 라벨은 미확보. 공개용 정상 사례 전 원문 재대조 권고.",
+  "conclusion": "life pack is metadata/history input with unresolved image and LED bindings. Existing archived assets still decode. Same raw IDs have incompatible meanings across packs. Screen displays source audit notes in customer care content. Current implementation fault location is not inspected."
+}

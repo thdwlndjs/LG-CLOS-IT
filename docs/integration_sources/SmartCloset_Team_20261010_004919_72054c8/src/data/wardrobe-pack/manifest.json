@@ -1,0 +1,37 @@
+{
+  "pack_id": "smartcloset_wardrobe_48_v1_20261008",
+  "schema_version": "1.0",
+  "created_date": "2026-10-08",
+  "status": "offline_import_ready",
+  "garment_count": 48,
+  "active_asset_count": 52,
+  "catalog_cutout_count": 48,
+  "registration_example_count": 1,
+  "outfit_still_count": 3,
+  "history_asset_count": 1,
+  "primary_catalog": "data/catalog.json",
+  "data_files": [
+    "assets",
+    "garments",
+    "outfits",
+    "outfit_items",
+    "saved_results"
+  ],
+  "category_counts": {
+    "top": 12,
+    "bottom": 9,
+    "outer": 8,
+    "dress": 1,
+    "hat": 5,
+    "shoes": 7,
+    "accessory": 6
+  },
+  "source_contract_status": "document_mapping_only; live schema not inspected",
+  "id_scope": "package-local stable IDs; map to existing production ID type at import",
+  "owner_binding": "unbound; assign authorized profile in server import",
+  "storage_binding": "unbound; upload included files then set storage_key",
+  "timestamps": "null means not yet imported to application; set actual server timestamps",
+  "no_activity_records_created": true,
+  "static_results_only": true,
+  "checksums_file": "checksums.sha256"
+}

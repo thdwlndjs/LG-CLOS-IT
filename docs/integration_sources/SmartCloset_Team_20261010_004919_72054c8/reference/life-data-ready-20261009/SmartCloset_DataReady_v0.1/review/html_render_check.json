@@ -1,0 +1,11 @@
+{
+  "scope": "read-only generated data review HTML only; not product app",
+  "render_method": "set_content; file URL navigation blocked by container policy",
+  "viewport": [
+    1440,
+    1000
+  ],
+  "page_errors": [],
+  "horizontal_body_overflow": false,
+  "title": "스마트 옷장 · 데이터 준비 검토"
+}

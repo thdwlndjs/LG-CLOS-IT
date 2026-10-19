@@ -1,0 +1,119 @@
+[
+  {
+    "ref": "PREF-HW-NEUTRAL",
+    "profile_ref": "PHW",
+    "kind": "explicit_preference",
+    "key": "palette",
+    "value": [
+      "white",
+      "navy",
+      "charcoal",
+      "black"
+    ],
+    "context": "commute",
+    "note": "출근에는 차분한 색 조합을 선호하도록 설정",
+    "provenance": {
+      "kind": "scenario_authored",
+      "dataset_namespace": "scprep-20261009-v1"
+    }
+  },
+  {
+    "ref": "PREF-HW-RAIN",
+    "profile_ref": "PHW",
+    "kind": "explicit_preference",
+    "key": "bottom_colour",
+    "value": [
+      "black",
+      "navy"
+    ],
+    "context": "rain_forecast",
+    "note": "비 예보 날에는 어두운 하의를 선호하도록 설정. 방수 성능 주장 아님.",
+    "provenance": {
+      "kind": "scenario_authored",
+      "dataset_namespace": "scprep-20261009-v1"
+    }
+  },
+  {
+    "ref": "PREF-SU-NEUTRAL",
+    "profile_ref": "PSU",
+    "kind": "explicit_preference",
+    "key": "palette",
+    "value": [
+      "beige",
+      "cream",
+      "navy"
+    ],
+    "context": "daily",
+    "note": "편한 중립색 조합 선호를 설정",
+    "provenance": {
+      "kind": "scenario_authored",
+      "dataset_namespace": "scprep-20261009-v1"
+    }
+  },
+  {
+    "ref": "LIKE-01",
+    "profile_ref": "PHW",
+    "kind": "like",
+    "outfit_ref": "LH01",
+    "occurred_at": "2026-09-25T21:00:00+09:00",
+    "provenance": {
+      "kind": "scenario_authored",
+      "dataset_namespace": "scprep-20261009-v1"
+    }
+  },
+  {
+    "ref": "LIKE-02",
+    "profile_ref": "PHW",
+    "kind": "like",
+    "outfit_ref": "LH02",
+    "occurred_at": "2026-09-26T21:00:00+09:00",
+    "provenance": {
+      "kind": "scenario_authored",
+      "dataset_namespace": "scprep-20261009-v1"
+    }
+  },
+  {
+    "ref": "LIKE-03",
+    "profile_ref": "PHW",
+    "kind": "like",
+    "outfit_ref": "LH06",
+    "occurred_at": "2026-09-27T21:00:00+09:00",
+    "provenance": {
+      "kind": "scenario_authored",
+      "dataset_namespace": "scprep-20261009-v1"
+    }
+  },
+  {
+    "ref": "LIKE-04",
+    "profile_ref": "PSU",
+    "kind": "like",
+    "outfit_ref": "LS01",
+    "occurred_at": "2026-09-28T21:00:00+09:00",
+    "provenance": {
+      "kind": "scenario_authored",
+      "dataset_namespace": "scprep-20261009-v1"
+    }
+  },
+  {
+    "ref": "LIKE-05",
+    "profile_ref": "PSU",
+    "kind": "like",
+    "outfit_ref": "LS03",
+    "occurred_at": "2026-09-29T21:00:00+09:00",
+    "provenance": {
+      "kind": "scenario_authored",
+      "dataset_namespace": "scprep-20261009-v1"
+    }
+  },
+  {
+    "ref": "LIKE-06",
+    "profile_ref": "PSU",
+    "kind": "like",
+    "outfit_ref": "LS05",
+    "occurred_at": "2026-09-30T21:00:00+09:00",
+    "provenance": {
+      "kind": "scenario_authored",
+      "dataset_namespace": "scprep-20261009-v1"
+    }
+  }
+]

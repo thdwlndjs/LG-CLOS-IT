@@ -1,0 +1,160 @@
+{
+  "version": "H1.0",
+  "files": [
+    {
+      "path": "00_README_START_HERE.md",
+      "sha256": "86a027fc03e4f99794566fdd7545f1f5b91d3dd805fe37ddf53e0a06c16e63f2",
+      "bytes": 4516
+    },
+    {
+      "path": "01_PASTE_TO_CODEX.md",
+      "sha256": "edfd0dfe08e5afa7853039b218c99708a7c3cb0169aeb516bfbace73b527fdea",
+      "bytes": 4039
+    },
+    {
+      "path": "contracts/00_MASTER_CONTRACT.md",
+      "sha256": "86f1dbb1c610c03328158743a58df50e076fda2e32386f6158a3579802827e1b",
+      "bytes": 5860
+    },
+    {
+      "path": "contracts/01_DATA_AND_PRODUCT.md",
+      "sha256": "6e4b7731779f5cea8572c25943fe23b0f320043caf0cef15ecc99cca91c635b9",
+      "bytes": 4969
+    },
+    {
+      "path": "contracts/02_ASSETS_WARDROBE.md",
+      "sha256": "4e31c03a0b9f08073155362a9534a8c89e09f58ae34b71fa418413e6acf79608",
+      "bytes": 3765
+    },
+    {
+      "path": "contracts/03_EXPERIENCE_VTON_CARD.md",
+      "sha256": "f7366b1a02671f2e9ecce4f6a050ac9912c2ebc73d8e459f6f66d7813aacd07c",
+      "bytes": 3568
+    },
+    {
+      "path": "contracts/04_STORAGE_AGENT.md",
+      "sha256": "a4f6eb1dc0a5d9db86279ca5c0ada6cb4501592f8b668fbdb532eb03e91a32dd",
+      "bytes": 3529
+    },
+    {
+      "path": "execution/00_PLAN_AND_GATES.md",
+      "sha256": "f17dbbc2c149011889703d994d1186a58848932708c4ab9fe7b5cfaa617da251",
+      "bytes": 3989
+    },
+    {
+      "path": "execution/01_DISCOVERY_AND_REPORT.md",
+      "sha256": "e5f04fbb430fa5f9e423e4a00f93416fb0578c77bafc41eece8d1658dc34130b",
+      "bytes": 4387
+    },
+    {
+      "path": "execution/02_AFTER_APPROVAL.md",
+      "sha256": "f08a134ceeeb35c3cb3fb1643ead5e7772b1ec8255498a8c39a0da305cbda5fd",
+      "bytes": 2898
+    },
+    {
+      "path": "execution/03_QA_MATRIX.md",
+      "sha256": "ff7203f8281687175b7ce5364958a3542cf840177ccb8c89c28d6fa2a138df68",
+      "bytes": 2831
+    },
+    {
+      "path": "references/card/CARD_TEMPLATE_CONTRACT.md",
+      "sha256": "ad6541fcf3f7cb3206bd19f15f465eaf925f1bb6f0108f7ab61253bdec7a4269",
+      "bytes": 10802
+    },
+    {
+      "path": "references/card/T1_reference.png",
+      "sha256": "96cf9617bdcbb859915073610333f011da32840de4020a77d92f1398dcffe39c",
+      "bytes": 4142633
+    },
+    {
+      "path": "references/card/T2_reference.png",
+      "sha256": "c156e925a80f4b974d4a5f565661d59eabed2ada641502ca18793878d4961c61",
+      "bytes": 3863565
+    },
+    {
+      "path": "references/card/T3_reference.png",
+      "sha256": "d390f7f950a5e38731126762b25839c99f4b438d53926985eb4c4137fa5faece",
+      "bytes": 3127596
+    },
+    {
+      "path": "references/card/T4_reference.png",
+      "sha256": "9d1fc74f050bc774ded943e729080f342ba7d7c2fc95b5216f80ac327ebc6554",
+      "bytes": 3860541
+    },
+    {
+      "path": "references/history/AI_tryon_card_entry_v0.1.docx",
+      "sha256": "3225495c7f3e093b39718ad7bcdc885d6bff119bcf6e7094bdf308566f1ec819",
+      "bytes": 39648
+    },
+    {
+      "path": "references/history/README_NOT_AUTHORITY.md",
+      "sha256": "3429d1f4334e5e12026edaa07308625b8b994c547de0a1440d4b9501bbb86dda",
+      "bytes": 550
+    },
+    {
+      "path": "references/history/master_change_v0.2.md",
+      "sha256": "7035ea19ef37826a05ecee6eabdc22f4af416bbb2e378dc6b4e4b8a952169bc9",
+      "bytes": 17709
+    },
+    {
+      "path": "references/history/real_product_contract_v0.3.docx",
+      "sha256": "6ec7829ee7c0425a08cf3ebb2b75635c6c6439bc76cb761a316627c2eaf45f38",
+      "bytes": 41019
+    },
+    {
+      "path": "references/history/seed_proposal_v0.1.md",
+      "sha256": "5faca8c377888c08fd785715044a5d85095f0f031b4f2506c202c859d854fac5",
+      "bytes": 15942
+    },
+    {
+      "path": "references/history/wardrobe_twin_light_v0.1.docx",
+      "sha256": "89bb47fb387d1b7311418255d59c718adf903d8a6c4e5f5ed26efbd404780345",
+      "bytes": 39319
+    },
+    {
+      "path": "references/wardrobe/wardrobe_ui_original.png",
+      "sha256": "6b8ad5c98d71fa8380557f0dc307536e25da351e109ef815167158e13fa42b37",
+      "bytes": 2776217
+    },
+    {
+      "path": "reports/README_REPORT_OUTPUTS.md",
+      "sha256": "65637c4db62d3e982330f100d2495010fb97589132137e1edaf9a2de0ae1ce9b",
+      "bytes": 399
+    },
+    {
+      "path": "templates/README.md",
+      "sha256": "5cc3646059d69d86bfbbacc1c6fa443733a8e8f13712e5315aedd0dce908010b",
+      "bytes": 629
+    },
+    {
+      "path": "templates/asset_manifest.csv",
+      "sha256": "b35ae9f53d617975db1061bd49e575ea3c6242d5bac775786cb337bdcfa6a708",
+      "bytes": 187
+    },
+    {
+      "path": "templates/decision_log.csv",
+      "sha256": "3093b121c58de3198d2af8d833b33ea8fd4f18aabd4f9e58e609130ef7d5a764",
+      "bytes": 111
+    },
+    {
+      "path": "templates/item_plan.csv",
+      "sha256": "53812a88c62e63f64c90ed301799b6b0b70ef4893767b03c82e6a29f65eaaee5",
+      "bytes": 282
+    },
+    {
+      "path": "templates/product_candidates.csv",
+      "sha256": "39e29f2b876ec9ad559b102b6ba2567f53fd6bf6b8610c2d8be61b1ddb0138a4",
+      "bytes": 302
+    },
+    {
+      "path": "templates/scenario_trace.csv",
+      "sha256": "65573a3864beb05c37f0b756af7e39601dd1f8feb3d6bb89141a57089a132ee8",
+      "bytes": 171
+    },
+    {
+      "path": "templates/storage_slots.csv",
+      "sha256": "d67bfcf2d556dc00d75142749c85c058dbbf07dbdabac56832ff15599635b3cb",
+      "bytes": 188
+    }
+  ]
+}

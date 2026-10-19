@@ -1,0 +1,39 @@
+{
+  "namespace": "scprep-20261009-v1",
+  "version": "0.1.0",
+  "created_date": "2026-10-09",
+  "status": "REVIEW_PACK_NOT_IMPORTED",
+  "purpose": "기존 6메뉴의 데이터 기반 기능 연결을 검증하기 위한 준비 데이터",
+  "language": "ko",
+  "contains_real_user_behaviour": false,
+  "contains_real_person_media": false,
+  "contains_generated_clothing_images": false,
+  "contains_physical_label_photos": false,
+  "product_metadata": "official sources; retrieval level explicit",
+  "stock_prices_or_live_weather_verified": false,
+  "db_schema_verified": false,
+  "database_import_executed": false,
+  "app_tests_executed": false,
+  "external_api_calls_executed": 0,
+  "counts": {
+    "profiles": 2,
+    "garment_plans": 32,
+    "external_candidates": 4,
+    "products": 10,
+    "evidence_bindings": 8,
+    "stored_outfit_fixtures": 18,
+    "activity_events": 70,
+    "preferences_and_likes": 9,
+    "contexts": 4,
+    "asset_requests": 38,
+    "offline_logic_tests": 28,
+    "app_acceptance_cases_designed": 24,
+    "feature_connections_designed": 12
+  },
+  "app_data_sources_are_not_replaced_by_this_pack": true,
+  "source_design": {
+    "filename": "SmartCloset_통합설계서_검토기준본_20261008.pdf",
+    "sha256": "b3f17bbebda11ecd4a6889fb5450d853b85e60e8d3ad137b303bd32fa33e6cbf",
+    "modified_by_this_task": false
+  }
+}

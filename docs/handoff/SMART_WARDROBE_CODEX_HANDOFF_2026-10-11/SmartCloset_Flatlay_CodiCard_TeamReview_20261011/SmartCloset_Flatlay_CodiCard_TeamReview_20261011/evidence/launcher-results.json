@@ -1,0 +1,13 @@
+[
+  {
+    "check": "Windows launcher from extracted folder serves exact local index + all32asset hashes at configured port",
+    "status": "PASS",
+    "port": 62271,
+    "sourceDependency": "none"
+  },
+  {
+    "check": "Port conflict prints error, waits at pause and exits nonzero after acknowledgement",
+    "status": "PASS",
+    "exitCode": 1
+  }
+]

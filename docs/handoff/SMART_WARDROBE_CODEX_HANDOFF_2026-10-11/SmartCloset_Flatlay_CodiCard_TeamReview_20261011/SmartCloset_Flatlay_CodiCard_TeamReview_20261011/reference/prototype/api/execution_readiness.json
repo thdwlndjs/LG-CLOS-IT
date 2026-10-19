@@ -1,0 +1,18 @@
+{
+  "state": "NOT_EXECUTED",
+  "environmentCheck": {
+    "openaiKeyPresent": false,
+    "decartKeyPresent": false
+  },
+  "teamSourceConfirmed": false,
+  "paidCalls": 0,
+  "approvedExecution": {
+    "model": null,
+    "inputAssetIds": [],
+    "personVideo": null,
+    "singleRequestUsd": null,
+    "totalUsd": null,
+    "maxSessionSeconds": null
+  },
+  "note": "Fill in team environment using existing verified authorization; do not put keys in this file."
+}

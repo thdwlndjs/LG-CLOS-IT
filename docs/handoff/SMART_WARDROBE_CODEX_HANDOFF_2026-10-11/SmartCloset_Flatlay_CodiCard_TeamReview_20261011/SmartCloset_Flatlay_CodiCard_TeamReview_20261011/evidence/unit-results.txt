@@ -1,0 +1,61 @@
+
+> smartcloset-flatlay-module@0.1.0 test
+> node --test tests/*.test.mjs
+
+✔ owned/external same raw ID are distinct, delimiter-safe identities (0.7574ms)
+✔ replacement preserves other items and original input (0.3632ms)
+✔ dress conflict is explicit and replacement removes only conflicting clothes (0.5384ms)
+✔ layout covers every legal subset of all eight slot types within canvas (6.5874ms)
+✔ significant alpha metadata controls aspect and source crop without mutating asset (0.2084ms)
+✔ missing photo remains selected and does not become a different garment (0.2385ms)
+✔ snapshots are deeply immutable, stable by composition and source/version aware (0.2426ms)
+✔ automatic title follows composition; explicit title and empty save semantics (0.1385ms)
+✔ proposal checks profile candidate scope, locks, duplicates and revision (0.5143ms)
+✔ initial draft is empty and saving needs neither fitting nor title (3.2855ms)
+✔ double click, retry and reload save one card (0.5451ms)
+✔ reuse creates new draft, unchanged save reuses source, edits preserve original (0.9044ms)
+✔ profile roundtrip and storage reload preserve scoped draft/cards (0.9226ms)
+✔ external source remains external after save, reload and reuse (0.3477ms)
+✔ quota failure rolls back both draft and card changes (0.41ms)
+✔ corrupt JSON is preserved and never silently reset (0.1286ms)
+✔ cross-tab stale mutation refuses to overwrite newer content (0.1666ms)
+✔ late results become stale after manual changes or profile roundtrip (0.1863ms)
+✔ changed asset version blocks reuse without losing source card (0.3202ms)
+✔ actual supplied catalog loads without fixed quantity or hidden preset (8.4268ms)
+✔ reuse rejects changed source version, slot and unversioned name without touching saved state (1.3882ms)
+✔ catalog version fallback is a source version and cannot silently replace a saved item (0.3762ms)
+✔ corrupt persisted layout geometry blocks reopening and preserves exact raw content (1.7219ms)
+✔ persisted duplicate layer depth cannot pass structural validation (0.349ms)
+✔ ordinary four-piece composition keeps prototype hierarchy and intermediate bag (0.1707ms)
+✔ dense accessory fallback covers all seven pieces and avoids hat/accessory collision (0.2005ms)
+✔ transparent file has no invented visible garment (0.7771ms)
+✔ solid full image retains all source pixels (0.5767ms)
+✔ isolated opaque dust cannot shrink garment display to full canvas (1.6432ms)
+✔ faint wide shadow ignored, two pixel antialias margin preserved (1.0627ms)
+✔ both disconnected shoes remain in source bounds (0.6272ms)
+✔ thin diagonal strap belongs to eight-connected garment (0.4174ms)
+✔ wholly translucent image remains measurable, opacity not rewritten (0.2271ms)
+✔ real detached small component preserved without isolated single pixel (0.7575ms)
+✔ invalid pixel geometry rejects rather than silently crops (0.305ms)
+✔ fit preserves tall garment aspect inside assigned area (0.2133ms)
+✔ fit preserves shoe aspect inside narrow area (0.1464ms)
+✔ fit rejects invalid dimensions (0.6839ms)
+✔ empty provider reference cannot accidentally become valid input (0.2336ms)
+✔ empty PNG export fails independently of saved composition (0.145ms)
+✔ render fixture: missing image commits honest named placeholder with error (1.1828ms)
+✔ render fixture: delayed previous-profile image never draws into current canvas (0.6096ms)
+✔ render fixture: export refuses missing selected image (0.1497ms)
+✔ render fixture: export reports image decode failure without substitution (0.2279ms)
+✔ render fixture: export reports canvas CORS failure (0.1658ms)
+✔ render fixture: PNG encoder failure is not save success (0.3167ms)
+✔ render fixture: provider preparation requires explicit per-asset policy (0.1645ms)
+✔ render fixture: approved provider composition has no title, card background or shadows (0.4146ms)
+✔ render fixture: layout cannot silently omit or add selected garments (0.1534ms)
+ℹ tests 49
+ℹ suites 0
+ℹ pass 49
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 83.5409

@@ -1,0 +1,830 @@
+[
+  {
+    "request_ref": "ASSET-S01",
+    "entity_ref": "S01",
+    "priority": "P0",
+    "kind": "garment_media",
+    "needed": [
+      "catalog_front",
+      "tryon_reference_if_supported",
+      "physical_label_if_available"
+    ],
+    "actual_asset_id": null,
+    "local_path": null,
+    "product_ref": "P04",
+    "source_ref": "SRC-P04",
+    "permission_review": "PENDING",
+    "mapping_method": "explicit_human_or_verified_import_mapping",
+    "must_not": [
+      "match_by_name_alone",
+      "invent_label",
+      "replace_existing_user_item"
+    ]
+  },
+  {
+    "request_ref": "ASSET-S02",
+    "entity_ref": "S02",
+    "priority": "P0",
+    "kind": "garment_media",
+    "needed": [
+      "catalog_front",
+      "tryon_reference_if_supported",
+      "physical_label_if_available"
+    ],
+    "actual_asset_id": null,
+    "local_path": null,
+    "product_ref": "P01",
+    "source_ref": "SRC-P01",
+    "permission_review": "PENDING",
+    "mapping_method": "explicit_human_or_verified_import_mapping",
+    "must_not": [
+      "match_by_name_alone",
+      "invent_label",
+      "replace_existing_user_item"
+    ]
+  },
+  {
+    "request_ref": "ASSET-S03",
+    "entity_ref": "S03",
+    "priority": "P1",
+    "kind": "garment_media",
+    "needed": [
+      "catalog_front",
+      "tryon_reference_if_supported",
+      "physical_label_if_available"
+    ],
+    "actual_asset_id": null,
+    "local_path": null,
+    "product_ref": "P06",
+    "source_ref": "SRC-P06",
+    "permission_review": "PENDING",
+    "mapping_method": "explicit_human_or_verified_import_mapping",
+    "must_not": [
+      "match_by_name_alone",
+      "invent_label",
+      "replace_existing_user_item"
+    ]
+  },
+  {
+    "request_ref": "ASSET-S04",
+    "entity_ref": "S04",
+    "priority": "P1",
+    "kind": "garment_media",
+    "needed": [
+      "catalog_front",
+      "tryon_reference_if_supported",
+      "physical_label_if_available"
+    ],
+    "actual_asset_id": null,
+    "local_path": null,
+    "product_ref": null,
+    "source_ref": null,
+    "permission_review": "PENDING",
+    "mapping_method": "explicit_human_or_verified_import_mapping",
+    "must_not": [
+      "match_by_name_alone",
+      "invent_label",
+      "replace_existing_user_item"
+    ]
+  },
+  {
+    "request_ref": "ASSET-S05",
+    "entity_ref": "S05",
+    "priority": "P1",
+    "kind": "garment_media",
+    "needed": [
+      "catalog_front",
+      "tryon_reference_if_supported",
+      "physical_label_if_available"
+    ],
+    "actual_asset_id": null,
+    "local_path": null,
+    "product_ref": null,
+    "source_ref": null,
+    "permission_review": "PENDING",
+    "mapping_method": "explicit_human_or_verified_import_mapping",
+    "must_not": [
+      "match_by_name_alone",
+      "invent_label",
+      "replace_existing_user_item"
+    ]
+  },
+  {
+    "request_ref": "ASSET-S06",
+    "entity_ref": "S06",
+    "priority": "P1",
+    "kind": "garment_media",
+    "needed": [
+      "catalog_front",
+      "tryon_reference_if_supported",
+      "physical_label_if_available"
+    ],
+    "actual_asset_id": null,
+    "local_path": null,
+    "product_ref": null,
+    "source_ref": null,
+    "permission_review": "PENDING",
+    "mapping_method": "explicit_human_or_verified_import_mapping",
+    "must_not": [
+      "match_by_name_alone",
+      "invent_label",
+      "replace_existing_user_item"
+    ]
+  },
+  {
+    "request_ref": "ASSET-S07",
+    "entity_ref": "S07",
+    "priority": "P1",
+    "kind": "garment_media",
+    "needed": [
+      "catalog_front",
+      "tryon_reference_if_supported",
+      "physical_label_if_available"
+    ],
+    "actual_asset_id": null,
+    "local_path": null,
+    "product_ref": null,
+    "source_ref": null,
+    "permission_review": "PENDING",
+    "mapping_method": "explicit_human_or_verified_import_mapping",
+    "must_not": [
+      "match_by_name_alone",
+      "invent_label",
+      "replace_existing_user_item"
+    ]
+  },
+  {
+    "request_ref": "ASSET-S08",
+    "entity_ref": "S08",
+    "priority": "P1",
+    "kind": "garment_media",
+    "needed": [
+      "catalog_front",
+      "tryon_reference_if_supported",
+      "physical_label_if_available"
+    ],
+    "actual_asset_id": null,
+    "local_path": null,
+    "product_ref": "P05",
+    "source_ref": "SRC-P05",
+    "permission_review": "PENDING",
+    "mapping_method": "explicit_human_or_verified_import_mapping",
+    "must_not": [
+      "match_by_name_alone",
+      "invent_label",
+      "replace_existing_user_item"
+    ]
+  },
+  {
+    "request_ref": "ASSET-S09",
+    "entity_ref": "S09",
+    "priority": "P1",
+    "kind": "garment_media",
+    "needed": [
+      "catalog_front",
+      "tryon_reference_if_supported",
+      "physical_label_if_available"
+    ],
+    "actual_asset_id": null,
+    "local_path": null,
+    "product_ref": null,
+    "source_ref": null,
+    "permission_review": "PENDING",
+    "mapping_method": "explicit_human_or_verified_import_mapping",
+    "must_not": [
+      "match_by_name_alone",
+      "invent_label",
+      "replace_existing_user_item"
+    ]
+  },
+  {
+    "request_ref": "ASSET-S10",
+    "entity_ref": "S10",
+    "priority": "P1",
+    "kind": "garment_media",
+    "needed": [
+      "catalog_front",
+      "tryon_reference_if_supported",
+      "physical_label_if_available"
+    ],
+    "actual_asset_id": null,
+    "local_path": null,
+    "product_ref": null,
+    "source_ref": null,
+    "permission_review": "PENDING",
+    "mapping_method": "explicit_human_or_verified_import_mapping",
+    "must_not": [
+      "match_by_name_alone",
+      "invent_label",
+      "replace_existing_user_item"
+    ]
+  },
+  {
+    "request_ref": "ASSET-S11",
+    "entity_ref": "S11",
+    "priority": "P1",
+    "kind": "garment_media",
+    "needed": [
+      "catalog_front",
+      "tryon_reference_if_supported",
+      "physical_label_if_available"
+    ],
+    "actual_asset_id": null,
+    "local_path": null,
+    "product_ref": null,
+    "source_ref": null,
+    "permission_review": "PENDING",
+    "mapping_method": "explicit_human_or_verified_import_mapping",
+    "must_not": [
+      "match_by_name_alone",
+      "invent_label",
+      "replace_existing_user_item"
+    ]
+  },
+  {
+    "request_ref": "ASSET-S12",
+    "entity_ref": "S12",
+    "priority": "P1",
+    "kind": "garment_media",
+    "needed": [
+      "catalog_front",
+      "tryon_reference_if_supported",
+      "physical_label_if_available"
+    ],
+    "actual_asset_id": null,
+    "local_path": null,
+    "product_ref": null,
+    "source_ref": null,
+    "permission_review": "PENDING",
+    "mapping_method": "explicit_human_or_verified_import_mapping",
+    "must_not": [
+      "match_by_name_alone",
+      "invent_label",
+      "replace_existing_user_item"
+    ]
+  },
+  {
+    "request_ref": "ASSET-S13",
+    "entity_ref": "S13",
+    "priority": "P1",
+    "kind": "garment_media",
+    "needed": [
+      "catalog_front",
+      "tryon_reference_if_supported",
+      "physical_label_if_available"
+    ],
+    "actual_asset_id": null,
+    "local_path": null,
+    "product_ref": null,
+    "source_ref": null,
+    "permission_review": "PENDING",
+    "mapping_method": "explicit_human_or_verified_import_mapping",
+    "must_not": [
+      "match_by_name_alone",
+      "invent_label",
+      "replace_existing_user_item"
+    ]
+  },
+  {
+    "request_ref": "ASSET-S14",
+    "entity_ref": "S14",
+    "priority": "P1",
+    "kind": "garment_media",
+    "needed": [
+      "catalog_front",
+      "tryon_reference_if_supported",
+      "physical_label_if_available"
+    ],
+    "actual_asset_id": null,
+    "local_path": null,
+    "product_ref": null,
+    "source_ref": null,
+    "permission_review": "PENDING",
+    "mapping_method": "explicit_human_or_verified_import_mapping",
+    "must_not": [
+      "match_by_name_alone",
+      "invent_label",
+      "replace_existing_user_item"
+    ]
+  },
+  {
+    "request_ref": "ASSET-S15",
+    "entity_ref": "S15",
+    "priority": "P1",
+    "kind": "garment_media",
+    "needed": [
+      "catalog_front",
+      "tryon_reference_if_supported",
+      "physical_label_if_available"
+    ],
+    "actual_asset_id": null,
+    "local_path": null,
+    "product_ref": null,
+    "source_ref": null,
+    "permission_review": "PENDING",
+    "mapping_method": "explicit_human_or_verified_import_mapping",
+    "must_not": [
+      "match_by_name_alone",
+      "invent_label",
+      "replace_existing_user_item"
+    ]
+  },
+  {
+    "request_ref": "ASSET-S16",
+    "entity_ref": "S16",
+    "priority": "P1",
+    "kind": "garment_media",
+    "needed": [
+      "catalog_front",
+      "tryon_reference_if_supported",
+      "physical_label_if_available"
+    ],
+    "actual_asset_id": null,
+    "local_path": null,
+    "product_ref": null,
+    "source_ref": null,
+    "permission_review": "PENDING",
+    "mapping_method": "explicit_human_or_verified_import_mapping",
+    "must_not": [
+      "match_by_name_alone",
+      "invent_label",
+      "replace_existing_user_item"
+    ]
+  },
+  {
+    "request_ref": "ASSET-H01",
+    "entity_ref": "H01",
+    "priority": "P0",
+    "kind": "garment_media",
+    "needed": [
+      "catalog_front",
+      "tryon_reference_if_supported",
+      "physical_label_if_available"
+    ],
+    "actual_asset_id": null,
+    "local_path": null,
+    "product_ref": "P01",
+    "source_ref": "SRC-P01",
+    "permission_review": "PENDING",
+    "mapping_method": "explicit_human_or_verified_import_mapping",
+    "must_not": [
+      "match_by_name_alone",
+      "invent_label",
+      "replace_existing_user_item"
+    ]
+  },
+  {
+    "request_ref": "ASSET-H02",
+    "entity_ref": "H02",
+    "priority": "P0",
+    "kind": "garment_media",
+    "needed": [
+      "catalog_front",
+      "tryon_reference_if_supported",
+      "physical_label_if_available"
+    ],
+    "actual_asset_id": null,
+    "local_path": null,
+    "product_ref": "P02",
+    "source_ref": "SRC-P02",
+    "permission_review": "PENDING",
+    "mapping_method": "explicit_human_or_verified_import_mapping",
+    "must_not": [
+      "match_by_name_alone",
+      "invent_label",
+      "replace_existing_user_item"
+    ]
+  },
+  {
+    "request_ref": "ASSET-H03",
+    "entity_ref": "H03",
+    "priority": "P1",
+    "kind": "garment_media",
+    "needed": [
+      "catalog_front",
+      "tryon_reference_if_supported",
+      "physical_label_if_available"
+    ],
+    "actual_asset_id": null,
+    "local_path": null,
+    "product_ref": "P07",
+    "source_ref": "SRC-P07",
+    "permission_review": "PENDING",
+    "mapping_method": "explicit_human_or_verified_import_mapping",
+    "must_not": [
+      "match_by_name_alone",
+      "invent_label",
+      "replace_existing_user_item"
+    ]
+  },
+  {
+    "request_ref": "ASSET-H04",
+    "entity_ref": "H04",
+    "priority": "P1",
+    "kind": "garment_media",
+    "needed": [
+      "catalog_front",
+      "tryon_reference_if_supported",
+      "physical_label_if_available"
+    ],
+    "actual_asset_id": null,
+    "local_path": null,
+    "product_ref": null,
+    "source_ref": null,
+    "permission_review": "PENDING",
+    "mapping_method": "explicit_human_or_verified_import_mapping",
+    "must_not": [
+      "match_by_name_alone",
+      "invent_label",
+      "replace_existing_user_item"
+    ]
+  },
+  {
+    "request_ref": "ASSET-H05",
+    "entity_ref": "H05",
+    "priority": "P1",
+    "kind": "garment_media",
+    "needed": [
+      "catalog_front",
+      "tryon_reference_if_supported",
+      "physical_label_if_available"
+    ],
+    "actual_asset_id": null,
+    "local_path": null,
+    "product_ref": null,
+    "source_ref": null,
+    "permission_review": "PENDING",
+    "mapping_method": "explicit_human_or_verified_import_mapping",
+    "must_not": [
+      "match_by_name_alone",
+      "invent_label",
+      "replace_existing_user_item"
+    ]
+  },
+  {
+    "request_ref": "ASSET-H06",
+    "entity_ref": "H06",
+    "priority": "P1",
+    "kind": "garment_media",
+    "needed": [
+      "catalog_front",
+      "tryon_reference_if_supported",
+      "physical_label_if_available"
+    ],
+    "actual_asset_id": null,
+    "local_path": null,
+    "product_ref": null,
+    "source_ref": null,
+    "permission_review": "PENDING",
+    "mapping_method": "explicit_human_or_verified_import_mapping",
+    "must_not": [
+      "match_by_name_alone",
+      "invent_label",
+      "replace_existing_user_item"
+    ]
+  },
+  {
+    "request_ref": "ASSET-H07",
+    "entity_ref": "H07",
+    "priority": "P1",
+    "kind": "garment_media",
+    "needed": [
+      "catalog_front",
+      "tryon_reference_if_supported",
+      "physical_label_if_available"
+    ],
+    "actual_asset_id": null,
+    "local_path": null,
+    "product_ref": null,
+    "source_ref": null,
+    "permission_review": "PENDING",
+    "mapping_method": "explicit_human_or_verified_import_mapping",
+    "must_not": [
+      "match_by_name_alone",
+      "invent_label",
+      "replace_existing_user_item"
+    ]
+  },
+  {
+    "request_ref": "ASSET-H08",
+    "entity_ref": "H08",
+    "priority": "P0",
+    "kind": "garment_media",
+    "needed": [
+      "catalog_front",
+      "tryon_reference_if_supported",
+      "physical_label_if_available"
+    ],
+    "actual_asset_id": null,
+    "local_path": null,
+    "product_ref": "P03",
+    "source_ref": "SRC-P03",
+    "permission_review": "PENDING",
+    "mapping_method": "explicit_human_or_verified_import_mapping",
+    "must_not": [
+      "match_by_name_alone",
+      "invent_label",
+      "replace_existing_user_item"
+    ]
+  },
+  {
+    "request_ref": "ASSET-H09",
+    "entity_ref": "H09",
+    "priority": "P1",
+    "kind": "garment_media",
+    "needed": [
+      "catalog_front",
+      "tryon_reference_if_supported",
+      "physical_label_if_available"
+    ],
+    "actual_asset_id": null,
+    "local_path": null,
+    "product_ref": null,
+    "source_ref": null,
+    "permission_review": "PENDING",
+    "mapping_method": "explicit_human_or_verified_import_mapping",
+    "must_not": [
+      "match_by_name_alone",
+      "invent_label",
+      "replace_existing_user_item"
+    ]
+  },
+  {
+    "request_ref": "ASSET-H10",
+    "entity_ref": "H10",
+    "priority": "P1",
+    "kind": "garment_media",
+    "needed": [
+      "catalog_front",
+      "tryon_reference_if_supported",
+      "physical_label_if_available"
+    ],
+    "actual_asset_id": null,
+    "local_path": null,
+    "product_ref": null,
+    "source_ref": null,
+    "permission_review": "PENDING",
+    "mapping_method": "explicit_human_or_verified_import_mapping",
+    "must_not": [
+      "match_by_name_alone",
+      "invent_label",
+      "replace_existing_user_item"
+    ]
+  },
+  {
+    "request_ref": "ASSET-H11",
+    "entity_ref": "H11",
+    "priority": "P1",
+    "kind": "garment_media",
+    "needed": [
+      "catalog_front",
+      "tryon_reference_if_supported",
+      "physical_label_if_available"
+    ],
+    "actual_asset_id": null,
+    "local_path": null,
+    "product_ref": null,
+    "source_ref": null,
+    "permission_review": "PENDING",
+    "mapping_method": "explicit_human_or_verified_import_mapping",
+    "must_not": [
+      "match_by_name_alone",
+      "invent_label",
+      "replace_existing_user_item"
+    ]
+  },
+  {
+    "request_ref": "ASSET-H12",
+    "entity_ref": "H12",
+    "priority": "P1",
+    "kind": "garment_media",
+    "needed": [
+      "catalog_front",
+      "tryon_reference_if_supported",
+      "physical_label_if_available"
+    ],
+    "actual_asset_id": null,
+    "local_path": null,
+    "product_ref": null,
+    "source_ref": null,
+    "permission_review": "PENDING",
+    "mapping_method": "explicit_human_or_verified_import_mapping",
+    "must_not": [
+      "match_by_name_alone",
+      "invent_label",
+      "replace_existing_user_item"
+    ]
+  },
+  {
+    "request_ref": "ASSET-H13",
+    "entity_ref": "H13",
+    "priority": "P1",
+    "kind": "garment_media",
+    "needed": [
+      "catalog_front",
+      "tryon_reference_if_supported",
+      "physical_label_if_available"
+    ],
+    "actual_asset_id": null,
+    "local_path": null,
+    "product_ref": null,
+    "source_ref": null,
+    "permission_review": "PENDING",
+    "mapping_method": "explicit_human_or_verified_import_mapping",
+    "must_not": [
+      "match_by_name_alone",
+      "invent_label",
+      "replace_existing_user_item"
+    ]
+  },
+  {
+    "request_ref": "ASSET-H14",
+    "entity_ref": "H14",
+    "priority": "P1",
+    "kind": "garment_media",
+    "needed": [
+      "catalog_front",
+      "tryon_reference_if_supported",
+      "physical_label_if_available"
+    ],
+    "actual_asset_id": null,
+    "local_path": null,
+    "product_ref": null,
+    "source_ref": null,
+    "permission_review": "PENDING",
+    "mapping_method": "explicit_human_or_verified_import_mapping",
+    "must_not": [
+      "match_by_name_alone",
+      "invent_label",
+      "replace_existing_user_item"
+    ]
+  },
+  {
+    "request_ref": "ASSET-H15",
+    "entity_ref": "H15",
+    "priority": "P1",
+    "kind": "garment_media",
+    "needed": [
+      "catalog_front",
+      "tryon_reference_if_supported",
+      "physical_label_if_available"
+    ],
+    "actual_asset_id": null,
+    "local_path": null,
+    "product_ref": null,
+    "source_ref": null,
+    "permission_review": "PENDING",
+    "mapping_method": "explicit_human_or_verified_import_mapping",
+    "must_not": [
+      "match_by_name_alone",
+      "invent_label",
+      "replace_existing_user_item"
+    ]
+  },
+  {
+    "request_ref": "ASSET-H16",
+    "entity_ref": "H16",
+    "priority": "P1",
+    "kind": "garment_media",
+    "needed": [
+      "catalog_front",
+      "tryon_reference_if_supported",
+      "physical_label_if_available"
+    ],
+    "actual_asset_id": null,
+    "local_path": null,
+    "product_ref": null,
+    "source_ref": null,
+    "permission_review": "PENDING",
+    "mapping_method": "explicit_human_or_verified_import_mapping",
+    "must_not": [
+      "match_by_name_alone",
+      "invent_label",
+      "replace_existing_user_item"
+    ]
+  },
+  {
+    "request_ref": "ASSET-X01",
+    "entity_ref": "X01",
+    "priority": "P0",
+    "kind": "external_product_media",
+    "needed": [
+      "exact_variant_catalog_image",
+      "transfer_permission",
+      "tryon_reference_if_supported"
+    ],
+    "actual_asset_id": null,
+    "local_path": null,
+    "product_ref": "P08",
+    "source_ref": "SRC-P08",
+    "permission_review": "PENDING",
+    "mapping_method": "exact_product_code_and_variant",
+    "must_not": [
+      "auto_owned",
+      "auto_led"
+    ]
+  },
+  {
+    "request_ref": "ASSET-X02",
+    "entity_ref": "X02",
+    "priority": "P1",
+    "kind": "external_product_media",
+    "needed": [
+      "exact_variant_catalog_image",
+      "transfer_permission",
+      "tryon_reference_if_supported"
+    ],
+    "actual_asset_id": null,
+    "local_path": null,
+    "product_ref": "P09",
+    "source_ref": "SRC-P09",
+    "permission_review": "PENDING",
+    "mapping_method": "exact_product_code_and_variant",
+    "must_not": [
+      "auto_owned",
+      "auto_led"
+    ]
+  },
+  {
+    "request_ref": "ASSET-X03",
+    "entity_ref": "X03",
+    "priority": "P1",
+    "kind": "external_product_media",
+    "needed": [
+      "exact_variant_catalog_image",
+      "transfer_permission",
+      "tryon_reference_if_supported"
+    ],
+    "actual_asset_id": null,
+    "local_path": null,
+    "product_ref": "P10",
+    "source_ref": "SRC-P10",
+    "permission_review": "PENDING",
+    "mapping_method": "exact_product_code_and_variant",
+    "must_not": [
+      "auto_owned",
+      "auto_led"
+    ]
+  },
+  {
+    "request_ref": "ASSET-X04",
+    "entity_ref": "X04",
+    "priority": "P1",
+    "kind": "external_product_media",
+    "needed": [
+      "exact_variant_catalog_image",
+      "transfer_permission",
+      "tryon_reference_if_supported"
+    ],
+    "actual_asset_id": null,
+    "local_path": null,
+    "product_ref": "P06",
+    "source_ref": "SRC-P06",
+    "permission_review": "PENDING",
+    "mapping_method": "exact_product_code_and_variant",
+    "must_not": [
+      "auto_owned",
+      "auto_led"
+    ]
+  },
+  {
+    "request_ref": "PERSON-PSU",
+    "entity_ref": "PSU",
+    "priority": "P1",
+    "kind": "person_video",
+    "needed": [
+      "approved_adult_input_video",
+      "provider_scope",
+      "retention_scope"
+    ],
+    "actual_asset_id": null,
+    "local_path": null,
+    "permission_review": "PENDING",
+    "mapping_method": "explicit_user_approval",
+    "must_not": [
+      "use_persona_age_as_age_verification",
+      "generate_real_user_without_reference",
+      "activate_webcam_implicitly"
+    ]
+  },
+  {
+    "request_ref": "PERSON-PHW",
+    "entity_ref": "PHW",
+    "priority": "P0",
+    "kind": "person_video",
+    "needed": [
+      "approved_adult_input_video",
+      "provider_scope",
+      "retention_scope"
+    ],
+    "actual_asset_id": null,
+    "local_path": null,
+    "permission_review": "PENDING",
+    "mapping_method": "explicit_user_approval",
+    "must_not": [
+      "use_persona_age_as_age_verification",
+      "generate_real_user_without_reference",
+      "activate_webcam_implicitly"
+    ]
+  }
+]

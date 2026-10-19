@@ -1,0 +1,33 @@
+{
+  "name": "smartcloset-stage1-demo",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "node scripts/dev.mjs",
+    "typecheck": "tsc --noEmit",
+    "test": "tsx --test tests/*.test.ts",
+    "test:browser": "tsx tests/browser.ts",
+    "build": "tsc --noEmit && vite build",
+    "preview": "vite preview --host 127.0.0.1 --port 4311 --strictPort",
+    "dev:ui": "vite --host 127.0.0.1 --port 4311 --strictPort",
+    "dev:server": "tsx server/main.ts",
+    "test:backend": "tsx --test tests/server*.test.ts tests/providers*.test.ts tests/db*.test.ts"
+  },
+  "dependencies": {
+    "@decartai/sdk": "0.2.7",
+    "react": "19.1.1",
+    "react-dom": "19.1.1"
+  },
+  "devDependencies": {
+    "@electric-sql/pglite": "0.5.8",
+    "@types/node": "24.3.1",
+    "@types/react": "19.1.12",
+    "@types/react-dom": "19.1.9",
+    "@vitejs/plugin-react": "5.0.2",
+    "playwright": "1.55.1",
+    "tsx": "4.20.5",
+    "typescript": "5.9.2",
+    "vite": "7.3.7"
+  }
+}

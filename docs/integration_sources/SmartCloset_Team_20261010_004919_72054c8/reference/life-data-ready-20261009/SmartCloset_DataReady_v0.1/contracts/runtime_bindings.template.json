@@ -1,0 +1,276 @@
+{
+  "dataset_namespace": "scprep-20261009-v1",
+  "format": "logical_interchange_not_db_schema",
+  "observed_app_schema": false,
+  "observed_running_build": false,
+  "profiles": [
+    {
+      "logical_ref": "PSU",
+      "actual_profile_id": null,
+      "actual_auth_subject": null
+    },
+    {
+      "logical_ref": "PHW",
+      "actual_profile_id": null,
+      "actual_auth_subject": null
+    }
+  ],
+  "garments": [
+    {
+      "logical_ref": "S01",
+      "actual_garment_id": null,
+      "actual_asset_id": null,
+      "actual_led_anchor_id": null,
+      "action": "UNRESOLVED_CREATE_OR_EXPLICIT_BIND"
+    },
+    {
+      "logical_ref": "S02",
+      "actual_garment_id": null,
+      "actual_asset_id": null,
+      "actual_led_anchor_id": null,
+      "action": "UNRESOLVED_CREATE_OR_EXPLICIT_BIND"
+    },
+    {
+      "logical_ref": "S03",
+      "actual_garment_id": null,
+      "actual_asset_id": null,
+      "actual_led_anchor_id": null,
+      "action": "UNRESOLVED_CREATE_OR_EXPLICIT_BIND"
+    },
+    {
+      "logical_ref": "S04",
+      "actual_garment_id": null,
+      "actual_asset_id": null,
+      "actual_led_anchor_id": null,
+      "action": "UNRESOLVED_CREATE_OR_EXPLICIT_BIND"
+    },
+    {
+      "logical_ref": "S05",
+      "actual_garment_id": null,
+      "actual_asset_id": null,
+      "actual_led_anchor_id": null,
+      "action": "UNRESOLVED_CREATE_OR_EXPLICIT_BIND"
+    },
+    {
+      "logical_ref": "S06",
+      "actual_garment_id": null,
+      "actual_asset_id": null,
+      "actual_led_anchor_id": null,
+      "action": "UNRESOLVED_CREATE_OR_EXPLICIT_BIND"
+    },
+    {
+      "logical_ref": "S07",
+      "actual_garment_id": null,
+      "actual_asset_id": null,
+      "actual_led_anchor_id": null,
+      "action": "UNRESOLVED_CREATE_OR_EXPLICIT_BIND"
+    },
+    {
+      "logical_ref": "S08",
+      "actual_garment_id": null,
+      "actual_asset_id": null,
+      "actual_led_anchor_id": null,
+      "action": "UNRESOLVED_CREATE_OR_EXPLICIT_BIND"
+    },
+    {
+      "logical_ref": "S09",
+      "actual_garment_id": null,
+      "actual_asset_id": null,
+      "actual_led_anchor_id": null,
+      "action": "UNRESOLVED_CREATE_OR_EXPLICIT_BIND"
+    },
+    {
+      "logical_ref": "S10",
+      "actual_garment_id": null,
+      "actual_asset_id": null,
+      "actual_led_anchor_id": null,
+      "action": "UNRESOLVED_CREATE_OR_EXPLICIT_BIND"
+    },
+    {
+      "logical_ref": "S11",
+      "actual_garment_id": null,
+      "actual_asset_id": null,
+      "actual_led_anchor_id": null,
+      "action": "UNRESOLVED_CREATE_OR_EXPLICIT_BIND"
+    },
+    {
+      "logical_ref": "S12",
+      "actual_garment_id": null,
+      "actual_asset_id": null,
+      "actual_led_anchor_id": null,
+      "action": "UNRESOLVED_CREATE_OR_EXPLICIT_BIND"
+    },
+    {
+      "logical_ref": "S13",
+      "actual_garment_id": null,
+      "actual_asset_id": null,
+      "actual_led_anchor_id": null,
+      "action": "UNRESOLVED_CREATE_OR_EXPLICIT_BIND"
+    },
+    {
+      "logical_ref": "S14",
+      "actual_garment_id": null,
+      "actual_asset_id": null,
+      "actual_led_anchor_id": null,
+      "action": "UNRESOLVED_CREATE_OR_EXPLICIT_BIND"
+    },
+    {
+      "logical_ref": "S15",
+      "actual_garment_id": null,
+      "actual_asset_id": null,
+      "actual_led_anchor_id": null,
+      "action": "UNRESOLVED_CREATE_OR_EXPLICIT_BIND"
+    },
+    {
+      "logical_ref": "S16",
+      "actual_garment_id": null,
+      "actual_asset_id": null,
+      "actual_led_anchor_id": null,
+      "action": "UNRESOLVED_CREATE_OR_EXPLICIT_BIND"
+    },
+    {
+      "logical_ref": "H01",
+      "actual_garment_id": null,
+      "actual_asset_id": null,
+      "actual_led_anchor_id": null,
+      "action": "UNRESOLVED_CREATE_OR_EXPLICIT_BIND"
+    },
+    {
+      "logical_ref": "H02",
+      "actual_garment_id": null,
+      "actual_asset_id": null,
+      "actual_led_anchor_id": null,
+      "action": "UNRESOLVED_CREATE_OR_EXPLICIT_BIND"
+    },
+    {
+      "logical_ref": "H03",
+      "actual_garment_id": null,
+      "actual_asset_id": null,
+      "actual_led_anchor_id": null,
+      "action": "UNRESOLVED_CREATE_OR_EXPLICIT_BIND"
+    },
+    {
+      "logical_ref": "H04",
+      "actual_garment_id": null,
+      "actual_asset_id": null,
+      "actual_led_anchor_id": null,
+      "action": "UNRESOLVED_CREATE_OR_EXPLICIT_BIND"
+    },
+    {
+      "logical_ref": "H05",
+      "actual_garment_id": null,
+      "actual_asset_id": null,
+      "actual_led_anchor_id": null,
+      "action": "UNRESOLVED_CREATE_OR_EXPLICIT_BIND"
+    },
+    {
+      "logical_ref": "H06",
+      "actual_garment_id": null,
+      "actual_asset_id": null,
+      "actual_led_anchor_id": null,
+      "action": "UNRESOLVED_CREATE_OR_EXPLICIT_BIND"
+    },
+    {
+      "logical_ref": "H07",
+      "actual_garment_id": null,
+      "actual_asset_id": null,
+      "actual_led_anchor_id": null,
+      "action": "UNRESOLVED_CREATE_OR_EXPLICIT_BIND"
+    },
+    {
+      "logical_ref": "H08",
+      "actual_garment_id": null,
+      "actual_asset_id": null,
+      "actual_led_anchor_id": null,
+      "action": "UNRESOLVED_CREATE_OR_EXPLICIT_BIND"
+    },
+    {
+      "logical_ref": "H09",
+      "actual_garment_id": null,
+      "actual_asset_id": null,
+      "actual_led_anchor_id": null,
+      "action": "UNRESOLVED_CREATE_OR_EXPLICIT_BIND"
+    },
+    {
+      "logical_ref": "H10",
+      "actual_garment_id": null,
+      "actual_asset_id": null,
+      "actual_led_anchor_id": null,
+      "action": "UNRESOLVED_CREATE_OR_EXPLICIT_BIND"
+    },
+    {
+      "logical_ref": "H11",
+      "actual_garment_id": null,
+      "actual_asset_id": null,
+      "actual_led_anchor_id": null,
+      "action": "UNRESOLVED_CREATE_OR_EXPLICIT_BIND"
+    },
+    {
+      "logical_ref": "H12",
+      "actual_garment_id": null,
+      "actual_asset_id": null,
+      "actual_led_anchor_id": null,
+      "action": "UNRESOLVED_CREATE_OR_EXPLICIT_BIND"
+    },
+    {
+      "logical_ref": "H13",
+      "actual_garment_id": null,
+      "actual_asset_id": null,
+      "actual_led_anchor_id": null,
+      "action": "UNRESOLVED_CREATE_OR_EXPLICIT_BIND"
+    },
+    {
+      "logical_ref": "H14",
+      "actual_garment_id": null,
+      "actual_asset_id": null,
+      "actual_led_anchor_id": null,
+      "action": "UNRESOLVED_CREATE_OR_EXPLICIT_BIND"
+    },
+    {
+      "logical_ref": "H15",
+      "actual_garment_id": null,
+      "actual_asset_id": null,
+      "actual_led_anchor_id": null,
+      "action": "UNRESOLVED_CREATE_OR_EXPLICIT_BIND"
+    },
+    {
+      "logical_ref": "H16",
+      "actual_garment_id": null,
+      "actual_asset_id": null,
+      "actual_led_anchor_id": null,
+      "action": "UNRESOLVED_CREATE_OR_EXPLICIT_BIND"
+    }
+  ],
+  "external_items": [
+    {
+      "logical_ref": "X01",
+      "actual_external_item_id": null,
+      "action": "UNRESOLVED"
+    },
+    {
+      "logical_ref": "X02",
+      "actual_external_item_id": null,
+      "action": "UNRESOLVED"
+    },
+    {
+      "logical_ref": "X03",
+      "actual_external_item_id": null,
+      "action": "UNRESOLVED"
+    },
+    {
+      "logical_ref": "X04",
+      "actual_external_item_id": null,
+      "action": "UNRESOLVED"
+    }
+  ],
+  "policy": {
+    "default": "dry_run_only",
+    "writes_enabled": false,
+    "target_environment": null,
+    "force_merge_by_name": false,
+    "force_merge_by_image_hash": false,
+    "same_sku_distinct_items": true,
+    "apply_condition": "isolated_test_target_and_explicit_profile_mapping_and_source/asset_review",
+    "production_apply_authorized": false
+  }
+}

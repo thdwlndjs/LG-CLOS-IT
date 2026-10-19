@@ -1,0 +1,37 @@
+/** Existing seven-schema PostgreSQL sources in PGlite memory. Never connects to Supabase. */
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import {asRole,createTestDatabase,OWNER,OTHER} from './db-harness';
+import {applyIsolatedFixture,buildIsolatedLifeFixture,readFixtureImportRecords} from './life-data-import-fixture';
+import {planLifeDataImport} from '../src/lifeData/importPlan';
+import {eventFrom,garmentFrom,outfitFrom} from '../server/domain';
+import {garmentLifeSummary} from '../src/lifeHistory';
+const countSql=`select (select count(*) from public.sc_garments)::int as garments,(select count(*) from public.sc_assets)::int as assets,(select count(*) from public.sc_outfits)::int as outfits,(select count(*) from public.sc_activity_events)::int as events,(select count(*) from public.sc_evidence_items)::int as evidence,(select count(*) from public.sc_external_items)::int as external,(select count(*) from public.sc_access_grants)::int as grants,(select count(*) from public.sc_budget_ledger)::int as budget`;
+test('existing SQL transaction imports only resolved fixture rows; read-back lifecycle is same-owner and preserves wash/plan meanings',async()=>{
+ const db=await createTestDatabase();try{const f=await buildIsolatedLifeFixture();const before=(await db.query(countSql)).rows[0];assert.deepEqual(before,{garments:0,assets:0,outfits:0,events:0,evidence:0,external:0,grants:0,budget:0});const applied=await applyIsolatedFixture(db,f.plan);assert.equal(applied.createdEntities,128);assert.deepEqual((await db.query(countSql)).rows[0],{garments:31,assets:0,outfits:17,events:68,evidence:8,external:4,grants:0,budget:0});
+ const allEvents=(await db.query<Record<string,unknown>>('select * from public.sc_activity_events')).rows,links=(await db.query<{event_id:string;garment_id:string}>('select * from public.sc_event_garments')).rows;const events=allEvents.map(row=>eventFrom(JSON.parse(JSON.stringify(row)),links.filter(l=>l.event_id===row.id).map(l=>l.garment_id))),outfits=(await db.query<Record<string,unknown>>('select * from public.sc_outfits')).rows.map(outfitFrom);
+ const s=f.bindings.garments.S01;const summary=garmentLifeSummary(s.id,s.ownerId,outfits,events,{asOf:'2026-10-09T07:40:00+09:00',timeZone:'Asia/Seoul'});assert.equal(summary.wearsAfterLastWash,3);assert.equal(summary.wearDaysAfterLastWash,3);
+ const h=f.bindings.garments.H02,blue=garmentLifeSummary(h.id,h.ownerId,outfits,events,{asOf:'2026-10-09T07:40:00+09:00',timeZone:'Asia/Seoul'});assert.equal(blue.wearsAfterLastWash,2);assert.equal(blue.wearDaysAfterLastWash,1);
+ const planned=events.find(e=>e.sourceRef==='HW-PLAN-09')!;assert.equal(planned.kind,'plan');assert.equal(planned.date,'2026-10-09');assert.equal(planned.inputSource,'demo');assert.equal(events.find(e=>e.sourceRef==='SU-IRON-08')?.lifeKind,'iron_completed');assert.equal((await db.query('select * from public.sc_assets')).rows.length,0);
+ }finally{await db.close();}
+});
+test('exact reimport creates zero duplicates; changed source and later user edit remain conflict without overwrite',async()=>{
+ const db=await createTestDatabase();try{const f=await buildIsolatedLifeFixture(),first=await applyIsolatedFixture(db,f.plan),before=(await db.query(countSql)).rows[0];const receipts=await readFixtureImportRecords(db,f.plan,first.receipts);assert.equal(receipts.filter(r=>r.currentRowHash!==r.appliedRowHash).length,0);const repeat=planLifeDataImport({...f,existing:{...f.existing,imports:receipts}});assert.equal(repeat.counts.CREATE,0);assert.equal(repeat.counts.UNCHANGED,128);assert.equal((await applyIsolatedFixture(db,repeat)).insertedRows,0);assert.deepEqual((await db.query(countSql)).rows[0],before);
+ const g=f.bindings.garments.S01;await db.query('update public.sc_garments set name=$1,revision=revision+1 where id=$2',['격리 사용자가 나중에 바꾼 이름',g.id]);const changedReceipts=await readFixtureImportRecords(db,f.plan,first.receipts),changed=planLifeDataImport({...f,existing:{...f.existing,imports:changedReceipts}});assert.equal(changed.items.find(i=>i.entity==='garment'&&i.ref==='S01')?.status,'CONFLICT');await assert.rejects(applyIsolatedFixture(db,changed),/isolated_fixture_contract_required/);assert.equal((await db.query<{name:string}>('select name from public.sc_garments where id=$1',[g.id])).rows[0].name,'격리 사용자가 나중에 바꾼 이름');
+ const pack=structuredClone(f.pack);pack.activity_events.find(e=>e.ref==='HW-PLAN-09')!.details.calendar_date='2026-10-10';const sourceChange=planLifeDataImport({...f,pack,existing:{...f.existing,imports:receipts}});assert.equal(sourceChange.items.find(i=>i.entity==='event'&&i.ref==='HW-PLAN-09')?.status,'CONFLICT');assert.deepEqual((await db.query(countSql)).rows[0],before);
+ }finally{await db.close();}
+});
+test('injected mid-batch failure rolls every inserted entity and join back; safe re-run starts from original state',async()=>{
+ const db=await createTestDatabase();try{const f=await buildIsolatedLifeFixture(),before=(await db.query(countSql)).rows[0];await assert.rejects(applyIsolatedFixture(db,f.plan,{failAfterRows:90}),/injected_partial_failure/);assert.deepEqual((await db.query(countSql)).rows[0],before);assert.equal((await db.query('select * from public.sc_outfit_items')).rows.length,0);assert.equal((await db.query('select * from public.sc_event_garments')).rows.length,0);const retry=await applyIsolatedFixture(db,f.plan);assert.equal(retry.createdEntities,128);
+ }finally{await db.close();}
+});
+test('existing RLS denies other-owner rows and authenticated direct mutation; no fictional family grant is created',async()=>{
+ const db=await createTestDatabase();try{const f=await buildIsolatedLifeFixture();await applyIsolatedFixture(db,f.plan);await asRole(db,'authenticated',OWNER);const garments=(await db.query<Record<string,unknown>>('select * from public.sc_garments')).rows.map(g=>garmentFrom(g,[]));assert.equal(garments.length,15);assert.ok(garments.every(g=>g.ownerId===OWNER));assert.equal((await db.query('select * from public.sc_garments where id=$1',[f.bindings.garments.H01.id])).rows.length,0);assert.equal((await db.query('select * from public.sc_activity_events where owner_id=$1',[OTHER])).rows.length,0);await assert.rejects(db.query('update public.sc_garments set name=$1 where id=$2',['bad',f.bindings.garments.S01.id]),/permission denied/);assert.equal((await db.query('select * from public.sc_access_grants')).rows.length,0);
+ await asRole(db,'authenticated',OTHER);assert.equal((await db.query('select * from public.sc_garments')).rows.length,16);assert.equal((await db.query('select * from public.sc_garments where id=$1',[f.bindings.garments.S02.id])).rows.length,0);
+ await asRole(db,'authenticated',OWNER);assert.equal((await db.query('select * from public.sc_garments')).rows.length,15);
+ }finally{await db.close();}
+});
+test('fixture writer itself rejects remote or unidentified database targets before a statement',async()=>{
+ const db=await createTestDatabase();try{const f=await buildIsolatedLifeFixture();for(const target of [{...f.target,environment:'remote' as const,projectId:'slxgcgtnxkchxywgsmuk'},{...f.target,environment:'unknown' as const,projectId:null},{...f.target,projectId:'not-memory'}])await assert.rejects(applyIsolatedFixture(db,{...f.plan,target}),/isolated_fixture_contract_required/);assert.equal((await db.query('select * from public.sc_garments')).rows.length,0);
+ }finally{await db.close();}
+});

@@ -1,0 +1,269 @@
+{
+  "status": "INPUT_PREPARED_NOT_SUBMITTED",
+  "logical_ids_not_runtime_ids": true,
+  "profile_ref": "PHW",
+  "display_name": "최휘재",
+  "context_ref": "CTX-HW-RAIN",
+  "as_of": "2026-10-09T07:40:00+09:00",
+  "purpose": "출근·회의",
+  "weather": {
+    "status": "available",
+    "kind": "forecast",
+    "provenance": {
+      "kind": "synthetic_weather_fixture",
+      "dataset_namespace": "scprep-20261009-v1"
+    },
+    "location_label": "서울 시연 지역",
+    "issued_at": "2026-10-09T06:00:00+09:00",
+    "valid_from": "2026-10-09T07:00:00+09:00",
+    "valid_to": "2026-10-09T10:00:00+09:00",
+    "precipitation": "rain",
+    "temperature_c": 18,
+    "real_weather_fetched": false
+  },
+  "preferences": [
+    {
+      "ref": "PREF-HW-NEUTRAL",
+      "profile_ref": "PHW",
+      "kind": "explicit_preference",
+      "key": "palette",
+      "value": [
+        "white",
+        "navy",
+        "charcoal",
+        "black"
+      ],
+      "context": "commute",
+      "note": "출근에는 차분한 색 조합을 선호하도록 설정",
+      "provenance": {
+        "kind": "scenario_authored",
+        "dataset_namespace": "scprep-20261009-v1"
+      }
+    },
+    {
+      "ref": "PREF-HW-RAIN",
+      "profile_ref": "PHW",
+      "kind": "explicit_preference",
+      "key": "bottom_colour",
+      "value": [
+        "black",
+        "navy"
+      ],
+      "context": "rain_forecast",
+      "note": "비 예보 날에는 어두운 하의를 선호하도록 설정. 방수 성능 주장 아님.",
+      "provenance": {
+        "kind": "scenario_authored",
+        "dataset_namespace": "scprep-20261009-v1"
+      }
+    },
+    {
+      "ref": "LIKE-01",
+      "profile_ref": "PHW",
+      "kind": "like",
+      "outfit_ref": "LH01",
+      "occurred_at": "2026-09-25T21:00:00+09:00",
+      "provenance": {
+        "kind": "scenario_authored",
+        "dataset_namespace": "scprep-20261009-v1"
+      }
+    },
+    {
+      "ref": "LIKE-02",
+      "profile_ref": "PHW",
+      "kind": "like",
+      "outfit_ref": "LH02",
+      "occurred_at": "2026-09-26T21:00:00+09:00",
+      "provenance": {
+        "kind": "scenario_authored",
+        "dataset_namespace": "scprep-20261009-v1"
+      }
+    },
+    {
+      "ref": "LIKE-03",
+      "profile_ref": "PHW",
+      "kind": "like",
+      "outfit_ref": "LH06",
+      "occurred_at": "2026-09-27T21:00:00+09:00",
+      "provenance": {
+        "kind": "scenario_authored",
+        "dataset_namespace": "scprep-20261009-v1"
+      }
+    }
+  ],
+  "wardrobe": [
+    {
+      "ref": "H01",
+      "name": "화이트 옥스퍼드 셔츠",
+      "category": "top",
+      "colour": "white",
+      "product_ref": "P01",
+      "availability": "no_recorded_block_not_cleanliness_confirmation",
+      "catalog_media_ready": false,
+      "tryon_ready": false
+    },
+    {
+      "ref": "H02",
+      "name": "라이트블루 옥스퍼드 셔츠",
+      "category": "top",
+      "colour": "light_blue",
+      "product_ref": "P02",
+      "availability": "no_recorded_block_not_cleanliness_confirmation",
+      "catalog_media_ready": false,
+      "tryon_ready": false
+    },
+    {
+      "ref": "H03",
+      "name": "다크그레이 맨투맨",
+      "category": "top",
+      "colour": "dark_grey",
+      "product_ref": "P07",
+      "availability": "user_marked_laundry_pending",
+      "catalog_media_ready": false,
+      "tryon_ready": false
+    },
+    {
+      "ref": "H04",
+      "name": "올리브 오버셔츠",
+      "category": "top",
+      "colour": "olive",
+      "product_ref": null,
+      "availability": "no_recorded_block_not_cleanliness_confirmation",
+      "catalog_media_ready": false,
+      "tryon_ready": false
+    },
+    {
+      "ref": "H05",
+      "name": "화이트 반소매 티셔츠",
+      "category": "top",
+      "colour": "white",
+      "product_ref": null,
+      "availability": "drying_unconfirmed",
+      "catalog_media_ready": false,
+      "tryon_ready": false
+    },
+    {
+      "ref": "H06",
+      "name": "블랙 후드",
+      "category": "top",
+      "colour": "black",
+      "product_ref": null,
+      "availability": "no_recorded_block_not_cleanliness_confirmation",
+      "catalog_media_ready": false,
+      "tryon_ready": false
+    },
+    {
+      "ref": "H07",
+      "name": "크림 케이블 니트",
+      "category": "top",
+      "colour": "cream",
+      "product_ref": null,
+      "availability": "no_recorded_block_not_cleanliness_confirmation",
+      "catalog_media_ready": false,
+      "tryon_ready": false
+    },
+    {
+      "ref": "H08",
+      "name": "블랙 트윌 팬츠",
+      "category": "bottom",
+      "colour": "black",
+      "product_ref": "P03",
+      "availability": "no_recorded_block_not_cleanliness_confirmation",
+      "catalog_media_ready": false,
+      "tryon_ready": false
+    },
+    {
+      "ref": "H09",
+      "name": "베이지 치노",
+      "category": "bottom",
+      "colour": "beige",
+      "product_ref": null,
+      "availability": "no_recorded_block_not_cleanliness_confirmation",
+      "catalog_media_ready": false,
+      "tryon_ready": false
+    },
+    {
+      "ref": "H10",
+      "name": "인디고 스트레이트 데님",
+      "category": "bottom",
+      "colour": "indigo",
+      "product_ref": null,
+      "availability": "no_recorded_block_not_cleanliness_confirmation",
+      "catalog_media_ready": false,
+      "tryon_ready": false
+    },
+    {
+      "ref": "H11",
+      "name": "네이비 여름 팬츠",
+      "category": "bottom",
+      "colour": "navy",
+      "product_ref": null,
+      "availability": "no_recorded_block_not_cleanliness_confirmation",
+      "catalog_media_ready": false,
+      "tryon_ready": false
+    },
+    {
+      "ref": "H12",
+      "name": "네이비 블레이저",
+      "category": "outer",
+      "colour": "navy",
+      "product_ref": null,
+      "availability": "no_recorded_block_not_cleanliness_confirmation",
+      "catalog_media_ready": false,
+      "tryon_ready": false
+    },
+    {
+      "ref": "H13",
+      "name": "베이지 트렌치",
+      "category": "outer",
+      "colour": "beige",
+      "product_ref": null,
+      "availability": "no_recorded_block_not_cleanliness_confirmation",
+      "catalog_media_ready": false,
+      "tryon_ready": false
+    },
+    {
+      "ref": "H14",
+      "name": "올리브 가벼운 재킷",
+      "category": "outer",
+      "colour": "olive",
+      "product_ref": null,
+      "availability": "no_recorded_block_not_cleanliness_confirmation",
+      "catalog_media_ready": false,
+      "tryon_ready": false
+    },
+    {
+      "ref": "H15",
+      "name": "브라운 앵클부츠",
+      "category": "shoes",
+      "colour": "brown",
+      "product_ref": null,
+      "availability": "no_recorded_block_not_cleanliness_confirmation",
+      "catalog_media_ready": false,
+      "tryon_ready": false
+    },
+    {
+      "ref": "H16",
+      "name": "블랙 백팩",
+      "category": "accessory",
+      "colour": "black",
+      "product_ref": null,
+      "availability": "no_recorded_block_not_cleanliness_confirmation",
+      "catalog_media_ready": false,
+      "tryon_ready": false
+    }
+  ],
+  "today_suggestion_blocked_refs": [
+    "H03",
+    "H05"
+  ],
+  "rules": [
+    "owned_only_home_suggestions",
+    "no_unverified_weather_or_preference_claim",
+    "include_evidence_refs_for_claims",
+    "unknown_status_is_not_automatic_global_exclusion",
+    "manual_mixing_and_card_save_remain_possible",
+    "do_not_change_records",
+    "do_not_reuse_fixed_answers_as_live_output"
+  ],
+  "live_response": null
+}

@@ -1,0 +1,21 @@
+import {useState} from 'react';
+import {createRoot} from 'react-dom/client';
+import {DemoApp} from '../src/core/app';
+import {createSeed} from '../src/core/seed';
+import {MirrorHome} from '../src/MirrorHome';
+import {MirrorGarmentGrid} from '../src/MirrorGarmentGrid';
+import {PhotoWardrobeStage} from '../src/PhotoWardrobeStage';
+import '../src/styles.css';import '../src/mirror-experience.css';import '../src/mirror-wardrobe.css';
+const seed=createSeed(),owner=seed.activeProfileId;
+seed.profiles[0].name='아주 긴 전체 프로필 이름을 보존하는 썸네일 검증 사용자';
+seed.outfits[0].name='아주 긴 저장 코디 이름이 좁은 카드에서 여러 줄로 무너지지 않는 조합';
+seed.outfits[0].items={top:'g-knit',bottom:'g-slacks',outer:'g-trench',bag:'g-bag'};
+seed.garments.forEach(garment=>{garment.name=`${garment.name} · 전체 이름과 고유 의류 ID를 그대로 보존하는 긴 설명`;});
+seed.garments.find(g=>g.id==='g-knit')!.asset!.url='/__thumbnail_slow__';
+seed.garments.find(g=>g.id==='g-trench')!.asset!.url='/__thumbnail_failure__';
+seed.garments.find(g=>g.id==='g-bag')!.asset!.version=2;
+seed.externalItems=[{id:'fixture-external',ownerId:owner,name:'긴 외부 상품 후보 이름을 소유 의류로 바꾸지 않는 확인 자료',asset:{id:'fixture-external-asset',version:3,source:'packaged',url:'/assets/shoes.png'},sourceLabel:'격리 시험 자료',sourceUrl:'https://example.invalid/not-requested',category:'shoes'}];
+seed.outfits[0].externalItems={shoes:{externalItemId:'fixture-external',assetId:'fixture-external-asset',assetVersion:3,name:seed.externalItems[0].name,sourceLabel:'격리 시험 자료',sourceUrl:'https://example.invalid/not-requested'}};
+const app=new DemoApp(undefined,()=>seed);(window as any).thumbnailApp=app;(window as any).thumbnailOpened=null;
+function Fixture(){const[view,setView]=useState('home'),[page,setPage]=useState(0);return <><PhotoWardrobeStage anchorIds={[]}><div className="mx-surface"><nav className="mx-nav"><button onClick={()=>setView('home')}>home</button><button onClick={()=>setView('grid')}>grid</button></nav>{view==='home'?<MirrorHome app={app} onOpenOutfit={outfit=>{(window as any).thumbnailOpened=structuredClone(outfit);}}/>:<section className="mx-work mx-wardrobe"><h1>누락 사진 검사</h1><MirrorGarmentGrid garments={app.garments()} index={page} onIndexChange={setPage} onSelect={garment=>{(window as any).thumbnailSelected=garment.id;}}/></section>}</div></PhotoWardrobeStage></>;}
+createRoot(document.getElementById('root')!).render(<Fixture/>);

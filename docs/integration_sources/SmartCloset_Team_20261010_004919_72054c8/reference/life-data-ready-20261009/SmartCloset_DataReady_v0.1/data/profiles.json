@@ -1,0 +1,38 @@
+[
+  {
+    "ref": "PSU",
+    "display_name": "김수진",
+    "persona_age": 42,
+    "persona_age_is_real_user_age": false,
+    "profile_kind": "fictional_demo",
+    "auth_user_id": null,
+    "household_ref": null,
+    "allowed_profile_refs": [
+      "PSU"
+    ],
+    "person_input_asset_ref": null,
+    "primary_scenario": "CARE",
+    "provenance": {
+      "kind": "scenario_authored",
+      "dataset_namespace": "scprep-20261009-v1"
+    }
+  },
+  {
+    "ref": "PHW",
+    "display_name": "최휘재",
+    "persona_age": 27,
+    "persona_age_is_real_user_age": false,
+    "profile_kind": "fictional_demo",
+    "auth_user_id": null,
+    "household_ref": null,
+    "allowed_profile_refs": [
+      "PHW"
+    ],
+    "person_input_asset_ref": null,
+    "primary_scenario": "OUTFIT",
+    "provenance": {
+      "kind": "scenario_authored",
+      "dataset_namespace": "scprep-20261009-v1"
+    }
+  }
+]

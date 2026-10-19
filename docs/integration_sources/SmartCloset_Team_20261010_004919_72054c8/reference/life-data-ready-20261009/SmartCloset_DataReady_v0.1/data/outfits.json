@@ -1,0 +1,545 @@
+[
+  {
+    "ref": "LS01",
+    "owner_ref": "PSU",
+    "title": "베이지 셔츠와 블랙 데님",
+    "title_source": "scenario_authored",
+    "items": [
+      {
+        "slot": "top",
+        "kind": "owned",
+        "ref": "S01"
+      },
+      {
+        "slot": "bottom",
+        "kind": "owned",
+        "ref": "S08"
+      },
+      {
+        "slot": "shoes",
+        "kind": "owned",
+        "ref": "S15"
+      }
+    ],
+    "bookmarked": true,
+    "fitting_result_ref": null,
+    "cover_policy": "composition_from_valid_assets",
+    "created_at": "2026-09-24T20:00:00+09:00",
+    "provenance": {
+      "kind": "authored_demo_saved_outfit",
+      "dataset_namespace": "scprep-20261009-v1"
+    }
+  },
+  {
+    "ref": "LS02",
+    "owner_ref": "PSU",
+    "title": "화이트 셔츠와 차콜 슬랙스",
+    "title_source": "scenario_authored",
+    "items": [
+      {
+        "slot": "top",
+        "kind": "owned",
+        "ref": "S02"
+      },
+      {
+        "slot": "bottom",
+        "kind": "owned",
+        "ref": "S11"
+      },
+      {
+        "slot": "shoes",
+        "kind": "owned",
+        "ref": "S15"
+      }
+    ],
+    "bookmarked": true,
+    "fitting_result_ref": null,
+    "cover_policy": "composition_from_valid_assets",
+    "created_at": "2026-09-24T20:00:00+09:00",
+    "provenance": {
+      "kind": "authored_demo_saved_outfit",
+      "dataset_namespace": "scprep-20261009-v1"
+    }
+  },
+  {
+    "ref": "LS03",
+    "owner_ref": "PSU",
+    "title": "편안한 주말",
+    "title_source": "scenario_authored",
+    "items": [
+      {
+        "slot": "top",
+        "kind": "owned",
+        "ref": "S04"
+      },
+      {
+        "slot": "bottom",
+        "kind": "owned",
+        "ref": "S09"
+      },
+      {
+        "slot": "shoes",
+        "kind": "owned",
+        "ref": "S15"
+      }
+    ],
+    "bookmarked": true,
+    "fitting_result_ref": null,
+    "cover_policy": "composition_from_valid_assets",
+    "created_at": "2026-09-24T20:00:00+09:00",
+    "provenance": {
+      "kind": "authored_demo_saved_outfit",
+      "dataset_namespace": "scprep-20261009-v1"
+    }
+  },
+  {
+    "ref": "LS04",
+    "owner_ref": "PSU",
+    "title": "네이비 니트와 스커트",
+    "title_source": "scenario_authored",
+    "items": [
+      {
+        "slot": "top",
+        "kind": "owned",
+        "ref": "S06"
+      },
+      {
+        "slot": "bottom",
+        "kind": "owned",
+        "ref": "S10"
+      },
+      {
+        "slot": "accessory",
+        "kind": "owned",
+        "ref": "S16"
+      }
+    ],
+    "bookmarked": true,
+    "fitting_result_ref": null,
+    "cover_policy": "composition_from_valid_assets",
+    "created_at": "2026-09-24T20:00:00+09:00",
+    "provenance": {
+      "kind": "authored_demo_saved_outfit",
+      "dataset_namespace": "scprep-20261009-v1"
+    }
+  },
+  {
+    "ref": "LS05",
+    "owner_ref": "PSU",
+    "title": "크림 카디건 조합",
+    "title_source": "scenario_authored",
+    "items": [
+      {
+        "slot": "top",
+        "kind": "owned",
+        "ref": "S03"
+      },
+      {
+        "slot": "bottom",
+        "kind": "owned",
+        "ref": "S08"
+      }
+    ],
+    "bookmarked": true,
+    "fitting_result_ref": null,
+    "cover_policy": "composition_from_valid_assets",
+    "created_at": "2026-09-24T20:00:00+09:00",
+    "provenance": {
+      "kind": "authored_demo_saved_outfit",
+      "dataset_namespace": "scprep-20261009-v1"
+    }
+  },
+  {
+    "ref": "LS06",
+    "owner_ref": "PSU",
+    "title": "스트라이프와 트렌치",
+    "title_source": "scenario_authored",
+    "items": [
+      {
+        "slot": "top",
+        "kind": "owned",
+        "ref": "S07"
+      },
+      {
+        "slot": "bottom",
+        "kind": "owned",
+        "ref": "S11"
+      },
+      {
+        "slot": "outer",
+        "kind": "owned",
+        "ref": "S12"
+      }
+    ],
+    "bookmarked": true,
+    "fitting_result_ref": null,
+    "cover_policy": "composition_from_valid_assets",
+    "created_at": "2026-09-24T20:00:00+09:00",
+    "provenance": {
+      "kind": "authored_demo_saved_outfit",
+      "dataset_namespace": "scprep-20261009-v1"
+    }
+  },
+  {
+    "ref": "LS07",
+    "owner_ref": "PSU",
+    "title": "지난 계절의 원피스",
+    "title_source": "scenario_authored",
+    "items": [
+      {
+        "slot": "dress",
+        "kind": "owned",
+        "ref": "S14"
+      },
+      {
+        "slot": "shoes",
+        "kind": "owned",
+        "ref": "S15"
+      }
+    ],
+    "bookmarked": true,
+    "fitting_result_ref": null,
+    "cover_policy": "composition_from_valid_assets",
+    "created_at": "2026-09-24T20:00:00+09:00",
+    "provenance": {
+      "kind": "authored_demo_saved_outfit",
+      "dataset_namespace": "scprep-20261009-v1"
+    }
+  },
+  {
+    "ref": "LS08",
+    "owner_ref": "PSU",
+    "title": "반소매 기본 조합",
+    "title_source": "scenario_authored",
+    "items": [
+      {
+        "slot": "top",
+        "kind": "owned",
+        "ref": "S05"
+      },
+      {
+        "slot": "bottom",
+        "kind": "owned",
+        "ref": "S09"
+      },
+      {
+        "slot": "accessory",
+        "kind": "owned",
+        "ref": "S16"
+      }
+    ],
+    "bookmarked": true,
+    "fitting_result_ref": null,
+    "cover_policy": "composition_from_valid_assets",
+    "created_at": "2026-09-24T20:00:00+09:00",
+    "provenance": {
+      "kind": "authored_demo_saved_outfit",
+      "dataset_namespace": "scprep-20261009-v1"
+    }
+  },
+  {
+    "ref": "LS09",
+    "owner_ref": "PSU",
+    "title": "카멜 카디건 구매 전 비교",
+    "title_source": "scenario_authored",
+    "items": [
+      {
+        "slot": "bottom",
+        "kind": "owned",
+        "ref": "S11"
+      },
+      {
+        "slot": "top",
+        "kind": "external",
+        "ref": "X02"
+      }
+    ],
+    "bookmarked": true,
+    "fitting_result_ref": null,
+    "cover_policy": "composition_from_valid_assets",
+    "created_at": "2026-09-24T20:00:00+09:00",
+    "provenance": {
+      "kind": "authored_demo_saved_outfit",
+      "dataset_namespace": "scprep-20261009-v1"
+    }
+  },
+  {
+    "ref": "LH01",
+    "owner_ref": "PHW",
+    "title": "화이트 셔츠 출근 코디",
+    "title_source": "scenario_authored",
+    "items": [
+      {
+        "slot": "top",
+        "kind": "owned",
+        "ref": "H01"
+      },
+      {
+        "slot": "bottom",
+        "kind": "owned",
+        "ref": "H08"
+      },
+      {
+        "slot": "shoes",
+        "kind": "owned",
+        "ref": "H15"
+      }
+    ],
+    "bookmarked": true,
+    "fitting_result_ref": null,
+    "cover_policy": "composition_from_valid_assets",
+    "created_at": "2026-09-24T20:00:00+09:00",
+    "provenance": {
+      "kind": "authored_demo_saved_outfit",
+      "dataset_namespace": "scprep-20261009-v1"
+    }
+  },
+  {
+    "ref": "LH02",
+    "owner_ref": "PHW",
+    "title": "블루 셔츠 출근 코디",
+    "title_source": "scenario_authored",
+    "items": [
+      {
+        "slot": "top",
+        "kind": "owned",
+        "ref": "H02"
+      },
+      {
+        "slot": "bottom",
+        "kind": "owned",
+        "ref": "H08"
+      },
+      {
+        "slot": "shoes",
+        "kind": "owned",
+        "ref": "H15"
+      }
+    ],
+    "bookmarked": true,
+    "fitting_result_ref": null,
+    "cover_policy": "composition_from_valid_assets",
+    "created_at": "2026-09-24T20:00:00+09:00",
+    "provenance": {
+      "kind": "authored_demo_saved_outfit",
+      "dataset_namespace": "scprep-20261009-v1"
+    }
+  },
+  {
+    "ref": "LH03",
+    "owner_ref": "PHW",
+    "title": "맨투맨과 인디고 데님",
+    "title_source": "scenario_authored",
+    "items": [
+      {
+        "slot": "top",
+        "kind": "owned",
+        "ref": "H03"
+      },
+      {
+        "slot": "bottom",
+        "kind": "owned",
+        "ref": "H10"
+      },
+      {
+        "slot": "shoes",
+        "kind": "owned",
+        "ref": "H15"
+      }
+    ],
+    "bookmarked": true,
+    "fitting_result_ref": null,
+    "cover_policy": "composition_from_valid_assets",
+    "created_at": "2026-09-24T20:00:00+09:00",
+    "provenance": {
+      "kind": "authored_demo_saved_outfit",
+      "dataset_namespace": "scprep-20261009-v1"
+    }
+  },
+  {
+    "ref": "LH04",
+    "owner_ref": "PHW",
+    "title": "올리브와 베이지",
+    "title_source": "scenario_authored",
+    "items": [
+      {
+        "slot": "top",
+        "kind": "owned",
+        "ref": "H04"
+      },
+      {
+        "slot": "bottom",
+        "kind": "owned",
+        "ref": "H09"
+      },
+      {
+        "slot": "accessory",
+        "kind": "owned",
+        "ref": "H16"
+      }
+    ],
+    "bookmarked": true,
+    "fitting_result_ref": null,
+    "cover_policy": "composition_from_valid_assets",
+    "created_at": "2026-09-24T20:00:00+09:00",
+    "provenance": {
+      "kind": "authored_demo_saved_outfit",
+      "dataset_namespace": "scprep-20261009-v1"
+    }
+  },
+  {
+    "ref": "LH05",
+    "owner_ref": "PHW",
+    "title": "주말 후드 조합",
+    "title_source": "scenario_authored",
+    "items": [
+      {
+        "slot": "top",
+        "kind": "owned",
+        "ref": "H06"
+      },
+      {
+        "slot": "bottom",
+        "kind": "owned",
+        "ref": "H10"
+      },
+      {
+        "slot": "accessory",
+        "kind": "owned",
+        "ref": "H16"
+      }
+    ],
+    "bookmarked": true,
+    "fitting_result_ref": null,
+    "cover_policy": "composition_from_valid_assets",
+    "created_at": "2026-09-24T20:00:00+09:00",
+    "provenance": {
+      "kind": "authored_demo_saved_outfit",
+      "dataset_namespace": "scprep-20261009-v1"
+    }
+  },
+  {
+    "ref": "LH06",
+    "owner_ref": "PHW",
+    "title": "크림 니트와 트렌치",
+    "title_source": "scenario_authored",
+    "items": [
+      {
+        "slot": "top",
+        "kind": "owned",
+        "ref": "H07"
+      },
+      {
+        "slot": "bottom",
+        "kind": "owned",
+        "ref": "H08"
+      },
+      {
+        "slot": "outer",
+        "kind": "owned",
+        "ref": "H13"
+      }
+    ],
+    "bookmarked": true,
+    "fitting_result_ref": null,
+    "cover_policy": "composition_from_valid_assets",
+    "created_at": "2026-09-24T20:00:00+09:00",
+    "provenance": {
+      "kind": "authored_demo_saved_outfit",
+      "dataset_namespace": "scprep-20261009-v1"
+    }
+  },
+  {
+    "ref": "LH07",
+    "owner_ref": "PHW",
+    "title": "지난 계절의 가벼운 조합",
+    "title_source": "scenario_authored",
+    "items": [
+      {
+        "slot": "top",
+        "kind": "owned",
+        "ref": "H05"
+      },
+      {
+        "slot": "bottom",
+        "kind": "owned",
+        "ref": "H11"
+      }
+    ],
+    "bookmarked": true,
+    "fitting_result_ref": null,
+    "cover_policy": "composition_from_valid_assets",
+    "created_at": "2026-09-24T20:00:00+09:00",
+    "provenance": {
+      "kind": "authored_demo_saved_outfit",
+      "dataset_namespace": "scprep-20261009-v1"
+    }
+  },
+  {
+    "ref": "LH08",
+    "owner_ref": "PHW",
+    "title": "셔츠와 네이비 재킷",
+    "title_source": "scenario_authored",
+    "items": [
+      {
+        "slot": "top",
+        "kind": "owned",
+        "ref": "H01"
+      },
+      {
+        "slot": "bottom",
+        "kind": "owned",
+        "ref": "H09"
+      },
+      {
+        "slot": "outer",
+        "kind": "owned",
+        "ref": "H12"
+      }
+    ],
+    "bookmarked": true,
+    "fitting_result_ref": null,
+    "cover_policy": "composition_from_valid_assets",
+    "created_at": "2026-09-24T20:00:00+09:00",
+    "provenance": {
+      "kind": "authored_demo_saved_outfit",
+      "dataset_namespace": "scprep-20261009-v1"
+    }
+  },
+  {
+    "ref": "LH09",
+    "owner_ref": "PHW",
+    "title": "울 재킷 구매 전 비교",
+    "title_source": "scenario_authored",
+    "items": [
+      {
+        "slot": "top",
+        "kind": "owned",
+        "ref": "H01"
+      },
+      {
+        "slot": "bottom",
+        "kind": "owned",
+        "ref": "H08"
+      },
+      {
+        "slot": "shoes",
+        "kind": "owned",
+        "ref": "H15"
+      },
+      {
+        "slot": "outer",
+        "kind": "external",
+        "ref": "X01"
+      }
+    ],
+    "bookmarked": true,
+    "fitting_result_ref": null,
+    "cover_policy": "composition_from_valid_assets",
+    "created_at": "2026-09-24T20:00:00+09:00",
+    "provenance": {
+      "kind": "authored_demo_saved_outfit",
+      "dataset_namespace": "scprep-20261009-v1"
+    }
+  }
+]

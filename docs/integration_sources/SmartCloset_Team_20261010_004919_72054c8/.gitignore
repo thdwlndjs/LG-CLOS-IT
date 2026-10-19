@@ -1,0 +1,13 @@
+node_modules/
+dist/
+tmp/
+.env*
+!.env.example
+*.log
+public/local-reference/
+evidence/*.png
+evidence/*.webm
+evidence/*.mp4
+evidence/*.jpg
+evidence/browser-results*.json
+test-results/

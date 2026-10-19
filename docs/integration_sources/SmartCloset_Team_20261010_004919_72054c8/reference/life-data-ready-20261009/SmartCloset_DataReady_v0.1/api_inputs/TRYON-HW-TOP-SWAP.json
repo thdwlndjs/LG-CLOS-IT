@@ -1,0 +1,56 @@
+{
+  "status": "BLOCKED_ASSET_MAPPING",
+  "role": "application_input_brief_not_provider_payload",
+  "profile_ref": "PHW",
+  "base_outfit_ref": "LH01",
+  "replace_slot": "top",
+  "candidate_garment_refs": [
+    "H01",
+    "H02",
+    "H04"
+  ],
+  "locked_items": [
+    {
+      "slot": "bottom",
+      "ref": "H08"
+    },
+    {
+      "slot": "shoes",
+      "ref": "H15"
+    }
+  ],
+  "external_comparison": {
+    "outfit_ref": "LH09",
+    "external_item_ref": "X01"
+  },
+  "person_asset_ref": null,
+  "reference_images": null,
+  "provider_config": "reuse_current_verified_adapter",
+  "provider_submit_permitted": false,
+  "result_binding": [
+    "profile_id",
+    "profile_epoch",
+    "draft_id",
+    "draft_revision",
+    "outfit_snapshot_hash",
+    "person_asset_id_and_version",
+    "garment_asset_ids_and_versions",
+    "operation_id",
+    "provider_job_id_if_available"
+  ],
+  "success_requires": [
+    "same_person",
+    "selected_top_and_bottom_visible",
+    "locked_items_retained",
+    "no_unapproved_appearance_change",
+    "matching_video_visible_in_mirror",
+    "foreground_mask_matches_output_frame",
+    "stop_releases_stream_and_cost_path"
+  ],
+  "not_proven_by": [
+    "static_image_display",
+    "one_upper_body_edit",
+    "queued_job_response",
+    "template_card_saved"
+  ]
+}

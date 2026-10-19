@@ -1,0 +1,970 @@
+{
+  "scope": "independent local module, NOT team integration or provider success",
+  "origin": "http://127.0.0.1:4393",
+  "results": [
+    {
+      "name": "Empty draft cannot save",
+      "status": "PASS",
+      "scope": "actual local browser + native localStorage"
+    },
+    {
+      "name": "Select four exact garments, auto flatlay without title or fitting",
+      "status": "PASS",
+      "scope": "actual local browser + native localStorage"
+    },
+    {
+      "name": "Double save creates one card with exact composition",
+      "status": "PASS",
+      "scope": "actual local browser + native localStorage"
+    },
+    {
+      "name": "Replace top preserves bottom shoes bag",
+      "status": "PASS",
+      "scope": "actual local browser + native localStorage"
+    },
+    {
+      "name": "Saved reuse makes a new draft, unchanged re-save adds no duplicate",
+      "status": "PASS",
+      "scope": "actual local browser + native localStorage"
+    },
+    {
+      "name": "Optional user title persists without changing original",
+      "status": "PASS",
+      "scope": "actual local browser + native localStorage"
+    },
+    {
+      "name": "Profile switch isolates draft candidates and cards",
+      "status": "PASS",
+      "scope": "actual local browser + native localStorage"
+    },
+    {
+      "name": "External candidate remains external without location or wear",
+      "status": "PASS",
+      "scope": "actual local browser + native localStorage"
+    },
+    {
+      "name": "Actual transparent PNG downloads and has correct dimensions",
+      "status": "PASS",
+      "scope": "actual local browser + native localStorage"
+    },
+    {
+      "name": "Profile roundtrip restores exact own draft and saved cards",
+      "status": "PASS",
+      "scope": "actual local browser + native localStorage"
+    },
+    {
+      "name": "Reload uses native persisted browser data",
+      "status": "PASS",
+      "scope": "actual local browser + native localStorage"
+    },
+    {
+      "name": "Narrow viewport keeps card and actual controls within viewport",
+      "status": "PASS",
+      "scope": "actual local browser + native localStorage"
+    },
+    {
+      "name": "Browser process and local server restart retain native storage",
+      "status": "PASS",
+      "scope": "actual local browser + native localStorage"
+    },
+    {
+      "name": "Explicit missing-photo fixture cannot masquerade as successful export",
+      "status": "PASS",
+      "scope": "explicit isolated HTTP404 fault fixture, native persisted cards"
+    },
+    {
+      "name": "Concurrent tab conflict remains visible and never says reuse succeeded",
+      "status": "PASS",
+      "scope": "actual local browser + native localStorage"
+    }
+  ],
+  "pageErrors": [],
+  "requests": [
+    {
+      "path": "/reference/prototype/index.html",
+      "method": "GET",
+      "allowed": true
+    },
+    {
+      "path": "/reference/prototype/style.css",
+      "method": "GET",
+      "allowed": true
+    },
+    {
+      "path": "/reference/prototype/data/demo-pack.js",
+      "method": "GET",
+      "allowed": true
+    },
+    {
+      "path": "/reference/prototype/src/card-core.js",
+      "method": "GET",
+      "allowed": true
+    },
+    {
+      "path": "/reference/prototype/src/app.js",
+      "method": "GET",
+      "allowed": true
+    },
+    {
+      "path": "/reference/prototype/assets/T01.webp",
+      "method": "GET",
+      "allowed": true
+    },
+    {
+      "path": "/reference/prototype/assets/T03.webp",
+      "method": "GET",
+      "allowed": true
+    },
+    {
+      "path": "/reference/prototype/assets/T05.webp",
+      "method": "GET",
+      "allowed": true
+    },
+    {
+      "path": "/reference/prototype/assets/T07.webp",
+      "method": "GET",
+      "allowed": true
+    },
+    {
+      "path": "/reference/prototype/assets/T09.webp",
+      "method": "GET",
+      "allowed": true
+    },
+    {
+      "path": "/reference/prototype/assets/T12.webp",
+      "method": "GET",
+      "allowed": true
+    },
+    {
+      "path": "/reference/prototype/assets/B03.webp",
+      "method": "GET",
+      "allowed": true
+    },
+    {
+      "path": "/reference/prototype/assets/S01.webp",
+      "method": "GET",
+      "allowed": true
+    },
+    {
+      "path": "/reference/prototype/assets/A05.webp",
+      "method": "GET",
+      "allowed": true
+    },
+    {
+      "path": "/",
+      "method": "GET",
+      "allowed": true
+    },
+    {
+      "path": "/style.css",
+      "method": "GET",
+      "allowed": true
+    },
+    {
+      "path": "/src/app.mjs",
+      "method": "GET",
+      "allowed": true
+    },
+    {
+      "path": "/src/local-session.mjs",
+      "method": "GET",
+      "allowed": true
+    },
+    {
+      "path": "/src/card-core.mjs",
+      "method": "GET",
+      "allowed": true
+    },
+    {
+      "path": "/src/card-renderer.mjs",
+      "method": "GET",
+      "allowed": true
+    },
+    {
+      "path": "/reference/prototype/data/demo-pack.json",
+      "method": "GET",
+      "allowed": true
+    },
+    {
+      "path": "/reference/prototype/assets/T01.webp",
+      "method": "GET",
+      "allowed": true
+    },
+    {
+      "path": "/reference/prototype/assets/T03.webp",
+      "method": "GET",
+      "allowed": true
+    },
+    {
+      "path": "/reference/prototype/assets/T05.webp",
+      "method": "GET",
+      "allowed": true
+    },
+    {
+      "path": "/reference/prototype/assets/T07.webp",
+      "method": "GET",
+      "allowed": true
+    },
+    {
+      "path": "/reference/prototype/assets/T09.webp",
+      "method": "GET",
+      "allowed": true
+    },
+    {
+      "path": "/reference/prototype/assets/T12.webp",
+      "method": "GET",
+      "allowed": true
+    },
+    {
+      "path": "/reference/prototype/assets/T03.webp",
+      "method": "GET",
+      "allowed": true
+    },
+    {
+      "path": "/reference/prototype/assets/B01.webp",
+      "method": "GET",
+      "allowed": true
+    },
+    {
+      "path": "/reference/prototype/assets/B02.webp",
+      "method": "GET",
+      "allowed": true
+    },
+    {
+      "path": "/reference/prototype/assets/B03.webp",
+      "method": "GET",
+      "allowed": true
+    },
+    {
+      "path": "/reference/prototype/assets/B07.webp",
+      "method": "GET",
+      "allowed": true
+    },
+    {
+      "path": "/reference/prototype/assets/B03.webp",
+      "method": "GET",
+      "allowed": true
+    },
+    {
+      "path": "/reference/prototype/assets/S01.webp",
+      "method": "GET",
+      "allowed": true
+    },
+    {
+      "path": "/reference/prototype/assets/S04.webp",
+      "method": "GET",
+      "allowed": true
+    },
+    {
+      "path": "/reference/prototype/assets/S01.webp",
+      "method": "GET",
+      "allowed": true
+    },
+    {
+      "path": "/reference/prototype/assets/A05.webp",
+      "method": "GET",
+      "allowed": true
+    },
+    {
+      "path": "/reference/prototype/assets/A05.webp",
+      "method": "GET",
+      "allowed": true
+    },
+    {
+      "path": "/reference/prototype/assets/A05.webp",
+      "method": "GET",
+      "allowed": true
+    },
+    {
+      "path": "/reference/prototype/assets/T01.webp",
+      "method": "GET",
+      "allowed": true
+    },
+    {
+      "path": "/reference/prototype/assets/T03.webp",
+      "method": "GET",
+      "allowed": true
+    },
+    {
+      "path": "/reference/prototype/assets/T05.webp",
+      "method": "GET",
+      "allowed": true
+    },
+    {
+      "path": "/reference/prototype/assets/T07.webp",
+      "method": "GET",
+      "allowed": true
+    },
+    {
+      "path": "/reference/prototype/assets/T09.webp",
+      "method": "GET",
+      "allowed": true
+    },
+    {
+      "path": "/reference/prototype/assets/T12.webp",
+      "method": "GET",
+      "allowed": true
+    },
+    {
+      "path": "/reference/prototype/assets/T01.webp",
+      "method": "GET",
+      "allowed": true
+    },
+    {
+      "path": "/reference/prototype/assets/T01.webp",
+      "method": "GET",
+      "allowed": true
+    },
+    {
+      "path": "/reference/prototype/assets/T02.webp",
+      "method": "GET",
+      "allowed": true
+    },
+    {
+      "path": "/reference/prototype/assets/T04.webp",
+      "method": "GET",
+      "allowed": true
+    },
+    {
+      "path": "/reference/prototype/assets/T08.webp",
+      "method": "GET",
+      "allowed": true
+    },
+    {
+      "path": "/reference/prototype/assets/T10.webp",
+      "method": "GET",
+      "allowed": true
+    },
+    {
+      "path": "/reference/prototype/assets/T11.webp",
+      "method": "GET",
+      "allowed": true
+    },
+    {
+      "path": "/reference/prototype/assets/T02.webp",
+      "method": "GET",
+      "allowed": true
+    },
+    {
+      "path": "/reference/prototype/assets/B02.webp",
+      "method": "GET",
+      "allowed": true
+    },
+    {
+      "path": "/reference/prototype/assets/B04.webp",
+      "method": "GET",
+      "allowed": true
+    },
+    {
+      "path": "/reference/prototype/assets/B05.webp",
+      "method": "GET",
+      "allowed": true
+    },
+    {
+      "path": "/reference/prototype/assets/B04.webp",
+      "method": "GET",
+      "allowed": true
+    },
+    {
+      "path": "/reference/prototype/assets/S02.webp",
+      "method": "GET",
+      "allowed": true
+    },
+    {
+      "path": "/reference/prototype/assets/S06.webp",
+      "method": "GET",
+      "allowed": true
+    },
+    {
+      "path": "/reference/prototype/assets/S02.webp",
+      "method": "GET",
+      "allowed": true
+    },
+    {
+      "path": "/reference/prototype/assets/A01.webp",
+      "method": "GET",
+      "allowed": true
+    },
+    {
+      "path": "/reference/prototype/assets/A02.webp",
+      "method": "GET",
+      "allowed": true
+    },
+    {
+      "path": "/reference/prototype/assets/A01.webp",
+      "method": "GET",
+      "allowed": true
+    },
+    {
+      "path": "/reference/prototype/assets/O08.webp",
+      "method": "GET",
+      "allowed": true
+    },
+    {
+      "path": "/reference/prototype/assets/O08.webp",
+      "method": "GET",
+      "allowed": true
+    },
+    {
+      "path": "/reference/prototype/assets/O08.webp",
+      "method": "GET",
+      "allowed": true
+    },
+    {
+      "path": "/reference/prototype/assets/T01.webp",
+      "method": "GET",
+      "allowed": true
+    },
+    {
+      "path": "/reference/prototype/assets/T03.webp",
+      "method": "GET",
+      "allowed": true
+    },
+    {
+      "path": "/reference/prototype/assets/T05.webp",
+      "method": "GET",
+      "allowed": true
+    },
+    {
+      "path": "/reference/prototype/assets/T07.webp",
+      "method": "GET",
+      "allowed": true
+    },
+    {
+      "path": "/reference/prototype/assets/T09.webp",
+      "method": "GET",
+      "allowed": true
+    },
+    {
+      "path": "/reference/prototype/assets/T12.webp",
+      "method": "GET",
+      "allowed": true
+    },
+    {
+      "path": "/",
+      "method": "GET",
+      "allowed": true
+    },
+    {
+      "path": "/style.css",
+      "method": "GET",
+      "allowed": true
+    },
+    {
+      "path": "/src/app.mjs",
+      "method": "GET",
+      "allowed": true
+    },
+    {
+      "path": "/src/local-session.mjs",
+      "method": "GET",
+      "allowed": true
+    },
+    {
+      "path": "/src/card-core.mjs",
+      "method": "GET",
+      "allowed": true
+    },
+    {
+      "path": "/src/card-renderer.mjs",
+      "method": "GET",
+      "allowed": true
+    },
+    {
+      "path": "/reference/prototype/data/demo-pack.json",
+      "method": "GET",
+      "allowed": true
+    },
+    {
+      "path": "/reference/prototype/assets/T01.webp",
+      "method": "GET",
+      "allowed": true
+    },
+    {
+      "path": "/reference/prototype/assets/T03.webp",
+      "method": "GET",
+      "allowed": true
+    },
+    {
+      "path": "/reference/prototype/assets/T05.webp",
+      "method": "GET",
+      "allowed": true
+    },
+    {
+      "path": "/reference/prototype/assets/T07.webp",
+      "method": "GET",
+      "allowed": true
+    },
+    {
+      "path": "/reference/prototype/assets/T09.webp",
+      "method": "GET",
+      "allowed": true
+    },
+    {
+      "path": "/reference/prototype/assets/T12.webp",
+      "method": "GET",
+      "allowed": true
+    },
+    {
+      "path": "/reference/prototype/assets/T03.webp",
+      "method": "GET",
+      "allowed": true
+    },
+    {
+      "path": "/reference/prototype/assets/B03.webp",
+      "method": "GET",
+      "allowed": true
+    },
+    {
+      "path": "/reference/prototype/assets/S01.webp",
+      "method": "GET",
+      "allowed": true
+    },
+    {
+      "path": "/reference/prototype/assets/A05.webp",
+      "method": "GET",
+      "allowed": true
+    },
+    {
+      "path": "/reference/prototype/assets/T03.webp",
+      "method": "GET",
+      "allowed": true
+    },
+    {
+      "path": "/",
+      "method": "GET",
+      "allowed": true
+    },
+    {
+      "path": "/style.css",
+      "method": "GET",
+      "allowed": true
+    },
+    {
+      "path": "/src/app.mjs",
+      "method": "GET",
+      "allowed": true
+    },
+    {
+      "path": "/src/local-session.mjs",
+      "method": "GET",
+      "allowed": true
+    },
+    {
+      "path": "/src/card-core.mjs",
+      "method": "GET",
+      "allowed": true
+    },
+    {
+      "path": "/src/card-renderer.mjs",
+      "method": "GET",
+      "allowed": true
+    },
+    {
+      "path": "/reference/prototype/data/demo-pack.json",
+      "method": "GET",
+      "allowed": true
+    },
+    {
+      "path": "/reference/prototype/assets/T01.webp",
+      "method": "GET",
+      "allowed": true
+    },
+    {
+      "path": "/reference/prototype/assets/T03.webp",
+      "method": "GET",
+      "allowed": true
+    },
+    {
+      "path": "/reference/prototype/assets/T05.webp",
+      "method": "GET",
+      "allowed": true
+    },
+    {
+      "path": "/reference/prototype/assets/T07.webp",
+      "method": "GET",
+      "allowed": true
+    },
+    {
+      "path": "/reference/prototype/assets/T09.webp",
+      "method": "GET",
+      "allowed": true
+    },
+    {
+      "path": "/reference/prototype/assets/T12.webp",
+      "method": "GET",
+      "allowed": true
+    },
+    {
+      "path": "/reference/prototype/assets/T03.webp",
+      "method": "GET",
+      "allowed": true
+    },
+    {
+      "path": "/reference/prototype/assets/B03.webp",
+      "method": "GET",
+      "allowed": true
+    },
+    {
+      "path": "/reference/prototype/assets/S01.webp",
+      "method": "GET",
+      "allowed": true
+    },
+    {
+      "path": "/reference/prototype/assets/A05.webp",
+      "method": "GET",
+      "allowed": true
+    },
+    {
+      "path": "/",
+      "method": "GET",
+      "allowed": true
+    },
+    {
+      "path": "/style.css",
+      "method": "GET",
+      "allowed": true
+    },
+    {
+      "path": "/src/app.mjs",
+      "method": "GET",
+      "allowed": true
+    },
+    {
+      "path": "/src/local-session.mjs",
+      "method": "GET",
+      "allowed": true
+    },
+    {
+      "path": "/src/card-core.mjs",
+      "method": "GET",
+      "allowed": true
+    },
+    {
+      "path": "/src/card-renderer.mjs",
+      "method": "GET",
+      "allowed": true
+    },
+    {
+      "path": "/reference/prototype/data/demo-pack.json",
+      "method": "GET",
+      "allowed": true
+    },
+    {
+      "path": "/reference/prototype/assets/T01.webp",
+      "method": "GET",
+      "allowed": true
+    },
+    {
+      "path": "/reference/prototype/assets/T05.webp",
+      "method": "GET",
+      "allowed": true
+    },
+    {
+      "path": "/reference/prototype/assets/T07.webp",
+      "method": "GET",
+      "allowed": true
+    },
+    {
+      "path": "/reference/prototype/assets/T09.webp",
+      "method": "GET",
+      "allowed": true
+    },
+    {
+      "path": "/reference/prototype/assets/T12.webp",
+      "method": "GET",
+      "allowed": true
+    },
+    {
+      "path": "/reference/prototype/assets/B03.webp",
+      "method": "GET",
+      "allowed": true
+    },
+    {
+      "path": "/reference/prototype/assets/S01.webp",
+      "method": "GET",
+      "allowed": true
+    },
+    {
+      "path": "/reference/prototype/assets/A05.webp",
+      "method": "GET",
+      "allowed": true
+    },
+    {
+      "path": "/",
+      "method": "GET",
+      "allowed": true
+    },
+    {
+      "path": "/style.css",
+      "method": "GET",
+      "allowed": true
+    },
+    {
+      "path": "/src/app.mjs",
+      "method": "GET",
+      "allowed": true
+    },
+    {
+      "path": "/src/local-session.mjs",
+      "method": "GET",
+      "allowed": true
+    },
+    {
+      "path": "/src/card-core.mjs",
+      "method": "GET",
+      "allowed": true
+    },
+    {
+      "path": "/src/card-renderer.mjs",
+      "method": "GET",
+      "allowed": true
+    },
+    {
+      "path": "/reference/prototype/data/demo-pack.json",
+      "method": "GET",
+      "allowed": true
+    },
+    {
+      "path": "/reference/prototype/assets/T01.webp",
+      "method": "GET",
+      "allowed": true
+    },
+    {
+      "path": "/reference/prototype/assets/T03.webp",
+      "method": "GET",
+      "allowed": true
+    },
+    {
+      "path": "/reference/prototype/assets/T05.webp",
+      "method": "GET",
+      "allowed": true
+    },
+    {
+      "path": "/reference/prototype/assets/T07.webp",
+      "method": "GET",
+      "allowed": true
+    },
+    {
+      "path": "/reference/prototype/assets/T09.webp",
+      "method": "GET",
+      "allowed": true
+    },
+    {
+      "path": "/reference/prototype/assets/T12.webp",
+      "method": "GET",
+      "allowed": true
+    },
+    {
+      "path": "/reference/prototype/assets/T03.webp",
+      "method": "GET",
+      "allowed": true
+    },
+    {
+      "path": "/reference/prototype/assets/B03.webp",
+      "method": "GET",
+      "allowed": true
+    },
+    {
+      "path": "/reference/prototype/assets/S01.webp",
+      "method": "GET",
+      "allowed": true
+    },
+    {
+      "path": "/reference/prototype/assets/A05.webp",
+      "method": "GET",
+      "allowed": true
+    },
+    {
+      "path": "/reference/prototype/assets/T01.webp",
+      "method": "GET",
+      "allowed": true
+    },
+    {
+      "path": "/",
+      "method": "GET",
+      "allowed": true
+    },
+    {
+      "path": "/style.css",
+      "method": "GET",
+      "allowed": true
+    },
+    {
+      "path": "/src/app.mjs",
+      "method": "GET",
+      "allowed": true
+    },
+    {
+      "path": "/src/local-session.mjs",
+      "method": "GET",
+      "allowed": true
+    },
+    {
+      "path": "/src/card-core.mjs",
+      "method": "GET",
+      "allowed": true
+    },
+    {
+      "path": "/src/card-renderer.mjs",
+      "method": "GET",
+      "allowed": true
+    },
+    {
+      "path": "/reference/prototype/data/demo-pack.json",
+      "method": "GET",
+      "allowed": true
+    },
+    {
+      "path": "/reference/prototype/assets/T01.webp",
+      "method": "GET",
+      "allowed": true
+    },
+    {
+      "path": "/reference/prototype/assets/T03.webp",
+      "method": "GET",
+      "allowed": true
+    },
+    {
+      "path": "/reference/prototype/assets/T05.webp",
+      "method": "GET",
+      "allowed": true
+    },
+    {
+      "path": "/reference/prototype/assets/T07.webp",
+      "method": "GET",
+      "allowed": true
+    },
+    {
+      "path": "/reference/prototype/assets/T09.webp",
+      "method": "GET",
+      "allowed": true
+    },
+    {
+      "path": "/reference/prototype/assets/T12.webp",
+      "method": "GET",
+      "allowed": true
+    },
+    {
+      "path": "/reference/prototype/assets/T03.webp",
+      "method": "GET",
+      "allowed": true
+    },
+    {
+      "path": "/reference/prototype/assets/B03.webp",
+      "method": "GET",
+      "allowed": true
+    },
+    {
+      "path": "/reference/prototype/assets/S01.webp",
+      "method": "GET",
+      "allowed": true
+    },
+    {
+      "path": "/reference/prototype/assets/A05.webp",
+      "method": "GET",
+      "allowed": true
+    },
+    {
+      "path": "/reference/prototype/assets/T03.webp",
+      "method": "GET",
+      "allowed": true
+    },
+    {
+      "path": "/reference/prototype/assets/T01.webp",
+      "method": "GET",
+      "allowed": true
+    },
+    {
+      "path": "/",
+      "method": "GET",
+      "allowed": true
+    },
+    {
+      "path": "/style.css",
+      "method": "GET",
+      "allowed": true
+    },
+    {
+      "path": "/src/app.mjs",
+      "method": "GET",
+      "allowed": true
+    },
+    {
+      "path": "/src/local-session.mjs",
+      "method": "GET",
+      "allowed": true
+    },
+    {
+      "path": "/src/card-core.mjs",
+      "method": "GET",
+      "allowed": true
+    },
+    {
+      "path": "/src/card-renderer.mjs",
+      "method": "GET",
+      "allowed": true
+    },
+    {
+      "path": "/reference/prototype/data/demo-pack.json",
+      "method": "GET",
+      "allowed": true
+    },
+    {
+      "path": "/reference/prototype/assets/T01.webp",
+      "method": "GET",
+      "allowed": true
+    },
+    {
+      "path": "/reference/prototype/assets/T03.webp",
+      "method": "GET",
+      "allowed": true
+    },
+    {
+      "path": "/reference/prototype/assets/T05.webp",
+      "method": "GET",
+      "allowed": true
+    },
+    {
+      "path": "/reference/prototype/assets/T07.webp",
+      "method": "GET",
+      "allowed": true
+    },
+    {
+      "path": "/reference/prototype/assets/T09.webp",
+      "method": "GET",
+      "allowed": true
+    },
+    {
+      "path": "/reference/prototype/assets/T12.webp",
+      "method": "GET",
+      "allowed": true
+    },
+    {
+      "path": "/reference/prototype/assets/T01.webp",
+      "method": "GET",
+      "allowed": true
+    },
+    {
+      "path": "/reference/prototype/assets/B03.webp",
+      "method": "GET",
+      "allowed": true
+    },
+    {
+      "path": "/reference/prototype/assets/S01.webp",
+      "method": "GET",
+      "allowed": true
+    },
+    {
+      "path": "/reference/prototype/assets/A05.webp",
+      "method": "GET",
+      "allowed": true
+    }
+  ],
+  "counts": {
+    "passed": 15,
+    "failed": 0
+  },
+  "remoteWrites": 0,
+  "providerCalls": 0
+}

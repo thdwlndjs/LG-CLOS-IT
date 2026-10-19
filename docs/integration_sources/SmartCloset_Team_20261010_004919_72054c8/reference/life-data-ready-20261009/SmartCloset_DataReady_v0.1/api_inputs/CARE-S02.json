@@ -1,0 +1,130 @@
+{
+  "status": "INPUT_PREPARED_NOT_SUBMITTED",
+  "logical_ids_not_runtime_ids": true,
+  "profile_ref": "PSU",
+  "garment_ref": "S02",
+  "summary": {
+    "garment_ref": "S02",
+    "profile_ref": "PSU",
+    "as_of": "2026-10-10T14:00:00+09:00",
+    "recorded_wear_events_total": 2,
+    "recorded_wear_days_total": 2,
+    "last_wear_at": "2026-10-03T09:00:00+09:00",
+    "last_wash_at": "2026-10-04T10:00:00+09:00",
+    "recorded_wears_after_last_wash": 0,
+    "recorded_days_after_last_wash": 0,
+    "wear_dates_after_last_wash": [],
+    "last_location_event_ref": "MOVE-INIT-S02",
+    "last_location_description": "행거 상의 구역",
+    "availability": "no_recorded_block_not_cleanliness_confirmation",
+    "cleanliness_confirmed": false,
+    "display": "마지막 세탁 뒤 기록된 착용 0회 · 0일",
+    "evidence_event_refs": [
+      "MOVE-INIT-S02",
+      "SU-WEAR-SEP-03",
+      "SU-WEAR-OCT-03",
+      "SU-W04-W",
+      "SU-W04-D",
+      "SU-PLAN-10"
+    ],
+    "input_source": "scenario_fixture"
+  },
+  "care_evidence": {
+    "ref": "EV-S02",
+    "owner_ref": "PSU",
+    "garment_ref": "S02",
+    "evidence_kind": "official_product_page",
+    "product_ref": "P01",
+    "source_ref": "SRC-P01",
+    "structured_care": {
+      "wash": {
+        "method": "machine",
+        "temperature_c": 40
+      },
+      "iron": {
+        "level": "medium",
+        "temperature_c": null
+      },
+      "tumble_dry": {
+        "permitted": true,
+        "level": "low"
+      },
+      "professional_clean": {
+        "dry_clean": "permitted_unspecified"
+      },
+      "bleach": null
+    },
+    "physical_label_asset_ref": null,
+    "human_item_match_status": "PENDING_REAL_ITEM_OR_DEMO_PRODUCT_BINDING",
+    "display_source_label": "공식 상품 관리 안내",
+    "must_not_display": "실물 라벨 확인 완료",
+    "provenance": {
+      "kind": "source_derived_evidence_binding",
+      "dataset_namespace": "scprep-20261009-v1"
+    }
+  },
+  "product_facts": {
+    "ref": "P01",
+    "brand": "COS",
+    "product_code": "1307720001",
+    "variant_colour": "white",
+    "display_name_ko": "코튼 옥스퍼드 셔츠",
+    "category": "top",
+    "subtype": "shirt",
+    "composition": {
+      "shell": {
+        "cotton": 100
+      }
+    },
+    "care_structured": {
+      "wash": {
+        "method": "machine",
+        "temperature_c": 40
+      },
+      "iron": {
+        "level": "medium",
+        "temperature_c": null
+      },
+      "tumble_dry": {
+        "permitted": true,
+        "level": "low"
+      },
+      "professional_clean": {
+        "dry_clean": "permitted_unspecified"
+      },
+      "bleach": null
+    },
+    "source_ref": "SRC-P01",
+    "source_kind": "official_product_page",
+    "verification": "official_page_text",
+    "variant_identity_status": "product_code_and_colour_from_source",
+    "fit_claim": null,
+    "sizes_not_selected": true,
+    "purchase_price": null,
+    "availability_verified": false,
+    "physical_label_asset_ref": null,
+    "catalog_asset_ref": null,
+    "tryon_asset_ref": null,
+    "asset_transfer_permissions": {
+      "openai": null,
+      "decart": null,
+      "public_redistribution": null
+    },
+    "issues": [
+      "직접 열린 페이지의 관리 항목을 기준으로 추출. 검색 요약에는 표백 항목이 있지만 열린 본문에는 없어 미확인 유지. Fit 설명도 regular/relaxed가 충돌하여 추천 근거에서 제외."
+    ],
+    "provenance": {
+      "kind": "source_derived_metadata",
+      "dataset_namespace": "scprep-20261009-v1"
+    }
+  },
+  "rules": [
+    "use_only_attached_target_evidence",
+    "do_not_generate_missing_wash_temperature",
+    "do_not_treat_product_page_as_physical_label",
+    "do_not_infer_dirt_from_wear_count",
+    "no_record_mutation",
+    "return_missing_information_when_needed"
+  ],
+  "live_response": null
+}

@@ -1,0 +1,73 @@
+{
+  "date": "2026-10-10",
+  "sourceCommit": "72054c818e80db0c58b3a7808343c8279aa8713a",
+  "sourceFilesUnchanged": 404,
+  "install": {
+    "command": "INSTALL.cmd (npm ci --no-audit --no-fund)",
+    "status": "PASS",
+    "packagesAdded": 100,
+    "node": "24.18.0",
+    "npm": "11.16.0"
+  },
+  "unitTests": {
+    "pass": 522,
+    "fail": 0,
+    "skip": 1,
+    "skipReason": "optional tmp/media-inspector-fixture.mp4 not included"
+  },
+  "typecheck": "PASS",
+  "build": "PASS",
+  "startCmd": "PASS",
+  "startCmdPortConflictErrorAndPause": "PASS",
+  "serverMode": {
+    "databaseConfigured": false,
+    "aiMode": "mock",
+    "liveEnabled": false,
+    "allKeysPresent": false,
+    "envFileIncluded": false
+  },
+  "browserOrigin": "http://127.0.0.1:4371/",
+  "defaultOrigin": "http://127.0.0.1:4311/",
+  "defaultOriginExactAssetByteChecks": 50,
+  "browserChecks": [
+    {
+      "task": "PSU S02 image loaded naturalWidth 1254, L2_UPPER_GROUP LED, history and Korean care/source/local help",
+      "status": "PASS"
+    },
+    {
+      "task": "PHW home card -> H02 top replacement with H08/H15 retained -> save card -> today selection",
+      "status": "PASS"
+    },
+    {
+      "task": "same T03/S04 image URLs and owned-garment L2 LED, no fabricated fitting result",
+      "status": "PASS"
+    },
+    {
+      "task": "calendar date card with same composition; profile round trip and reload persistence",
+      "status": "PASS"
+    },
+    {
+      "task": "saved card re-read at page 5 of 5; app stop/start and calendar re-read",
+      "status": "PASS"
+    }
+  ],
+  "notRun": [
+    "live OpenAI or Decart",
+    "Supabase authentication/remote save/import",
+    "physical wardrobe/LED hardware",
+    "new clothing/person/label generation"
+  ],
+  "exclusions": [
+    "actual env/credentials/session/browser storage",
+    "private logs/private local-reference",
+    ".git",
+    "node_modules/caches/dist",
+    "old ZIPs"
+  ],
+  "packagingOnlyChanges": [
+    "current Korean start guide",
+    "Windows setup/start scripts",
+    "safe .env.example",
+    "integrity verifier and package reports"
+  ]
+}

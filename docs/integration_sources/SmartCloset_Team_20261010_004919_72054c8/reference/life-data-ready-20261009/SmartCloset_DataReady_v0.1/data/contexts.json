@@ -1,0 +1,99 @@
+[
+  {
+    "ref": "CTX-HW-RAIN",
+    "profile_ref": "PHW",
+    "scenario": "OUTFIT",
+    "as_of": "2026-10-09T07:40:00+09:00",
+    "timezone": "Asia/Seoul",
+    "purpose": "출근·회의",
+    "weather": {
+      "status": "available",
+      "kind": "forecast",
+      "provenance": {
+        "kind": "synthetic_weather_fixture",
+        "dataset_namespace": "scprep-20261009-v1"
+      },
+      "location_label": "서울 시연 지역",
+      "issued_at": "2026-10-09T06:00:00+09:00",
+      "valid_from": "2026-10-09T07:00:00+09:00",
+      "valid_to": "2026-10-09T10:00:00+09:00",
+      "precipitation": "rain",
+      "temperature_c": 18,
+      "real_weather_fetched": false
+    },
+    "provenance": {
+      "kind": "scenario_authored",
+      "dataset_namespace": "scprep-20261009-v1"
+    }
+  },
+  {
+    "ref": "CTX-HW-DRY",
+    "profile_ref": "PHW",
+    "scenario": "OUTFIT_COUNTERFACTUAL",
+    "as_of": "2026-10-09T07:40:00+09:00",
+    "timezone": "Asia/Seoul",
+    "purpose": "출근·회의",
+    "weather": {
+      "status": "available",
+      "kind": "forecast",
+      "provenance": {
+        "kind": "synthetic_weather_fixture",
+        "dataset_namespace": "scprep-20261009-v1"
+      },
+      "location_label": "서울 시연 지역",
+      "issued_at": "2026-10-09T06:00:00+09:00",
+      "valid_from": "2026-10-09T07:00:00+09:00",
+      "valid_to": "2026-10-09T10:00:00+09:00",
+      "precipitation": "none",
+      "temperature_c": 20,
+      "real_weather_fetched": false
+    },
+    "provenance": {
+      "kind": "scenario_authored",
+      "dataset_namespace": "scprep-20261009-v1"
+    }
+  },
+  {
+    "ref": "CTX-HW-UNKNOWN",
+    "profile_ref": "PHW",
+    "scenario": "OUTFIT_NO_WEATHER",
+    "as_of": "2026-10-09T07:40:00+09:00",
+    "timezone": "Asia/Seoul",
+    "purpose": "출근·회의",
+    "weather": {
+      "status": "unavailable",
+      "kind": null,
+      "precipitation": null,
+      "temperature_c": null,
+      "real_weather_fetched": false,
+      "provenance": {
+        "kind": "missing_input_fixture",
+        "dataset_namespace": "scprep-20261009-v1"
+      }
+    },
+    "provenance": {
+      "kind": "scenario_authored",
+      "dataset_namespace": "scprep-20261009-v1"
+    }
+  },
+  {
+    "ref": "CTX-SU-CARE",
+    "profile_ref": "PSU",
+    "scenario": "CARE",
+    "as_of": "2026-10-10T14:00:00+09:00",
+    "timezone": "Asia/Seoul",
+    "purpose": "토요일 오후 옷 관리",
+    "weather": {
+      "status": "not_used",
+      "real_weather_fetched": false,
+      "provenance": {
+        "kind": "not_used",
+        "dataset_namespace": "scprep-20261009-v1"
+      }
+    },
+    "provenance": {
+      "kind": "scenario_authored",
+      "dataset_namespace": "scprep-20261009-v1"
+    }
+  }
+]

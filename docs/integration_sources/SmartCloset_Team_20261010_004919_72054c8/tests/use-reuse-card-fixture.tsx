@@ -1,0 +1,24 @@
+import {useState,useSyncExternalStore} from 'react';
+import {createRoot} from 'react-dom/client';
+import {DemoApp} from '../src/core/app';
+import {createSeed,emptyUI} from '../src/core/seed';
+import {createWardrobePackBundle} from '../src/wardrobePack';
+import {MirrorHome} from '../src/MirrorHome';
+import {MirrorCalendar} from '../src/MirrorCalendar';
+import {PhotoWardrobeStage} from '../src/PhotoWardrobeStage';
+import '../src/styles.css';import '../src/mirror-experience.css';import '../src/mirror-wardrobe.css';import '../src/mirror-clear.css';
+const seed=createSeed(),bundle=createWardrobePackBundle(),owner=bundle.profile.id;
+seed.profiles.push(bundle.profile);seed.garments.push(...bundle.garments);seed.outfits.push(...bundle.outfits);seed.ui[owner]=emptyUI();seed.ui[owner].calendarDate='2026-10-09';seed.outfitDrafts[owner]=bundle.outfitDraft;seed.activeProfileId=owner;
+const look=seed.outfits.find(o=>o.id==='LOOK01')!;look.name='이전 작업의 제목을 임의로 바꾸지 않는 긴 사용자 코디 이름';look.nameOrigin='user';
+seed.garments.find(g=>g.id===look.items.top&&g.ownerId===owner)!.asset!.url='/assets/__reuse_card_slow.png';
+seed.garments.find(g=>g.id===look.items.bottom&&g.ownerId===owner)!.asset!.url='/assets/__reuse_card_error.png';
+seed.outfits.push({...structuredClone(look),id:'technical-selection',name:'날짜 보존 조합',purpose:'selection'});
+const external={externalItemId:'reuse-external',assetId:'reuse-external-asset',assetVersion:1,name:'이미 제공된 외부 신발',sourceLabel:'격리 자료',sourceUrl:'https://example.invalid/not-requested'};
+seed.externalItems=[{id:external.externalItemId,ownerId:owner,name:external.name,category:'shoes',asset:{id:external.assetId,version:1,source:'packaged',url:'/assets/shoes.png'},sourceLabel:external.sourceLabel,sourceUrl:external.sourceUrl}];
+const mixed={...structuredClone(look),id:'mixed-card',name:'외부 후보 구성',items:{...look.items},externalItems:{shoes:external}};if(mixed.items.shoes)delete mixed.assetVersions[mixed.items.shoes];delete mixed.items.shoes;seed.outfits.push(mixed);
+seed.events=[{id:'card-plan',ownerId:owner,kind:'plan',outfitId:look.id,date:'2026-10-09',value:'격리 선택 계획'},{id:'external-plan',ownerId:owner,kind:'plan',outfitId:mixed.id,date:'2026-10-10',value:'외부 후보 선택 계획'},{id:'technical-plan',ownerId:owner,kind:'plan',outfitId:'technical-selection',date:'2026-10-11',value:'날짜 전용 조합'}];
+const prefix='use-reuse-card-fixture:';const app=new DemoApp({getItem:key=>sessionStorage.getItem(prefix+key),setItem:(key,value)=>sessionStorage.setItem(prefix+key,value),removeItem:key=>sessionStorage.removeItem(prefix+key)},()=>seed);(window as any).useReuseCardApp=app;(window as any).useReuseCardOpened=null;
+const control:any={calls:JSON.parse(sessionStorage.getItem(prefix+'calls')??'[]'),hold:false,failAfterSave:false,release:()=>{}};(window as any).useReuseCardControl=control;const record=app.recordWear.bind(app);
+app.recordWear=async(...args:Parameters<typeof app.recordWear>)=>{control.calls.push(structuredClone(args.slice(0,3)));sessionStorage.setItem(prefix+'calls',JSON.stringify(control.calls));const operation=record(args[0],args[1],args[2],{delayMs:100});if(control.hold)await new Promise<void>(resolve=>{control.release=resolve;});const result=await operation;if(control.failAfterSave){control.failAfterSave=false;throw new Error('격리 시험: 저장 응답 확인 불명');}return result;};
+function Fixture(){const state=useSyncExternalStore(app.subscribe,app.getState),[view,setView]=useState('home');return <PhotoWardrobeStage anchorIds={[]}><div className="mx-surface" data-mirror-ui="clear"><nav className="mx-nav" aria-label="카드 격리 검사 메뉴">{['home','calendar'].map(id=><button key={id} onClick={()=>setView(id)}>{id}</button>)}</nav>{view==='home'?<MirrorHome app={app} onOpenOutfit={outfit=>{(window as any).useReuseCardOpened=structuredClone(outfit);}}/>:<MirrorCalendar app={app} today="2026-10-09" onReuse={outfit=>{app.loadOutfitDraft(outfit.id,{reuse:true});(window as any).useReuseCardOpened=structuredClone(outfit);}} onBrowseOutfits={()=>setView('home')}/>}<output hidden>{state.activeProfileId}</output></div></PhotoWardrobeStage>;}
+createRoot(document.getElementById('root')!).render(<Fixture/>);

@@ -1,0 +1,33 @@
+test_01_relations (__main__.DataContractTests.test_01_relations) ... ok
+test_02_two_independent_profiles (__main__.DataContractTests.test_02_two_independent_profiles) ... ok
+test_03_inventory_counts (__main__.DataContractTests.test_03_inventory_counts) ... ok
+test_04_sujin_after_wash (__main__.DataContractTests.test_04_sujin_after_wash) ... ok
+test_05_hwi_white_after_wash (__main__.DataContractTests.test_05_hwi_white_after_wash) ... ok
+test_06_same_day_two_episodes (__main__.DataContractTests.test_06_same_day_two_episodes) ... ok
+test_07_ironing_does_not_reset_wash (__main__.DataContractTests.test_07_ironing_does_not_reset_wash) ... ok
+test_08_no_history_is_unknown_not_never_worn (__main__.DataContractTests.test_08_no_history_is_unknown_not_never_worn) ... ok
+test_09_plan_does_not_add_wear (__main__.DataContractTests.test_09_plan_does_not_add_wear) ... ok
+test_10_identical_event_retry_dedupes (__main__.DataContractTests.test_10_identical_event_retry_dedupes) ... ok
+test_11_conflicting_event_key_rejected (__main__.DataContractTests.test_11_conflicting_event_key_rejected) ... ok
+test_12_cross_profile_read_rejected (__main__.DataContractTests.test_12_cross_profile_read_rejected) ... ok
+test_13_wash_not_dry (__main__.DataContractTests.test_13_wash_not_dry) ... ok
+test_14_user_observation_not_generic_count_rule (__main__.DataContractTests.test_14_user_observation_not_generic_count_rule) ... ok
+test_15_unknown_not_global_exclusion (__main__.DataContractTests.test_15_unknown_not_global_exclusion) ... ok
+test_16_home_profile_isolation (__main__.DataContractTests.test_16_home_profile_isolation) ... ok
+test_17_weather_scenarios_are_not_real_observation (__main__.DataContractTests.test_17_weather_scenarios_are_not_real_observation) ... ok
+test_18_plan_calendar_uses_scheduled_date (__main__.DataContractTests.test_18_plan_calendar_uses_scheduled_date) ... ok
+test_19_top_only_revision (__main__.DataContractTests.test_19_top_only_revision) ... ok
+test_20_external_not_owned_or_led (__main__.DataContractTests.test_20_external_not_owned_or_led) ... ok
+test_21_product_same_real_item_not_assumed (__main__.DataContractTests.test_21_product_same_real_item_not_assumed) ... ok
+test_22_conflicting_composition_is_unresolved (__main__.DataContractTests.test_22_conflicting_composition_is_unresolved) ... ok
+test_23_cool_not_converted_to_temperature (__main__.DataContractTests.test_23_cool_not_converted_to_temperature) ... ok
+test_24_no_physical_label_fabrication (__main__.DataContractTests.test_24_no_physical_label_fabrication) ... ok
+test_25_date_without_timezone_rejected (__main__.DataContractTests.test_25_date_without_timezone_rejected) ... ok
+test_26_future_observation_excluded (__main__.DataContractTests.test_26_future_observation_excluded) ... ok
+test_27_corrupted_cross_owner_outfit_fails (__main__.DataContractTests.test_27_corrupted_cross_owner_outfit_fails) ... ok
+test_28_no_unverified_cleanliness (__main__.DataContractTests.test_28_no_unverified_cleanliness) ... ok
+
+----------------------------------------------------------------------
+Ran 28 tests in 0.013s
+
+OK

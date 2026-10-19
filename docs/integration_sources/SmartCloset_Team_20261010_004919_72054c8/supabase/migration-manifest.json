@@ -1,0 +1,58 @@
+[
+  {
+    "version": "20261008064114",
+    "migration": "supabase/migrations/20261008064114_smartcloset_core.sql",
+    "source": "supabase/schema/001_core.sql",
+    "sha256": "16fb1473a07e342911a348122041df3fb87b4c039537d4c1bad8a8f11caed0fd",
+    "target": "slxgcgtnxkchxywgsmuk",
+    "applied_by": "parent task via approved Supabase migration tool"
+  },
+  {
+    "version": "20261008064122",
+    "migration": "supabase/migrations/20261008064122_smartcloset_transactions.sql",
+    "source": "supabase/schema/002_transactions.sql",
+    "sha256": "4778e9f03191458227f833a8e3e861f1d8c77f65226ae4b6e87dbd68ee409472",
+    "target": "slxgcgtnxkchxywgsmuk",
+    "applied_by": "parent task via approved Supabase migration tool"
+  },
+  {
+    "version": "20261008064129",
+    "migration": "supabase/migrations/20261008064129_smartcloset_server_control.sql",
+    "source": "supabase/schema/003_server_control.sql",
+    "sha256": "8a58f6123bfb0765cda26e01789de402a29bc4f09606bb423a713e8d7d925d0e",
+    "target": "slxgcgtnxkchxywgsmuk",
+    "applied_by": "parent task via approved Supabase migration tool"
+  },
+  {
+    "version": "20261008064335",
+    "migration": "supabase/migrations/20261008064335_smartcloset_private_storage.sql",
+    "source": "supabase/schema/004_storage.sql",
+    "sha256": "8edf601e7e2179fb7e51fda6f98bd1835f86e0e4a4fef7700abed398f74520dd",
+    "target": "slxgcgtnxkchxywgsmuk",
+    "applied_by": "parent task via approved Supabase migration tool"
+  },
+  {
+    "version": "20261008064342",
+    "migration": "supabase/migrations/20261008064342_smartcloset_evidence_results.sql",
+    "source": "supabase/schema/005_evidence_results.sql",
+    "sha256": "089753cb5b02d8cad042ed583e97b06e5188f8c00207ae0c1737485c7fd8f411",
+    "target": "slxgcgtnxkchxywgsmuk",
+    "applied_by": "parent task via approved Supabase migration tool"
+  },
+  {
+    "version": "20261008070209",
+    "migration": "supabase/migrations/20261008070209_smartcloset_owner_budget_and_draft_discard.sql",
+    "source": "supabase/schema/006_owner_budget_and_draft_discard.sql",
+    "sha256": "395a41d0eb2424610840cda0f9de99181fbb709f446f9817550e1ec07ba3f982",
+    "target": "slxgcgtnxkchxywgsmuk",
+    "applied_by": "parent task via approved Supabase migration tool"
+  },
+  {
+    "version": "20261008071121",
+    "migration": "supabase/migrations/20261008071121_smartcloset_discarded_draft_write_guard.sql",
+    "source": "supabase/schema/007_discarded_draft_write_guard.sql",
+    "sha256": "1b1786f490afbb3cdcf62c5320c933e6bd1a26c62f95e99462cb2b986e571358",
+    "target": "slxgcgtnxkchxywgsmuk",
+    "applied_by": "parent task via approved Supabase migration tool"
+  }
+]

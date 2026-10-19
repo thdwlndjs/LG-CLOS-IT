@@ -1,0 +1,16 @@
+{
+  "kind": "OFFLINE_DATA_LOGIC_ONLY",
+  "status": "PASS",
+  "errors": [],
+  "db_import_executed": false,
+  "app_test_executed": false,
+  "provider_execution_count": 0,
+  "data_blockers": [
+    "all garment/catalog media not bound",
+    "physical label photos not supplied",
+    "profile/auth mapping not confirmed",
+    "LED scene mapping not confirmed",
+    "person video and transfer scopes missing",
+    "runtime database schema not inspected"
+  ]
+}

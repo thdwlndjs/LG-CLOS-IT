@@ -1,0 +1,544 @@
+{
+  "schema_version": "1.0-review",
+  "purpose": "현재 첨부 이미지의 시연 좌표 보조값. 실제 기구 좌표·센서 관측·완료된 LED OFF 자산이 아니다.",
+  "source": {
+    "filename": "대칭형 럭셔리 스마트 드레스룸.png",
+    "width": 1672,
+    "height": 941,
+    "sha256": "95c47d8caa06019564b579c9cde4e68e5e94e46496f17937eb678d9ca535a617",
+    "rgb_pixel_sha256": "561cc71ed7d54f90dfb4ba3edb6c3050c1ed17a41aefb8b9c9530fda7a0fe535"
+  },
+  "measurement_status": "원본 직접 열람 + 점광원 색상 위치 확인. 실제 앱에서 최종 정렬 필요.",
+  "mirror_safe_rect_px": {
+    "x": 714,
+    "y": 28,
+    "width": 248,
+    "height": 824
+  },
+  "mirror_safe_rect_normalized": {
+    "x": 0.4270335,
+    "y": 0.0297556,
+    "width": 0.1483254,
+    "height": 0.8756642
+  },
+  "stage_fit": "contain_preserve_aspect_ratio",
+  "led_anchors": [
+    {
+      "anchor_id": "L1_RAIL_GROUP",
+      "source_xy_px": [
+        237.9,
+        89.1
+      ],
+      "xy_normalized": [
+        0.1422847,
+        0.0946865
+      ],
+      "kind": "rail_group",
+      "description": "왼쪽 긴 옷 행거 상단의 중심 점광원",
+      "garment_ids": [],
+      "mapping_status": "unbound_visual_landmark"
+    },
+    {
+      "anchor_id": "L1_RAIL_01",
+      "source_xy_px": [
+        128.4,
+        102.2
+      ],
+      "xy_normalized": [
+        0.0767943,
+        0.1086079
+      ],
+      "kind": "rail",
+      "description": "왼쪽 긴 옷 행거 안쪽 점광원; 개별 옷과 1:1이라고 가정하지 않음",
+      "garment_ids": [],
+      "mapping_status": "unbound_visual_landmark"
+    },
+    {
+      "anchor_id": "L1_RAIL_02",
+      "source_xy_px": [
+        184.5,
+        103.0
+      ],
+      "xy_normalized": [
+        0.1103469,
+        0.109458
+      ],
+      "kind": "rail",
+      "description": "왼쪽 긴 옷 행거 안쪽 점광원; 개별 옷과 1:1이라고 가정하지 않음",
+      "garment_ids": [],
+      "mapping_status": "unbound_visual_landmark"
+    },
+    {
+      "anchor_id": "L1_RAIL_03",
+      "source_xy_px": [
+        237.0,
+        103.0
+      ],
+      "xy_normalized": [
+        0.1417464,
+        0.109458
+      ],
+      "kind": "rail",
+      "description": "왼쪽 긴 옷 행거 안쪽 점광원; 개별 옷과 1:1이라고 가정하지 않음",
+      "garment_ids": [],
+      "mapping_status": "unbound_visual_landmark"
+    },
+    {
+      "anchor_id": "L1_RAIL_04",
+      "source_xy_px": [
+        292.2,
+        103.0
+      ],
+      "xy_normalized": [
+        0.1747608,
+        0.109458
+      ],
+      "kind": "rail",
+      "description": "왼쪽 긴 옷 행거 안쪽 점광원; 개별 옷과 1:1이라고 가정하지 않음",
+      "garment_ids": [],
+      "mapping_status": "unbound_visual_landmark"
+    },
+    {
+      "anchor_id": "L1_RAIL_05",
+      "source_xy_px": [
+        345.8,
+        103.0
+      ],
+      "xy_normalized": [
+        0.2068182,
+        0.109458
+      ],
+      "kind": "rail",
+      "description": "왼쪽 긴 옷 행거 안쪽 점광원; 개별 옷과 1:1이라고 가정하지 않음",
+      "garment_ids": [],
+      "mapping_status": "unbound_visual_landmark"
+    },
+    {
+      "anchor_id": "L2_UPPER_GROUP",
+      "source_xy_px": [
+        544.2,
+        88.8
+      ],
+      "xy_normalized": [
+        0.3254785,
+        0.0943677
+      ],
+      "kind": "rail_group",
+      "description": "가운데 왼쪽 상의 행거 위 중심 점광원",
+      "garment_ids": [],
+      "mapping_status": "unbound_visual_landmark"
+    },
+    {
+      "anchor_id": "L2_UPPER_01",
+      "source_xy_px": [
+        435.1,
+        104.2
+      ],
+      "xy_normalized": [
+        0.2602273,
+        0.1107333
+      ],
+      "kind": "rail",
+      "description": "상의 행거 위 점광원",
+      "garment_ids": [],
+      "mapping_status": "unbound_visual_landmark"
+    },
+    {
+      "anchor_id": "L2_UPPER_02",
+      "source_xy_px": [
+        499.1,
+        104.9
+      ],
+      "xy_normalized": [
+        0.2985048,
+        0.1114772
+      ],
+      "kind": "rail",
+      "description": "상의 행거 위 점광원",
+      "garment_ids": [],
+      "mapping_status": "unbound_visual_landmark"
+    },
+    {
+      "anchor_id": "L2_UPPER_03",
+      "source_xy_px": [
+        584.7,
+        104.9
+      ],
+      "xy_normalized": [
+        0.349701,
+        0.1114772
+      ],
+      "kind": "rail",
+      "description": "상의 행거 위 점광원",
+      "garment_ids": [],
+      "mapping_status": "unbound_visual_landmark"
+    },
+    {
+      "anchor_id": "L2_UPPER_04",
+      "source_xy_px": [
+        653.3,
+        105.2
+      ],
+      "xy_normalized": [
+        0.3907297,
+        0.111796
+      ],
+      "kind": "rail",
+      "description": "상의 행거 위 점광원",
+      "garment_ids": [],
+      "mapping_status": "unbound_visual_landmark"
+    },
+    {
+      "anchor_id": "L2_LOWER_GROUP",
+      "source_xy_px": [
+        544.0,
+        442.8
+      ],
+      "xy_normalized": [
+        0.3253589,
+        0.4705632
+      ],
+      "kind": "rail_group",
+      "description": "가운데 왼쪽 하의 행거 위 중심 점광원",
+      "garment_ids": [],
+      "mapping_status": "unbound_visual_landmark"
+    },
+    {
+      "anchor_id": "L2_LOWER_01",
+      "source_xy_px": [
+        437.0,
+        457.5
+      ],
+      "xy_normalized": [
+        0.2613636,
+        0.4861849
+      ],
+      "kind": "rail",
+      "description": "하의 행거 위 점광원",
+      "garment_ids": [],
+      "mapping_status": "unbound_visual_landmark"
+    },
+    {
+      "anchor_id": "L2_LOWER_02",
+      "source_xy_px": [
+        502.6,
+        457.6
+      ],
+      "xy_normalized": [
+        0.3005981,
+        0.4862912
+      ],
+      "kind": "rail",
+      "description": "하의 행거 위 점광원",
+      "garment_ids": [],
+      "mapping_status": "unbound_visual_landmark"
+    },
+    {
+      "anchor_id": "L2_LOWER_03",
+      "source_xy_px": [
+        584.6,
+        457.6
+      ],
+      "xy_normalized": [
+        0.3496411,
+        0.4862912
+      ],
+      "kind": "rail",
+      "description": "하의 행거 위 점광원",
+      "garment_ids": [],
+      "mapping_status": "unbound_visual_landmark"
+    },
+    {
+      "anchor_id": "L2_LOWER_04",
+      "source_xy_px": [
+        653.8,
+        457.2
+      ],
+      "xy_normalized": [
+        0.3910287,
+        0.4858661
+      ],
+      "kind": "rail",
+      "description": "하의 행거 위 점광원",
+      "garment_ids": [],
+      "mapping_status": "unbound_visual_landmark"
+    },
+    {
+      "anchor_id": "L1_DRAWER",
+      "source_xy_px": [
+        235.8,
+        698.7
+      ],
+      "xy_normalized": [
+        0.1410287,
+        0.742508
+      ],
+      "kind": "drawer",
+      "description": "왼쪽 긴 옷 아래 서랍 전면",
+      "garment_ids": [],
+      "mapping_status": "unbound_visual_landmark"
+    },
+    {
+      "anchor_id": "L2_DRAWER",
+      "source_xy_px": [
+        543.5,
+        764.6
+      ],
+      "xy_normalized": [
+        0.3250598,
+        0.8125399
+      ],
+      "kind": "drawer",
+      "description": "가운데 왼쪽 하의 아래 서랍 전면",
+      "garment_ids": [],
+      "mapping_status": "unbound_visual_landmark"
+    },
+    {
+      "anchor_id": "R1_SHELF_01",
+      "source_xy_px": [
+        1121.0,
+        62.5
+      ],
+      "xy_normalized": [
+        0.6704545,
+        0.0664187
+      ],
+      "kind": "shelf",
+      "description": "가운데 오른쪽 접힌 옷 선반 점광원",
+      "garment_ids": [],
+      "mapping_status": "unbound_visual_landmark"
+    },
+    {
+      "anchor_id": "R1_SHELF_02",
+      "source_xy_px": [
+        1121.0,
+        172.0
+      ],
+      "xy_normalized": [
+        0.6704545,
+        0.1827843
+      ],
+      "kind": "shelf",
+      "description": "가운데 오른쪽 접힌 옷 선반 점광원",
+      "garment_ids": [],
+      "mapping_status": "unbound_visual_landmark"
+    },
+    {
+      "anchor_id": "R1_SHELF_03",
+      "source_xy_px": [
+        1121.3,
+        284.2
+      ],
+      "xy_normalized": [
+        0.670634,
+        0.3020191
+      ],
+      "kind": "shelf",
+      "description": "가운데 오른쪽 접힌 옷 선반 점광원",
+      "garment_ids": [],
+      "mapping_status": "unbound_visual_landmark"
+    },
+    {
+      "anchor_id": "R1_SHELF_04",
+      "source_xy_px": [
+        1120.8,
+        401.1
+      ],
+      "xy_normalized": [
+        0.6703349,
+        0.4262487
+      ],
+      "kind": "shelf",
+      "description": "가운데 오른쪽 접힌 옷 선반 점광원",
+      "garment_ids": [],
+      "mapping_status": "unbound_visual_landmark"
+    },
+    {
+      "anchor_id": "R1_DRAWER_01",
+      "source_xy_px": [
+        1125.1,
+        533.9
+      ],
+      "xy_normalized": [
+        0.6729067,
+        0.5673751
+      ],
+      "kind": "drawer",
+      "description": "가운데 오른쪽 서랍 전면 점광원",
+      "garment_ids": [],
+      "mapping_status": "unbound_visual_landmark"
+    },
+    {
+      "anchor_id": "R1_DRAWER_02",
+      "source_xy_px": [
+        1124.8,
+        596.0
+      ],
+      "xy_normalized": [
+        0.6727273,
+        0.6333688
+      ],
+      "kind": "drawer",
+      "description": "가운데 오른쪽 서랍 전면 점광원",
+      "garment_ids": [],
+      "mapping_status": "unbound_visual_landmark"
+    },
+    {
+      "anchor_id": "R1_DRAWER_03",
+      "source_xy_px": [
+        1124.6,
+        660.3
+      ],
+      "xy_normalized": [
+        0.6726077,
+        0.7017003
+      ],
+      "kind": "drawer",
+      "description": "가운데 오른쪽 서랍 전면 점광원",
+      "garment_ids": [],
+      "mapping_status": "unbound_visual_landmark"
+    },
+    {
+      "anchor_id": "R1_DRAWER_04",
+      "source_xy_px": [
+        1125.2,
+        736.3
+      ],
+      "xy_normalized": [
+        0.6729665,
+        0.7824655
+      ],
+      "kind": "drawer",
+      "description": "가운데 오른쪽 서랍 전면 점광원",
+      "garment_ids": [],
+      "mapping_status": "unbound_visual_landmark"
+    },
+    {
+      "anchor_id": "R1_DRAWER_05",
+      "source_xy_px": [
+        1124.8,
+        802.0
+      ],
+      "xy_normalized": [
+        0.6727273,
+        0.8522848
+      ],
+      "kind": "drawer",
+      "description": "가운데 오른쪽 서랍 전면 점광원",
+      "garment_ids": [],
+      "mapping_status": "unbound_visual_landmark"
+    },
+    {
+      "anchor_id": "R2_SHELF_01",
+      "source_xy_px": [
+        1427.0,
+        65.0
+      ],
+      "xy_normalized": [
+        0.8534689,
+        0.0690755
+      ],
+      "kind": "shelf",
+      "description": "맨 오른쪽 접힌 옷 선반 점광원",
+      "garment_ids": [],
+      "mapping_status": "unbound_visual_landmark"
+    },
+    {
+      "anchor_id": "R2_SHELF_02",
+      "source_xy_px": [
+        1427.2,
+        171.7
+      ],
+      "xy_normalized": [
+        0.8535885,
+        0.1824655
+      ],
+      "kind": "shelf",
+      "description": "맨 오른쪽 접힌 옷 선반 점광원",
+      "garment_ids": [],
+      "mapping_status": "unbound_visual_landmark"
+    },
+    {
+      "anchor_id": "R2_SHELF_03",
+      "source_xy_px": [
+        1427.6,
+        283.8
+      ],
+      "xy_normalized": [
+        0.8538278,
+        0.301594
+      ],
+      "kind": "shelf",
+      "description": "맨 오른쪽 접힌 옷 선반 점광원",
+      "garment_ids": [],
+      "mapping_status": "unbound_visual_landmark"
+    },
+    {
+      "anchor_id": "R2_SHELF_04",
+      "source_xy_px": [
+        1426.7,
+        403.4
+      ],
+      "xy_normalized": [
+        0.8532895,
+        0.4286929
+      ],
+      "kind": "shelf",
+      "description": "맨 오른쪽 접힌 옷 선반 점광원",
+      "garment_ids": [],
+      "mapping_status": "unbound_visual_landmark"
+    },
+    {
+      "anchor_id": "R2_SHELF_05",
+      "source_xy_px": [
+        1427.7,
+        519.7
+      ],
+      "xy_normalized": [
+        0.8538876,
+        0.5522848
+      ],
+      "kind": "shelf",
+      "description": "맨 오른쪽 접힌 옷 선반 점광원",
+      "garment_ids": [],
+      "mapping_status": "unbound_visual_landmark"
+    },
+    {
+      "anchor_id": "R2_SHELF_06",
+      "source_xy_px": [
+        1427.2,
+        627.3
+      ],
+      "xy_normalized": [
+        0.8535885,
+        0.6666312
+      ],
+      "kind": "shelf",
+      "description": "맨 오른쪽 접힌 옷 선반 점광원",
+      "garment_ids": [],
+      "mapping_status": "unbound_visual_landmark"
+    },
+    {
+      "anchor_id": "R2_SHELF_07",
+      "source_xy_px": [
+        1429.8,
+        734.9
+      ],
+      "xy_normalized": [
+        0.8551435,
+        0.7809777
+      ],
+      "kind": "shelf",
+      "description": "맨 오른쪽 접힌 옷 선반 점광원",
+      "garment_ids": [],
+      "mapping_status": "unbound_visual_landmark"
+    }
+  ],
+  "warnings": [
+    "원본은 LED ON 상태다. 이 JSON만으로 LED가 꺼지지 않는다.",
+    "빛 위치와 실제 의류 DB 매핑은 별개다. garment_ids는 의도적으로 비어 있다.",
+    "점 수는 사진의 시각 표식 수일 뿐 실제 LED 회로·수납 수량이 아니다.",
+    "거울에 반사된 천장 조명은 위치 표시 LED가 아니므로 제거하지 않는다.",
+    "LED를 끄기 위한 편집 마스크는 glow까지 확인해 별도로 작성한다. 이 좌표는 마스크 경계가 아니다."
+  ]
+}

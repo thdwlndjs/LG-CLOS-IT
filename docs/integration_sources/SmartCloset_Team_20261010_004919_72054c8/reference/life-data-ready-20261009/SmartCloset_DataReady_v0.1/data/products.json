@@ -1,0 +1,546 @@
+[
+  {
+    "ref": "P01",
+    "brand": "COS",
+    "product_code": "1307720001",
+    "variant_colour": "white",
+    "display_name_ko": "코튼 옥스퍼드 셔츠",
+    "category": "top",
+    "subtype": "shirt",
+    "composition": {
+      "shell": {
+        "cotton": 100
+      }
+    },
+    "care_structured": {
+      "wash": {
+        "method": "machine",
+        "temperature_c": 40
+      },
+      "iron": {
+        "level": "medium",
+        "temperature_c": null
+      },
+      "tumble_dry": {
+        "permitted": true,
+        "level": "low"
+      },
+      "professional_clean": {
+        "dry_clean": "permitted_unspecified"
+      },
+      "bleach": null
+    },
+    "source_ref": "SRC-P01",
+    "source_kind": "official_product_page",
+    "verification": "official_page_text",
+    "variant_identity_status": "product_code_and_colour_from_source",
+    "fit_claim": null,
+    "sizes_not_selected": true,
+    "purchase_price": null,
+    "availability_verified": false,
+    "physical_label_asset_ref": null,
+    "catalog_asset_ref": null,
+    "tryon_asset_ref": null,
+    "asset_transfer_permissions": {
+      "openai": null,
+      "decart": null,
+      "public_redistribution": null
+    },
+    "issues": [
+      "직접 열린 페이지의 관리 항목을 기준으로 추출. 검색 요약에는 표백 항목이 있지만 열린 본문에는 없어 미확인 유지. Fit 설명도 regular/relaxed가 충돌하여 추천 근거에서 제외."
+    ],
+    "provenance": {
+      "kind": "source_derived_metadata",
+      "dataset_namespace": "scprep-20261009-v1"
+    }
+  },
+  {
+    "ref": "P02",
+    "brand": "H&M",
+    "product_code": "1036739005",
+    "variant_colour": "light_blue",
+    "display_name_ko": "릴랙스핏 옥스퍼드 셔츠",
+    "category": "top",
+    "subtype": "shirt",
+    "composition": {
+      "shell": {
+        "cotton": 100
+      }
+    },
+    "care_structured": {
+      "wash": {
+        "method": "machine",
+        "temperature_word": "cool",
+        "temperature_c": null
+      },
+      "dry": {
+        "method": "line"
+      },
+      "iron": {
+        "level": "medium",
+        "temperature_c": null
+      },
+      "bleach": {
+        "type": "non_chlorine_only_if_needed"
+      },
+      "professional_clean": {
+        "dry_clean": "permitted_unspecified"
+      }
+    },
+    "source_ref": "SRC-P02",
+    "source_kind": "official_product_page",
+    "verification": "official_page_text",
+    "variant_identity_status": "product_code_and_colour_from_source",
+    "fit_claim": null,
+    "sizes_not_selected": true,
+    "purchase_price": null,
+    "availability_verified": false,
+    "physical_label_asset_ref": null,
+    "catalog_asset_ref": null,
+    "tryon_asset_ref": null,
+    "asset_transfer_permissions": {
+      "openai": null,
+      "decart": null,
+      "public_redistribution": null
+    },
+    "issues": [
+      "cool을 30도 또는 40도로 임의 환산하지 않는다. 숫자 세탁 온도와 텀블 건조 허용은 미확인."
+    ],
+    "provenance": {
+      "kind": "source_derived_metadata",
+      "dataset_namespace": "scprep-20261009-v1"
+    }
+  },
+  {
+    "ref": "P03",
+    "brand": "H&M",
+    "product_code": "1193588001",
+    "variant_colour": "black",
+    "display_name_ko": "레귤러핏 트윌 팬츠",
+    "category": "bottom",
+    "subtype": "trousers",
+    "composition": {
+      "shell": {
+        "cotton": 98,
+        "elastane": 2
+      }
+    },
+    "care_structured": {
+      "wash": {
+        "method": "machine",
+        "temperature_c": 40
+      },
+      "tumble_dry": {
+        "permitted": true,
+        "level": "medium"
+      },
+      "iron": {
+        "level": "medium",
+        "temperature_c": null
+      },
+      "bleach": {
+        "type": "non_chlorine_only_if_needed"
+      },
+      "professional_clean": {
+        "dry_clean": "permitted_unspecified"
+      },
+      "extra": [
+        "wash_with_similar_colours"
+      ]
+    },
+    "source_ref": "SRC-P03",
+    "source_kind": "official_product_page",
+    "verification": "official_page_text",
+    "variant_identity_status": "product_code_and_colour_from_source",
+    "fit_claim": null,
+    "sizes_not_selected": true,
+    "purchase_price": null,
+    "availability_verified": false,
+    "physical_label_asset_ref": null,
+    "catalog_asset_ref": null,
+    "tryon_asset_ref": null,
+    "asset_transfer_permissions": {
+      "openai": null,
+      "decart": null,
+      "public_redistribution": null
+    },
+    "issues": [
+      "사이트 지역은 필리핀. 동일 제품번호 자료이며 한국 판매/재고/가격은 확인하지 않았다."
+    ],
+    "provenance": {
+      "kind": "source_derived_metadata",
+      "dataset_namespace": "scprep-20261009-v1"
+    }
+  },
+  {
+    "ref": "P04",
+    "brand": "ARKET",
+    "product_code": "1066232002",
+    "variant_colour": "beige",
+    "display_name_ko": "릴랙스드 포플린 셔츠",
+    "category": "top",
+    "subtype": "shirt",
+    "composition": null,
+    "care_structured": {
+      "wash": {
+        "method": "label_wash",
+        "max_temperature_c": 40
+      },
+      "dry": {
+        "method": "line"
+      },
+      "iron": {
+        "level": "high",
+        "temperature_c": null
+      },
+      "bleach": {
+        "type": "non_chlorine_only_if_needed"
+      },
+      "professional_clean": {
+        "dry_clean": "not_permitted"
+      }
+    },
+    "source_ref": "SRC-P04",
+    "source_kind": "official_product_page",
+    "verification": "official_search_snapshot",
+    "variant_identity_status": "product_code_and_colour_from_source",
+    "fit_claim": null,
+    "sizes_not_selected": true,
+    "purchase_price": null,
+    "availability_verified": false,
+    "physical_label_asset_ref": null,
+    "catalog_asset_ref": null,
+    "tryon_asset_ref": null,
+    "asset_transfer_permissions": {
+      "openai": null,
+      "decart": null,
+      "public_redistribution": null
+    },
+    "issues": [
+      "공식 검색 스냅샷 내용. 직접 open은 실패했다. 성분 비율은 파싱되지 않아 비워 둠. 실물 라벨은 미확보. 공개용 정상 사례 전 원문 재대조 권고."
+    ],
+    "provenance": {
+      "kind": "source_derived_metadata",
+      "dataset_namespace": "scprep-20261009-v1"
+    }
+  },
+  {
+    "ref": "P05",
+    "brand": "ARKET",
+    "product_code": "1242862001",
+    "variant_colour": "black",
+    "display_name_ko": "테일러드 데님 팬츠",
+    "category": "bottom",
+    "subtype": "jeans",
+    "composition": null,
+    "care_structured": {
+      "wash": {
+        "method": "label_wash",
+        "max_temperature_c": 40
+      },
+      "dry": {
+        "method": "line"
+      },
+      "iron": {
+        "level": "medium",
+        "temperature_c": null
+      },
+      "bleach": {
+        "type": "non_chlorine_only_if_needed"
+      },
+      "professional_clean": {
+        "dry_clean": "not_permitted"
+      },
+      "extra": [
+        "wash_with_similar_colours"
+      ]
+    },
+    "source_ref": "SRC-P05",
+    "source_kind": "official_product_page",
+    "verification": "official_search_snapshot",
+    "variant_identity_status": "product_code_and_colour_from_source",
+    "fit_claim": null,
+    "sizes_not_selected": true,
+    "purchase_price": null,
+    "availability_verified": false,
+    "physical_label_asset_ref": null,
+    "catalog_asset_ref": null,
+    "tryon_asset_ref": null,
+    "asset_transfer_permissions": {
+      "openai": null,
+      "decart": null,
+      "public_redistribution": null
+    },
+    "issues": [
+      "직접 open 실패. 검색에서 확인된 상품 단위 근거만 수록. 성분 비율 미확인."
+    ],
+    "provenance": {
+      "kind": "source_derived_metadata",
+      "dataset_namespace": "scprep-20261009-v1"
+    }
+  },
+  {
+    "ref": "P06",
+    "brand": "COS",
+    "product_code": "1228237002",
+    "variant_colour": "cream",
+    "display_name_ko": "크롭 울 블렌드 카디건",
+    "category": "top",
+    "subtype": "cardigan",
+    "composition": {
+      "shell": {
+        "lyocell": 60,
+        "wool": 40
+      }
+    },
+    "care_structured": {
+      "wash": {
+        "method": "hand",
+        "temperature_c": null
+      },
+      "dry": null,
+      "iron": null,
+      "bleach": null,
+      "professional_clean": null
+    },
+    "source_ref": "SRC-P06",
+    "source_kind": "official_product_page",
+    "verification": "official_search_snapshot",
+    "variant_identity_status": "product_code_and_colour_from_source",
+    "fit_claim": null,
+    "sizes_not_selected": true,
+    "purchase_price": null,
+    "availability_verified": false,
+    "physical_label_asset_ref": null,
+    "catalog_asset_ref": null,
+    "tryon_asset_ref": null,
+    "asset_transfer_permissions": {
+      "openai": null,
+      "decart": null,
+      "public_redistribution": null
+    },
+    "issues": [
+      "손세탁 외의 건조·온도·다림질 조건은 모른다. 라이오셀/울 혼방을 순모로 표현하지 않음."
+    ],
+    "provenance": {
+      "kind": "source_derived_metadata",
+      "dataset_namespace": "scprep-20261009-v1"
+    }
+  },
+  {
+    "ref": "P07",
+    "brand": "H&M",
+    "product_code": "1308076007",
+    "variant_colour": "dark_grey",
+    "display_name_ko": "루스핏 스웨트셔츠",
+    "category": "top",
+    "subtype": "sweatshirt",
+    "composition": {
+      "shell": {
+        "cotton": 60,
+        "polyester": 40
+      }
+    },
+    "care_structured": {},
+    "source_ref": "SRC-P07",
+    "source_kind": "official_product_page",
+    "verification": "official_page_text",
+    "variant_identity_status": "product_code_and_colour_from_source",
+    "fit_claim": null,
+    "sizes_not_selected": true,
+    "purchase_price": null,
+    "availability_verified": false,
+    "physical_label_asset_ref": null,
+    "catalog_asset_ref": null,
+    "tryon_asset_ref": null,
+    "asset_transfer_permissions": {
+      "openai": null,
+      "decart": null,
+      "public_redistribution": null
+    },
+    "issues": [
+      "조회한 자료에서 관리 항목을 확보하지 못했다. 면 혼방이라는 이유만으로 세탁법을 채우지 않는다."
+    ],
+    "provenance": {
+      "kind": "source_derived_metadata",
+      "dataset_namespace": "scprep-20261009-v1"
+    }
+  },
+  {
+    "ref": "P08",
+    "brand": "COS",
+    "product_code": "1291663001",
+    "variant_colour": "stone_melange",
+    "display_name_ko": "싱글 브레스티드 울 블레이저",
+    "category": "outer",
+    "subtype": "blazer",
+    "composition": {
+      "shell": {
+        "wool": 66,
+        "polyester": 32,
+        "elastane": 2
+      },
+      "lining": {
+        "cellulosic_acetate": 100
+      }
+    },
+    "care_structured": {
+      "professional_clean": {
+        "dry_clean": "recommended_unspecified"
+      },
+      "wash": null,
+      "dry": null,
+      "iron": null,
+      "bleach": null
+    },
+    "source_ref": "SRC-P08",
+    "source_kind": "official_product_page",
+    "verification": "official_page_text",
+    "variant_identity_status": "product_code_and_colour_from_source",
+    "fit_claim": null,
+    "sizes_not_selected": true,
+    "purchase_price": null,
+    "availability_verified": false,
+    "physical_label_asset_ref": null,
+    "catalog_asset_ref": null,
+    "tryon_asset_ref": null,
+    "asset_transfer_permissions": {
+      "openai": null,
+      "decart": null,
+      "public_redistribution": null
+    },
+    "issues": [
+      "Dry clean만 확인. dry-clean-only, 세탁 주기, 방수 기능을 새로 추가하지 않는다."
+    ],
+    "provenance": {
+      "kind": "source_derived_metadata",
+      "dataset_namespace": "scprep-20261009-v1"
+    }
+  },
+  {
+    "ref": "P09",
+    "brand": "'S Max Mara",
+    "product_code": "9346036306004",
+    "variant_colour": "camel",
+    "display_name_ko": "울 얀 카디건",
+    "category": "top",
+    "subtype": "cardigan",
+    "composition": {
+      "shell": {
+        "wool": 100
+      }
+    },
+    "care_structured": {
+      "wash": {
+        "method": "hand",
+        "temperature_word": "cold",
+        "max_temperature_c": 40
+      },
+      "bleach": {
+        "type": "not_permitted"
+      },
+      "tumble_dry": {
+        "permitted": false
+      },
+      "dry": {
+        "method": "flat_in_shade"
+      },
+      "iron": {
+        "level": "cool",
+        "temperature_c": null,
+        "pressing_cloth": true
+      },
+      "professional_clean": {
+        "dry_clean": "perchloroethylene_mild",
+        "wet_clean": "not_permitted"
+      },
+      "extra": [
+        "neutral_detergent"
+      ]
+    },
+    "source_ref": "SRC-P09",
+    "source_kind": "official_product_page",
+    "verification": "official_search_snapshot",
+    "variant_identity_status": "product_code_and_colour_from_source",
+    "fit_claim": null,
+    "sizes_not_selected": true,
+    "purchase_price": null,
+    "availability_verified": false,
+    "physical_label_asset_ref": null,
+    "catalog_asset_ref": null,
+    "tryon_asset_ref": null,
+    "asset_transfer_permissions": {
+      "openai": null,
+      "decart": null,
+      "public_redistribution": null
+    },
+    "issues": [
+      "공식 검색 스냅샷. cold 권고와 최대40도를 둘 다 보존하고, 40도 권장으로 바꾸지 않는다. 실물 라벨 없음."
+    ],
+    "provenance": {
+      "kind": "source_derived_metadata",
+      "dataset_namespace": "scprep-20261009-v1"
+    }
+  },
+  {
+    "ref": "P10",
+    "brand": "COS",
+    "product_code": "1311409001",
+    "variant_colour": "white",
+    "display_name_ko": "칼라리스 코튼 셔츠",
+    "category": "top",
+    "subtype": "blouse",
+    "composition": null,
+    "care_structured": {
+      "wash": {
+        "method": "machine",
+        "temperature_c": null
+      }
+    },
+    "source_ref": "SRC-P10",
+    "source_kind": "official_product_page",
+    "verification": "official_search_snapshot",
+    "variant_identity_status": "product_code_and_colour_from_source",
+    "fit_claim": null,
+    "sizes_not_selected": true,
+    "purchase_price": null,
+    "availability_verified": false,
+    "physical_label_asset_ref": null,
+    "catalog_asset_ref": null,
+    "tryon_asset_ref": null,
+    "asset_transfer_permissions": {
+      "openai": null,
+      "decart": null,
+      "public_redistribution": null
+    },
+    "issues": [
+      "상품 설명은 면97/엘라스테인3, 성분 항목은 면95/엘라스테인5로 불일치. resolved composition은 null. 해당 성분을 근거로 한 안내는 보류."
+    ],
+    "provenance": {
+      "kind": "source_derived_metadata",
+      "dataset_namespace": "scprep-20261009-v1"
+    },
+    "field_conflicts": [
+      {
+        "field": "composition.shell",
+        "candidates": [
+          {
+            "locator": "Description",
+            "value": {
+              "cotton": 97,
+              "elastane": 3
+            }
+          },
+          {
+            "locator": "Composition",
+            "value": {
+              "cotton": 95,
+              "elastane": 5
+            }
+          }
+        ],
+        "resolution": "UNRESOLVED"
+      }
+    ]
+  }
+]

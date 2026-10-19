@@ -1,0 +1,305 @@
+{
+  "packageName": "SmartCloset_Flatlay_CodiCard_TeamReview_20261011",
+  "createdAt": "2026-10-11T14:44:12.660914+00:00",
+  "sourceProject": "SmartCloset_Flatlay_20261011",
+  "sourceCommit": "902e47c9fd2cf54dea754d44667388457af90d7f",
+  "featureCommits": [
+    "c63689e",
+    "b27ac43"
+  ],
+  "branch": "feature/flatlay-card-module",
+  "uncommittedSourceChangesIncluded": false,
+  "sourceWorkingTreeClean": true,
+  "integrationState": "independent prototype, NOT integrated into team deployment",
+  "teamBaselineUrl": "https://lg-clos-it.vercel.app/",
+  "remotePushPerformed": false,
+  "runtime": {
+    "node": ">=22",
+    "verifiedNode": "24.18.0",
+    "npmRuntimeDependencies": 0,
+    "url": "http://127.0.0.1:4391"
+  },
+  "data": {
+    "fictionalProfiles": 2,
+    "fictionalOwnedItems": 32,
+    "externalFixtures": 2,
+    "webpAssets": 32,
+    "containsPersonalUserStorage": false
+  },
+  "api": {
+    "activeProviderEndpoints": 0,
+    "openai": "not connected; reference helper only",
+    "decart": "not connected; no server implementation in this package",
+    "paidCalls": 0,
+    "remoteDatabaseWrites": 0
+  },
+  "excluded": [
+    ".git",
+    "real .env and credentials",
+    "browser profiles and sessions",
+    "private databases and personal logs",
+    "node_modules",
+    "caches",
+    "previous ZIPs",
+    "duplicate embedded standalone HTML",
+    "old project source"
+  ],
+  "sourceFiles": [
+    {
+      "path": "README_FIRST.md",
+      "sha256": "6d01262b9fce6f25013823e3f5aea18eee8a5922e07d342978540c7d32d92515"
+    },
+    {
+      "path": "INTEGRATION_GUIDE.md",
+      "sha256": "2122742f31974780d58341f49387c9df2d740294b06374f109121daa45116b5e"
+    },
+    {
+      "path": ".env.example",
+      "sha256": "d1773de186d765f05b52ae36627254061928cbcb8833c2fa1bd7f8b92d895ebd"
+    },
+    {
+      "path": "START_WINDOWS.cmd",
+      "sha256": "806b0c2b4584760d9e0c26cb6e9560c21a1fda10f0ea1ceb10aaf19f84907647"
+    },
+    {
+      "path": "package.json",
+      "sha256": "e13a90763a909da4d4c9fadf44075510e6f27dfcdd647f29738ed62ee181ccf3"
+    },
+    {
+      "path": "package-lock.json",
+      "sha256": "2d24ba3178a88f8b1e10483c344e08ce3ad0f6dcb8d0cbbfdaa93c1357d0c65c"
+    },
+    {
+      "path": "server.mjs",
+      "sha256": "dc3b17b838763345dc8c4f7c1984347581fa50808c655df783e148f263064e7f"
+    },
+    {
+      "path": "index.html",
+      "sha256": "628a104b828d49a6748babb8111a5093b11f08f94f36ce94a47384de8e248d4d"
+    },
+    {
+      "path": "style.css",
+      "sha256": "49eb0f4b27f5016c1eec56ea3974d3555b1c6c6afa40378ab123250b621dff11"
+    },
+    {
+      "path": "evidence/id-mapping-pending.json",
+      "sha256": "52a2f81fd89f6a0a4101f43f340eee66fb6d6664d1272b15b047ba30b712de70"
+    },
+    {
+      "path": "evidence/api-audit.md",
+      "sha256": "c3b457dfb7a819ce6f8f3361c90ae300d76ad10df9ddd9c131a038456bae4b80"
+    },
+    {
+      "path": "src/app.mjs",
+      "sha256": "2daeae72bc9aefbf68a8ca09f4b4b0b49d70dea09a30a343cf7b78ff7531f3c7"
+    },
+    {
+      "path": "src/card-core.mjs",
+      "sha256": "50725c25d87f3e970487aeaf69929cef78402cb8558898e33c0bfa082fd9eab6"
+    },
+    {
+      "path": "src/card-renderer.mjs",
+      "sha256": "9f10948c7edbc8535946828bb7533959f3c383331a86ca8e22d1ff2f99d13709"
+    },
+    {
+      "path": "src/local-session.mjs",
+      "sha256": "38caac0aff1f9b5be94ce82da551b853927f5856ebd172a5efd714a44bdf3c7e"
+    },
+    {
+      "path": "tests/browser-check.mjs",
+      "sha256": "776a0192147db24e03a2045e2c2cdfc1d22489b1052017e576936100dad0e6be"
+    },
+    {
+      "path": "tests/core.test.mjs",
+      "sha256": "c1138cb69baed168d6d8693a6993b0a3c1922e902778040a675c196c455e667f"
+    },
+    {
+      "path": "tests/renderer-math.test.mjs",
+      "sha256": "36295ba56f948e14deb6ce72b7b6d78ac3884439881cf7863b83acafd4befb24"
+    },
+    {
+      "path": "reference/prototype/assets/A01.webp",
+      "sha256": "089c1aca1a051f08d6c4f6c12d429da1f7c8595ebff1542e11cf1dfacab4e04b"
+    },
+    {
+      "path": "reference/prototype/assets/A02.webp",
+      "sha256": "4bfc736aa6a990e57bcc480c2f154bd5b3baeb0c4fefd2dcd46b6e53dc0eff5b"
+    },
+    {
+      "path": "reference/prototype/assets/A05.webp",
+      "sha256": "5b2885904f2bd976e9520388b590d18853380ba4d271a5b4be6d403f7e6a939d"
+    },
+    {
+      "path": "reference/prototype/assets/B01.webp",
+      "sha256": "019afaf8743e1b448eee663905ab4ccecb5f263817d6f5930b33075c452520e6"
+    },
+    {
+      "path": "reference/prototype/assets/B02.webp",
+      "sha256": "1e027203d62dfac950c4483d7d442ecc8c58d2c416168b79474ece3271ba8ad6"
+    },
+    {
+      "path": "reference/prototype/assets/B03.webp",
+      "sha256": "f05e337862d91794a9a428d1e667096932b851d11766a0b0a8b84a435e59aa7a"
+    },
+    {
+      "path": "reference/prototype/assets/B04.webp",
+      "sha256": "6e3ed70ce2435dc97b1c687665c0d96686e39f14a73647f0fb24885f3a933ba1"
+    },
+    {
+      "path": "reference/prototype/assets/B05.webp",
+      "sha256": "1e41bb255195531ac70b3eac4b5cabe4cd7a0a879e04b47928e8f09f3e7f4313"
+    },
+    {
+      "path": "reference/prototype/assets/B07.webp",
+      "sha256": "183c33854b8dd2d63b269036d1dbf5b0aa8dfbfdf0df26821e5de420855c2cd0"
+    },
+    {
+      "path": "reference/prototype/assets/D01.webp",
+      "sha256": "46b1f46548201140c21c908b0bfed0703da86018e27b7697037b7707daf9d16d"
+    },
+    {
+      "path": "reference/prototype/assets/H01.webp",
+      "sha256": "84a4b1f7b5f7822868fdebdfa90db079d9303633d05d987a4fc9b8f95c201b4e"
+    },
+    {
+      "path": "reference/prototype/assets/O01.webp",
+      "sha256": "144891530ef3644a9b95badd1010c57ad5dd465fbf6c160a00f21ac622b71e2f"
+    },
+    {
+      "path": "reference/prototype/assets/O02.webp",
+      "sha256": "538c70d9ffda66ed901e7b1046fd1b6583b34e74b4ab0f963c50f16e582ebd58"
+    },
+    {
+      "path": "reference/prototype/assets/O04.webp",
+      "sha256": "acf3ccf304d99d90eb2938e8222ed25277a04692ba510003056aec4bce396d81"
+    },
+    {
+      "path": "reference/prototype/assets/O05.webp",
+      "sha256": "16208fc3e349424de37fb19bafb209cfc8c4660649c5d06234c0e97fdae51cf4"
+    },
+    {
+      "path": "reference/prototype/assets/O06.webp",
+      "sha256": "41efb781904d76ab4aa5d994b079e1514a605b63d69bb422319a48edf8859383"
+    },
+    {
+      "path": "reference/prototype/assets/O08.webp",
+      "sha256": "995f4d019ff6aec477774e7631cd8f1a1d2ab38e04355214e8a613715446b4b7"
+    },
+    {
+      "path": "reference/prototype/assets/S01.webp",
+      "sha256": "73b48fbc177709d7a4aab15a746e2449603e292135290392f7186b8f7b97039a"
+    },
+    {
+      "path": "reference/prototype/assets/S02.webp",
+      "sha256": "8e3670caf6f0618c2c4befef59c2e87efd2cf315d0e708f32b0768a06f5e178f"
+    },
+    {
+      "path": "reference/prototype/assets/S04.webp",
+      "sha256": "4fc37d324a57d28bbe648d985002fc58e7fb426cb68a68d079f3297ff0257431"
+    },
+    {
+      "path": "reference/prototype/assets/S06.webp",
+      "sha256": "b01288d8da5496d6806c8fd3790d667b6233af3f5ef2908bd055a436e5f3d725"
+    },
+    {
+      "path": "reference/prototype/assets/T01.webp",
+      "sha256": "ed9d83c4b57960023798c31428046079dcaef54c1f7814ff6d04e6230f73d5d4"
+    },
+    {
+      "path": "reference/prototype/assets/T02.webp",
+      "sha256": "e1dc1207542eb75bc782899011fe69f5b669cdcaab8a3288db70a1386789d319"
+    },
+    {
+      "path": "reference/prototype/assets/T03.webp",
+      "sha256": "c329797d5ebb5cd54e72ae47998059d96215d086a25ef9a1b2832c8702e66e16"
+    },
+    {
+      "path": "reference/prototype/assets/T04.webp",
+      "sha256": "3233dbe6c2dc84205cafb59c5f798ae3c88fb0975bf6d675aeb8195d90f9aca9"
+    },
+    {
+      "path": "reference/prototype/assets/T05.webp",
+      "sha256": "b407c52b2d4a1f58d717f2faa712d801ad8277de5747ea9c5956b79439832c8a"
+    },
+    {
+      "path": "reference/prototype/assets/T07.webp",
+      "sha256": "70711f7f624d7223c819a717e04fbd601eed853fba84674792cf715a3275285b"
+    },
+    {
+      "path": "reference/prototype/assets/T08.webp",
+      "sha256": "674345e8f9289be64e2d548b7c9813f3a2a651a243016f4deb6929e02a195844"
+    },
+    {
+      "path": "reference/prototype/assets/T09.webp",
+      "sha256": "37f356073b504882b97f82f36001e70c55b7fb9e6cf827d0ed1058442e99d60a"
+    },
+    {
+      "path": "reference/prototype/assets/T10.webp",
+      "sha256": "ba045fc627e723a51cc842ef2bd558ba9663419f78f71db11263656e44f51204"
+    },
+    {
+      "path": "reference/prototype/assets/T11.webp",
+      "sha256": "78c1c42cf20af033e919fb5398af924aa11a7b387a984912baf23c858bdcb415"
+    },
+    {
+      "path": "reference/prototype/assets/T12.webp",
+      "sha256": "b8e8c25ec024baf4985f2707fbfe7b52ea9a78e43696b8733e9701d2936a8395"
+    },
+    {
+      "path": "reference/prototype/data/demo-pack.json",
+      "sha256": "cc95bd5fd1696d34beb926a7ac4a9494b3213f67fa4e59e3a19f751904a8919e"
+    },
+    {
+      "path": "reference/prototype/data/demo-pack.js",
+      "sha256": "7f051f4c57c51b09167aa5d3c9f6a16adf8318d8610a08dbc5743efcde113e6b"
+    },
+    {
+      "path": "reference/prototype/index.html",
+      "sha256": "9a138d067e0dba30e62ef06d7d06aabf2811c54fb51f010adc2545d45e9cfe15"
+    },
+    {
+      "path": "reference/prototype/style.css",
+      "sha256": "fd11037bac4687065d035531cccae5e2ed594754e9afa14f84ec26215381958b"
+    },
+    {
+      "path": "reference/prototype/src/app.js",
+      "sha256": "323bc0250089cc2764aabdc17e9e1ebe3c3b4a4ecee18372c41e0dbc2dc3344c"
+    },
+    {
+      "path": "reference/prototype/src/card-core.js",
+      "sha256": "a718e1b2b0fdbfb6c74d7b16ce3228feb41d37250dfb1afc78a7edd232711aa9"
+    },
+    {
+      "path": "reference/prototype/api/execution_readiness.json",
+      "sha256": "7001aa6112ca9586d4af695091784de1a87a8b167c74e85d56cc70ef18cb32ae"
+    },
+    {
+      "path": "reference/prototype/api/first_probe_input.json",
+      "sha256": "f38b5cd778bbbeea315e6e545ab3cff8c572370d12f6b95ebc1d89b589163c1b"
+    },
+    {
+      "path": "reference/prototype/api/openai-recommendation.mjs",
+      "sha256": "4f8e3f4518e0f85b9c9d32d71808943ec28d760451deef4fe782d588a5de3ce6"
+    }
+  ],
+  "packageVerification": {
+    "isolatedExtraction": true,
+    "npmCiOffline": "PASS",
+    "syntaxCheck": "PASS",
+    "unitTests": {
+      "pass": 49,
+      "fail": 0
+    },
+    "actualBrowserTests": {
+      "pass": 15,
+      "fail": 0,
+      "includesExplicitHttp404FaultFixture": true
+    },
+    "windowsLauncherTests": 2,
+    "assetHttpHashChecks": 32,
+    "originalSourceDependency": false,
+    "qaTooling": "Playwright1.55.1 installed in independent temporary tools directory; actual Chrome browser",
+    "providerCalls": 0,
+    "remoteWrites": 0
+  }
+}

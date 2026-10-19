@@ -1,0 +1,12 @@
+{
+  "status": "HANDOFF_CONSISTENCY_CHECKS_PASSED",
+  "mapping_rows": 32,
+  "all_rows_review_only": true,
+  "current_runtime_bindings_assigned": 0,
+  "old_catalog_hash_and_decode_checks": 48,
+  "actual_app_tests_executed": 0,
+  "actual_ledger_or_database_writes": 0,
+  "new_image_generation": 0,
+  "external_paid_api_calls": 0,
+  "note": "카탈로그 48개의 원본 검사와 인계 문서 정합성만 확인. 앱 수용시험 R01~R30은 앞으로 Codex가 수행할 항목."
+}

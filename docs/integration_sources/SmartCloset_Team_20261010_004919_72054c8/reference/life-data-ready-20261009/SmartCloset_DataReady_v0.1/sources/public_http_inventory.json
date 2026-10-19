@@ -1,0 +1,92 @@
+[
+  {
+    "product_ref": "P01",
+    "url": "https://www2.hm.com/en_gb/productpage.1307720001.html",
+    "retrieval_method": "public_http_get_once",
+    "downloaded_images": false,
+    "image_candidates": [],
+    "status": "FETCH_ERROR",
+    "error_type": "ConnectionError"
+  },
+  {
+    "product_ref": "P02",
+    "url": "https://www2.hm.com/en_us/productpage.1036739005.html",
+    "retrieval_method": "public_http_get_once",
+    "downloaded_images": false,
+    "image_candidates": [],
+    "status": "FETCH_ERROR",
+    "error_type": "ConnectionError"
+  },
+  {
+    "product_ref": "P03",
+    "url": "https://www2.hm.com/en_ph/productpage.1193588001.html",
+    "retrieval_method": "public_http_get_once",
+    "downloaded_images": false,
+    "image_candidates": [],
+    "status": "FETCH_ERROR",
+    "error_type": "ConnectionError"
+  },
+  {
+    "product_ref": "P04",
+    "url": "https://www.arket.com/en_gbp/women/shirts-blouses/product.relaxed-poplin-shirt-beige.1066232002.html",
+    "retrieval_method": "public_http_get_once",
+    "downloaded_images": false,
+    "image_candidates": [],
+    "status": "FETCH_ERROR",
+    "error_type": "ConnectionError"
+  },
+  {
+    "product_ref": "P05",
+    "url": "https://www.arket.com/en_gbp/women/trousers/product.tailored-denim-trousers-black.1242862001.html",
+    "retrieval_method": "public_http_get_once",
+    "downloaded_images": false,
+    "image_candidates": [],
+    "status": "FETCH_ERROR",
+    "error_type": "ConnectionError"
+  },
+  {
+    "product_ref": "P06",
+    "url": "https://www.cos.com/en-us/women/womenswear/knitwear/cardigans/product/cropped-wool-blend-cardigan-cream-1228237002",
+    "retrieval_method": "public_http_get_once",
+    "downloaded_images": false,
+    "image_candidates": [],
+    "status": "FETCH_ERROR",
+    "error_type": "ConnectionError"
+  },
+  {
+    "product_ref": "P07",
+    "url": "https://www2.hm.com/en_gb/productpage.1308076007.html",
+    "retrieval_method": "public_http_get_once",
+    "downloaded_images": false,
+    "image_candidates": [],
+    "status": "FETCH_ERROR",
+    "error_type": "ConnectionError"
+  },
+  {
+    "product_ref": "P08",
+    "url": "https://www.cos.com/en-us/men/menswear/suits/blazers/product/single-breasted-wool-blazer-stone-mlange-1291663001",
+    "retrieval_method": "public_http_get_once",
+    "downloaded_images": false,
+    "image_candidates": [],
+    "status": "FETCH_ERROR",
+    "error_type": "ConnectionError"
+  },
+  {
+    "product_ref": "P09",
+    "url": "https://us.maxmara.com/p-9346036306004-smmchiara-camel",
+    "retrieval_method": "public_http_get_once",
+    "downloaded_images": false,
+    "image_candidates": [],
+    "status": "FETCH_ERROR",
+    "error_type": "ConnectionError"
+  },
+  {
+    "product_ref": "P10",
+    "url": "https://www2.hm.com/en_gb/productpage.1311409001.html",
+    "retrieval_method": "public_http_get_once",
+    "downloaded_images": false,
+    "image_candidates": [],
+    "status": "FETCH_ERROR",
+    "error_type": "ConnectionError"
+  }
+]

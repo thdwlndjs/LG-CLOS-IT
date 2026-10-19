@@ -1,0 +1,191 @@
+{
+  "schemaVersion": 1,
+  "profileId": "flatlay-demo:hwijae",
+  "draftId": "api-probe-prepared-not-submitted",
+  "revision": 0,
+  "purpose": "블루 셔츠를 유지한 출근 코디 대안",
+  "weather": {
+    "state": "unavailable"
+  },
+  "selected": [
+    {
+      "id": "flatlay-demo:hwijae:owned:T03",
+      "slot": "top",
+      "kind": "owned",
+      "assetId": "legacy48:T03:v1",
+      "assetVersion": 1
+    },
+    {
+      "id": "flatlay-demo:hwijae:owned:B03",
+      "slot": "bottom",
+      "kind": "owned",
+      "assetId": "legacy48:B03:v1",
+      "assetVersion": 1
+    },
+    {
+      "id": "flatlay-demo:hwijae:owned:S01",
+      "slot": "shoes",
+      "kind": "owned",
+      "assetId": "legacy48:S01:v1",
+      "assetVersion": 1
+    },
+    {
+      "id": "flatlay-demo:hwijae:owned:A05",
+      "slot": "bag",
+      "kind": "owned",
+      "assetId": "legacy48:A05:v1",
+      "assetVersion": 1
+    }
+  ],
+  "allowedCandidates": [
+    {
+      "id": "flatlay-demo:hwijae:owned:T01",
+      "name": "화이트 셔츠",
+      "slot": "top",
+      "kind": "owned",
+      "colors": [
+        "화이트"
+      ]
+    },
+    {
+      "id": "flatlay-demo:hwijae:owned:T03",
+      "name": "블루 셔츠",
+      "slot": "top",
+      "kind": "owned",
+      "colors": [
+        "스카이블루"
+      ]
+    },
+    {
+      "id": "flatlay-demo:hwijae:owned:T05",
+      "name": "크림 케이블 니트",
+      "slot": "top",
+      "kind": "owned",
+      "colors": [
+        "크림"
+      ]
+    },
+    {
+      "id": "flatlay-demo:hwijae:owned:T07",
+      "name": "그레이 맨투맨",
+      "slot": "top",
+      "kind": "owned",
+      "colors": [
+        "그레이"
+      ]
+    },
+    {
+      "id": "flatlay-demo:hwijae:owned:T09",
+      "name": "차콜 풀오버 후드티",
+      "slot": "top",
+      "kind": "owned",
+      "colors": [
+        "차콜"
+      ]
+    },
+    {
+      "id": "flatlay-demo:hwijae:owned:T12",
+      "name": "블랙 모크넥",
+      "slot": "top",
+      "kind": "owned",
+      "colors": [
+        "블랙"
+      ]
+    },
+    {
+      "id": "flatlay-demo:hwijae:owned:B01",
+      "name": "블랙 슬랙스",
+      "slot": "bottom",
+      "kind": "owned",
+      "colors": [
+        "블랙"
+      ]
+    },
+    {
+      "id": "flatlay-demo:hwijae:owned:B02",
+      "name": "베이지 치노",
+      "slot": "bottom",
+      "kind": "owned",
+      "colors": [
+        "베이지"
+      ]
+    },
+    {
+      "id": "flatlay-demo:hwijae:owned:B03",
+      "name": "인디고 스트레이트 데님",
+      "slot": "bottom",
+      "kind": "owned",
+      "colors": [
+        "인디고"
+      ]
+    },
+    {
+      "id": "flatlay-demo:hwijae:owned:B07",
+      "name": "그레이 조거팬츠",
+      "slot": "bottom",
+      "kind": "owned",
+      "colors": [
+        "그레이"
+      ]
+    },
+    {
+      "id": "flatlay-demo:hwijae:owned:O02",
+      "name": "네이비 봄버 재킷",
+      "slot": "outer",
+      "kind": "owned",
+      "colors": [
+        "네이비"
+      ]
+    },
+    {
+      "id": "flatlay-demo:hwijae:owned:O04",
+      "name": "차콜 블레이저",
+      "slot": "outer",
+      "kind": "owned",
+      "colors": [
+        "차콜"
+      ]
+    },
+    {
+      "id": "flatlay-demo:hwijae:owned:S01",
+      "name": "화이트 스니커즈",
+      "slot": "shoes",
+      "kind": "owned",
+      "colors": [
+        "화이트",
+        "아이보리"
+      ]
+    },
+    {
+      "id": "flatlay-demo:hwijae:owned:S04",
+      "name": "브라운 앵클부츠",
+      "slot": "shoes",
+      "kind": "owned",
+      "colors": [
+        "다크브라운"
+      ]
+    },
+    {
+      "id": "flatlay-demo:hwijae:owned:A05",
+      "name": "블랙 데이팩",
+      "slot": "bag",
+      "kind": "owned",
+      "colors": [
+        "블랙"
+      ]
+    },
+    {
+      "id": "flatlay-demo:hwijae:owned:H01",
+      "name": "네이비 볼캡",
+      "slot": "hat",
+      "kind": "owned",
+      "colors": [
+        "네이비"
+      ]
+    }
+  ],
+  "lockedSlots": [
+    "top"
+  ],
+  "inputProvenance": "fictional_demo"
+}

@@ -1,0 +1,11 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>플랫레이 카드 · 독립 모듈 검수</title><link rel="stylesheet" href="style.css"></head><body>
+<header><strong>코디카드</strong><nav aria-label="모듈 검수 화면"><button id="studio-tab">조합 만들기</button><button id="saved-tab">저장 카드 <span id="saved-count">0</span></button><button id="profile-trigger">마이 · 프로필</button></nav></header>
+<main><p class="scope">팀 웹 연결 전 · 가상 시연 데이터 · 이 브라우저에만 저장</p>
+<p id="feedback" role="status" aria-live="polite"></p>
+<section id="studio-view" class="workspace" aria-label="코디 조합">
+<div class="stage"><canvas id="card-canvas" width="1080" height="1350" aria-label="현재 조합 플랫레이"></canvas><div class="tools" aria-label="배치"><button data-variant="natural">자연스럽게</button><button data-variant="ordered">정돈해서</button><button id="transparent" aria-pressed="false">투명 배경</button></div></div>
+<div class="editor"><h1 id="closet-label">옷을 골라 한 장으로</h1><p id="profile-note"></p><div class="tools"><button data-source="owned">시연 보유옷</button><button data-source="external">외부 후보 예시</button></div><div id="slots" class="tools" aria-label="옷 종류"></div><p id="candidate-caption" class="note"></p><div id="item-grid" class="item-grid"></div><div id="current-items" class="current" aria-label="현재 선택 품목"></div>
+<label for="card-title">이름 · 선택 사항</label><input id="card-title" maxlength="70" placeholder="선택한 옷으로 자동 구성"><div class="actions"><button id="save-card" class="primary">카드 저장</button><button id="export-card">PNG 내보내기</button></div><p class="note">저장과 내보내기는 피팅·오늘 선택·실제 착용을 실행하지 않아요.</p></div></section>
+<section id="saved-view" hidden aria-label="내 저장 카드"><h1>저장한 조합</h1><p>누르면 원본을 보존한 새 초안으로 열려요.</p><div id="saved-grid" class="saved-grid"></div></section>
+<details><summary>연결 상태</summary><p>원격 저장·실제 OpenAI·Decart 호출은 아직 연결하지 않았습니다. 팀 소스와 승인 잔액·자산 확인이 필요합니다. 아래 JSON은 현재 선택의 연결 계약 검토용입니다.</p><button id="download-context">현재 조합 JSON</button></details></main>
+<dialog id="profile-dialog"><h2>시연 프로필</h2><p>실제 팀 계정과 연결되지 않은 가상 데이터입니다.</p><div id="profile-options"></div><button id="close-profile">닫기</button></dialog><script type="module" src="src/app.mjs"></script></body></html>

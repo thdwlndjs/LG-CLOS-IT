@@ -1,0 +1,20 @@
+{
+  "dataset_namespace": "scprep-20261009-v1",
+  "stage": "PREPARATION_ONLY",
+  "provider_models": "reuse_current_approved_runtime_after_verification",
+  "provider_calls_made": 0,
+  "api_keys_present": false,
+  "approved_budget_usd": null,
+  "approved_person_asset_refs": [],
+  "allowed_remote_target": null,
+  "live_enabled": false,
+  "must_confirm": [
+    "target account and project",
+    "profile and asset permissions",
+    "exact provider/model/endpoint in current runtime",
+    "per-call and cumulative spend including retries",
+    "input/output retention",
+    "source usage rights"
+  ],
+  "no_automatic_switch_to_mock_or_live": true
+}

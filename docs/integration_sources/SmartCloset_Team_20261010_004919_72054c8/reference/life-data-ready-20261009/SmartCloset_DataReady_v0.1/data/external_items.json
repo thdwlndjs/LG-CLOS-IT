@@ -1,0 +1,66 @@
+[
+  {
+    "ref": "X01",
+    "owner_ref": "PHW",
+    "ownership": "external_candidate",
+    "product_ref": "P08",
+    "source_url": "https://www.cos.com/en-us/men/menswear/suits/blazers/product/single-breasted-wool-blazer-stone-mlange-1291663001",
+    "catalog_asset_ref": null,
+    "tryon_asset_ref": null,
+    "led_anchor_ref": null,
+    "real_purchase_verified": false,
+    "provenance": {
+      "kind": "source_derived_external_candidate",
+      "dataset_namespace": "scprep-20261009-v1"
+    },
+    "source_ref": "SRC-P08"
+  },
+  {
+    "ref": "X02",
+    "owner_ref": "PSU",
+    "ownership": "external_candidate",
+    "product_ref": "P09",
+    "source_url": "https://us.maxmara.com/p-9346036306004-smmchiara-camel",
+    "catalog_asset_ref": null,
+    "tryon_asset_ref": null,
+    "led_anchor_ref": null,
+    "real_purchase_verified": false,
+    "provenance": {
+      "kind": "source_derived_external_candidate",
+      "dataset_namespace": "scprep-20261009-v1"
+    },
+    "source_ref": "SRC-P09"
+  },
+  {
+    "ref": "X03",
+    "owner_ref": "PSU",
+    "ownership": "external_candidate",
+    "product_ref": "P10",
+    "source_url": "https://www2.hm.com/en_gb/productpage.1311409001.html",
+    "catalog_asset_ref": null,
+    "tryon_asset_ref": null,
+    "led_anchor_ref": null,
+    "real_purchase_verified": false,
+    "provenance": {
+      "kind": "source_derived_external_candidate",
+      "dataset_namespace": "scprep-20261009-v1"
+    },
+    "source_ref": "SRC-P10"
+  },
+  {
+    "ref": "X04",
+    "owner_ref": "PHW",
+    "ownership": "external_candidate",
+    "product_ref": "P06",
+    "source_url": "https://www.cos.com/en-us/women/womenswear/knitwear/cardigans/product/cropped-wool-blend-cardigan-cream-1228237002",
+    "catalog_asset_ref": null,
+    "tryon_asset_ref": null,
+    "led_anchor_ref": null,
+    "real_purchase_verified": false,
+    "provenance": {
+      "kind": "source_derived_external_candidate",
+      "dataset_namespace": "scprep-20261009-v1"
+    },
+    "source_ref": "SRC-P06"
+  }
+]

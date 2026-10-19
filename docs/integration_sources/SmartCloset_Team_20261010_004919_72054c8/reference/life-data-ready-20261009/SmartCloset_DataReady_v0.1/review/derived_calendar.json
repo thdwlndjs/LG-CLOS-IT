@@ -1,0 +1,484 @@
+[
+  {
+    "profile_ref": "PSU",
+    "events": [
+      {
+        "event_ref": "SU-WEAR-SEP-01",
+        "date": "2026-09-25",
+        "kind": "wear_confirmed",
+        "outfit_ref": "LS01",
+        "garment_refs": [
+          "S01",
+          "S08",
+          "S15"
+        ],
+        "input_source": "scenario_fixture"
+      },
+      {
+        "event_ref": "SU-WEAR-SEP-02",
+        "date": "2026-09-26",
+        "kind": "wear_confirmed",
+        "outfit_ref": "LS03",
+        "garment_refs": [
+          "S04",
+          "S09",
+          "S15"
+        ],
+        "input_source": "scenario_fixture"
+      },
+      {
+        "event_ref": "SU-WEAR-SEP-03",
+        "date": "2026-09-28",
+        "kind": "wear_confirmed",
+        "outfit_ref": "LS02",
+        "garment_refs": [
+          "S02",
+          "S11",
+          "S15"
+        ],
+        "input_source": "scenario_fixture"
+      },
+      {
+        "event_ref": "SU-WEAR-SEP-04",
+        "date": "2026-09-30",
+        "kind": "wear_confirmed",
+        "outfit_ref": "LS04",
+        "garment_refs": [
+          "S06",
+          "S10",
+          "S16"
+        ],
+        "input_source": "scenario_fixture"
+      },
+      {
+        "event_ref": "SU-WEAR-OCT-01",
+        "date": "2026-10-01",
+        "kind": "wear_confirmed",
+        "outfit_ref": "LS04",
+        "garment_refs": [
+          "S06",
+          "S10",
+          "S16"
+        ],
+        "input_source": "scenario_fixture"
+      },
+      {
+        "event_ref": "SU-WEAR-OCT-02",
+        "date": "2026-10-02",
+        "kind": "wear_confirmed",
+        "outfit_ref": "LS03",
+        "garment_refs": [
+          "S04",
+          "S09",
+          "S15"
+        ],
+        "input_source": "scenario_fixture"
+      },
+      {
+        "event_ref": "SU-WEAR-OCT-03",
+        "date": "2026-10-03",
+        "kind": "wear_confirmed",
+        "outfit_ref": "LS02",
+        "garment_refs": [
+          "S02",
+          "S11",
+          "S15"
+        ],
+        "input_source": "scenario_fixture"
+      },
+      {
+        "event_ref": "SU-W04-W",
+        "date": "2026-10-04",
+        "kind": "wash_completed",
+        "outfit_ref": null,
+        "garment_refs": [
+          "S01",
+          "S02",
+          "S04",
+          "S08",
+          "S09",
+          "S11"
+        ],
+        "input_source": "scenario_fixture"
+      },
+      {
+        "event_ref": "SU-W04-D",
+        "date": "2026-10-04",
+        "kind": "dry_completed",
+        "outfit_ref": null,
+        "garment_refs": [
+          "S01",
+          "S02",
+          "S04",
+          "S08",
+          "S09",
+          "S11"
+        ],
+        "input_source": "scenario_fixture"
+      },
+      {
+        "event_ref": "SU-WEAR-OCT-05",
+        "date": "2026-10-05",
+        "kind": "wear_confirmed",
+        "outfit_ref": "LS01",
+        "garment_refs": [
+          "S01",
+          "S08",
+          "S15"
+        ],
+        "input_source": "scenario_fixture"
+      },
+      {
+        "event_ref": "SU-WEAR-OCT-06",
+        "date": "2026-10-06",
+        "kind": "wear_confirmed",
+        "outfit_ref": "LS03",
+        "garment_refs": [
+          "S04",
+          "S09",
+          "S15"
+        ],
+        "input_source": "scenario_fixture"
+      },
+      {
+        "event_ref": "SU-WEAR-OCT-07",
+        "date": "2026-10-07",
+        "kind": "wear_confirmed",
+        "outfit_ref": "LS01",
+        "garment_refs": [
+          "S01",
+          "S08",
+          "S15"
+        ],
+        "input_source": "scenario_fixture"
+      },
+      {
+        "event_ref": "SU-WEAR-OCT-08",
+        "date": "2026-10-08",
+        "kind": "wear_confirmed",
+        "outfit_ref": "LS01",
+        "garment_refs": [
+          "S01",
+          "S08",
+          "S15"
+        ],
+        "input_source": "scenario_fixture"
+      },
+      {
+        "event_ref": "SU-IRON-08",
+        "date": "2026-10-08",
+        "kind": "iron_completed",
+        "outfit_ref": null,
+        "garment_refs": [
+          "S01"
+        ],
+        "input_source": "scenario_fixture"
+      },
+      {
+        "event_ref": "SU-PLAN-10",
+        "date": "2026-10-10",
+        "kind": "outfit_planned",
+        "outfit_ref": "LS02",
+        "garment_refs": [
+          "S02",
+          "S11",
+          "S15"
+        ],
+        "input_source": "scenario_fixture"
+      }
+    ]
+  },
+  {
+    "profile_ref": "PHW",
+    "events": [
+      {
+        "event_ref": "HW-WEAR-SEP-01",
+        "date": "2026-09-25",
+        "kind": "wear_confirmed",
+        "outfit_ref": "LH01",
+        "garment_refs": [
+          "H01",
+          "H08",
+          "H15"
+        ],
+        "input_source": "scenario_fixture"
+      },
+      {
+        "event_ref": "HW-WEAR-SEP-02",
+        "date": "2026-09-26",
+        "kind": "wear_confirmed",
+        "outfit_ref": "LH03",
+        "garment_refs": [
+          "H03",
+          "H10",
+          "H15"
+        ],
+        "input_source": "scenario_fixture"
+      },
+      {
+        "event_ref": "HW-WEAR-SEP-03",
+        "date": "2026-09-28",
+        "kind": "wear_confirmed",
+        "outfit_ref": "LH04",
+        "garment_refs": [
+          "H04",
+          "H09",
+          "H16"
+        ],
+        "input_source": "scenario_fixture"
+      },
+      {
+        "event_ref": "HW-WEAR-SEP-04",
+        "date": "2026-09-30",
+        "kind": "wear_confirmed",
+        "outfit_ref": "LH05",
+        "garment_refs": [
+          "H06",
+          "H10",
+          "H16"
+        ],
+        "input_source": "scenario_fixture"
+      },
+      {
+        "event_ref": "HW-WEAR-OCT-01",
+        "date": "2026-10-01",
+        "kind": "wear_confirmed",
+        "outfit_ref": "LH04",
+        "garment_refs": [
+          "H04",
+          "H09",
+          "H16"
+        ],
+        "input_source": "scenario_fixture"
+      },
+      {
+        "event_ref": "HW-W01-W",
+        "date": "2026-10-01",
+        "kind": "wash_completed",
+        "outfit_ref": null,
+        "garment_refs": [
+          "H03",
+          "H06"
+        ],
+        "input_source": "scenario_fixture"
+      },
+      {
+        "event_ref": "HW-W01-D",
+        "date": "2026-10-01",
+        "kind": "dry_completed",
+        "outfit_ref": null,
+        "garment_refs": [
+          "H03",
+          "H06"
+        ],
+        "input_source": "scenario_fixture"
+      },
+      {
+        "event_ref": "HW-WEAR-OCT-02",
+        "date": "2026-10-02",
+        "kind": "wear_confirmed",
+        "outfit_ref": "LH03",
+        "garment_refs": [
+          "H03",
+          "H10",
+          "H15"
+        ],
+        "input_source": "scenario_fixture"
+      },
+      {
+        "event_ref": "HW-WEAR-OCT-03",
+        "date": "2026-10-03",
+        "kind": "wear_confirmed",
+        "outfit_ref": "LH03",
+        "garment_refs": [
+          "H03",
+          "H10",
+          "H15"
+        ],
+        "input_source": "scenario_fixture"
+      },
+      {
+        "event_ref": "HW-W03-W",
+        "date": "2026-10-03",
+        "kind": "wash_completed",
+        "outfit_ref": null,
+        "garment_refs": [
+          "H01",
+          "H09"
+        ],
+        "input_source": "scenario_fixture"
+      },
+      {
+        "event_ref": "HW-W03-D",
+        "date": "2026-10-03",
+        "kind": "dry_completed",
+        "outfit_ref": null,
+        "garment_refs": [
+          "H01",
+          "H09"
+        ],
+        "input_source": "scenario_fixture"
+      },
+      {
+        "event_ref": "HW-WEAR-OCT-04",
+        "date": "2026-10-04",
+        "kind": "wear_confirmed",
+        "outfit_ref": "LH01",
+        "garment_refs": [
+          "H01",
+          "H08",
+          "H15"
+        ],
+        "input_source": "scenario_fixture"
+      },
+      {
+        "event_ref": "HW-WEAR-OCT-05",
+        "date": "2026-10-05",
+        "kind": "wear_confirmed",
+        "outfit_ref": "LH03",
+        "garment_refs": [
+          "H03",
+          "H10",
+          "H15"
+        ],
+        "input_source": "scenario_fixture"
+      },
+      {
+        "event_ref": "HW-W05-W",
+        "date": "2026-10-05",
+        "kind": "wash_completed",
+        "outfit_ref": null,
+        "garment_refs": [
+          "H08",
+          "H10"
+        ],
+        "input_source": "scenario_fixture"
+      },
+      {
+        "event_ref": "HW-W05-D",
+        "date": "2026-10-05",
+        "kind": "dry_completed",
+        "outfit_ref": null,
+        "garment_refs": [
+          "H08",
+          "H10"
+        ],
+        "input_source": "scenario_fixture"
+      },
+      {
+        "event_ref": "HW-WEAR-OCT-06",
+        "date": "2026-10-06",
+        "kind": "wear_confirmed",
+        "outfit_ref": "LH01",
+        "garment_refs": [
+          "H01",
+          "H08",
+          "H15"
+        ],
+        "input_source": "scenario_fixture"
+      },
+      {
+        "event_ref": "HW-WEAR-OCT-07",
+        "date": "2026-10-06",
+        "kind": "wear_confirmed",
+        "outfit_ref": "LH03",
+        "garment_refs": [
+          "H03",
+          "H10",
+          "H15"
+        ],
+        "input_source": "scenario_fixture"
+      },
+      {
+        "event_ref": "HW-WEAR-OCT-08",
+        "date": "2026-10-07",
+        "kind": "wear_confirmed",
+        "outfit_ref": "LH03",
+        "garment_refs": [
+          "H03",
+          "H10",
+          "H15"
+        ],
+        "input_source": "scenario_fixture"
+      },
+      {
+        "event_ref": "HW-W07-W",
+        "date": "2026-10-07",
+        "kind": "wash_completed",
+        "outfit_ref": null,
+        "garment_refs": [
+          "H02"
+        ],
+        "input_source": "scenario_fixture"
+      },
+      {
+        "event_ref": "HW-W07-D",
+        "date": "2026-10-07",
+        "kind": "dry_completed",
+        "outfit_ref": null,
+        "garment_refs": [
+          "H02"
+        ],
+        "input_source": "scenario_fixture"
+      },
+      {
+        "event_ref": "HW-WEAR-OCT-09",
+        "date": "2026-10-08",
+        "kind": "wear_confirmed",
+        "outfit_ref": "LH01",
+        "garment_refs": [
+          "H01",
+          "H08",
+          "H15"
+        ],
+        "input_source": "scenario_fixture"
+      },
+      {
+        "event_ref": "HW-WEAR-BLUE-AM",
+        "date": "2026-10-08",
+        "kind": "wear_confirmed",
+        "outfit_ref": "LH02",
+        "garment_refs": [
+          "H02",
+          "H08",
+          "H15"
+        ],
+        "input_source": "scenario_fixture"
+      },
+      {
+        "event_ref": "HW-WEAR-BLUE-PM",
+        "date": "2026-10-08",
+        "kind": "wear_confirmed",
+        "outfit_ref": "LH02",
+        "garment_refs": [
+          "H02",
+          "H08",
+          "H15"
+        ],
+        "input_source": "scenario_fixture"
+      },
+      {
+        "event_ref": "HW-W08-PENDING",
+        "date": "2026-10-08",
+        "kind": "wash_completed",
+        "outfit_ref": null,
+        "garment_refs": [
+          "H05"
+        ],
+        "input_source": "scenario_fixture"
+      },
+      {
+        "event_ref": "HW-PLAN-09",
+        "date": "2026-10-09",
+        "kind": "outfit_planned",
+        "outfit_ref": "LH02",
+        "garment_refs": [
+          "H02",
+          "H08",
+          "H15"
+        ],
+        "input_source": "scenario_fixture"
+      }
+    ]
+  }
+]

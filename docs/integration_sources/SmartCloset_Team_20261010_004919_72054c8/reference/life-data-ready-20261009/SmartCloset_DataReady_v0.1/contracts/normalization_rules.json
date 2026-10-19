@@ -1,0 +1,19 @@
+{
+  "status": "REFERENCE_RULES_TO_MAP_TO_EXISTING_APP",
+  "namespace": "scprep-20261009-v1",
+  "wear_count": "Count distinct non-voided wear_confirmed source events; not planned/saved/liked/tryon",
+  "wear_days": "Distinct Asia/Seoul local dates of those events; one event spanning midnight counts by declared occurred_at date unless app explicitly captures interval semantics",
+  "wash_window": "Only wash_completed sets last_wash; ironing/airing/drying do not",
+  "professional_cleaning": "Keep separate from wash counter; any combined cleaning counter must be explicitly named and tested",
+  "no_baseline": "after_last_wash is null without a recorded wash; never infer 0 wears since purchase",
+  "observation_age": "Show observed_at or last_known; no invented freshness threshold",
+  "calendar": "planned -> scheduled_at; wear/care -> occurred_at; card_created_at is neither",
+  "latest_record": "Use as_of and non-voided events; recorded future plans are allowed, future observations excluded",
+  "care_temperature": "Do not convert cool/cold/medium iron to a numeric value absent source",
+  "time_fixture": "Freeze context clock only within this demo namespace; do not change production clock or silently shift history each run",
+  "claim_sources": "Value must retain source_ref or event_ref; narrative not a new evidence source",
+  "import_idempotency": "namespace+entity_type+source_ref/source_event_key; changed payload on same key yields review conflict, not silent overwrite",
+  "user_action_idempotency": "actor+action+intent_key, with per-action draft revision uniqueness; save card vs plan today remain distinct intents",
+  "ownership": "Product code is not a garment instance. H01 and S02 intentionally share P01 but are separate demo objects",
+  "display_mirrors": "Existing transparency, horizontal navigation, stable action positions, snapshot continuity preserved"
+}

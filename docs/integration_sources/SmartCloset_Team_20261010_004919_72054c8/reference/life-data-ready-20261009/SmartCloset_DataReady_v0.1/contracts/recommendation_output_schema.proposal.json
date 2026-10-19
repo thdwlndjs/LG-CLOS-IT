@@ -1,0 +1,121 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "result_type": {
+      "type": "string",
+      "enum": [
+        "proposal",
+        "needs_information",
+        "unsupported"
+      ]
+    },
+    "context_ref": {
+      "type": "string"
+    },
+    "profile_ref": {
+      "type": "string"
+    },
+    "greeting": {
+      "type": "string"
+    },
+    "claims": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "text": {
+            "type": "string"
+          },
+          "evidence_refs": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "claim_kind": {
+            "type": "string",
+            "enum": [
+              "forecast",
+              "explicit_preference",
+              "liked_style",
+              "styling_suggestion",
+              "data_gap"
+            ]
+          }
+        },
+        "required": [
+          "text",
+          "evidence_refs",
+          "claim_kind"
+        ]
+      }
+    },
+    "candidates": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "items": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "slot": {
+                  "type": "string"
+                },
+                "item_ref": {
+                  "type": "string"
+                },
+                "kind": {
+                  "type": "string",
+                  "enum": [
+                    "owned",
+                    "external"
+                  ]
+                }
+              },
+              "required": [
+                "slot",
+                "item_ref",
+                "kind"
+              ]
+            }
+          },
+          "reason": {
+            "type": "string"
+          },
+          "evidence_refs": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "items",
+          "reason",
+          "evidence_refs"
+        ]
+      }
+    },
+    "unknowns": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "required": [
+    "result_type",
+    "context_ref",
+    "profile_ref",
+    "greeting",
+    "claims",
+    "candidates",
+    "unknowns"
+  ]
+}

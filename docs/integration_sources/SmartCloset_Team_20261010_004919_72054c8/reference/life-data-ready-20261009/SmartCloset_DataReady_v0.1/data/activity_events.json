@@ -1,0 +1,1497 @@
+[
+  {
+    "ref": "MOVE-INIT-H01",
+    "owner_ref": "PHW",
+    "kind": "movement_confirmed",
+    "occurred_at": "2026-09-01T20:00:00+09:00",
+    "outfit_ref": null,
+    "garment_refs": [
+      "H01"
+    ],
+    "details": {
+      "zone_description": "행거 상의 구역",
+      "scene_slot_ref": null,
+      "led_anchor_ref": null,
+      "observed_by_sensor": false,
+      "simulated_confirmation": true
+    },
+    "input_source": "scenario_fixture",
+    "source_event_key": "scprep-20261009-v1:MOVE-INIT-H01",
+    "provenance": {
+      "kind": "synthetic_life_event",
+      "dataset_namespace": "scprep-20261009-v1"
+    }
+  },
+  {
+    "ref": "MOVE-INIT-H02",
+    "owner_ref": "PHW",
+    "kind": "movement_confirmed",
+    "occurred_at": "2026-09-01T20:00:00+09:00",
+    "outfit_ref": null,
+    "garment_refs": [
+      "H02"
+    ],
+    "details": {
+      "zone_description": "행거 상의 구역",
+      "scene_slot_ref": null,
+      "led_anchor_ref": null,
+      "observed_by_sensor": false,
+      "simulated_confirmation": true
+    },
+    "input_source": "scenario_fixture",
+    "source_event_key": "scprep-20261009-v1:MOVE-INIT-H02",
+    "provenance": {
+      "kind": "synthetic_life_event",
+      "dataset_namespace": "scprep-20261009-v1"
+    }
+  },
+  {
+    "ref": "MOVE-INIT-H03",
+    "owner_ref": "PHW",
+    "kind": "movement_confirmed",
+    "occurred_at": "2026-09-01T20:00:00+09:00",
+    "outfit_ref": null,
+    "garment_refs": [
+      "H03"
+    ],
+    "details": {
+      "zone_description": "행거 상의 구역",
+      "scene_slot_ref": null,
+      "led_anchor_ref": null,
+      "observed_by_sensor": false,
+      "simulated_confirmation": true
+    },
+    "input_source": "scenario_fixture",
+    "source_event_key": "scprep-20261009-v1:MOVE-INIT-H03",
+    "provenance": {
+      "kind": "synthetic_life_event",
+      "dataset_namespace": "scprep-20261009-v1"
+    }
+  },
+  {
+    "ref": "MOVE-INIT-H04",
+    "owner_ref": "PHW",
+    "kind": "movement_confirmed",
+    "occurred_at": "2026-09-01T20:00:00+09:00",
+    "outfit_ref": null,
+    "garment_refs": [
+      "H04"
+    ],
+    "details": {
+      "zone_description": "행거 상의 구역",
+      "scene_slot_ref": null,
+      "led_anchor_ref": null,
+      "observed_by_sensor": false,
+      "simulated_confirmation": true
+    },
+    "input_source": "scenario_fixture",
+    "source_event_key": "scprep-20261009-v1:MOVE-INIT-H04",
+    "provenance": {
+      "kind": "synthetic_life_event",
+      "dataset_namespace": "scprep-20261009-v1"
+    }
+  },
+  {
+    "ref": "MOVE-INIT-H05",
+    "owner_ref": "PHW",
+    "kind": "movement_confirmed",
+    "occurred_at": "2026-09-01T20:00:00+09:00",
+    "outfit_ref": null,
+    "garment_refs": [
+      "H05"
+    ],
+    "details": {
+      "zone_description": "행거 상의 구역",
+      "scene_slot_ref": null,
+      "led_anchor_ref": null,
+      "observed_by_sensor": false,
+      "simulated_confirmation": true
+    },
+    "input_source": "scenario_fixture",
+    "source_event_key": "scprep-20261009-v1:MOVE-INIT-H05",
+    "provenance": {
+      "kind": "synthetic_life_event",
+      "dataset_namespace": "scprep-20261009-v1"
+    }
+  },
+  {
+    "ref": "MOVE-INIT-H06",
+    "owner_ref": "PHW",
+    "kind": "movement_confirmed",
+    "occurred_at": "2026-09-01T20:00:00+09:00",
+    "outfit_ref": null,
+    "garment_refs": [
+      "H06"
+    ],
+    "details": {
+      "zone_description": "행거 상의 구역",
+      "scene_slot_ref": null,
+      "led_anchor_ref": null,
+      "observed_by_sensor": false,
+      "simulated_confirmation": true
+    },
+    "input_source": "scenario_fixture",
+    "source_event_key": "scprep-20261009-v1:MOVE-INIT-H06",
+    "provenance": {
+      "kind": "synthetic_life_event",
+      "dataset_namespace": "scprep-20261009-v1"
+    }
+  },
+  {
+    "ref": "MOVE-INIT-H08",
+    "owner_ref": "PHW",
+    "kind": "movement_confirmed",
+    "occurred_at": "2026-09-01T20:00:00+09:00",
+    "outfit_ref": null,
+    "garment_refs": [
+      "H08"
+    ],
+    "details": {
+      "zone_description": "접은 하의 선반",
+      "scene_slot_ref": null,
+      "led_anchor_ref": null,
+      "observed_by_sensor": false,
+      "simulated_confirmation": true
+    },
+    "input_source": "scenario_fixture",
+    "source_event_key": "scprep-20261009-v1:MOVE-INIT-H08",
+    "provenance": {
+      "kind": "synthetic_life_event",
+      "dataset_namespace": "scprep-20261009-v1"
+    }
+  },
+  {
+    "ref": "MOVE-INIT-H09",
+    "owner_ref": "PHW",
+    "kind": "movement_confirmed",
+    "occurred_at": "2026-09-01T20:00:00+09:00",
+    "outfit_ref": null,
+    "garment_refs": [
+      "H09"
+    ],
+    "details": {
+      "zone_description": "접은 하의 선반",
+      "scene_slot_ref": null,
+      "led_anchor_ref": null,
+      "observed_by_sensor": false,
+      "simulated_confirmation": true
+    },
+    "input_source": "scenario_fixture",
+    "source_event_key": "scprep-20261009-v1:MOVE-INIT-H09",
+    "provenance": {
+      "kind": "synthetic_life_event",
+      "dataset_namespace": "scprep-20261009-v1"
+    }
+  },
+  {
+    "ref": "MOVE-INIT-H10",
+    "owner_ref": "PHW",
+    "kind": "movement_confirmed",
+    "occurred_at": "2026-09-01T20:00:00+09:00",
+    "outfit_ref": null,
+    "garment_refs": [
+      "H10"
+    ],
+    "details": {
+      "zone_description": "접은 하의 선반",
+      "scene_slot_ref": null,
+      "led_anchor_ref": null,
+      "observed_by_sensor": false,
+      "simulated_confirmation": true
+    },
+    "input_source": "scenario_fixture",
+    "source_event_key": "scprep-20261009-v1:MOVE-INIT-H10",
+    "provenance": {
+      "kind": "synthetic_life_event",
+      "dataset_namespace": "scprep-20261009-v1"
+    }
+  },
+  {
+    "ref": "MOVE-INIT-H11",
+    "owner_ref": "PHW",
+    "kind": "movement_confirmed",
+    "occurred_at": "2026-09-01T20:00:00+09:00",
+    "outfit_ref": null,
+    "garment_refs": [
+      "H11"
+    ],
+    "details": {
+      "zone_description": "접은 하의 선반",
+      "scene_slot_ref": null,
+      "led_anchor_ref": null,
+      "observed_by_sensor": false,
+      "simulated_confirmation": true
+    },
+    "input_source": "scenario_fixture",
+    "source_event_key": "scprep-20261009-v1:MOVE-INIT-H11",
+    "provenance": {
+      "kind": "synthetic_life_event",
+      "dataset_namespace": "scprep-20261009-v1"
+    }
+  },
+  {
+    "ref": "MOVE-INIT-H12",
+    "owner_ref": "PHW",
+    "kind": "movement_confirmed",
+    "occurred_at": "2026-09-01T20:00:00+09:00",
+    "outfit_ref": null,
+    "garment_refs": [
+      "H12"
+    ],
+    "details": {
+      "zone_description": "긴 옷 행거",
+      "scene_slot_ref": null,
+      "led_anchor_ref": null,
+      "observed_by_sensor": false,
+      "simulated_confirmation": true
+    },
+    "input_source": "scenario_fixture",
+    "source_event_key": "scprep-20261009-v1:MOVE-INIT-H12",
+    "provenance": {
+      "kind": "synthetic_life_event",
+      "dataset_namespace": "scprep-20261009-v1"
+    }
+  },
+  {
+    "ref": "MOVE-INIT-H13",
+    "owner_ref": "PHW",
+    "kind": "movement_confirmed",
+    "occurred_at": "2026-09-01T20:00:00+09:00",
+    "outfit_ref": null,
+    "garment_refs": [
+      "H13"
+    ],
+    "details": {
+      "zone_description": "긴 옷 행거",
+      "scene_slot_ref": null,
+      "led_anchor_ref": null,
+      "observed_by_sensor": false,
+      "simulated_confirmation": true
+    },
+    "input_source": "scenario_fixture",
+    "source_event_key": "scprep-20261009-v1:MOVE-INIT-H13",
+    "provenance": {
+      "kind": "synthetic_life_event",
+      "dataset_namespace": "scprep-20261009-v1"
+    }
+  },
+  {
+    "ref": "MOVE-INIT-H15",
+    "owner_ref": "PHW",
+    "kind": "movement_confirmed",
+    "occurred_at": "2026-09-01T20:00:00+09:00",
+    "outfit_ref": null,
+    "garment_refs": [
+      "H15"
+    ],
+    "details": {
+      "zone_description": "신발 보관 위치",
+      "scene_slot_ref": null,
+      "led_anchor_ref": null,
+      "observed_by_sensor": false,
+      "simulated_confirmation": true
+    },
+    "input_source": "scenario_fixture",
+    "source_event_key": "scprep-20261009-v1:MOVE-INIT-H15",
+    "provenance": {
+      "kind": "synthetic_life_event",
+      "dataset_namespace": "scprep-20261009-v1"
+    }
+  },
+  {
+    "ref": "MOVE-INIT-H16",
+    "owner_ref": "PHW",
+    "kind": "movement_confirmed",
+    "occurred_at": "2026-09-01T20:00:00+09:00",
+    "outfit_ref": null,
+    "garment_refs": [
+      "H16"
+    ],
+    "details": {
+      "zone_description": "소품 보관 위치",
+      "scene_slot_ref": null,
+      "led_anchor_ref": null,
+      "observed_by_sensor": false,
+      "simulated_confirmation": true
+    },
+    "input_source": "scenario_fixture",
+    "source_event_key": "scprep-20261009-v1:MOVE-INIT-H16",
+    "provenance": {
+      "kind": "synthetic_life_event",
+      "dataset_namespace": "scprep-20261009-v1"
+    }
+  },
+  {
+    "ref": "MOVE-INIT-S01",
+    "owner_ref": "PSU",
+    "kind": "movement_confirmed",
+    "occurred_at": "2026-09-01T20:00:00+09:00",
+    "outfit_ref": null,
+    "garment_refs": [
+      "S01"
+    ],
+    "details": {
+      "zone_description": "행거 상의 구역",
+      "scene_slot_ref": null,
+      "led_anchor_ref": null,
+      "observed_by_sensor": false,
+      "simulated_confirmation": true
+    },
+    "input_source": "scenario_fixture",
+    "source_event_key": "scprep-20261009-v1:MOVE-INIT-S01",
+    "provenance": {
+      "kind": "synthetic_life_event",
+      "dataset_namespace": "scprep-20261009-v1"
+    }
+  },
+  {
+    "ref": "MOVE-INIT-S02",
+    "owner_ref": "PSU",
+    "kind": "movement_confirmed",
+    "occurred_at": "2026-09-01T20:00:00+09:00",
+    "outfit_ref": null,
+    "garment_refs": [
+      "S02"
+    ],
+    "details": {
+      "zone_description": "행거 상의 구역",
+      "scene_slot_ref": null,
+      "led_anchor_ref": null,
+      "observed_by_sensor": false,
+      "simulated_confirmation": true
+    },
+    "input_source": "scenario_fixture",
+    "source_event_key": "scprep-20261009-v1:MOVE-INIT-S02",
+    "provenance": {
+      "kind": "synthetic_life_event",
+      "dataset_namespace": "scprep-20261009-v1"
+    }
+  },
+  {
+    "ref": "MOVE-INIT-S03",
+    "owner_ref": "PSU",
+    "kind": "movement_confirmed",
+    "occurred_at": "2026-09-01T20:00:00+09:00",
+    "outfit_ref": null,
+    "garment_refs": [
+      "S03"
+    ],
+    "details": {
+      "zone_description": "행거 상의 구역",
+      "scene_slot_ref": null,
+      "led_anchor_ref": null,
+      "observed_by_sensor": false,
+      "simulated_confirmation": true
+    },
+    "input_source": "scenario_fixture",
+    "source_event_key": "scprep-20261009-v1:MOVE-INIT-S03",
+    "provenance": {
+      "kind": "synthetic_life_event",
+      "dataset_namespace": "scprep-20261009-v1"
+    }
+  },
+  {
+    "ref": "MOVE-INIT-S04",
+    "owner_ref": "PSU",
+    "kind": "movement_confirmed",
+    "occurred_at": "2026-09-01T20:00:00+09:00",
+    "outfit_ref": null,
+    "garment_refs": [
+      "S04"
+    ],
+    "details": {
+      "zone_description": "행거 상의 구역",
+      "scene_slot_ref": null,
+      "led_anchor_ref": null,
+      "observed_by_sensor": false,
+      "simulated_confirmation": true
+    },
+    "input_source": "scenario_fixture",
+    "source_event_key": "scprep-20261009-v1:MOVE-INIT-S04",
+    "provenance": {
+      "kind": "synthetic_life_event",
+      "dataset_namespace": "scprep-20261009-v1"
+    }
+  },
+  {
+    "ref": "MOVE-INIT-S05",
+    "owner_ref": "PSU",
+    "kind": "movement_confirmed",
+    "occurred_at": "2026-09-01T20:00:00+09:00",
+    "outfit_ref": null,
+    "garment_refs": [
+      "S05"
+    ],
+    "details": {
+      "zone_description": "행거 상의 구역",
+      "scene_slot_ref": null,
+      "led_anchor_ref": null,
+      "observed_by_sensor": false,
+      "simulated_confirmation": true
+    },
+    "input_source": "scenario_fixture",
+    "source_event_key": "scprep-20261009-v1:MOVE-INIT-S05",
+    "provenance": {
+      "kind": "synthetic_life_event",
+      "dataset_namespace": "scprep-20261009-v1"
+    }
+  },
+  {
+    "ref": "MOVE-INIT-S07",
+    "owner_ref": "PSU",
+    "kind": "movement_confirmed",
+    "occurred_at": "2026-09-01T20:00:00+09:00",
+    "outfit_ref": null,
+    "garment_refs": [
+      "S07"
+    ],
+    "details": {
+      "zone_description": "행거 상의 구역",
+      "scene_slot_ref": null,
+      "led_anchor_ref": null,
+      "observed_by_sensor": false,
+      "simulated_confirmation": true
+    },
+    "input_source": "scenario_fixture",
+    "source_event_key": "scprep-20261009-v1:MOVE-INIT-S07",
+    "provenance": {
+      "kind": "synthetic_life_event",
+      "dataset_namespace": "scprep-20261009-v1"
+    }
+  },
+  {
+    "ref": "MOVE-INIT-S08",
+    "owner_ref": "PSU",
+    "kind": "movement_confirmed",
+    "occurred_at": "2026-09-01T20:00:00+09:00",
+    "outfit_ref": null,
+    "garment_refs": [
+      "S08"
+    ],
+    "details": {
+      "zone_description": "접은 하의 선반",
+      "scene_slot_ref": null,
+      "led_anchor_ref": null,
+      "observed_by_sensor": false,
+      "simulated_confirmation": true
+    },
+    "input_source": "scenario_fixture",
+    "source_event_key": "scprep-20261009-v1:MOVE-INIT-S08",
+    "provenance": {
+      "kind": "synthetic_life_event",
+      "dataset_namespace": "scprep-20261009-v1"
+    }
+  },
+  {
+    "ref": "MOVE-INIT-S09",
+    "owner_ref": "PSU",
+    "kind": "movement_confirmed",
+    "occurred_at": "2026-09-01T20:00:00+09:00",
+    "outfit_ref": null,
+    "garment_refs": [
+      "S09"
+    ],
+    "details": {
+      "zone_description": "접은 하의 선반",
+      "scene_slot_ref": null,
+      "led_anchor_ref": null,
+      "observed_by_sensor": false,
+      "simulated_confirmation": true
+    },
+    "input_source": "scenario_fixture",
+    "source_event_key": "scprep-20261009-v1:MOVE-INIT-S09",
+    "provenance": {
+      "kind": "synthetic_life_event",
+      "dataset_namespace": "scprep-20261009-v1"
+    }
+  },
+  {
+    "ref": "MOVE-INIT-S10",
+    "owner_ref": "PSU",
+    "kind": "movement_confirmed",
+    "occurred_at": "2026-09-01T20:00:00+09:00",
+    "outfit_ref": null,
+    "garment_refs": [
+      "S10"
+    ],
+    "details": {
+      "zone_description": "접은 하의 선반",
+      "scene_slot_ref": null,
+      "led_anchor_ref": null,
+      "observed_by_sensor": false,
+      "simulated_confirmation": true
+    },
+    "input_source": "scenario_fixture",
+    "source_event_key": "scprep-20261009-v1:MOVE-INIT-S10",
+    "provenance": {
+      "kind": "synthetic_life_event",
+      "dataset_namespace": "scprep-20261009-v1"
+    }
+  },
+  {
+    "ref": "MOVE-INIT-S11",
+    "owner_ref": "PSU",
+    "kind": "movement_confirmed",
+    "occurred_at": "2026-09-01T20:00:00+09:00",
+    "outfit_ref": null,
+    "garment_refs": [
+      "S11"
+    ],
+    "details": {
+      "zone_description": "접은 하의 선반",
+      "scene_slot_ref": null,
+      "led_anchor_ref": null,
+      "observed_by_sensor": false,
+      "simulated_confirmation": true
+    },
+    "input_source": "scenario_fixture",
+    "source_event_key": "scprep-20261009-v1:MOVE-INIT-S11",
+    "provenance": {
+      "kind": "synthetic_life_event",
+      "dataset_namespace": "scprep-20261009-v1"
+    }
+  },
+  {
+    "ref": "MOVE-INIT-S12",
+    "owner_ref": "PSU",
+    "kind": "movement_confirmed",
+    "occurred_at": "2026-09-01T20:00:00+09:00",
+    "outfit_ref": null,
+    "garment_refs": [
+      "S12"
+    ],
+    "details": {
+      "zone_description": "긴 옷 행거",
+      "scene_slot_ref": null,
+      "led_anchor_ref": null,
+      "observed_by_sensor": false,
+      "simulated_confirmation": true
+    },
+    "input_source": "scenario_fixture",
+    "source_event_key": "scprep-20261009-v1:MOVE-INIT-S12",
+    "provenance": {
+      "kind": "synthetic_life_event",
+      "dataset_namespace": "scprep-20261009-v1"
+    }
+  },
+  {
+    "ref": "MOVE-INIT-S14",
+    "owner_ref": "PSU",
+    "kind": "movement_confirmed",
+    "occurred_at": "2026-09-01T20:00:00+09:00",
+    "outfit_ref": null,
+    "garment_refs": [
+      "S14"
+    ],
+    "details": {
+      "zone_description": "계절 보관 구역",
+      "scene_slot_ref": null,
+      "led_anchor_ref": null,
+      "observed_by_sensor": false,
+      "simulated_confirmation": true
+    },
+    "input_source": "scenario_fixture",
+    "source_event_key": "scprep-20261009-v1:MOVE-INIT-S14",
+    "provenance": {
+      "kind": "synthetic_life_event",
+      "dataset_namespace": "scprep-20261009-v1"
+    }
+  },
+  {
+    "ref": "MOVE-INIT-S15",
+    "owner_ref": "PSU",
+    "kind": "movement_confirmed",
+    "occurred_at": "2026-09-01T20:00:00+09:00",
+    "outfit_ref": null,
+    "garment_refs": [
+      "S15"
+    ],
+    "details": {
+      "zone_description": "신발 보관 위치",
+      "scene_slot_ref": null,
+      "led_anchor_ref": null,
+      "observed_by_sensor": false,
+      "simulated_confirmation": true
+    },
+    "input_source": "scenario_fixture",
+    "source_event_key": "scprep-20261009-v1:MOVE-INIT-S15",
+    "provenance": {
+      "kind": "synthetic_life_event",
+      "dataset_namespace": "scprep-20261009-v1"
+    }
+  },
+  {
+    "ref": "MOVE-INIT-S16",
+    "owner_ref": "PSU",
+    "kind": "movement_confirmed",
+    "occurred_at": "2026-09-01T20:00:00+09:00",
+    "outfit_ref": null,
+    "garment_refs": [
+      "S16"
+    ],
+    "details": {
+      "zone_description": "소품 보관 위치",
+      "scene_slot_ref": null,
+      "led_anchor_ref": null,
+      "observed_by_sensor": false,
+      "simulated_confirmation": true
+    },
+    "input_source": "scenario_fixture",
+    "source_event_key": "scprep-20261009-v1:MOVE-INIT-S16",
+    "provenance": {
+      "kind": "synthetic_life_event",
+      "dataset_namespace": "scprep-20261009-v1"
+    }
+  },
+  {
+    "ref": "HW-WEAR-SEP-01",
+    "owner_ref": "PHW",
+    "kind": "wear_confirmed",
+    "occurred_at": "2026-09-25T08:00:00+09:00",
+    "outfit_ref": "LH01",
+    "garment_refs": [
+      "H01",
+      "H08",
+      "H15"
+    ],
+    "details": {},
+    "input_source": "scenario_fixture",
+    "source_event_key": "scprep-20261009-v1:HW-WEAR-SEP-01",
+    "provenance": {
+      "kind": "synthetic_life_event",
+      "dataset_namespace": "scprep-20261009-v1"
+    }
+  },
+  {
+    "ref": "SU-WEAR-SEP-01",
+    "owner_ref": "PSU",
+    "kind": "wear_confirmed",
+    "occurred_at": "2026-09-25T09:00:00+09:00",
+    "outfit_ref": "LS01",
+    "garment_refs": [
+      "S01",
+      "S08",
+      "S15"
+    ],
+    "details": {},
+    "input_source": "scenario_fixture",
+    "source_event_key": "scprep-20261009-v1:SU-WEAR-SEP-01",
+    "provenance": {
+      "kind": "synthetic_life_event",
+      "dataset_namespace": "scprep-20261009-v1"
+    }
+  },
+  {
+    "ref": "HW-WEAR-SEP-02",
+    "owner_ref": "PHW",
+    "kind": "wear_confirmed",
+    "occurred_at": "2026-09-26T08:00:00+09:00",
+    "outfit_ref": "LH03",
+    "garment_refs": [
+      "H03",
+      "H10",
+      "H15"
+    ],
+    "details": {},
+    "input_source": "scenario_fixture",
+    "source_event_key": "scprep-20261009-v1:HW-WEAR-SEP-02",
+    "provenance": {
+      "kind": "synthetic_life_event",
+      "dataset_namespace": "scprep-20261009-v1"
+    }
+  },
+  {
+    "ref": "SU-WEAR-SEP-02",
+    "owner_ref": "PSU",
+    "kind": "wear_confirmed",
+    "occurred_at": "2026-09-26T09:00:00+09:00",
+    "outfit_ref": "LS03",
+    "garment_refs": [
+      "S04",
+      "S09",
+      "S15"
+    ],
+    "details": {},
+    "input_source": "scenario_fixture",
+    "source_event_key": "scprep-20261009-v1:SU-WEAR-SEP-02",
+    "provenance": {
+      "kind": "synthetic_life_event",
+      "dataset_namespace": "scprep-20261009-v1"
+    }
+  },
+  {
+    "ref": "HW-WEAR-SEP-03",
+    "owner_ref": "PHW",
+    "kind": "wear_confirmed",
+    "occurred_at": "2026-09-28T08:00:00+09:00",
+    "outfit_ref": "LH04",
+    "garment_refs": [
+      "H04",
+      "H09",
+      "H16"
+    ],
+    "details": {},
+    "input_source": "scenario_fixture",
+    "source_event_key": "scprep-20261009-v1:HW-WEAR-SEP-03",
+    "provenance": {
+      "kind": "synthetic_life_event",
+      "dataset_namespace": "scprep-20261009-v1"
+    }
+  },
+  {
+    "ref": "SU-WEAR-SEP-03",
+    "owner_ref": "PSU",
+    "kind": "wear_confirmed",
+    "occurred_at": "2026-09-28T09:00:00+09:00",
+    "outfit_ref": "LS02",
+    "garment_refs": [
+      "S02",
+      "S11",
+      "S15"
+    ],
+    "details": {},
+    "input_source": "scenario_fixture",
+    "source_event_key": "scprep-20261009-v1:SU-WEAR-SEP-03",
+    "provenance": {
+      "kind": "synthetic_life_event",
+      "dataset_namespace": "scprep-20261009-v1"
+    }
+  },
+  {
+    "ref": "HW-WEAR-SEP-04",
+    "owner_ref": "PHW",
+    "kind": "wear_confirmed",
+    "occurred_at": "2026-09-30T08:00:00+09:00",
+    "outfit_ref": "LH05",
+    "garment_refs": [
+      "H06",
+      "H10",
+      "H16"
+    ],
+    "details": {},
+    "input_source": "scenario_fixture",
+    "source_event_key": "scprep-20261009-v1:HW-WEAR-SEP-04",
+    "provenance": {
+      "kind": "synthetic_life_event",
+      "dataset_namespace": "scprep-20261009-v1"
+    }
+  },
+  {
+    "ref": "SU-WEAR-SEP-04",
+    "owner_ref": "PSU",
+    "kind": "wear_confirmed",
+    "occurred_at": "2026-09-30T09:00:00+09:00",
+    "outfit_ref": "LS04",
+    "garment_refs": [
+      "S06",
+      "S10",
+      "S16"
+    ],
+    "details": {},
+    "input_source": "scenario_fixture",
+    "source_event_key": "scprep-20261009-v1:SU-WEAR-SEP-04",
+    "provenance": {
+      "kind": "synthetic_life_event",
+      "dataset_namespace": "scprep-20261009-v1"
+    }
+  },
+  {
+    "ref": "HW-WEAR-OCT-01",
+    "owner_ref": "PHW",
+    "kind": "wear_confirmed",
+    "occurred_at": "2026-10-01T08:00:00+09:00",
+    "outfit_ref": "LH04",
+    "garment_refs": [
+      "H04",
+      "H09",
+      "H16"
+    ],
+    "details": {},
+    "input_source": "scenario_fixture",
+    "source_event_key": "scprep-20261009-v1:HW-WEAR-OCT-01",
+    "provenance": {
+      "kind": "synthetic_life_event",
+      "dataset_namespace": "scprep-20261009-v1"
+    }
+  },
+  {
+    "ref": "SU-WEAR-OCT-01",
+    "owner_ref": "PSU",
+    "kind": "wear_confirmed",
+    "occurred_at": "2026-10-01T09:00:00+09:00",
+    "outfit_ref": "LS04",
+    "garment_refs": [
+      "S06",
+      "S10",
+      "S16"
+    ],
+    "details": {},
+    "input_source": "scenario_fixture",
+    "source_event_key": "scprep-20261009-v1:SU-WEAR-OCT-01",
+    "provenance": {
+      "kind": "synthetic_life_event",
+      "dataset_namespace": "scprep-20261009-v1"
+    }
+  },
+  {
+    "ref": "HW-W01-W",
+    "owner_ref": "PHW",
+    "kind": "wash_completed",
+    "occurred_at": "2026-10-01T10:00:00+09:00",
+    "outfit_ref": null,
+    "garment_refs": [
+      "H03",
+      "H06"
+    ],
+    "details": {
+      "operation_kind": "wash",
+      "method_verified": false,
+      "washing_instructions_not_inferred": true
+    },
+    "input_source": "scenario_fixture",
+    "source_event_key": "scprep-20261009-v1:HW-W01-W",
+    "provenance": {
+      "kind": "synthetic_life_event",
+      "dataset_namespace": "scprep-20261009-v1"
+    }
+  },
+  {
+    "ref": "HW-W01-D",
+    "owner_ref": "PHW",
+    "kind": "dry_completed",
+    "occurred_at": "2026-10-01T18:00:00+09:00",
+    "outfit_ref": null,
+    "garment_refs": [
+      "H03",
+      "H06"
+    ],
+    "details": {
+      "method_verified": false,
+      "cleanliness_verified": false
+    },
+    "input_source": "scenario_fixture",
+    "source_event_key": "scprep-20261009-v1:HW-W01-D",
+    "provenance": {
+      "kind": "synthetic_life_event",
+      "dataset_namespace": "scprep-20261009-v1"
+    }
+  },
+  {
+    "ref": "HW-WEAR-OCT-02",
+    "owner_ref": "PHW",
+    "kind": "wear_confirmed",
+    "occurred_at": "2026-10-02T08:00:00+09:00",
+    "outfit_ref": "LH03",
+    "garment_refs": [
+      "H03",
+      "H10",
+      "H15"
+    ],
+    "details": {},
+    "input_source": "scenario_fixture",
+    "source_event_key": "scprep-20261009-v1:HW-WEAR-OCT-02",
+    "provenance": {
+      "kind": "synthetic_life_event",
+      "dataset_namespace": "scprep-20261009-v1"
+    }
+  },
+  {
+    "ref": "SU-WEAR-OCT-02",
+    "owner_ref": "PSU",
+    "kind": "wear_confirmed",
+    "occurred_at": "2026-10-02T09:00:00+09:00",
+    "outfit_ref": "LS03",
+    "garment_refs": [
+      "S04",
+      "S09",
+      "S15"
+    ],
+    "details": {},
+    "input_source": "scenario_fixture",
+    "source_event_key": "scprep-20261009-v1:SU-WEAR-OCT-02",
+    "provenance": {
+      "kind": "synthetic_life_event",
+      "dataset_namespace": "scprep-20261009-v1"
+    }
+  },
+  {
+    "ref": "SU-SEASON-MOVE",
+    "owner_ref": "PSU",
+    "kind": "movement_confirmed",
+    "occurred_at": "2026-10-02T15:00:00+09:00",
+    "outfit_ref": null,
+    "garment_refs": [
+      "S14"
+    ],
+    "details": {
+      "zone_description": "계절 보관 구역",
+      "scene_slot_ref": null,
+      "led_anchor_ref": null,
+      "observed_by_sensor": false,
+      "simulated_confirmation": true
+    },
+    "input_source": "scenario_fixture",
+    "source_event_key": "scprep-20261009-v1:SU-SEASON-MOVE",
+    "provenance": {
+      "kind": "synthetic_life_event",
+      "dataset_namespace": "scprep-20261009-v1"
+    }
+  },
+  {
+    "ref": "HW-WEAR-OCT-03",
+    "owner_ref": "PHW",
+    "kind": "wear_confirmed",
+    "occurred_at": "2026-10-03T08:00:00+09:00",
+    "outfit_ref": "LH03",
+    "garment_refs": [
+      "H03",
+      "H10",
+      "H15"
+    ],
+    "details": {},
+    "input_source": "scenario_fixture",
+    "source_event_key": "scprep-20261009-v1:HW-WEAR-OCT-03",
+    "provenance": {
+      "kind": "synthetic_life_event",
+      "dataset_namespace": "scprep-20261009-v1"
+    }
+  },
+  {
+    "ref": "SU-WEAR-OCT-03",
+    "owner_ref": "PSU",
+    "kind": "wear_confirmed",
+    "occurred_at": "2026-10-03T09:00:00+09:00",
+    "outfit_ref": "LS02",
+    "garment_refs": [
+      "S02",
+      "S11",
+      "S15"
+    ],
+    "details": {},
+    "input_source": "scenario_fixture",
+    "source_event_key": "scprep-20261009-v1:SU-WEAR-OCT-03",
+    "provenance": {
+      "kind": "synthetic_life_event",
+      "dataset_namespace": "scprep-20261009-v1"
+    }
+  },
+  {
+    "ref": "HW-W03-W",
+    "owner_ref": "PHW",
+    "kind": "wash_completed",
+    "occurred_at": "2026-10-03T10:00:00+09:00",
+    "outfit_ref": null,
+    "garment_refs": [
+      "H01",
+      "H09"
+    ],
+    "details": {
+      "operation_kind": "wash",
+      "method_verified": false,
+      "washing_instructions_not_inferred": true
+    },
+    "input_source": "scenario_fixture",
+    "source_event_key": "scprep-20261009-v1:HW-W03-W",
+    "provenance": {
+      "kind": "synthetic_life_event",
+      "dataset_namespace": "scprep-20261009-v1"
+    }
+  },
+  {
+    "ref": "HW-W03-D",
+    "owner_ref": "PHW",
+    "kind": "dry_completed",
+    "occurred_at": "2026-10-03T18:00:00+09:00",
+    "outfit_ref": null,
+    "garment_refs": [
+      "H01",
+      "H09"
+    ],
+    "details": {
+      "method_verified": false,
+      "cleanliness_verified": false
+    },
+    "input_source": "scenario_fixture",
+    "source_event_key": "scprep-20261009-v1:HW-W03-D",
+    "provenance": {
+      "kind": "synthetic_life_event",
+      "dataset_namespace": "scprep-20261009-v1"
+    }
+  },
+  {
+    "ref": "HW-WEAR-OCT-04",
+    "owner_ref": "PHW",
+    "kind": "wear_confirmed",
+    "occurred_at": "2026-10-04T08:00:00+09:00",
+    "outfit_ref": "LH01",
+    "garment_refs": [
+      "H01",
+      "H08",
+      "H15"
+    ],
+    "details": {},
+    "input_source": "scenario_fixture",
+    "source_event_key": "scprep-20261009-v1:HW-WEAR-OCT-04",
+    "provenance": {
+      "kind": "synthetic_life_event",
+      "dataset_namespace": "scprep-20261009-v1"
+    }
+  },
+  {
+    "ref": "SU-W04-W",
+    "owner_ref": "PSU",
+    "kind": "wash_completed",
+    "occurred_at": "2026-10-04T10:00:00+09:00",
+    "outfit_ref": null,
+    "garment_refs": [
+      "S01",
+      "S02",
+      "S04",
+      "S08",
+      "S09",
+      "S11"
+    ],
+    "details": {
+      "operation_kind": "wash",
+      "method_verified": false,
+      "washing_instructions_not_inferred": true
+    },
+    "input_source": "scenario_fixture",
+    "source_event_key": "scprep-20261009-v1:SU-W04-W",
+    "provenance": {
+      "kind": "synthetic_life_event",
+      "dataset_namespace": "scprep-20261009-v1"
+    }
+  },
+  {
+    "ref": "SU-W04-D",
+    "owner_ref": "PSU",
+    "kind": "dry_completed",
+    "occurred_at": "2026-10-04T18:00:00+09:00",
+    "outfit_ref": null,
+    "garment_refs": [
+      "S01",
+      "S02",
+      "S04",
+      "S08",
+      "S09",
+      "S11"
+    ],
+    "details": {
+      "method_verified": false,
+      "cleanliness_verified": false
+    },
+    "input_source": "scenario_fixture",
+    "source_event_key": "scprep-20261009-v1:SU-W04-D",
+    "provenance": {
+      "kind": "synthetic_life_event",
+      "dataset_namespace": "scprep-20261009-v1"
+    }
+  },
+  {
+    "ref": "HW-WEAR-OCT-05",
+    "owner_ref": "PHW",
+    "kind": "wear_confirmed",
+    "occurred_at": "2026-10-05T08:00:00+09:00",
+    "outfit_ref": "LH03",
+    "garment_refs": [
+      "H03",
+      "H10",
+      "H15"
+    ],
+    "details": {},
+    "input_source": "scenario_fixture",
+    "source_event_key": "scprep-20261009-v1:HW-WEAR-OCT-05",
+    "provenance": {
+      "kind": "synthetic_life_event",
+      "dataset_namespace": "scprep-20261009-v1"
+    }
+  },
+  {
+    "ref": "SU-WEAR-OCT-05",
+    "owner_ref": "PSU",
+    "kind": "wear_confirmed",
+    "occurred_at": "2026-10-05T09:00:00+09:00",
+    "outfit_ref": "LS01",
+    "garment_refs": [
+      "S01",
+      "S08",
+      "S15"
+    ],
+    "details": {},
+    "input_source": "scenario_fixture",
+    "source_event_key": "scprep-20261009-v1:SU-WEAR-OCT-05",
+    "provenance": {
+      "kind": "synthetic_life_event",
+      "dataset_namespace": "scprep-20261009-v1"
+    }
+  },
+  {
+    "ref": "HW-W05-W",
+    "owner_ref": "PHW",
+    "kind": "wash_completed",
+    "occurred_at": "2026-10-05T10:00:00+09:00",
+    "outfit_ref": null,
+    "garment_refs": [
+      "H08",
+      "H10"
+    ],
+    "details": {
+      "operation_kind": "wash",
+      "method_verified": false,
+      "washing_instructions_not_inferred": true
+    },
+    "input_source": "scenario_fixture",
+    "source_event_key": "scprep-20261009-v1:HW-W05-W",
+    "provenance": {
+      "kind": "synthetic_life_event",
+      "dataset_namespace": "scprep-20261009-v1"
+    }
+  },
+  {
+    "ref": "HW-W05-D",
+    "owner_ref": "PHW",
+    "kind": "dry_completed",
+    "occurred_at": "2026-10-05T18:00:00+09:00",
+    "outfit_ref": null,
+    "garment_refs": [
+      "H08",
+      "H10"
+    ],
+    "details": {
+      "method_verified": false,
+      "cleanliness_verified": false
+    },
+    "input_source": "scenario_fixture",
+    "source_event_key": "scprep-20261009-v1:HW-W05-D",
+    "provenance": {
+      "kind": "synthetic_life_event",
+      "dataset_namespace": "scprep-20261009-v1"
+    }
+  },
+  {
+    "ref": "HW-WEAR-OCT-06",
+    "owner_ref": "PHW",
+    "kind": "wear_confirmed",
+    "occurred_at": "2026-10-06T08:00:00+09:00",
+    "outfit_ref": "LH01",
+    "garment_refs": [
+      "H01",
+      "H08",
+      "H15"
+    ],
+    "details": {},
+    "input_source": "scenario_fixture",
+    "source_event_key": "scprep-20261009-v1:HW-WEAR-OCT-06",
+    "provenance": {
+      "kind": "synthetic_life_event",
+      "dataset_namespace": "scprep-20261009-v1"
+    }
+  },
+  {
+    "ref": "SU-WEAR-OCT-06",
+    "owner_ref": "PSU",
+    "kind": "wear_confirmed",
+    "occurred_at": "2026-10-06T09:00:00+09:00",
+    "outfit_ref": "LS03",
+    "garment_refs": [
+      "S04",
+      "S09",
+      "S15"
+    ],
+    "details": {},
+    "input_source": "scenario_fixture",
+    "source_event_key": "scprep-20261009-v1:SU-WEAR-OCT-06",
+    "provenance": {
+      "kind": "synthetic_life_event",
+      "dataset_namespace": "scprep-20261009-v1"
+    }
+  },
+  {
+    "ref": "HW-WEAR-OCT-07",
+    "owner_ref": "PHW",
+    "kind": "wear_confirmed",
+    "occurred_at": "2026-10-06T18:00:00+09:00",
+    "outfit_ref": "LH03",
+    "garment_refs": [
+      "H03",
+      "H10",
+      "H15"
+    ],
+    "details": {},
+    "input_source": "scenario_fixture",
+    "source_event_key": "scprep-20261009-v1:HW-WEAR-OCT-07",
+    "provenance": {
+      "kind": "synthetic_life_event",
+      "dataset_namespace": "scprep-20261009-v1"
+    }
+  },
+  {
+    "ref": "HW-WEAR-OCT-08",
+    "owner_ref": "PHW",
+    "kind": "wear_confirmed",
+    "occurred_at": "2026-10-07T08:00:00+09:00",
+    "outfit_ref": "LH03",
+    "garment_refs": [
+      "H03",
+      "H10",
+      "H15"
+    ],
+    "details": {},
+    "input_source": "scenario_fixture",
+    "source_event_key": "scprep-20261009-v1:HW-WEAR-OCT-08",
+    "provenance": {
+      "kind": "synthetic_life_event",
+      "dataset_namespace": "scprep-20261009-v1"
+    }
+  },
+  {
+    "ref": "SU-WEAR-OCT-07",
+    "owner_ref": "PSU",
+    "kind": "wear_confirmed",
+    "occurred_at": "2026-10-07T09:00:00+09:00",
+    "outfit_ref": "LS01",
+    "garment_refs": [
+      "S01",
+      "S08",
+      "S15"
+    ],
+    "details": {},
+    "input_source": "scenario_fixture",
+    "source_event_key": "scprep-20261009-v1:SU-WEAR-OCT-07",
+    "provenance": {
+      "kind": "synthetic_life_event",
+      "dataset_namespace": "scprep-20261009-v1"
+    }
+  },
+  {
+    "ref": "HW-W07-W",
+    "owner_ref": "PHW",
+    "kind": "wash_completed",
+    "occurred_at": "2026-10-07T10:00:00+09:00",
+    "outfit_ref": null,
+    "garment_refs": [
+      "H02"
+    ],
+    "details": {
+      "operation_kind": "wash",
+      "method_verified": false,
+      "washing_instructions_not_inferred": true
+    },
+    "input_source": "scenario_fixture",
+    "source_event_key": "scprep-20261009-v1:HW-W07-W",
+    "provenance": {
+      "kind": "synthetic_life_event",
+      "dataset_namespace": "scprep-20261009-v1"
+    }
+  },
+  {
+    "ref": "HW-W07-D",
+    "owner_ref": "PHW",
+    "kind": "dry_completed",
+    "occurred_at": "2026-10-07T18:00:00+09:00",
+    "outfit_ref": null,
+    "garment_refs": [
+      "H02"
+    ],
+    "details": {
+      "method_verified": false,
+      "cleanliness_verified": false
+    },
+    "input_source": "scenario_fixture",
+    "source_event_key": "scprep-20261009-v1:HW-W07-D",
+    "provenance": {
+      "kind": "synthetic_life_event",
+      "dataset_namespace": "scprep-20261009-v1"
+    }
+  },
+  {
+    "ref": "HW-WEAR-OCT-09",
+    "owner_ref": "PHW",
+    "kind": "wear_confirmed",
+    "occurred_at": "2026-10-08T08:00:00+09:00",
+    "outfit_ref": "LH01",
+    "garment_refs": [
+      "H01",
+      "H08",
+      "H15"
+    ],
+    "details": {},
+    "input_source": "scenario_fixture",
+    "source_event_key": "scprep-20261009-v1:HW-WEAR-OCT-09",
+    "provenance": {
+      "kind": "synthetic_life_event",
+      "dataset_namespace": "scprep-20261009-v1"
+    }
+  },
+  {
+    "ref": "SU-WEAR-OCT-08",
+    "owner_ref": "PSU",
+    "kind": "wear_confirmed",
+    "occurred_at": "2026-10-08T09:00:00+09:00",
+    "outfit_ref": "LS01",
+    "garment_refs": [
+      "S01",
+      "S08",
+      "S15"
+    ],
+    "details": {},
+    "input_source": "scenario_fixture",
+    "source_event_key": "scprep-20261009-v1:SU-WEAR-OCT-08",
+    "provenance": {
+      "kind": "synthetic_life_event",
+      "dataset_namespace": "scprep-20261009-v1"
+    }
+  },
+  {
+    "ref": "HW-WEAR-BLUE-AM",
+    "owner_ref": "PHW",
+    "kind": "wear_confirmed",
+    "occurred_at": "2026-10-08T10:30:00+09:00",
+    "outfit_ref": "LH02",
+    "garment_refs": [
+      "H02",
+      "H08",
+      "H15"
+    ],
+    "details": {
+      "episode": "am",
+      "same_day_separate_episode": true
+    },
+    "input_source": "scenario_fixture",
+    "source_event_key": "scprep-20261009-v1:HW-WEAR-BLUE-AM",
+    "provenance": {
+      "kind": "synthetic_life_event",
+      "dataset_namespace": "scprep-20261009-v1"
+    }
+  },
+  {
+    "ref": "HW-WEAR-BLUE-PM",
+    "owner_ref": "PHW",
+    "kind": "wear_confirmed",
+    "occurred_at": "2026-10-08T19:00:00+09:00",
+    "outfit_ref": "LH02",
+    "garment_refs": [
+      "H02",
+      "H08",
+      "H15"
+    ],
+    "details": {
+      "episode": "pm",
+      "same_day_separate_episode": true
+    },
+    "input_source": "scenario_fixture",
+    "source_event_key": "scprep-20261009-v1:HW-WEAR-BLUE-PM",
+    "provenance": {
+      "kind": "synthetic_life_event",
+      "dataset_namespace": "scprep-20261009-v1"
+    }
+  },
+  {
+    "ref": "SU-IRON-08",
+    "owner_ref": "PSU",
+    "kind": "iron_completed",
+    "occurred_at": "2026-10-08T20:00:00+09:00",
+    "outfit_ref": null,
+    "garment_refs": [
+      "S01"
+    ],
+    "details": {
+      "method_verified": false,
+      "must_not_reset_wash_window": true
+    },
+    "input_source": "scenario_fixture",
+    "source_event_key": "scprep-20261009-v1:SU-IRON-08",
+    "provenance": {
+      "kind": "synthetic_life_event",
+      "dataset_namespace": "scprep-20261009-v1"
+    }
+  },
+  {
+    "ref": "HW-OBS-08",
+    "owner_ref": "PHW",
+    "kind": "user_observation",
+    "occurred_at": "2026-10-08T20:30:00+09:00",
+    "outfit_ref": null,
+    "garment_refs": [
+      "H03"
+    ],
+    "details": {
+      "observation": "세탁 대기로 분류하기로 한 시연 사용자 판단",
+      "laundry_review_requested": true,
+      "not_an_ai_cleanliness_score": true
+    },
+    "input_source": "scenario_fixture",
+    "source_event_key": "scprep-20261009-v1:HW-OBS-08",
+    "provenance": {
+      "kind": "synthetic_life_event",
+      "dataset_namespace": "scprep-20261009-v1"
+    }
+  },
+  {
+    "ref": "HW-W08-PENDING",
+    "owner_ref": "PHW",
+    "kind": "wash_completed",
+    "occurred_at": "2026-10-08T21:00:00+09:00",
+    "outfit_ref": null,
+    "garment_refs": [
+      "H05"
+    ],
+    "details": {
+      "drying_status": "unconfirmed",
+      "cleanliness_verified": false
+    },
+    "input_source": "scenario_fixture",
+    "source_event_key": "scprep-20261009-v1:HW-W08-PENDING",
+    "provenance": {
+      "kind": "synthetic_life_event",
+      "dataset_namespace": "scprep-20261009-v1"
+    }
+  },
+  {
+    "ref": "HW-PLAN-09",
+    "owner_ref": "PHW",
+    "kind": "outfit_planned",
+    "occurred_at": "2026-10-08T22:00:00+09:00",
+    "outfit_ref": "LH02",
+    "garment_refs": [
+      "H02",
+      "H08",
+      "H15"
+    ],
+    "details": {
+      "scheduled_at": "2026-10-09T08:00:00+09:00",
+      "calendar_date": "2026-10-09",
+      "actual_wear_confirmed": false
+    },
+    "input_source": "scenario_fixture",
+    "source_event_key": "scprep-20261009-v1:HW-PLAN-09",
+    "provenance": {
+      "kind": "synthetic_life_event",
+      "dataset_namespace": "scprep-20261009-v1"
+    }
+  },
+  {
+    "ref": "SU-PLAN-10",
+    "owner_ref": "PSU",
+    "kind": "outfit_planned",
+    "occurred_at": "2026-10-08T22:10:00+09:00",
+    "outfit_ref": "LS02",
+    "garment_refs": [
+      "S02",
+      "S11",
+      "S15"
+    ],
+    "details": {
+      "scheduled_at": "2026-10-10T10:00:00+09:00",
+      "calendar_date": "2026-10-10",
+      "actual_wear_confirmed": false
+    },
+    "input_source": "scenario_fixture",
+    "source_event_key": "scprep-20261009-v1:SU-PLAN-10",
+    "provenance": {
+      "kind": "synthetic_life_event",
+      "dataset_namespace": "scprep-20261009-v1"
+    }
+  }
+]

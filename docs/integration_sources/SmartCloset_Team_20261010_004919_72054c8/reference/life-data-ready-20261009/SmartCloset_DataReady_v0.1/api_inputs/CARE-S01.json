@@ -1,0 +1,134 @@
+{
+  "status": "INPUT_PREPARED_NOT_SUBMITTED",
+  "logical_ids_not_runtime_ids": true,
+  "profile_ref": "PSU",
+  "garment_ref": "S01",
+  "summary": {
+    "garment_ref": "S01",
+    "profile_ref": "PSU",
+    "as_of": "2026-10-10T14:00:00+09:00",
+    "recorded_wear_events_total": 4,
+    "recorded_wear_days_total": 4,
+    "last_wear_at": "2026-10-08T09:00:00+09:00",
+    "last_wash_at": "2026-10-04T10:00:00+09:00",
+    "recorded_wears_after_last_wash": 3,
+    "recorded_days_after_last_wash": 3,
+    "wear_dates_after_last_wash": [
+      "2026-10-05",
+      "2026-10-07",
+      "2026-10-08"
+    ],
+    "last_location_event_ref": "MOVE-INIT-S01",
+    "last_location_description": "행거 상의 구역",
+    "availability": "no_recorded_block_not_cleanliness_confirmation",
+    "cleanliness_confirmed": false,
+    "display": "마지막 세탁 뒤 기록된 착용 3회 · 3일",
+    "evidence_event_refs": [
+      "MOVE-INIT-S01",
+      "SU-WEAR-SEP-01",
+      "SU-W04-W",
+      "SU-W04-D",
+      "SU-WEAR-OCT-05",
+      "SU-WEAR-OCT-07",
+      "SU-WEAR-OCT-08",
+      "SU-IRON-08"
+    ],
+    "input_source": "scenario_fixture"
+  },
+  "care_evidence": {
+    "ref": "EV-S01",
+    "owner_ref": "PSU",
+    "garment_ref": "S01",
+    "evidence_kind": "official_product_page",
+    "product_ref": "P04",
+    "source_ref": "SRC-P04",
+    "structured_care": {
+      "wash": {
+        "method": "label_wash",
+        "max_temperature_c": 40
+      },
+      "dry": {
+        "method": "line"
+      },
+      "iron": {
+        "level": "high",
+        "temperature_c": null
+      },
+      "bleach": {
+        "type": "non_chlorine_only_if_needed"
+      },
+      "professional_clean": {
+        "dry_clean": "not_permitted"
+      }
+    },
+    "physical_label_asset_ref": null,
+    "human_item_match_status": "PENDING_REAL_ITEM_OR_DEMO_PRODUCT_BINDING",
+    "display_source_label": "공식 상품 관리 안내",
+    "must_not_display": "실물 라벨 확인 완료",
+    "provenance": {
+      "kind": "source_derived_evidence_binding",
+      "dataset_namespace": "scprep-20261009-v1"
+    }
+  },
+  "product_facts": {
+    "ref": "P04",
+    "brand": "ARKET",
+    "product_code": "1066232002",
+    "variant_colour": "beige",
+    "display_name_ko": "릴랙스드 포플린 셔츠",
+    "category": "top",
+    "subtype": "shirt",
+    "composition": null,
+    "care_structured": {
+      "wash": {
+        "method": "label_wash",
+        "max_temperature_c": 40
+      },
+      "dry": {
+        "method": "line"
+      },
+      "iron": {
+        "level": "high",
+        "temperature_c": null
+      },
+      "bleach": {
+        "type": "non_chlorine_only_if_needed"
+      },
+      "professional_clean": {
+        "dry_clean": "not_permitted"
+      }
+    },
+    "source_ref": "SRC-P04",
+    "source_kind": "official_product_page",
+    "verification": "official_search_snapshot",
+    "variant_identity_status": "product_code_and_colour_from_source",
+    "fit_claim": null,
+    "sizes_not_selected": true,
+    "purchase_price": null,
+    "availability_verified": false,
+    "physical_label_asset_ref": null,
+    "catalog_asset_ref": null,
+    "tryon_asset_ref": null,
+    "asset_transfer_permissions": {
+      "openai": null,
+      "decart": null,
+      "public_redistribution": null
+    },
+    "issues": [
+      "공식 검색 스냅샷 내용. 직접 open은 실패했다. 성분 비율은 파싱되지 않아 비워 둠. 실물 라벨은 미확보. 공개용 정상 사례 전 원문 재대조 권고."
+    ],
+    "provenance": {
+      "kind": "source_derived_metadata",
+      "dataset_namespace": "scprep-20261009-v1"
+    }
+  },
+  "rules": [
+    "use_only_attached_target_evidence",
+    "do_not_generate_missing_wash_temperature",
+    "do_not_treat_product_page_as_physical_label",
+    "do_not_infer_dirt_from_wear_count",
+    "no_record_mutation",
+    "return_missing_information_when_needed"
+  ],
+  "live_response": null
+}

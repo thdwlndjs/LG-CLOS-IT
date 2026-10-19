@@ -1,0 +1,26 @@
+* text=auto
+*.ts text eol=lf
+*.tsx text eol=lf
+*.css text eol=lf
+*.json text eol=lf
+*.md text eol=lf
+*.sql text eol=lf
+*.cmd text eol=crlf
+*.ps1 text eol=crlf
+*.png binary
+*.ttf binary
+
+# Preserve reviewed upstream vendor bytes and manifest hashes.
+public/vendor/mediapipe/** -text -whitespace
+
+# Keep this review evidence and supplied instructions byte-exact for SHA256 verification.
+evidence/clear-mirror-140423-20261009/** -text -whitespace
+reference/clear-mirror-140423-20261009/** -text -whitespace
+
+# Preserve supplied use/reuse instructions and recorded verification bytes.
+evidence/use-compare-save-reuse-20261009/** -text -whitespace
+reference/use-compare-save-reuse-20261009/** -text -whitespace
+
+# Preserve supplied life-data source hashes and recorded verification bytes.
+reference/life-data-ready-20261009/** -text -whitespace
+evidence/life-data-connection-20261009/** -text -whitespace

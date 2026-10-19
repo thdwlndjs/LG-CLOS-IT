@@ -1,0 +1,107 @@
+{
+  "status": "INPUT_PREPARED_NOT_SUBMITTED",
+  "logical_ids_not_runtime_ids": true,
+  "profile_ref": "PHW",
+  "garment_ref": "H03",
+  "summary": {
+    "garment_ref": "H03",
+    "profile_ref": "PHW",
+    "as_of": "2026-10-09T07:40:00+09:00",
+    "recorded_wear_events_total": 6,
+    "recorded_wear_days_total": 6,
+    "last_wear_at": "2026-10-07T08:00:00+09:00",
+    "last_wash_at": "2026-10-01T10:00:00+09:00",
+    "recorded_wears_after_last_wash": 5,
+    "recorded_days_after_last_wash": 5,
+    "wear_dates_after_last_wash": [
+      "2026-10-02",
+      "2026-10-03",
+      "2026-10-05",
+      "2026-10-06",
+      "2026-10-07"
+    ],
+    "last_location_event_ref": "MOVE-INIT-H03",
+    "last_location_description": "행거 상의 구역",
+    "availability": "user_marked_laundry_pending",
+    "cleanliness_confirmed": false,
+    "display": "마지막 세탁 뒤 기록된 착용 5회 · 5일",
+    "evidence_event_refs": [
+      "MOVE-INIT-H03",
+      "HW-WEAR-SEP-02",
+      "HW-W01-W",
+      "HW-W01-D",
+      "HW-WEAR-OCT-02",
+      "HW-WEAR-OCT-03",
+      "HW-WEAR-OCT-05",
+      "HW-WEAR-OCT-07",
+      "HW-WEAR-OCT-08",
+      "HW-OBS-08"
+    ],
+    "input_source": "scenario_fixture"
+  },
+  "care_evidence": {
+    "ref": "EV-H03",
+    "owner_ref": "PHW",
+    "garment_ref": "H03",
+    "evidence_kind": "official_product_page",
+    "product_ref": "P07",
+    "source_ref": "SRC-P07",
+    "structured_care": {},
+    "physical_label_asset_ref": null,
+    "human_item_match_status": "PENDING_REAL_ITEM_OR_DEMO_PRODUCT_BINDING",
+    "display_source_label": "공식 상품 관리 안내",
+    "must_not_display": "실물 라벨 확인 완료",
+    "provenance": {
+      "kind": "source_derived_evidence_binding",
+      "dataset_namespace": "scprep-20261009-v1"
+    }
+  },
+  "product_facts": {
+    "ref": "P07",
+    "brand": "H&M",
+    "product_code": "1308076007",
+    "variant_colour": "dark_grey",
+    "display_name_ko": "루스핏 스웨트셔츠",
+    "category": "top",
+    "subtype": "sweatshirt",
+    "composition": {
+      "shell": {
+        "cotton": 60,
+        "polyester": 40
+      }
+    },
+    "care_structured": {},
+    "source_ref": "SRC-P07",
+    "source_kind": "official_product_page",
+    "verification": "official_page_text",
+    "variant_identity_status": "product_code_and_colour_from_source",
+    "fit_claim": null,
+    "sizes_not_selected": true,
+    "purchase_price": null,
+    "availability_verified": false,
+    "physical_label_asset_ref": null,
+    "catalog_asset_ref": null,
+    "tryon_asset_ref": null,
+    "asset_transfer_permissions": {
+      "openai": null,
+      "decart": null,
+      "public_redistribution": null
+    },
+    "issues": [
+      "조회한 자료에서 관리 항목을 확보하지 못했다. 면 혼방이라는 이유만으로 세탁법을 채우지 않는다."
+    ],
+    "provenance": {
+      "kind": "source_derived_metadata",
+      "dataset_namespace": "scprep-20261009-v1"
+    }
+  },
+  "rules": [
+    "use_only_attached_target_evidence",
+    "do_not_generate_missing_wash_temperature",
+    "do_not_treat_product_page_as_physical_label",
+    "do_not_infer_dirt_from_wear_count",
+    "no_record_mutation",
+    "return_missing_information_when_needed"
+  ],
+  "live_response": null
+}
