@@ -1,0 +1,935 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<style>:root{color-scheme:light;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+</head>
+<body>
+<title>Smart Wardrobe 해부도</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+/* 레이아웃: 상단 제목+층 범례, 아래 [3D 지도 | 설명 패널] 2단, 900px 이하에선 1단 */
+:root{
+  --bg:#eef1f4; --surface:#ffffff; --surface-2:#f4f6f9; --fg:#18202e; --muted:#5a6476; --line:#c5ccd7;
+  --accent:#2457d6; --accent-ink:#ffffff;
+  --c-screen:#d0502c; --c-gate:#2457d6; --c-feat:#0c8a74; --c-rule:#8a4fd1; --c-work:#b5306c; --c-store:#a37206; --c-ext:#5a6a82;
+  --font-body:"IBM Plex Sans KR","Apple SD Gothic Neo","Malgun Gothic",system-ui,sans-serif;
+  --font-mono:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#10151e; --surface:#171e2a; --surface-2:#1d2532; --fg:#e5eaf2; --muted:#9ba5b7; --line:#2f3a4c;
+    --accent:#7aa2ff; --accent-ink:#0d1320;
+    --c-screen:#ff8866; --c-gate:#7aa2ff; --c-feat:#3fd0b2; --c-rule:#bb8fff; --c-work:#ff7fb5; --c-store:#e6b649; --c-ext:#97a7c0;
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#10151e; --surface:#171e2a; --surface-2:#1d2532; --fg:#e5eaf2; --muted:#9ba5b7; --line:#2f3a4c;
+  --accent:#7aa2ff; --accent-ink:#0d1320;
+  --c-screen:#ff8866; --c-gate:#7aa2ff; --c-feat:#3fd0b2; --c-rule:#bb8fff; --c-work:#ff7fb5; --c-store:#e6b649; --c-ext:#97a7c0;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+body{
+  background:var(--bg); color:var(--fg); font-family:var(--font-body); font-size:15px; line-height:1.6;
+  padding-left:max(16px, env(safe-area-inset-left, 0px));
+  padding-right:max(16px, env(safe-area-inset-right, 0px));
+  padding-block:20px 36px;
+}
+.wrap{max-width:1380px; margin:0 auto; display:flex; flex-direction:column; gap:16px}
+header{display:flex; flex-direction:column; gap:8px}
+.eyebrow{font:600 12px/1.3 var(--font-mono); letter-spacing:.06em; color:var(--muted)}
+h1{margin:0; font-size:clamp(1.55rem, 1.1rem + 1.6vw, 2.25rem); line-height:1.2; letter-spacing:-.025em; font-weight:700; text-wrap:balance}
+.lede{margin:0; max-width:70ch; color:var(--muted)}
+.layers{display:flex; flex-wrap:wrap; align-items:center; gap:6px 4px; font-size:13px; margin-top:4px}
+.layers span{display:inline-flex; align-items:center; gap:6px; padding:3px 10px; border-radius:999px; background:var(--surface); border:1px solid var(--line)}
+.layers span i{width:9px; height:9px; border-radius:50%; background:var(--dot)}
+.layers b{color:var(--muted); font-weight:400; padding:0 2px}
+
+.app{display:grid; grid-template-columns:minmax(0,1.45fr) minmax(0,1fr); gap:16px; align-items:start}
+@media (max-width:900px){ .app{grid-template-columns:minmax(0,1fr)} }
+
+.stage{position:relative; height:clamp(400px,76vh,800px); border:1px solid var(--line); border-radius:14px; overflow:hidden; background:var(--bg)}
+@media (max-width:900px){ .stage{height:clamp(360px,62vh,560px)} }
+#c{display:block; width:100%; height:100%; touch-action:none; cursor:grab}
+#c.grabbing{cursor:grabbing}
+#c.hovering{cursor:pointer}
+.labels{position:absolute; inset:0; pointer-events:none; overflow:hidden}
+.lbl{
+  position:absolute; left:0; top:0; pointer-events:auto; cursor:pointer;
+  display:inline-flex; align-items:center; gap:6px; white-space:nowrap;
+  font:500 12px/1.2 var(--font-body); color:var(--fg);
+  background:var(--surface); border:1px solid var(--line); border-radius:999px; padding:3px 9px 3px 7px;
+  transition:opacity .25s, border-color .2s;
+}
+.lbl i{width:8px; height:8px; border-radius:50%; background:var(--dot); flex:none}
+.lbl.dim{opacity:.32}
+.lbl.on{border-color:var(--dot); box-shadow:0 0 0 2px color-mix(in srgb, var(--dot) 28%, transparent)}
+.lbl:focus-visible{outline:2px solid var(--accent); outline-offset:2px}
+.hint{position:absolute; left:10px; bottom:10px; font-size:12px; color:var(--muted); background:color-mix(in srgb, var(--surface) 85%, transparent); border:1px solid var(--line); padding:4px 10px; border-radius:8px; pointer-events:none}
+.split-lbl{position:absolute; left:0; top:0; display:flex; flex-direction:column; gap:2px; font:600 11px/1.2 var(--font-mono); color:var(--c-screen); pointer-events:none; white-space:nowrap}
+.fallback{position:absolute; inset:0; display:grid; place-items:center; padding:24px; text-align:center; color:var(--muted)}
+
+.panel{display:flex; flex-direction:column; gap:14px; min-width:0}
+.box{background:var(--surface); border:1px solid var(--line); border-radius:14px; padding:16px 18px; display:flex; flex-direction:column; gap:12px; min-width:0}
+.box-title{font:600 12px/1 var(--font-mono); letter-spacing:.06em; color:var(--muted)}
+.chips{display:flex; flex-wrap:wrap; gap:6px}
+.chip{font:500 13px/1.2 var(--font-body); color:var(--fg); background:var(--surface-2); border:1px solid var(--line); border-radius:999px; padding:7px 12px; cursor:pointer}
+.chip:hover{border-color:var(--accent)}
+.chip[aria-pressed="true"]{background:var(--accent); color:var(--accent-ink); border-color:var(--accent)}
+.chip.gap{border-style:dashed; border-color:var(--c-screen)}
+.chip.gap[aria-pressed="true"]{background:var(--c-screen); border-color:var(--c-screen); color:var(--accent-ink)}
+.chip:focus-visible,.btn:focus-visible,.dot:focus-visible,.nb:focus-visible{outline:2px solid var(--accent); outline-offset:2px}
+.sc-desc{margin:0; font-size:14px; color:var(--muted)}
+.caption{border-left:3px solid var(--step, var(--accent)); padding:2px 0 2px 12px; min-height:6.2em; display:flex; flex-direction:column; gap:4px}
+.caption .meta{font:12px/1.3 var(--font-mono); color:var(--muted); font-variant-numeric:tabular-nums}
+.caption .who{font-weight:600}
+.caption p{margin:0}
+.controls{display:flex; flex-wrap:wrap; align-items:center; gap:8px}
+.btn{font:600 13px/1 var(--font-body); color:var(--fg); background:var(--surface-2); border:1px solid var(--line); border-radius:9px; padding:9px 14px; cursor:pointer}
+.btn:hover{border-color:var(--fg)}
+.btn.primary{background:var(--fg); color:var(--bg); border-color:var(--fg); min-width:84px}
+.btn:disabled{opacity:.4; cursor:default}
+.dots{display:flex; flex-wrap:wrap; gap:4px}
+.dot{width:20px; height:6px; border-radius:3px; border:0; padding:0; background:var(--line); cursor:pointer}
+.dot.done{background:color-mix(in srgb, var(--accent) 45%, var(--line))}
+.dot.now{background:var(--accent)}
+
+.card .layer{display:inline-flex; align-items:center; gap:6px; font:600 12px/1 var(--font-mono); color:var(--muted)}
+.card .layer i{width:9px; height:9px; border-radius:50%; background:var(--dot)}
+.card h2{margin:0; font-size:1.4rem; line-height:1.25; letter-spacing:-.015em; text-wrap:balance}
+.code-name{font:13px/1.4 var(--font-mono); color:var(--muted); overflow-wrap:anywhere}
+.sum{margin:0; font-size:1rem}
+.analogy{background:var(--surface-2); border-radius:10px; padding:10px 12px; font-size:14px}
+.analogy b{display:block; font:600 11px/1 var(--font-mono); color:var(--muted); margin-bottom:6px; letter-spacing:.05em}
+.points{margin:0; padding-left:1.15em; display:flex; flex-direction:column; gap:6px; font-size:14.5px}
+.points li::marker{color:var(--dot)}
+pre{margin:0; overflow-x:auto; background:var(--surface-2); border:1px solid var(--line); border-radius:10px; padding:12px 14px; font:12.5px/1.6 var(--font-mono); color:var(--fg)}
+.warn{font-size:14px; padding:10px 12px; border-radius:10px; border:1px dashed var(--c-screen); color:var(--fg)}
+.warn b{color:var(--c-screen)}
+.nbs{display:flex; flex-wrap:wrap; gap:6px}
+.nb{font:500 12px/1.2 var(--font-body); color:var(--fg); background:transparent; border:1px solid var(--line); border-radius:999px; padding:5px 10px 5px 8px; display:inline-flex; gap:6px; align-items:center; cursor:pointer}
+.nb i{width:7px; height:7px; border-radius:50%; background:var(--dot)}
+.nb:hover{border-color:var(--dot)}
+@media (prefers-reduced-motion: reduce){ *{transition:none !important} }
+</style>
+
+<div class="wrap">
+  <header>
+    <div class="eyebrow" id="eyebrow">backend/app + web/src/mirror + renderer</div>
+    <h1>Smart Wardrobe 해부도</h1>
+    <p class="lede">맨 위 네 개가 브라우저(거울 화면)이고, 가운데 반투명한 면 아래는 전부 서버예요. 오른쪽 분홍색 무리는 2초마다 도는 백그라운드 작업이에요. 공을 누르면 그 부품 설명이 나오고, 오른쪽에서 흐름을 고르면 요청 하나가 어디를 거쳐 가는지 빛이 따라가요. 점선 칩은 코드에서 연결이 끊겨 있는 흐름이에요.</p>
+    <div class="layers" id="layers"></div>
+  </header>
+
+  <main class="app">
+    <div class="stage" id="stage">
+      <canvas id="c" aria-label="Smart Wardrobe 부품을 공으로 배치한 3D 지도"></canvas>
+      <div class="labels" id="labels"></div>
+      <div class="hint" id="hint">드래그 회전 · 휠/두 손가락 확대 · 공을 누르면 설명</div>
+    </div>
+
+    <aside class="panel">
+      <section class="box" aria-labelledby="tour-title">
+        <div class="box-title" id="tour-title">흐름 따라가기</div>
+        <div class="chips" id="scChips" role="group" aria-label="시나리오 선택"></div>
+        <p class="sc-desc" id="scDesc"></p>
+        <div class="caption" id="caption" aria-live="polite">
+          <div class="meta" id="capMeta"></div>
+          <div class="who" id="capWho"></div>
+          <p id="capText"></p>
+        </div>
+        <div class="controls">
+          <button class="btn" id="prev" type="button">이전</button>
+          <button class="btn primary" id="play" type="button">재생</button>
+          <button class="btn" id="next" type="button">다음</button>
+        </div>
+        <div class="dots" id="dots" aria-label="단계"></div>
+      </section>
+
+      <article class="box card" id="card">
+        <div class="layer" id="cLayer"><i></i><span></span></div>
+        <h2 id="cTitle"></h2>
+        <div class="code-name" id="cCode"></div>
+        <p class="sum" id="cSum"></p>
+        <div class="analogy" id="cAna"><b>쉽게 말하면</b><span></span></div>
+        <ul class="points" id="cPoints"></ul>
+        <pre id="cSnip"></pre>
+        <div class="warn" id="cWarn"><b>주의</b> <span></span></div>
+        <div class="box-title">연결된 부품</div>
+        <div class="nbs" id="cNbs"></div>
+      </article>
+    </aside>
+  </main>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+(function () {
+"use strict";
+
+const LAYERS = {
+  screen: { name: "브라우저 (거울 화면)", token: "--c-screen" },
+  gate:   { name: "서버 입구", token: "--c-gate" },
+  feat:   { name: "업무 기능", token: "--c-feat" },
+  rule:   { name: "규칙 엔진", token: "--c-rule" },
+  work:   { name: "백그라운드 작업", token: "--c-work" },
+  store:  { name: "저장소", token: "--c-store" },
+  ext:    { name: "외부 서비스", token: "--c-ext" },
+};
+const SPLIT_Y = 4.25; // 브라우저와 서버를 가르는 면의 높이
+
+const NODES = [
+  // ── 브라우저 ──
+  { id: "user", layer: "screen", pos: [-3.4, 7.8, 0.2], label: "사용자", code: "거울 화면 앞의 가족 구성원",
+    sum: `옷을 등록하고, 코디를 추천받고, 입어 보고, 입었다고 확인하는 사람이에요. 모든 흐름이 여기서 시작해서 여기로 돌아와요.`,
+    ana: `스마트 옷장 문에 달린 거울 앞에 선 사람이에요.`,
+    points: [`한 집(household)에 여러 사람(member)이 있어요. 역할은 OWNER · MEMBER · CHILD 셋 중 하나예요.`,
+             `데모에서는 "엄마" 같은 프로필을 골라 로그인해요.`] ,
+    snip: `role: "OWNER" | "MEMBER" | "CHILD"\nhousehold_id → 한 집, member_id → 한 사람` },
+  { id: "app", layer: "screen", pos: [-3.4, 5.5, 0.3], label: "거울 앱 App.tsx", code: "web/src/entry.js → mirror/source/main.tsx → App.tsx",
+    sum: `React 19로 만든 거울 화면이에요. 홈, 옷장, 코디, 피팅, 케어, 수납 화면이 모두 여기서 갈라져요.`,
+    ana: `거울에 비치는 메뉴판이에요. 버튼을 누르면 뒤에서 서버에 주문을 넣어요.`,
+    points: [`주소가 /legacy로 시작하면 예전 화면(main.jsx), 아니면 거울 앱을 불러와요.`,
+             `App.tsx만 2,800줄이 넘어요. 코드가 눈에 잘 안 들어오는 가장 큰 이유예요.`,
+             `서버 없이 도는 데모 모드도 있어요. 이때는 core/repository.ts가 브라우저 저장소를 써요.`],
+    snip: `if (window.location.pathname.startsWith("/legacy")) import("./main.jsx");\nelse import("./mirror/source/main.tsx");`,
+    warn: `App.tsx(2,796줄)와 MirrorExperience.tsx(1,368줄)에 화면 로직이 몰려 있어요. 고칠 곳을 찾으려면 이 지도의 흐름에서 부품 이름을 먼저 확인하세요.` },
+  { id: "client", layer: "screen", pos: [0.6, 5.6, -0.6], label: "backendClient.ts", code: "web/src/mirror/source/integrations/backendClient.ts",
+    sum: `화면과 서버 사이의 유일한 창구예요. 로그인 토큰을 들고 있다가 모든 API 요청에 붙여요.`,
+    ana: `주문을 받아 주방에 전달하는 웨이터예요. 손님 번호표(토큰)를 항상 같이 들고 가요.`,
+    points: [`토큰은 모듈 변수에만 있어요. 서버가 401을 주면 토큰을 비우고, 이미지 캐시를 지우고, "세션 만료"를 알려요.`,
+             `쓰기 요청에는 Idempotency-Key를 붙여서 같은 요청이 두 번 가도 한 번만 처리되게 해요.`,
+             `오래 걸리는 작업은 202와 status_url을 받아서 /api/v1/jobs/{id}를 폴링해요.`],
+    snip: `httpClient = createClient(token, () => {\n  if (token !== expectedToken) return;\n  token = ""; member = null; deviceId = "";\n  sessionGeneration++;\n  clearImageCache();\n  for (const fn of listeners) fn();\n});` },
+  { id: "realtime", layer: "screen", pos: [4.4, 6.5, 0.9], label: "실시간 피팅 (Decart SDK)", code: "integrations/decartRealtime.ts · mirrorFittingController.ts",
+    sum: `카메라 영상을 Decart의 lucy-vton-3.6 모델로 보내서 옷을 입은 모습을 실시간 영상으로 돌려받는 부분이에요.`,
+    ana: `영상 통화로 가상 옷을 입혀 주는 디자이너와 연결하는 전화기예요. 연결하려면 서버에서 일회용 비밀번호를 받아야 해요.`,
+    points: [`브라우저가 wss://api3.decart.ai에 직접 연결해요. 영상은 서버를 거치지 않아요.`,
+             `연결 전에 /api/try-on/{작업ID}/token으로 짧은 토큰을 받아요.`,
+             `재연결은 최대 3번, 정해진 종료 시각이 지나면 끊어요. 오디오 트랙이 있으면 시작을 거부해요.`],
+    snip: `requestToken: async (operationId, signal) => {\n  const response = await this.ports.fetch(\n    "/api/try-on/" + operationId + "/token",\n    { method: "POST", body: "{}", signal, credentials: "same-origin" });`,
+    warn: `이 저장소 안에서는 /api/try-on/…/token을 처리하는 서버 코드를 찾지 못했어요. FastAPI 라우터는 모두 /api/v1/… 아래에 있어요. 실시간 피팅은 지금 토큰 단계에서 끊길 가능성이 커요.` },
+
+  // ── 서버 입구 ──
+  { id: "gate", layer: "gate", pos: [-1.0, 2.8, 0.9], label: "FastAPI 입구 create_app", code: "backend/app/main.py · core/rate_limit.py",
+    sum: `서버의 정문이에요. CORS와 요청 로그를 걸고, 기능별 라우터 11개를 붙이고, 모든 요청에 요청 수 제한을 걸어요.`,
+    ana: `건물 로비예요. 출입 기록을 남기고, 한 사람이 너무 자주 드나들면 잠깐 막아요.`,
+    points: [`요청 수 제한: 로그인 30, 읽기 600, 쓰기 120 (IP·그룹별, Redis 카운터).`,
+             `Redis가 죽으면 제한을 건너뛰지 않고 503으로 막아요.`,
+             `/health/ready는 DB 마이그레이션 버전, Redis, 저장소, 렌더러를 동시에 확인해요. INLINE 모드면 워커도 봐요.`,
+             `라우터는 sprint1~7, integration, shopping, poc_vton, fitroom, storage_relay예요.`],
+    snip: `names = ["database", "redis", "storage", "renderer"]\nvalues = await asyncio.gather(*(check(getattr(runtime, f"probe_{name}")) for name in names))\nif settings.worker_execution == "INLINE":\n    checks["worker"] = await check(request.app.state.inline_worker.probe)` },
+  { id: "auth", layer: "gate", pos: [-5.4, 2.4, -0.4], label: "로그인 · JWT", code: "core/security.py · api/v1/integration.py demo_login",
+    sum: `프로필을 확인하고 HS256 JWT를 발급해요. 이후 모든 요청은 이 토큰을 풀어 ActorContext(누가, 어느 집, 무슨 역할)로 바꿔요.`,
+    ana: `로비의 출입증 발급기예요. 출입증에는 이름 대신 집 번호와 역할이 적혀 있어요.`,
+    points: [`토큰 안에 household_id, sub(사람), role, sid가 들어가요. 집 안 스테이션(station_id), 개인 계정, 공개 데모 여부도 선택적으로 들어가요.`,
+             `데모 로그인은 공개 데모 설정이 켜졌거나, 로컬·테스트 환경일 때만 열려요.`,
+             `다른 집 자원을 요청하면 403이 아니라 404를 줘요. 존재 여부조차 알려주지 않아요.`],
+    snip: `def require_household(actor, household_id):\n    if actor.household_id != household_id:\n        raise ApiError(404, "NOT_FOUND", "Resource not found")` },
+
+  // ── 업무 기능 ──
+  { id: "garments", layer: "feat", pos: [-6.6, 0.2, 0.4], label: "옷 · 사진 업로드", code: "api/v1/sprint1.py · application/assets.py",
+    sum: `옷을 등록하고 사진을 올려요. 사진은 서버를 거치지 않고 브라우저가 저장소에 직접 올리고, 서버는 다 올라간 뒤 검사만 해요.`,
+    ana: `택배 보관함 비밀번호를 미리 알려주고, 물건이 들어오면 무게와 봉인을 확인한 뒤 진열대로 옮기는 거예요.`,
+    points: [`1단계 upload-intents: 사진 업로드 동의를 확인하고, staging/ 경로에 5분짜리 서명 URL을 줘요.`,
+             `2단계 브라우저가 그 URL로 직접 PUT해요.`,
+             `3단계 finalize: 파일을 다시 읽어 크기, sha256, 이미지 형식을 확인하고 최종 위치로 옮겨요.`,
+             `용도는 GARMENT · STYLE · PERSON_VTON만 받아요. 최대 10MB.`],
+    snip: `url = signer.generate_presigned_url("put_object", Params={\n    "Bucket": bucket, "Key": staging,\n    "ContentType": body.content_type, "ContentLength": body.size_bytes,\n}, ExpiresIn=300)` },
+  { id: "recommend", layer: "feat", pos: [-4.2, 0.0, 2.2], label: "코디 추천", code: "api/v1/sprint2.py · application/sprint2.py recommend()",
+    sum: `먼저 "지금 상황"(날씨·일정)을 스냅샷으로 찍고, 그 스냅샷을 기준으로 코디를 추천해요. 같은 스냅샷이면 언제 다시 물어도 같은 답이 나와요.`,
+    ana: `오늘 아침 일기예보를 사진으로 찍어 두고, 그 사진을 보면서 옷을 골라 주는 코디네이터예요.`,
+    points: [`POST /context-snapshots → POST /outfit-recommendations 두 번에 나눠 불러요.`,
+             `테마는 CASUAL · WORK · FORMAL · SPORT, 한 코디는 2~6벌, 추천은 1~20개.`,
+             `특별 관리(special_care) 옷과 사용 불가 옷은 후보에서 빠져요.`],
+    snip: `snapshot = await self.require_context(repo, actor, body.context_snapshot_id)\nrows, total = await repo.garments(actor, dict(status="AVAILABLE"), 200, 0)` },
+  { id: "vton", layer: "feat", pos: [-1.4, -0.2, -1.6], label: "가상 피팅 요청", code: "sprint3.py · poc_vton.py · fitroom.py",
+    sum: `사람 사진과 옷 사진으로 "입어 본 모습"을 만드는 요청을 받아요. 경로가 세 갈래예요: Mock 작업, 통합 VTON 작업, FitRoom 유료 호출.`,
+    ana: `피팅룸 접수처예요. 대부분은 견본(Mock)을 보여주고, 진짜 유료 피팅은 담당자가 직접 승인해야 한 번만 해요.`,
+    points: [`/vton-jobs, /integration/vton-jobs: 작업을 큐에 넣고 202를 돌려줘요. 워커가 처리해요.`,
+             `/integration/fitroom/reviews: 미리보기 → 사람이 execute를 눌러야 한 번 호출해요. 백그라운드 워커는 FitRoom을 부를 수 없어요.`,
+             `실행 직전에 입력 사진 지문(fingerprint)과 전처리 결과 해시를 다시 비교해요. 다르면 REVIEW_CHANGED로 막아요.`],
+    snip: `"""Human-triggered single attempt; background workers cannot submit C-2 jobs."""\nif live and not live_allowed(self.settings):\n    await self.blocked(actor, identity, "PAID_CALL_BLOCKED")` },
+  { id: "cards", layer: "feat", pos: [1.0, 0.2, 1.7], label: "코디 카드", code: "api/v1/sprint4.py · application/sprint4.py",
+    sum: `코디를 1080×1350 이미지 카드로 만들고, 저장하고, 24시간 공유 링크를 만들어요. 그림 그리기는 워커와 렌더러가 해요.`,
+    ana: `사진관 접수처예요. 주문서를 받아 암실(렌더러)로 넘기고, 다 되면 액자에 넣어 돌려줘요.`,
+    points: [`drafts → card-render-jobs(202) → 폴링 → save 순서예요.`,
+             `이미 RENDERING 중인 카드는 다시 요청하면 409예요.`,
+             `공유 토큰은 HMAC으로 만들고 DB에는 해시만 저장해요. 공유 화면에는 제목·스타일·옷 사진(+날짜·날씨)만 보여요.`],
+    snip: `await repo.execute("INSERT INTO wardrobe.job(...) VALUES (:id,:h,:m,'CARD_RENDER',...)")\nawait repo.execute("INSERT INTO wardrobe.card_render_job(job_id,card_id,...)")\nawait self.event(repo, actor, "CardGenerationRequested", "job", identity, ...)` },
+  { id: "care", layer: "feat", pos: [3.2, 0.0, -1.3], label: "착용 · 케어", code: "api/v1/sprint5.py · application/sprint5.py · domain/care.py",
+    sum: `"오늘 이거 입었어요"를 기록하고, 세탁·드라이 같은 관리 일정을 만들고 완료 처리해요.`,
+    ana: `옷마다 붙은 이용 기록 카드와 세탁 달력이에요.`,
+    points: [`착용 확인은 사람이 직접 누른 것(USER)만 받아요. 센서 확인은 503이에요.`,
+             `미래 시각은 거부해요. 케어 완료 시각이 일정 생성보다 앞서도 거부해요.`,
+             `일정 수정·완료에는 expected_version이 필요해요. 그사이 누가 바꿨으면 충돌로 막아요.`],
+    snip: `if body.confirmation_method != "USER":\n    raise ApiError(503, "SENSOR_VERIFICATION_UNAVAILABLE", "Verified sensor ingress unavailable")\nnot_future(body.worn_at)` },
+  { id: "storage", layer: "feat", pos: [5.4, 0.3, 1.0], label: "수납 정리 · LED", code: "sprint6.py · integration.py led-commands",
+    sum: `옷을 어느 칸으로 옮기면 좋을지 계산하는 작업을 받고, 사람이 승인하면 반영해요. 옷 위치를 LED로 비춰 주는 명령도 여기 있어요.`,
+    ana: `정리 컨설턴트예요. 제안서를 만들어 오지만 실제로 옮기는 건 집주인이 "좋아요"를 누른 뒤예요.`,
+    points: [`storage-optimization-jobs → storage-actions → decision → confirm.`,
+             `LED는 집 안 스테이션(HOME) 토큰으로만 켤 수 있어요.`,
+             `모든 옷의 위치 신뢰도가 0.9 이상이고 24시간 안에 확인됐어야 해요. 한 벌이라도 불확실하면 전체를 409로 거절해요.`,
+             `LED 컨트롤러는 아직 MOCK이에요. LED_OFF_SECONDS가 지나면 OFF로 보여요.`],
+    snip: `if unresolved:\n    # Fail closed: a partial command does not silently claim all items located.\n    raise ApiError(409, "CONFLICT", "Reliable mapped locations required for every garment")` },
+  { id: "home", layer: "feat", pos: [-6.2, 0.9, -2.4], label: "홈 대시보드", code: "api/v1/sprint7.py · application/sprint7.py home()",
+    sum: `첫 화면에 보일 추천, 케어 일정, 수납 제안을 한 번에 모아요.`,
+    ana: `아침 브리핑이에요. 기자 셋에게 동시에 전화하고, 3초 안에 답 없는 사람 칸은 "확인 불가"로 비워 둬요.`,
+    points: [`세 출처를 asyncio로 동시에 부르고, 각각 3초 제한을 걸어요.`,
+             `하나가 실패해도 화면 전체가 깨지지 않고 그 칸만 UNAVAILABLE이에요.`,
+             `시각은 미래가 아니어야 하고, 시간대는 IANA 이름(예: Asia/Seoul)이어야 해요.`],
+    snip: `async def isolated(self, name, callback, empty):\n    try:\n        return await asyncio.wait_for(callback(), timeout=3)\n    except Exception:\n        return empty, "UNAVAILABLE"` },
+
+  // ── 규칙 엔진 ──
+  { id: "idem", layer: "rule", pos: [-0.8, -2.4, 2.7], label: "idempotent() 중복 방지", code: "application/common/idempotency.py",
+    sum: `같은 Idempotency-Key로 다시 온 요청은 다시 실행하지 않고, 처음 저장해 둔 응답을 그대로 돌려줘요. 응답 저장과 실제 변경이 한 트랜잭션이에요.`,
+    ana: `영수증 번호예요. 같은 영수증을 다시 내밀면 물건을 또 주지 않고 처음 영수증 사본을 보여줘요.`,
+    points: [`키를 잠그고(lock) → 이전 기록을 찾고 → 본문 해시가 같으면 이전 응답, 다르면 409.`,
+             `기본 보관 24시간, 업로드 의도는 5분.`,
+             `카드 렌더, 수납 작업, 착용 확인 등 쓰기 대부분이 이 함수를 거쳐요.`],
+    snip: `digest = hashlib.sha256(canonical(payload).encode()).hexdigest()\nawait repo.lock(f"idempotency:{member_id}:{operation}:{key}")\nif prior:\n    if prior["request_hash"] != digest: raise ApiError(409, ...)\n    return prior["response_body"]` },
+  { id: "rank", layer: "rule", pos: [-4.6, -2.3, 0.4], label: "rank_candidates 추천 규칙", code: "domain/recommendations.py",
+    sum: `코디 추천의 실제 계산식이에요. LLM이나 외부 호출 없이 정해진 규칙으로 점수를 매겨요. 같은 입력이면 항상 같은 결과예요.`,
+    ana: `점수표를 든 심사위원이에요. 기본 50점에서 시작해 조건마다 더하고 빼요.`,
+    points: [`조합: (상의×하의 또는 원피스) × 신발 × 아우터 × 액세서리.`,
+             `아우터는 기온이 15℃ 미만일 때만 후보에 넣어요.`,
+             `계절·테마가 맞는 비율만큼 최대 +10점씩, 15℃ 이상이거나 아우터가 있으면 +10점.`,
+             `최근 7일에 입은 옷은 한 번에 -5점(최대 -20점), 좋아한 옷은 +2점(최대 +10점).`],
+    snip: `score = 50.0\nreasons = ["Available accessible garments", "Rule-based cold-start baseline"]\n...\nscore += max(-10, min(10, positive * 2)) - min(20, recent * 5)` },
+  { id: "plan", layer: "rule", pos: [5.2, -2.2, -1.0], label: "plan() 수납 계획", code: "domain/storage.py",
+    sum: `옷마다 현재 칸, 보관 조건, 착용 횟수를 보고 어디로 옮길지(moves), 왜 못 옮기는지(blocked)를 계산하는 순수 함수예요.`,
+    ana: `테트리스 고수예요. 칸 크기와 옷 성질을 보고 놓을 자리를 정하되, 근거가 부족하면 손대지 않아요.`,
+    points: [`옷 id 순서대로 처리해서 결과가 항상 같아요.`,
+             `현재 칸을 모르면 SOURCE_SPACE_UNKNOWN으로 빼요.`,
+             `착용 패턴 모드인데 착용 기록이 0이면 INSUFFICIENT_WEAR_HISTORY로 빼요.`],
+    snip: `if body.mode == "WEAR_PATTERN" and body.season == "ALL" and count == 0:\n    blocked.append(dict(garment_id=str(identity), reasons=["INSUFFICIENT_WEAR_HISTORY"]))\n    continue` },
+
+  // ── 백그라운드 작업 ──
+  { id: "inline", layer: "work", pos: [9.6, 2.1, -0.8], label: "워커 루프 (2초)", code: "application/inline_worker.py · workers/celery_app.py",
+    sum: `DB에 쌓인 작업을 2초마다 꺼내 처리하는 심장 박동이에요. 클라우드 무료 배포는 API 프로세스 안에서(INLINE), 로컬 Docker는 Celery beat로 돌아요.`,
+    ana: `2초마다 주문 현황판을 확인하는 주방장이에요. 메모리에 따로 대기열을 두지 않고 현황판(DB)만 봐요.`,
+    points: [`한 바퀴 순서: vton → poc-vton → liked → cards → storage → outbox. 60초마다 오래된 파일 정리도 해요.`,
+             `한 작업이 실패해도 나머지는 계속 돌아요. 실패하면 healthy=false가 되고 /health/ready에 드러나요.`,
+             `120초 넘게 성공이 없으면 준비 안 됨(503)으로 바뀌어요.`],
+    snip: `async def run(self):\n    while True:\n        await self.cycle()\n        await asyncio.sleep(2)` },
+  { id: "cardw", layer: "work", pos: [8.8, -0.8, 1.7], label: "card_worker", code: "application/card_worker.py",
+    sum: `대기 중인 카드 작업 한 건을 잡아서 옷 사진을 모으고, 렌더러에 그림을 부탁하고, 결과 PNG를 저장해요.`,
+    ana: `암실 기사예요. 주문서 하나를 집으면 "작업 중" 팻말(lease)을 걸고, 시간 안에 못 끝내면 팻말이 자동으로 떨어져요.`,
+    points: [`FOR UPDATE SKIP LOCKED로 한 건만 잡아요. 여러 워커가 같은 카드를 동시에 그리지 않아요.`,
+             `lease 시간이 지난 RUNNING 작업은 TIMED_OUT으로, 카드는 FAILED로 바꿔요.`,
+             `옷 사진을 읽을 때 크기·형식·sha256을 다시 확인해요.`],
+    snip: `"SELECT j.*,c.card_id,c.output_format FROM wardrobe.job j JOIN wardrobe.card_render_job c "\n"ON c.job_id=j.id WHERE j.status='QUEUED' AND j.next_attempt_at<=now() "\n"ORDER BY j.created_at,j.id LIMIT 1 FOR UPDATE OF j SKIP LOCKED"` },
+  { id: "vtonw", layer: "work", pos: [11.0, -1.0, -1.7], label: "vton 워커", code: "vton_worker.py · poc_vton_worker.py · workers/external_vton.py",
+    sum: `가상 피팅 작업을 처리해요. 지금 서버에 연결된 공급자는 사실상 Mock 하나예요.`,
+    ana: `견본 사진사예요. 진짜 사진 대신 "견본"이라고 크게 적힌 종이를 찍어 돌려줘요.`,
+    points: [`VTON_PROVIDER=MOCK이면 회색 바탕에 "MOCK - NOT A REAL TRY-ON"이 적힌 320×240 PNG를 돌려줘요.`,
+             `서버 쪽 DecartAdapter는 항상 PROVIDER_CAPABILITY_UNAVAILABLE을 던져요.`,
+             `클라우드 배포 설정(render.yaml)도 VTON_PROVIDER=MOCK이에요.`],
+    snip: `class DecartAdapter:\n    async def submit(self, request):\n        raise ProviderFailure("PROVIDER_CAPABILITY_UNAVAILABLE")\n\ndef provider_for(mode):\n    return MockVtonProvider() if mode == "MOCK" else DecartAdapter()` },
+  { id: "storw", layer: "work", pos: [12.0, 0.6, 1.2], label: "storage_worker", code: "application/storage_worker.py",
+    sum: `수납 최적화 작업을 꺼내 plan()을 돌리고, 결과를 승인 대기 중인 수납 제안으로 저장해요.`,
+    ana: `컨설턴트 사무실의 계산 담당이에요. 계산만 하고 실제 옷은 건드리지 않아요.`,
+    points: [`옷 목록, 칸 정보, 현재 점유, 환경, 착용 횟수를 모아 plan()에 넘겨요.`,
+             `결과는 storage-actions로 저장되고 사람이 decision/confirm을 해야 반영돼요.`],
+    snip: `async def process_storage(settings, resources, planner=plan):\n    ...\nasync def execute_storage(resources, row, planner):` },
+  { id: "outbox", layer: "work", pos: [10.6, -3.1, 0.2], label: "outbox 배달", code: "application/outbox.py dispatch() · consume()",
+    sum: `업무 처리 중에 남긴 이벤트를 나중에 꺼내서 배달해요. 이벤트는 업무와 같은 트랜잭션으로 저장되니 "처리는 됐는데 이벤트는 없음"이 생기지 않아요.`,
+    ana: `등기 우편 창구예요. 보내기 전에 "미확인" 도장을 먼저 찍고, 받은 쪽은 원본 대장과 한 글자씩 대조해요.`,
+    points: [`한 번에 10개, FOR UPDATE SKIP LOCKED로 잡아요.`,
+             `발행 전에 먼저 FAILED(DELIVERY_UNCONFIRMED)로 바꿔 둬요. 도중에 죽어도 다시 보내져요.`,
+             `실패하면 2^시도 횟수 초 뒤 재시도, 최대 5번.`,
+             `받는 쪽은 event_id로 만든 uuid5로 audit_log에 넣어요. 같은 이벤트가 두 번 와도 한 번만 기록돼요.`],
+    snip: `if row is None or canonical(envelope(row)) != canonical(message):\n    raise ValueError("Event does not match committed source")\n"INSERT INTO wardrobe.audit_log(...) ON CONFLICT(id) DO NOTHING RETURNING id"` },
+
+  // ── 저장소 ──
+  { id: "pg", layer: "store", pos: [-0.4, -4.8, -0.6], label: "PostgreSQL (wardrobe)", code: "wardrobe.job · domain_event_outbox · idempotency_key · asset …",
+    sum: `모든 상태의 원본이에요. 작업 대기열도 Redis가 아니라 이 DB의 job 테이블이에요. 로컬은 Docker Postgres, 클라우드는 Supabase예요.`,
+    ana: `회사 장부 금고예요. 주문서, 영수증 사본, 우편 대장, 사진 목록이 모두 여기 있어요.`,
+    points: [`job: 카드·피팅·수납 작업과 상태(QUEUED → RUNNING → SUCCEEDED/FAILED/TIMED_OUT).`,
+             `domain_event_outbox: 배달 대기 이벤트. idempotency_key: 저장된 응답.`,
+             `asset: 사진 목록과 상태(PENDING_UPLOAD → READY → DELETED), 보관 만료 시각.`,
+             `/health/ready는 마이그레이션 버전이 0006_fitroom_budget인지 확인해요.`],
+    snip: `BASELINE_REVISION = "0006_fitroom_budget"\nrevision = await connection.scalar(text("SELECT version_num FROM public.alembic_version"))\nif revision != BASELINE_REVISION:\n    raise RuntimeError("Database migration required")` },
+  { id: "redis", layer: "store", pos: [-4.8, -4.6, 1.0], label: "Redis", code: "resources.redis · Celery broker",
+    sum: `요청 수 제한 카운터와, Celery 모드일 때 작업 전달 통로로 써요. 데이터의 원본은 여기 없어요.`,
+    ana: `로비의 출입 횟수 계수기이자, 주방으로 쪽지를 보내는 기송관이에요.`,
+    points: [`카운터 키: wardrobe:rate:{DB 지문}:{IP}:{그룹}. Lua 스크립트로 INCR해요.`,
+             `INLINE 모드(클라우드)에서는 Celery를 안 쓰지만 요청 제한 때문에 여전히 필요해요.`],
+    snip: `key = f"wardrobe:rate:{namespace}:{peer}:{group}"\ncount = await request.app.state.resources.redis.eval(COUNTER, 1, key, WINDOW_SECONDS)` },
+  { id: "s3", layer: "store", pos: [3.6, -4.6, 1.4], label: "오브젝트 저장소", code: "MinIO (로컬) · Supabase S3 (클라우드) · api/storage_relay.py",
+    sum: `옷 사진, 카드 PNG, 피팅 결과 이미지가 들어가는 곳이에요. 비공개 버킷이고, 브라우저는 짧은 서명 URL로만 접근해요.`,
+    ana: `사진 창고예요. 열쇠 대신 5분짜리 출입권만 나눠줘요.`,
+    points: [`업로드는 staging/…, 확정본은 assets/{집}/{사람}/{asset}/… 경로예요.`,
+             `클라우드에서는 /wardrobe-assets/… 중계(relay)가 서명 형식, 만료 300초 이하, 경로 모양을 검사한 뒤에만 넘겨요.`,
+             `보관 기한이 지나거나 업로드가 안 끝난 파일은 60초마다 정리 작업이 지워요.`],
+    snip: `STAGING = re.compile(rf"staging/{UUID}/{UUID}/{UUID}")\nASSET = re.compile(rf"assets/{UUID}/{UUID}/{UUID}/(?:[0-9a-f]{{32}}|result\\.png|card\\.(?:png|webp)|liked-result\\.png)")`,
+    warn: `로컬 MinIO 이미지에는 알려진 취약점이 남아 있어서 로컬 개발 전용이라고 README에 적혀 있어요.` },
+
+  // ── 외부 서비스 ──
+  { id: "renderer", layer: "ext", pos: [6.8, -7.0, 0.6], label: "카드 렌더러 (Chromium)", code: "renderer/src/server.mjs · template.mjs",
+    sum: `Node 서버가 Playwright로 Chromium을 띄워 카드 HTML을 스크린샷 찍어 PNG로 돌려줘요. 외부 회사가 아니라 이 저장소 안의 별도 프로세스예요.`,
+    ana: `암실의 인화기예요. 한 번에 한 장만 뽑고, 인화하는 동안은 창문(네트워크)을 전부 닫아요.`,
+    points: [`1080×1350, 자바스크립트 끄고, 모든 네트워크 요청을 차단한 채 렌더링해요.`,
+             `한 번에 하나만 처리해요. 바쁘면 429.`,
+             `이미지가 하나라도 안 그려지면 실패로 처리해요. 배경은 T1~T4 네 가지예요.`,
+             `클라우드에서는 API와 같은 컨테이너 안에서 루프백 주소로만 떠요.`],
+    snip: `const page = await browser.newPage({viewport:{width:1080,height:1350},deviceScaleFactor:1,javaScriptEnabled:false});\nawait page.route('**/*', route => route.abort());\nconst image = await page.screenshot({type:'png',timeout:20_000});` },
+  { id: "fitroom", layer: "ext", pos: [1.4, -7.2, -1.0], label: "FitRoom API", code: "infrastructure/adapters/fitroom.py  platform.fitroom.app",
+    sum: `유료 가상 피팅 서비스예요. 상의+하의(combo) 또는 원피스(full_set) 조합만 보내요.`,
+    ana: `한 번 부를 때마다 돈이 드는 외부 스튜디오예요. 결재 도장이 찍힌 주문서가 아니면 전화도 걸지 않아요.`,
+    points: [`live_allowed: 플래그 두 개 + API 키 + staging/production 환경일 때만.`,
+             `재시도 0번, 리다이렉트 금지, 프록시 환경변수 무시.`,
+             `호출 전에 예산 행(fitroom_request)을 먼저 "사용됨"으로 커밋해요. 같은 승인으로 두 번 부를 수 없어요.`,
+             `보내기 전에 사진을 흰 배경에 펴고 2048px 안으로 줄여요.`],
+    snip: `async def consume(repo, actor, job_id, expected, live):\n    """Caller MUST commit this transaction before any network attempt."""\n    "UPDATE wardrobe.fitroom_request SET consumed_at=now() WHERE ... AND consumed_at IS NULL ..."` },
+  { id: "decart", layer: "ext", pos: [13.8, -6.6, 0.0], label: "Decart (lucy-vton-3.6)", code: "wss://api3.decart.ai · @decartai/sdk 0.2.7",
+    sum: `실시간 영상 가상 피팅 모델이에요. 브라우저가 WebSocket으로 직접 연결해요.`,
+    ana: `영상 통화 너머의 디자이너예요. 서버는 통화 연결용 일회용 비밀번호만 줘야 해요.`,
+    points: [`서버 쪽 Decart 연결은 비활성(PROVIDER_CAPABILITY_UNAVAILABLE)이에요.`,
+             `/integration/vton-capabilities가 이 모델 정보를 문서 링크와 함께 알려줘요.`],
+    snip: `"model": "lucy-vton-3.6", "documented_realtime_video": True,\n"source": "https://docs.platform.decart.ai/models/realtime/virtual-try-on"` },
+  { id: "weather", layer: "ext", pos: [-4.6, -7.0, 0.0], label: "날씨 · 일정 (MOCK)", code: "infrastructure/adapters/context.py collect_context()",
+    sum: `추천에 쓰는 "지금 상황"을 만들어요. 실제 날씨·캘린더 API는 연결돼 있지 않고, MOCK이면 고정값을 써요.`,
+    ana: `창밖을 보는 대신 "오늘은 18도, 흐림"이라고 적힌 쪽지를 읽는 거예요. 쪽지라는 사실도 함께 적어 둬요.`,
+    points: [`MOCK 고정값: 18℃, 습도 65%, 강수 0mm, 흐림.`,
+             `MOCK이 아니면 값을 비워 두고 missing_fields에 무엇이 없는지 적어요. 지어내지 않아요.`,
+             `공휴일과 위치 이름은 항상 missing이에요.`],
+    snip: `weather = (dict(temperature_c=18.0, humidity_pct=65.0, precipitation_mm=0.0, condition="CLOUDY")\n           if use_mock else {})` },
+];
+
+const SCENARIOS = [
+  { id: "login", name: "로그인 → 홈", desc: "모든 흐름의 출발점이에요. 토큰이 어디서 만들어져 어디에 머무는지 보여줘요.",
+    steps: [
+      { node: "user", text: `거울 화면에서 프로필을 고르고 데모 로그인을 눌러요.` },
+      { node: "app", text: `로그인 화면이 backendClient에 로그인을 부탁해요.` },
+      { node: "client", text: `POST /api/v1/integration/demo-login을 보내요. 아직 토큰이 없어요.` },
+      { node: "gate", text: `rate_guard가 이 요청을 "session" 그룹으로 분류해요.` },
+      { node: "redis", from: "gate", text: `IP별 로그인 카운터를 1 올려요. 30을 넘으면 429예요.` },
+      { node: "auth", from: "gate", text: `공개 데모나 로컬 데모일 때만 열려요. issue_token이 HS256 JWT를 만들어요.` },
+      { node: "client", from: "auth", text: `토큰을 모듈 변수에 보관해요. 이제 모든 요청에 Authorization 헤더가 붙어요.` },
+      { node: "home", from: "client", text: `GET /api/v1/home. 서버가 토큰을 풀어 ActorContext로 바꾼 뒤 홈 정보를 모아요.` },
+      { node: ["rank", "care", "storage"], from: "home", text: `추천, 케어, 수납 세 출처를 동시에 불러요. 각각 3초 제한이 걸려 있어요.` },
+      { node: "pg", from: "home", text: `세 출처 모두 PostgreSQL에서 읽어요. 실패한 출처는 그 칸만 UNAVAILABLE이 돼요.` },
+      { node: "app", from: "home", text: `홈 화면이 그려져요.` },
+      { node: "user", text: `오늘의 추천, 케어 일정, 수납 제안을 봐요.` },
+    ] },
+  { id: "upload", name: "옷 사진 등록", desc: "사진이 서버를 거치지 않고 저장소로 바로 가는 흐름이에요. 서버는 검사만 해요.",
+    steps: [
+      { node: "user", text: `새 옷 사진을 골라요.` },
+      { node: "client", from: "user", text: `POST /assets/upload-intents. 용도(GARMENT), 파일 크기, 형식, Idempotency-Key를 보내요.` },
+      { node: "garments", from: "client", text: `사진 업로드 동의를 확인해요. 없으면 403 CONSENT_REQUIRED예요.` },
+      { node: "pg", from: "garments", text: `asset 행을 만들어요. 15분 안에 확정되지 않으면 정리 대상이에요.` },
+      { node: "s3", from: "garments", text: `staging/ 경로에 5분짜리 PUT 서명 URL을 만들어요.` },
+      { node: "client", from: "garments", text: `업로드 URL과 꼭 넣어야 할 헤더(Content-Type, Content-Length)를 받아요.` },
+      { node: "s3", from: "client", text: `브라우저가 사진을 저장소에 직접 PUT해요. 클라우드에서는 중계가 서명 형식을 먼저 검사해요.` },
+      { node: "garments", from: "client", text: `POST /assets/{id}/finalize. 브라우저가 계산한 sha256을 같이 보내요.` },
+      { node: "s3", from: "garments", text: `staging 파일을 다시 읽어 크기, 해시, 실제 이미지 형식을 확인하고 최종 위치로 저장해요.` },
+      { node: "pg", from: "garments", text: `asset을 READY로 바꾸고, 같은 트랜잭션에서 AssetFinalized 이벤트를 남겨요.` },
+      { node: "garments", from: "pg", text: `POST /garments로 옷 정보와 사진을 연결해요.` },
+      { node: "app", from: "garments", text: `옷장 화면에 새 옷이 나타나요.` },
+    ] },
+  { id: "recommend", name: "코디 추천", desc: "LLM 없이 규칙 점수표로 코디를 고르는 흐름이에요.",
+    steps: [
+      { node: "user", text: `"오늘 뭐 입지?" 추천을 열어요.` },
+      { node: "client", from: "user", text: `POST /context-snapshots로 지금 상황부터 찍어요.` },
+      { node: "recommend", from: "client", text: `collect_context를 불러요.` },
+      { node: "weather", from: "recommend", text: `MOCK이면 18℃·흐림 고정값, 아니면 빈 값과 "무엇이 없는지" 목록을 줘요.` },
+      { node: "pg", from: "recommend", text: `스냅샷과 출처 정보(SYNTHETIC_FIXTURE 등)를 저장해요.` },
+      { node: "recommend", from: "client", text: `POST /outfit-recommendations. 스냅샷 ID, 테마, 계절, 최대 벌 수를 보내요.` },
+      { node: "pg", from: "recommend", text: `사용 가능한 옷 최대 200벌, 특별 관리 표시, 최근 7일 착용 기록을 읽어요.` },
+      { node: "rank", from: "recommend", text: `상의×하의(또는 원피스)×신발×아우터×액세서리 조합을 만들고 50점에서 시작해 더하고 빼요.` },
+      { node: "recommend", from: "rank", text: `점수 순 상위 n개와 각 코디의 이유 문장(reasons)을 돌려줘요.` },
+      { node: "app", from: "recommend", text: `추천 코디와 "왜 이 코디인지"가 화면에 나와요.` },
+    ] },
+  { id: "card", name: "코디 카드 만들기", desc: "가장 많은 부품을 지나가는 흐름이에요. 202 → 워커 → 렌더러 → 폴링 구조가 다 보여요.",
+    steps: [
+      { node: "user", text: `코디 카드 만들기를 눌러요.` },
+      { node: "client", from: "user", text: `POST /cards/drafts로 초안을 만들고, POST /card-render-jobs를 Idempotency-Key와 함께 보내요.` },
+      { node: "cards", from: "client", text: `카드가 이미 RENDERING이면 409예요. 옷 사진이 모두 준비됐는지 먼저 확인해요.` },
+      { node: "idem", from: "cards", text: `같은 키, 같은 본문이 이미 있으면 저장된 응답을 그대로 돌려주고 끝나요.` },
+      { node: "pg", from: "cards", text: `job(CARD_RENDER, QUEUED), card_render_job, 카드 RENDERING, CardGenerationRequested 이벤트를 한 트랜잭션에 써요.` },
+      { node: "client", from: "cards", text: `202와 status_url(/api/v1/jobs/{id})을 받아요. 화면은 이 주소를 폴링해요.` },
+      { node: "inline", from: "pg", text: `워커 루프가 2초마다 깨어나 카드 차례를 돌아요.` },
+      { node: "cardw", from: "inline", text: `대기 작업 한 건을 SKIP LOCKED로 잡고 RUNNING, lease를 걸어요.` },
+      { node: "s3", from: "cardw", text: `옷 사진을 읽어 크기와 sha256을 다시 확인해요.` },
+      { node: "renderer", from: "cardw", text: `POST /render. Chromium이 1080×1350으로, 네트워크를 막은 채 스크린샷을 찍어요.` },
+      { node: "s3", from: "cardw", text: `card.png를 저장해요.` },
+      { node: "pg", from: "cardw", text: `asset READY, 카드 READY, job SUCCEEDED 100%로 바꿔요.` },
+      { node: "client", from: "pg", text: `폴링 결과가 SUCCEEDED로 바뀌어요.` },
+      { node: "cards", from: "client", text: `저장(save). SHAREABLE이면 HMAC 토큰으로 24시간 공유 링크를 만들고 DB엔 해시만 남겨요.` },
+      { node: "user", from: "client", text: `카드와 공유 링크를 받아요.` },
+    ] },
+  { id: "vton", name: "가상 피팅", desc: "Mock 작업과 FitRoom 유료 호출 두 갈래를 차례로 보여줘요.",
+    steps: [
+      { node: "user", text: `옷을 고르고 "입어 보기"를 눌러요.` },
+      { node: "client", from: "user", text: `POST /api/v1/integration/vton-jobs. 사람 사진과 옷 사진 ID를 보내요.` },
+      { node: "vton", from: "client", text: `입력 사진이 준비됐는지, 옷이 사용 가능한지 확인하고 작업을 큐에 넣어요.` },
+      { node: "pg", from: "vton", text: `job을 QUEUED로 저장하고 202를 돌려줘요.` },
+      { node: "inline", from: "pg", text: `워커 루프가 poc-vton 차례에 작업을 꺼내요.` },
+      { node: "vtonw", from: "inline", text: `VTON_PROVIDER가 MOCK이라 Mock 공급자를 써요. "MOCK - NOT A REAL TRY-ON" 이미지가 나와요.` },
+      { node: "s3", from: "vtonw", text: `결과 이미지를 result.png로 저장해요.` },
+      { node: "client", from: "pg", text: `폴링으로 결과를 받아요. 화면에는 Mock이라는 표시가 함께 나와요.` },
+      { node: "vton", from: "client", text: `진짜 피팅을 원하면 /integration/fitroom/reviews로 미리보기부터 만들어요.` },
+      { node: "pg", from: "vton", text: `사람이 execute를 누르면 예산 행을 "사용됨"으로 먼저 커밋해요. 같은 승인으로 두 번은 못 불러요.` },
+      { node: "fitroom", from: "vton", text: `live_allowed가 참일 때만 한 번 호출해요. 아니면 PAID_CALL_BLOCKED. 재시도는 0번이에요.` },
+      { node: "s3", from: "vton", text: `결과를 내려받아 이미지 검사 후 저장해요.` },
+      { node: "app", from: "client", text: `피팅 결과를 비교 화면에 보여줘요.` },
+    ] },
+  { id: "realtime", name: "실시간 피팅 (끊긴 곳)", gap: true, desc: "프론트엔드에는 있는데 서버 짝이 안 보이는 흐름이에요. 어디서 끊기는지 보여줘요.",
+    steps: [
+      { node: "user", text: `실시간 피팅을 켜요.` },
+      { node: "app", text: `mirrorFittingController가 카메라를 lucy-vton-3.6 해상도와 fps로 열어요.` },
+      { node: "realtime", text: `DecartRealtimeController.start. 재연결 횟수(0~3)와 종료 시각을 검사해요.` },
+      { node: "gate", from: "realtime", text: `연결용 토큰을 받으려고 POST /api/try-on/{작업ID}/token을 보내요.` },
+      { node: "gate", text: `여기서 끊겨요. 서버에 등록된 라우터는 모두 /api/v1/… 아래라 이 주소는 처리할 곳이 없어요. Vercel 배포에서는 이 주소도 index.html로 되돌려져요.` },
+      { node: "realtime", from: "gate", text: `JSON 토큰을 못 받아 "토큰 발급 불가"로 멈춰요.` },
+      { node: "decart", from: "realtime", text: `원래는 이 다음에 브라우저가 wss://api3.decart.ai에 직접 연결해 영상을 주고받아야 해요.` },
+      { node: "user", from: "realtime", text: `사용자는 실시간 영상 대신 오류 메시지를 봐요. 서버에 토큰 발급 경로를 추가해야 이어져요.` },
+    ] },
+  { id: "storage", name: "수납 정리 · LED", desc: "계산은 워커가, 결정은 사람이, LED는 집 안에서만 켜지는 흐름이에요.",
+    steps: [
+      { node: "user", text: `수납 정리 제안을 요청해요.` },
+      { node: "client", from: "user", text: `POST /storage-optimization-jobs. 옷 목록, 모드, 계절, dry_run을 보내요.` },
+      { node: "storage", from: "client", text: `집 단위로 잠그고 옷 위치를 읽은 뒤 STORAGE_OPTIMIZE 작업을 만들어요.` },
+      { node: "pg", from: "storage", text: `job QUEUED와 StorageOptimizationRequested 이벤트를 함께 저장해요.` },
+      { node: "inline", from: "pg", text: `워커 루프가 storage 차례에 작업을 꺼내요.` },
+      { node: "storw", from: "inline", text: `옷, 칸, 점유, 환경, 착용 횟수를 모아요.` },
+      { node: "plan", from: "storw", text: `옷마다 옮길 칸(moves)과 못 옮기는 이유(blocked)를 계산해요.` },
+      { node: "pg", from: "storw", text: `결과를 승인 대기 중인 storage-actions로 저장해요. 아직 아무것도 안 옮겨졌어요.` },
+      { node: "storage", from: "client", text: `사용자가 제안을 보고 decision → confirm을 눌러야 반영돼요.` },
+      { node: "storage", text: `"이 옷 어디 있지?" POST /integration/led-commands. 집 안 스테이션 토큰이 아니면 403이에요.` },
+      { node: "pg", from: "storage", text: `모든 옷이 위치 신뢰도 0.9 이상, 24시간 안 확인이어야 해요. 한 벌이라도 아니면 전체 409.` },
+      { node: "app", from: "storage", text: `LED 상태(MOCK 컨트롤러)를 ON으로 보여주고, 정해진 초가 지나면 OFF로 바뀌어요.` },
+    ] },
+  { id: "wear", name: "착용 확인 → 케어", desc: "입었다는 기록 하나가 추천과 수납 계산에 어떻게 다시 쓰이는지 보여줘요.",
+    steps: [
+      { node: "user", text: `"오늘 이 코디 입었어요"를 눌러요.` },
+      { node: "client", from: "user", text: `POST /wear-confirmations. confirmation_method는 USER예요.` },
+      { node: "care", from: "client", text: `USER만 받아요. 미래 시각이면 거부해요.` },
+      { node: "pg", from: "care", text: `wear_event를 저장해요. 취소하면 cancelled_at만 찍히고 기록은 남아요.` },
+      { node: "rank", from: "pg", text: `다음 추천부터 최근 7일에 입은 옷은 한 번에 -5점이에요.` },
+      { node: "plan", from: "pg", text: `수납 계산의 착용 패턴에도 이 기록이 쓰여요.` },
+      { node: "care", from: "client", text: `세탁 일정을 POST /care-schedules로 만들고, 끝나면 complete를 expected_version과 함께 보내요.` },
+      { node: "pg", from: "care", text: `버전이 다르면 충돌로 막고, 맞으면 완료 처리하고 다음 반복 일정을 계산해요.` },
+      { node: "home", from: "pg", text: `홈의 케어 칸에 다음 일정이 보여요.` },
+    ] },
+  { id: "outbox", name: "이벤트 배달", desc: "업무와 함께 저장된 이벤트가 나중에 한 번만 배달되는 구조예요.",
+    steps: [
+      { node: "cards", text: `업무 기능이 처리 중에 self.event(...)로 이벤트를 남겨요. 카드뿐 아니라 거의 모든 쓰기가 같아요.` },
+      { node: "pg", from: "cards", text: `domain_event_outbox에 업무 변경과 같은 트랜잭션으로 저장돼요. 업무가 롤백되면 이벤트도 사라져요.` },
+      { node: "inline", from: "pg", text: `워커 루프의 마지막 차례가 outbox예요.` },
+      { node: "outbox", from: "inline", text: `PENDING/FAILED 10개를 잡고, 먼저 FAILED(DELIVERY_UNCONFIRMED)로 표시해요.` },
+      { node: "redis", from: "outbox", text: `Celery 모드면 consume_event 작업으로 브로커에 넣어요. INLINE 모드면 바로 consume을 불러요.` },
+      { node: "outbox", from: "redis", text: `consume: 받은 봉투가 DB 원본과 정확히 같은지 비교해요. 다르면 거부해요.` },
+      { node: "pg", from: "outbox", text: `event_id로 만든 uuid5로 audit_log에 넣어요. 이미 있으면 아무 일도 안 해요.` },
+      { node: ["cardw", "vtonw", "storw"], from: "outbox", text: `Celery 모드에서 "…Requested" 이벤트를 처음 받았다면 2초를 기다리지 않고 바로 작업 처리를 깨워요.` },
+      { node: "pg", from: "outbox", text: `성공이면 PUBLISHED, 실패면 2^시도 횟수 초 뒤 다시 시도해요. 최대 5번이에요.` },
+    ] },
+];
+
+const byId = {};
+NODES.forEach(n => { byId[n.id] = n; });
+const targets = st => Array.isArray(st.node) ? st.node : [st.node];
+const primary = st => targets(st)[0];
+function hopsFor(sc, i) {
+  if (i <= 0) return [];
+  const st = sc.steps[i];
+  const from = st.from || primary(sc.steps[i - 1]);
+  return targets(st).filter(t => t !== from).map(t => [from, t]);
+}
+const ekey = (a, b) => a < b ? a + "|" + b : b + "|" + a;
+
+// 구조 연결(시나리오에 안 나와도 코드상 이어진 것)
+const EXTRA_EDGES = [["user", "app"], ["app", "client"], ["app", "realtime"], ["gate", "auth"], ["gate", "client"],
+  ["gate", "garments"], ["gate", "recommend"], ["gate", "vton"], ["gate", "cards"], ["gate", "care"], ["gate", "storage"], ["gate", "home"],
+  ["care", "idem"], ["storage", "idem"], ["garments", "idem"], ["inline", "vtonw"], ["inline", "storw"], ["inline", "outbox"]];
+const EDGE_KEYS = new Set();
+EXTRA_EDGES.forEach(([a, b]) => EDGE_KEYS.add(ekey(a, b)));
+SCENARIOS.forEach(sc => sc.steps.forEach((_, i) => hopsFor(sc, i).forEach(([a, b]) => EDGE_KEYS.add(ekey(a, b)))));
+const NEIGHBORS = {};
+NODES.forEach(n => { NEIGHBORS[n.id] = []; });
+EDGE_KEYS.forEach(k => { const [a, b] = k.split("|"); NEIGHBORS[a].push(b); NEIGHBORS[b].push(a); });
+
+document.getElementById("eyebrow").textContent =
+  "backend/app + web/src/mirror + renderer · 부품 " + NODES.length + "개 · 흐름 " + SCENARIOS.length + "개";
+
+const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+const css = name => getComputedStyle(document.documentElement).getPropertyValue(name).trim();
+
+// ── 헤더 범례 ──
+const layersEl = document.getElementById("layers");
+const order = ["screen", "gate", "feat", "rule", "store", "ext", "work"];
+order.forEach((k, i) => {
+  const s = document.createElement("span");
+  s.style.setProperty("--dot", "var(" + LAYERS[k].token + ")");
+  s.innerHTML = "<i></i>";
+  s.appendChild(document.createTextNode(LAYERS[k].name));
+  layersEl.appendChild(s);
+  if (i < order.length - 1) { const b = document.createElement("b"); b.textContent = i === 0 ? "⇄ HTTP ⇄" : i === order.length - 2 ? "+" : "→"; layersEl.appendChild(b); }
+});
+
+// ── 설명 카드 ──
+const card = {
+  layer: document.querySelector("#cLayer span"), dotHost: document.getElementById("card"),
+  title: document.getElementById("cTitle"), code: document.getElementById("cCode"), sum: document.getElementById("cSum"),
+  ana: document.getElementById("cAna"), points: document.getElementById("cPoints"), snip: document.getElementById("cSnip"),
+  warn: document.getElementById("cWarn"), nbs: document.getElementById("cNbs"),
+};
+let selectedId = null;
+function showCard(id) {
+  const n = byId[id];
+  selectedId = id;
+  card.dotHost.style.setProperty("--dot", "var(" + LAYERS[n.layer].token + ")");
+  card.layer.textContent = LAYERS[n.layer].name;
+  card.title.textContent = n.label;
+  card.code.textContent = n.code;
+  card.sum.textContent = n.sum;
+  card.ana.hidden = !n.ana;
+  card.ana.querySelector("span").textContent = n.ana || "";
+  card.points.replaceChildren(...n.points.map(p => { const li = document.createElement("li"); li.textContent = p; return li; }));
+  card.snip.textContent = n.snip;
+  card.warn.hidden = !n.warn;
+  card.warn.querySelector("span").textContent = n.warn || "";
+  card.nbs.replaceChildren(...NEIGHBORS[id].map(nid => {
+    const m = byId[nid];
+    const b = document.createElement("button");
+    b.type = "button"; b.className = "nb";
+    b.style.setProperty("--dot", "var(" + LAYERS[m.layer].token + ")");
+    b.innerHTML = "<i></i>";
+    b.appendChild(document.createTextNode(m.label));
+    b.addEventListener("click", () => select(nid));
+    return b;
+  }));
+  labelEls.forEach((el, k) => el.classList.toggle("on", k === id));
+}
+function select(id) { showCard(id); autoRotate = false; }
+
+// ── 라벨(HTML, 3D 위치를 화면에 투영) ──
+const labelsEl = document.getElementById("labels");
+const labelEls = new Map();
+NODES.forEach(n => {
+  const b = document.createElement("button");
+  b.type = "button"; b.className = "lbl";
+  b.style.setProperty("--dot", "var(" + LAYERS[n.layer].token + ")");
+  b.innerHTML = "<i></i>";
+  b.appendChild(document.createTextNode(n.label));
+  b.addEventListener("click", () => select(n.id));
+  labelsEl.appendChild(b);
+  labelEls.set(n.id, b);
+});
+
+// ── 시나리오 패널 ──
+const chipsEl = document.getElementById("scChips"), descEl = document.getElementById("scDesc");
+const capMeta = document.getElementById("capMeta"), capWho = document.getElementById("capWho"), capText = document.getElementById("capText");
+const captionEl = document.getElementById("caption"), dotsEl = document.getElementById("dots");
+const prevBtn = document.getElementById("prev"), nextBtn = document.getElementById("next"), playBtn = document.getElementById("play");
+let sc = SCENARIOS[0], stepI = 0, playing = false, timer = null;
+const STEP_MS = 3600, HOP_MS = reduceMotion ? 0 : 750;
+
+SCENARIOS.forEach(s => {
+  const b = document.createElement("button");
+  b.type = "button"; b.className = "chip" + (s.gap ? " gap" : ""); b.textContent = s.name; b.dataset.id = s.id;
+  b.addEventListener("click", () => { loadScenario(s); setPlaying(true); });
+  chipsEl.appendChild(b);
+});
+
+function loadScenario(s) {
+  sc = s;
+  [...chipsEl.children].forEach(c => c.setAttribute("aria-pressed", String(c.dataset.id === s.id)));
+  descEl.textContent = s.desc;
+  dotsEl.replaceChildren(...s.steps.map((_, i) => {
+    const d = document.createElement("button");
+    d.type = "button"; d.className = "dot"; d.setAttribute("aria-label", (i + 1) + "단계");
+    d.addEventListener("click", () => { setPlaying(false); goStep(i); });
+    return d;
+  }));
+  goStep(0);
+}
+
+function goStep(i) {
+  stepI = Math.max(0, Math.min(sc.steps.length - 1, i));
+  const st = sc.steps[stepI];
+  const names = targets(st).map(t => byId[t].label).join(" + ");
+  capMeta.textContent = (stepI + 1) + " / " + sc.steps.length + " 단계";
+  capWho.textContent = names;
+  capText.textContent = st.text;
+  captionEl.style.setProperty("--step", "var(" + LAYERS[byId[primary(st)].layer].token + ")");
+  [...dotsEl.children].forEach((d, k) => { d.className = "dot" + (k < stepI ? " done" : k === stepI ? " now" : ""); });
+  prevBtn.disabled = stepI === 0;
+  nextBtn.disabled = stepI === sc.steps.length - 1;
+  showCard(primary(st));
+  if (scene3d) scene3d.onStep(sc, stepI);
+}
+
+function setPlaying(on) {
+  playing = on;
+  playBtn.textContent = on ? "일시정지" : (stepI === sc.steps.length - 1 ? "처음부터" : "재생");
+  clearTimeout(timer);
+  if (on) schedule();
+}
+function schedule() {
+  clearTimeout(timer);
+  timer = setTimeout(() => {
+    if (!playing) return;
+    if (stepI < sc.steps.length - 1) { goStep(stepI + 1); schedule(); }
+    else setPlaying(false);
+  }, STEP_MS);
+}
+playBtn.addEventListener("click", () => {
+  if (playing) { setPlaying(false); return; }
+  if (stepI === sc.steps.length - 1) goStep(0);
+  setPlaying(true);
+});
+prevBtn.addEventListener("click", () => { setPlaying(false); goStep(stepI - 1); });
+nextBtn.addEventListener("click", () => { setPlaying(false); goStep(stepI + 1); if (stepI === sc.steps.length - 1) playBtn.textContent = "처음부터"; });
+document.addEventListener("keydown", e => {
+  if (e.target.closest && e.target.closest("input,textarea")) return;
+  if (e.key === "ArrowRight") { setPlaying(false); goStep(stepI + 1); }
+  if (e.key === "ArrowLeft") { setPlaying(false); goStep(stepI - 1); }
+});
+
+// ── 3D 장면 ──
+let scene3d = null, autoRotate = !reduceMotion;
+const stage = document.getElementById("stage"), canvas = document.getElementById("c");
+const CX = 3.6; // 지도 가운데 x
+
+function build3D() {
+  if (!window.THREE) throw new Error("no three");
+  const THREE = window.THREE;
+  const renderer = new THREE.WebGLRenderer({ canvas, antialias: true });
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+  const scene = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(42, 1, 0.1, 200);
+  scene.add(new THREE.AmbientLight(0xffffff, 0.62));
+  const dl = new THREE.DirectionalLight(0xffffff, 0.75); dl.position.set(6, 12, 9); scene.add(dl);
+
+  const grid = new THREE.GridHelper(32, 32);
+  grid.position.set(CX, -8.2, 0);
+  grid.material.vertexColors = false; grid.material.transparent = true; grid.material.opacity = 0.55;
+  scene.add(grid);
+
+  // 브라우저 / 서버 분리면
+  const splitMat = new THREE.MeshBasicMaterial({ transparent: true, opacity: 0.08, side: THREE.DoubleSide, depthWrite: false });
+  const splitPlane = new THREE.Mesh(new THREE.PlaneGeometry(26, 9), splitMat);
+  splitPlane.rotation.x = -Math.PI / 2; splitPlane.position.set(CX, SPLIT_Y, 0); scene.add(splitPlane);
+  const splitEdge = new THREE.LineSegments(new THREE.EdgesGeometry(splitPlane.geometry), new THREE.LineBasicMaterial({ transparent: true, opacity: 0.7 }));
+  splitEdge.rotation.copy(splitPlane.rotation); splitEdge.position.copy(splitPlane.position); scene.add(splitEdge);
+  const splitAnchor = new THREE.Vector3(CX - 13, SPLIT_Y, 4.5);
+  const splitLbl = document.createElement("div");
+  splitLbl.className = "split-lbl";
+  splitLbl.innerHTML = "<span>▲ 브라우저</span><span>▼ 서버</span>";
+  labelsEl.appendChild(splitLbl);
+
+  const sphere = new THREE.SphereGeometry(0.56, 32, 20);
+  const ringGeo = new THREE.TorusGeometry(0.9, 0.045, 8, 56);
+  const meshes = [];
+  NODES.forEach(n => {
+    const mat = new THREE.MeshStandardMaterial({ roughness: 0.42, metalness: 0.08, emissiveIntensity: 0.15, transparent: true });
+    const m = new THREE.Mesh(sphere, mat);
+    m.position.set(n.pos[0], n.pos[1], n.pos[2]);
+    m.userData.id = n.id;
+    scene.add(m); meshes.push(m); n.mesh = m;
+    const ring = new THREE.Mesh(ringGeo, new THREE.MeshBasicMaterial({ transparent: true, opacity: 0 }));
+    ring.position.copy(m.position); scene.add(ring); n.ring = ring;
+    // 바닥까지 내려오는 가는 기둥: 층 높이를 읽기 쉽게
+    const g = new THREE.BufferGeometry().setFromPoints([m.position.clone(), new THREE.Vector3(n.pos[0], -8.2, n.pos[2])]);
+    n.stem = new THREE.Line(g, new THREE.LineBasicMaterial({ transparent: true, opacity: 0.25 }));
+    scene.add(n.stem);
+  });
+
+  const edges = new Map();
+  EDGE_KEYS.forEach(k => {
+    const [a, b] = k.split("|");
+    const g = new THREE.BufferGeometry().setFromPoints([byId[a].mesh.position, byId[b].mesh.position]);
+    const line = new THREE.Line(g, new THREE.LineBasicMaterial({ transparent: true, opacity: 0.5 }));
+    scene.add(line); edges.set(k, line);
+  });
+
+  const particles = [];
+  for (let i = 0; i < 4; i++) {
+    const core = new THREE.Mesh(new THREE.SphereGeometry(0.17, 16, 12), new THREE.MeshBasicMaterial());
+    const glow = new THREE.Mesh(new THREE.SphereGeometry(0.36, 16, 12), new THREE.MeshBasicMaterial({ transparent: true, opacity: 0.28 }));
+    core.add(glow); core.visible = false; scene.add(core);
+    particles.push({ mesh: core, glow, a: null, b: null, start: 0 });
+  }
+
+  let T = {};
+  let scNodes = new Set(), scEdges = new Set(), hopEdges = new Set(), activeIds = new Set();
+  function applyTheme() {
+    T = { bg: css("--bg"), line: css("--line"), accent: css("--accent"), muted: css("--muted") };
+    scene.background = new THREE.Color(T.bg);
+    grid.material.color.set(T.line);
+    splitMat.color.set(css("--c-screen")); splitEdge.material.color.set(css("--c-screen"));
+    NODES.forEach(n => {
+      const c = new THREE.Color(css(LAYERS[n.layer].token));
+      n.mesh.material.color.copy(c); n.mesh.material.emissive.copy(c);
+      n.ring.material.color.copy(c); n.stem.material.color.copy(c);
+    });
+    particles.forEach(p => { p.mesh.material.color.set(T.accent); p.glow.material.color.set(T.accent); });
+    paint();
+  }
+  function paint() {
+    edges.forEach((line, k) => {
+      const hot = hopEdges.has(k);
+      line.material.color.set(hot ? T.accent : T.line);
+      line.material.opacity = hot ? 1 : scEdges.has(k) ? 0.85 : 0.22;
+    });
+    NODES.forEach(n => {
+      const inSc = scNodes.has(n.id);
+      n.mesh.material.opacity = inSc ? 1 : 0.28;
+      n.mesh.material.emissiveIntensity = activeIds.has(n.id) ? 0.75 : 0.14;
+      n.stem.material.opacity = inSc ? 0.3 : 0.08;
+      labelEls.get(n.id).classList.toggle("dim", !inSc);
+    });
+  }
+
+  function onStep(s, i) {
+    scNodes = new Set(); scEdges = new Set();
+    s.steps.forEach((st, k) => { targets(st).forEach(t => scNodes.add(t)); hopsFor(s, k).forEach(([a, b]) => scEdges.add(ekey(a, b))); });
+    const hops = hopsFor(s, i);
+    hopEdges = new Set(hops.map(([a, b]) => ekey(a, b)));
+    activeIds = new Set(targets(s.steps[i]));
+    const now = performance.now();
+    particles.forEach(p => { p.mesh.visible = false; p.a = null; });
+    hops.slice(0, particles.length).forEach(([a, b], k) => {
+      const p = particles[k];
+      p.a = byId[a].mesh.position; p.b = byId[b].mesh.position; p.start = now;
+    });
+    if (T.bg) paint();
+  }
+
+  // 카메라 궤도
+  let theta = 0.45, phi = 1.22, radius = 24;
+  const target = new THREE.Vector3(CX, 0.2, 0);
+  function placeCamera() {
+    camera.position.set(
+      target.x + radius * Math.sin(phi) * Math.sin(theta),
+      target.y + radius * Math.cos(phi),
+      target.z + radius * Math.sin(phi) * Math.cos(theta));
+    camera.lookAt(target);
+  }
+  const clamp = (v, a, b) => Math.max(a, Math.min(b, v));
+  let W = 1, H = 1;
+  function resize() {
+    W = stage.clientWidth; H = stage.clientHeight;
+    renderer.setSize(W, H, false);
+    camera.aspect = W / H; camera.updateProjectionMatrix();
+    if (!resize.done) { radius = W / H < 0.9 ? 38 : W / H < 1.2 ? 32 : 28; resize.done = true; }
+  }
+  new ResizeObserver(resize).observe(stage);
+  resize();
+
+  // 포인터: 드래그 회전, 두 손가락 확대, 짧은 탭 = 선택
+  const raycaster = new THREE.Raycaster(), ndc = new THREE.Vector2();
+  const pts = new Map(); let moved = 0, pinch = 0;
+  const dist = () => { const [p, q] = [...pts.values()]; return Math.hypot(p.x - q.x, p.y - q.y) || 1; };
+  function hit(e) {
+    const r = canvas.getBoundingClientRect();
+    ndc.set(((e.clientX - r.left) / r.width) * 2 - 1, -((e.clientY - r.top) / r.height) * 2 + 1);
+    raycaster.setFromCamera(ndc, camera);
+    const h = raycaster.intersectObjects(meshes)[0];
+    return h ? h.object.userData.id : null;
+  }
+  canvas.addEventListener("pointerdown", e => {
+    canvas.setPointerCapture(e.pointerId);
+    pts.set(e.pointerId, { x: e.clientX, y: e.clientY });
+    if (pts.size === 1) moved = 0;
+    if (pts.size === 2) pinch = dist();
+    autoRotate = false; canvas.classList.add("grabbing");
+  });
+  canvas.addEventListener("pointermove", e => {
+    if (!pts.has(e.pointerId)) {
+      if (e.pointerType === "mouse") canvas.classList.toggle("hovering", !!hit(e));
+      return;
+    }
+    const p = pts.get(e.pointerId);
+    const dx = e.clientX - p.x, dy = e.clientY - p.y;
+    pts.set(e.pointerId, { x: e.clientX, y: e.clientY });
+    if (pts.size === 1) {
+      theta -= dx * 0.0065; phi = clamp(phi - dy * 0.0065, 0.35, 2.55);
+      moved += Math.abs(dx) + Math.abs(dy);
+    } else if (pts.size === 2) {
+      const d = dist(); radius = clamp(radius * pinch / d, 9, 44); pinch = d; moved += 20;
+    }
+  });
+  function up(e) {
+    if (!pts.has(e.pointerId)) return;
+    pts.delete(e.pointerId);
+    if (pts.size === 0) {
+      canvas.classList.remove("grabbing");
+      if (moved < 6 && e.type === "pointerup") { const id = hit(e); if (id) select(id); }
+    }
+  }
+  canvas.addEventListener("pointerup", up);
+  canvas.addEventListener("pointercancel", up);
+  canvas.addEventListener("wheel", e => {
+    e.preventDefault(); autoRotate = false;
+    radius = clamp(radius * (1 + Math.sign(e.deltaY) * 0.08), 9, 44);
+  }, { passive: false });
+
+  const v = new THREE.Vector3();
+  function frame(now) {
+    if (autoRotate && pts.size === 0) theta += 0.0011;
+    placeCamera();
+    particles.forEach(p => {
+      if (!p.a) return;
+      const t = HOP_MS ? Math.min(1, (now - p.start) / HOP_MS) : 1;
+      const e = t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2;
+      p.mesh.position.lerpVectors(p.a, p.b, e);
+      p.mesh.visible = t < 1;
+    });
+    NODES.forEach(n => {
+      const act = activeIds.has(n.id), sel = n.id === selectedId;
+      const s = act ? 1.2 + (reduceMotion ? 0 : 0.06 * Math.sin(now / 240)) : 1;
+      n.mesh.scale.setScalar(s);
+      n.ring.lookAt(camera.position);
+      const want = sel ? 0.95 : act ? 0.45 : 0;
+      n.ring.material.opacity += (want - n.ring.material.opacity) * 0.18;
+      n.ring.scale.setScalar(sel ? 1.08 : 1);
+    });
+    renderer.render(scene, camera);
+    NODES.forEach(n => {
+      v.copy(n.mesh.position).project(camera);
+      const el = labelEls.get(n.id);
+      const x = (v.x * 0.5 + 0.5) * W, y = (-v.y * 0.5 + 0.5) * H;
+      el.style.transform = "translate(" + x.toFixed(1) + "px," + y.toFixed(1) + "px) translate(-50%, 16px)";
+      el.style.zIndex = String(Math.round(1000 - camera.position.distanceTo(n.mesh.position) * 10));
+      el.style.visibility = v.z > 1 ? "hidden" : "visible";
+    });
+    v.copy(splitAnchor).project(camera);
+    splitLbl.style.transform = "translate(" + ((v.x * 0.5 + 0.5) * W).toFixed(1) + "px," + ((-v.y * 0.5 + 0.5) * H).toFixed(1) + "px) translate(0, -50%)";
+    splitLbl.style.visibility = v.z > 1 ? "hidden" : "visible";
+    requestAnimationFrame(frame);
+  }
+
+  applyTheme();
+  window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", applyTheme);
+  new MutationObserver(applyTheme).observe(document.documentElement, { attributes: true, attributeFilter: ["data-theme"] });
+  requestAnimationFrame(frame);
+  return { onStep };
+}
+
+try {
+  scene3d = build3D();
+} catch (err) {
+  const f = document.createElement("div");
+  f.className = "fallback";
+  f.textContent = "이 브라우저에서 3D를 그릴 수 없어요. 오른쪽 흐름과 설명은 그대로 쓸 수 있어요.";
+  stage.appendChild(f);
+  labelsEl.hidden = true;
+}
+if (window.matchMedia("(pointer: coarse)").matches) document.getElementById("hint").textContent = "드래그 회전 · 두 손가락 확대 · 공을 누르면 설명";
+
+loadScenario(SCENARIOS[0]);
+playBtn.textContent = "재생";
+})();
+</script>
+
+</body>
+</html>

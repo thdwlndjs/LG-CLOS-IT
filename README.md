@@ -1,5 +1,7 @@
 # Smart Wardrobe 로컬 프로토타입
 
+> **[코드 해부도 (3D)](https://thdwlndjs.github.io/LG-CLOS-IT/)** — 부품 28개와 요청 흐름 9개를 3D 지도로 따라가 볼 수 있다. 원본은 [docs/index.html](docs/index.html).
+
 기존 설계의 Sprint 0 플랫폼과 계약 1.7의 Sprint 1~7 업무 API 52개를 제공한다. 카드 렌더링·비공개 저장·공유·코디 재사용과 명시적 착용 이력·케어 프로필·관리 일정·수행 기록을 구현했다. 실제 Decart 유료 호출 검증은 사용자의 요청에 따라 모든 Sprint 종료 후 수행한다. IA 여섯 메뉴의 프론트엔드를 구현했고 사용자 직접 QA를 대기한다. 선택 외부 연동과 유료 API 검증은 직접 QA 이후 진행한다.
 
 현재 구현/검증은 [Sprint 7 보고서](docs/SPRINT_7_REPORT.md), 과거 증적은 각 Sprint 0~6 보고서, 계약 결정은 [DECISIONS](docs/DECISIONS.md), 기능별 상태는 [추적표](docs/IMPLEMENTATION_TRACEABILITY.md)를 따른다.
